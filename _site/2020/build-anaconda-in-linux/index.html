@@ -1,0 +1,70 @@
+<p>参考：https://blog.csdn.net/hitzijiyingcai/article/details/81099951</p>
+
+<h1 id="1下载linux版本的anaconda安装包">1、下载linux版本的Anaconda安装包</h1>
+
+<p>下载地址：https://www.continuum.io/downloads
+选择64位linux的Python 2.7版本点击下载，下载完成后，得到Anaconda3-4.2.0-Linux-x86_64.sh安装文件。</p>
+
+<h1 id="2安装anaconda">2、安装Anaconda</h1>
+
+<p>进入下载文件所在的文件夹，在命令行运行：</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">bash</span><span class="err"> </span> <span class="nx">Anaconda3</span><span class="o">-</span><span class="mf">4.2</span><span class="p">.</span><span class="mi">0</span><span class="o">-</span><span class="nx">Linux</span><span class="o">-</span><span class="nx">x86_64</span><span class="p">.</span><span class="nx">sh</span>
+<span class="nx">安装过程一路回车即可</span><span class="err">，</span><span class="nx">中途询问是否允许许可条款</span>
+<span class="nx">Do</span> <span class="nx">you</span> <span class="nx">approve</span> <span class="nx">the</span> <span class="nx">license</span> <span class="nx">terms</span><span class="p">?</span> <span class="p">[</span><span class="nx">yes</span><span class="o">|</span><span class="nx">no</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nx">yes</span>
+<span class="nx">在询问是否将anaconda路径加入到系统环境变量步骤</span><span class="err">，</span><span class="nx">默认为no</span><span class="err">，</span><span class="nx">设置为yes</span>
+<span class="nx">Do</span> <span class="nx">you</span> <span class="nx">wish</span> <span class="nx">the</span> <span class="nx">installer</span> <span class="nx">to</span> <span class="nx">prepend</span> <span class="nx">the</span> <span class="nx">Anaconda2</span> <span class="nx">install</span> <span class="nx">location</span>
+<span class="nx">to</span> <span class="nx">PATH</span> <span class="k">in</span> <span class="nx">your</span> <span class="nx">$path</span> <span class="p">?</span> <span class="p">[</span><span class="nx">yes</span><span class="o">|</span><span class="nx">no</span><span class="p">]</span>
+<span class="p">[</span><span class="nx">no</span><span class="p">]</span> <span class="o">&gt;&gt;&gt;</span> <span class="nx">yes</span>
+<span class="nx">等待安装完毕即可</span>
+</code></pre></div></div>
+
+<h1 id="3安装tensorflow">3、安装tensorflow</h1>
+
+<p>首先创建一个conda环境，命名为tensorflow</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">conda</span> <span class="nx">create</span> <span class="o">-</span><span class="nx">n</span> <span class="nx">tensorflow</span> <span class="nx">python</span><span class="o">=</span><span class="mi">3</span><span class="p">.</span><span class="nx">x</span>
+<span class="nx">然后激活该环境并在环境下安装tensorflow</span>
+<span class="nx">source</span> <span class="nx">activate</span> <span class="nx">tensorflow</span>
+</code></pre></div></div>
+<p>接下来为利用清华大学镜像进行安装，镜像地址为https://mirrors.tuna.tsinghua.edu.cn/help/tensorflow/，</p>
+
+<p>可以根据需要自己选择想要安装的tensorflow版本，以下为本次安装的：</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">pip</span> <span class="nx">install</span> <span class="err">\ </span> <span class="o">-</span><span class="nx">i</span> <span class="nx">https</span><span class="p">:</span><span class="c1">//pypi.tuna.tsinghua.edu.cn/simple/ \  https://mirrors.tuna.tsinghua.edu.cn/tensorflow/linux/gpu/tensorflow_gpu-1.4.0-cp35-cp35m-linux_x86_64.whl</span>
+</code></pre></div></div>
+<p>要注意对应的版本要和anaconda对应一致，由于本次安装的anaconda所需要的版本为python3.5所以为cp35，否则就出现错误：
+<code class="language-plaintext highlighter-rouge">is not a supported wheel in this platform</code></p>
+
+<h1 id="4测试">4、测试</h1>
+
+<p>安装完成javascript之后就可以进入进行测试</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">source</span> <span class="nx">activate</span> <span class="nx">tensorflow</span>
+<span class="nx">python3</span>
+<span class="k">import</span> <span class="nx">tensorflow</span> <span class="k">as</span> <span class="nx">tf</span>
+<span class="p">(</span><span class="nx">此处进行一个python程序的测试</span><span class="err">，</span><span class="nx">直接运行python3</span> <span class="nx">test</span><span class="p">.</span><span class="nx">py进行测试即可</span><span class="err">，</span><span class="nx">在测试过程中发现有部分库未安装再进行安装即可</span><span class="p">)</span>
+<span class="nx">测试完成之后source</span> <span class="nx">deactivate</span>
+</code></pre></div></div>
+<p>5、在安装配置过程中遇到的其他错误
+（１）conda报错：’Could not connect to https://repo.continuum.io/pkgs/pro/linux-64’
+执行conda命令：
+<code class="language-plaintext highlighter-rouge">conda config</code>
+更换安装源镜像，清华大学有提供镜像具体更换方法有如下：</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">conda</span> <span class="nx">config</span> <span class="o">--</span><span class="nx">add</span> <span class="nx">channels</span> <span class="dl">'</span><span class="s1">https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/</span><span class="dl">'</span>
+<span class="nx">conda</span> <span class="nx">config</span> <span class="o">--</span><span class="kd">set</span> <span class="nx">show_channel_urls</span> <span class="nx">yes</span>
+</code></pre></div></div>
+<p>然后使用vim.condarc命令打开文件，打开之后将 -defaults删除</p>
+
+<p>（２）在使用python程序进行测试时易出现：Intel MKL FATAL ERROR: Cannot load libmkl_avx2.so or libmkl_def.so</p>
+
+<p>输入这两条命令即可：</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">conda</span> <span class="nx">install</span> <span class="nx">nomkl</span> <span class="nx">numpy</span> <span class="nx">scipy</span> <span class="nx">scikit</span><span class="o">-</span><span class="nx">learn</span> <span class="nx">numexpr</span>
+<span class="nx">conda</span> <span class="nx">remove</span> <span class="nx">mkl</span> <span class="nx">mkl</span><span class="o">-</span><span class="nx">service</span>
+</code></pre></div></div>
+<p>（３）在测试tensorflow时import tensorflow as tf 易出现的问题：</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">can</span> <span class="nx">not</span> <span class="nx">find</span> <span class="nx">libcusolver</span><span class="p">.</span><span class="nx">so</span><span class="p">.</span><span class="mf">8.0</span><span class="p">:</span>
+<span class="nx">ImportError</span><span class="p">:</span> <span class="nx">libcusolver</span><span class="p">.</span><span class="nx">so</span><span class="p">.</span><span class="mf">8.0</span><span class="p">:</span> <span class="nx">cannot</span> <span class="nx">open</span> <span class="nx">shared</span> <span class="nx">object</span> <span class="nx">file</span><span class="p">:</span> <span class="nx">No</span> <span class="nx">such</span> <span class="nx">file</span> <span class="nx">or</span> <span class="nx">directory</span>
+</code></pre></div></div>
+<p>解决措施：</p>
+
+<p>sudo vim ~/.bashrc
+export LD_LIBRARY_PATH=/usr/local/cuda/lib64/
+source ~/.bashrc</p>

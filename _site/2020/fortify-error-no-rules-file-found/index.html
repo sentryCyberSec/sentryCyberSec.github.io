@@ -1,0 +1,133 @@
+<blockquote>
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>最近在接触代码审计的活儿。碰到了一些问题，随手记录下来。
+错误描述：当fortify开始java代码分析时，报错No rules files found;
+</code></pre></div>  </div>
+</blockquote>
+
+<h1 id="1错误描述">1.错误描述</h1>
+<p>谷歌一波：</p>
+<h2 id="问题引出">问题引出</h2>
+<p>stackoverflow原问题：</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nx">When</span> <span class="nx">I</span> <span class="nx">run</span> <span class="nx">a</span> <span class="nx">Fortify</span> <span class="nx">analysis</span> <span class="nx">against</span> <span class="nx">a</span> <span class="nx">Java</span> <span class="nx">project</span> <span class="nx">I</span> <span class="nx">receive</span> <span class="k">this</span> <span class="nx">error</span> <span class="p">:</span>
+ <span class="p">[</span><span class="nx">warning</span><span class="p">]:</span> <span class="nx">No</span> <span class="nx">rules</span> <span class="nx">files</span> <span class="nx">found</span>
+ <span class="p">[</span><span class="nx">error</span><span class="p">]:</span> <span class="nx">No</span> <span class="nx">rules</span> <span class="nx">files</span> <span class="nx">found</span>
+ <span class="nx">Where</span> <span class="nx">can</span> <span class="nx">I</span> <span class="nx">configure</span> <span class="nx">the</span> <span class="nx">rules</span> <span class="nx">file</span> <span class="p">?</span>
+</code></pre></div></div>
+<p>原答案：</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">Navigate</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">bin</span> <span class="nx">folder</span> <span class="k">of</span> <span class="nx">your</span> <span class="nx">fortify</span> <span class="nx">installation</span>
+<span class="nx">Enter</span> <span class="nx">scapostinstall</span>
+<span class="nx">Enter</span> <span class="mi">2</span> <span class="nx">to</span> <span class="nx">select</span> <span class="nx">Settings</span>
+<span class="nx">Enter</span> <span class="mi">2</span> <span class="nx">to</span> <span class="nx">select</span> <span class="nb">Proxy</span> <span class="nx">Server</span> <span class="nx">Host</span>
+<span class="nx">Enter</span> <span class="nx">the</span> <span class="nx">name</span> <span class="k">of</span> <span class="nx">the</span> <span class="nx">proxy</span> <span class="nx">server</span>
+<span class="nx">Enter</span> <span class="mi">3</span> <span class="nx">to</span> <span class="nx">select</span> <span class="nb">Proxy</span> <span class="nx">Server</span> <span class="nx">Port</span><span class="p">.</span>
+<span class="nx">Enter</span> <span class="nx">the</span> <span class="nx">proxy</span> <span class="nx">server</span><span class="dl">'</span><span class="s1">s port number.
+Exit and run fortifyupdate.cmd
+</span></code></pre></div></div>
+<p>原答案的意思就是说需要对fortify进行代理配置，(需科学上网)后进行规则库的下载配置。</p>
+
+<h1 id="2解决问题">2.解决问题</h1>
+
+<h2 id="配置代码">配置代码</h2>
+<p>进入fortify安装的目录，对fortify进行代理配置，配置过程代码如下：</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">#</span><span class="nx">进入fortify的安装目录</span><span class="p">(</span><span class="nx">windows环境</span><span class="p">)</span>
+<span class="nx">E</span><span class="p">:</span>
+<span class="nx">cd</span> <span class="nx">fortify</span><span class="err">\</span><span class="nx">bin</span><span class="o">\</span>
+
+<span class="nx">E</span><span class="p">:</span><span class="err">\</span><span class="nx">fortify</span><span class="err">\</span><span class="nx">bin</span><span class="o">&gt;</span><span class="nx">scapostinstall</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="nx">Migration</span><span class="p">...</span>
+<span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="nx">Settings</span><span class="p">...</span>
+<span class="p">[</span><span class="nx">s</span><span class="p">]</span> <span class="nx">Display</span> <span class="nx">all</span> <span class="nx">settings</span>
+<span class="p">[</span><span class="nx">q</span><span class="p">]</span> <span class="nx">Exit</span>
+<span class="nx">Please</span> <span class="nx">select</span> <span class="nx">the</span> <span class="nx">desired</span> <span class="nx">action</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="nx">s</span><span class="p">,</span><span class="nx">q</span><span class="p">):</span> <span class="mi">2</span>
+
+<span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="nx">General</span><span class="p">...</span>
+<span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="nx">Fortify</span> <span class="nx">Update</span><span class="p">...</span>
+<span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="nx">Software</span> <span class="nx">Security</span> <span class="nx">Center</span> <span class="nx">Settings</span><span class="p">...</span>
+<span class="p">[</span><span class="nx">s</span><span class="p">]</span> <span class="nx">Display</span> <span class="nx">all</span> <span class="nx">settings</span>
+<span class="p">[</span><span class="nx">r</span><span class="p">]</span> <span class="nx">Return</span>
+<span class="p">[</span><span class="nx">q</span><span class="p">]</span> <span class="nx">Exit</span>
+<span class="nx">Please</span> <span class="nx">select</span> <span class="nx">the</span> <span class="nx">desired</span> <span class="nx">action</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="nx">s</span><span class="p">,</span><span class="nx">r</span><span class="p">,</span><span class="nx">q</span><span class="p">):</span> <span class="mi">2</span>
+
+<span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="nx">Update</span> <span class="nx">Server</span> <span class="nx">URL</span>
+<span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="nb">Proxy</span> <span class="nx">Server</span> <span class="nx">Host</span>
+<span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="nb">Proxy</span> <span class="nx">Server</span> <span class="nx">Port</span>
+<span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="nb">Proxy</span> <span class="nx">Server</span> <span class="nx">Username</span>
+<span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="nb">Proxy</span> <span class="nx">Server</span> <span class="nx">Password</span>
+<span class="p">[</span><span class="nx">s</span><span class="p">]</span> <span class="nx">Display</span> <span class="nx">all</span> <span class="nx">settings</span>
+<span class="p">[</span><span class="nx">r</span><span class="p">]</span> <span class="nx">Return</span>
+<span class="p">[</span><span class="nx">q</span><span class="p">]</span> <span class="nx">Exit</span>
+<span class="nx">Please</span> <span class="nx">select</span> <span class="nx">the</span> <span class="nx">desired</span> <span class="nx">action</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="nx">s</span><span class="p">,</span><span class="nx">r</span><span class="p">,</span><span class="nx">q</span><span class="p">):</span> <span class="mi">2</span>
+
+<span class="nb">Proxy</span> <span class="nx">Server</span> <span class="nx">Host</span> <span class="p">[</span><span class="k">default</span><span class="p">:</span> <span class="p">]:</span> <span class="nx">localhost</span>
+
+<span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="nx">Update</span> <span class="nx">Server</span> <span class="nx">URL</span>
+<span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="nb">Proxy</span> <span class="nx">Server</span> <span class="nx">Host</span>
+<span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="nb">Proxy</span> <span class="nx">Server</span> <span class="nx">Port</span>
+<span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="nb">Proxy</span> <span class="nx">Server</span> <span class="nx">Username</span>
+<span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="nb">Proxy</span> <span class="nx">Server</span> <span class="nx">Password</span>
+<span class="p">[</span><span class="nx">s</span><span class="p">]</span> <span class="nx">Display</span> <span class="nx">all</span> <span class="nx">settings</span>
+<span class="p">[</span><span class="nx">r</span><span class="p">]</span> <span class="nx">Return</span>
+<span class="p">[</span><span class="nx">q</span><span class="p">]</span> <span class="nx">Exit</span>
+<span class="nx">Please</span> <span class="nx">select</span> <span class="nx">the</span> <span class="nx">desired</span> <span class="nx">action</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="nx">s</span><span class="p">,</span><span class="nx">r</span><span class="p">,</span><span class="nx">q</span><span class="p">):</span> <span class="mi">3</span>
+
+<span class="nb">Proxy</span> <span class="nx">Server</span> <span class="nx">Port</span> <span class="p">[</span><span class="k">default</span><span class="p">:</span> <span class="p">]:</span> <span class="mi">8080</span>
+
+<span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="nx">Update</span> <span class="nx">Server</span> <span class="nx">URL</span>
+<span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="nb">Proxy</span> <span class="nx">Server</span> <span class="nx">Host</span>
+<span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="nb">Proxy</span> <span class="nx">Server</span> <span class="nx">Port</span>
+<span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="nb">Proxy</span> <span class="nx">Server</span> <span class="nx">Username</span>
+<span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="nb">Proxy</span> <span class="nx">Server</span> <span class="nx">Password</span>
+<span class="p">[</span><span class="nx">s</span><span class="p">]</span> <span class="nx">Display</span> <span class="nx">all</span> <span class="nx">settings</span>
+<span class="p">[</span><span class="nx">r</span><span class="p">]</span> <span class="nx">Return</span>
+<span class="p">[</span><span class="nx">q</span><span class="p">]</span> <span class="nx">Exit</span>
+<span class="nx">Please</span> <span class="nx">select</span> <span class="nx">the</span> <span class="nx">desired</span> <span class="nx">action</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="nx">s</span><span class="p">,</span><span class="nx">r</span><span class="p">,</span><span class="nx">q</span><span class="p">):</span> <span class="nx">q</span>
+</code></pre></div></div>
+<p>以上fortify客户端配置代理结束，然后直接输入命令进行规则库下载更新：</p>
+
+<h2 id="更新文件">更新文件</h2>
+<p>输入fortifyupdate更新命令，更新代码如下：</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">E</span><span class="p">:</span><span class="err">\</span><span class="nx">fortify</span><span class="err">\</span><span class="nx">bin</span><span class="o">&gt;</span><span class="nx">fortifyupdate</span><span class="p">.</span><span class="nx">cmd</span>
+<span class="nx">Using</span> <span class="nx">proxy</span> <span class="nx">server</span><span class="p">:</span> <span class="nx">localhost</span><span class="p">:</span><span class="mi">8080</span>
+<span class="nx">Storing</span> <span class="nx">Updated</span> <span class="nx">Security</span> <span class="nx">Content</span> <span class="p">...</span>
+<span class="nx">E</span><span class="p">:</span><span class="err">\</span><span class="nx">fortify</span><span class="err">\</span><span class="nx">Core</span><span class="err">\</span><span class="nx">config</span><span class="err">\</span><span class="nx">rules</span>
+<span class="nx">Fortify</span> <span class="nx">Secure</span> <span class="nx">Coding</span> <span class="nx">Rules</span><span class="p">,</span> <span class="nx">Core</span><span class="p">,</span> <span class="nx">Annotations</span> <span class="nx">v2015</span><span class="p">.</span><span class="mf">2.0</span><span class="p">.</span><span class="mi">0008</span>
+<span class="nx">Fortify</span> <span class="nx">Secure</span> <span class="nx">Coding</span> <span class="nx">Rules</span><span class="p">,</span> <span class="nx">Extended</span><span class="p">,</span> <span class="nx">JSP</span> <span class="nx">v2015</span><span class="p">.</span><span class="mf">2.0</span><span class="p">.</span><span class="mi">0008</span>
+<span class="nx">Fortify</span> <span class="nx">Secure</span> <span class="nx">Coding</span> <span class="nx">Rules</span><span class="p">,</span> <span class="nx">Core</span><span class="p">,</span> <span class="nx">Classic</span> <span class="nx">ASP</span><span class="p">,</span> <span class="nx">VBScript</span><span class="p">,</span> <span class="nx">and</span> <span class="nx">VB6</span> <span class="nx">v2015</span><span class="p">.</span><span class="mf">2.0</span><span class="p">.</span><span class="mi">0008</span>
+<span class="nx">Fortify</span> <span class="nx">Secure</span> <span class="nx">Coding</span> <span class="nx">Rules</span><span class="p">,</span> <span class="nx">Core</span><span class="p">,</span> <span class="nx">ActionScript</span> <span class="mf">3.0</span> <span class="nx">v2015</span><span class="p">.</span><span class="mf">2.0</span><span class="p">.</span><span class="mi">0008</span>
+<span class="nx">Fortify</span> <span class="nx">Secure</span> <span class="nx">Coding</span> <span class="nx">Rules</span><span class="p">,</span> <span class="nx">Core</span><span class="p">,</span> <span class="nx">C</span><span class="o">/</span><span class="nx">C</span><span class="o">++</span> <span class="nx">v2015</span><span class="p">.</span><span class="mf">2.0</span><span class="p">.</span><span class="mi">0008</span>
+<span class="nx">Fortify</span> <span class="nx">Secure</span> <span class="nx">Coding</span> <span class="nx">Rules</span><span class="p">,</span> <span class="nx">Extended</span><span class="p">,</span> <span class="nx">Java</span> <span class="nx">v2015</span><span class="p">.</span><span class="mf">2.0</span><span class="p">.</span><span class="mi">0008</span>
+<span class="nx">Fortify</span> <span class="nx">Secure</span> <span class="nx">Coding</span> <span class="nx">Rules</span><span class="p">,</span> <span class="nx">Core</span><span class="p">,</span> <span class="nx">Android</span> <span class="nx">v2015</span><span class="p">.</span><span class="mf">2.0</span><span class="p">.</span><span class="mi">0008</span>
+<span class="nx">Fortify</span> <span class="nx">Secure</span> <span class="nx">Coding</span> <span class="nx">Rules</span><span class="p">,</span> <span class="nx">Core</span><span class="p">,</span> <span class="nx">COBOL</span> <span class="nx">v2015</span><span class="p">.</span><span class="mf">2.0</span><span class="p">.</span><span class="mi">0008</span>
+<span class="nx">Fortify</span> <span class="nx">Secure</span> <span class="nx">Coding</span> <span class="nx">Rules</span><span class="p">,</span> <span class="nx">Extended</span><span class="p">,</span> <span class="nx">C</span><span class="o">/</span><span class="nx">C</span><span class="o">++</span> <span class="nx">v2015</span><span class="p">.</span><span class="mf">2.0</span><span class="p">.</span><span class="mi">0008</span>
+<span class="nx">Fortify</span> <span class="nx">Secure</span> <span class="nx">Coding</span> <span class="nx">Rules</span><span class="p">,</span> <span class="nx">Core</span><span class="p">,</span> <span class="p">.</span><span class="nx">NET</span> <span class="nx">v2015</span><span class="p">.</span><span class="mf">2.0</span><span class="p">.</span><span class="mi">0008</span>
+<span class="nx">Fortify</span> <span class="nx">Secure</span> <span class="nx">Coding</span> <span class="nx">Rules</span><span class="p">,</span> <span class="nx">Core</span> <span class="nx">Preview</span><span class="p">,</span> <span class="nx">ABAP</span> <span class="nx">v2014</span><span class="p">.</span><span class="mf">4.0</span><span class="p">.</span><span class="mi">0008</span>
+<span class="nx">Fortify</span> <span class="nx">Secure</span> <span class="nx">Coding</span> <span class="nx">Rules</span><span class="p">,</span> <span class="nx">Extended</span><span class="p">,</span> <span class="nx">Configuration</span> <span class="nx">v2015</span><span class="p">.</span><span class="mf">2.0</span><span class="p">.</span><span class="mi">0008</span>
+<span class="nx">Fortify</span> <span class="nx">Secure</span> <span class="nx">Coding</span> <span class="nx">Rules</span><span class="p">,</span> <span class="nx">Extended</span><span class="p">,</span> <span class="nx">Content</span> <span class="nx">v2015</span><span class="p">.</span><span class="mf">2.0</span><span class="p">.</span><span class="mi">0008</span>
+<span class="nx">Fortify</span> <span class="nx">Secure</span> <span class="nx">Coding</span> <span class="nx">Rules</span><span class="p">,</span> <span class="nx">Core</span><span class="p">,</span> <span class="nx">Objective</span><span class="o">-</span><span class="nx">C</span> <span class="nx">v2015</span><span class="p">.</span><span class="mf">2.0</span><span class="p">.</span><span class="mi">0008</span>
+<span class="nx">Fortify</span> <span class="nx">Secure</span> <span class="nx">Coding</span> <span class="nx">Rules</span><span class="p">,</span> <span class="nx">Core</span><span class="p">,</span> <span class="nx">PHP</span> <span class="nx">v2015</span><span class="p">.</span><span class="mf">2.0</span><span class="p">.</span><span class="mi">0008</span>
+<span class="nx">Fortify</span> <span class="nx">Secure</span> <span class="nx">Coding</span> <span class="nx">Rules</span><span class="p">,</span> <span class="nx">Core</span><span class="p">,</span> <span class="nx">ABAP</span> <span class="nx">v2015</span><span class="p">.</span><span class="mf">2.0</span><span class="p">.</span><span class="mi">0008</span>
+<span class="nx">Fortify</span> <span class="nx">Secure</span> <span class="nx">Coding</span> <span class="nx">Rules</span><span class="p">,</span> <span class="nx">Extended</span><span class="p">,</span> <span class="nx">SQL</span> <span class="nx">v2015</span><span class="p">.</span><span class="mf">2.0</span><span class="p">.</span><span class="mi">0008</span>
+<span class="nx">Fortify</span> <span class="nx">Secure</span> <span class="nx">Coding</span> <span class="nx">Rules</span><span class="p">,</span> <span class="nx">Core</span><span class="p">,</span> <span class="nx">JavaScript</span> <span class="nx">v2015</span><span class="p">.</span><span class="mf">2.0</span><span class="p">.</span><span class="mi">0008</span>
+<span class="nx">Fortify</span> <span class="nx">Secure</span> <span class="nx">Coding</span> <span class="nx">Rules</span><span class="p">,</span> <span class="nx">Core</span><span class="p">,</span> <span class="nx">SQL</span> <span class="nx">v2015</span><span class="p">.</span><span class="mf">2.0</span><span class="p">.</span><span class="mi">0008</span>
+<span class="nx">Fortify</span> <span class="nx">Secure</span> <span class="nx">Coding</span> <span class="nx">Rules</span><span class="p">,</span> <span class="nx">Extended</span><span class="p">,</span> <span class="p">.</span><span class="nx">NET</span> <span class="nx">v2015</span><span class="p">.</span><span class="mf">2.0</span><span class="p">.</span><span class="mi">0008</span>
+<span class="nx">Fortify</span> <span class="nx">Secure</span> <span class="nx">Coding</span> <span class="nx">Rules</span><span class="p">,</span> <span class="nx">Core</span><span class="p">,</span> <span class="nx">Java</span> <span class="nx">v2015</span><span class="p">.</span><span class="mf">2.0</span><span class="p">.</span><span class="mi">0008</span>
+<span class="nx">Fortify</span> <span class="nx">Secure</span> <span class="nx">Coding</span> <span class="nx">Rules</span><span class="p">,</span> <span class="nx">Core</span><span class="p">,</span> <span class="nx">Ruby</span> <span class="nx">v2015</span><span class="p">.</span><span class="mf">2.0</span><span class="p">.</span><span class="mi">0008</span>
+<span class="nx">Fortify</span> <span class="nx">Secure</span> <span class="nx">Coding</span> <span class="nx">Rules</span><span class="p">,</span> <span class="nx">Core</span><span class="p">,</span> <span class="nx">ColdFusion</span> <span class="nx">v2015</span><span class="p">.</span><span class="mf">2.0</span><span class="p">.</span><span class="mi">0008</span>
+<span class="nx">Fortify</span> <span class="nx">Secure</span> <span class="nx">Coding</span> <span class="nx">Rules</span><span class="p">,</span> <span class="nx">Core</span><span class="p">,</span> <span class="nx">Python</span> <span class="nx">v2015</span><span class="p">.</span><span class="mf">2.0</span><span class="p">.</span><span class="mi">0008</span>
+<span class="nx">Removing</span> <span class="nx">Old</span> <span class="nx">Metadata</span> <span class="nx">Files</span> <span class="p">...</span>
+<span class="nx">E</span><span class="p">:</span><span class="err">\</span><span class="nx">fortify</span><span class="err">\</span><span class="nx">Core</span><span class="err">\</span><span class="nx">config</span><span class="err">\</span><span class="nx">ExternalMetadata</span>
+<span class="nx">Main</span> <span class="nx">External</span> <span class="nx">List</span> <span class="nx">Mappings</span> <span class="nx">v2019</span><span class="p">.</span><span class="mf">1.0</span><span class="p">.</span><span class="mi">0007</span>
+<span class="nx">Storing</span> <span class="nx">Updated</span> <span class="nx">Metadata</span> <span class="nx">Files</span> <span class="p">...</span>
+<span class="nx">E</span><span class="p">:</span><span class="err">\</span><span class="nx">fortify</span><span class="err">\</span><span class="nx">Core</span><span class="err">\</span><span class="nx">config</span><span class="err">\</span><span class="nx">ExternalMetadata</span>
+<span class="nx">Main</span> <span class="nx">External</span> <span class="nx">List</span> <span class="nx">Mappings</span> <span class="nx">v2015</span><span class="p">.</span><span class="mf">2.0</span><span class="p">.</span><span class="mi">0008</span>
+</code></pre></div></div>
+
+<h1 id="结果">结果</h1>
+
+<p>配置完就可以愉快地使用fortify进行机器扫描分析代码了。</p>
+
+<p><code class="language-plaintext highlighter-rouge">敬上。感谢您的阅读</code><br /></p>
+
+<p>参考：<br />
+<a href="https://stackoverflow.com/questions/18209159/fortify-error-no-rules-file-found"> Fortify Error : “No rules file found”</a></p>
+

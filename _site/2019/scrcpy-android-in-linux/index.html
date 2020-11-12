@@ -1,0 +1,80 @@
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">#</span> <span class="nx">apt</span> <span class="nx">install</span> <span class="nx">snapd</span>
+<span class="nx">正在读取软件包列表</span><span class="p">...</span> <span class="nx">完成</span>
+<span class="nx">正在分析软件包的依赖关系树</span>       
+<span class="nx">正在读取状态信息</span><span class="p">...</span> <span class="nx">完成</span>       
+<span class="nx">snapd</span> <span class="nx">已经是最新版</span> <span class="p">(</span><span class="mf">2.42</span><span class="p">.</span><span class="mi">1</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="err">。</span>
+<span class="nx">升级了</span> <span class="mi">0</span> <span class="nx">个软件包</span><span class="err">，</span><span class="nx">新安装了</span> <span class="mi">0</span> <span class="nx">个软件包</span><span class="err">，</span><span class="nx">要卸载</span> <span class="mi">0</span> <span class="nx">个软件包</span><span class="err">，</span><span class="nx">有</span> <span class="mi">26</span> <span class="nx">个软件包未被升级</span>
+<span class="nx">sudo</span> <span class="nx">snap</span> <span class="nx">install</span> <span class="nx">scrcpy</span><span class="p">.</span><span class="nx">snap</span> <span class="o">--</span><span class="nx">dangerous</span>
+</code></pre></div></div>
+
+<p>由于直接设置 http_proxy 环境变量无法设置上, 作者在 snapd 中直接设置proxy, 方法如下:</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">#</span> <span class="nx">前置操作</span><span class="p">,</span> <span class="nx">修改</span>  <span class="nx">systemctl</span> <span class="nx">edit</span> <span class="nx">使用的编辑器为</span> <span class="nx">VIM</span><span class="p">,</span> <span class="nx">如果不介意</span> <span class="nx">Nano</span> <span class="nx">可以跳过这一步</span>
+<span class="nx">$</span> <span class="nx">sudo</span> <span class="nx">tee</span> <span class="o">-</span><span class="nx">a</span> <span class="o">/</span><span class="nx">etc</span><span class="o">/</span><span class="nx">profile</span> <span class="o">&lt;&lt;-</span><span class="dl">'</span><span class="s1">EOF</span><span class="dl">'</span> 
+<span class="k">export</span> <span class="nx">SYSTEMD_EDITOR</span><span class="o">=</span><span class="dl">"</span><span class="s2">/bin/vim</span><span class="dl">"</span>
+<span class="nx">EOF</span>
+<span class="nx">$</span> <span class="nx">source</span> <span class="o">/</span><span class="nx">etc</span><span class="o">/</span><span class="nx">profile</span>
+
+<span class="err">#</span> <span class="nx">开始设置代理</span>
+<span class="nx">$</span> <span class="nx">sudo</span> <span class="nx">systemctl</span> <span class="nx">edit</span> <span class="nx">snapd</span>
+<span class="nx">加上</span><span class="err">：</span>
+<span class="p">[</span><span class="nx">Service</span><span class="p">]</span>
+<span class="nx">Environment</span><span class="o">=</span><span class="dl">"</span><span class="s2">http_proxy=http://127.0.0.1:port</span><span class="dl">"</span>
+<span class="nx">Environment</span><span class="o">=</span><span class="dl">"</span><span class="s2">https_proxy=http://127.0.0.1:port</span><span class="dl">"</span>
+</code></pre></div></div>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span> <span class="nx">sudo</span> <span class="nx">systemctl</span> <span class="nx">daemon</span><span class="o">-</span><span class="nx">reload</span>
+<span class="nx">$</span> <span class="nx">sudo</span> <span class="nx">systemctl</span> <span class="nx">restart</span> <span class="nx">snapd</span>
+</code></pre></div></div>
+<p>实测相当有效</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">root</span><span class="p">@</span><span class="nd">kali</span><span class="p">:</span><span class="o">/</span><span class="nx">usr</span><span class="o">/</span><span class="nx">local</span><span class="o">/</span><span class="nx">scrcpy</span><span class="o">-</span><span class="nx">test</span><span class="o">/</span><span class="nx">scrcpy</span><span class="err">#</span> <span class="nx">sudo</span> <span class="nx">snap</span> <span class="nx">install</span> <span class="nx">scrcpy</span>
+<span class="mi">2019</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">31</span><span class="nx">T11</span><span class="p">:</span><span class="mi">28</span><span class="p">:</span><span class="mi">41</span><span class="o">+</span><span class="mi">08</span><span class="p">:</span><span class="mi">00</span> <span class="nx">INFO</span> <span class="nx">Waiting</span> <span class="k">for</span> <span class="nx">restart</span><span class="p">...</span>
+<span class="nx">Download</span> <span class="nx">snap</span> <span class="dl">"</span><span class="s2">core18</span><span class="dl">"</span> <span class="p">(</span><span class="mi">1288</span><span class="p">)</span> <span class="k">from</span> <span class="nx">channel</span> <span class="dl">"</span><span class="s2">stable</span><span class="dl">"</span>             <span class="mi">11</span><span class="o">%</span> <span class="mf">14.7</span><span class="nx">kB</span><span class="o">/</span><span class="nx">s</span> <span class="mf">57.7</span><span class="nx">m</span><span class="o">^</span><span class="nx">C</span><span class="o">^</span><span class="nx">C</span><span class="o">^</span><span class="nx">Z</span>
+<span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span>  <span class="nx">已停止</span>               <span class="nx">sudo</span> <span class="nx">snap</span> <span class="nx">install</span> <span class="nx">scrcpy</span>
+</code></pre></div></div>
+<p>如上下所示，速度快了十倍～十倍的快乐～</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">root</span><span class="p">@</span><span class="nd">kali</span><span class="p">:</span><span class="o">/</span><span class="nx">usr</span><span class="o">/</span><span class="nx">local</span><span class="o">/</span><span class="nx">scrcpy</span><span class="o">-</span><span class="nx">test</span><span class="o">/</span><span class="nx">scrcpy</span><span class="err">#</span> <span class="nx">sudo</span> <span class="nx">snap</span> <span class="nx">install</span> <span class="nx">scrcpy</span>
+<span class="mi">2019</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">31</span><span class="nx">T11</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mi">30</span><span class="o">+</span><span class="mi">08</span><span class="p">:</span><span class="mi">00</span> <span class="nx">INFO</span> <span class="nx">Waiting</span> <span class="k">for</span> <span class="nx">restart</span><span class="p">...</span>
+<span class="nx">Download</span> <span class="nx">snap</span> <span class="dl">"</span><span class="s2">scrcpy</span><span class="dl">"</span> <span class="p">(</span><span class="mi">199</span><span class="p">)</span> <span class="k">from</span> <span class="nx">channel</span> <span class="dl">"</span><span class="s2">stable</span><span class="dl">"</span>               <span class="mi">7</span><span class="o">%</span>  <span class="mi">129</span><span class="nx">kB</span><span class="o">/</span><span class="nx">s</span> <span class="mi">9</span><span class="nx">m51s</span>
+<span class="nx">Warning</span><span class="p">:</span> <span class="o">/</span><span class="nx">snap</span><span class="o">/</span><span class="nx">bin</span> <span class="nx">was</span> <span class="nx">not</span> <span class="nx">found</span> <span class="k">in</span> <span class="nx">your</span> <span class="nx">$PATH</span><span class="p">.</span> <span class="nx">If</span> <span class="nx">you</span><span class="dl">'</span><span class="s1">ve not restarted your session since you
+         installed snapd, try doing that. Please see https://forum.snapcraft.io/t/9469 for more
+         details.
+
+scrcpy v1.12 from sisco311 installed
+</span></code></pre></div></div>
+<p>scrcpy投屏需要usb调试权限；
+具体步骤为[开发者模式]-[打开usb调试]
+否则会报错：</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">root</span><span class="p">@</span><span class="nd">kali</span><span class="p">:</span><span class="o">~</span><span class="err">#</span> <span class="nx">scrcpy</span>
+<span class="nx">INFO</span><span class="p">:</span> <span class="nx">scrcpy</span> <span class="mf">1.12</span> <span class="o">&lt;</span><span class="nx">https</span><span class="p">:</span><span class="c1">//github.com/Genymobile/scrcpy&gt;</span>
+<span class="nx">adb</span><span class="p">:</span> <span class="nx">error</span><span class="p">:</span> <span class="nx">failed</span> <span class="nx">to</span> <span class="kd">get</span> <span class="nx">feature</span> <span class="kd">set</span><span class="p">:</span> <span class="nx">no</span> <span class="nx">devices</span><span class="o">/</span><span class="nx">emulators</span> <span class="nx">found</span>
+<span class="nx">ERROR</span><span class="p">:</span> <span class="dl">"</span><span class="s2">adb push</span><span class="dl">"</span> <span class="nx">returned</span> <span class="kd">with</span> <span class="nx">value</span> <span class="mi">1</span>
+</code></pre></div></div>
+
+<p>报错如下：</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">root</span><span class="p">@</span><span class="nd">kali</span><span class="p">:</span><span class="o">/</span><span class="nx">snap</span><span class="o">/</span><span class="nx">bin</span><span class="err">#</span> <span class="p">.</span><span class="o">/</span><span class="nx">scrcpy</span>
+<span class="nx">cannot</span> <span class="nx">change</span> <span class="nx">profile</span> <span class="k">for</span> <span class="nx">the</span> <span class="nx">next</span> <span class="nx">exec</span> <span class="nx">call</span><span class="p">:</span> <span class="nx">No</span> <span class="nx">such</span> <span class="nx">file</span> <span class="nx">or</span> <span class="nx">directory</span>
+<span class="nx">snap</span><span class="o">-</span><span class="nx">update</span><span class="o">-</span><span class="nx">ns</span> <span class="nx">failed</span> <span class="kd">with</span> <span class="nx">code</span> <span class="mi">1</span><span class="p">:</span> <span class="nx">No</span> <span class="nx">such</span> <span class="nx">file</span> <span class="nx">or</span> <span class="nx">directory</span>
+<span class="nx">查看版本</span><span class="err">：</span>
+<span class="nx">root</span><span class="p">@</span><span class="nd">kali</span><span class="p">:</span><span class="o">~</span><span class="err">#</span> <span class="nx">snap</span> <span class="nx">version</span>
+<span class="nx">snap</span>    <span class="mf">2.42</span><span class="p">.</span><span class="mi">5</span>
+<span class="nx">snapd</span>   <span class="mf">2.42</span><span class="p">.</span><span class="mi">5</span>
+<span class="nx">series</span>  <span class="mi">16</span>
+<span class="nx">kali</span>    <span class="mf">2019.4</span>
+<span class="nx">kernel</span>  <span class="mf">5.3</span><span class="p">.</span><span class="mi">0</span><span class="o">-</span><span class="nx">kali3</span><span class="o">-</span><span class="nx">amd64</span>
+<span class="nx">root</span><span class="p">@</span><span class="nd">kali</span><span class="p">:</span><span class="o">~</span><span class="err">#</span> <span class="nx">snap</span> <span class="nx">version</span>
+<span class="nx">snap</span>    <span class="mf">2.42</span><span class="p">.</span><span class="mi">5</span>
+<span class="nx">snapd</span>   <span class="mf">2.42</span><span class="p">.</span><span class="mi">5</span>
+<span class="nx">series</span>  <span class="mi">16</span>
+<span class="nx">kali</span>    <span class="mf">2019.4</span>
+<span class="nx">kernel</span>  <span class="mf">5.3</span><span class="p">.</span><span class="mi">0</span><span class="o">-</span><span class="nx">kali3</span><span class="o">-</span><span class="nx">amd64</span>
+</code></pre></div></div>
+<p>解决：</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">root</span><span class="p">@</span><span class="nd">kali</span><span class="p">:</span><span class="o">/</span><span class="kd">var</span><span class="sr">/lib/</span><span class="nx">snapd</span><span class="o">/</span><span class="nx">apparmor</span><span class="o">/</span><span class="nx">profiles</span><span class="err">#</span> <span class="nx">apparmor_parser</span> <span class="o">-</span><span class="nx">r</span> <span class="o">/</span><span class="kd">var</span><span class="sr">/lib/</span><span class="nx">snapd</span><span class="o">/</span><span class="nx">apparmor</span><span class="o">/</span><span class="nx">profiles</span><span class="o">/</span>
+</code></pre></div></div>
+
+<p>参考<br /></p>
+
+<p><a href="https://kuricat.com/gist/snap-install-too-slow-zmbjy">
+snapInstall.md;snap安装过慢解决方案</a></p>
+
+<p><a href="https://forum.snapcraft.io/t/snap-update-ns-failing-cannot-launch-snaps/11956">
+Snap-update-ns failing, cannot launch snaps;linux重启后启动scrcpy，snap报错</a></p>

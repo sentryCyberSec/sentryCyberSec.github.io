@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="本站由哨兵安全实验室支持创办">
+
+    <meta name="google-site-verification" content="Lwh0NyQ1YAKRuLlXXkk0_QvgJpGLRQVA8xaoRn81Ysk">
+
+<link rel="shortcut icon" href="/assets/img/favicon.png">
+<link type="application/atom+xml" rel="alternate" href="/feed.xml" title="©「哨兵」| Sentry Security" />
+
+
+
+<!-- Open Graph metadata -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="TUNA NTP (网络授时) 服务使用说明 | ©「哨兵」| Sentry Security" />
+<meta property="og:description" content="本站由哨兵安全实验室支持创办" />
+<meta property="og:image" content="http://localhost:80/assets/img/logo-share.png" /> <!-- WeChat requires that thumbnail image is larger than 300x300 -->
+<meta property="og:url" content="http://localhost:80/help/ntp/" />
+
+<title>TUNA NTP (网络授时) 服务使用说明 | ©「哨兵」| Sentry Security</title>
+
+<!-- Bootstrap core CSS -->
+<link href="/assets/css/bootstrap.css" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="/assets/css/style.css" rel="stylesheet">
+<link href="/assets/css/font-awesome.min.css" rel="stylesheet">
+<link href="/assets/css/font-awesome-v4-shims.min.css" rel="stylesheet">
+
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+</head>
+
+
+    <body>
+        <!-- Fixed navbar -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/"><!--
+   --><picture>
+  <source srcset="/assets/img/logo-small-dark.png 1x, /assets/img/logo-small-dark@2x.png 2x, /assets/img/logo-small-dark@3x.png 3x, /assets/img/logo-small-dark@4x.png 4x" media="(prefers-color-scheme: dark)" />
+  
+  <img src="/assets/img/logo-small.png" srcset="/assets/img/logo-small.png 1x, /assets/img/logo-small@2x.png 2x, /assets/img/logo-small@3x.png 3x, /assets/img/logo-small@4x.png 4x" />
+  </picture>
+ Sentry Security</a>
+    </div>
+    <div class="navbar-collapse collapse navbar-right">
+      <ul class="nav navbar-nav">
+        <li ><a href="/">HOME</a></li>
+        <li ><a href="/blog/">BLOG</a></li>
+        <li><a href="/feed.xml">RSS</a></li>
+        <li><a href="/about">ABOUT ME</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+
+            <div class="container mtb">
+    <div class="row">
+        <! -- SINGLE POST -->
+        <div class="col-lg-12">
+            <! -- Blog Post  -->
+            <a href="/help/ntp/"><h3 class="ctitle">TUNA NTP (网络授时) 服务使用说明</h3></a>
+            <div class="post-content">
+            <h3 id="服务总览">服务总览</h3>
+
+<p>TUNA 现提供一台时间服务器：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ntp.tuna.tsinghua.edu.cn
+</code></pre></div></div>
+
+<p>服务器位于清华校内，提供 IPv4 与 IPv6 双栈服务。校内师生可以使用这一服务进行一般的时间校准工作，而无需进行校园网认证。</p>
+
+<h3 id="服务介绍">服务介绍</h3>
+
+<p>NTP (网络时间协议, network time protocol) 是网络中保持时间同步的协议 (<a href="http://www.ntp.org/ntpfaq/NTP-s-algo.htm">How does it work</a>)。简单来说，客户端通过向服务器发送带有时间戳的数据包和服务器回复带有时间戳的数据包，来获得客户端发送时间，服务端接收时间、服务端发送时间、客户端接收时间 4 个时间戳。客户端系统时间偏移量定义为 δ = (t₃ - t₀) - (t₂ - t₁)。如果运行 ntpd 服务，一般来说 ntpd 会逐渐调整时钟，避免时间跳变。这对于运行计费系统、交易系统或者其他对时间准确性和事件先后顺序敏感的操作十分重要。</p>
+
+<h3 id="linux-客户端配置">Linux 客户端配置</h3>
+
+<p>在 <code class="language-plaintext highlighter-rouge">/etc/ntp.conf</code> 中添加一行 <code class="language-plaintext highlighter-rouge">server ntp.tuna.tsinghua.edu.cn</code> 即可。（若您的发行版使用 Chrony，请修改对应的配置文件 <code class="language-plaintext highlighter-rouge">/etc/chrony.conf</code>。）</p>
+
+<p>为了确保 ntpd 服务正在运行，使用你的发行版的 initscripts 脚本或 <code class="language-plaintext highlighter-rouge">systemctl</code>（若有）进行检查和修正。</p>
+
+<p>如果你的机器的时钟发生跳变不会有严重后果 (例如在你的笔记本上)，你可以使用 <code class="language-plaintext highlighter-rouge">sudo ntpdate ntp.tuna.tsinghua.edu.cn</code> 进行一次性的同步。</p>
+
+<h3 id="mac-客户端配置">Mac 客户端配置</h3>
+
+<p>在“系统配置 &gt; 日期与时间 &gt; 自动设置日期与时间”一栏，填入 <code class="language-plaintext highlighter-rouge">ntp.tuna.tsinghua.edu.cn</code>。</p>
+
+<p>与 Linux 用户相同的，你可以使用 <code class="language-plaintext highlighter-rouge">sudo ntpdate ntp.tuna.tsinghua.edu.cn</code> 来进行一次性的同步。</p>
+
+<h3 id="windows-客户端配置">Windows 客户端配置</h3>
+
+<p>Windows XP 及以下版本的配置方式可以参看上海大学 NTP 网站上提供的<a href="http://cms.shu.edu.cn/Default.aspx?alias=cms.shu.edu.cn/ntp">教程</a>。</p>
+
+<h4 id="windows-10-客户端配置">Windows 10 客户端配置</h4>
+
+<p>在“控制面板 &gt; 时钟、语言和区域 &gt; 日期和时间 &gt; Internet时间 &gt; 更改设置”中勾选“与 Internet 时间服务器同步”，在“服务器”一栏填入 <code class="language-plaintext highlighter-rouge">ntp.tuna.tsinghua.edu.cn</code>。</p>
+
+<p>您也可以通过在命令提示符中使用  <code class="language-plaintext highlighter-rouge">w32tm /config /manualpeerlist:ntp.tuna.tsinghua.edu.cn /syncfromflags:manual /update</code> 来将此服务器设置为您的时间服务器.</p>
+
+            </div>
+            <div class="spacing"></div>
+        </div><! --/col-lg-8 -->
+    </div><! --/row -->
+</div><! --/container -->
+
+
+        <div id="footerwrap">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <p>本站由哨兵安全实验室支持创办</p>
+                <p class="thuhidden">个人感谢<em>@TUNA协会</em>的开源代码</p>
+        <p class="thuhidden">Powered by <a href="https://github.com/Bin4xin">Bin4xin</a> &amp; <a title="open code from TUNA mirror-web." href="https://github.com/tuna/mirror-web"><em>这里是开源代码库</em></a>.</p>
+            </div>
+
+            <div class="col-sm-4">
+              <h4>有个不成熟的建议？联系：</h4>
+                  <div class="thuhidden">
+                    <ul class="social">
+                      <li>
+                      <a><i class="fa fa-envelope"></i> chihou.pro@gmail.com</a>
+                      </li>
+                      <!-- <li>
+                      IRC: <a href="https://webchat.freenode.net/?channels=%23tuna">#tuna at freenode</a>
+                      </li> -->
+                      <li>
+                      <a href="https://github.com/Bin4xin/"><i class="fa fa-github"></i> GitHub </a>
+                      </li>
+                      <!-- <li>
+                      <a href="http://weibo.com/u/5402274706"><i class="fa fa-weibo"></i> 新浪微博</a>
+                      </li> -->
+                    </ul>
+                  </div>
+                </div>
+            <!-- aaa-->
+            <div class="col-sm-4">
+              <picture>
+  <img src="/assets/img/logo-white.png" srcset="/assets/img/logo-white.png 1x, /assets/img/logo-white@2x.png 2x, /assets/img/logo-white@3x.png 3x, /assets/img/logo-white@4x.png 4x" />
+  </picture>
+
+              <p style="color: #384452"> The best team on the planet. </p>
+            </div>
+        </div><!--/row -->
+    </div><!--/container -->
+</div><!--/footerwrap -->
+
+    </body>
+</html>
