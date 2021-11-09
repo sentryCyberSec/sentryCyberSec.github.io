@@ -1,0 +1,4440 @@
+[
+  {
+    "distro": "Arch Linux",
+    "category": "os",
+    "urls": [
+      {
+        "name": "2020.11.01 (x86_64, CLI-only)",
+        "url": "/archlinux/iso/latest/archlinux-2020.11.01-x86_64.iso"
+      }
+    ]
+  },
+  {
+    "distro": "Debian",
+    "category": "os",
+    "urls": [
+      {
+        "name": "10.6.0 (amd64, CD installer with xfce)",
+        "url": "/debian-cd/current/amd64/iso-cd/debian-10.6.0-amd64-xfce-CD-1.iso"
+      },
+      {
+        "name": "10.6.0 (amd64, DVD installer (Part 1))",
+        "url": "/debian-cd/current/amd64/iso-dvd/debian-10.6.0-amd64-DVD-1.iso"
+      },
+      {
+        "name": "10.6.0 (amd64, DVD installer (Part 2))",
+        "url": "/debian-cd/current/amd64/iso-dvd/debian-10.6.0-amd64-DVD-2.iso"
+      },
+      {
+        "name": "10.6.0 (amd64, DVD installer (Part 3))",
+        "url": "/debian-cd/current/amd64/iso-dvd/debian-10.6.0-amd64-DVD-3.iso"
+      },
+      {
+        "name": "10.6.0 (amd64, Live CD with cinnamon)",
+        "url": "/debian-cd/current-live/amd64/iso-hybrid/debian-live-10.6.0-amd64-cinnamon.iso"
+      },
+      {
+        "name": "10.6.0 (amd64, Live CD with gnome)",
+        "url": "/debian-cd/current-live/amd64/iso-hybrid/debian-live-10.6.0-amd64-gnome.iso"
+      },
+      {
+        "name": "10.6.0 (amd64, Live CD with kde)",
+        "url": "/debian-cd/current-live/amd64/iso-hybrid/debian-live-10.6.0-amd64-kde.iso"
+      },
+      {
+        "name": "10.6.0 (amd64, Live CD with lxde)",
+        "url": "/debian-cd/current-live/amd64/iso-hybrid/debian-live-10.6.0-amd64-lxde.iso"
+      },
+      {
+        "name": "10.6.0 (amd64, Live CD with lxqt)",
+        "url": "/debian-cd/current-live/amd64/iso-hybrid/debian-live-10.6.0-amd64-lxqt.iso"
+      },
+      {
+        "name": "10.6.0 (amd64, Live CD with mate)",
+        "url": "/debian-cd/current-live/amd64/iso-hybrid/debian-live-10.6.0-amd64-mate.iso"
+      },
+      {
+        "name": "10.6.0 (amd64, Live CD with standard)",
+        "url": "/debian-cd/current-live/amd64/iso-hybrid/debian-live-10.6.0-amd64-standard.iso"
+      },
+      {
+        "name": "10.6.0 (amd64, Live CD with xfce)",
+        "url": "/debian-cd/current-live/amd64/iso-hybrid/debian-live-10.6.0-amd64-xfce.iso"
+      },
+      {
+        "name": "10.6.0 (amd64, Network installer)",
+        "url": "/debian-cd/current/amd64/iso-cd/debian-10.6.0-amd64-netinst.iso"
+      },
+      {
+        "name": "10.6.0 (i386, CD installer with xfce)",
+        "url": "/debian-cd/current/i386/iso-cd/debian-10.6.0-i386-xfce-CD-1.iso"
+      },
+      {
+        "name": "10.6.0 (i386, DVD installer (Part 1))",
+        "url": "/debian-cd/current/i386/iso-dvd/debian-10.6.0-i386-DVD-1.iso"
+      },
+      {
+        "name": "10.6.0 (i386, DVD installer (Part 2))",
+        "url": "/debian-cd/current/i386/iso-dvd/debian-10.6.0-i386-DVD-2.iso"
+      },
+      {
+        "name": "10.6.0 (i386, DVD installer (Part 3))",
+        "url": "/debian-cd/current/i386/iso-dvd/debian-10.6.0-i386-DVD-3.iso"
+      },
+      {
+        "name": "10.6.0 (i386, Live CD with cinnamon)",
+        "url": "/debian-cd/current-live/i386/iso-hybrid/debian-live-10.6.0-i386-cinnamon.iso"
+      },
+      {
+        "name": "10.6.0 (i386, Live CD with gnome)",
+        "url": "/debian-cd/current-live/i386/iso-hybrid/debian-live-10.6.0-i386-gnome.iso"
+      },
+      {
+        "name": "10.6.0 (i386, Live CD with kde)",
+        "url": "/debian-cd/current-live/i386/iso-hybrid/debian-live-10.6.0-i386-kde.iso"
+      },
+      {
+        "name": "10.6.0 (i386, Live CD with lxde)",
+        "url": "/debian-cd/current-live/i386/iso-hybrid/debian-live-10.6.0-i386-lxde.iso"
+      },
+      {
+        "name": "10.6.0 (i386, Live CD with lxqt)",
+        "url": "/debian-cd/current-live/i386/iso-hybrid/debian-live-10.6.0-i386-lxqt.iso"
+      },
+      {
+        "name": "10.6.0 (i386, Live CD with mate)",
+        "url": "/debian-cd/current-live/i386/iso-hybrid/debian-live-10.6.0-i386-mate.iso"
+      },
+      {
+        "name": "10.6.0 (i386, Live CD with standard)",
+        "url": "/debian-cd/current-live/i386/iso-hybrid/debian-live-10.6.0-i386-standard.iso"
+      },
+      {
+        "name": "10.6.0 (i386, Live CD with xfce)",
+        "url": "/debian-cd/current-live/i386/iso-hybrid/debian-live-10.6.0-i386-xfce.iso"
+      },
+      {
+        "name": "10.6.0 (i386, Network installer)",
+        "url": "/debian-cd/current/i386/iso-cd/debian-10.6.0-i386-netinst.iso"
+      }
+    ]
+  },
+  {
+    "distro": "Debian non-free",
+    "category": "os",
+    "urls": [
+      {
+        "name": "10.6.0 (amd64, DVD installer with non-free firmware (Part 1))",
+        "url": "/debian-nonfree/cd-including-firmware/current/amd64/iso-dvd/firmware-10.6.0-amd64-DVD-1.iso"
+      },
+      {
+        "name": "10.6.0 (amd64, Live CD with cinnamon and non-free firmware)",
+        "url": "/debian-nonfree/images-including-firmware/current-live/amd64/iso-hybrid/debian-live-10.6.0-amd64-cinnamon+nonfree.iso"
+      },
+      {
+        "name": "10.6.0 (amd64, Live CD with gnome and non-free firmware)",
+        "url": "/debian-nonfree/images-including-firmware/current-live/amd64/iso-hybrid/debian-live-10.6.0-amd64-gnome+nonfree.iso"
+      },
+      {
+        "name": "10.6.0 (amd64, Live CD with kde and non-free firmware)",
+        "url": "/debian-nonfree/images-including-firmware/current-live/amd64/iso-hybrid/debian-live-10.6.0-amd64-kde+nonfree.iso"
+      },
+      {
+        "name": "10.6.0 (amd64, Live CD with lxde and non-free firmware)",
+        "url": "/debian-nonfree/images-including-firmware/current-live/amd64/iso-hybrid/debian-live-10.6.0-amd64-lxde+nonfree.iso"
+      },
+      {
+        "name": "10.6.0 (amd64, Live CD with lxqt and non-free firmware)",
+        "url": "/debian-nonfree/images-including-firmware/current-live/amd64/iso-hybrid/debian-live-10.6.0-amd64-lxqt+nonfree.iso"
+      },
+      {
+        "name": "10.6.0 (amd64, Live CD with mate and non-free firmware)",
+        "url": "/debian-nonfree/images-including-firmware/current-live/amd64/iso-hybrid/debian-live-10.6.0-amd64-mate+nonfree.iso"
+      },
+      {
+        "name": "10.6.0 (amd64, Live CD with standard and non-free firmware)",
+        "url": "/debian-nonfree/images-including-firmware/current-live/amd64/iso-hybrid/debian-live-10.6.0-amd64-standard+nonfree.iso"
+      },
+      {
+        "name": "10.6.0 (amd64, Live CD with xfce and non-free firmware)",
+        "url": "/debian-nonfree/images-including-firmware/current-live/amd64/iso-hybrid/debian-live-10.6.0-amd64-xfce+nonfree.iso"
+      },
+      {
+        "name": "10.6.0 (amd64, Network installer with non-free firmware)",
+        "url": "/debian-nonfree/cd-including-firmware/current/amd64/iso-cd/firmware-10.6.0-amd64-netinst.iso"
+      },
+      {
+        "name": "10.6.0 (i386, Network installer with non-free firmware)",
+        "url": "/debian-nonfree/cd-including-firmware/current/i386/iso-cd/firmware-10.6.0-i386-netinst.iso"
+      }
+    ]
+  },
+  {
+    "distro": "CentOS",
+    "category": "os",
+    "urls": [
+      {
+        "name": "7 (x86_64, DVD)",
+        "url": "/centos/7.8.2003/isos/x86_64/CentOS-7-x86_64-DVD-2003.iso"
+      },
+      {
+        "name": "7 (x86_64, Everything)",
+        "url": "/centos/7.8.2003/isos/x86_64/CentOS-7-x86_64-Everything-2003.iso"
+      },
+      {
+        "name": "7 (x86_64, LiveGNOME)",
+        "url": "/centos/7.8.2003/isos/x86_64/CentOS-7-x86_64-LiveGNOME-2003.iso"
+      },
+      {
+        "name": "7 (x86_64, LiveKDE)",
+        "url": "/centos/7.8.2003/isos/x86_64/CentOS-7-x86_64-LiveKDE-2003.iso"
+      },
+      {
+        "name": "7 (x86_64, Minimal)",
+        "url": "/centos/7.8.2003/isos/x86_64/CentOS-7-x86_64-Minimal-2003.iso"
+      },
+      {
+        "name": "7 (x86_64, NetInstall)",
+        "url": "/centos/7.8.2003/isos/x86_64/CentOS-7-x86_64-NetInstall-2003.iso"
+      },
+      {
+        "name": "8.2.2004 (aarch64, boot)",
+        "url": "/centos/8.2.2004/isos/aarch64/CentOS-8.2.2004-aarch64-boot.iso"
+      },
+      {
+        "name": "8.2.2004 (aarch64, dvd1)",
+        "url": "/centos/8.2.2004/isos/aarch64/CentOS-8.2.2004-aarch64-dvd1.iso"
+      },
+      {
+        "name": "8.2.2004 (aarch64, minimal)",
+        "url": "/centos/8.2.2004/isos/aarch64/CentOS-8.2.2004-aarch64-minimal.iso"
+      },
+      {
+        "name": "8.2.2004 (ppc64le, boot)",
+        "url": "/centos/8.2.2004/isos/ppc64le/CentOS-8.2.2004-ppc64le-boot.iso"
+      },
+      {
+        "name": "8.2.2004 (ppc64le, dvd1)",
+        "url": "/centos/8.2.2004/isos/ppc64le/CentOS-8.2.2004-ppc64le-dvd1.iso"
+      },
+      {
+        "name": "8.2.2004 (ppc64le, minimal)",
+        "url": "/centos/8.2.2004/isos/ppc64le/CentOS-8.2.2004-ppc64le-minimal.iso"
+      },
+      {
+        "name": "8.2.2004 (x86_64, boot)",
+        "url": "/centos/8.2.2004/isos/x86_64/CentOS-8.2.2004-x86_64-boot.iso"
+      },
+      {
+        "name": "8.2.2004 (x86_64, dvd1)",
+        "url": "/centos/8.2.2004/isos/x86_64/CentOS-8.2.2004-x86_64-dvd1.iso"
+      },
+      {
+        "name": "8.2.2004 (x86_64, minimal)",
+        "url": "/centos/8.2.2004/isos/x86_64/CentOS-8.2.2004-x86_64-minimal.iso"
+      }
+    ]
+  },
+  {
+    "distro": "Fedora",
+    "category": "os",
+    "urls": [
+      {
+        "name": "32 (x86_64, KDE)",
+        "url": "/fedora/releases/32/Spins/x86_64/iso/Fedora-KDE-Live-x86_64-32-1.6.iso"
+      },
+      {
+        "name": "32 (x86_64, Workstation)",
+        "url": "/fedora/releases/32/Workstation/x86_64/iso/Fedora-Workstation-Live-x86_64-32-1.6.iso"
+      },
+      {
+        "name": "32 (x86_64, Xfce)",
+        "url": "/fedora/releases/32/Spins/x86_64/iso/Fedora-Xfce-Live-x86_64-32-1.6.iso"
+      },
+      {
+        "name": "33 (aarch64, Workstation)",
+        "url": "/fedora/releases/33/Workstation/aarch64/iso/Fedora-Workstation-Live-aarch64-33-1.2.iso"
+      },
+      {
+        "name": "33 (x86_64, KDE)",
+        "url": "/fedora/releases/33/Spins/x86_64/iso/Fedora-KDE-Live-x86_64-33-1.2.iso"
+      },
+      {
+        "name": "33 (x86_64, Workstation)",
+        "url": "/fedora/releases/33/Workstation/x86_64/iso/Fedora-Workstation-Live-x86_64-33-1.2.iso"
+      },
+      {
+        "name": "33 (x86_64, Xfce)",
+        "url": "/fedora/releases/33/Spins/x86_64/iso/Fedora-Xfce-Live-x86_64-33-1.2.iso"
+      }
+    ]
+  },
+  {
+    "distro": "Ubuntu",
+    "category": "os",
+    "urls": [
+      {
+        "name": "12.04.5 (amd64, Server)",
+        "url": "/ubuntu-releases/precise/ubuntu-12.04.5-server-amd64.iso"
+      },
+      {
+        "name": "12.04.5 (i386, Server)",
+        "url": "/ubuntu-releases/precise/ubuntu-12.04.5-server-i386.iso"
+      },
+      {
+        "name": "14.04.6 (amd64, Server)",
+        "url": "/ubuntu-releases/trusty/ubuntu-14.04.6-server-amd64.iso"
+      },
+      {
+        "name": "14.04.6 (i386, Server)",
+        "url": "/ubuntu-releases/trusty/ubuntu-14.04.6-server-i386.iso"
+      },
+      {
+        "name": "16.04.6 (i386, Server)",
+        "url": "/ubuntu-releases/xenial/ubuntu-16.04.6-server-i386.iso"
+      },
+      {
+        "name": "16.04.7 (amd64, Desktop LiveDVD)",
+        "url": "/ubuntu-releases/xenial/ubuntu-16.04.7-desktop-amd64.iso"
+      },
+      {
+        "name": "16.04.7 (amd64, Server)",
+        "url": "/ubuntu-releases/xenial/ubuntu-16.04.7-server-amd64.iso"
+      },
+      {
+        "name": "18.04.5 (amd64, Desktop LiveDVD)",
+        "url": "/ubuntu-releases/bionic/ubuntu-18.04.5-desktop-amd64.iso"
+      },
+      {
+        "name": "18.04.5 (amd64, Server)",
+        "url": "/ubuntu-releases/bionic/ubuntu-18.04.5-live-server-amd64.iso"
+      },
+      {
+        "name": "20.04.1 (amd64, Desktop LiveDVD)",
+        "url": "/ubuntu-releases/focal/ubuntu-20.04.1-desktop-amd64.iso"
+      },
+      {
+        "name": "20.04.1 (amd64, Server)",
+        "url": "/ubuntu-releases/focal/ubuntu-20.04.1-live-server-amd64.iso"
+      },
+      {
+        "name": "20.10 (amd64, Desktop LiveDVD)",
+        "url": "/ubuntu-releases/groovy/ubuntu-20.10-desktop-amd64.iso"
+      },
+      {
+        "name": "20.10 (amd64, Server)",
+        "url": "/ubuntu-releases/groovy/ubuntu-20.10-live-server-amd64.iso"
+      }
+    ]
+  },
+  {
+    "distro": "Ubuntu 衍生版",
+    "category": "os",
+    "urls": [
+      {
+        "name": "Kubuntu 20.10 (amd64)",
+        "url": "/ubuntu-cdimage/kubuntu/releases/groovy/release/kubuntu-20.10-desktop-amd64.iso"
+      },
+      {
+        "name": "Lubuntu 20.10 (amd64)",
+        "url": "/ubuntu-cdimage/lubuntu/releases/groovy/release/lubuntu-20.10-desktop-amd64.iso"
+      },
+      {
+        "name": "Ubuntu Gnome 16.04.5 (amd64)",
+        "url": "/ubuntu-cdimage/ubuntu-gnome/releases/xenial/release/ubuntu-gnome-16.04.5-desktop-amd64.iso"
+      },
+      {
+        "name": "Ubuntu Gnome 16.04.5 (i386)",
+        "url": "/ubuntu-cdimage/ubuntu-gnome/releases/xenial/release/ubuntu-gnome-16.04.5-desktop-i386.iso"
+      },
+      {
+        "name": "Ubuntu Kylin 20.10 (amd64)",
+        "url": "/ubuntu-cdimage/ubuntukylin/releases/groovy/release/ubuntukylin-20.10-desktop-amd64.iso"
+      },
+      {
+        "name": "Ubuntu Mate 20.10 (amd64)",
+        "url": "/ubuntu-cdimage/ubuntu-mate/releases/groovy/release/ubuntu-mate-20.10-desktop-amd64.iso"
+      },
+      {
+        "name": "Xubuntu 20.10 (amd64)",
+        "url": "/ubuntu-cdimage/xubuntu/releases/groovy/release/xubuntu-20.10-desktop-amd64.iso"
+      }
+    ]
+  },
+  {
+    "distro": "Alpine",
+    "category": "os",
+    "urls": [
+      {
+        "name": "3.12.1 (aarch64, standard)",
+        "url": "/alpine/latest-stable/releases/aarch64/alpine-standard-3.12.1-aarch64.iso"
+      },
+      {
+        "name": "3.12.1 (aarch64, virt)",
+        "url": "/alpine/latest-stable/releases/aarch64/alpine-virt-3.12.1-aarch64.iso"
+      },
+      {
+        "name": "3.12.1 (ppc64le, standard)",
+        "url": "/alpine/latest-stable/releases/ppc64le/alpine-standard-3.12.1-ppc64le.iso"
+      },
+      {
+        "name": "3.12.1 (s390x, standard)",
+        "url": "/alpine/latest-stable/releases/s390x/alpine-standard-3.12.1-s390x.iso"
+      },
+      {
+        "name": "3.12.1 (x86, extended)",
+        "url": "/alpine/latest-stable/releases/x86/alpine-extended-3.12.1-x86.iso"
+      },
+      {
+        "name": "3.12.1 (x86, standard)",
+        "url": "/alpine/latest-stable/releases/x86/alpine-standard-3.12.1-x86.iso"
+      },
+      {
+        "name": "3.12.1 (x86, virt)",
+        "url": "/alpine/latest-stable/releases/x86/alpine-virt-3.12.1-x86.iso"
+      },
+      {
+        "name": "3.12.1 (x86_64, extended)",
+        "url": "/alpine/latest-stable/releases/x86_64/alpine-extended-3.12.1-x86_64.iso"
+      },
+      {
+        "name": "3.12.1 (x86_64, standard)",
+        "url": "/alpine/latest-stable/releases/x86_64/alpine-standard-3.12.1-x86_64.iso"
+      },
+      {
+        "name": "3.12.1 (x86_64, virt)",
+        "url": "/alpine/latest-stable/releases/x86_64/alpine-virt-3.12.1-x86_64.iso"
+      },
+      {
+        "name": "3.12.1 (x86_64, xen)",
+        "url": "/alpine/latest-stable/releases/x86_64/alpine-xen-3.12.1-x86_64.iso"
+      }
+    ]
+  },
+  {
+    "distro": "Artix Linux",
+    "category": "os",
+    "urls": [
+      {
+        "name": "20200214 (x86_64, base-openrc)",
+        "url": "/artixlinux-iso/artix-base-openrc-20200214-x86_64.iso"
+      },
+      {
+        "name": "20200214 (x86_64, base-runit)",
+        "url": "/artixlinux-iso/artix-base-runit-20200214-x86_64.iso"
+      },
+      {
+        "name": "20200214 (x86_64, base-s6)",
+        "url": "/artixlinux-iso/artix-base-s6-20200214-x86_64.iso"
+      },
+      {
+        "name": "20200210 (x86_64, cinnamon-openrc)",
+        "url": "/artixlinux-iso/artix-cinnamon-openrc-20200210-x86_64.iso"
+      },
+      {
+        "name": "20200210 (x86_64, cinnamon-runit)",
+        "url": "/artixlinux-iso/artix-cinnamon-runit-20200210-x86_64.iso"
+      },
+      {
+        "name": "20200210 (x86_64, cinnamon-s6)",
+        "url": "/artixlinux-iso/artix-cinnamon-s6-20200210-x86_64.iso"
+      },
+      {
+        "name": "20200211 (x86_64, gtk-openrc)",
+        "url": "/artixlinux-iso/artix-community-gtk-openrc-20200211-x86_64.iso"
+      },
+      {
+        "name": "20200211 (x86_64, gtk-runit)",
+        "url": "/artixlinux-iso/artix-community-gtk-runit-20200211-x86_64.iso"
+      },
+      {
+        "name": "20200211 (x86_64, gtk-s6)",
+        "url": "/artixlinux-iso/artix-community-gtk-s6-20200211-x86_64.iso"
+      },
+      {
+        "name": "20200210 (x86_64, lxde-openrc)",
+        "url": "/artixlinux-iso/artix-lxde-openrc-20200210-x86_64.iso"
+      },
+      {
+        "name": "20200210 (x86_64, lxde-runit)",
+        "url": "/artixlinux-iso/artix-lxde-runit-20200210-x86_64.iso"
+      },
+      {
+        "name": "20200210 (x86_64, lxde-s6)",
+        "url": "/artixlinux-iso/artix-lxde-s6-20200210-x86_64.iso"
+      },
+      {
+        "name": "20200211 (x86_64, lxqt-openrc)",
+        "url": "/artixlinux-iso/artix-lxqt-openrc-20200211-x86_64.iso"
+      },
+      {
+        "name": "20200211 (x86_64, lxqt-runit)",
+        "url": "/artixlinux-iso/artix-lxqt-runit-20200211-x86_64.iso"
+      },
+      {
+        "name": "20200211 (x86_64, lxqt-s6)",
+        "url": "/artixlinux-iso/artix-lxqt-s6-20200211-x86_64.iso"
+      },
+      {
+        "name": "20200210 (x86_64, mate-openrc)",
+        "url": "/artixlinux-iso/artix-mate-openrc-20200210-x86_64.iso"
+      },
+      {
+        "name": "20200210 (x86_64, mate-runit)",
+        "url": "/artixlinux-iso/artix-mate-runit-20200210-x86_64.iso"
+      },
+      {
+        "name": "20200210 (x86_64, mate-s6)",
+        "url": "/artixlinux-iso/artix-mate-s6-20200210-x86_64.iso"
+      },
+      {
+        "name": "20200210 (x86_64, plasma-openrc)",
+        "url": "/artixlinux-iso/artix-plasma-openrc-20200210-x86_64.iso"
+      },
+      {
+        "name": "20200210 (x86_64, plasma-runit)",
+        "url": "/artixlinux-iso/artix-plasma-runit-20200210-x86_64.iso"
+      },
+      {
+        "name": "20200210 (x86_64, plasma-s6)",
+        "url": "/artixlinux-iso/artix-plasma-s6-20200210-x86_64.iso"
+      },
+      {
+        "name": "20200211 (x86_64, qt-openrc)",
+        "url": "/artixlinux-iso/artix-community-qt-openrc-20200211-x86_64.iso"
+      },
+      {
+        "name": "20200211 (x86_64, qt-runit)",
+        "url": "/artixlinux-iso/artix-community-qt-runit-20200211-x86_64.iso"
+      },
+      {
+        "name": "20200211 (x86_64, qt-s6)",
+        "url": "/artixlinux-iso/artix-community-qt-s6-20200211-x86_64.iso"
+      },
+      {
+        "name": "20200506 (x86_64, xfce-openrc)",
+        "url": "/artixlinux-iso/artix-xfce-openrc-20200506-x86_64.iso"
+      },
+      {
+        "name": "20200506 (x86_64, xfce-runit)",
+        "url": "/artixlinux-iso/artix-xfce-runit-20200506-x86_64.iso"
+      },
+      {
+        "name": "20200506 (x86_64, xfce-s6)",
+        "url": "/artixlinux-iso/artix-xfce-s6-20200506-x86_64.iso"
+      }
+    ]
+  },
+  {
+    "distro": "openSUSE",
+    "category": "os",
+    "urls": [
+      {
+        "name": "15.0 (x86_64)",
+        "url": "/opensuse/distribution/leap/15.0/iso/openSUSE-Leap-15.0-DVD-x86_64.iso"
+      },
+      {
+        "name": "15.1 (x86_64)",
+        "url": "/opensuse/distribution/leap/15.1/iso/openSUSE-Leap-15.1-DVD-x86_64.iso"
+      },
+      {
+        "name": "15.2 (x86_64)",
+        "url": "/opensuse/distribution/leap/15.2/iso/openSUSE-Leap-15.2-DVD-x86_64.iso"
+      },
+      {
+        "name": "Tumbleweed (i586, DVD)",
+        "url": "/opensuse/tumbleweed/iso/openSUSE-Tumbleweed-DVD-i586-Current.iso"
+      },
+      {
+        "name": "Tumbleweed (i686, GNOME-Live)",
+        "url": "/opensuse/tumbleweed/iso/openSUSE-Tumbleweed-GNOME-Live-i686-Current.iso"
+      },
+      {
+        "name": "Tumbleweed (i686, KDE-Live)",
+        "url": "/opensuse/tumbleweed/iso/openSUSE-Tumbleweed-KDE-Live-i686-Current.iso"
+      },
+      {
+        "name": "Tumbleweed (x86_64, DVD)",
+        "url": "/opensuse/tumbleweed/iso/openSUSE-Tumbleweed-DVD-x86_64-Current.iso"
+      },
+      {
+        "name": "Tumbleweed (x86_64, GNOME-Live)",
+        "url": "/opensuse/tumbleweed/iso/openSUSE-Tumbleweed-GNOME-Live-x86_64-Current.iso"
+      },
+      {
+        "name": "Tumbleweed (x86_64, KDE-Live)",
+        "url": "/opensuse/tumbleweed/iso/openSUSE-Tumbleweed-KDE-Live-x86_64-Current.iso"
+      }
+    ]
+  },
+  {
+    "distro": "Manjaro ARM",
+    "category": "os",
+    "urls": [
+      {
+        "name": "20.06 (edgev, kde-plasma)",
+        "url": "/osdn/storage/g/m/ma/manjaro-arm/edgev/kde-plasma/20.06/Manjaro-ARM-kde-plasma-edgev-20.06.img.xz"
+      },
+      {
+        "name": "20.06 (edgev, xfce)",
+        "url": "/osdn/storage/g/m/ma/manjaro-arm/edgev/xfce/20.06/Manjaro-ARM-xfce-edgev-20.06.img.xz"
+      },
+      {
+        "name": "20.01 (on2, minimal)",
+        "url": "/osdn/storage/g/m/ma/manjaro-arm/on2/minimal/20.01/Manjaro-ARM-minimal-on2-20.01.img.xz"
+      },
+      {
+        "name": "20.10 (pbpro, i3)",
+        "url": "/osdn/storage/g/m/ma/manjaro-arm/pbpro/i3/20.10/Manjaro-ARM-i3-pbpro-20.10.img.xz"
+      },
+      {
+        "name": "20.10 (pbpro, kde-plasma)",
+        "url": "/osdn/storage/g/m/ma/manjaro-arm/pbpro/kde-plasma/20.10/Manjaro-ARM-kde-plasma-pbpro-20.10.img.xz"
+      },
+      {
+        "name": "20.10 (pbpro, sway)",
+        "url": "/osdn/storage/g/m/ma/manjaro-arm/pbpro/sway/20.10/Manjaro-ARM-sway-pbpro-20.10.img.xz"
+      },
+      {
+        "name": "20.10 (pbpro, xfce)",
+        "url": "/osdn/storage/g/m/ma/manjaro-arm/pbpro/xfce/20.10/Manjaro-ARM-xfce-pbpro-20.10.img.xz"
+      },
+      {
+        "name": "20.10 (pinebook, i3)",
+        "url": "/osdn/storage/g/m/ma/manjaro-arm/pinebook/i3/20.10/Manjaro-ARM-i3-pinebook-20.10.img.xz"
+      },
+      {
+        "name": "20.10 (pinebook, kde-plasma)",
+        "url": "/osdn/storage/g/m/ma/manjaro-arm/pinebook/kde-plasma/20.10/Manjaro-ARM-kde-plasma-pinebook-20.10.img.xz"
+      },
+      {
+        "name": "20.10 (pinebook, sway)",
+        "url": "/osdn/storage/g/m/ma/manjaro-arm/pinebook/sway/20.10/Manjaro-ARM-sway-pinebook-20.10.img.xz"
+      },
+      {
+        "name": "20.10 (pinebook, xfce)",
+        "url": "/osdn/storage/g/m/ma/manjaro-arm/pinebook/xfce/20.10/Manjaro-ARM-xfce-pinebook-20.10.img.xz"
+      },
+      {
+        "name": "20.10 (rockpi4b, i3)",
+        "url": "/osdn/storage/g/m/ma/manjaro-arm/rockpi4b/i3/20.10/Manjaro-ARM-i3-rockpi4b-20.10.img.xz"
+      },
+      {
+        "name": "20.10 (rockpi4b, kde-plasma)",
+        "url": "/osdn/storage/g/m/ma/manjaro-arm/rockpi4b/kde-plasma/20.10/Manjaro-ARM-kde-plasma-rockpi4b-20.10.img.xz"
+      },
+      {
+        "name": "20.10 (rockpi4b, sway)",
+        "url": "/osdn/storage/g/m/ma/manjaro-arm/rockpi4b/sway/20.10/Manjaro-ARM-sway-rockpi4b-20.10.img.xz"
+      },
+      {
+        "name": "20.10 (rockpi4b, xfce)",
+        "url": "/osdn/storage/g/m/ma/manjaro-arm/rockpi4b/xfce/20.10/Manjaro-ARM-xfce-rockpi4b-20.10.img.xz"
+      },
+      {
+        "name": "20.10 (rockpro64, i3)",
+        "url": "/osdn/storage/g/m/ma/manjaro-arm/rockpro64/i3/20.10/Manjaro-ARM-i3-rockpro64-20.10.img.xz"
+      },
+      {
+        "name": "20.10 (rockpro64, kde-plasma)",
+        "url": "/osdn/storage/g/m/ma/manjaro-arm/rockpro64/kde-plasma/20.10/Manjaro-ARM-kde-plasma-rockpro64-20.10.img.xz"
+      },
+      {
+        "name": "20.10 (rockpro64, sway)",
+        "url": "/osdn/storage/g/m/ma/manjaro-arm/rockpro64/sway/20.10/Manjaro-ARM-sway-rockpro64-20.10.img.xz"
+      },
+      {
+        "name": "20.10 (rockpro64, xfce)",
+        "url": "/osdn/storage/g/m/ma/manjaro-arm/rockpro64/xfce/20.10/Manjaro-ARM-xfce-rockpro64-20.10.img.xz"
+      },
+      {
+        "name": "20.10 (rpi4, i3)",
+        "url": "/osdn/storage/g/m/ma/manjaro-arm/rpi4/i3/20.10/Manjaro-ARM-i3-rpi4-20.10.img.xz"
+      },
+      {
+        "name": "20.10 (rpi4, kde-plasma)",
+        "url": "/osdn/storage/g/m/ma/manjaro-arm/rpi4/kde-plasma/20.10/Manjaro-ARM-kde-plasma-rpi4-20.10.img.xz"
+      },
+      {
+        "name": "20.10 (rpi4, sway)",
+        "url": "/osdn/storage/g/m/ma/manjaro-arm/rpi4/sway/20.10/Manjaro-ARM-sway-rpi4-20.10.img.xz"
+      },
+      {
+        "name": "20.10 (rpi4, xfce)",
+        "url": "/osdn/storage/g/m/ma/manjaro-arm/rpi4/xfce/20.10/Manjaro-ARM-xfce-rpi4-20.10.img.xz"
+      },
+      {
+        "name": "20.10 (vim1, i3)",
+        "url": "/osdn/storage/g/m/ma/manjaro-arm/vim1/i3/20.10/Manjaro-ARM-i3-vim1-20.10.img.xz"
+      },
+      {
+        "name": "20.10 (vim1, kde-plasma)",
+        "url": "/osdn/storage/g/m/ma/manjaro-arm/vim1/kde-plasma/20.10/Manjaro-ARM-kde-plasma-vim1-20.10.img.xz"
+      },
+      {
+        "name": "20.10 (vim1, sway)",
+        "url": "/osdn/storage/g/m/ma/manjaro-arm/vim1/sway/20.10/Manjaro-ARM-sway-vim1-20.10.img.xz"
+      },
+      {
+        "name": "20.10 (vim1, xfce)",
+        "url": "/osdn/storage/g/m/ma/manjaro-arm/vim1/xfce/20.10/Manjaro-ARM-xfce-vim1-20.10.img.xz"
+      },
+      {
+        "name": "20.10 (vim2, i3)",
+        "url": "/osdn/storage/g/m/ma/manjaro-arm/vim2/i3/20.10/Manjaro-ARM-i3-vim2-20.10.img.xz"
+      },
+      {
+        "name": "20.10 (vim2, kde-plasma)",
+        "url": "/osdn/storage/g/m/ma/manjaro-arm/vim2/kde-plasma/20.10/Manjaro-ARM-kde-plasma-vim2-20.10.img.xz"
+      },
+      {
+        "name": "20.10 (vim2, sway)",
+        "url": "/osdn/storage/g/m/ma/manjaro-arm/vim2/sway/20.10/Manjaro-ARM-sway-vim2-20.10.img.xz"
+      },
+      {
+        "name": "20.10 (vim2, xfce)",
+        "url": "/osdn/storage/g/m/ma/manjaro-arm/vim2/xfce/20.10/Manjaro-ARM-xfce-vim2-20.10.img.xz"
+      },
+      {
+        "name": "20.06 (vim3, kde-plasma)",
+        "url": "/osdn/storage/g/m/ma/manjaro-arm/vim3/kde-plasma/20.06/Manjaro-ARM-kde-plasma-vim3-20.06.img.xz"
+      },
+      {
+        "name": "20.06 (vim3, xfce)",
+        "url": "/osdn/storage/g/m/ma/manjaro-arm/vim3/xfce/20.06/Manjaro-ARM-xfce-vim3-20.06.img.xz"
+      }
+    ]
+  },
+  {
+    "distro": "Manjaro",
+    "category": "os",
+    "urls": [
+      {
+        "name": "20.0.3 (x86_64, architect)",
+        "url": "/osdn/storage/g/m/ma/manjaro/architect/20.0.3/manjaro-architect-20.0.3-200607-linux56.iso"
+      },
+      {
+        "name": "20.1.2 (x86_64, gnome)",
+        "url": "/osdn/storage/g/m/ma/manjaro/gnome/20.1.2/manjaro-gnome-20.1.2-201019-linux58.iso"
+      },
+      {
+        "name": "20.1.2 (x86_64, gnome/minimal)",
+        "url": "/osdn/storage/g/m/ma/manjaro/gnome/20.1.2/minimal/manjaro-gnome-20.1.2-minimal-201019-linux58.iso"
+      },
+      {
+        "name": "20.1.2 (x86_64, kde)",
+        "url": "/osdn/storage/g/m/ma/manjaro/kde/20.1.2/manjaro-kde-20.1.2-201019-linux58.iso"
+      },
+      {
+        "name": "20.1.2 (x86_64, kde/minimal)",
+        "url": "/osdn/storage/g/m/ma/manjaro/kde/20.1.2/minimal/manjaro-kde-20.1.2-minimal-201019-linux58.iso"
+      },
+      {
+        "name": "20.1.2 (x86_64, xfce)",
+        "url": "/osdn/storage/g/m/ma/manjaro/xfce/20.1.2/manjaro-xfce-20.1.2-201019-linux58.iso"
+      },
+      {
+        "name": "20.1.2 (x86_64, xfce/minimal)",
+        "url": "/osdn/storage/g/m/ma/manjaro/xfce/20.1.2/minimal/manjaro-xfce-20.1.2-minimal-201019-linux58.iso"
+      }
+    ]
+  },
+  {
+    "distro": "MX Linux",
+    "category": "os",
+    "urls": [
+      {
+        "name": "19.2 (386)",
+        "url": "/osdn/storage/g/m/mx/mx-linux/ISOs/MX/Final/MX-19.2_386.iso"
+      },
+      {
+        "name": "19.2 (KDE_x64)",
+        "url": "/osdn/storage/g/m/mx/mx-linux/ISOs/MX/Final/MX-19.2_KDE_x64.iso"
+      },
+      {
+        "name": "19.2 (ahs_x64)",
+        "url": "/osdn/storage/g/m/mx/mx-linux/ISOs/MX/Final/MX-19.2_ahs_x64.iso"
+      },
+      {
+        "name": "19.2 (x64)",
+        "url": "/osdn/storage/g/m/mx/mx-linux/ISOs/MX/Final/MX-19.2_x64.iso"
+      }
+    ]
+  },
+  {
+    "distro": "Raspberry Pi OS (原 Raspbian)",
+    "category": "os",
+    "urls": [
+      {
+        "name": "2020-08-20 (arm64, buster)",
+        "url": "/raspberry-pi-os-images/raspios_arm64/images/raspios_arm64-2020-08-24/2020-08-20-raspios-buster-arm64.zip"
+      },
+      {
+        "name": "2020-08-20 (armhf, buster)",
+        "url": "/raspberry-pi-os-images/raspios_armhf/images/raspios_armhf-2020-08-24/2020-08-20-raspios-buster-armhf.zip"
+      },
+      {
+        "name": "2020-08-20 (full, buster-armhf)",
+        "url": "/raspberry-pi-os-images/raspios_full_armhf/images/raspios_full_armhf-2020-08-24/2020-08-20-raspios-buster-armhf-full.zip"
+      },
+      {
+        "name": "2020-08-20 (lite, buster-arm64)",
+        "url": "/raspberry-pi-os-images/raspios_lite_arm64/images/raspios_lite_arm64-2020-08-24/2020-08-20-raspios-buster-arm64-lite.zip"
+      },
+      {
+        "name": "2020-08-20 (lite, buster-armhf)",
+        "url": "/raspberry-pi-os-images/raspios_lite_armhf/images/raspios_lite_armhf-2020-08-24/2020-08-20-raspios-buster-armhf-lite.zip"
+      }
+    ]
+  },
+  {
+    "distro": "Linux Mint",
+    "category": "os",
+    "urls": [
+      {
+        "name": "20 (64bit, cinnamon)",
+        "url": "/linuxmint-cd/stable/20/linuxmint-20-cinnamon-64bit.iso"
+      },
+      {
+        "name": "20 (64bit, mate)",
+        "url": "/linuxmint-cd/stable/20/linuxmint-20-mate-64bit.iso"
+      },
+      {
+        "name": "20 (64bit, xfce)",
+        "url": "/linuxmint-cd/stable/20/linuxmint-20-xfce-64bit.iso"
+      }
+    ]
+  },
+  {
+    "distro": "Kali",
+    "category": "os",
+    "urls": [
+      {
+        "name": "2020.3 (amd64, installer)",
+        "url": "/kali-images/current/kali-linux-2020.3-installer-amd64.iso"
+      },
+      {
+        "name": "2020.3 (amd64, installer-netinst)",
+        "url": "/kali-images/current/kali-linux-2020.3-installer-netinst-amd64.iso"
+      },
+      {
+        "name": "2020.3 (amd64, live)",
+        "url": "/kali-images/current/kali-linux-2020.3-live-amd64.iso"
+      },
+      {
+        "name": "2020.3 (i386, installer)",
+        "url": "/kali-images/current/kali-linux-2020.3-installer-i386.iso"
+      },
+      {
+        "name": "2020.3 (i386, installer-netinst)",
+        "url": "/kali-images/current/kali-linux-2020.3-installer-netinst-i386.iso"
+      },
+      {
+        "name": "2020.3 (i386, live)",
+        "url": "/kali-images/current/kali-linux-2020.3-live-i386.iso"
+      }
+    ]
+  },
+  {
+    "distro": "Qt 5",
+    "category": "app",
+    "urls": [
+      {
+        "name": "qt 5.14.2 (linux-x64)",
+        "url": "/qt/official_releases/qt/5.14/5.14.2/qt-opensource-linux-x64-5.14.2.run"
+      },
+      {
+        "name": "qt 5.14.2 (mac-x64)",
+        "url": "/qt/official_releases/qt/5.14/5.14.2/qt-opensource-mac-x64-5.14.2.dmg"
+      },
+      {
+        "name": "qt 5.14.2 (windows-x86)",
+        "url": "/qt/official_releases/qt/5.14/5.14.2/qt-opensource-windows-x86-5.14.2.exe"
+      },
+      {
+        "name": "qt-creator 4.13.2 (linux-x86_64)",
+        "url": "/qt/official_releases/qtcreator/4.13/4.13.2/qt-creator-opensource-linux-x86_64-4.13.2.run"
+      },
+      {
+        "name": "qt-creator 4.13.2 (mac-x86_64)",
+        "url": "/qt/official_releases/qtcreator/4.13/4.13.2/qt-creator-opensource-mac-x86_64-4.13.2.dmg"
+      },
+      {
+        "name": "qt-creator 4.13.2 (windows-x86)",
+        "url": "/qt/official_releases/qtcreator/4.13/4.13.2/qt-creator-opensource-windows-x86-4.13.2.exe"
+      },
+      {
+        "name": "qt-creator 4.13.2 (windows-x86_64)",
+        "url": "/qt/official_releases/qtcreator/4.13/4.13.2/qt-creator-opensource-windows-x86_64-4.13.2.exe"
+      }
+    ]
+  },
+  {
+    "distro": "MSYS2",
+    "category": "app",
+    "urls": [
+      {
+        "name": "latest (Windows, i686)",
+        "url": "/msys2/distrib/msys2-i686-latest.exe"
+      },
+      {
+        "name": "latest (Windows, x86_64)",
+        "url": "/msys2/distrib/msys2-x86_64-latest.exe"
+      }
+    ]
+  },
+  {
+    "distro": "VirtualBox",
+    "category": "app",
+    "urls": [
+      {
+        "name": "latest (Win)",
+        "url": "/virtualbox/virtualbox-Win-latest.exe"
+      },
+      {
+        "name": "latest (osx)",
+        "url": "/virtualbox/virtualbox-osx-latest.dmg"
+      }
+    ]
+  },
+  {
+    "distro": "TeX 排版系统",
+    "category": "app",
+    "urls": [
+      {
+        "name": "MacTeX 20200407 (macOS)",
+        "url": "/CTAN/systems/mac/mactex/mactex-20200407.pkg"
+      },
+      {
+        "name": "MikTeX 20.11 (Windows)",
+        "url": "/CTAN/systems/win32/miktex/setup/windows-x86/basic-miktex-20.11.exe"
+      },
+      {
+        "name": "MikTeX 20.11 (Windows, x64)",
+        "url": "/CTAN/systems/win32/miktex/setup/windows-x64/basic-miktex-20.11-x64.exe"
+      },
+      {
+        "name": "MikTeX 20.11 (macOS, x86_64)",
+        "url": "/CTAN/systems/win32/miktex/setup/darwin-x86_64/miktex-20.11-darwin-x86_64.dmg"
+      },
+      {
+        "name": "TeX Live 2020 (Windows & Linux)",
+        "url": "/CTAN/systems/texlive/Images/texlive2020-20200406.iso"
+      }
+    ]
+  },
+  {
+    "distro": "ThuThesis 论文模板",
+    "category": "app",
+    "urls": [
+      {
+        "name": "6.1.3 (TeX Live, zip)",
+        "url": "/github-release/tuna/thuthesis/thuthesis-v6.1.3.zip"
+      },
+      {
+        "name": "7.0.0 (TeX Live, zip)",
+        "url": "/github-release/tuna/thuthesis/thuthesis-v7.0.0.zip"
+      },
+      {
+        "name": "7.1.0 (TeX Live, zip)",
+        "url": "/github-release/tuna/thuthesis/thuthesis-v7.1.0.zip"
+      }
+    ]
+  },
+  {
+    "distro": "Conda",
+    "category": "app",
+    "urls": [
+      {
+        "name": "Anaconda2 2019.10 (Linux/x86_64, sh)",
+        "url": "/anaconda/archive/Anaconda2-2019.10-Linux-x86_64.sh"
+      },
+      {
+        "name": "Anaconda2 2019.10 (MacOSX/x86_64, pkg)",
+        "url": "/anaconda/archive/Anaconda2-2019.10-MacOSX-x86_64.pkg"
+      },
+      {
+        "name": "Anaconda2 2019.10 (MacOSX/x86_64, sh)",
+        "url": "/anaconda/archive/Anaconda2-2019.10-MacOSX-x86_64.sh"
+      },
+      {
+        "name": "Anaconda2 2019.10 (Windows/x86, exe)",
+        "url": "/anaconda/archive/Anaconda2-2019.10-Windows-x86.exe"
+      },
+      {
+        "name": "Anaconda2 2019.10 (Windows/x86_64, exe)",
+        "url": "/anaconda/archive/Anaconda2-2019.10-Windows-x86_64.exe"
+      },
+      {
+        "name": "Anaconda3 2020.07 (Linux/x86_64, sh)",
+        "url": "/anaconda/archive/Anaconda3-2020.07-Linux-x86_64.sh"
+      },
+      {
+        "name": "Anaconda3 2020.07 (MacOSX/x86_64, pkg)",
+        "url": "/anaconda/archive/Anaconda3-2020.07-MacOSX-x86_64.pkg"
+      },
+      {
+        "name": "Anaconda3 2020.07 (MacOSX/x86_64, sh)",
+        "url": "/anaconda/archive/Anaconda3-2020.07-MacOSX-x86_64.sh"
+      },
+      {
+        "name": "Anaconda3 2020.07 (Windows/x86, exe)",
+        "url": "/anaconda/archive/Anaconda3-2020.07-Windows-x86.exe"
+      },
+      {
+        "name": "Anaconda3 2020.07 (Windows/x86_64, exe)",
+        "url": "/anaconda/archive/Anaconda3-2020.07-Windows-x86_64.exe"
+      },
+      {
+        "name": "Miniconda2 4.7.12.1 (Linux/x86_64, sh)",
+        "url": "/anaconda/miniconda/Miniconda2-4.7.12.1-Linux-x86_64.sh"
+      },
+      {
+        "name": "Miniconda2 4.7.12.1 (MacOSX/x86_64, pkg)",
+        "url": "/anaconda/miniconda/Miniconda2-4.7.12.1-MacOSX-x86_64.pkg"
+      },
+      {
+        "name": "Miniconda2 4.7.12.1 (MacOSX/x86_64, sh)",
+        "url": "/anaconda/miniconda/Miniconda2-4.7.12.1-MacOSX-x86_64.sh"
+      },
+      {
+        "name": "Miniconda2 4.7.12.1 (Windows/x86, exe)",
+        "url": "/anaconda/miniconda/Miniconda2-4.7.12.1-Windows-x86.exe"
+      },
+      {
+        "name": "Miniconda2 4.7.12.1 (Windows/x86_64, exe)",
+        "url": "/anaconda/miniconda/Miniconda2-4.7.12.1-Windows-x86_64.exe"
+      },
+      {
+        "name": "Miniconda3-py37 4.8.3 (Linux/x86_64, sh)",
+        "url": "/anaconda/miniconda/Miniconda3-py37_4.8.3-Linux-x86_64.sh"
+      },
+      {
+        "name": "Miniconda3-py37 4.8.3 (MacOSX/x86_64, pkg)",
+        "url": "/anaconda/miniconda/Miniconda3-py37_4.8.3-MacOSX-x86_64.pkg"
+      },
+      {
+        "name": "Miniconda3-py37 4.8.3 (MacOSX/x86_64, sh)",
+        "url": "/anaconda/miniconda/Miniconda3-py37_4.8.3-MacOSX-x86_64.sh"
+      },
+      {
+        "name": "Miniconda3-py37 4.8.3 (Windows/x86, exe)",
+        "url": "/anaconda/miniconda/Miniconda3-py37_4.8.3-Windows-x86.exe"
+      },
+      {
+        "name": "Miniconda3-py37 4.8.3 (Windows/x86_64, exe)",
+        "url": "/anaconda/miniconda/Miniconda3-py37_4.8.3-Windows-x86_64.exe"
+      },
+      {
+        "name": "Miniconda3-py38 4.8.3 (Linux/x86_64, sh)",
+        "url": "/anaconda/miniconda/Miniconda3-py38_4.8.3-Linux-x86_64.sh"
+      },
+      {
+        "name": "Miniconda3-py38 4.8.3 (MacOSX/x86_64, pkg)",
+        "url": "/anaconda/miniconda/Miniconda3-py38_4.8.3-MacOSX-x86_64.pkg"
+      },
+      {
+        "name": "Miniconda3-py38 4.8.3 (MacOSX/x86_64, sh)",
+        "url": "/anaconda/miniconda/Miniconda3-py38_4.8.3-MacOSX-x86_64.sh"
+      },
+      {
+        "name": "Miniconda3-py38 4.8.3 (Windows/x86, exe)",
+        "url": "/anaconda/miniconda/Miniconda3-py38_4.8.3-Windows-x86.exe"
+      },
+      {
+        "name": "Miniconda3-py38 4.8.3 (Windows/x86_64, exe)",
+        "url": "/anaconda/miniconda/Miniconda3-py38_4.8.3-Windows-x86_64.exe"
+      }
+    ]
+  },
+  {
+    "distro": "Blender",
+    "category": "app",
+    "urls": [
+      {
+        "name": "2.90.1 (linux64, tar.xz)",
+        "url": "/blender/blender-release/Blender2.90/blender-2.90.1-linux64.tar.xz"
+      },
+      {
+        "name": "2.90.1 (macOS, dmg)",
+        "url": "/blender/blender-release/Blender2.90/blender-2.90.1-macOS.dmg"
+      },
+      {
+        "name": "2.90.1 (windows64, msi)",
+        "url": "/blender/blender-release/Blender2.90/blender-2.90.1-windows64.msi"
+      },
+      {
+        "name": "2.90.1 (windows64, zip)",
+        "url": "/blender/blender-release/Blender2.90/blender-2.90.1-windows64.zip"
+      },
+      {
+        "name": "2.90.1.0 (windows64, msix)",
+        "url": "/blender/blender-release/Blender2.90/blender-2.90.1.0-windows64.msix"
+      }
+    ]
+  },
+  {
+    "distro": "LineageOS",
+    "category": "os",
+    "urls": [
+      {
+        "name": "20201101 (Amber, 17.1)",
+        "url": "/lineage-rom/full/Amber/20201101/lineage-17.1-20201101-nightly-Amber-signed.zip"
+      },
+      {
+        "name": "20201106 (FP2, 17.1)",
+        "url": "/lineage-rom/full/FP2/20201106/lineage-17.1-20201106-nightly-FP2-signed.zip"
+      },
+      {
+        "name": "20201104 (I001D, 17.1)",
+        "url": "/lineage-rom/full/I001D/20201104/lineage-17.1-20201104-nightly-I001D-signed.zip"
+      },
+      {
+        "name": "20201030 (I01WD, 17.1)",
+        "url": "/lineage-rom/full/I01WD/20201030/lineage-17.1-20201030-nightly-I01WD-signed.zip"
+      },
+      {
+        "name": "20201103 (PL2, 17.1)",
+        "url": "/lineage-rom/full/PL2/20201103/lineage-17.1-20201103-nightly-PL2-signed.zip"
+      },
+      {
+        "name": "20201104 (RMX1801, 17.1)",
+        "url": "/lineage-rom/full/RMX1801/20201104/lineage-17.1-20201104-nightly-RMX1801-signed.zip"
+      },
+      {
+        "name": "20201103 (X00TD, 16.0)",
+        "url": "/lineage-rom/full/X00TD/20201103/lineage-16.0-20201103-nightly-X00TD-signed.zip"
+      },
+      {
+        "name": "20201026 (X01BD, 16.0)",
+        "url": "/lineage-rom/full/X01BD/20201026/lineage-16.0-20201026-nightly-X01BD-signed.zip"
+      },
+      {
+        "name": "20201031 (YTX703F, 16.0)",
+        "url": "/lineage-rom/full/YTX703F/20201031/lineage-16.0-20201031-nightly-YTX703F-signed.zip"
+      },
+      {
+        "name": "20201030 (YTX703L, 16.0)",
+        "url": "/lineage-rom/full/YTX703L/20201030/lineage-16.0-20201030-nightly-YTX703L-signed.zip"
+      },
+      {
+        "name": "20201101 (a3xelte, 17.1)",
+        "url": "/lineage-rom/full/a3xelte/20201101/lineage-17.1-20201101-nightly-a3xelte-signed.zip"
+      },
+      {
+        "name": "20201101 (a5xelte, 17.1)",
+        "url": "/lineage-rom/full/a5xelte/20201101/lineage-17.1-20201101-nightly-a5xelte-signed.zip"
+      },
+      {
+        "name": "20201105 (a5y17lte, 17.1)",
+        "url": "/lineage-rom/full/a5y17lte/20201105/lineage-17.1-20201105-nightly-a5y17lte-signed.zip"
+      },
+      {
+        "name": "20201031 (a7xelte, 17.1)",
+        "url": "/lineage-rom/full/a7xelte/20201031/lineage-17.1-20201031-nightly-a7xelte-signed.zip"
+      },
+      {
+        "name": "20201031 (a7y17lte, 17.1)",
+        "url": "/lineage-rom/full/a7y17lte/20201031/lineage-17.1-20201031-nightly-a7y17lte-signed.zip"
+      },
+      {
+        "name": "20201104 (akari, 17.1)",
+        "url": "/lineage-rom/full/akari/20201104/lineage-17.1-20201104-nightly-akari-signed.zip"
+      },
+      {
+        "name": "20201026 (anne, 16.0)",
+        "url": "/lineage-rom/full/anne/20201026/lineage-16.0-20201026-nightly-anne-signed.zip"
+      },
+      {
+        "name": "20201105 (bacon, 17.1)",
+        "url": "/lineage-rom/full/bacon/20201105/lineage-17.1-20201105-nightly-bacon-signed.zip"
+      },
+      {
+        "name": "20201103 (bardock, 17.1)",
+        "url": "/lineage-rom/full/bardock/20201103/lineage-17.1-20201103-nightly-bardock-signed.zip"
+      },
+      {
+        "name": "20201031 (bardockpro, 17.1)",
+        "url": "/lineage-rom/full/bardockpro/20201031/lineage-17.1-20201031-nightly-bardockpro-signed.zip"
+      },
+      {
+        "name": "20201104 (berkeley, 16.0)",
+        "url": "/lineage-rom/full/berkeley/20201104/lineage-16.0-20201104-nightly-berkeley-signed.zip"
+      },
+      {
+        "name": "20201031 (beryllium, 17.1)",
+        "url": "/lineage-rom/full/beryllium/20201031/lineage-17.1-20201031-nightly-beryllium-signed.zip"
+      },
+      {
+        "name": "20201103 (blueline, 17.1)",
+        "url": "/lineage-rom/full/blueline/20201103/lineage-17.1-20201103-nightly-blueline-signed.zip"
+      },
+      {
+        "name": "20201031 (bonito, 17.1)",
+        "url": "/lineage-rom/full/bonito/20201031/lineage-17.1-20201031-nightly-bonito-signed.zip"
+      },
+      {
+        "name": "20201104 (capricorn, 16.0)",
+        "url": "/lineage-rom/full/capricorn/20201104/lineage-16.0-20201104-nightly-capricorn-signed.zip"
+      },
+      {
+        "name": "20201101 (channel, 17.1)",
+        "url": "/lineage-rom/full/channel/20201101/lineage-17.1-20201101-nightly-channel-signed.zip"
+      },
+      {
+        "name": "20201105 (charlotte, 16.0)",
+        "url": "/lineage-rom/full/charlotte/20201105/lineage-16.0-20201105-nightly-charlotte-signed.zip"
+      },
+      {
+        "name": "20201026 (cheeseburger, 16.0)",
+        "url": "/lineage-rom/full/cheeseburger/20201026/lineage-16.0-20201026-nightly-cheeseburger-signed.zip"
+      },
+      {
+        "name": "20201031 (chef, 17.1)",
+        "url": "/lineage-rom/full/chef/20201031/lineage-17.1-20201031-nightly-chef-signed.zip"
+      },
+      {
+        "name": "20201031 (cheryl, 17.1)",
+        "url": "/lineage-rom/full/cheryl/20201031/lineage-17.1-20201031-nightly-cheryl-signed.zip"
+      },
+      {
+        "name": "20201105 (chiron, 17.1)",
+        "url": "/lineage-rom/full/chiron/20201105/lineage-17.1-20201105-nightly-chiron-signed.zip"
+      },
+      {
+        "name": "20201101 (coral, 17.1)",
+        "url": "/lineage-rom/full/coral/20201101/lineage-17.1-20201101-nightly-coral-signed.zip"
+      },
+      {
+        "name": "20201031 (crackling, 17.1)",
+        "url": "/lineage-rom/full/crackling/20201031/lineage-17.1-20201031-nightly-crackling-signed.zip"
+      },
+      {
+        "name": "20201103 (crosshatch, 17.1)",
+        "url": "/lineage-rom/full/crosshatch/20201103/lineage-17.1-20201103-nightly-crosshatch-signed.zip"
+      },
+      {
+        "name": "20201103 (crownlte, 17.1)",
+        "url": "/lineage-rom/full/crownlte/20201103/lineage-17.1-20201103-nightly-crownlte-signed.zip"
+      },
+      {
+        "name": "20201104 (d800, 17.1)",
+        "url": "/lineage-rom/full/d800/20201104/lineage-17.1-20201104-nightly-d800-signed.zip"
+      },
+      {
+        "name": "20201103 (d801, 17.1)",
+        "url": "/lineage-rom/full/d801/20201103/lineage-17.1-20201103-nightly-d801-signed.zip"
+      },
+      {
+        "name": "20201105 (d802, 17.1)",
+        "url": "/lineage-rom/full/d802/20201105/lineage-17.1-20201105-nightly-d802-signed.zip"
+      },
+      {
+        "name": "20201106 (d803, 17.1)",
+        "url": "/lineage-rom/full/d803/20201106/lineage-17.1-20201106-nightly-d803-signed.zip"
+      },
+      {
+        "name": "20201030 (d850, 17.1)",
+        "url": "/lineage-rom/full/d850/20201030/lineage-17.1-20201030-nightly-d850-signed.zip"
+      },
+      {
+        "name": "20201030 (d851, 17.1)",
+        "url": "/lineage-rom/full/d851/20201030/lineage-17.1-20201030-nightly-d851-signed.zip"
+      },
+      {
+        "name": "20201031 (d852, 17.1)",
+        "url": "/lineage-rom/full/d852/20201031/lineage-17.1-20201031-nightly-d852-signed.zip"
+      },
+      {
+        "name": "20201031 (d855, 17.1)",
+        "url": "/lineage-rom/full/d855/20201031/lineage-17.1-20201031-nightly-d855-signed.zip"
+      },
+      {
+        "name": "20201104 (davinci, 17.1)",
+        "url": "/lineage-rom/full/davinci/20201104/lineage-17.1-20201104-nightly-davinci-signed.zip"
+      },
+      {
+        "name": "20201105 (dipper, 17.1)",
+        "url": "/lineage-rom/full/dipper/20201105/lineage-17.1-20201105-nightly-dipper-signed.zip"
+      },
+      {
+        "name": "20201105 (discovery, 17.1)",
+        "url": "/lineage-rom/full/discovery/20201105/lineage-17.1-20201105-nightly-discovery-signed.zip"
+      },
+      {
+        "name": "20201103 (dumpling, 16.0)",
+        "url": "/lineage-rom/full/dumpling/20201103/lineage-16.0-20201103-nightly-dumpling-signed.zip"
+      },
+      {
+        "name": "20201103 (enchilada, 17.1)",
+        "url": "/lineage-rom/full/enchilada/20201103/lineage-17.1-20201103-nightly-enchilada-signed.zip"
+      },
+      {
+        "name": "20201101 (ether, 16.0)",
+        "url": "/lineage-rom/full/ether/20201101/lineage-16.0-20201101-nightly-ether-signed.zip"
+      },
+      {
+        "name": "20201103 (evert, 17.1)",
+        "url": "/lineage-rom/full/evert/20201103/lineage-17.1-20201103-nightly-evert-signed.zip"
+      },
+      {
+        "name": "20201103 (f1f, 16.0)",
+        "url": "/lineage-rom/full/f1f/20201103/lineage-16.0-20201103-nightly-f1f-signed.zip"
+      },
+      {
+        "name": "20201105 (f400, 17.1)",
+        "url": "/lineage-rom/full/f400/20201105/lineage-17.1-20201105-nightly-f400-signed.zip"
+      },
+      {
+        "name": "20201105 (fajita, 17.1)",
+        "url": "/lineage-rom/full/fajita/20201105/lineage-17.1-20201105-nightly-fajita-signed.zip"
+      },
+      {
+        "name": "20201030 (figo, 16.0)",
+        "url": "/lineage-rom/full/figo/20201030/lineage-16.0-20201030-nightly-figo-signed.zip"
+      },
+      {
+        "name": "20201026 (find7, 16.0)",
+        "url": "/lineage-rom/full/find7/20201026/lineage-16.0-20201026-nightly-find7-signed.zip"
+      },
+      {
+        "name": "20201101 (flame, 17.1)",
+        "url": "/lineage-rom/full/flame/20201101/lineage-17.1-20201101-nightly-flame-signed.zip"
+      },
+      {
+        "name": "20201101 (gemini, 17.1)",
+        "url": "/lineage-rom/full/gemini/20201101/lineage-17.1-20201101-nightly-gemini-signed.zip"
+      },
+      {
+        "name": "20201026 (ginkgo, 17.1)",
+        "url": "/lineage-rom/full/ginkgo/20201026/lineage-17.1-20201026-nightly-ginkgo-signed.zip"
+      },
+      {
+        "name": "20201030 (griffin, 17.1)",
+        "url": "/lineage-rom/full/griffin/20201030/lineage-17.1-20201030-nightly-griffin-signed.zip"
+      },
+      {
+        "name": "20201031 (gts210vewifi, 16.0)",
+        "url": "/lineage-rom/full/gts210vewifi/20201031/lineage-16.0-20201031-nightly-gts210vewifi-signed.zip"
+      },
+      {
+        "name": "20201026 (gts28vewifi, 16.0)",
+        "url": "/lineage-rom/full/gts28vewifi/20201026/lineage-16.0-20201026-nightly-gts28vewifi-signed.zip"
+      },
+      {
+        "name": "20201026 (gts4lvwifi, 17.1)",
+        "url": "/lineage-rom/full/gts4lvwifi/20201026/lineage-17.1-20201026-nightly-gts4lvwifi-signed.zip"
+      },
+      {
+        "name": "20201101 (guacamole, 17.1)",
+        "url": "/lineage-rom/full/guacamole/20201101/lineage-17.1-20201101-nightly-guacamole-signed.zip"
+      },
+      {
+        "name": "20201026 (guacamoleb, 17.1)",
+        "url": "/lineage-rom/full/guacamoleb/20201026/lineage-17.1-20201026-nightly-guacamoleb-signed.zip"
+      },
+      {
+        "name": "20201104 (h830, 17.1)",
+        "url": "/lineage-rom/full/h830/20201104/lineage-17.1-20201104-nightly-h830-signed.zip"
+      },
+      {
+        "name": "20201101 (h850, 17.1)",
+        "url": "/lineage-rom/full/h850/20201101/lineage-17.1-20201101-nightly-h850-signed.zip"
+      },
+      {
+        "name": "20201105 (h910, 17.1)",
+        "url": "/lineage-rom/full/h910/20201105/lineage-17.1-20201105-nightly-h910-signed.zip"
+      },
+      {
+        "name": "20201105 (h918, 17.1)",
+        "url": "/lineage-rom/full/h918/20201105/lineage-17.1-20201105-nightly-h918-signed.zip"
+      },
+      {
+        "name": "20201101 (h990, 17.1)",
+        "url": "/lineage-rom/full/h990/20201101/lineage-17.1-20201101-nightly-h990-signed.zip"
+      },
+      {
+        "name": "20201104 (ham, 16.0)",
+        "url": "/lineage-rom/full/ham/20201104/lineage-16.0-20201104-nightly-ham-signed.zip"
+      },
+      {
+        "name": "20201030 (harpia, 17.1)",
+        "url": "/lineage-rom/full/harpia/20201030/lineage-17.1-20201030-nightly-harpia-signed.zip"
+      },
+      {
+        "name": "20201003 (hlte, 16.0)",
+        "url": "/lineage-rom/full/hlte/20201003/lineage-16.0-20201003-nightly-hlte-signed.zip"
+      },
+      {
+        "name": "20201031 (hlte, 17.1)",
+        "url": "/lineage-rom/full/hlte/20201031/lineage-17.1-20201031-nightly-hlte-signed.zip"
+      },
+      {
+        "name": "20201005 (hltechn, 16.0)",
+        "url": "/lineage-rom/full/hltechn/20201005/lineage-16.0-20201005-nightly-hltechn-signed.zip"
+      },
+      {
+        "name": "20201026 (hltechn, 17.1)",
+        "url": "/lineage-rom/full/hltechn/20201026/lineage-17.1-20201026-nightly-hltechn-signed.zip"
+      },
+      {
+        "name": "20201007 (hltekor, 16.0)",
+        "url": "/lineage-rom/full/hltekor/20201007/lineage-16.0-20201007-nightly-hltekor-signed.zip"
+      },
+      {
+        "name": "20201104 (hltekor, 17.1)",
+        "url": "/lineage-rom/full/hltekor/20201104/lineage-17.1-20201104-nightly-hltekor-signed.zip"
+      },
+      {
+        "name": "20201001 (hltetmo, 16.0)",
+        "url": "/lineage-rom/full/hltetmo/20201001/lineage-16.0-20201001-nightly-hltetmo-signed.zip"
+      },
+      {
+        "name": "20201105 (hltetmo, 17.1)",
+        "url": "/lineage-rom/full/hltetmo/20201105/lineage-17.1-20201105-nightly-hltetmo-signed.zip"
+      },
+      {
+        "name": "20201103 (hotdog, 17.1)",
+        "url": "/lineage-rom/full/hotdog/20201103/lineage-17.1-20201103-nightly-hotdog-signed.zip"
+      },
+      {
+        "name": "20201105 (j7elte, 17.1)",
+        "url": "/lineage-rom/full/j7elte/20201105/lineage-17.1-20201105-nightly-j7elte-signed.zip"
+      },
+      {
+        "name": "20201029 (jactivelte, 17.1)",
+        "url": "/lineage-rom/full/jactivelte/20201029/lineage-17.1-20201029-nightly-jactivelte-signed.zip"
+      },
+      {
+        "name": "20201031 (jasmine_sprout, 17.1)",
+        "url": "/lineage-rom/full/jasmine_sprout/20201031/lineage-17.1-20201031-nightly-jasmine_sprout-signed.zip"
+      },
+      {
+        "name": "20201104 (jason, 17.1)",
+        "url": "/lineage-rom/full/jason/20201104/lineage-17.1-20201104-nightly-jason-signed.zip"
+      },
+      {
+        "name": "20201025 (jflteatt, 17.1)",
+        "url": "/lineage-rom/full/jflteatt/20201025/lineage-17.1-20201025-nightly-jflteatt-signed.zip"
+      },
+      {
+        "name": "20201030 (jfltespr, 17.1)",
+        "url": "/lineage-rom/full/jfltespr/20201030/lineage-17.1-20201030-nightly-jfltespr-signed.zip"
+      },
+      {
+        "name": "20201028 (jfltevzw, 17.1)",
+        "url": "/lineage-rom/full/jfltevzw/20201028/lineage-17.1-20201028-nightly-jfltevzw-signed.zip"
+      },
+      {
+        "name": "20201029 (jfltexx, 17.1)",
+        "url": "/lineage-rom/full/jfltexx/20201029/lineage-17.1-20201029-nightly-jfltexx-signed.zip"
+      },
+      {
+        "name": "20201031 (jfvelte, 17.1)",
+        "url": "/lineage-rom/full/jfvelte/20201031/lineage-17.1-20201031-nightly-jfvelte-signed.zip"
+      },
+      {
+        "name": "20201105 (kccat6, 16.0)",
+        "url": "/lineage-rom/full/kccat6/20201105/lineage-16.0-20201105-nightly-kccat6-signed.zip"
+      },
+      {
+        "name": "20201103 (kirin, 17.1)",
+        "url": "/lineage-rom/full/kirin/20201103/lineage-17.1-20201103-nightly-kirin-signed.zip"
+      },
+      {
+        "name": "20201105 (kiwi, 16.0)",
+        "url": "/lineage-rom/full/kiwi/20201105/lineage-16.0-20201105-nightly-kiwi-signed.zip"
+      },
+      {
+        "name": "20201004 (klte, 16.0)",
+        "url": "/lineage-rom/full/klte/20201004/lineage-16.0-20201004-nightly-klte-signed.zip"
+      },
+      {
+        "name": "20201025 (klte, 17.1)",
+        "url": "/lineage-rom/full/klte/20201025/lineage-17.1-20201025-nightly-klte-signed.zip"
+      },
+      {
+        "name": "20201001 (klteactivexx, 16.0)",
+        "url": "/lineage-rom/full/klteactivexx/20201001/lineage-16.0-20201001-nightly-klteactivexx-signed.zip"
+      },
+      {
+        "name": "20201105 (klteactivexx, 17.1)",
+        "url": "/lineage-rom/full/klteactivexx/20201105/lineage-17.1-20201105-nightly-klteactivexx-signed.zip"
+      },
+      {
+        "name": "20201003 (kltechn, 16.0)",
+        "url": "/lineage-rom/full/kltechn/20201003/lineage-16.0-20201003-nightly-kltechn-signed.zip"
+      },
+      {
+        "name": "20201031 (kltechn, 17.1)",
+        "url": "/lineage-rom/full/kltechn/20201031/lineage-17.1-20201031-nightly-kltechn-signed.zip"
+      },
+      {
+        "name": "20201003 (kltechnduo, 16.0)",
+        "url": "/lineage-rom/full/kltechnduo/20201003/lineage-16.0-20201003-nightly-kltechnduo-signed.zip"
+      },
+      {
+        "name": "20201031 (kltechnduo, 17.1)",
+        "url": "/lineage-rom/full/kltechnduo/20201031/lineage-17.1-20201031-nightly-kltechnduo-signed.zip"
+      },
+      {
+        "name": "20201004 (klteduos, 16.0)",
+        "url": "/lineage-rom/full/klteduos/20201004/lineage-16.0-20201004-nightly-klteduos-signed.zip"
+      },
+      {
+        "name": "20201025 (klteduos, 17.1)",
+        "url": "/lineage-rom/full/klteduos/20201025/lineage-17.1-20201025-nightly-klteduos-signed.zip"
+      },
+      {
+        "name": "20201004 (kltedv, 16.0)",
+        "url": "/lineage-rom/full/kltedv/20201004/lineage-16.0-20201004-nightly-kltedv-signed.zip"
+      },
+      {
+        "name": "20201025 (kltedv, 17.1)",
+        "url": "/lineage-rom/full/kltedv/20201025/lineage-17.1-20201025-nightly-kltedv-signed.zip"
+      },
+      {
+        "name": "20201002 (kltekdi, 16.0)",
+        "url": "/lineage-rom/full/kltekdi/20201002/lineage-16.0-20201002-nightly-kltekdi-signed.zip"
+      },
+      {
+        "name": "20201030 (kltekdi, 17.1)",
+        "url": "/lineage-rom/full/kltekdi/20201030/lineage-17.1-20201030-nightly-kltekdi-signed.zip"
+      },
+      {
+        "name": "20201001 (kltekor, 16.0)",
+        "url": "/lineage-rom/full/kltekor/20201001/lineage-16.0-20201001-nightly-kltekor-signed.zip"
+      },
+      {
+        "name": "20201105 (kltekor, 17.1)",
+        "url": "/lineage-rom/full/kltekor/20201105/lineage-17.1-20201105-nightly-kltekor-signed.zip"
+      },
+      {
+        "name": "20201101 (kuntao, 17.1)",
+        "url": "/lineage-rom/full/kuntao/20201101/lineage-17.1-20201101-nightly-kuntao-signed.zip"
+      },
+      {
+        "name": "20201103 (lake, 17.1)",
+        "url": "/lineage-rom/full/lake/20201103/lineage-17.1-20201103-nightly-lake-signed.zip"
+      },
+      {
+        "name": "20201104 (land, 16.0)",
+        "url": "/lineage-rom/full/land/20201104/lineage-16.0-20201104-nightly-land-signed.zip"
+      },
+      {
+        "name": "20201103 (lavender, 17.1)",
+        "url": "/lineage-rom/full/lavender/20201103/lineage-17.1-20201103-nightly-lavender-signed.zip"
+      },
+      {
+        "name": "20201031 (lentislte, 16.0)",
+        "url": "/lineage-rom/full/lentislte/20201031/lineage-16.0-20201031-nightly-lentislte-signed.zip"
+      },
+      {
+        "name": "20201105 (lithium, 17.1)",
+        "url": "/lineage-rom/full/lithium/20201105/lineage-17.1-20201105-nightly-lithium-signed.zip"
+      },
+      {
+        "name": "20201030 (ls990, 16.0)",
+        "url": "/lineage-rom/full/ls990/20201030/lineage-16.0-20201030-nightly-ls990-signed.zip"
+      },
+      {
+        "name": "20201101 (ls997, 17.1)",
+        "url": "/lineage-rom/full/ls997/20201101/lineage-17.1-20201101-nightly-ls997-signed.zip"
+      },
+      {
+        "name": "20201101 (lux, 17.1)",
+        "url": "/lineage-rom/full/lux/20201101/lineage-17.1-20201101-nightly-lux-signed.zip"
+      },
+      {
+        "name": "20201030 (m8, 17.1)",
+        "url": "/lineage-rom/full/m8/20201030/lineage-17.1-20201030-nightly-m8-signed.zip"
+      },
+      {
+        "name": "20201030 (m8d, 17.1)",
+        "url": "/lineage-rom/full/m8d/20201030/lineage-17.1-20201030-nightly-m8d-signed.zip"
+      },
+      {
+        "name": "20201104 (marlin, 17.1)",
+        "url": "/lineage-rom/full/marlin/20201104/lineage-17.1-20201104-nightly-marlin-signed.zip"
+      },
+      {
+        "name": "20201026 (mata, 17.1)",
+        "url": "/lineage-rom/full/mata/20201026/lineage-17.1-20201026-nightly-mata-signed.zip"
+      },
+      {
+        "name": "20201031 (merlin, 17.1)",
+        "url": "/lineage-rom/full/merlin/20201031/lineage-17.1-20201031-nightly-merlin-signed.zip"
+      },
+      {
+        "name": "20201104 (mermaid, 17.1)",
+        "url": "/lineage-rom/full/mermaid/20201104/lineage-17.1-20201104-nightly-mermaid-signed.zip"
+      },
+      {
+        "name": "20201031 (ms013g, 16.0)",
+        "url": "/lineage-rom/full/ms013g/20201031/lineage-16.0-20201031-nightly-ms013g-signed.zip"
+      },
+      {
+        "name": "20201103 (nash, 17.1)",
+        "url": "/lineage-rom/full/nash/20201103/lineage-17.1-20201103-nightly-nash-signed.zip"
+      },
+      {
+        "name": "20201103 (natrium, 17.1)",
+        "url": "/lineage-rom/full/natrium/20201103/lineage-17.1-20201103-nightly-natrium-signed.zip"
+      },
+      {
+        "name": "20201104 (nx563j, 17.1)",
+        "url": "/lineage-rom/full/nx563j/20201104/lineage-17.1-20201104-nightly-nx563j-signed.zip"
+      },
+      {
+        "name": "20201031 (ocean, 17.1)",
+        "url": "/lineage-rom/full/ocean/20201031/lineage-17.1-20201031-nightly-ocean-signed.zip"
+      },
+      {
+        "name": "20201101 (onclite, 17.1)",
+        "url": "/lineage-rom/full/onclite/20201101/lineage-17.1-20201101-nightly-onclite-signed.zip"
+      },
+      {
+        "name": "20201031 (oneplus2, 17.1)",
+        "url": "/lineage-rom/full/oneplus2/20201031/lineage-17.1-20201031-nightly-oneplus2-signed.zip"
+      },
+      {
+        "name": "20201026 (oneplus3, 17.1)",
+        "url": "/lineage-rom/full/oneplus3/20201026/lineage-17.1-20201026-nightly-oneplus3-signed.zip"
+      },
+      {
+        "name": "20201030 (osprey, 17.1)",
+        "url": "/lineage-rom/full/osprey/20201030/lineage-17.1-20201030-nightly-osprey-signed.zip"
+      },
+      {
+        "name": "20201103 (payton, 17.1)",
+        "url": "/lineage-rom/full/payton/20201103/lineage-17.1-20201103-nightly-payton-signed.zip"
+      },
+      {
+        "name": "20201105 (pioneer, 17.1)",
+        "url": "/lineage-rom/full/pioneer/20201105/lineage-17.1-20201105-nightly-pioneer-signed.zip"
+      },
+      {
+        "name": "20201030 (polaris, 17.1)",
+        "url": "/lineage-rom/full/polaris/20201030/lineage-17.1-20201030-nightly-polaris-signed.zip"
+      },
+      {
+        "name": "20201026 (pro1, 16.0)",
+        "url": "/lineage-rom/full/pro1/20201026/lineage-16.0-20201026-nightly-pro1-signed.zip"
+      },
+      {
+        "name": "20201101 (r5, 16.0)",
+        "url": "/lineage-rom/full/r5/20201101/lineage-16.0-20201101-nightly-r5-signed.zip"
+      },
+      {
+        "name": "20201103 (r7plus, 16.0)",
+        "url": "/lineage-rom/full/r7plus/20201103/lineage-16.0-20201103-nightly-r7plus-signed.zip"
+      },
+      {
+        "name": "20201031 (r7sf, 16.0)",
+        "url": "/lineage-rom/full/r7sf/20201031/lineage-16.0-20201031-nightly-r7sf-signed.zip"
+      },
+      {
+        "name": "20201101 (river, 17.1)",
+        "url": "/lineage-rom/full/river/20201101/lineage-17.1-20201101-nightly-river-signed.zip"
+      },
+      {
+        "name": "20201101 (rs988, 17.1)",
+        "url": "/lineage-rom/full/rs988/20201101/lineage-17.1-20201101-nightly-rs988-signed.zip"
+      },
+      {
+        "name": "20201026 (s2, 16.0)",
+        "url": "/lineage-rom/full/s2/20201026/lineage-16.0-20201026-nightly-s2-signed.zip"
+      },
+      {
+        "name": "20201031 (s3ve3gds, 16.0)",
+        "url": "/lineage-rom/full/s3ve3gds/20201031/lineage-16.0-20201031-nightly-s3ve3gds-signed.zip"
+      },
+      {
+        "name": "20201101 (s3ve3gjv, 16.0)",
+        "url": "/lineage-rom/full/s3ve3gjv/20201101/lineage-16.0-20201101-nightly-s3ve3gjv-signed.zip"
+      },
+      {
+        "name": "20201026 (s3ve3gxx, 16.0)",
+        "url": "/lineage-rom/full/s3ve3gxx/20201026/lineage-16.0-20201026-nightly-s3ve3gxx-signed.zip"
+      },
+      {
+        "name": "20201101 (s5neolte, 17.1)",
+        "url": "/lineage-rom/full/s5neolte/20201101/lineage-17.1-20201101-nightly-s5neolte-signed.zip"
+      },
+      {
+        "name": "20201105 (sagit, 17.1)",
+        "url": "/lineage-rom/full/sagit/20201105/lineage-17.1-20201105-nightly-sagit-signed.zip"
+      },
+      {
+        "name": "20201031 (sailfish, 17.1)",
+        "url": "/lineage-rom/full/sailfish/20201031/lineage-17.1-20201031-nightly-sailfish-signed.zip"
+      },
+      {
+        "name": "20201104 (santoni, 16.0)",
+        "url": "/lineage-rom/full/santoni/20201104/lineage-16.0-20201104-nightly-santoni-signed.zip"
+      },
+      {
+        "name": "20201103 (sargo, 17.1)",
+        "url": "/lineage-rom/full/sargo/20201103/lineage-17.1-20201103-nightly-sargo-signed.zip"
+      },
+      {
+        "name": "20201103 (scorpio, 17.1)",
+        "url": "/lineage-rom/full/scorpio/20201103/lineage-17.1-20201103-nightly-scorpio-signed.zip"
+      },
+      {
+        "name": "20201104 (shamu, 17.1)",
+        "url": "/lineage-rom/full/shamu/20201104/lineage-17.1-20201104-nightly-shamu-signed.zip"
+      },
+      {
+        "name": "20201105 (star2lte, 17.1)",
+        "url": "/lineage-rom/full/star2lte/20201105/lineage-17.1-20201105-nightly-star2lte-signed.zip"
+      },
+      {
+        "name": "20201026 (starlte, 17.1)",
+        "url": "/lineage-rom/full/starlte/20201026/lineage-17.1-20201026-nightly-starlte-signed.zip"
+      },
+      {
+        "name": "20201030 (surnia, 17.1)",
+        "url": "/lineage-rom/full/surnia/20201030/lineage-17.1-20201030-nightly-surnia-signed.zip"
+      },
+      {
+        "name": "20201105 (taimen, 17.1)",
+        "url": "/lineage-rom/full/taimen/20201105/lineage-17.1-20201105-nightly-taimen-signed.zip"
+      },
+      {
+        "name": "20201103 (tissot, 17.1)",
+        "url": "/lineage-rom/full/tissot/20201103/lineage-17.1-20201103-nightly-tissot-signed.zip"
+      },
+      {
+        "name": "20201026 (twolip, 17.1)",
+        "url": "/lineage-rom/full/twolip/20201026/lineage-17.1-20201026-nightly-twolip-signed.zip"
+      },
+      {
+        "name": "20201105 (us996, 17.1)",
+        "url": "/lineage-rom/full/us996/20201105/lineage-17.1-20201105-nightly-us996-signed.zip"
+      },
+      {
+        "name": "20201101 (victara, 17.1)",
+        "url": "/lineage-rom/full/victara/20201101/lineage-17.1-20201101-nightly-victara-signed.zip"
+      },
+      {
+        "name": "20201104 (voyager, 17.1)",
+        "url": "/lineage-rom/full/voyager/20201104/lineage-17.1-20201104-nightly-voyager-signed.zip"
+      },
+      {
+        "name": "20201101 (vs985, 17.1)",
+        "url": "/lineage-rom/full/vs985/20201101/lineage-17.1-20201101-nightly-vs985-signed.zip"
+      },
+      {
+        "name": "20201103 (vs995, 17.1)",
+        "url": "/lineage-rom/full/vs995/20201103/lineage-17.1-20201103-nightly-vs995-signed.zip"
+      },
+      {
+        "name": "20201103 (walleye, 17.1)",
+        "url": "/lineage-rom/full/walleye/20201103/lineage-17.1-20201103-nightly-walleye-signed.zip"
+      },
+      {
+        "name": "20201105 (wayne, 17.1)",
+        "url": "/lineage-rom/full/wayne/20201105/lineage-17.1-20201105-nightly-wayne-signed.zip"
+      },
+      {
+        "name": "20201026 (whyred, 17.1)",
+        "url": "/lineage-rom/full/whyred/20201026/lineage-17.1-20201026-nightly-whyred-signed.zip"
+      },
+      {
+        "name": "20201031 (wt88047, 17.1)",
+        "url": "/lineage-rom/full/wt88047/20201031/lineage-17.1-20201031-nightly-wt88047-signed.zip"
+      },
+      {
+        "name": "20201030 (x2, 17.1)",
+        "url": "/lineage-rom/full/x2/20201030/lineage-17.1-20201030-nightly-x2-signed.zip"
+      },
+      {
+        "name": "20201030 (xz2c, 17.1)",
+        "url": "/lineage-rom/full/xz2c/20201030/lineage-17.1-20201030-nightly-xz2c-signed.zip"
+      },
+      {
+        "name": "20201105 (z2_plus, 17.1)",
+        "url": "/lineage-rom/full/z2_plus/20201105/lineage-17.1-20201105-nightly-z2_plus-signed.zip"
+      },
+      {
+        "name": "20201105 (z3, 17.1)",
+        "url": "/lineage-rom/full/z3/20201105/lineage-17.1-20201105-nightly-z3-signed.zip"
+      },
+      {
+        "name": "20201103 (z3c, 17.1)",
+        "url": "/lineage-rom/full/z3c/20201103/lineage-17.1-20201103-nightly-z3c-signed.zip"
+      },
+      {
+        "name": "20201031 (zangya, 16.0)",
+        "url": "/lineage-rom/full/zangya/20201031/lineage-16.0-20201031-nightly-zangya-signed.zip"
+      },
+      {
+        "name": "20201103 (zangyapro, 16.0)",
+        "url": "/lineage-rom/full/zangyapro/20201103/lineage-16.0-20201103-nightly-zangyapro-signed.zip"
+      },
+      {
+        "name": "20201026 (zenfone3, 16.0)",
+        "url": "/lineage-rom/full/zenfone3/20201026/lineage-16.0-20201026-nightly-zenfone3-signed.zip"
+      },
+      {
+        "name": "20201031 (zl1, 17.1)",
+        "url": "/lineage-rom/full/zl1/20201031/lineage-17.1-20201031-nightly-zl1-signed.zip"
+      }
+    ]
+  },
+  {
+    "distro": "Android-x86",
+    "category": "os",
+    "urls": [
+      {
+        "name": "1.6 (x86, r2)",
+        "url": "/osdn/android-x86/65699/android-x86-1.6-r2.iso"
+      },
+      {
+        "name": "2.2 (x86, asus_laptop)",
+        "url": "/osdn/android-x86/65698/android-x86-2.2-asus_laptop.iso"
+      },
+      {
+        "name": "2.2 (x86, eeepc)",
+        "url": "/osdn/android-x86/65698/android-x86-2.2-eeepc.iso"
+      },
+      {
+        "name": "2.2 (x86, generic)",
+        "url": "/osdn/android-x86/65698/android-x86-2.2-generic.iso"
+      },
+      {
+        "name": "2.2 (x86, r2-asus_laptop)",
+        "url": "/osdn/android-x86/65698/android-x86-2.2-r2-asus_laptop.iso"
+      },
+      {
+        "name": "2.2 (x86, r2-eeepc)",
+        "url": "/osdn/android-x86/65698/android-x86-2.2-r2-eeepc.iso"
+      },
+      {
+        "name": "2.2 (x86, r2-motion_m1400)",
+        "url": "/osdn/android-x86/65698/android-x86-2.2-r2-motion_m1400.iso"
+      },
+      {
+        "name": "2.2 (x86, r2-s103t)",
+        "url": "/osdn/android-x86/65698/android-x86-2.2-r2-s103t.iso"
+      },
+      {
+        "name": "2.2 (x86, r2-sparta)",
+        "url": "/osdn/android-x86/65698/android-x86-2.2-r2-sparta.iso"
+      },
+      {
+        "name": "2.2 (x86, r2-tegav2)",
+        "url": "/osdn/android-x86/65698/android-x86-2.2-r2-tegav2.iso"
+      },
+      {
+        "name": "2.2 (x86, r2-tx2500)",
+        "url": "/osdn/android-x86/65698/android-x86-2.2-r2-tx2500.iso"
+      },
+      {
+        "name": "2.2 (x86, sparta)",
+        "url": "/osdn/android-x86/65698/android-x86-2.2-sparta.iso"
+      },
+      {
+        "name": "2.2 (x86, viewpad10)",
+        "url": "/osdn/android-x86/65698/android-x86-2.2-viewpad10.iso"
+      },
+      {
+        "name": "4.0 (x86, r1-amd_brazos)",
+        "url": "/osdn/android-x86/66419/android-x86-4.0-r1-amd_brazos.iso"
+      },
+      {
+        "name": "4.0 (x86, r1-eeepc)",
+        "url": "/osdn/android-x86/66419/android-x86-4.0-r1-eeepc.iso"
+      },
+      {
+        "name": "4.0 (x86, r1-s103t)",
+        "url": "/osdn/android-x86/66419/android-x86-4.0-r1-s103t.iso"
+      },
+      {
+        "name": "4.0 (x86, r1-tegav2)",
+        "url": "/osdn/android-x86/66419/android-x86-4.0-r1-tegav2.iso"
+      },
+      {
+        "name": "4.0 (x86, r1-thinkpad)",
+        "url": "/osdn/android-x86/66419/android-x86-4.0-r1-thinkpad.iso"
+      },
+      {
+        "name": "4.0 (x86, r1-tx2500)",
+        "url": "/osdn/android-x86/66419/android-x86-4.0-r1-tx2500.iso"
+      },
+      {
+        "name": "4.0 (x86, tegav2-20120101)",
+        "url": "/osdn/android-x86/65696/android-x86-4.0-tegav2-20120101.iso"
+      },
+      {
+        "name": "4.4 (x86, RC1)",
+        "url": "/osdn/android-x86/65695/android-x86-4.4-RC1.iso"
+      },
+      {
+        "name": "4.4 (x86, RC2)",
+        "url": "/osdn/android-x86/65695/android-x86-4.4-RC2.iso"
+      },
+      {
+        "name": "4.4 (x86, r1)",
+        "url": "/osdn/android-x86/65695/android-x86-4.4-r1.iso"
+      },
+      {
+        "name": "4.4 (x86, r2)",
+        "url": "/osdn/android-x86/65695/android-x86-4.4-r2.iso"
+      },
+      {
+        "name": "4.4 (x86, r3)",
+        "url": "/osdn/android-x86/65695/android-x86-4.4-r3.iso"
+      },
+      {
+        "name": "4.4 (x86, r4)",
+        "url": "/osdn/android-x86/65695/android-x86-4.4-r4.iso"
+      },
+      {
+        "name": "4.4 (x86, r5)",
+        "url": "/osdn/android-x86/65695/android-x86-4.4-r5.iso"
+      },
+      {
+        "name": "5.1 (x86, rc1)",
+        "url": "/osdn/android-x86/65697/android-x86-5.1-rc1.iso"
+      },
+      {
+        "name": "6.0 (x86, 20151202)",
+        "url": "/osdn/android-x86/65696/android-x86-6.0-20151202.iso"
+      },
+      {
+        "name": "6.0 (x86, r1)",
+        "url": "/osdn/android-x86/65890/android-x86-6.0-r1.iso"
+      },
+      {
+        "name": "6.0 (x86, r2)",
+        "url": "/osdn/android-x86/65890/android-x86-6.0-r2.iso"
+      },
+      {
+        "name": "6.0 (x86, r3)",
+        "url": "/osdn/android-x86/65890/android-x86-6.0-r3.iso"
+      },
+      {
+        "name": "6.0 (x86, rc1)",
+        "url": "/osdn/android-x86/65890/android-x86-6.0-rc1.iso"
+      },
+      {
+        "name": "6.0 (x86, rc2)",
+        "url": "/osdn/android-x86/65890/android-x86-6.0-rc2.iso"
+      },
+      {
+        "name": "6.0 (x86_64, r1)",
+        "url": "/osdn/android-x86/65890/android-x86_64-6.0-r1.iso"
+      },
+      {
+        "name": "6.0 (x86_64, r2)",
+        "url": "/osdn/android-x86/65890/android-x86_64-6.0-r2.iso"
+      },
+      {
+        "name": "6.0 (x86_64, r3)",
+        "url": "/osdn/android-x86/65890/android-x86_64-6.0-r3.iso"
+      },
+      {
+        "name": "6.0 (x86_64, rc1)",
+        "url": "/osdn/android-x86/65890/android-x86_64-6.0-rc1.iso"
+      },
+      {
+        "name": "6.0 (x86_64, rc2)",
+        "url": "/osdn/android-x86/65890/android-x86_64-6.0-rc2.iso"
+      },
+      {
+        "name": "6.0 (x86_64, rc2-for-s3)",
+        "url": "/osdn/android-x86/65696/android-x86_64-6.0-rc2-for-s3.iso"
+      },
+      {
+        "name": "7.1 (x86, r1)",
+        "url": "/osdn/android-x86/67834/android-x86-7.1-r1.iso"
+      },
+      {
+        "name": "7.1 (x86, r2)",
+        "url": "/osdn/android-x86/67834/android-x86-7.1-r2.iso"
+      },
+      {
+        "name": "7.1 (x86, r3)",
+        "url": "/osdn/android-x86/67834/android-x86-7.1-r3.iso"
+      },
+      {
+        "name": "7.1 (x86, r4)",
+        "url": "/osdn/android-x86/67834/android-x86-7.1-r4.iso"
+      },
+      {
+        "name": "7.1 (x86, r4-k419)",
+        "url": "/osdn/android-x86/67834/android-x86-7.1-r4-k419.iso"
+      },
+      {
+        "name": "7.1 (x86, rc1)",
+        "url": "/osdn/android-x86/67834/android-x86-7.1-rc1.iso"
+      },
+      {
+        "name": "7.1 (x86, rc2)",
+        "url": "/osdn/android-x86/67834/android-x86-7.1-rc2.iso"
+      },
+      {
+        "name": "7.1 (x86_64, r1)",
+        "url": "/osdn/android-x86/67834/android-x86_64-7.1-r1.iso"
+      },
+      {
+        "name": "7.1 (x86_64, r2)",
+        "url": "/osdn/android-x86/67834/android-x86_64-7.1-r2.iso"
+      },
+      {
+        "name": "7.1 (x86_64, r3)",
+        "url": "/osdn/android-x86/67834/android-x86_64-7.1-r3.iso"
+      },
+      {
+        "name": "7.1 (x86_64, r4)",
+        "url": "/osdn/android-x86/67834/android-x86_64-7.1-r4.iso"
+      },
+      {
+        "name": "7.1 (x86_64, r4-k419)",
+        "url": "/osdn/android-x86/67834/android-x86_64-7.1-r4-k419.iso"
+      },
+      {
+        "name": "7.1 (x86_64, rc0-for-s3)",
+        "url": "/osdn/android-x86/65696/android-x86_64-7.1-rc0-for-s3.iso"
+      },
+      {
+        "name": "7.1 (x86_64, rc1)",
+        "url": "/osdn/android-x86/67834/android-x86_64-7.1-rc1.iso"
+      },
+      {
+        "name": "7.1 (x86_64, rc2)",
+        "url": "/osdn/android-x86/67834/android-x86_64-7.1-rc2.iso"
+      },
+      {
+        "name": "8.1 (x86, r1)",
+        "url": "/osdn/android-x86/69704/android-x86-8.1-r1.iso"
+      },
+      {
+        "name": "8.1 (x86, r2)",
+        "url": "/osdn/android-x86/69704/android-x86-8.1-r2.iso"
+      },
+      {
+        "name": "8.1 (x86, r3)",
+        "url": "/osdn/android-x86/69704/android-x86-8.1-r3.iso"
+      },
+      {
+        "name": "8.1 (x86, r4)",
+        "url": "/osdn/android-x86/69704/android-x86-8.1-r4.iso"
+      },
+      {
+        "name": "8.1 (x86, r5)",
+        "url": "/osdn/android-x86/69704/android-x86-8.1-r5.iso"
+      },
+      {
+        "name": "8.1 (x86, rc1)",
+        "url": "/osdn/android-x86/69704/android-x86-8.1-rc1.iso"
+      },
+      {
+        "name": "8.1 (x86, rc2)",
+        "url": "/osdn/android-x86/69704/android-x86-8.1-rc2.iso"
+      },
+      {
+        "name": "8.1 (x86_64, r1)",
+        "url": "/osdn/android-x86/69704/android-x86_64-8.1-r1.iso"
+      },
+      {
+        "name": "8.1 (x86_64, r2)",
+        "url": "/osdn/android-x86/69704/android-x86_64-8.1-r2.iso"
+      },
+      {
+        "name": "8.1 (x86_64, r2-k49)",
+        "url": "/osdn/android-x86/69704/android-x86_64-8.1-r2-k49.iso"
+      },
+      {
+        "name": "8.1 (x86_64, r3)",
+        "url": "/osdn/android-x86/69704/android-x86_64-8.1-r3.iso"
+      },
+      {
+        "name": "8.1 (x86_64, r3-k49)",
+        "url": "/osdn/android-x86/69704/android-x86_64-8.1-r3-k49.iso"
+      },
+      {
+        "name": "8.1 (x86_64, r4)",
+        "url": "/osdn/android-x86/69704/android-x86_64-8.1-r4.iso"
+      },
+      {
+        "name": "8.1 (x86_64, r4-k49)",
+        "url": "/osdn/android-x86/69704/android-x86_64-8.1-r4-k49.iso"
+      },
+      {
+        "name": "8.1 (x86_64, r5)",
+        "url": "/osdn/android-x86/69704/android-x86_64-8.1-r5.iso"
+      },
+      {
+        "name": "8.1 (x86_64, r5-k49)",
+        "url": "/osdn/android-x86/69704/android-x86_64-8.1-r5-k49.iso"
+      },
+      {
+        "name": "8.1 (x86_64, rc1)",
+        "url": "/osdn/android-x86/69704/android-x86_64-8.1-rc1.iso"
+      },
+      {
+        "name": "8.1 (x86_64, rc2)",
+        "url": "/osdn/android-x86/69704/android-x86_64-8.1-rc2.iso"
+      },
+      {
+        "name": "9.0 (x86, r1)",
+        "url": "/osdn/android-x86/71931/android-x86-9.0-r1.iso"
+      },
+      {
+        "name": "9.0 (x86, r2)",
+        "url": "/osdn/android-x86/71931/android-x86-9.0-r2.iso"
+      },
+      {
+        "name": "9.0 (x86, rc1)",
+        "url": "/osdn/android-x86/71931/android-x86-9.0-rc1.iso"
+      },
+      {
+        "name": "9.0 (x86, rc2)",
+        "url": "/osdn/android-x86/71931/android-x86-9.0-rc2.iso"
+      },
+      {
+        "name": "9.0 (x86_64, r1)",
+        "url": "/osdn/android-x86/71931/android-x86_64-9.0-r1.iso"
+      },
+      {
+        "name": "9.0 (x86_64, r1-k49)",
+        "url": "/osdn/android-x86/71931/android-x86_64-9.0-r1-k49.iso"
+      },
+      {
+        "name": "9.0 (x86_64, r2)",
+        "url": "/osdn/android-x86/71931/android-x86_64-9.0-r2.iso"
+      },
+      {
+        "name": "9.0 (x86_64, r2-k49)",
+        "url": "/osdn/android-x86/71931/android-x86_64-9.0-r2-k49.iso"
+      },
+      {
+        "name": "9.0 (x86_64, rc1)",
+        "url": "/osdn/android-x86/71931/android-x86_64-9.0-rc1.iso"
+      },
+      {
+        "name": "9.0 (x86_64, rc2)",
+        "url": "/osdn/android-x86/71931/android-x86_64-9.0-rc2.iso"
+      },
+      {
+        "name": "9.0 (x86_64, rc2-k49)",
+        "url": "/osdn/android-x86/71931/android-x86_64-9.0-rc2-k49.iso"
+      },
+      {
+        "name": "Lineage OS-x86 13.0 (x86, r1)",
+        "url": "/osdn/android-x86/66512/cm-x86-13.0-r1.iso"
+      },
+      {
+        "name": "Lineage OS-x86 13.0 (x86, rc1)",
+        "url": "/osdn/android-x86/66512/cm-x86-13.0-rc1.iso"
+      },
+      {
+        "name": "Lineage OS-x86 13.0 (x86_64, r1)",
+        "url": "/osdn/android-x86/66512/cm-x86_64-13.0-r1.iso"
+      },
+      {
+        "name": "Lineage OS-x86 13.0 (x86_64, rc1)",
+        "url": "/osdn/android-x86/66512/cm-x86_64-13.0-rc1.iso"
+      },
+      {
+        "name": "Lineage OS-x86 14.1 (x86, r1)",
+        "url": "/osdn/android-x86/68670/cm-x86-14.1-r1.iso"
+      },
+      {
+        "name": "Lineage OS-x86 14.1 (x86, r2)",
+        "url": "/osdn/android-x86/68670/cm-x86-14.1-r2.iso"
+      },
+      {
+        "name": "Lineage OS-x86 14.1 (x86, r3)",
+        "url": "/osdn/android-x86/68670/cm-x86-14.1-r3.iso"
+      },
+      {
+        "name": "Lineage OS-x86 14.1 (x86, r4)",
+        "url": "/osdn/android-x86/68670/cm-x86-14.1-r4.iso"
+      },
+      {
+        "name": "Lineage OS-x86 14.1 (x86, r4-k419)",
+        "url": "/osdn/android-x86/68670/cm-x86-14.1-r4-k419.iso"
+      },
+      {
+        "name": "Lineage OS-x86 14.1 (x86, rc1)",
+        "url": "/osdn/android-x86/68670/cm-x86-14.1-rc1.iso"
+      },
+      {
+        "name": "Lineage OS-x86 14.1 (x86_64, r1)",
+        "url": "/osdn/android-x86/68670/cm-x86_64-14.1-r1.iso"
+      },
+      {
+        "name": "Lineage OS-x86 14.1 (x86_64, r2)",
+        "url": "/osdn/android-x86/68670/cm-x86_64-14.1-r2.iso"
+      },
+      {
+        "name": "Lineage OS-x86 14.1 (x86_64, r3)",
+        "url": "/osdn/android-x86/68670/cm-x86_64-14.1-r3.iso"
+      },
+      {
+        "name": "Lineage OS-x86 14.1 (x86_64, r4)",
+        "url": "/osdn/android-x86/68670/cm-x86_64-14.1-r4.iso"
+      },
+      {
+        "name": "Lineage OS-x86 14.1 (x86_64, r4-k419)",
+        "url": "/osdn/android-x86/68670/cm-x86_64-14.1-r4-k419.iso"
+      },
+      {
+        "name": "Lineage OS-x86 14.1 (x86_64, rc1)",
+        "url": "/osdn/android-x86/68670/cm-x86_64-14.1-rc1.iso"
+      }
+    ]
+  },
+  {
+    "distro": "Docker",
+    "category": "app",
+    "urls": [
+      {
+        "name": "19.03.13 (macOS)",
+        "url": "/docker-ce/mac/static/stable/x86_64/docker-19.03.13.tgz"
+      }
+    ]
+  },
+  {
+    "distro": "NixOS",
+    "category": "os",
+    "urls": [
+      {
+        "name": "20.03 (i686, minimal iso)",
+        "url": "/nixos-images/nixos-20.03/latest-nixos-minimal-i686-linux.iso"
+      },
+      {
+        "name": "20.03 (x86_64, minimal iso)",
+        "url": "/nixos-images/nixos-20.03/latest-nixos-minimal-x86_64-linux.iso"
+      },
+      {
+        "name": "20.03 (x86_64, plasma5 iso)",
+        "url": "/nixos-images/nixos-20.03/latest-nixos-plasma5-x86_64-linux.iso"
+      },
+      {
+        "name": "20.09 (i686, minimal iso)",
+        "url": "/nixos-images/nixos-20.09/latest-nixos-minimal-i686-linux.iso"
+      },
+      {
+        "name": "20.09 (x86_64, gnome iso)",
+        "url": "/nixos-images/nixos-20.09/latest-nixos-gnome-x86_64-linux.iso"
+      },
+      {
+        "name": "20.09 (x86_64, minimal iso)",
+        "url": "/nixos-images/nixos-20.09/latest-nixos-minimal-x86_64-linux.iso"
+      },
+      {
+        "name": "20.09 (x86_64, plasma5 iso)",
+        "url": "/nixos-images/nixos-20.09/latest-nixos-plasma5-x86_64-linux.iso"
+      }
+    ]
+  },
+  {
+    "distro": "Solus",
+    "category": "os",
+    "urls": [
+      {
+        "name": "4.1 (x86_64, Budgie)",
+        "url": "/solus/images/4.1/Solus-4.1-Budgie.iso"
+      },
+      {
+        "name": "4.1 (x86_64, GNOME)",
+        "url": "/solus/images/4.1/Solus-4.1-GNOME.iso"
+      },
+      {
+        "name": "4.1 (x86_64, MATE)",
+        "url": "/solus/images/4.1/Solus-4.1-MATE.iso"
+      },
+      {
+        "name": "4.1 (x86_64, Plasma)",
+        "url": "/solus/images/4.1/Solus-4.1-Plasma.iso"
+      }
+    ]
+  },
+  {
+    "distro": "Eclipse IDE",
+    "category": "app",
+    "urls": [
+      {
+        "name": "committers 2020-09 (linux-gtk, x86_64)",
+        "url": "/eclipse/technology/epp/downloads/release/2020-09/R/eclipse-committers-2020-09-R-linux-gtk-x86_64.tar.gz"
+      },
+      {
+        "name": "committers 2020-09 (macosx-cocoa, x86_64)",
+        "url": "/eclipse/technology/epp/downloads/release/2020-09/R/eclipse-committers-2020-09-R-macosx-cocoa-x86_64.dmg"
+      },
+      {
+        "name": "committers 2020-09 (win32, x86_64)",
+        "url": "/eclipse/technology/epp/downloads/release/2020-09/R/eclipse-committers-2020-09-R-win32-x86_64.zip"
+      },
+      {
+        "name": "cpp 2020-09 (linux-gtk, x86_64)",
+        "url": "/eclipse/technology/epp/downloads/release/2020-09/R/eclipse-cpp-2020-09-R-linux-gtk-x86_64.tar.gz"
+      },
+      {
+        "name": "cpp 2020-09 (macosx-cocoa, x86_64)",
+        "url": "/eclipse/technology/epp/downloads/release/2020-09/R/eclipse-cpp-2020-09-R-macosx-cocoa-x86_64.dmg"
+      },
+      {
+        "name": "cpp 2020-09 (win32, x86_64)",
+        "url": "/eclipse/technology/epp/downloads/release/2020-09/R/eclipse-cpp-2020-09-R-win32-x86_64.zip"
+      },
+      {
+        "name": "dsl 2020-09 (linux-gtk, x86_64)",
+        "url": "/eclipse/technology/epp/downloads/release/2020-09/R/eclipse-dsl-2020-09-R-linux-gtk-x86_64.tar.gz"
+      },
+      {
+        "name": "dsl 2020-09 (macosx-cocoa, x86_64)",
+        "url": "/eclipse/technology/epp/downloads/release/2020-09/R/eclipse-dsl-2020-09-R-macosx-cocoa-x86_64.dmg"
+      },
+      {
+        "name": "dsl 2020-09 (win32, x86_64)",
+        "url": "/eclipse/technology/epp/downloads/release/2020-09/R/eclipse-dsl-2020-09-R-win32-x86_64.zip"
+      },
+      {
+        "name": "java 2020-09 (linux-gtk, x86_64)",
+        "url": "/eclipse/technology/epp/downloads/release/2020-09/R/eclipse-java-2020-09-R-linux-gtk-x86_64.tar.gz"
+      },
+      {
+        "name": "java 2020-09 (macosx-cocoa, x86_64)",
+        "url": "/eclipse/technology/epp/downloads/release/2020-09/R/eclipse-java-2020-09-R-macosx-cocoa-x86_64.dmg"
+      },
+      {
+        "name": "java 2020-09 (win32, x86_64)",
+        "url": "/eclipse/technology/epp/downloads/release/2020-09/R/eclipse-java-2020-09-R-win32-x86_64.zip"
+      },
+      {
+        "name": "javascript 2020-09 (linux-gtk, x86_64)",
+        "url": "/eclipse/technology/epp/downloads/release/2020-09/R/eclipse-javascript-2020-09-R-linux-gtk-x86_64.tar.gz"
+      },
+      {
+        "name": "javascript 2020-09 (macosx-cocoa, x86_64)",
+        "url": "/eclipse/technology/epp/downloads/release/2020-09/R/eclipse-javascript-2020-09-R-macosx-cocoa-x86_64.dmg"
+      },
+      {
+        "name": "javascript 2020-09 (win32, x86_64)",
+        "url": "/eclipse/technology/epp/downloads/release/2020-09/R/eclipse-javascript-2020-09-R-win32-x86_64.zip"
+      },
+      {
+        "name": "jee 2020-09 (linux-gtk, x86_64)",
+        "url": "/eclipse/technology/epp/downloads/release/2020-09/R/eclipse-jee-2020-09-R-linux-gtk-x86_64.tar.gz"
+      },
+      {
+        "name": "jee 2020-09 (macosx-cocoa, x86_64)",
+        "url": "/eclipse/technology/epp/downloads/release/2020-09/R/eclipse-jee-2020-09-R-macosx-cocoa-x86_64.dmg"
+      },
+      {
+        "name": "jee 2020-09 (win32, x86_64)",
+        "url": "/eclipse/technology/epp/downloads/release/2020-09/R/eclipse-jee-2020-09-R-win32-x86_64.zip"
+      },
+      {
+        "name": "modeling 2020-09 (linux-gtk, x86_64)",
+        "url": "/eclipse/technology/epp/downloads/release/2020-09/R/eclipse-modeling-2020-09-R-linux-gtk-x86_64.tar.gz"
+      },
+      {
+        "name": "modeling 2020-09 (macosx-cocoa, x86_64)",
+        "url": "/eclipse/technology/epp/downloads/release/2020-09/R/eclipse-modeling-2020-09-R-macosx-cocoa-x86_64.dmg"
+      },
+      {
+        "name": "modeling 2020-09 (win32, x86_64)",
+        "url": "/eclipse/technology/epp/downloads/release/2020-09/R/eclipse-modeling-2020-09-R-win32-x86_64.zip"
+      },
+      {
+        "name": "parallel 2020-09 (linux-gtk, x86_64)",
+        "url": "/eclipse/technology/epp/downloads/release/2020-09/R/eclipse-parallel-2020-09-R-linux-gtk-x86_64.tar.gz"
+      },
+      {
+        "name": "parallel 2020-09 (macosx-cocoa, x86_64)",
+        "url": "/eclipse/technology/epp/downloads/release/2020-09/R/eclipse-parallel-2020-09-R-macosx-cocoa-x86_64.dmg"
+      },
+      {
+        "name": "parallel 2020-09 (win32, x86_64)",
+        "url": "/eclipse/technology/epp/downloads/release/2020-09/R/eclipse-parallel-2020-09-R-win32-x86_64.zip"
+      },
+      {
+        "name": "php 2020-09 (linux-gtk, x86_64)",
+        "url": "/eclipse/technology/epp/downloads/release/2020-09/R/eclipse-php-2020-09-R-linux-gtk-x86_64.tar.gz"
+      },
+      {
+        "name": "php 2020-09 (macosx-cocoa, x86_64)",
+        "url": "/eclipse/technology/epp/downloads/release/2020-09/R/eclipse-php-2020-09-R-macosx-cocoa-x86_64.dmg"
+      },
+      {
+        "name": "php 2020-09 (win32, x86_64)",
+        "url": "/eclipse/technology/epp/downloads/release/2020-09/R/eclipse-php-2020-09-R-win32-x86_64.zip"
+      },
+      {
+        "name": "rcp 2020-09 (linux-gtk, x86_64)",
+        "url": "/eclipse/technology/epp/downloads/release/2020-09/R/eclipse-rcp-2020-09-R-linux-gtk-x86_64.tar.gz"
+      },
+      {
+        "name": "rcp 2020-09 (macosx-cocoa, x86_64)",
+        "url": "/eclipse/technology/epp/downloads/release/2020-09/R/eclipse-rcp-2020-09-R-macosx-cocoa-x86_64.dmg"
+      },
+      {
+        "name": "rcp 2020-09 (win32, x86_64)",
+        "url": "/eclipse/technology/epp/downloads/release/2020-09/R/eclipse-rcp-2020-09-R-win32-x86_64.zip"
+      },
+      {
+        "name": "reporting 2019-09 (linux-gtk, x86_64)",
+        "url": "/eclipse/technology/epp/downloads/release/2019-09/R/eclipse-reporting-2019-09-R-linux-gtk-x86_64.tar.gz"
+      },
+      {
+        "name": "reporting 2019-09 (macosx-cocoa, x86_64)",
+        "url": "/eclipse/technology/epp/downloads/release/2019-09/R/eclipse-reporting-2019-09-R-macosx-cocoa-x86_64.dmg"
+      },
+      {
+        "name": "reporting 2019-09 (win32, x86_64)",
+        "url": "/eclipse/technology/epp/downloads/release/2019-09/R/eclipse-reporting-2019-09-R-win32-x86_64.zip"
+      },
+      {
+        "name": "rust 2020-09 (linux-gtk, x86_64)",
+        "url": "/eclipse/technology/epp/downloads/release/2020-09/R/eclipse-rust-2020-09-R-linux-gtk-x86_64.tar.gz"
+      },
+      {
+        "name": "rust 2020-09 (macosx-cocoa, x86_64)",
+        "url": "/eclipse/technology/epp/downloads/release/2020-09/R/eclipse-rust-2020-09-R-macosx-cocoa-x86_64.dmg"
+      },
+      {
+        "name": "rust 2020-09 (win32, x86_64)",
+        "url": "/eclipse/technology/epp/downloads/release/2020-09/R/eclipse-rust-2020-09-R-win32-x86_64.zip"
+      },
+      {
+        "name": "scout 2020-09 (linux-gtk, x86_64)",
+        "url": "/eclipse/technology/epp/downloads/release/2020-09/R/eclipse-scout-2020-09-R-linux-gtk-x86_64.tar.gz"
+      },
+      {
+        "name": "scout 2020-09 (macosx-cocoa, x86_64)",
+        "url": "/eclipse/technology/epp/downloads/release/2020-09/R/eclipse-scout-2020-09-R-macosx-cocoa-x86_64.dmg"
+      },
+      {
+        "name": "scout 2020-09 (win32, x86_64)",
+        "url": "/eclipse/technology/epp/downloads/release/2020-09/R/eclipse-scout-2020-09-R-win32-x86_64.zip"
+      },
+      {
+        "name": "testing 2020-09 (linux-gtk, x86_64)",
+        "url": "/eclipse/technology/epp/downloads/release/2020-09/R/eclipse-testing-2020-09-R-linux-gtk-x86_64.tar.gz"
+      },
+      {
+        "name": "testing 2020-09 (macosx-cocoa, x86_64)",
+        "url": "/eclipse/technology/epp/downloads/release/2020-09/R/eclipse-testing-2020-09-R-macosx-cocoa-x86_64.dmg"
+      },
+      {
+        "name": "testing 2020-09 (win32, x86_64)",
+        "url": "/eclipse/technology/epp/downloads/release/2020-09/R/eclipse-testing-2020-09-R-win32-x86_64.zip"
+      }
+    ]
+  },
+  {
+    "distro": "Elvish Shell",
+    "category": "app",
+    "urls": [
+      {
+        "name": "v0.14.1 (darwin, amd64)",
+        "url": "/elvish/darwin-amd64/elvish-v0.14.1.tar.gz"
+      },
+      {
+        "name": "v0.14.1 (freebsd, amd64)",
+        "url": "/elvish/freebsd-amd64/elvish-v0.14.1.tar.gz"
+      },
+      {
+        "name": "v0.14.1 (linux, 386)",
+        "url": "/elvish/linux-386/elvish-v0.14.1.tar.gz"
+      },
+      {
+        "name": "v0.14.1 (linux, amd64)",
+        "url": "/elvish/linux-amd64/elvish-v0.14.1.tar.gz"
+      },
+      {
+        "name": "v0.14.1 (linux, arm64)",
+        "url": "/elvish/linux-arm64/elvish-v0.14.1.tar.gz"
+      },
+      {
+        "name": "v0.14.1 (netbsd, amd64)",
+        "url": "/elvish/netbsd-amd64/elvish-v0.14.1.tar.gz"
+      },
+      {
+        "name": "v0.14.1 (openbsd, amd64)",
+        "url": "/elvish/openbsd-amd64/elvish-v0.14.1.tar.gz"
+      },
+      {
+        "name": "v0.14.1 (windows, 386)",
+        "url": "/elvish/windows-386/elvish-v0.14.1.zip"
+      },
+      {
+        "name": "v0.14.1 (windows, 386)",
+        "url": "/elvish/windows-386/elvish-v0.14.1.exe"
+      },
+      {
+        "name": "v0.14.1 (windows, amd64)",
+        "url": "/elvish/windows-amd64/elvish-v0.14.1.exe"
+      },
+      {
+        "name": "v0.14.1 (windows, amd64)",
+        "url": "/elvish/windows-amd64/elvish-v0.14.1.zip"
+      }
+    ]
+  },
+  {
+    "distro": "Flutter SDK",
+    "category": "app",
+    "urls": [
+      {
+        "name": "1.22.3 (linux)",
+        "url": "/flutter/flutter_infra/releases/stable/linux/flutter_linux_1.22.3-stable.tar.xz"
+      },
+      {
+        "name": "1.22.3 (macos)",
+        "url": "/flutter/flutter_infra/releases/stable/macos/flutter_macos_1.22.3-stable.zip"
+      },
+      {
+        "name": "1.22.3 (windows)",
+        "url": "/flutter/flutter_infra/releases/stable/windows/flutter_windows_1.22.3-stable.zip"
+      }
+    ]
+  },
+  {
+    "distro": "Dart SDK",
+    "category": "app",
+    "urls": [
+      {
+        "name": "2.10.3 (linux, arm)",
+        "url": "/flutter/dart-archive/channels/stable/release/2.10.3/sdk/dartsdk-linux-arm-release.zip"
+      },
+      {
+        "name": "2.10.3 (linux, arm64)",
+        "url": "/flutter/dart-archive/channels/stable/release/2.10.3/sdk/dartsdk-linux-arm64-release.zip"
+      },
+      {
+        "name": "2.10.3 (linux, ia32)",
+        "url": "/flutter/dart-archive/channels/stable/release/2.10.3/sdk/dartsdk-linux-ia32-release.zip"
+      },
+      {
+        "name": "2.10.3 (linux, x64)",
+        "url": "/flutter/dart-archive/channels/stable/release/2.10.3/sdk/dartsdk-linux-x64-release.zip"
+      },
+      {
+        "name": "2.10.3 (macos, x64)",
+        "url": "/flutter/dart-archive/channels/stable/release/2.10.3/sdk/dartsdk-macos-x64-release.zip"
+      },
+      {
+        "name": "2.10.3 (windows, ia32)",
+        "url": "/flutter/dart-archive/channels/stable/release/2.10.3/sdk/dartsdk-windows-ia32-release.zip"
+      },
+      {
+        "name": "2.10.3 (windows, x64)",
+        "url": "/flutter/dart-archive/channels/stable/release/2.10.3/sdk/dartsdk-windows-x64-release.zip"
+      }
+    ]
+  },
+  {
+    "distro": "IINA",
+    "category": "app",
+    "urls": [
+      {
+        "name": "v1.0.5 (macOS, x86_64)",
+        "url": "/iina/IINA.v1.0.5.dmg"
+      },
+      {
+        "name": "v1.0.6 (macOS, x86_64)",
+        "url": "/iina/IINA.v1.0.6.dmg"
+      },
+      {
+        "name": "v1.0.7 (macOS, x86_64)",
+        "url": "/iina/IINA.v1.0.7.dmg"
+      },
+      {
+        "name": "v1.1.0 (macOS, x86_64)",
+        "url": "/iina/IINA.v1.1.0.dmg"
+      }
+    ]
+  },
+  {
+    "distro": "KiCad",
+    "category": "app",
+    "urls": [
+      {
+        "name": "5.1.6-0 (macOS, x86_64)",
+        "url": "/kicad/osx/stable/kicad-unified-5.1.6-0.dmg"
+      },
+      {
+        "name": "5.1.6-0-10_14 (macOS, x86_64)",
+        "url": "/kicad/osx/stable/kicad-unified-5.1.6-0-10_14.dmg"
+      },
+      {
+        "name": "5.1.7-0-10_14 (macOS, x86_64)",
+        "url": "/kicad/osx/stable/kicad-unified-5.1.7-0-10_14.dmg"
+      },
+      {
+        "name": "5.1.7_1 (Windows, i686)",
+        "url": "/kicad/windows/stable/kicad-5.1.7_1-i686.exe"
+      },
+      {
+        "name": "5.1.7_1 (Windows, x86_64)",
+        "url": "/kicad/windows/stable/kicad-5.1.7_1-x86_64.exe"
+      },
+      {
+        "name": "5.1.8-0-10_14 (macOS, x86_64)",
+        "url": "/kicad/osx/stable/kicad-unified-5.1.8-0-10_14.dmg"
+      },
+      {
+        "name": "5.1.8_1 (Windows, i686)",
+        "url": "/kicad/windows/stable/kicad-5.1.8_1-i686.exe"
+      },
+      {
+        "name": "5.1.8_1 (Windows, x86_64)",
+        "url": "/kicad/windows/stable/kicad-5.1.8_1-x86_64.exe"
+      }
+    ]
+  },
+  {
+    "distro": "LibreOffice",
+    "category": "app",
+    "urls": [
+      {
+        "name": "7.0.2 (deb, x86_64)",
+        "url": "/libreoffice/libreoffice/stable/7.0.2/deb/x86_64/LibreOffice_7.0.2_Linux_x86-64_deb.tar.gz"
+      },
+      {
+        "name": "7.0.2 (mac, x86_64)",
+        "url": "/libreoffice/libreoffice/stable/7.0.2/mac/x86_64/LibreOffice_7.0.2_MacOS_x86-64.dmg"
+      },
+      {
+        "name": "7.0.2 (rpm, x86_64)",
+        "url": "/libreoffice/libreoffice/stable/7.0.2/rpm/x86_64/LibreOffice_7.0.2_Linux_x86-64_rpm.tar.gz"
+      },
+      {
+        "name": "7.0.2 (win, x86)",
+        "url": "/libreoffice/libreoffice/stable/7.0.2/win/x86/LibreOffice_7.0.2_Win_x86.msi"
+      },
+      {
+        "name": "7.0.2 (win, x86_64)",
+        "url": "/libreoffice/libreoffice/stable/7.0.2/win/x86_64/LibreOffice_7.0.2_Win_x64.msi"
+      },
+      {
+        "name": "7.0.3 (deb, x86_64)",
+        "url": "/libreoffice/libreoffice/stable/7.0.3/deb/x86_64/LibreOffice_7.0.3_Linux_x86-64_deb.tar.gz"
+      },
+      {
+        "name": "7.0.3 (mac, x86_64)",
+        "url": "/libreoffice/libreoffice/stable/7.0.3/mac/x86_64/LibreOffice_7.0.3_MacOS_x86-64.dmg"
+      },
+      {
+        "name": "7.0.3 (rpm, x86_64)",
+        "url": "/libreoffice/libreoffice/stable/7.0.3/rpm/x86_64/LibreOffice_7.0.3_Linux_x86-64_rpm.tar.gz"
+      },
+      {
+        "name": "7.0.3 (win, x86)",
+        "url": "/libreoffice/libreoffice/stable/7.0.3/win/x86/LibreOffice_7.0.3_Win_x86.msi"
+      },
+      {
+        "name": "7.0.3 (win, x86_64)",
+        "url": "/libreoffice/libreoffice/stable/7.0.3/win/x86_64/LibreOffice_7.0.3_Win_x64.msi"
+      }
+    ]
+  },
+  {
+    "distro": "VS Codium",
+    "category": "app",
+    "urls": [
+      {
+        "name": "1.50.1 (Linux, amd64 deb)",
+        "url": "/github-release/VSCodium/vscodium/LatestRelease/codium_1.50.1-1602760402_amd64.deb"
+      },
+      {
+        "name": "1.50.1 (Linux, arm64 tar)",
+        "url": "/github-release/VSCodium/vscodium/LatestRelease/VSCodium-linux-arm64-1.50.1.tar.gz"
+      },
+      {
+        "name": "1.50.1 (Linux, arm64 deb)",
+        "url": "/github-release/VSCodium/vscodium/LatestRelease/codium_1.50.1-1602760507_arm64.deb"
+      },
+      {
+        "name": "1.50.1 (Linux, armhf tar)",
+        "url": "/github-release/VSCodium/vscodium/LatestRelease/VSCodium-linux-armhf-1.50.1.tar.gz"
+      },
+      {
+        "name": "1.50.1 (Linux, armhf deb)",
+        "url": "/github-release/VSCodium/vscodium/LatestRelease/codium_1.50.1-1602760551_armhf.deb"
+      },
+      {
+        "name": "1.50.1 (Linux, x64 tar)",
+        "url": "/github-release/VSCodium/vscodium/LatestRelease/VSCodium-linux-x64-1.50.1.tar.gz"
+      },
+      {
+        "name": "1.50.1 (Linux, x86_64 rpm)",
+        "url": "/github-release/VSCodium/vscodium/LatestRelease/codium-1.50.1-1602760554.el7.x86_64.rpm"
+      },
+      {
+        "name": "1.50.1 (Windows, VSCodiumSetup-ia32)",
+        "url": "/github-release/VSCodium/vscodium/LatestRelease/VSCodiumSetup-ia32-1.50.1.exe"
+      },
+      {
+        "name": "1.50.1 (Windows, VSCodiumSetup-x64)",
+        "url": "/github-release/VSCodium/vscodium/LatestRelease/VSCodiumSetup-x64-1.50.1.exe"
+      },
+      {
+        "name": "1.50.1 (Windows, VSCodiumUserSetup-ia32)",
+        "url": "/github-release/VSCodium/vscodium/LatestRelease/VSCodiumUserSetup-ia32-1.50.1.exe"
+      },
+      {
+        "name": "1.50.1 (Windows, VSCodiumUserSetup-x64)",
+        "url": "/github-release/VSCodium/vscodium/LatestRelease/VSCodiumUserSetup-x64-1.50.1.exe"
+      },
+      {
+        "name": "1.50.1 (macOS, x86_64)",
+        "url": "/github-release/VSCodium/vscodium/LatestRelease/VSCodium.1.50.1.dmg"
+      }
+    ]
+  },
+  {
+    "distro": "VLC",
+    "category": "app",
+    "urls": [
+      {
+        "name": "3.0.11.1 (macosx, dmg)",
+        "url": "/videolan-ftp/vlc/3.0.11.1/macosx/vlc-3.0.11.1.dmg"
+      },
+      {
+        "name": "3.2.12 (iOS, ipa)",
+        "url": "/videolan-ftp/vlc-iOS/3.2.12/VLC-iOS.ipa"
+      },
+      {
+        "name": "3.3.1 (Android/arm64-v8a, apk)",
+        "url": "/videolan-ftp/vlc-android/3.3.1/VLC-Android-3.3.1-arm64-v8a.apk"
+      },
+      {
+        "name": "3.3.1 (Android/armeabi-v7a, apk)",
+        "url": "/videolan-ftp/vlc-android/3.3.1/VLC-Android-3.3.1-armeabi-v7a.apk"
+      },
+      {
+        "name": "3.3.1 (Android/x86, apk)",
+        "url": "/videolan-ftp/vlc-android/3.3.1/VLC-Android-3.3.1-x86.apk"
+      },
+      {
+        "name": "3.3.1 (Android/x86_64, apk)",
+        "url": "/videolan-ftp/vlc-android/3.3.1/VLC-Android-3.3.1-x86_64.apk"
+      }
+    ]
+  },
+  {
+    "distro": "Julia",
+    "category": "app",
+    "urls": [
+      {
+        "name": "0.1.2 (mac/x64, dmg)",
+        "url": "/julia-releases/bin/mac/x64/0.1/julia-0.1.2-mac64.dmg"
+      },
+      {
+        "name": "0.2.0 (mac/x64, dmg)",
+        "url": "/julia-releases/bin/mac/x64/0.2/julia-0.2.0-mac64.dmg"
+      },
+      {
+        "name": "0.2.0 (win/x64, exe)",
+        "url": "/julia-releases/bin/winnt/x64/0.2/julia-0.2.0-win64.exe"
+      },
+      {
+        "name": "0.2.0 (win/x86, exe)",
+        "url": "/julia-releases/bin/winnt/x86/0.2/julia-0.2.0-win32.exe"
+      },
+      {
+        "name": "0.2.1 (mac/x64, dmg)",
+        "url": "/julia-releases/bin/mac/x64/0.2/julia-0.2.1-mac64.dmg"
+      },
+      {
+        "name": "0.2.1 (win/x64, exe)",
+        "url": "/julia-releases/bin/winnt/x64/0.2/julia-0.2.1-win64.exe"
+      },
+      {
+        "name": "0.2.1 (win/x86, exe)",
+        "url": "/julia-releases/bin/winnt/x86/0.2/julia-0.2.1-win32.exe"
+      },
+      {
+        "name": "0.3.0 (mac/x64, dmg)",
+        "url": "/julia-releases/bin/mac/x64/0.3/julia-0.3.0-mac64.dmg"
+      },
+      {
+        "name": "0.3.0 (win/x64, exe)",
+        "url": "/julia-releases/bin/winnt/x64/0.3/julia-0.3.0-win64.exe"
+      },
+      {
+        "name": "0.3.0 (win/x86, exe)",
+        "url": "/julia-releases/bin/winnt/x86/0.3/julia-0.3.0-win32.exe"
+      },
+      {
+        "name": "0.3.1 (linux/x64, tar.gz)",
+        "url": "/julia-releases/bin/linux/x64/0.3/julia-0.3.1-linux-x86_64.tar.gz"
+      },
+      {
+        "name": "0.3.1 (linux/x86, tar.gz)",
+        "url": "/julia-releases/bin/linux/x86/0.3/julia-0.3.1-linux-i686.tar.gz"
+      },
+      {
+        "name": "0.3.1 (mac/x64, dmg)",
+        "url": "/julia-releases/bin/mac/x64/0.3/julia-0.3.1-mac64.dmg"
+      },
+      {
+        "name": "0.3.1 (win/x64, exe)",
+        "url": "/julia-releases/bin/winnt/x64/0.3/julia-0.3.1-win64.exe"
+      },
+      {
+        "name": "0.3.1 (win/x86, exe)",
+        "url": "/julia-releases/bin/winnt/x86/0.3/julia-0.3.1-win32.exe"
+      },
+      {
+        "name": "0.3.10 (linux/x64, tar.gz)",
+        "url": "/julia-releases/bin/linux/x64/0.3/julia-0.3.10-linux-x86_64.tar.gz"
+      },
+      {
+        "name": "0.3.10 (linux/x86, tar.gz)",
+        "url": "/julia-releases/bin/linux/x86/0.3/julia-0.3.10-linux-i686.tar.gz"
+      },
+      {
+        "name": "0.3.10 (mac/x64, dmg)",
+        "url": "/julia-releases/bin/mac/x64/0.3/julia-0.3.10-mac64.dmg"
+      },
+      {
+        "name": "0.3.10 (win/x64, exe)",
+        "url": "/julia-releases/bin/winnt/x64/0.3/julia-0.3.10-win64.exe"
+      },
+      {
+        "name": "0.3.10 (win/x86, exe)",
+        "url": "/julia-releases/bin/winnt/x86/0.3/julia-0.3.10-win32.exe"
+      },
+      {
+        "name": "0.3.11 (linux/x64, tar.gz)",
+        "url": "/julia-releases/bin/linux/x64/0.3/julia-0.3.11-linux-x86_64.tar.gz"
+      },
+      {
+        "name": "0.3.11 (linux/x86, tar.gz)",
+        "url": "/julia-releases/bin/linux/x86/0.3/julia-0.3.11-linux-i686.tar.gz"
+      },
+      {
+        "name": "0.3.11 (mac/x64, dmg)",
+        "url": "/julia-releases/bin/mac/x64/0.3/julia-0.3.11-mac64.dmg"
+      },
+      {
+        "name": "0.3.11 (win/x64, exe)",
+        "url": "/julia-releases/bin/winnt/x64/0.3/julia-0.3.11-win64.exe"
+      },
+      {
+        "name": "0.3.11 (win/x86, exe)",
+        "url": "/julia-releases/bin/winnt/x86/0.3/julia-0.3.11-win32.exe"
+      },
+      {
+        "name": "0.3.12 (linux/x64, tar.gz)",
+        "url": "/julia-releases/bin/linux/x64/0.3/julia-0.3.12-linux-x86_64.tar.gz"
+      },
+      {
+        "name": "0.3.12 (linux/x86, tar.gz)",
+        "url": "/julia-releases/bin/linux/x86/0.3/julia-0.3.12-linux-i686.tar.gz"
+      },
+      {
+        "name": "0.3.12 (mac/x64, dmg)",
+        "url": "/julia-releases/bin/mac/x64/0.3/julia-0.3.12-mac64.dmg"
+      },
+      {
+        "name": "0.3.12 (win/x64, exe)",
+        "url": "/julia-releases/bin/winnt/x64/0.3/julia-0.3.12-win64.exe"
+      },
+      {
+        "name": "0.3.12 (win/x86, exe)",
+        "url": "/julia-releases/bin/winnt/x86/0.3/julia-0.3.12-win32.exe"
+      },
+      {
+        "name": "0.3.2 (linux/x64, tar.gz)",
+        "url": "/julia-releases/bin/linux/x64/0.3/julia-0.3.2-linux-x86_64.tar.gz"
+      },
+      {
+        "name": "0.3.2 (linux/x86, tar.gz)",
+        "url": "/julia-releases/bin/linux/x86/0.3/julia-0.3.2-linux-i686.tar.gz"
+      },
+      {
+        "name": "0.3.2 (mac/x64, dmg)",
+        "url": "/julia-releases/bin/mac/x64/0.3/julia-0.3.2-mac64.dmg"
+      },
+      {
+        "name": "0.3.2 (win/x64, exe)",
+        "url": "/julia-releases/bin/winnt/x64/0.3/julia-0.3.2-win64.exe"
+      },
+      {
+        "name": "0.3.2 (win/x86, exe)",
+        "url": "/julia-releases/bin/winnt/x86/0.3/julia-0.3.2-win32.exe"
+      },
+      {
+        "name": "0.3.3 (linux/x64, tar.gz)",
+        "url": "/julia-releases/bin/linux/x64/0.3/julia-0.3.3-linux-x86_64.tar.gz"
+      },
+      {
+        "name": "0.3.3 (linux/x86, tar.gz)",
+        "url": "/julia-releases/bin/linux/x86/0.3/julia-0.3.3-linux-i686.tar.gz"
+      },
+      {
+        "name": "0.3.3 (mac/x64, dmg)",
+        "url": "/julia-releases/bin/mac/x64/0.3/julia-0.3.3-mac64.dmg"
+      },
+      {
+        "name": "0.3.3 (win/x64, exe)",
+        "url": "/julia-releases/bin/winnt/x64/0.3/julia-0.3.3-win64.exe"
+      },
+      {
+        "name": "0.3.3 (win/x86, exe)",
+        "url": "/julia-releases/bin/winnt/x86/0.3/julia-0.3.3-win32.exe"
+      },
+      {
+        "name": "0.3.4 (linux/x64, tar.gz)",
+        "url": "/julia-releases/bin/linux/x64/0.3/julia-0.3.4-linux-x86_64.tar.gz"
+      },
+      {
+        "name": "0.3.4 (linux/x86, tar.gz)",
+        "url": "/julia-releases/bin/linux/x86/0.3/julia-0.3.4-linux-i686.tar.gz"
+      },
+      {
+        "name": "0.3.4 (mac/x64, dmg)",
+        "url": "/julia-releases/bin/mac/x64/0.3/julia-0.3.4-mac64.dmg"
+      },
+      {
+        "name": "0.3.4 (win/x64, exe)",
+        "url": "/julia-releases/bin/winnt/x64/0.3/julia-0.3.4-win64.exe"
+      },
+      {
+        "name": "0.3.4 (win/x86, exe)",
+        "url": "/julia-releases/bin/winnt/x86/0.3/julia-0.3.4-win32.exe"
+      },
+      {
+        "name": "0.3.5 (linux/x64, tar.gz)",
+        "url": "/julia-releases/bin/linux/x64/0.3/julia-0.3.5-linux-x86_64.tar.gz"
+      },
+      {
+        "name": "0.3.5 (linux/x86, tar.gz)",
+        "url": "/julia-releases/bin/linux/x86/0.3/julia-0.3.5-linux-i686.tar.gz"
+      },
+      {
+        "name": "0.3.5 (mac/x64, dmg)",
+        "url": "/julia-releases/bin/mac/x64/0.3/julia-0.3.5-mac64.dmg"
+      },
+      {
+        "name": "0.3.5 (win/x64, exe)",
+        "url": "/julia-releases/bin/winnt/x64/0.3/julia-0.3.5-win64.exe"
+      },
+      {
+        "name": "0.3.5 (win/x86, exe)",
+        "url": "/julia-releases/bin/winnt/x86/0.3/julia-0.3.5-win32.exe"
+      },
+      {
+        "name": "0.3.6 (linux/x64, tar.gz)",
+        "url": "/julia-releases/bin/linux/x64/0.3/julia-0.3.6-linux-x86_64.tar.gz"
+      },
+      {
+        "name": "0.3.6 (linux/x86, tar.gz)",
+        "url": "/julia-releases/bin/linux/x86/0.3/julia-0.3.6-linux-i686.tar.gz"
+      },
+      {
+        "name": "0.3.6 (mac/x64, dmg)",
+        "url": "/julia-releases/bin/mac/x64/0.3/julia-0.3.6-mac64.dmg"
+      },
+      {
+        "name": "0.3.6 (win/x64, exe)",
+        "url": "/julia-releases/bin/winnt/x64/0.3/julia-0.3.6-win64.exe"
+      },
+      {
+        "name": "0.3.6 (win/x86, exe)",
+        "url": "/julia-releases/bin/winnt/x86/0.3/julia-0.3.6-win32.exe"
+      },
+      {
+        "name": "0.3.7 (linux/x64, tar.gz)",
+        "url": "/julia-releases/bin/linux/x64/0.3/julia-0.3.7-linux-x86_64.tar.gz"
+      },
+      {
+        "name": "0.3.7 (linux/x86, tar.gz)",
+        "url": "/julia-releases/bin/linux/x86/0.3/julia-0.3.7-linux-i686.tar.gz"
+      },
+      {
+        "name": "0.3.7 (mac/x64, dmg)",
+        "url": "/julia-releases/bin/mac/x64/0.3/julia-0.3.7-mac64.dmg"
+      },
+      {
+        "name": "0.3.7 (win/x64, exe)",
+        "url": "/julia-releases/bin/winnt/x64/0.3/julia-0.3.7-win64.exe"
+      },
+      {
+        "name": "0.3.7 (win/x86, exe)",
+        "url": "/julia-releases/bin/winnt/x86/0.3/julia-0.3.7-win32.exe"
+      },
+      {
+        "name": "0.3.8 (linux/x64, tar.gz)",
+        "url": "/julia-releases/bin/linux/x64/0.3/julia-0.3.8-linux-x86_64.tar.gz"
+      },
+      {
+        "name": "0.3.8 (linux/x86, tar.gz)",
+        "url": "/julia-releases/bin/linux/x86/0.3/julia-0.3.8-linux-i686.tar.gz"
+      },
+      {
+        "name": "0.3.8 (mac/x64, dmg)",
+        "url": "/julia-releases/bin/mac/x64/0.3/julia-0.3.8-mac64.dmg"
+      },
+      {
+        "name": "0.3.8 (win/x64, exe)",
+        "url": "/julia-releases/bin/winnt/x64/0.3/julia-0.3.8-win64.exe"
+      },
+      {
+        "name": "0.3.8 (win/x86, exe)",
+        "url": "/julia-releases/bin/winnt/x86/0.3/julia-0.3.8-win32.exe"
+      },
+      {
+        "name": "0.3.9 (linux/x64, tar.gz)",
+        "url": "/julia-releases/bin/linux/x64/0.3/julia-0.3.9-linux-x86_64.tar.gz"
+      },
+      {
+        "name": "0.3.9 (linux/x86, tar.gz)",
+        "url": "/julia-releases/bin/linux/x86/0.3/julia-0.3.9-linux-i686.tar.gz"
+      },
+      {
+        "name": "0.3.9 (mac/x64, dmg)",
+        "url": "/julia-releases/bin/mac/x64/0.3/julia-0.3.9-mac64.dmg"
+      },
+      {
+        "name": "0.3.9 (win/x64, exe)",
+        "url": "/julia-releases/bin/winnt/x64/0.3/julia-0.3.9-win64.exe"
+      },
+      {
+        "name": "0.3.9 (win/x86, exe)",
+        "url": "/julia-releases/bin/winnt/x86/0.3/julia-0.3.9-win32.exe"
+      },
+      {
+        "name": "0.4.0 (linux/x64, tar.gz)",
+        "url": "/julia-releases/bin/linux/x64/0.4/julia-0.4.0-linux-x86_64.tar.gz"
+      },
+      {
+        "name": "0.4.0 (linux/x86, tar.gz)",
+        "url": "/julia-releases/bin/linux/x86/0.4/julia-0.4.0-linux-i686.tar.gz"
+      },
+      {
+        "name": "0.4.0 (mac/x64, dmg)",
+        "url": "/julia-releases/bin/mac/x64/0.4/julia-0.4.0-mac64.dmg"
+      },
+      {
+        "name": "0.4.0 (win/x64, exe)",
+        "url": "/julia-releases/bin/winnt/x64/0.4/julia-0.4.0-win64.exe"
+      },
+      {
+        "name": "0.4.0 (win/x86, exe)",
+        "url": "/julia-releases/bin/winnt/x86/0.4/julia-0.4.0-win32.exe"
+      },
+      {
+        "name": "0.4.1 (linux/x64, tar.gz)",
+        "url": "/julia-releases/bin/linux/x64/0.4/julia-0.4.1-linux-x86_64.tar.gz"
+      },
+      {
+        "name": "0.4.1 (linux/x86, tar.gz)",
+        "url": "/julia-releases/bin/linux/x86/0.4/julia-0.4.1-linux-i686.tar.gz"
+      },
+      {
+        "name": "0.4.1 (mac/x64, dmg)",
+        "url": "/julia-releases/bin/mac/x64/0.4/julia-0.4.1-mac64.dmg"
+      },
+      {
+        "name": "0.4.1 (win/x64, exe)",
+        "url": "/julia-releases/bin/winnt/x64/0.4/julia-0.4.1-win64.exe"
+      },
+      {
+        "name": "0.4.1 (win/x86, exe)",
+        "url": "/julia-releases/bin/winnt/x86/0.4/julia-0.4.1-win32.exe"
+      },
+      {
+        "name": "0.4.2 (linux/x64, tar.gz)",
+        "url": "/julia-releases/bin/linux/x64/0.4/julia-0.4.2-linux-x86_64.tar.gz"
+      },
+      {
+        "name": "0.4.2 (linux/x86, tar.gz)",
+        "url": "/julia-releases/bin/linux/x86/0.4/julia-0.4.2-linux-i686.tar.gz"
+      },
+      {
+        "name": "0.4.2 (mac/x64, dmg)",
+        "url": "/julia-releases/bin/mac/x64/0.4/julia-0.4.2-mac64.dmg"
+      },
+      {
+        "name": "0.4.2 (win/x64, exe)",
+        "url": "/julia-releases/bin/winnt/x64/0.4/julia-0.4.2-win64.exe"
+      },
+      {
+        "name": "0.4.2 (win/x86, exe)",
+        "url": "/julia-releases/bin/winnt/x86/0.4/julia-0.4.2-win32.exe"
+      },
+      {
+        "name": "0.4.3 (linux/x64, tar.gz)",
+        "url": "/julia-releases/bin/linux/x64/0.4/julia-0.4.3-linux-x86_64.tar.gz"
+      },
+      {
+        "name": "0.4.3 (linux/x86, tar.gz)",
+        "url": "/julia-releases/bin/linux/x86/0.4/julia-0.4.3-linux-i686.tar.gz"
+      },
+      {
+        "name": "0.4.3 (mac/x64, dmg)",
+        "url": "/julia-releases/bin/mac/x64/0.4/julia-0.4.3-mac64.dmg"
+      },
+      {
+        "name": "0.4.3 (win/x64, exe)",
+        "url": "/julia-releases/bin/winnt/x64/0.4/julia-0.4.3-win64.exe"
+      },
+      {
+        "name": "0.4.3 (win/x86, exe)",
+        "url": "/julia-releases/bin/winnt/x86/0.4/julia-0.4.3-win32.exe"
+      },
+      {
+        "name": "0.4.4 (linux/x64, tar.gz)",
+        "url": "/julia-releases/bin/linux/x64/0.4/julia-0.4.4-linux-x86_64.tar.gz"
+      },
+      {
+        "name": "0.4.4 (linux/x86, tar.gz)",
+        "url": "/julia-releases/bin/linux/x86/0.4/julia-0.4.4-linux-i686.tar.gz"
+      },
+      {
+        "name": "0.4.4 (mac/x64, dmg)",
+        "url": "/julia-releases/bin/mac/x64/0.4/julia-0.4.4-mac64.dmg"
+      },
+      {
+        "name": "0.4.4 (win/x64, exe)",
+        "url": "/julia-releases/bin/winnt/x64/0.4/julia-0.4.4-win64.exe"
+      },
+      {
+        "name": "0.4.4 (win/x86, exe)",
+        "url": "/julia-releases/bin/winnt/x86/0.4/julia-0.4.4-win32.exe"
+      },
+      {
+        "name": "0.4.5 (linux/x64, tar.gz)",
+        "url": "/julia-releases/bin/linux/x64/0.4/julia-0.4.5-linux-x86_64.tar.gz"
+      },
+      {
+        "name": "0.4.5 (linux/x86, tar.gz)",
+        "url": "/julia-releases/bin/linux/x86/0.4/julia-0.4.5-linux-i686.tar.gz"
+      },
+      {
+        "name": "0.4.5 (mac/x64, dmg)",
+        "url": "/julia-releases/bin/mac/x64/0.4/julia-0.4.5-mac64.dmg"
+      },
+      {
+        "name": "0.4.5 (win/x64, exe)",
+        "url": "/julia-releases/bin/winnt/x64/0.4/julia-0.4.5-win64.exe"
+      },
+      {
+        "name": "0.4.5 (win/x86, exe)",
+        "url": "/julia-releases/bin/winnt/x86/0.4/julia-0.4.5-win32.exe"
+      },
+      {
+        "name": "0.4.6 (linux/x64, tar.gz)",
+        "url": "/julia-releases/bin/linux/x64/0.4/julia-0.4.6-linux-x86_64.tar.gz"
+      },
+      {
+        "name": "0.4.6 (linux/x86, tar.gz)",
+        "url": "/julia-releases/bin/linux/x86/0.4/julia-0.4.6-linux-i686.tar.gz"
+      },
+      {
+        "name": "0.4.6 (mac/x64, dmg)",
+        "url": "/julia-releases/bin/mac/x64/0.4/julia-0.4.6-mac64.dmg"
+      },
+      {
+        "name": "0.4.6 (win/x64, exe)",
+        "url": "/julia-releases/bin/winnt/x64/0.4/julia-0.4.6-win64.exe"
+      },
+      {
+        "name": "0.4.6 (win/x86, exe)",
+        "url": "/julia-releases/bin/winnt/x86/0.4/julia-0.4.6-win32.exe"
+      },
+      {
+        "name": "0.4.7 (linux/x64, tar.gz)",
+        "url": "/julia-releases/bin/linux/x64/0.4/julia-0.4.7-linux-x86_64.tar.gz"
+      },
+      {
+        "name": "0.4.7 (linux/x86, tar.gz)",
+        "url": "/julia-releases/bin/linux/x86/0.4/julia-0.4.7-linux-i686.tar.gz"
+      },
+      {
+        "name": "0.4.7 (mac/x64, dmg)",
+        "url": "/julia-releases/bin/mac/x64/0.4/julia-0.4.7-mac64.dmg"
+      },
+      {
+        "name": "0.4.7 (win/x64, exe)",
+        "url": "/julia-releases/bin/winnt/x64/0.4/julia-0.4.7-win64.exe"
+      },
+      {
+        "name": "0.4.7 (win/x86, exe)",
+        "url": "/julia-releases/bin/winnt/x86/0.4/julia-0.4.7-win32.exe"
+      },
+      {
+        "name": "0.5.0 (linux/x64, tar.gz)",
+        "url": "/julia-releases/bin/linux/x64/0.5/julia-0.5.0-linux-x86_64.tar.gz"
+      },
+      {
+        "name": "0.5.0 (linux/x86, tar.gz)",
+        "url": "/julia-releases/bin/linux/x86/0.5/julia-0.5.0-linux-i686.tar.gz"
+      },
+      {
+        "name": "0.5.0 (mac/x64, dmg)",
+        "url": "/julia-releases/bin/mac/x64/0.5/julia-0.5.0-mac64.dmg"
+      },
+      {
+        "name": "0.5.0 (win/x64, exe)",
+        "url": "/julia-releases/bin/winnt/x64/0.5/julia-0.5.0-win64.exe"
+      },
+      {
+        "name": "0.5.0 (win/x86, exe)",
+        "url": "/julia-releases/bin/winnt/x86/0.5/julia-0.5.0-win32.exe"
+      },
+      {
+        "name": "0.5.1 (linux/x64, tar.gz)",
+        "url": "/julia-releases/bin/linux/x64/0.5/julia-0.5.1-linux-x86_64.tar.gz"
+      },
+      {
+        "name": "0.5.1 (linux/x86, tar.gz)",
+        "url": "/julia-releases/bin/linux/x86/0.5/julia-0.5.1-linux-i686.tar.gz"
+      },
+      {
+        "name": "0.5.1 (mac/x64, dmg)",
+        "url": "/julia-releases/bin/mac/x64/0.5/julia-0.5.1-mac64.dmg"
+      },
+      {
+        "name": "0.5.1 (win/x64, exe)",
+        "url": "/julia-releases/bin/winnt/x64/0.5/julia-0.5.1-win64.exe"
+      },
+      {
+        "name": "0.5.1 (win/x86, exe)",
+        "url": "/julia-releases/bin/winnt/x86/0.5/julia-0.5.1-win32.exe"
+      },
+      {
+        "name": "0.5.2 (linux/x64, tar.gz)",
+        "url": "/julia-releases/bin/linux/x64/0.5/julia-0.5.2-linux-x86_64.tar.gz"
+      },
+      {
+        "name": "0.5.2 (linux/x86, tar.gz)",
+        "url": "/julia-releases/bin/linux/x86/0.5/julia-0.5.2-linux-i686.tar.gz"
+      },
+      {
+        "name": "0.5.2 (mac/x64, dmg)",
+        "url": "/julia-releases/bin/mac/x64/0.5/julia-0.5.2-mac64.dmg"
+      },
+      {
+        "name": "0.5.2 (win/x64, exe)",
+        "url": "/julia-releases/bin/winnt/x64/0.5/julia-0.5.2-win64.exe"
+      },
+      {
+        "name": "0.5.2 (win/x86, exe)",
+        "url": "/julia-releases/bin/winnt/x86/0.5/julia-0.5.2-win32.exe"
+      },
+      {
+        "name": "0.6.0 (linux/x64, tar.gz)",
+        "url": "/julia-releases/bin/linux/x64/0.6/julia-0.6.0-linux-x86_64.tar.gz"
+      },
+      {
+        "name": "0.6.0 (linux/x86, tar.gz)",
+        "url": "/julia-releases/bin/linux/x86/0.6/julia-0.6.0-linux-i686.tar.gz"
+      },
+      {
+        "name": "0.6.0 (mac/x64, dmg)",
+        "url": "/julia-releases/bin/mac/x64/0.6/julia-0.6.0-mac64.dmg"
+      },
+      {
+        "name": "0.6.0 (win/x64, exe)",
+        "url": "/julia-releases/bin/winnt/x64/0.6/julia-0.6.0-win64.exe"
+      },
+      {
+        "name": "0.6.0 (win/x86, exe)",
+        "url": "/julia-releases/bin/winnt/x86/0.6/julia-0.6.0-win32.exe"
+      },
+      {
+        "name": "0.6.1 (linux/aarch64, tar.gz)",
+        "url": "/julia-releases/bin/linux/aarch64/0.6/julia-0.6.1-linux-aarch64.tar.gz"
+      },
+      {
+        "name": "0.6.1 (linux/armv7l, tar.gz)",
+        "url": "/julia-releases/bin/linux/armv7l/0.6/julia-0.6.1-linux-armv7l.tar.gz"
+      },
+      {
+        "name": "0.6.1 (linux/x64, tar.gz)",
+        "url": "/julia-releases/bin/linux/x64/0.6/julia-0.6.1-linux-x86_64.tar.gz"
+      },
+      {
+        "name": "0.6.1 (linux/x86, tar.gz)",
+        "url": "/julia-releases/bin/linux/x86/0.6/julia-0.6.1-linux-i686.tar.gz"
+      },
+      {
+        "name": "0.6.1 (mac/x64, dmg)",
+        "url": "/julia-releases/bin/mac/x64/0.6/julia-0.6.1-mac64.dmg"
+      },
+      {
+        "name": "0.6.1 (win/x64, exe)",
+        "url": "/julia-releases/bin/winnt/x64/0.6/julia-0.6.1-win64.exe"
+      },
+      {
+        "name": "0.6.1 (win/x86, exe)",
+        "url": "/julia-releases/bin/winnt/x86/0.6/julia-0.6.1-win32.exe"
+      },
+      {
+        "name": "0.6.2 (linux/aarch64, tar.gz)",
+        "url": "/julia-releases/bin/linux/aarch64/0.6/julia-0.6.2-linux-aarch64.tar.gz"
+      },
+      {
+        "name": "0.6.2 (linux/armv7l, tar.gz)",
+        "url": "/julia-releases/bin/linux/armv7l/0.6/julia-0.6.2-linux-armv7l.tar.gz"
+      },
+      {
+        "name": "0.6.2 (linux/x64, tar.gz)",
+        "url": "/julia-releases/bin/linux/x64/0.6/julia-0.6.2-linux-x86_64.tar.gz"
+      },
+      {
+        "name": "0.6.2 (linux/x86, tar.gz)",
+        "url": "/julia-releases/bin/linux/x86/0.6/julia-0.6.2-linux-i686.tar.gz"
+      },
+      {
+        "name": "0.6.2 (mac/x64, dmg)",
+        "url": "/julia-releases/bin/mac/x64/0.6/julia-0.6.2-mac64.dmg"
+      },
+      {
+        "name": "0.6.2 (win/x64, exe)",
+        "url": "/julia-releases/bin/winnt/x64/0.6/julia-0.6.2-win64.exe"
+      },
+      {
+        "name": "0.6.2 (win/x86, exe)",
+        "url": "/julia-releases/bin/winnt/x86/0.6/julia-0.6.2-win32.exe"
+      },
+      {
+        "name": "0.6.3 (freebsd/x64, tar.gz)",
+        "url": "/julia-releases/bin/freebsd/x64/0.6/julia-0.6.3-freebsd-x86_64.tar.gz"
+      },
+      {
+        "name": "0.6.3 (linux/aarch64, tar.gz)",
+        "url": "/julia-releases/bin/linux/aarch64/0.6/julia-0.6.3-linux-aarch64.tar.gz"
+      },
+      {
+        "name": "0.6.3 (linux/armv7l, tar.gz)",
+        "url": "/julia-releases/bin/linux/armv7l/0.6/julia-0.6.3-linux-armv7l.tar.gz"
+      },
+      {
+        "name": "0.6.3 (linux/x64, tar.gz)",
+        "url": "/julia-releases/bin/linux/x64/0.6/julia-0.6.3-linux-x86_64.tar.gz"
+      },
+      {
+        "name": "0.6.3 (linux/x86, tar.gz)",
+        "url": "/julia-releases/bin/linux/x86/0.6/julia-0.6.3-linux-i686.tar.gz"
+      },
+      {
+        "name": "0.6.3 (mac/x64, dmg)",
+        "url": "/julia-releases/bin/mac/x64/0.6/julia-0.6.3-mac64.dmg"
+      },
+      {
+        "name": "0.6.3 (win/x64, exe)",
+        "url": "/julia-releases/bin/winnt/x64/0.6/julia-0.6.3-win64.exe"
+      },
+      {
+        "name": "0.6.3 (win/x86, exe)",
+        "url": "/julia-releases/bin/winnt/x86/0.6/julia-0.6.3-win32.exe"
+      },
+      {
+        "name": "0.6.4 (linux/x64, tar.gz)",
+        "url": "/julia-releases/bin/linux/x64/0.6/julia-0.6.4-linux-x86_64.tar.gz"
+      },
+      {
+        "name": "0.6.4 (linux/x86, tar.gz)",
+        "url": "/julia-releases/bin/linux/x86/0.6/julia-0.6.4-linux-i686.tar.gz"
+      },
+      {
+        "name": "0.6.4 (mac/x64, dmg)",
+        "url": "/julia-releases/bin/mac/x64/0.6/julia-0.6.4-mac64.dmg"
+      },
+      {
+        "name": "0.6.4 (win/x64, exe)",
+        "url": "/julia-releases/bin/winnt/x64/0.6/julia-0.6.4-win64.exe"
+      },
+      {
+        "name": "0.6.4 (win/x86, exe)",
+        "url": "/julia-releases/bin/winnt/x86/0.6/julia-0.6.4-win32.exe"
+      },
+      {
+        "name": "0.7.0 (freebsd/x64, tar.gz)",
+        "url": "/julia-releases/bin/freebsd/x64/0.7/julia-0.7.0-freebsd-x86_64.tar.gz"
+      },
+      {
+        "name": "0.7.0 (linux/x64, tar.gz)",
+        "url": "/julia-releases/bin/linux/x64/0.7/julia-0.7.0-linux-x86_64.tar.gz"
+      },
+      {
+        "name": "0.7.0 (linux/x86, tar.gz)",
+        "url": "/julia-releases/bin/linux/x86/0.7/julia-0.7.0-linux-i686.tar.gz"
+      },
+      {
+        "name": "0.7.0 (mac/x64, dmg)",
+        "url": "/julia-releases/bin/mac/x64/0.7/julia-0.7.0-mac64.dmg"
+      },
+      {
+        "name": "0.7.0 (win/x64, exe)",
+        "url": "/julia-releases/bin/winnt/x64/0.7/julia-0.7.0-win64.exe"
+      },
+      {
+        "name": "0.7.0 (win/x86, exe)",
+        "url": "/julia-releases/bin/winnt/x86/0.7/julia-0.7.0-win32.exe"
+      },
+      {
+        "name": "1.0.0 (freebsd/x64, tar.gz)",
+        "url": "/julia-releases/bin/freebsd/x64/1.0/julia-1.0.0-freebsd-x86_64.tar.gz"
+      },
+      {
+        "name": "1.0.0 (linux/armv7l, tar.gz)",
+        "url": "/julia-releases/bin/linux/armv7l/1.0/julia-1.0.0-linux-armv7l.tar.gz"
+      },
+      {
+        "name": "1.0.0 (linux/x64, tar.gz)",
+        "url": "/julia-releases/bin/linux/x64/1.0/julia-1.0.0-linux-x86_64.tar.gz"
+      },
+      {
+        "name": "1.0.0 (linux/x86, tar.gz)",
+        "url": "/julia-releases/bin/linux/x86/1.0/julia-1.0.0-linux-i686.tar.gz"
+      },
+      {
+        "name": "1.0.0 (mac/x64, dmg)",
+        "url": "/julia-releases/bin/mac/x64/1.0/julia-1.0.0-mac64.dmg"
+      },
+      {
+        "name": "1.0.0 (win/x64, exe)",
+        "url": "/julia-releases/bin/winnt/x64/1.0/julia-1.0.0-win64.exe"
+      },
+      {
+        "name": "1.0.0 (win/x86, exe)",
+        "url": "/julia-releases/bin/winnt/x86/1.0/julia-1.0.0-win32.exe"
+      },
+      {
+        "name": "1.0.1 (freebsd/x64, tar.gz)",
+        "url": "/julia-releases/bin/freebsd/x64/1.0/julia-1.0.1-freebsd-x86_64.tar.gz"
+      },
+      {
+        "name": "1.0.1 (linux/x64, tar.gz)",
+        "url": "/julia-releases/bin/linux/x64/1.0/julia-1.0.1-linux-x86_64.tar.gz"
+      },
+      {
+        "name": "1.0.1 (linux/x86, tar.gz)",
+        "url": "/julia-releases/bin/linux/x86/1.0/julia-1.0.1-linux-i686.tar.gz"
+      },
+      {
+        "name": "1.0.1 (mac/x64, dmg)",
+        "url": "/julia-releases/bin/mac/x64/1.0/julia-1.0.1-mac64.dmg"
+      },
+      {
+        "name": "1.0.1 (win/x64, exe)",
+        "url": "/julia-releases/bin/winnt/x64/1.0/julia-1.0.1-win64.exe"
+      },
+      {
+        "name": "1.0.1 (win/x86, exe)",
+        "url": "/julia-releases/bin/winnt/x86/1.0/julia-1.0.1-win32.exe"
+      },
+      {
+        "name": "1.0.2 (freebsd/x64, tar.gz)",
+        "url": "/julia-releases/bin/freebsd/x64/1.0/julia-1.0.2-freebsd-x86_64.tar.gz"
+      },
+      {
+        "name": "1.0.2 (linux/x64, tar.gz)",
+        "url": "/julia-releases/bin/linux/x64/1.0/julia-1.0.2-linux-x86_64.tar.gz"
+      },
+      {
+        "name": "1.0.2 (linux/x86, tar.gz)",
+        "url": "/julia-releases/bin/linux/x86/1.0/julia-1.0.2-linux-i686.tar.gz"
+      },
+      {
+        "name": "1.0.2 (mac/x64, dmg)",
+        "url": "/julia-releases/bin/mac/x64/1.0/julia-1.0.2-mac64.dmg"
+      },
+      {
+        "name": "1.0.2 (win/x64, exe)",
+        "url": "/julia-releases/bin/winnt/x64/1.0/julia-1.0.2-win64.exe"
+      },
+      {
+        "name": "1.0.2 (win/x86, exe)",
+        "url": "/julia-releases/bin/winnt/x86/1.0/julia-1.0.2-win32.exe"
+      },
+      {
+        "name": "1.0.3 (freebsd/x64, tar.gz)",
+        "url": "/julia-releases/bin/freebsd/x64/1.0/julia-1.0.3-freebsd-x86_64.tar.gz"
+      },
+      {
+        "name": "1.0.3 (linux/aarch64, tar.gz)",
+        "url": "/julia-releases/bin/linux/aarch64/1.0/julia-1.0.3-linux-aarch64.tar.gz"
+      },
+      {
+        "name": "1.0.3 (linux/armv7l, tar.gz)",
+        "url": "/julia-releases/bin/linux/armv7l/1.0/julia-1.0.3-linux-armv7l.tar.gz"
+      },
+      {
+        "name": "1.0.3 (linux/x64, tar.gz)",
+        "url": "/julia-releases/bin/linux/x64/1.0/julia-1.0.3-linux-x86_64.tar.gz"
+      },
+      {
+        "name": "1.0.3 (linux/x86, tar.gz)",
+        "url": "/julia-releases/bin/linux/x86/1.0/julia-1.0.3-linux-i686.tar.gz"
+      },
+      {
+        "name": "1.0.3 (mac/x64, dmg)",
+        "url": "/julia-releases/bin/mac/x64/1.0/julia-1.0.3-mac64.dmg"
+      },
+      {
+        "name": "1.0.3 (win/x64, exe)",
+        "url": "/julia-releases/bin/winnt/x64/1.0/julia-1.0.3-win64.exe"
+      },
+      {
+        "name": "1.0.3 (win/x86, exe)",
+        "url": "/julia-releases/bin/winnt/x86/1.0/julia-1.0.3-win32.exe"
+      },
+      {
+        "name": "1.0.4 (freebsd/x64, tar.gz)",
+        "url": "/julia-releases/bin/freebsd/x64/1.0/julia-1.0.4-freebsd-x86_64.tar.gz"
+      },
+      {
+        "name": "1.0.4 (linux/aarch64, tar.gz)",
+        "url": "/julia-releases/bin/linux/aarch64/1.0/julia-1.0.4-linux-aarch64.tar.gz"
+      },
+      {
+        "name": "1.0.4 (linux/armv7l, tar.gz)",
+        "url": "/julia-releases/bin/linux/armv7l/1.0/julia-1.0.4-linux-armv7l.tar.gz"
+      },
+      {
+        "name": "1.0.4 (linux/x64, tar.gz)",
+        "url": "/julia-releases/bin/linux/x64/1.0/julia-1.0.4-linux-x86_64.tar.gz"
+      },
+      {
+        "name": "1.0.4 (linux/x86, tar.gz)",
+        "url": "/julia-releases/bin/linux/x86/1.0/julia-1.0.4-linux-i686.tar.gz"
+      },
+      {
+        "name": "1.0.4 (mac/x64, dmg)",
+        "url": "/julia-releases/bin/mac/x64/1.0/julia-1.0.4-mac64.dmg"
+      },
+      {
+        "name": "1.0.4 (win/x64, exe)",
+        "url": "/julia-releases/bin/winnt/x64/1.0/julia-1.0.4-win64.exe"
+      },
+      {
+        "name": "1.0.4 (win/x86, exe)",
+        "url": "/julia-releases/bin/winnt/x86/1.0/julia-1.0.4-win32.exe"
+      },
+      {
+        "name": "1.0.5 (freebsd/x64, tar.gz)",
+        "url": "/julia-releases/bin/freebsd/x64/1.0/julia-1.0.5-freebsd-x86_64.tar.gz"
+      },
+      {
+        "name": "1.0.5 (linux/aarch64, tar.gz)",
+        "url": "/julia-releases/bin/linux/aarch64/1.0/julia-1.0.5-linux-aarch64.tar.gz"
+      },
+      {
+        "name": "1.0.5 (linux/armv7l, tar.gz)",
+        "url": "/julia-releases/bin/linux/armv7l/1.0/julia-1.0.5-linux-armv7l.tar.gz"
+      },
+      {
+        "name": "1.0.5 (linux/x64, tar.gz)",
+        "url": "/julia-releases/bin/linux/x64/1.0/julia-1.0.5-linux-x86_64.tar.gz"
+      },
+      {
+        "name": "1.0.5 (linux/x86, tar.gz)",
+        "url": "/julia-releases/bin/linux/x86/1.0/julia-1.0.5-linux-i686.tar.gz"
+      },
+      {
+        "name": "1.0.5 (mac/x64, dmg)",
+        "url": "/julia-releases/bin/mac/x64/1.0/julia-1.0.5-mac64.dmg"
+      },
+      {
+        "name": "1.0.5 (win/x64, exe)",
+        "url": "/julia-releases/bin/winnt/x64/1.0/julia-1.0.5-win64.exe"
+      },
+      {
+        "name": "1.0.5 (win/x86, exe)",
+        "url": "/julia-releases/bin/winnt/x86/1.0/julia-1.0.5-win32.exe"
+      },
+      {
+        "name": "1.1.0 (freebsd/x64, tar.gz)",
+        "url": "/julia-releases/bin/freebsd/x64/1.1/julia-1.1.0-freebsd-x86_64.tar.gz"
+      },
+      {
+        "name": "1.1.0 (linux/aarch64, tar.gz)",
+        "url": "/julia-releases/bin/linux/aarch64/1.1/julia-1.1.0-linux-aarch64.tar.gz"
+      },
+      {
+        "name": "1.1.0 (linux/armv7l, tar.gz)",
+        "url": "/julia-releases/bin/linux/armv7l/1.1/julia-1.1.0-linux-armv7l.tar.gz"
+      },
+      {
+        "name": "1.1.0 (linux/x64, tar.gz)",
+        "url": "/julia-releases/bin/linux/x64/1.1/julia-1.1.0-linux-x86_64.tar.gz"
+      },
+      {
+        "name": "1.1.0 (linux/x86, tar.gz)",
+        "url": "/julia-releases/bin/linux/x86/1.1/julia-1.1.0-linux-i686.tar.gz"
+      },
+      {
+        "name": "1.1.0 (mac/x64, dmg)",
+        "url": "/julia-releases/bin/mac/x64/1.1/julia-1.1.0-mac64.dmg"
+      },
+      {
+        "name": "1.1.0 (win/x64, exe)",
+        "url": "/julia-releases/bin/winnt/x64/1.1/julia-1.1.0-win64.exe"
+      },
+      {
+        "name": "1.1.0 (win/x86, exe)",
+        "url": "/julia-releases/bin/winnt/x86/1.1/julia-1.1.0-win32.exe"
+      },
+      {
+        "name": "1.1.1 (freebsd/x64, tar.gz)",
+        "url": "/julia-releases/bin/freebsd/x64/1.1/julia-1.1.1-freebsd-x86_64.tar.gz"
+      },
+      {
+        "name": "1.1.1 (linux/aarch64, tar.gz)",
+        "url": "/julia-releases/bin/linux/aarch64/1.1/julia-1.1.1-linux-aarch64.tar.gz"
+      },
+      {
+        "name": "1.1.1 (linux/x64, tar.gz)",
+        "url": "/julia-releases/bin/linux/x64/1.1/julia-1.1.1-linux-x86_64.tar.gz"
+      },
+      {
+        "name": "1.1.1 (linux/x86, tar.gz)",
+        "url": "/julia-releases/bin/linux/x86/1.1/julia-1.1.1-linux-i686.tar.gz"
+      },
+      {
+        "name": "1.1.1 (mac/x64, dmg)",
+        "url": "/julia-releases/bin/mac/x64/1.1/julia-1.1.1-mac64.dmg"
+      },
+      {
+        "name": "1.1.1 (win/x64, exe)",
+        "url": "/julia-releases/bin/winnt/x64/1.1/julia-1.1.1-win64.exe"
+      },
+      {
+        "name": "1.1.1 (win/x86, exe)",
+        "url": "/julia-releases/bin/winnt/x86/1.1/julia-1.1.1-win32.exe"
+      },
+      {
+        "name": "1.2.0 (freebsd/x64, tar.gz)",
+        "url": "/julia-releases/bin/freebsd/x64/1.2/julia-1.2.0-freebsd-x86_64.tar.gz"
+      },
+      {
+        "name": "1.2.0 (linux/aarch64, tar.gz)",
+        "url": "/julia-releases/bin/linux/aarch64/1.2/julia-1.2.0-linux-aarch64.tar.gz"
+      },
+      {
+        "name": "1.2.0 (linux/armv7l, tar.gz)",
+        "url": "/julia-releases/bin/linux/armv7l/1.2/julia-1.2.0-linux-armv7l.tar.gz"
+      },
+      {
+        "name": "1.2.0 (linux/x64, tar.gz)",
+        "url": "/julia-releases/bin/linux/x64/1.2/julia-1.2.0-linux-x86_64.tar.gz"
+      },
+      {
+        "name": "1.2.0 (linux/x86, tar.gz)",
+        "url": "/julia-releases/bin/linux/x86/1.2/julia-1.2.0-linux-i686.tar.gz"
+      },
+      {
+        "name": "1.2.0 (mac/x64, dmg)",
+        "url": "/julia-releases/bin/mac/x64/1.2/julia-1.2.0-mac64.dmg"
+      },
+      {
+        "name": "1.2.0 (win/x64, exe)",
+        "url": "/julia-releases/bin/winnt/x64/1.2/julia-1.2.0-win64.exe"
+      },
+      {
+        "name": "1.2.0 (win/x86, exe)",
+        "url": "/julia-releases/bin/winnt/x86/1.2/julia-1.2.0-win32.exe"
+      },
+      {
+        "name": "1.3.0 (freebsd/x64, tar.gz)",
+        "url": "/julia-releases/bin/freebsd/x64/1.3/julia-1.3.0-freebsd-x86_64.tar.gz"
+      },
+      {
+        "name": "1.3.0 (linux/aarch64, tar.gz)",
+        "url": "/julia-releases/bin/linux/aarch64/1.3/julia-1.3.0-linux-aarch64.tar.gz"
+      },
+      {
+        "name": "1.3.0 (linux/armv7l, tar.gz)",
+        "url": "/julia-releases/bin/linux/armv7l/1.3/julia-1.3.0-linux-armv7l.tar.gz"
+      },
+      {
+        "name": "1.3.0 (linux/x64, tar.gz)",
+        "url": "/julia-releases/bin/linux/x64/1.3/julia-1.3.0-linux-x86_64.tar.gz"
+      },
+      {
+        "name": "1.3.0 (linux/x86, tar.gz)",
+        "url": "/julia-releases/bin/linux/x86/1.3/julia-1.3.0-linux-i686.tar.gz"
+      },
+      {
+        "name": "1.3.0 (mac/x64, dmg)",
+        "url": "/julia-releases/bin/mac/x64/1.3/julia-1.3.0-mac64.dmg"
+      },
+      {
+        "name": "1.3.0 (win/x64, exe)",
+        "url": "/julia-releases/bin/winnt/x64/1.3/julia-1.3.0-win64.exe"
+      },
+      {
+        "name": "1.3.0 (win/x86, exe)",
+        "url": "/julia-releases/bin/winnt/x86/1.3/julia-1.3.0-win32.exe"
+      },
+      {
+        "name": "1.3.1 (freebsd/x64, tar.gz)",
+        "url": "/julia-releases/bin/freebsd/x64/1.3/julia-1.3.1-freebsd-x86_64.tar.gz"
+      },
+      {
+        "name": "1.3.1 (linux/aarch64, tar.gz)",
+        "url": "/julia-releases/bin/linux/aarch64/1.3/julia-1.3.1-linux-aarch64.tar.gz"
+      },
+      {
+        "name": "1.3.1 (linux/armv7l, tar.gz)",
+        "url": "/julia-releases/bin/linux/armv7l/1.3/julia-1.3.1-linux-armv7l.tar.gz"
+      },
+      {
+        "name": "1.3.1 (linux/x64, tar.gz)",
+        "url": "/julia-releases/bin/linux/x64/1.3/julia-1.3.1-linux-x86_64.tar.gz"
+      },
+      {
+        "name": "1.3.1 (linux/x86, tar.gz)",
+        "url": "/julia-releases/bin/linux/x86/1.3/julia-1.3.1-linux-i686.tar.gz"
+      },
+      {
+        "name": "1.3.1 (mac/x64, dmg)",
+        "url": "/julia-releases/bin/mac/x64/1.3/julia-1.3.1-mac64.dmg"
+      },
+      {
+        "name": "1.3.1 (win/x64, exe)",
+        "url": "/julia-releases/bin/winnt/x64/1.3/julia-1.3.1-win64.exe"
+      },
+      {
+        "name": "1.3.1 (win/x86, exe)",
+        "url": "/julia-releases/bin/winnt/x86/1.3/julia-1.3.1-win32.exe"
+      },
+      {
+        "name": "1.4.0 (freebsd/x64, tar.gz)",
+        "url": "/julia-releases/bin/freebsd/x64/1.4/julia-1.4.0-freebsd-x86_64.tar.gz"
+      },
+      {
+        "name": "1.4.0 (linux/aarch64, tar.gz)",
+        "url": "/julia-releases/bin/linux/aarch64/1.4/julia-1.4.0-linux-aarch64.tar.gz"
+      },
+      {
+        "name": "1.4.0 (linux/armv7l, tar.gz)",
+        "url": "/julia-releases/bin/linux/armv7l/1.4/julia-1.4.0-linux-armv7l.tar.gz"
+      },
+      {
+        "name": "1.4.0 (linux/x64, tar.gz)",
+        "url": "/julia-releases/bin/linux/x64/1.4/julia-1.4.0-linux-x86_64.tar.gz"
+      },
+      {
+        "name": "1.4.0 (linux/x86, tar.gz)",
+        "url": "/julia-releases/bin/linux/x86/1.4/julia-1.4.0-linux-i686.tar.gz"
+      },
+      {
+        "name": "1.4.0 (mac/x64, dmg)",
+        "url": "/julia-releases/bin/mac/x64/1.4/julia-1.4.0-mac64.dmg"
+      },
+      {
+        "name": "1.4.0 (win/x64, exe)",
+        "url": "/julia-releases/bin/winnt/x64/1.4/julia-1.4.0-win64.exe"
+      },
+      {
+        "name": "1.4.0 (win/x86, exe)",
+        "url": "/julia-releases/bin/winnt/x86/1.4/julia-1.4.0-win32.exe"
+      },
+      {
+        "name": "1.4.1 (freebsd/x64, tar.gz)",
+        "url": "/julia-releases/bin/freebsd/x64/1.4/julia-1.4.1-freebsd-x86_64.tar.gz"
+      },
+      {
+        "name": "1.4.1 (linux/aarch64, tar.gz)",
+        "url": "/julia-releases/bin/linux/aarch64/1.4/julia-1.4.1-linux-aarch64.tar.gz"
+      },
+      {
+        "name": "1.4.1 (linux/armv7l, tar.gz)",
+        "url": "/julia-releases/bin/linux/armv7l/1.4/julia-1.4.1-linux-armv7l.tar.gz"
+      },
+      {
+        "name": "1.4.1 (linux/x64, tar.gz)",
+        "url": "/julia-releases/bin/linux/x64/1.4/julia-1.4.1-linux-x86_64.tar.gz"
+      },
+      {
+        "name": "1.4.1 (linux/x86, tar.gz)",
+        "url": "/julia-releases/bin/linux/x86/1.4/julia-1.4.1-linux-i686.tar.gz"
+      },
+      {
+        "name": "1.4.1 (mac/x64, dmg)",
+        "url": "/julia-releases/bin/mac/x64/1.4/julia-1.4.1-mac64.dmg"
+      },
+      {
+        "name": "1.4.1 (mac/x64, tar.gz)",
+        "url": "/julia-releases/bin/mac/x64/1.4/julia-1.4.1-mac64.tar.gz"
+      },
+      {
+        "name": "1.4.1 (win/x64, exe)",
+        "url": "/julia-releases/bin/winnt/x64/1.4/julia-1.4.1-win64.exe"
+      },
+      {
+        "name": "1.4.1 (win/x64, tar.gz)",
+        "url": "/julia-releases/bin/winnt/x64/1.4/julia-1.4.1-win64.tar.gz"
+      },
+      {
+        "name": "1.4.1 (win/x86, exe)",
+        "url": "/julia-releases/bin/winnt/x86/1.4/julia-1.4.1-win32.exe"
+      },
+      {
+        "name": "1.4.1 (win/x86, tar.gz)",
+        "url": "/julia-releases/bin/winnt/x86/1.4/julia-1.4.1-win32.tar.gz"
+      },
+      {
+        "name": "1.4.2 (freebsd/x64, tar.gz)",
+        "url": "/julia-releases/bin/freebsd/x64/1.4/julia-1.4.2-freebsd-x86_64.tar.gz"
+      },
+      {
+        "name": "1.4.2 (linux/aarch64, tar.gz)",
+        "url": "/julia-releases/bin/linux/aarch64/1.4/julia-1.4.2-linux-aarch64.tar.gz"
+      },
+      {
+        "name": "1.4.2 (linux/x64, tar.gz)",
+        "url": "/julia-releases/bin/linux/x64/1.4/julia-1.4.2-linux-x86_64.tar.gz"
+      },
+      {
+        "name": "1.4.2 (linux/x86, tar.gz)",
+        "url": "/julia-releases/bin/linux/x86/1.4/julia-1.4.2-linux-i686.tar.gz"
+      },
+      {
+        "name": "1.4.2 (mac/x64, dmg)",
+        "url": "/julia-releases/bin/mac/x64/1.4/julia-1.4.2-mac64.dmg"
+      },
+      {
+        "name": "1.4.2 (mac/x64, tar.gz)",
+        "url": "/julia-releases/bin/mac/x64/1.4/julia-1.4.2-mac64.tar.gz"
+      },
+      {
+        "name": "1.4.2 (win/x64, exe)",
+        "url": "/julia-releases/bin/winnt/x64/1.4/julia-1.4.2-win64.exe"
+      },
+      {
+        "name": "1.4.2 (win/x86, exe)",
+        "url": "/julia-releases/bin/winnt/x86/1.4/julia-1.4.2-win32.exe"
+      },
+      {
+        "name": "1.5.0 (freebsd/x64, tar.gz)",
+        "url": "/julia-releases/bin/freebsd/x64/1.5/julia-1.5.0-freebsd-x86_64.tar.gz"
+      },
+      {
+        "name": "1.5.0 (linux/aarch64, tar.gz)",
+        "url": "/julia-releases/bin/linux/aarch64/1.5/julia-1.5.0-linux-aarch64.tar.gz"
+      },
+      {
+        "name": "1.5.0 (linux/x64, tar.gz)",
+        "url": "/julia-releases/bin/linux/x64/1.5/julia-1.5.0-linux-x86_64.tar.gz"
+      },
+      {
+        "name": "1.5.0 (linux/x86, tar.gz)",
+        "url": "/julia-releases/bin/linux/x86/1.5/julia-1.5.0-linux-i686.tar.gz"
+      },
+      {
+        "name": "1.5.0 (mac/x64, dmg)",
+        "url": "/julia-releases/bin/mac/x64/1.5/julia-1.5.0-mac64.dmg"
+      },
+      {
+        "name": "1.5.0 (mac/x64, tar.gz)",
+        "url": "/julia-releases/bin/mac/x64/1.5/julia-1.5.0-mac64.tar.gz"
+      },
+      {
+        "name": "1.5.0 (win/x64, exe)",
+        "url": "/julia-releases/bin/winnt/x64/1.5/julia-1.5.0-win64.exe"
+      },
+      {
+        "name": "1.5.0 (win/x64, tar.gz)",
+        "url": "/julia-releases/bin/winnt/x64/1.5/julia-1.5.0-win64.tar.gz"
+      },
+      {
+        "name": "1.5.0 (win/x86, exe)",
+        "url": "/julia-releases/bin/winnt/x86/1.5/julia-1.5.0-win32.exe"
+      },
+      {
+        "name": "1.5.0 (win/x86, tar.gz)",
+        "url": "/julia-releases/bin/winnt/x86/1.5/julia-1.5.0-win32.tar.gz"
+      },
+      {
+        "name": "1.5.1 (freebsd/x64, tar.gz)",
+        "url": "/julia-releases/bin/freebsd/x64/1.5/julia-1.5.1-freebsd-x86_64.tar.gz"
+      },
+      {
+        "name": "1.5.1 (linux/aarch64, tar.gz)",
+        "url": "/julia-releases/bin/linux/aarch64/1.5/julia-1.5.1-linux-aarch64.tar.gz"
+      },
+      {
+        "name": "1.5.1 (linux/x64, tar.gz)",
+        "url": "/julia-releases/bin/linux/x64/1.5/julia-1.5.1-linux-x86_64.tar.gz"
+      },
+      {
+        "name": "1.5.1 (linux/x86, tar.gz)",
+        "url": "/julia-releases/bin/linux/x86/1.5/julia-1.5.1-linux-i686.tar.gz"
+      },
+      {
+        "name": "1.5.1 (mac/x64, dmg)",
+        "url": "/julia-releases/bin/mac/x64/1.5/julia-1.5.1-mac64.dmg"
+      },
+      {
+        "name": "1.5.1 (mac/x64, tar.gz)",
+        "url": "/julia-releases/bin/mac/x64/1.5/julia-1.5.1-mac64.tar.gz"
+      },
+      {
+        "name": "1.5.1 (win/x64, exe)",
+        "url": "/julia-releases/bin/winnt/x64/1.5/julia-1.5.1-win64.exe"
+      },
+      {
+        "name": "1.5.1 (win/x64, tar.gz)",
+        "url": "/julia-releases/bin/winnt/x64/1.5/julia-1.5.1-win64.tar.gz"
+      },
+      {
+        "name": "1.5.1 (win/x86, exe)",
+        "url": "/julia-releases/bin/winnt/x86/1.5/julia-1.5.1-win32.exe"
+      },
+      {
+        "name": "1.5.1 (win/x86, tar.gz)",
+        "url": "/julia-releases/bin/winnt/x86/1.5/julia-1.5.1-win32.tar.gz"
+      },
+      {
+        "name": "1.5.2 (freebsd/x64, tar.gz)",
+        "url": "/julia-releases/bin/freebsd/x64/1.5/julia-1.5.2-freebsd-x86_64.tar.gz"
+      },
+      {
+        "name": "1.5.2 (linux/aarch64, tar.gz)",
+        "url": "/julia-releases/bin/linux/aarch64/1.5/julia-1.5.2-linux-aarch64.tar.gz"
+      },
+      {
+        "name": "1.5.2 (linux/x64, tar.gz)",
+        "url": "/julia-releases/bin/linux/x64/1.5/julia-1.5.2-linux-x86_64.tar.gz"
+      },
+      {
+        "name": "1.5.2 (linux/x86, tar.gz)",
+        "url": "/julia-releases/bin/linux/x86/1.5/julia-1.5.2-linux-i686.tar.gz"
+      },
+      {
+        "name": "1.5.2 (mac/x64, dmg)",
+        "url": "/julia-releases/bin/mac/x64/1.5/julia-1.5.2-mac64.dmg"
+      },
+      {
+        "name": "1.5.2 (mac/x64, tar.gz)",
+        "url": "/julia-releases/bin/mac/x64/1.5/julia-1.5.2-mac64.tar.gz"
+      },
+      {
+        "name": "1.5.2 (win/x64, exe)",
+        "url": "/julia-releases/bin/winnt/x64/1.5/julia-1.5.2-win64.exe"
+      },
+      {
+        "name": "1.5.2 (win/x64, tar.gz)",
+        "url": "/julia-releases/bin/winnt/x64/1.5/julia-1.5.2-win64.tar.gz"
+      },
+      {
+        "name": "1.5.2 (win/x86, exe)",
+        "url": "/julia-releases/bin/winnt/x86/1.5/julia-1.5.2-win32.exe"
+      },
+      {
+        "name": "1.5.2 (win/x86, tar.gz)",
+        "url": "/julia-releases/bin/winnt/x86/1.5/julia-1.5.2-win32.tar.gz"
+      }
+    ]
+  },
+  {
+    "distro": "Adobe Source",
+    "category": "font",
+    "urls": [
+      {
+        "name": "SourceCodePro latest (Black, otf)",
+        "url": "/adobe-fonts/source-code-pro/OTF/SourceCodePro-Black.otf"
+      },
+      {
+        "name": "SourceCodePro latest (Black, ttf)",
+        "url": "/adobe-fonts/source-code-pro/TTF/SourceCodePro-Black.ttf"
+      },
+      {
+        "name": "SourceCodePro latest (BlackIt, otf)",
+        "url": "/adobe-fonts/source-code-pro/OTF/SourceCodePro-BlackIt.otf"
+      },
+      {
+        "name": "SourceCodePro latest (BlackIt, ttf)",
+        "url": "/adobe-fonts/source-code-pro/TTF/SourceCodePro-BlackIt.ttf"
+      },
+      {
+        "name": "SourceCodePro latest (Bold, otf)",
+        "url": "/adobe-fonts/source-code-pro/OTF/SourceCodePro-Bold.otf"
+      },
+      {
+        "name": "SourceCodePro latest (Bold, ttf)",
+        "url": "/adobe-fonts/source-code-pro/TTF/SourceCodePro-Bold.ttf"
+      },
+      {
+        "name": "SourceCodePro latest (BoldIt, otf)",
+        "url": "/adobe-fonts/source-code-pro/OTF/SourceCodePro-BoldIt.otf"
+      },
+      {
+        "name": "SourceCodePro latest (BoldIt, ttf)",
+        "url": "/adobe-fonts/source-code-pro/TTF/SourceCodePro-BoldIt.ttf"
+      },
+      {
+        "name": "SourceCodePro latest (ExtraLight, otf)",
+        "url": "/adobe-fonts/source-code-pro/OTF/SourceCodePro-ExtraLight.otf"
+      },
+      {
+        "name": "SourceCodePro latest (ExtraLight, ttf)",
+        "url": "/adobe-fonts/source-code-pro/TTF/SourceCodePro-ExtraLight.ttf"
+      },
+      {
+        "name": "SourceCodePro latest (ExtraLightIt, otf)",
+        "url": "/adobe-fonts/source-code-pro/OTF/SourceCodePro-ExtraLightIt.otf"
+      },
+      {
+        "name": "SourceCodePro latest (ExtraLightIt, ttf)",
+        "url": "/adobe-fonts/source-code-pro/TTF/SourceCodePro-ExtraLightIt.ttf"
+      },
+      {
+        "name": "SourceCodePro latest (It, otf)",
+        "url": "/adobe-fonts/source-code-pro/OTF/SourceCodePro-It.otf"
+      },
+      {
+        "name": "SourceCodePro latest (It, ttf)",
+        "url": "/adobe-fonts/source-code-pro/TTF/SourceCodePro-It.ttf"
+      },
+      {
+        "name": "SourceCodePro latest (Light, otf)",
+        "url": "/adobe-fonts/source-code-pro/OTF/SourceCodePro-Light.otf"
+      },
+      {
+        "name": "SourceCodePro latest (Light, ttf)",
+        "url": "/adobe-fonts/source-code-pro/TTF/SourceCodePro-Light.ttf"
+      },
+      {
+        "name": "SourceCodePro latest (LightIt, otf)",
+        "url": "/adobe-fonts/source-code-pro/OTF/SourceCodePro-LightIt.otf"
+      },
+      {
+        "name": "SourceCodePro latest (LightIt, ttf)",
+        "url": "/adobe-fonts/source-code-pro/TTF/SourceCodePro-LightIt.ttf"
+      },
+      {
+        "name": "SourceCodePro latest (Medium, otf)",
+        "url": "/adobe-fonts/source-code-pro/OTF/SourceCodePro-Medium.otf"
+      },
+      {
+        "name": "SourceCodePro latest (Medium, ttf)",
+        "url": "/adobe-fonts/source-code-pro/TTF/SourceCodePro-Medium.ttf"
+      },
+      {
+        "name": "SourceCodePro latest (MediumIt, otf)",
+        "url": "/adobe-fonts/source-code-pro/OTF/SourceCodePro-MediumIt.otf"
+      },
+      {
+        "name": "SourceCodePro latest (MediumIt, ttf)",
+        "url": "/adobe-fonts/source-code-pro/TTF/SourceCodePro-MediumIt.ttf"
+      },
+      {
+        "name": "SourceCodePro latest (Regular, otf)",
+        "url": "/adobe-fonts/source-code-pro/OTF/SourceCodePro-Regular.otf"
+      },
+      {
+        "name": "SourceCodePro latest (Regular, ttf)",
+        "url": "/adobe-fonts/source-code-pro/TTF/SourceCodePro-Regular.ttf"
+      },
+      {
+        "name": "SourceCodePro latest (Semibold, otf)",
+        "url": "/adobe-fonts/source-code-pro/OTF/SourceCodePro-Semibold.otf"
+      },
+      {
+        "name": "SourceCodePro latest (Semibold, ttf)",
+        "url": "/adobe-fonts/source-code-pro/TTF/SourceCodePro-Semibold.ttf"
+      },
+      {
+        "name": "SourceCodePro latest (SemiboldIt, otf)",
+        "url": "/adobe-fonts/source-code-pro/OTF/SourceCodePro-SemiboldIt.otf"
+      },
+      {
+        "name": "SourceCodePro latest (SemiboldIt, ttf)",
+        "url": "/adobe-fonts/source-code-pro/TTF/SourceCodePro-SemiboldIt.ttf"
+      },
+      {
+        "name": "SourceCodeVariable latest (Italic, otf)",
+        "url": "/adobe-fonts/source-code-pro/VAR/SourceCodeVariable-Italic.otf"
+      },
+      {
+        "name": "SourceCodeVariable latest (Italic, ttf)",
+        "url": "/adobe-fonts/source-code-pro/VAR/SourceCodeVariable-Italic.ttf"
+      },
+      {
+        "name": "SourceCodeVariable latest (Roman, otf)",
+        "url": "/adobe-fonts/source-code-pro/VAR/SourceCodeVariable-Roman.otf"
+      },
+      {
+        "name": "SourceCodeVariable latest (Roman, ttf)",
+        "url": "/adobe-fonts/source-code-pro/VAR/SourceCodeVariable-Roman.ttf"
+      },
+      {
+        "name": "SourceSans3 latest (Black, otf)",
+        "url": "/adobe-fonts/source-sans-pro/OTF/SourceSans3-Black.otf"
+      },
+      {
+        "name": "SourceSans3 latest (Black, ttf)",
+        "url": "/adobe-fonts/source-sans-pro/TTF/SourceSans3-Black.ttf"
+      },
+      {
+        "name": "SourceSans3 latest (BlackIt, otf)",
+        "url": "/adobe-fonts/source-sans-pro/OTF/SourceSans3-BlackIt.otf"
+      },
+      {
+        "name": "SourceSans3 latest (BlackIt, ttf)",
+        "url": "/adobe-fonts/source-sans-pro/TTF/SourceSans3-BlackIt.ttf"
+      },
+      {
+        "name": "SourceSans3 latest (Bold, otf)",
+        "url": "/adobe-fonts/source-sans-pro/OTF/SourceSans3-Bold.otf"
+      },
+      {
+        "name": "SourceSans3 latest (Bold, ttf)",
+        "url": "/adobe-fonts/source-sans-pro/TTF/SourceSans3-Bold.ttf"
+      },
+      {
+        "name": "SourceSans3 latest (BoldIt, otf)",
+        "url": "/adobe-fonts/source-sans-pro/OTF/SourceSans3-BoldIt.otf"
+      },
+      {
+        "name": "SourceSans3 latest (BoldIt, ttf)",
+        "url": "/adobe-fonts/source-sans-pro/TTF/SourceSans3-BoldIt.ttf"
+      },
+      {
+        "name": "SourceSans3 latest (ExtraLight, otf)",
+        "url": "/adobe-fonts/source-sans-pro/OTF/SourceSans3-ExtraLight.otf"
+      },
+      {
+        "name": "SourceSans3 latest (ExtraLight, ttf)",
+        "url": "/adobe-fonts/source-sans-pro/TTF/SourceSans3-ExtraLight.ttf"
+      },
+      {
+        "name": "SourceSans3 latest (ExtraLightIt, otf)",
+        "url": "/adobe-fonts/source-sans-pro/OTF/SourceSans3-ExtraLightIt.otf"
+      },
+      {
+        "name": "SourceSans3 latest (ExtraLightIt, ttf)",
+        "url": "/adobe-fonts/source-sans-pro/TTF/SourceSans3-ExtraLightIt.ttf"
+      },
+      {
+        "name": "SourceSans3 latest (It, otf)",
+        "url": "/adobe-fonts/source-sans-pro/OTF/SourceSans3-It.otf"
+      },
+      {
+        "name": "SourceSans3 latest (It, ttf)",
+        "url": "/adobe-fonts/source-sans-pro/TTF/SourceSans3-It.ttf"
+      },
+      {
+        "name": "SourceSans3 latest (Light, otf)",
+        "url": "/adobe-fonts/source-sans-pro/OTF/SourceSans3-Light.otf"
+      },
+      {
+        "name": "SourceSans3 latest (Light, ttf)",
+        "url": "/adobe-fonts/source-sans-pro/TTF/SourceSans3-Light.ttf"
+      },
+      {
+        "name": "SourceSans3 latest (LightIt, otf)",
+        "url": "/adobe-fonts/source-sans-pro/OTF/SourceSans3-LightIt.otf"
+      },
+      {
+        "name": "SourceSans3 latest (LightIt, ttf)",
+        "url": "/adobe-fonts/source-sans-pro/TTF/SourceSans3-LightIt.ttf"
+      },
+      {
+        "name": "SourceSans3 latest (Regular, otf)",
+        "url": "/adobe-fonts/source-sans-pro/OTF/SourceSans3-Regular.otf"
+      },
+      {
+        "name": "SourceSans3 latest (Regular, ttf)",
+        "url": "/adobe-fonts/source-sans-pro/TTF/SourceSans3-Regular.ttf"
+      },
+      {
+        "name": "SourceSans3 latest (Semibold, otf)",
+        "url": "/adobe-fonts/source-sans-pro/OTF/SourceSans3-Semibold.otf"
+      },
+      {
+        "name": "SourceSans3 latest (Semibold, ttf)",
+        "url": "/adobe-fonts/source-sans-pro/TTF/SourceSans3-Semibold.ttf"
+      },
+      {
+        "name": "SourceSans3 latest (SemiboldIt, otf)",
+        "url": "/adobe-fonts/source-sans-pro/OTF/SourceSans3-SemiboldIt.otf"
+      },
+      {
+        "name": "SourceSans3 latest (SemiboldIt, ttf)",
+        "url": "/adobe-fonts/source-sans-pro/TTF/SourceSans3-SemiboldIt.ttf"
+      },
+      {
+        "name": "SourceSans3VF latest (Italic, otf)",
+        "url": "/adobe-fonts/source-sans-pro/VAR/SourceSans3VF-Italic.otf"
+      },
+      {
+        "name": "SourceSans3VF latest (Italic, ttf)",
+        "url": "/adobe-fonts/source-sans-pro/VAR/SourceSans3VF-Italic.ttf"
+      },
+      {
+        "name": "SourceSans3VF latest (Roman, otf)",
+        "url": "/adobe-fonts/source-sans-pro/VAR/SourceSans3VF-Roman.otf"
+      },
+      {
+        "name": "SourceSans3VF latest (Roman, ttf)",
+        "url": "/adobe-fonts/source-sans-pro/VAR/SourceSans3VF-Roman.ttf"
+      },
+      {
+        "name": "SourceSerifPro latest (Black, otf)",
+        "url": "/adobe-fonts/source-serif-pro/OTF/SourceSerifPro-Black.otf"
+      },
+      {
+        "name": "SourceSerifPro latest (Black, ttf)",
+        "url": "/adobe-fonts/source-serif-pro/TTF/SourceSerifPro-Black.ttf"
+      },
+      {
+        "name": "SourceSerifPro latest (BlackIt, otf)",
+        "url": "/adobe-fonts/source-serif-pro/OTF/SourceSerifPro-BlackIt.otf"
+      },
+      {
+        "name": "SourceSerifPro latest (BlackIt, ttf)",
+        "url": "/adobe-fonts/source-serif-pro/TTF/SourceSerifPro-BlackIt.ttf"
+      },
+      {
+        "name": "SourceSerifPro latest (Bold, otf)",
+        "url": "/adobe-fonts/source-serif-pro/OTF/SourceSerifPro-Bold.otf"
+      },
+      {
+        "name": "SourceSerifPro latest (Bold, ttf)",
+        "url": "/adobe-fonts/source-serif-pro/TTF/SourceSerifPro-Bold.ttf"
+      },
+      {
+        "name": "SourceSerifPro latest (BoldIt, otf)",
+        "url": "/adobe-fonts/source-serif-pro/OTF/SourceSerifPro-BoldIt.otf"
+      },
+      {
+        "name": "SourceSerifPro latest (BoldIt, ttf)",
+        "url": "/adobe-fonts/source-serif-pro/TTF/SourceSerifPro-BoldIt.ttf"
+      },
+      {
+        "name": "SourceSerifPro latest (ExtraLight, otf)",
+        "url": "/adobe-fonts/source-serif-pro/OTF/SourceSerifPro-ExtraLight.otf"
+      },
+      {
+        "name": "SourceSerifPro latest (ExtraLight, ttf)",
+        "url": "/adobe-fonts/source-serif-pro/TTF/SourceSerifPro-ExtraLight.ttf"
+      },
+      {
+        "name": "SourceSerifPro latest (ExtraLightIt, otf)",
+        "url": "/adobe-fonts/source-serif-pro/OTF/SourceSerifPro-ExtraLightIt.otf"
+      },
+      {
+        "name": "SourceSerifPro latest (ExtraLightIt, ttf)",
+        "url": "/adobe-fonts/source-serif-pro/TTF/SourceSerifPro-ExtraLightIt.ttf"
+      },
+      {
+        "name": "SourceSerifPro latest (It, otf)",
+        "url": "/adobe-fonts/source-serif-pro/OTF/SourceSerifPro-It.otf"
+      },
+      {
+        "name": "SourceSerifPro latest (It, ttf)",
+        "url": "/adobe-fonts/source-serif-pro/TTF/SourceSerifPro-It.ttf"
+      },
+      {
+        "name": "SourceSerifPro latest (Light, otf)",
+        "url": "/adobe-fonts/source-serif-pro/OTF/SourceSerifPro-Light.otf"
+      },
+      {
+        "name": "SourceSerifPro latest (Light, ttf)",
+        "url": "/adobe-fonts/source-serif-pro/TTF/SourceSerifPro-Light.ttf"
+      },
+      {
+        "name": "SourceSerifPro latest (LightIt, otf)",
+        "url": "/adobe-fonts/source-serif-pro/OTF/SourceSerifPro-LightIt.otf"
+      },
+      {
+        "name": "SourceSerifPro latest (LightIt, ttf)",
+        "url": "/adobe-fonts/source-serif-pro/TTF/SourceSerifPro-LightIt.ttf"
+      },
+      {
+        "name": "SourceSerifPro latest (Regular, otf)",
+        "url": "/adobe-fonts/source-serif-pro/OTF/SourceSerifPro-Regular.otf"
+      },
+      {
+        "name": "SourceSerifPro latest (Regular, ttf)",
+        "url": "/adobe-fonts/source-serif-pro/TTF/SourceSerifPro-Regular.ttf"
+      },
+      {
+        "name": "SourceSerifPro latest (Semibold, otf)",
+        "url": "/adobe-fonts/source-serif-pro/OTF/SourceSerifPro-Semibold.otf"
+      },
+      {
+        "name": "SourceSerifPro latest (Semibold, ttf)",
+        "url": "/adobe-fonts/source-serif-pro/TTF/SourceSerifPro-Semibold.ttf"
+      },
+      {
+        "name": "SourceSerifPro latest (SemiboldIt, otf)",
+        "url": "/adobe-fonts/source-serif-pro/OTF/SourceSerifPro-SemiboldIt.otf"
+      },
+      {
+        "name": "SourceSerifPro latest (SemiboldIt, ttf)",
+        "url": "/adobe-fonts/source-serif-pro/TTF/SourceSerifPro-SemiboldIt.ttf"
+      },
+      {
+        "name": "SourceSerifVariable latest (Italic, otf)",
+        "url": "/adobe-fonts/source-serif-pro/VAR/SourceSerifVariable-Italic.otf"
+      },
+      {
+        "name": "SourceSerifVariable latest (Italic, ttf)",
+        "url": "/adobe-fonts/source-serif-pro/VAR/SourceSerifVariable-Italic.ttf"
+      },
+      {
+        "name": "SourceSerifVariable latest (Roman, otf)",
+        "url": "/adobe-fonts/source-serif-pro/VAR/SourceSerifVariable-Roman.otf"
+      },
+      {
+        "name": "SourceSerifVariable latest (Roman, ttf)",
+        "url": "/adobe-fonts/source-serif-pro/VAR/SourceSerifVariable-Roman.ttf"
+      }
+    ]
+  },
+  {
+    "distro": "Adobe Source Han",
+    "category": "font",
+    "urls": [
+      {
+        "name": "SourceHanSansCN latest (SubsetOTF)",
+        "url": "/adobe-fonts/source-han-sans/SubsetOTF/SourceHanSansCN.zip"
+      },
+      {
+        "name": "SourceHanSansHC latest (OTF)",
+        "url": "/adobe-fonts/source-han-sans/OTF/SourceHanSansHC.zip"
+      },
+      {
+        "name": "SourceHanSansHK latest (SubsetOTF)",
+        "url": "/adobe-fonts/source-han-sans/SubsetOTF/SourceHanSansHK.zip"
+      },
+      {
+        "name": "SourceHanSansHWHC latest (OTF)",
+        "url": "/adobe-fonts/source-han-sans/OTF/SourceHanSansHWHC.zip"
+      },
+      {
+        "name": "SourceHanSansHWJ latest (OTF)",
+        "url": "/adobe-fonts/source-han-sans/OTF/SourceHanSansHWJ.zip"
+      },
+      {
+        "name": "SourceHanSansHWK latest (OTF)",
+        "url": "/adobe-fonts/source-han-sans/OTF/SourceHanSansHWK.zip"
+      },
+      {
+        "name": "SourceHanSansHWSC latest (OTF)",
+        "url": "/adobe-fonts/source-han-sans/OTF/SourceHanSansHWSC.zip"
+      },
+      {
+        "name": "SourceHanSansHWTC latest (OTF)",
+        "url": "/adobe-fonts/source-han-sans/OTF/SourceHanSansHWTC.zip"
+      },
+      {
+        "name": "SourceHanSansJ latest (OTF)",
+        "url": "/adobe-fonts/source-han-sans/OTF/SourceHanSansJ.zip"
+      },
+      {
+        "name": "SourceHanSansJP latest (SubsetOTF)",
+        "url": "/adobe-fonts/source-han-sans/SubsetOTF/SourceHanSansJP.zip"
+      },
+      {
+        "name": "SourceHanSansK latest (OTF)",
+        "url": "/adobe-fonts/source-han-sans/OTF/SourceHanSansK.zip"
+      },
+      {
+        "name": "SourceHanSansKR latest (SubsetOTF)",
+        "url": "/adobe-fonts/source-han-sans/SubsetOTF/SourceHanSansKR.zip"
+      },
+      {
+        "name": "SourceHanSansOTC_EL-R latest (OTC)",
+        "url": "/adobe-fonts/source-han-sans/OTC/SourceHanSansOTC_EL-R.zip"
+      },
+      {
+        "name": "SourceHanSansOTC_M-H latest (OTC)",
+        "url": "/adobe-fonts/source-han-sans/OTC/SourceHanSansOTC_M-H.zip"
+      },
+      {
+        "name": "SourceHanSansSC latest (OTF)",
+        "url": "/adobe-fonts/source-han-sans/OTF/SourceHanSansSC.zip"
+      },
+      {
+        "name": "SourceHanSansTC latest (OTF)",
+        "url": "/adobe-fonts/source-han-sans/OTF/SourceHanSansTC.zip"
+      },
+      {
+        "name": "SourceHanSansTW latest (SubsetOTF)",
+        "url": "/adobe-fonts/source-han-sans/SubsetOTF/SourceHanSansTW.zip"
+      },
+      {
+        "name": "SourceHanSerifCN latest (SubsetOTF)",
+        "url": "/adobe-fonts/source-han-serif/SubsetOTF/SourceHanSerifCN.zip"
+      },
+      {
+        "name": "SourceHanSerifJP latest (SubsetOTF)",
+        "url": "/adobe-fonts/source-han-serif/SubsetOTF/SourceHanSerifJP.zip"
+      },
+      {
+        "name": "SourceHanSerifJ_EL-M latest (OTF)",
+        "url": "/adobe-fonts/source-han-serif/OTF/SourceHanSerifJ_EL-M.zip"
+      },
+      {
+        "name": "SourceHanSerifJ_SB-H latest (OTF)",
+        "url": "/adobe-fonts/source-han-serif/OTF/SourceHanSerifJ_SB-H.zip"
+      },
+      {
+        "name": "SourceHanSerifKR latest (SubsetOTF)",
+        "url": "/adobe-fonts/source-han-serif/SubsetOTF/SourceHanSerifKR.zip"
+      },
+      {
+        "name": "SourceHanSerifK_EL-M latest (OTF)",
+        "url": "/adobe-fonts/source-han-serif/OTF/SourceHanSerifK_EL-M.zip"
+      },
+      {
+        "name": "SourceHanSerifK_SB-H latest (OTF)",
+        "url": "/adobe-fonts/source-han-serif/OTF/SourceHanSerifK_SB-H.zip"
+      },
+      {
+        "name": "SourceHanSerifOTC_EL-M latest (OTC)",
+        "url": "/adobe-fonts/source-han-serif/OTC/SourceHanSerifOTC_EL-M.zip"
+      },
+      {
+        "name": "SourceHanSerifOTC_SB-H latest (OTC)",
+        "url": "/adobe-fonts/source-han-serif/OTC/SourceHanSerifOTC_SB-H.zip"
+      },
+      {
+        "name": "SourceHanSerifSC_EL-M latest (OTF)",
+        "url": "/adobe-fonts/source-han-serif/OTF/SourceHanSerifSC_EL-M.zip"
+      },
+      {
+        "name": "SourceHanSerifSC_SB-H latest (OTF)",
+        "url": "/adobe-fonts/source-han-serif/OTF/SourceHanSerifSC_SB-H.zip"
+      },
+      {
+        "name": "SourceHanSerifTC_EL-M latest (OTF)",
+        "url": "/adobe-fonts/source-han-serif/OTF/SourceHanSerifTC_EL-M.zip"
+      },
+      {
+        "name": "SourceHanSerifTC_SB-H latest (OTF)",
+        "url": "/adobe-fonts/source-han-serif/OTF/SourceHanSerifTC_SB-H.zip"
+      },
+      {
+        "name": "SourceHanSerifTW latest (SubsetOTF)",
+        "url": "/adobe-fonts/source-han-serif/SubsetOTF/SourceHanSerifTW.zip"
+      }
+    ]
+  },
+  {
+    "distro": "Sarasa Gothic",
+    "category": "font",
+    "urls": [
+      {
+        "name": "0.14.5 (ttc)",
+        "url": "/github-release/be5invis/Sarasa-Gothic/LatestRelease/sarasa-gothic-ttc-0.14.5.7z"
+      },
+      {
+        "name": "0.14.5 (ttf)",
+        "url": "/github-release/be5invis/Sarasa-Gothic/LatestRelease/sarasa-gothic-ttf-0.14.5.7z"
+      }
+    ]
+  }
+]
