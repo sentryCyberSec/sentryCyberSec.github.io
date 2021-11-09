@@ -39,7 +39,7 @@ $(document).ready(() => {
 		window.location = `${window.location.protocol}//${window.location.host}${help_url}`;
 	});
 
-	$.getJSON("/static/200.json", (statusData) => {
+	$.getJSON("/static/tunasync.json", (statusData) => {
 		// remove help items for disabled/removed mirrors
 		let availableMirrorIds = new Set(statusData.map(x => x.name));
 		globalOptions.unlisted_mirrors.forEach(elem => {

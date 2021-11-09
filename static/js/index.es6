@@ -65,7 +65,7 @@ var vmMirList = new Vue({
 		},
 		refreshMirrorList () {
 			var self = this;
-			$.getJSON("/static/200.json", (status_data) => {
+			$.getJSON("/static/tunasync.json", (status_data) => {
 				var unlisted_mir = unlisted.map(d => processMirrorItem(d))
 				status_data = status_data.map(d => processMirrorItem(d));
 				var mir_data = $.merge(unlisted_mir, status_data);
