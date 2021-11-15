@@ -36,6 +36,7 @@ jobs:
       if: steps.cache.outputs.cache-hit != 'true'
       run: bundle install --path=vendor/bundle --jobs=4 --retry=3
     - name: Run jekyll-build
+      needs: Install dependencies
       run: bundle exec jekyll build --trace
     - name: Simple deploy with git
       uses: rdarida/simple-github-pages-deploy-action@v1
