@@ -36,13 +36,12 @@ jobs:
       if: steps.cache.outputs.cache-hit != 'true'
       run: bundle install --path=vendor/bundle --jobs=4 --retry=3
     - name: Run jekyll-build
-      needs: Install dependencies
-      run: bundle exec jekyll build --trace
+      run: bundle config set --local path 'vendor/bundle' && bundle exec jekyll build --trace
     - name: Simple deploy with git
       uses: rdarida/simple-github-pages-deploy-action@v1
       with: # optional
         git-user: ${{ secrets.Git_USERNAME}}
         git-email: ${{ secrets.Git_EMAIL }}
         git-base-folder: '_site'
-        commit-message: '<auto:> page build/deploy by github action.'
+        commit-message: '<auto generate:> page build/deploy by github action.'
         branch: 'gh-pages'
