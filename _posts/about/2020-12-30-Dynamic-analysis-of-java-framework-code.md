@@ -3,16 +3,17 @@ layout: about
 category: about
 Researchname:  Dynamic-analysis-of-java-framework-code
 toc: true
+author: Bin4xin
 permalink: /about/Dynamic-analysis-of-java-framework-code/
 ---
+
+# 零：[debug] the world
 
 - [ ] debug基本用法介绍
     - [ ] debug的几个分类断点介绍
     - [ ] 分类断点的使用
 - [x] debug简单例子演示
 - [ ] 以SHIRO框架来进行动态java代码调试分析
-
-# 零：[debug] the world
 
 ## 0x01：debug的基本用法
 

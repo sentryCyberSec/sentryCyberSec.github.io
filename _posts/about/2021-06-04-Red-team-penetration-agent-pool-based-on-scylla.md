@@ -3,8 +3,11 @@ layout: about
 category: about
 Researchname: ATT&CK - 基于 scylla 的访问代理池
 toc: true
+author: Bin4xin
 permalink: /about/Thousand-people-Thousand-faces-Red-team-penetration-agent-pool-based-on-scylla/
 ---
+
+# 红队技术向：基于 scylla 的访问代理池搭建
 
 >优点：手工burp渗透的同时，后台Xray扫描
 >
