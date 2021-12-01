@@ -2,9 +2,12 @@
 layout: about
 category: about
 Researchname: javaDeser
+author: Bin4xin
 permalink: /about/javaDeser/
 toc: true
 ---
+
+# Java 反序列化浅谈
 
 > <i class="fa fa-quote-left"></i> 序列化和反序列化是一种常见的编程思想；
 >
@@ -69,7 +72,7 @@ public class People implements Serializable {
 }
 ```
 所以简而言之，web中传入的反序列化RCE的poc必然是传入参数可控。效果：
-![](/static/web-image/javadeser/javaDeser-rce.png)
+![](https://i.loli.net/2021/11/18/GKTt6uvjdh1g5QY.png)
 
 
 ### 参考
