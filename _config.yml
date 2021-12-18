@@ -28,7 +28,9 @@ meow_404: true
 # Short text about your company. Shown in footer on every page and also separately on Home and Contact page.
 about: "本站由哨兵安全实验室支持创办"
 
-include: ['_pages']
+include: ['_pages','_primaryindex']
+exclude: ['BUILD.md','CHANGELOG.md','README.md','vendor']
+
 # jekyll-archives:
 #   enabled: [categories]
 #   layout:
@@ -36,14 +38,14 @@ include: ['_pages']
 #   permalink:
 #     category: /categories/:name/
 jekyll-archives:
-  enabled: [categories, tags]
   layouts:
-    category: category
+    categories: categories
     tag: tag
   permalinks:
     tag: /tags/:name/
     category: /categories/:name/
 
+contactMail: "administrator@sentrylab.cn"
 # option.
 githubAccess: "https://github.com/Bin4xin"
 githubRepos: "bin4xin.github.io"
