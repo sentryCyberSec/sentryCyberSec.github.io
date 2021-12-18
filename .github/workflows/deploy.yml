@@ -1,4 +1,4 @@
-name: build
+name: sentrylab build sync and reload
 
 on:
   push: 
@@ -14,7 +14,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        fetch-depth: 0    
+        fetch-depth: 0
 
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
