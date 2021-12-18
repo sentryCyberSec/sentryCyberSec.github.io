@@ -5,7 +5,7 @@ title: © 哨兵
 brand: Sentry CyberSecurity
 description: 哨兵安全实验室
 baseurl: "" #important: start with /
-url: "https://bin4xin.sentrylab.cn"
+url: "https://sentrylab.cn"
 
 highlighter: rouge
 markdown: kramdown
@@ -47,10 +47,10 @@ jekyll-archives:
 
 contactMail: "administrator@sentrylab.cn"
 # option.
-githubAccess: "https://github.com/Bin4xin"
-githubRepos: "bin4xin.github.io"
+githubAccess: "https://github.com/sentryCyberSec"
+githubRepos: "sentryCyberSec.github.io"
 # repos:
-githubIO: "https://bin4xin.github.io"
-giteeIO: "https://bin4xin.gitee.io"
+githubIO: "https://sentryCyberSec.github.io"
+giteeIO: "https://sentryCyberSec.gitee.io"
 # Build commit hash strings settings
 
