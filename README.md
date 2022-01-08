@@ -2,7 +2,7 @@
 
 <div align="center">
 
-© 哨兵博客 V1.0 Power by 哨兵安全实验室 | Jekyll | Github Action.
+© 哨兵博客 V1.0 由 [贡献者们](#) | Jekyll | Github Action 强力驱动
 
 ![sentrylab build sync and reload.](https://github.com/sentryCyberSec/sentryCyberSec.github.io/workflows/sentrylab%20build%20sync%20and%20reload./badge.svg)
 
