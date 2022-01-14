@@ -8,8 +8,6 @@ categories: [blog, 笔记, Android Reverse]
 permalink: /blog/2022/Learning-process-about-Tuoke-Android-Reverse/
 ---
 
-### 安卓逆向——脱壳学习记录
-
 #### 前言
 
 Android上的应用安装文件是apk格式，这个apk文件其实就是个归档文件压缩包，把应用相关的源码、资源文件、配置文件等乱七八糟的东西都简单粗暴的归档打包，其包内文件结构大体如下：
