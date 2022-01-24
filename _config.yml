@@ -6,12 +6,13 @@ brand: Sentry CyberSecurity
 description: 哨兵安全实验室
 baseurl: "" #important: start with /
 url: "https://sentrylab.cn"
+www_google_verify: "apz36MBrhPsyyKahn-qJWKDq0PQUASdgn5_nju0NwQE"
 
 highlighter: rouge
 markdown: kramdown
 kramdown:
-    input: GFM
-    hard_wrap: false
+  input: GFM
+  hard_wrap: false
 
 permalink: "/:categories/:year/:title/"
 
@@ -21,7 +22,7 @@ plugins:
   - jekyll-toc
 
 sass:
-    sass_dir: assets/css
+  sass_dir: assets/css
 future: true
 meow_404: true
 

@@ -4,14 +4,41 @@ title: Home
 permalink: /
 ---
 
+<link rel="stylesheet" type="text/css" href="/assets/css/card.css">
 <div id="service">
+  <!--<div class="container">-->
+  <devsite-header keep-tabs-visible="" top-row--height="65" bottom-row--height="48" bottom-tabs--height="48" fixed="">
+    <div class="devsite-header--inner nocontent">
+      <div class="devsite-top-logo-row-wrapper-wrapper">
+        <div class="devsite-top-logo-row-wrapper">
+          <div class="devsite-top-logo-row">
+            <div class="devsite-product-name-wrapper"></div>
+          </div>
+        </div>
+      </div>
+      <div class="devsite-collapsible-section" style="transform: translate3d(0px, 0px, 0px);">
+        <div class="devsite-header-background">
+          <div class="devsite-product-id-row" hidden="">
+            <div class="devsite-product-description-row"></div>
+          </div>
+          <div class="devsite-doc-set-nav-row">
+            <div class="devsite-product-button-row">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cws-banner cws-fullbleed" track-metadata-module="banner">
+        <p class="cws-banner__body-copy">
+          有关{% for about in site.categories['about'] limit:3 %}
+          <a href="{{ about.url | prepend: about.baseurl }}">{% if about.desc%}{{ about.desc }}{% endif %}</a>
+          {% endfor %}<a href={{"/about/"|prepend: site.baseurl}}>...</a>的描述。
+
+        </p>
+      </div>
+    </div>
+  </devsite-header>
+  <!--/container-->
   <div class="container">
-<!--<div class="row">-->
-<!--<div class="col-md-12">-->
-<!-- <h1> © 哨兵安全实验室 </h1>-->
-<!--</div>-->
-<!--</div>-->
-    <!----------分割线--------->
     <!--source <style and png files> from github.-->
     <div style="writing-mode: vertical-rl; font-family:STFangsong">
       <p class="Poetry-text" >草木风声势未安，孤舟惶恐再经滩。</p>
@@ -20,7 +47,7 @@ permalink: /
       <p class="Poetry-text">长歌正气重来读，我比前贤路已宽。</p>
       <p class="Poetry-text">&nbsp;&nbsp;&nbsp;&nbsp;————郁达夫 · 《乱离杂诗》</p>
     </div>
-    <div class="col-md-push-6 col-xs-offset-6 col-lg-push-6">
+    <!--<div class="col-md-push-6 col-xs-offset-6 col-lg-push-6">
       <div class="width-full">
         <svg viewBox="0 0 300 305" class="width-fit">
           <defs>
@@ -31,80 +58,44 @@ permalink: /
         <image mask="url(#https___github_githubassets_com_images_modules_site_home_astro-mona-alpha_jpg)" width="300" height="305" href="/assets/img/post-bg/astro-mona.jpg"></image>
         </svg>
       </div>
-    </div><!--github style end-->
+    </div>github style end-->
   </div><!--/container -->
-<!--under construction <div class="col-lg-push-12"><svg xmlns="http://www.w3.org/2000/svg" fill="none" preserveAspectRatio="none" viewBox="0 0 1680 40" class="position-absolute width-full z-1" style="bottom: -1px;"><path d="M0 40h1680V30S1340 0 840 0 0 30 0 30z" fill="#fff"></path></svg></div>  --> 
 </div><!--/service -->
 
-<div class="container">
-  <div class="row">
-    <div  class="col-md-6 col-md-push-6">
-      <h2> # 置顶文章 </h2> 
-      {% for top in site.categories['top'] limit:5 %}
-      <div class="event" data-event-date="{{top.date | date: "%F"}}">
-        <div class="event-title">
-          <a href="{{ top.url | prepend: site.baseurl }}">
-             <h4>{{ top.title }}</h4>
-          </a>
-        </div>
-        <div class="event-meta">
-          <span><strong>时间: </strong>{{top.date | date: "%F"}}{% if top.time %} {{top.time}} {% endif %}</span>
-          <span class="event-tags">
-            {% for tag in page.tags %}
-            <span class="label label-success">{{tag}}</span>
-            {% endfor %}
-          </span>
-          
-          <span class="event-status">
-          </span>
-        {% if top.video or top.slides or top.youtube or top.audio %}
-        <br>
-        {% if top.slides %}
-        <a data-toggle="tooltip" title="讲稿下载" class="label label-info" href="{{top.slides}}" target="_blank"><i class="fa fa-file-alt fa-fw"></i></a>
-        {% endif %}
-        {% endif %}
-        </div>
-        <div class="event-abstract">
-        {{ top.excerpt | strip_html | truncate: 240, '...'}}
-        </div>
+<div><!--  style="background: #222;"-->
+  <section style="font-family: 'DM Mono', monospace;color: white;" class="card-list">
+    {% for post in site.categories['blog'] limit:8 %}
+    <article class="card">
+      <header class="card-header">
+        <p>{{post.date | date: "%Y-%-m-%-d"}}</p>
+        <a href="{{ post.url | prepend: site.baseurl }}"><h2><i class="fa fa-file-text-o"></i> {{ post.title }}</h2></a>
+      </header>
+      <div class="post-abstract">
+        {{ post.excerpt | strip_html | truncate: 65, '...'}}
       </div>
-      {% endfor %} 
-      <div>
-        <a href={{"/tops/"|prepend: site.baseurl}}><i class="fa fa-hand-o-right"></i> MORE</a>
-      </div>
-    </div>
-  <div id="recent-posts" class="col-md-6 col-md-pull-6">
-      <h2> # 博客窗口 </h2>
-      {% for post in site.categories['blog'] limit:5 %}
-      <div class="post">
-        <div class="post-title">
-          <a href="{{ post.url | prepend: site.baseurl }}">
-             <h4><i class="fa fa-file-text-o"></i> {{ post.title }}</h4>
-          </a>
-        </div>
-        <div class="post-meta">
-          {{post.author}}, {{post.date | date: "%Y-%-m-%-d"}}
-        </div>
-        <div class="post-abstract">
-        {{ post.excerpt | strip_html | truncate: 240, '...'}}
-        </div>
-      </div>
-      {% endfor %}
-      <div>
-        <a href={{"/blog/"|prepend: site.baseurl}}><i class="fa fa-hand-o-right"></i> MORE</a>
-      </div>
-    </div>
-  </div>
+      <div class="card-author">
+        <a class="author-avatar">
+          <img src="/assets/img/contributors/{{post.author}}.jpg" />
+        </a>
+        <svg class="half-circle" viewBox="0 0 106 57">
+          <path d="M102 4c0 27.1-21.9 49-49 49S4 31.1 4 4"></path>
+        </svg>
 
-  <div class="row">
-  <div id="join-tuna" class="col-md-12">
-    <h2> # 加入我们 </h2> 
-    <p><a href="https://www.vulbox.com/team/ERRORS"><em>@</em>盒子团队 申请</a></p>
-    <p><a><em>@</em>或者邮件联系 {{site.contactMail}}</a></p>
-  </div>
-  </div>
+        <div class="author-name">
+          <div class="author-name-prefix">By</div>
+          {{post.author}}
+        </div>
+      </div>
+      <div class="tags">
+        {% for tag in post.tags %}
+        <a href="#">{{ tag }}</a>
+        {% endfor %}
+      </div>
+    </article>
+    {% endfor %}
+  </section>
 </div>
-
+<!-- TODO: JoinUS Btn underconstruction.
 <div id="join-button" class="visible-xs">
   <div class="container">
     <div class="row">
@@ -114,11 +105,12 @@ permalink: /
     </div>
   </div>
 </div>
+-->
 
 <script type="text/javascript">
 $(document).ready(function(){
   $('[data-toggle="tooltip"]').tooltip();
-  var today = function() { 
+  var today = function() {
     var pad = function (number) {
       var r = String(number);
       if ( r.length === 1 ) {
