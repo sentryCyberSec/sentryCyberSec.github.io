@@ -50,6 +50,7 @@ contactMail: "administrator@sentrylab.cn"
 # option.
 githubAccess: "https://github.com/sentryCyberSec"
 githubRepos: "sentryCyberSec.github.io"
+githubRepos-Branch: "main"
 # repos:
 githubIO: "https://sentryCyberSec.github.io"
 giteeIO: "https://sentryCyberSec.gitee.io"
