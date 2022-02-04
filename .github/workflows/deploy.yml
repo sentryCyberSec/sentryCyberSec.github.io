@@ -46,7 +46,7 @@ jobs:
       if: steps.cache.outputs.cache-hit != 'true'
       run: cd ${{ env.github-ReposAccess }} && bundle install --path=/tmp/bundle --jobs=4 --retry=3
     - name: Run jekyll-build
-      run: cd {{ env.github-ReposAccess }} && bundle config set --local path '/tmp/bundle' && bundle exec jekyll build --trace
+      run: cd ${{ env.github-ReposAccess }} && bundle config set --local path '/tmp/bundle' && bundle exec jekyll build --trace
     - name: Simple deploy with git
       uses: rdarida/simple-github-pages-deploy-action@v1
       with: # optional
