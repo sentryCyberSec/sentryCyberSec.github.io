@@ -13,9 +13,10 @@ permalink: /blog/2019/HOOK/BY/FRIDA/
 ## HOOK详解
 
 hook技术是指在android上进行的跨进程操作，包括
-一、native层hook，即：jni，本地调用java native interface，称之为本层hook；
-二、java本地接口
-三、java层hook
+
+- 一、native层hook，即：jni，本地调用java native interface，称之为本层hook；
+- 二、java本地接口
+- 三、java层hook
 
 
 * 实际上，Android本身进行且维护着一套事件分发机制，而应用程序则包括`应用触发事件`和`后台逻辑处理`

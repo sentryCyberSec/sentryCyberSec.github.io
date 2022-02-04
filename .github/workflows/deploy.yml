@@ -4,6 +4,9 @@ on:
   push: 
     branches: [main]
 
+env:
+  github-Access: "https://github.com/Bin4xin"
+  github-ReposAccess: "bin4xin.github.io"
 
 jobs:
   build:
@@ -16,6 +19,14 @@ jobs:
       with:
         fetch-depth: 0
 
+    - name: Clone and copy files
+      run: |
+        git clone ${{ env.github-Access }}/${{ env.github-ReposAccess }}
+        cd ${{ env.github-ReposAccess }}
+        cp -R ../_posts/* _posts/
+        echo "sentrylab.cn" > CNAME
+        sed -i "/^source/c source 'https://rubygems.org'" Gemfile
+
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
@@ -26,22 +37,21 @@ jobs:
       env:
         CACHE_ID: 2
       with:
-        path: vendor/bundle
-        key: ${{ runner.os }}-bundler-${{ env.CACHE_ID }}-${{ hashFiles('Gemfile') }}
+        path: /tmp/bundle
+        key: ${{ runner.os }}-bundler-${{ env.CACHE_ID }}-${{ hashFiles('${{ env.github-ReposAccess }}/Gemfile') }}
         restore-keys: |
           ${{ runner.os }}-bundler-${{ env.CACHE_ID }}-
-    - name: Change rubygems loading
-      run: sed -i "/^source/c source 'https://rubygems.org'" Gemfile
+
     - name: Install dependencies
       if: steps.cache.outputs.cache-hit != 'true'
-      run: bundle install --path=vendor/bundle --jobs=4 --retry=3
+      run: cd bundle install --path=/tmp/bundle --jobs=4 --retry=3
     - name: Run jekyll-build
-      run: bundle config set --local path 'vendor/bundle' && bundle exec jekyll build --trace
+      run: export work_dir="`pwd`/${{ env.github-ReposAccess }}" && cd $work_dir && bundle config set --local path '/tmp/bundle' && bundle exec jekyll build --trace
     - name: Simple deploy with git
       uses: rdarida/simple-github-pages-deploy-action@v1
       with: # optional
         git-user: ${{ secrets.Git_USERNAME}}
         git-email: ${{ secrets.Git_EMAIL }}
-        git-base-folder: '_site'
+        git-base-folder: '${{ env.github-ReposAccess }}/_site'
         commit-message: '<auto generate:> page build/deploy by github action.'
         branch: 'gh-pages'
