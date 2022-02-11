@@ -46,12 +46,14 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: |
           cd ${{ env.github-ReposAccess }} && bundle install --path=/tmp/bundle --jobs=4 --retry=3
+      # bundle config set --local path 'vendor/bundle' &&
+      - name: Run jekyll-build
+        run: |
+          cd ${{ env.github-ReposAccess }}
           commitString=$(git rev-parse HEAD)
           echo "harmony: 国家公祭日" >> _config.yml
           echo "harmonyURL: http://www.cngongji.cn" >> _config.yml
-      # bundle config set --local path 'vendor/bundle' &&
-      - name: Run jekyll-build
-        run: cd ${{ env.github-ReposAccess }} && bundle config set --local path '/tmp/bundle' && bundle exec jekyll build --trace
+          bundle config set --local path '/tmp/bundle' && bundle exec jekyll build --trace
 
       - name: simple deploy with git
         uses: rdarida/simple-github-pages-deploy-action@v1
