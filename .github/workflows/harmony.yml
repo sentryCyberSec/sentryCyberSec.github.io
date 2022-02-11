@@ -58,6 +58,6 @@ jobs:
         with: # optional
           git-user: ${{ secrets.Git_USERNAME }}
           git-email: ${{ secrets.Git_EMAIL }}
-          git-base-folder: '_site'
+          git-base-folder: '${{ env.github-ReposAccess }}/_site'
           commit-message: '<auto generate>: page build/deploy by github action.'
           branch: 'gh-pages'
