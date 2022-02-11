@@ -2,7 +2,7 @@
 layout: post
 title: "关于虚函数表的学习过程"
 date: 2022-01-09
-author: codecat
+author: codecat11
 toc: true
 categories:
 - blog
