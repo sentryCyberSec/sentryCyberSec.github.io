@@ -5,7 +5,10 @@ date: 2021-12-23
 wrench: 2021-12-23
 author: D3ch4ng
 toc: true
-categories: [blog, 笔记, NMAP]
+categories:
+- blog
+tags:
+- NMAP
 permalink: /blog/2021/nmap工具的用法及nmap与aquatone工具联动用法/
 ---
 

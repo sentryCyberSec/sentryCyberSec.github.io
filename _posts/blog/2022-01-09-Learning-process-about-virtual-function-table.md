@@ -4,7 +4,10 @@ title: "关于虚函数表的学习过程"
 date: 2022-01-09
 author: codecat
 toc: true
-categories: [blog, 笔记]
+categories:
+- blog
+tags:
+- 笔记
 permalink: /blog/2022/Learning-process-about-virtual-function-table/
 ---
 
