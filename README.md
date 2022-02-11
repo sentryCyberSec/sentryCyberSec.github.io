@@ -8,9 +8,11 @@
 
 <p align="center">
   <a href="https://sentryCyberSec.github.io/">网站</a> •
-  <a href="https://sentryCyberSec.gitee.io/">CN镜像(建设中)</a> •
   <a href="https://sentryCyberSec.github.io/blog">博客</a> •
   <a href="https://sentryCyberSec.github.io/about">我的研究</a>
+
+[comment]: <> (  <a href="https://sentryCyberSec.gitee.io/">CN镜像&#40;建设中&#41;</a> •)
+
 </p>
 </div>
 <ul>
