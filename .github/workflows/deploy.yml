@@ -1,7 +1,8 @@
 name: sentrylab build sync and reload.
 
 on:
-  #  [workflow_dispatch]
+  push:
+  pull_request:
   schedule:
     - cron: '0 16 * * 4'
 #换算为北京时间，加上八个小时即
