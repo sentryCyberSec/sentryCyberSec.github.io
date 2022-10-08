@@ -2,11 +2,11 @@ name: sentrylab build sync and reload.
 
 on:
   push:
+    branches:
+      - main
   pull_request:
   schedule:
-    - cron: '0 16 * * 4'
-#换算为北京时间，加上八个小时即
-#每周周五凌晨零点
+    - cron: '0 15 * * *'
 env:
   github-Access: "https://github.com/Bin4xin"
   github-ReposAccess: "bin4xin.github.io"
