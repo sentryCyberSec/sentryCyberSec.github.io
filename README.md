@@ -2,7 +2,7 @@
 
 <div align="center">
 
-© 哨兵博客 V1.0 由 [贡献者们](https://github.com/sentryCyberSec/sentryCyberSec.github.io/graphs/contributors) | Jekyll | Github Action 强力驱动
+© 哨兵博客 由 [贡献者们](https://github.com/sentryCyberSec/sentryCyberSec.github.io/graphs/contributors) | Jekyll | Github Action 强力驱动
 
 ![sentrylab build sync and reload.](https://github.com/sentryCyberSec/sentryCyberSec.github.io/workflows/sentrylab%20build%20sync%20and%20reload./badge.svg)
 
@@ -17,6 +17,7 @@
 </div>
 <ul>
 <li><h3>目录</h3></li>
-<li><a href="https://github.com/sentryCyberSec/sentryCyberSec.github.io/blob/main/CHANGELOG.md">::历史记录相关文档::</a></li>
-<li><a href="https://github.com/sentryCyberSec/sentryCyberSec.github.io/blob/main/BUILD.md">::构建相关文档::</a></li>
+<li><a href="https://github.com/Bin4xin/bin4xin.github.io/blob/main/_includes/CHANGELOG.md">::历史记录相关文档::</a></li>
 </ul>
+
+> 详细内容移步点击以[参见：Wiki](https://github.com/Bin4xin/bin4xin.github.io/wiki)
