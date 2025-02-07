@@ -46,7 +46,7 @@ jobs:
         ruby-version: 2.6
     - name: Cache Ruby Bundler
       id: cache
-      uses: actions/cache@v2
+      uses: actions/cache@v4
       env:
         CACHE_ID: 3
       with:
@@ -56,9 +56,8 @@ jobs:
           ${{ runner.os }}-bundler-${{ env.CACHE_ID }}-
 
     - name: Install dependencies
-      if: steps.cache.outputs.cache-hit != 'true'
       run: |
-        cd ${{ env.github-ReposAccess }} && gem update --system 3.2.3 && bundle config set --local path 'vendor/bundle' && bundle install --jobs=4 --retry=3
+        cd ${{ env.github-ReposAccess }} && gem update --system 3.2.3 && bundle config set --local path '/tmp/bundle' && bundle install --jobs=4 --retry=3
         bundle exec jekyll build --trace
     - name: Simple deploy with git
       uses: JamesIves/github-pages-deploy-action@v4
@@ -66,5 +65,5 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.TOKEN }}
         BASE_BRANCH: 'main'
         BRANCH: 'gh-pages'
-        FOLDER: '/home/runner/work/sentryCyberSec.github.io/${{ env.github-ReposAccess }}/_site'
+        FOLDER: '${{ env.github-ReposAccess }}/_site'
         commit-message: '<auto generate>:🚀sentinel page build/deploy by github action'
