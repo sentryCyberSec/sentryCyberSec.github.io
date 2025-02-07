@@ -66,5 +66,5 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.TOKEN }}
         BASE_BRANCH: 'main'
         BRANCH: 'gh-pages'
-        FOLDER: '${{ env.github-ReposAccess }}/_site'
-        commit-message: '<auto generate>:🚀page build/deploy by github action.'
+        FOLDER: '_site'
+        commit-message: '<auto generate>:🚀sentinel home page build/deploy by github action.'
