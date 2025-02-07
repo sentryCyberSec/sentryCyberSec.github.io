@@ -59,8 +59,7 @@ jobs:
       if: steps.cache.outputs.cache-hit != 'true'
       run: |
         cd ${{ env.github-ReposAccess }} && gem update --system 3.2.3 && bundle config set --local path 'vendor/bundle' && bundle install --jobs=4 --retry=3
-    - name: Run jekyll-build
-      run: cd ${{ env.github-ReposAccess }} && gem update --system 3.2.3 && bundle config set --local path 'vendor/bundle' && bundle exec jekyll build --trace
+        bundle exec jekyll build --trace
     - name: Simple deploy with git
       uses: JamesIves/github-pages-deploy-action@v4
       with:
