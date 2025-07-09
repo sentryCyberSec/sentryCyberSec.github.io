@@ -35,7 +35,7 @@ jobs:
         git clone ${{ env.github-Access }}/${{ env.github-ReposAccess }}
         cd ${{ env.github-ReposAccess }}
         cp -R ../_posts/* _posts/
-        echo "sentrylab.cn" > CNAME
+        echo "www.sentrylab.cn" > CNAME
         commitString=$(git rev-list HEAD --abbrev-commit --max-count=1)
         echo "commitString: $commitString" >> _config.yml
         sed -i "/^source/c source 'https://rubygems.org'" Gemfile
