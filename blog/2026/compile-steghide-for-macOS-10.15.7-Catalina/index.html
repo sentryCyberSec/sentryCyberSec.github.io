@@ -23,13 +23,13 @@
 
 <!-- Open Graph metadata -->
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Industrial Internet CTF 2022 walkthrough | © 哨兵" />
+<meta property="og:title" content="Compiled 「steghide」 for macOS 10.15.7/Catalina | © 哨兵" />
 <meta property="og:description" content=" &lt;div class=&quot;container mtb&quot;&gt;
     &lt;div class=&quot;row d-flex &quot;&gt;
         &lt;!-- SINGLE POST --&gt;
         &lt;div class=&quot;col-lg-8 markdown-body-img flex-column&quot;&gt;
             &lt;!-- Blog Post  --&gt;
-            &lt;a href=&quot;/blog/2022/Industrial-Internet-CTF-2022/&quot;&gt;&lt;h1 class=&quot;ctitle&quot;&gt;Industrial Internet CTF 2022 walkthrough&lt;/h1&gt;&lt;/a&gt;
+            &lt;a href=&quot;/blog/2026/compile-steghide-for-macOS-10.15.7-Catalina/&quot;&gt;&lt;h1 class=&quot;ctitle&quot;&gt;Compiled 「steghide」 for macOS 10.15.7/Catalina&lt;/h1&gt;&lt;/a&gt;
             &lt;csmall&gt;&lt;div class=&quot;d-flex items-center&quot;&gt;
                 &lt;!--article author end--&gt;
 
@@ -57,82 +57,103 @@
         
 
         
-            on Sep 25, 2022
+            
+                
+                        23 hours ago
+                
+            
         
     &lt;/a&gt;
 &lt;/div&gt;
             &lt;/div&gt;&lt;/csmall&gt;
             &lt;div class=&quot;post-content&quot;&gt; 
-            &lt;blockquote&gt;
-  &lt;p&gt;2022 工业互联网 CTF 一道WEB；&lt;/p&gt;
-&lt;/blockquote&gt;
+            &lt;h2 id=&quot;1-安装-libmcrypt-库&quot;&gt;1. 安装 libmcrypt 库&lt;/h2&gt;
 
-&lt;h2 id=&quot;-0x01考点&quot;&gt;# 0x01、考点&lt;/h2&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 下载源码包&lt;/span&gt;
+curl &lt;span class=&quot;nt&quot;&gt;-LO&lt;/span&gt; https://downloads.sourceforge.net/project/mcrypt/Libmcrypt/2.5.8/libmcrypt-2.5.8.tar.gz
 
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;file_get_content&lt;/code&gt; fuzzing内容文件读取；&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$_GET&lt;/code&gt;型&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;include_once&lt;/code&gt;本地文件包含。&lt;/li&gt;
-&lt;/ul&gt;
+&lt;span class=&quot;c&quot;&gt;# 解压&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;tar &lt;/span&gt;xzf libmcrypt-2.5.8.tar.gz
 
-&lt;h2 id=&quot;-1x01绕过&quot;&gt;# 1x01、绕过&lt;/h2&gt;
+&lt;span class=&quot;c&quot;&gt;# 进入目录&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;libmcrypt-2.5.8
 
-&lt;p&gt;给出的url主页面有一个链接指向到&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;read.php?Book=ZGRsLnR4dA==&lt;/code&gt;，是&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ddl.txt&lt;/code&gt;Base64编码，尝试了一些Linux下的绝对路径文件&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Base64 payload&lt;/code&gt;&lt;/p&gt;
+&lt;span class=&quot;c&quot;&gt;# 配置编译参数（使用特定的 CFLAGS）&lt;/span&gt;
+./configure &lt;span class=&quot;nv&quot;&gt;CFLAGS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;-g -O2 -Wno-implicit-function-declaration&quot;&lt;/span&gt;
 
-&lt;p&gt;页面提示回显&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;book/Base64 payload&lt;/code&gt;不存在&lt;/p&gt;
+&lt;span class=&quot;c&quot;&gt;# 编译&lt;/span&gt;
+make
 
-&lt;ul&gt;
-  &lt;li&gt;根据提示&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;read.php&lt;/code&gt;应该读取的是book目录下文件，查看了一下book目录，发现中间件开启了&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;auto_index&lt;/code&gt;，只有一个文本文件；&lt;/li&gt;
-  &lt;li&gt;尝试&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;目录穿越payload&lt;/code&gt;，具体提示忘了，即猜测对&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;../&lt;/code&gt;做了一些操作。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;于是尝试了：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;../&lt;/code&gt;url编码、双写绕过，发现双写绕过&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/read.php?Book=Li4uLy4vcmVhZC5waHA=&lt;/code&gt;可以读取：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;//image.isisy.com/images/2022/09/25/IMG_2042.png&quot; alt=&quot;IMG_2042.png&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;我们可以看到操作代码：&lt;/p&gt;
-
-&lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;str_replace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;../&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;..&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# 安装（需要管理员权限）&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;make &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h2 id=&quot;-2x01hint&quot;&gt;# 2x01、hint&lt;/h2&gt;
+&lt;h2 id=&quot;2-安装-jpeg-库&quot;&gt;2. 安装 JPEG 库&lt;/h2&gt;
 
-&lt;p&gt;进一步使用组合爆破：Base64（&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;..././..././..././&lt;/code&gt; + &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;文件路径&lt;/code&gt;）发现：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.bash_history&lt;/code&gt;文件：&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 下载 JPEG 源码&lt;/span&gt;
+curl &lt;span class=&quot;nt&quot;&gt;-O&lt;/span&gt; https://www.ijg.org/files/jpegsrc.v9f.tar.gz
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; /var/www/ctf/
-&lt;span class=&quot;nb&quot;&gt;ls
-cd &lt;/span&gt;V72J1dn23wjFrq
-&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;.php
+&lt;span class=&quot;c&quot;&gt;# 解压&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;tar &lt;/span&gt;xzf jpegsrc.v9f.tar.gz
+
+&lt;span class=&quot;c&quot;&gt;# 进入目录&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;jpeg-9f
+
+&lt;span class=&quot;c&quot;&gt;# 配置（指定安装路径为 /usr/local）&lt;/span&gt;
+./configure &lt;span class=&quot;nt&quot;&gt;--prefix&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/usr/local
+
+&lt;span class=&quot;c&quot;&gt;# 编译&lt;/span&gt;
+make
+
+&lt;span class=&quot;c&quot;&gt;# 安装&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;make &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;我们可以看到文件中的hint，而且根据1x01章节我们直接访问url&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;http://eci-2zeblmhade5fptwofhr8.cloudeci1.ichunqiu.com/V72J1dn23wjFrq/&lt;/code&gt;可以直接看到&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;demo.php&lt;/code&gt;文件&lt;/p&gt;
+&lt;h2 id=&quot;3-安装-steghide&quot;&gt;3. 安装 steghide&lt;/h2&gt;
 
-&lt;p&gt;直接读取：&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 克隆源代码&lt;/span&gt;
+git clone https://github.com/StegHigh/steghide.git
 
-&lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;error_reporting&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$file&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$_GET&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;ops&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$file&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str_replace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;../&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;..&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;include_once&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;	
-&lt;span class=&quot;cp&quot;&gt;?&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# 进入目录&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;steghide/
+
+&lt;span class=&quot;c&quot;&gt;# 配置（指定 JPEG 和 libmcrypt 的路径）&lt;/span&gt;
+./configure &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;CPPFLAGS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;-I/usr/local/Cellar/jpeg/9f/include -I/usr/local/include&quot;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;LDFLAGS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;-L/usr/local/Cellar/jpeg/9f/lib -L/usr/local/lib -ljpeg -lmcrypt&quot;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# 编译（指定使用 glibtool）&lt;/span&gt;
+make &lt;span class=&quot;nv&quot;&gt;LIBTOOL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;glibtool
+
+&lt;span class=&quot;c&quot;&gt;# 安装&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;make &lt;span class=&quot;nv&quot;&gt;LIBTOOL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;glibtool &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h2 id=&quot;-3x01文件包含&quot;&gt;# 3x01、文件包含&lt;/h2&gt;
-
-&lt;p&gt;基本步骤：&lt;/p&gt;
+&lt;h2 id=&quot;依赖关系说明&quot;&gt;依赖关系说明&lt;/h2&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ops=file:///etc/passwd&lt;/code&gt;读取相关文件，找到日志路径；&lt;/li&gt;
-  &lt;li&gt;日志文件写入webshell&lt;/li&gt;
-  &lt;li&gt;过程2可以参考文件[1]&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;libmcrypt&lt;/strong&gt;：加密算法库&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;JPEG 库&lt;/strong&gt;：图像处理库，版本为 9f&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;steghide&lt;/strong&gt;：依赖于上述两个库，用于在图像中隐藏信息&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;不过当时时间较为紧张，暂未完成这一步，有些遗憾。&lt;/p&gt;
+&lt;h2 id=&quot;注意事项&quot;&gt;注意事项&lt;/h2&gt;
 
-&lt;h2 id=&quot;参考&quot;&gt;参考&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;这些命令需要在 Unix/Linux/macOS 系统下执行&lt;/li&gt;
+  &lt;li&gt;部分命令需要管理员权限（sudo）&lt;/li&gt;
+  &lt;li&gt;确保系统已安装必要的开发工具：gcc, make, autoconf, automake, libtool 等&lt;/li&gt;
+  &lt;li&gt;如果遇到路径问题，可能需要根据实际安装位置调整 CPPFLAGS 和 LDFLAGS 中的路径&lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;[1].&lt;a href=&quot;https://henkel-security.com/2020/08/vulnhub-dc-5/&quot; target=&quot;_blank&quot;&gt;VulnHub – DC-5&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;h2 id=&quot;赛题相关&quot;&gt;赛题相关&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;steghide extract &lt;span class=&quot;nt&quot;&gt;-sf&lt;/span&gt; shanghao.jpg &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; qsnctf
+wrote extracted data to &lt;span class=&quot;s2&quot;&gt;&quot;flag.txt&quot;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;flag.txt 
+qsnctf&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;07f..d10&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
                 &lt;!-- [x] 2022/10/20/10:49:36 fixed: while width &lt; some inch. would be flex column not display like a row.--&gt;
 &lt;footer&gt;
@@ -144,7 +165,7 @@ cd &lt;/span&gt;V72J1dn23wjFrq
 			&lt;div class=&quot;col-xs-4-5 pr-4 mb-8 px-md-6 container-xl mx-auto py-6 py-lg-6 clearfix &quot;&gt;
 				&lt;h2 class=&quot;lead&quot;&gt;申明&lt;/h2&gt;
 				&lt;div&gt;
-					&lt;div class=&quot;mb-2&quot;&gt;&lt;a href=&quot;/blog/2022/Industrial-Internet-CTF-2022/&quot; target=&quot;_blank&quot; class=&quot; text-bold&quot;&gt;
+					&lt;div class=&quot;mb-2&quot;&gt;&lt;a href=&quot;/blog/2026/compile-steghide-for-macOS-10.15.7-Catalina/&quot; target=&quot;_blank&quot; class=&quot; text-bold&quot;&gt;
 						&lt;div class=&quot;fa fa-link&quot;&gt;&lt;/div&gt;
 						转载请申明本文档链接&lt;/a&gt;&lt;/div&gt;
 					&lt;div&gt;&lt;a href=&quot;https://github.com/Bin4xin&quot; target=&quot;_blank&quot;  class=&quot;text-bold&quot;&gt;
@@ -156,7 +177,7 @@ cd &lt;/span&gt;V72J1dn23wjFrq
 			&lt;div class=&quot;col-xs-4-5 pr-4 mb-8 px-md-6 container-xl mx-auto py-6 py-lg-6 clearfix&quot;&gt;
 				&lt;h2 class=&quot;lead&quot;&gt;贡献开源文档&lt;/h2&gt;
 				&lt;div&gt;
-					&lt;a href=&quot;https://github.com/Bin4xin/bin4xin.github.io/tree/main/_posts/blog/2022-09-25-Industrial-Internet-CTF-2022.md&quot; target=&quot;_blank&quot; class=&quot;no-underline btn mr-1 color-border-accent-emphasis&quot;&gt;
+					&lt;a href=&quot;https://github.com/Bin4xin/bin4xin.github.io/tree/main/_posts/blog/2026-02-05-compile-steghide-for-macOS-10.15.7-Catalina.md&quot; target=&quot;_blank&quot; class=&quot;no-underline btn mr-1 color-border-accent-emphasis&quot;&gt;
 						&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; role=&quot;img&quot; class=&quot;octicon mr-1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot; height=&quot;16&quot; fill=&quot;currentColor&quot; style=&quot;display: inline-block; user-select: none; vertical-align: text-bottom; overflow: visible;&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M7.177 3.073L9.573.677A.25.25 0 0110 .854v4.792a.25.25 0 01-.427.177L7.177 3.427a.25.25 0 010-.354zM3.75 2.5a.75.75 0 100 1.5.75.75 0 000-1.5zm-2.25.75a2.25 2.25 0 113 2.122v5.256a2.251 2.251 0 11-1.5 0V5.372A2.25 2.25 0 011.5 3.25zM11 2.5h-1V4h1a1 1 0 011 1v5.628a2.251 2.251 0 101.5 0V5A2.5 2.5 0 0011 2.5zm1 10.25a.75.75 0 111.5 0 .75.75 0 01-1.5 0zM3.75 12a.75.75 0 100 1.5.75.75 0 000-1.5z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;
 						贡献当前开源文档
 					&lt;/a&gt;
@@ -171,7 +192,7 @@ cd &lt;/span&gt;V72J1dn23wjFrq
 					&lt;div class=&quot;fa fa-thumbs-o-up&quot;&gt;&lt;/div&gt;
 				&lt;/span&gt;
 				&lt;/a&gt;
-				&lt;a href=&quot;https://github.com/Bin4xin/bin4xin.github.io/issues/new?labels=Service+Issue,research&amp;template=2-bug_report.yaml&amp;title=_posts/blog/2022-09-25-Industrial-Internet-CTF-2022.md&amp;nbsp; Industrial Internet CTF 2022 walkthrough | © 哨兵 | SENTINEL SECURITY, LAB&quot; target=&quot;_blank&quot;&gt;
+				&lt;a href=&quot;https://github.com/Bin4xin/bin4xin.github.io/issues/new?labels=Service+Issue,research&amp;template=2-bug_report.yaml&amp;title=_posts/blog/2026-02-05-compile-steghide-for-macOS-10.15.7-Catalina.md&amp;nbsp; Compiled 「steghide」 for macOS 10.15.7/Catalina | © 哨兵 | SENTINEL SECURITY, LAB&quot; target=&quot;_blank&quot;&gt;
 				&lt;span class=&quot;btn mr-1 color-border-accent-emphasis&quot; title=&quot;本文档有问题?&quot;&gt;
 				&lt;div class=&quot;fa fa-thumbs-o-down&quot;&gt;&lt;/div&gt;
 				&lt;/span&gt;
@@ -189,11 +210,12 @@ cd &lt;/span&gt;V72J1dn23wjFrq
             &lt;code-index-css&gt;
                 &lt;ul&gt;&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column&quot;&gt;&lt;a&gt;文章目录&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
                 &lt;ul id=&quot;toc&quot; class=&quot;section-nav&quot;&gt;
-&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2&quot;&gt;&lt;a href=&quot;#-0x01考点&quot;&gt;# 0x01、考点&lt;/a&gt;&lt;/li&gt;
-&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2&quot;&gt;&lt;a href=&quot;#-1x01绕过&quot;&gt;# 1x01、绕过&lt;/a&gt;&lt;/li&gt;
-&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2&quot;&gt;&lt;a href=&quot;#-2x01hint&quot;&gt;# 2x01、hint&lt;/a&gt;&lt;/li&gt;
-&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2&quot;&gt;&lt;a href=&quot;#-3x01文件包含&quot;&gt;# 3x01、文件包含&lt;/a&gt;&lt;/li&gt;
-&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2&quot;&gt;&lt;a href=&quot;#参考&quot;&gt;参考&lt;/a&gt;&lt;/li&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2&quot;&gt;&lt;a href=&quot;#1-安装-libmcrypt-库&quot;&gt;1. 安装 libmcrypt 库&lt;/a&gt;&lt;/li&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2&quot;&gt;&lt;a href=&quot;#2-安装-jpeg-库&quot;&gt;2. 安装 JPEG 库&lt;/a&gt;&lt;/li&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2&quot;&gt;&lt;a href=&quot;#3-安装-steghide&quot;&gt;3. 安装 steghide&lt;/a&gt;&lt;/li&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2&quot;&gt;&lt;a href=&quot;#依赖关系说明&quot;&gt;依赖关系说明&lt;/a&gt;&lt;/li&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2&quot;&gt;&lt;a href=&quot;#注意事项&quot;&gt;注意事项&lt;/a&gt;&lt;/li&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2&quot;&gt;&lt;a href=&quot;#赛题相关&quot;&gt;赛题相关&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
             &lt;/code-index-css&gt;
         &lt;/li&gt;
@@ -204,8 +226,8 @@ cd &lt;/span&gt;V72J1dn23wjFrq
     &lt;/div&gt;&lt;!--/row --&gt;
 &lt;/div&gt;&lt;!--/container --&gt;哨兵安全实验室 SENTINEL SECURITY, LAB" />
 <meta property="og:image" content="https://bin4xin.github.io/assets/img/logo-share.png" /> <!-- WeChat requires that thumbnail image is larger than 300x300 -->
-<meta property="og:url" content="https://bin4xin.github.io/blog/2022/Industrial-Internet-CTF-2022/" />
-<title> Industrial Internet CTF 2022 walkthrough | © 哨兵 | SENTINEL SECURITY, LAB</title>
+<meta property="og:url" content="https://bin4xin.github.io/blog/2026/compile-steghide-for-macOS-10.15.7-Catalina/" />
+<title> Compiled 「steghide」 for macOS 10.15.7/Catalina | © 哨兵 | SENTINEL SECURITY, LAB</title>
 
 <link rel="stylesheet" type="text/css" href="/assets/css/pace-minimal.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/footer.css">
@@ -347,7 +369,7 @@ cd &lt;/span&gt;V72J1dn23wjFrq
         <!-- SINGLE POST -->
         <div class="col-lg-8 markdown-body-img flex-column">
             <!-- Blog Post  -->
-            <a href="/blog/2022/Industrial-Internet-CTF-2022/"><h1 class="ctitle">Industrial Internet CTF 2022 walkthrough</h1></a>
+            <a href="/blog/2026/compile-steghide-for-macOS-10.15.7-Catalina/"><h1 class="ctitle">Compiled 「steghide」 for macOS 10.15.7/Catalina</h1></a>
             <csmall><div class="d-flex items-center">
                 <!--article author end-->
 
@@ -375,82 +397,103 @@ cd &lt;/span&gt;V72J1dn23wjFrq
         
 
         
-            on Sep 25, 2022
+            
+                
+                        23 hours ago
+                
+            
         
     </a>
 </div>
             </div></csmall>
             <div class="post-content"> 
-            <blockquote>
-  <p>2022 工业互联网 CTF 一道WEB；</p>
-</blockquote>
+            <h2 id="1-安装-libmcrypt-库">1. 安装 libmcrypt 库</h2>
 
-<h2 id="-0x01考点"># 0x01、考点</h2>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 下载源码包</span>
+curl <span class="nt">-LO</span> https://downloads.sourceforge.net/project/mcrypt/Libmcrypt/2.5.8/libmcrypt-2.5.8.tar.gz
 
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">file_get_content</code> fuzzing内容文件读取；</li>
-  <li><code class="language-plaintext highlighter-rouge">$_GET</code>型<code class="language-plaintext highlighter-rouge">include_once</code>本地文件包含。</li>
-</ul>
+<span class="c"># 解压</span>
+<span class="nb">tar </span>xzf libmcrypt-2.5.8.tar.gz
 
-<h2 id="-1x01绕过"># 1x01、绕过</h2>
+<span class="c"># 进入目录</span>
+<span class="nb">cd </span>libmcrypt-2.5.8
 
-<p>给出的url主页面有一个链接指向到<code class="language-plaintext highlighter-rouge">read.php?Book=ZGRsLnR4dA==</code>，是<code class="language-plaintext highlighter-rouge">ddl.txt</code>Base64编码，尝试了一些Linux下的绝对路径文件<code class="language-plaintext highlighter-rouge">Base64 payload</code></p>
+<span class="c"># 配置编译参数（使用特定的 CFLAGS）</span>
+./configure <span class="nv">CFLAGS</span><span class="o">=</span><span class="s2">"-g -O2 -Wno-implicit-function-declaration"</span>
 
-<p>页面提示回显<code class="language-plaintext highlighter-rouge">book/Base64 payload</code>不存在</p>
+<span class="c"># 编译</span>
+make
 
-<ul>
-  <li>根据提示<code class="language-plaintext highlighter-rouge">read.php</code>应该读取的是book目录下文件，查看了一下book目录，发现中间件开启了<code class="language-plaintext highlighter-rouge">auto_index</code>，只有一个文本文件；</li>
-  <li>尝试<code class="language-plaintext highlighter-rouge">目录穿越payload</code>，具体提示忘了，即猜测对<code class="language-plaintext highlighter-rouge">../</code>做了一些操作。</li>
-</ul>
-
-<p>于是尝试了：<code class="language-plaintext highlighter-rouge">../</code>url编码、双写绕过，发现双写绕过<code class="language-plaintext highlighter-rouge">/read.php?Book=Li4uLy4vcmVhZC5waHA=</code>可以读取：</p>
-
-<p><img src="//image.isisy.com/images/2022/09/25/IMG_2042.png" alt="IMG_2042.png" /></p>
-
-<p>我们可以看到操作代码：</p>
-
-<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">str_replace</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s2">"../"</span><span class="p">,</span> <span class="s2">"..</span><span class="se">\"</span><span class="s2">"</span><span class="p">),</span> <span class="s2">""</span><span class="p">,</span> <span class="nv">$file</span><span class="p">)</span>
+<span class="c"># 安装（需要管理员权限）</span>
+<span class="nb">sudo </span>make <span class="nb">install</span>
 </code></pre></div></div>
 
-<h2 id="-2x01hint"># 2x01、hint</h2>
+<h2 id="2-安装-jpeg-库">2. 安装 JPEG 库</h2>
 
-<p>进一步使用组合爆破：Base64（<code class="language-plaintext highlighter-rouge">..././..././..././</code> + <code class="language-plaintext highlighter-rouge">文件路径</code>）发现：<code class="language-plaintext highlighter-rouge">.bash_history</code>文件：</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 下载 JPEG 源码</span>
+curl <span class="nt">-O</span> https://www.ijg.org/files/jpegsrc.v9f.tar.gz
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> /var/www/ctf/
-<span class="nb">ls
-cd </span>V72J1dn23wjFrq
-<span class="nb">cat</span> <span class="k">*</span>.php
+<span class="c"># 解压</span>
+<span class="nb">tar </span>xzf jpegsrc.v9f.tar.gz
+
+<span class="c"># 进入目录</span>
+<span class="nb">cd </span>jpeg-9f
+
+<span class="c"># 配置（指定安装路径为 /usr/local）</span>
+./configure <span class="nt">--prefix</span><span class="o">=</span>/usr/local
+
+<span class="c"># 编译</span>
+make
+
+<span class="c"># 安装</span>
+<span class="nb">sudo </span>make <span class="nb">install</span>
 </code></pre></div></div>
 
-<p>我们可以看到文件中的hint，而且根据1x01章节我们直接访问url<code class="language-plaintext highlighter-rouge">http://eci-2zeblmhade5fptwofhr8.cloudeci1.ichunqiu.com/V72J1dn23wjFrq/</code>可以直接看到<code class="language-plaintext highlighter-rouge">demo.php</code>文件</p>
+<h2 id="3-安装-steghide">3. 安装 steghide</h2>
 
-<p>直接读取：</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 克隆源代码</span>
+git clone https://github.com/StegHigh/steghide.git
 
-<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
-<span class="nb">error_reporting</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-<span class="nv">$file</span><span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">'ops'</span><span class="p">];</span>
-<span class="nv">$file</span> <span class="o">=</span> <span class="nb">str_replace</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s2">"../"</span><span class="p">,</span> <span class="s2">"..</span><span class="se">\"</span><span class="s2">"</span><span class="p">),</span> <span class="s2">""</span><span class="p">,</span> <span class="nv">$file</span><span class="p">);</span>
-<span class="k">include_once</span><span class="p">(</span><span class="nv">$file</span><span class="p">);</span>	
-<span class="cp">?&gt;</span>
+<span class="c"># 进入目录</span>
+<span class="nb">cd </span>steghide/
+
+<span class="c"># 配置（指定 JPEG 和 libmcrypt 的路径）</span>
+./configure <span class="se">\</span>
+  <span class="nv">CPPFLAGS</span><span class="o">=</span><span class="s2">"-I/usr/local/Cellar/jpeg/9f/include -I/usr/local/include"</span> <span class="se">\</span>
+  <span class="nv">LDFLAGS</span><span class="o">=</span><span class="s2">"-L/usr/local/Cellar/jpeg/9f/lib -L/usr/local/lib -ljpeg -lmcrypt"</span>
+
+<span class="c"># 编译（指定使用 glibtool）</span>
+make <span class="nv">LIBTOOL</span><span class="o">=</span>glibtool
+
+<span class="c"># 安装</span>
+<span class="nb">sudo </span>make <span class="nv">LIBTOOL</span><span class="o">=</span>glibtool <span class="nb">install</span>
 </code></pre></div></div>
 
-<h2 id="-3x01文件包含"># 3x01、文件包含</h2>
-
-<p>基本步骤：</p>
+<h2 id="依赖关系说明">依赖关系说明</h2>
 
 <ol>
-  <li><code class="language-plaintext highlighter-rouge">ops=file:///etc/passwd</code>读取相关文件，找到日志路径；</li>
-  <li>日志文件写入webshell</li>
-  <li>过程2可以参考文件[1]</li>
+  <li><strong>libmcrypt</strong>：加密算法库</li>
+  <li><strong>JPEG 库</strong>：图像处理库，版本为 9f</li>
+  <li><strong>steghide</strong>：依赖于上述两个库，用于在图像中隐藏信息</li>
 </ol>
 
-<p>不过当时时间较为紧张，暂未完成这一步，有些遗憾。</p>
+<h2 id="注意事项">注意事项</h2>
 
-<h2 id="参考">参考</h2>
+<ol>
+  <li>这些命令需要在 Unix/Linux/macOS 系统下执行</li>
+  <li>部分命令需要管理员权限（sudo）</li>
+  <li>确保系统已安装必要的开发工具：gcc, make, autoconf, automake, libtool 等</li>
+  <li>如果遇到路径问题，可能需要根据实际安装位置调整 CPPFLAGS 和 LDFLAGS 中的路径</li>
+</ol>
 
-<ul>
-  <li>[1].<a href="https://henkel-security.com/2020/08/vulnhub-dc-5/" target="_blank">VulnHub – DC-5</a></li>
-</ul>
+<h2 id="赛题相关">赛题相关</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>steghide extract <span class="nt">-sf</span> shanghao.jpg <span class="nt">-p</span> qsnctf
+wrote extracted data to <span class="s2">"flag.txt"</span><span class="nb">.</span>
+
+<span class="nb">cat </span>flag.txt 
+qsnctf<span class="o">{</span>07f..d10<span class="o">}</span>
+</code></pre></div></div>
 
                 <!-- [x] 2022/10/20/10:49:36 fixed: while width < some inch. would be flex column not display like a row.-->
 <footer>
@@ -462,7 +505,7 @@ cd </span>V72J1dn23wjFrq
 			<div class="col-xs-4-5 pr-4 mb-8 px-md-6 container-xl mx-auto py-6 py-lg-6 clearfix ">
 				<h2 class="lead">申明</h2>
 				<div>
-					<div class="mb-2"><a href="/blog/2022/Industrial-Internet-CTF-2022/" target="_blank" class=" text-bold">
+					<div class="mb-2"><a href="/blog/2026/compile-steghide-for-macOS-10.15.7-Catalina/" target="_blank" class=" text-bold">
 						<div class="fa fa-link"></div>
 						转载请申明本文档链接</a></div>
 					<div><a href="https://github.com/Bin4xin" target="_blank"  class="text-bold">
@@ -474,7 +517,7 @@ cd </span>V72J1dn23wjFrq
 			<div class="col-xs-4-5 pr-4 mb-8 px-md-6 container-xl mx-auto py-6 py-lg-6 clearfix">
 				<h2 class="lead">贡献开源文档</h2>
 				<div>
-					<a href="https://github.com/Bin4xin/bin4xin.github.io/tree/main/_posts/blog/2022-09-25-Industrial-Internet-CTF-2022.md" target="_blank" class="no-underline btn mr-1 color-border-accent-emphasis">
+					<a href="https://github.com/Bin4xin/bin4xin.github.io/tree/main/_posts/blog/2026-02-05-compile-steghide-for-macOS-10.15.7-Catalina.md" target="_blank" class="no-underline btn mr-1 color-border-accent-emphasis">
 						<svg aria-hidden="true" focusable="false" role="img" class="octicon mr-1" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="display: inline-block; user-select: none; vertical-align: text-bottom; overflow: visible;"><path fill-rule="evenodd" d="M7.177 3.073L9.573.677A.25.25 0 0110 .854v4.792a.25.25 0 01-.427.177L7.177 3.427a.25.25 0 010-.354zM3.75 2.5a.75.75 0 100 1.5.75.75 0 000-1.5zm-2.25.75a2.25 2.25 0 113 2.122v5.256a2.251 2.251 0 11-1.5 0V5.372A2.25 2.25 0 011.5 3.25zM11 2.5h-1V4h1a1 1 0 011 1v5.628a2.251 2.251 0 101.5 0V5A2.5 2.5 0 0011 2.5zm1 10.25a.75.75 0 111.5 0 .75.75 0 01-1.5 0zM3.75 12a.75.75 0 100 1.5.75.75 0 000-1.5z"></path></svg>
 						贡献当前开源文档
 					</a>
@@ -489,7 +532,7 @@ cd </span>V72J1dn23wjFrq
 					<div class="fa fa-thumbs-o-up"></div>
 				</span>
 				</a>
-				<a href="https://github.com/Bin4xin/bin4xin.github.io/issues/new?labels=Service+Issue,research&template=2-bug_report.yaml&title=_posts/blog/2022-09-25-Industrial-Internet-CTF-2022.md&nbsp; Industrial Internet CTF 2022 walkthrough | © 哨兵 | SENTINEL SECURITY, LAB" target="_blank">
+				<a href="https://github.com/Bin4xin/bin4xin.github.io/issues/new?labels=Service+Issue,research&template=2-bug_report.yaml&title=_posts/blog/2026-02-05-compile-steghide-for-macOS-10.15.7-Catalina.md&nbsp; Compiled 「steghide」 for macOS 10.15.7/Catalina | © 哨兵 | SENTINEL SECURITY, LAB" target="_blank">
 				<span class="btn mr-1 color-border-accent-emphasis" title="本文档有问题?">
 				<div class="fa fa-thumbs-o-down"></div>
 				</span>
@@ -507,11 +550,12 @@ cd </span>V72J1dn23wjFrq
             <code-index-css>
                 <ul><li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column"><a>文章目录</a></li></ul>
                 <ul id="toc" class="section-nav">
-<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2"><a href="#-0x01考点"># 0x01、考点</a></li>
-<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2"><a href="#-1x01绕过"># 1x01、绕过</a></li>
-<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2"><a href="#-2x01hint"># 2x01、hint</a></li>
-<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2"><a href="#-3x01文件包含"># 3x01、文件包含</a></li>
-<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2"><a href="#参考">参考</a></li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2"><a href="#1-安装-libmcrypt-库">1. 安装 libmcrypt 库</a></li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2"><a href="#2-安装-jpeg-库">2. 安装 JPEG 库</a></li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2"><a href="#3-安装-steghide">3. 安装 steghide</a></li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2"><a href="#依赖关系说明">依赖关系说明</a></li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2"><a href="#注意事项">注意事项</a></li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2"><a href="#赛题相关">赛题相关</a></li>
 </ul>
             </code-index-css>
         </li>
