@@ -24,7 +24,6 @@ jobs:
           git clone ${{ env.github-Access }}/${{ env.github-ReposAccess }}
           cd ${{ env.github-ReposAccess }}
           cp -R ../_posts/* _posts/
-          echo "sentrylab.cn" > CNAME
           sed -i "/^source/c source 'https://rubygems.org'" Gemfile
 
       - name: set up Ruby
