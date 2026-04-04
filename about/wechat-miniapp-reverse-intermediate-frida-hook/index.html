@@ -1,12 +1,7 @@
 <!DOCTYPE html>
-<html><style></style>
-<link rel="stylesheet" type="text/css" href="/assets/css/common.css">
+<html lang="zh-CN"><style></style>
 <style>
-    .col-sm-bb {
-        position: relative;
-        min-height: 1px;
-        padding-left: 15px;
-    }
+
 </style>
 <head>
 <meta charset="utf-8">
@@ -31,153 +26,16 @@
 <!-- Open Graph metadata -->
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Wechat Miniapp Reverse Intermediate Frida Hook 2026 | © 哨兵" />
-<meta property="og:description" content=" &lt;style&gt;
-	.d-flex {
-		display: flex !important;
-		align-items: stretch;
-	}
-	/* 侧边栏基础样式 (继承原有结构，并确保折叠时平滑) */
-	#sidebar1 {
-		transition: width 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1), padding 0.2s ease, border 0.2s ease;
-		overflow-x: hidden;
-		overflow-y: auto;
-	}
-
-	/* 折叠状态：宽度归零，隐藏所有内部内容（包括logo，菜单等完全隐藏） */
-	#sidebar1.collapsed {
-		width: 0 !important;
-		min-width: 0 !important;
-		flex: 0 0 0 !important;
-		padding: 0 !important;
-		margin: 0 !important;
-		border-right-width: 0 !important;
-		overflow: hidden;
-		opacity: 0;
-		visibility: collapse;
-	}
-
-	/* 为了保证折叠时侧边栏内的logo彻底消失（视觉和DOM不可见），加一层安全隐藏 */
-	#sidebar1.collapsed #logo,
-	#sidebar1.collapsed .logo-link,
-	#sidebar1.collapsed #help-nav {
-		display: none !important;
-	}
-
-	/* 侧边栏内部滚动条美化，无功能影响 */
-	#sidebar1::-webkit-scrollbar {
-		width: 4px;
-	}
-	/* ---------- 切换按钮容器样式 (悬浮显示，定位在侧边栏右侧中间) ---------- */
-	.aside-area-toggle-btn {
-		position: fixed;
-		z-index: 1000;
-		width: 32px;          /* 略微加宽以更好容纳图片 */
-		height: 32px;
-		background: #ffffff;
-		/*mark*/
-		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
-		border-radius: 15px 15px 15px 15px ;
-		border: 1px solid #e1e4e8;
-		border-right: none;
-		cursor: pointer;
-		transition: all 0.2s ease;
-		opacity: 0;
-		visibility: hidden;
-		transform: translateX(4px);
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-
-	/* 按钮显示状态 */
-	.aside-area-toggle-btn.visible {
-		opacity: 1;
-		visibility: visible;
-		transform: translateX(0);
-	}
-
-	/* 内部表格布局保持原有结构，但改用flex确保图片居中 */
-	.aside-area-toggle-btn .dp-table-cell {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 100%;
-		height: 100%;
-	}
-
-	.aside-area-toggle-btn .btn-ctnr {
-		position: relative;
-		width: 100%;
-		height: 100%;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-
-	/* 实际可点击按钮 - 完全填充容器，图片居中 */
-	.restore-btn {
-		width: 100%;
-		height: 100%;
-		background: transparent;
-		border: 1px;
-		cursor: pointer;
-		outline: none;
-		align-items: center;
-		justify-content: center;
-		padding: 1px;
-		margin: 0;
-		transition: background-color 0.15s;
-		border-radius: 15px 15px 15px 15px;
-	}
-
-	.restore-btn:hover {
-		background-color: rgba(0, 0, 0, 0.05);
-	}
-
-	/* 切换按钮内部的图片样式：作为logo显示，自适应大小 */
-	.toggle-logo-img {
-		width: 28px;
-		height: auto;
-		max-width: 32px;
-		max-height: 32px;
-		object-fit: contain;
-		display: block;
-		pointer-events: none;  /* 确保点击穿透到按钮 */
-		border-radius: 4px;
-	}
-
-	/* 侧边栏内部原有logo样式保持 */
-	.logo-link {
-		display: flex;
-		align-items: center;
-		text-decoration: none;
-		padding: 1rem 1.2rem;
-		border-bottom: 1px solid #eaecef;
-	}
-
-	.logo-link img, .logo-link svg {
-		height: 32px;
-		width: auto;
-	}
-	/* 响应式辅助 */
-	@media (min-width: 768px) {
-		#sidebar1.collapsed {
-			flex: 0 0 0 !important;
-			max-width: 0 !important;
-		}
-	}
-&lt;/style&gt;
+<meta property="og:description" content=" &lt;link href=&quot;/assets/css/research.css&quot; rel=&quot;stylesheet&quot;&gt;
 
 
 &lt;div id=&quot;help-page&quot;&gt;
-	&lt;!--&lt;div class=&quot;visible-xs&quot;&gt;nav banner with logo. 响应式::菜单::表单--&gt;
-		
 	&lt;div id=&quot;post-content&quot; class=&quot;row markdown-body-img d-flex&quot;&gt;
-		&lt;div id=&quot;sidebar1&quot; class=&quot;flex-column col-md-3 position-sticky ml-hide overflow-y-auto top-0 d-none d-lg-block flex-shrink-0 border-right&quot; style=&quot;height:100vh&quot;&gt;
-
-			
+		&lt;div id=&quot;sidebar1&quot; class=&quot;flex-column col-md-2 position-sticky ml-hide overflow-y-auto top-0 d-none d-lg-block flex-shrink-0 border-right&quot; style=&quot;height:100vh&quot;&gt;
 			&lt;div style=&quot;padding-top: 20px&quot;&gt;
 				
+
+
 
 
 
@@ -345,18 +203,20 @@
     }
 &lt;/style&gt;
 
-&lt;section class=&quot;gh-banner info&quot; aria-labelledby=&quot;banner-title-欢迎并请注意-未经授权的渗透测试访问或滥用行为将被严格禁止-并将受到法律制裁-br-welcome-and-attention-plz-unauthorized-pentest-access-or-misuse-is-strictly-prohibited-and-will-be-prosecuted&quot; role=&quot;region&quot; data-dismissible=&quot;true&quot;&gt;
+&lt;section class=&quot;gh-banner error&quot; aria-labelledby=&quot;banner-title-&quot; role=&quot;region&quot; data-dismissible=&quot;true&quot;&gt;
     &lt;div class=&quot;banner-icon&quot; aria-hidden=&quot;true&quot;&gt;
         
         &lt;svg viewBox=&quot;0 0 16 16&quot; fill=&quot;currentColor&quot;&gt;
-            &lt;path d=&quot;M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z&quot;&gt;&lt;/path&gt;
+            &lt;path d=&quot;M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575L6.457 1.047ZM8 4.75a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 4.75Zm.75 6.75a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Z&quot;&gt;&lt;/path&gt;
         &lt;/svg&gt;
         
     &lt;/div&gt;
 
     &lt;div class=&quot;banner-content&quot;&gt;
-        &lt;span class=&quot;banner-text&quot;&gt;欢迎并请注意：未经授权的渗透测试访问或滥用行为将被严格禁止，并将受到法律制裁。&lt;br&gt;
-				Welcome and attention plz: Unauthorized Pentest access or misuse is strictly prohibited and will be prosecuted.&lt;/span&gt;
+        &lt;span class=&quot;banner-text&quot;&gt;
+    注意: 任何形式的未授权访问都是禁止的&lt;BR&gt;
+    ATTENTION: UNAUTHORIZED ACCESS OF ANY FORM IS PROHIBITED.
+    &lt;/span&gt;
     &lt;/div&gt;
 
     &lt;button class=&quot;banner-close&quot; aria-label=&quot;关闭通知横幅&quot; title=&quot;Dismiss banner&quot; type=&quot;button&quot;&gt;
@@ -385,7 +245,7 @@
     })();
 &lt;/script&gt;
 			&lt;/div&gt;
-			&lt;!--left area: menu 左边菜单栏 col-sm-3 ./25%--&gt;
+			&lt;!--left area: menu 左边菜单栏--&gt;
 			&lt;div id=&quot;help-nav&quot; aria-expanded=&quot;true&quot; class=&quot;nav nav-pills nav-stacked&quot; style=&quot;padding-top: 20px; padding-bottom: 20px&quot;&gt;
 				
 	&lt;details &gt;
@@ -903,21 +763,247 @@
 							&lt;/ion-icon&gt;
 							&lt;/a&gt;&lt;/span&gt;
 						&lt;/h1&gt;
-						&lt;h1 id=&quot;微信小程序逆向进阶抓包--frida-hook-打印加密明文2026超详细版&quot;&gt;微信小程序逆向进阶：抓包 + Frida Hook 打印加密明文（2026超详细版）&lt;/h1&gt;
+						
+						&lt;br&gt;&lt;br&gt;&lt;br&gt;
+						
 
-&lt;p&gt;上一期我们拿到了源码，这一期重点解决“源码有了，但加密函数看不懂、key藏在哪里”的问题。通过抓包 + 动态 Hook，我们可以直接在运行时打印出明文参数、key、iv 等核心信息。&lt;/p&gt;
 
-&lt;h2 id=&quot;目标读者--前置技能&quot;&gt;目标读者 &amp;amp; 前置技能&lt;/h2&gt;
+
+
+
+
+
+&lt;style&gt;
+    /* GitHub 风格横幅样式 - 支持错误/警告/信息主题 */
+    .gh-banner {
+        --banner-bg: #eef5ff;
+        --banner-border: rgba(84, 174, 255, 0.3);
+        --banner-icon-color: #1f7bdf;
+        --banner-text: #1f2328;
+        --banner-link: #0969da;
+        --banner-link-hover: #0550ae;
+        --banner-close-color: #656d76;
+        --banner-close-hover-bg: rgba(0, 0, 0, 0.05);
+        --banner-close-hover-color: #1f2328;
+        background-color: var(--banner-bg);
+        border: 1px solid var(--banner-border);
+        border-radius: 12px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        padding: 1rem 1rem 1rem 1.25rem;
+        transition: all 0.2s ease;
+        position: relative;
+    }
+    /* 错误主题 */
+    .gh-banner.error {
+        --banner-bg: #ffebe9;
+        --banner-border: rgba(255, 129, 130, 0.4);
+        --banner-icon-color: #cf222e;
+    }
+    /* 警告主题 */
+    .gh-banner.warn {
+        --banner-bg: #fff8e7;
+        --banner-border: rgba(215, 173, 62, 0.4);
+        --banner-icon-color: #bc6f00;
+    }
+    /* 深色模式适配 */
+    @media (prefers-color-scheme: dark) {
+        .gh-banner {
+            --banner-bg: #1c2a3e;
+            --banner-border: #2d4a6e;
+            --banner-icon-color: #6cb4ff;
+            --banner-text: #e6edf3;
+            --banner-link: #6cb4ff;
+            --banner-link-hover: #9acbff;
+            --banner-close-color: #9aa6b2;
+            --banner-close-hover-bg: rgba(177, 186, 196, 0.12);
+            --banner-close-hover-color: #f0f3f6;
+            background-color: var(--banner-bg);
+            border-color: #2d4a6e;
+        }
+        .gh-banner.error {
+            --banner-bg: #3b1e1e;
+            --banner-border: #da3633;
+            --banner-icon-color: #f85149;
+        }
+        .gh-banner.warn {
+            --banner-bg: #382d1a;
+            --banner-border: #d29922;
+            --banner-icon-color: #e3b341;
+        }
+    }
+    .banner-icon {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 1px;
+    }
+    .banner-icon svg {
+        width: 20px;
+        height: 20px;
+        color: var(--banner-icon-color);
+        fill: currentColor;
+        display: block;
+    }
+    .banner-content {
+        flex: 1;
+        font-size: 0.9375rem;
+        font-weight: 400;
+        color: var(--banner-text);
+        line-height: 1.5;
+        word-break: break-word;
+    }
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+    }
+    .banner-content a {
+        color: var(--banner-link);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.12s ease, text-decoration 0.12s;
+    }
+    .banner-content a:hover {
+        color: var(--banner-link-hover);
+        text-decoration: underline;
+        text-underline-offset: 2px;
+    }
+    .banner-text {
+        display: inline;
+        /*font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, &quot;Noto Sans&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;;*/
+    }
+    .banner-close {
+        flex-shrink: 0;
+        background: transparent;
+        border: 0;
+        padding: 4px;
+        margin: -4px -4px 0 0;
+        cursor: pointer;
+        border-radius: 6px;
+        color: var(--banner-close-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.2s, color 0.2s;
+        line-height: 1;
+    }
+    .banner-close:hover {
+        background-color: var(--banner-close-hover-bg);
+        color: var(--banner-close-hover-color);
+    }
+    .banner-close:focus-visible {
+        outline: 2px solid var(--banner-icon-color);
+        outline-offset: 2px;
+    }
+    .banner-close svg {
+        width: 16px;
+        height: 16px;
+        fill: currentColor;
+        display: block;
+    }
+    .gh-banner.hide-banner {
+        display: none;
+    }
+    @media (max-width: 640px) {
+        .gh-banner {
+            padding: 0.875rem 1rem;
+            gap: 0.5rem;
+        }
+        .banner-content {
+            font-size: 0.875rem;
+        }
+        .banner-icon svg {
+            width: 18px;
+            height: 18px;
+        }
+    }
+    .banner-content span {
+        display: inline;
+    }
+    .banner-content a {
+        display: inline-block;
+    }
+&lt;/style&gt;
+
+&lt;section class=&quot;gh-banner info&quot; aria-labelledby=&quot;banner-title-&quot; role=&quot;region&quot; data-dismissible=&quot;true&quot;&gt;
+    &lt;div class=&quot;banner-icon&quot; aria-hidden=&quot;true&quot;&gt;
+        
+        &lt;svg viewBox=&quot;0 0 16 16&quot; fill=&quot;currentColor&quot;&gt;
+            &lt;path d=&quot;M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z&quot;&gt;&lt;/path&gt;
+        &lt;/svg&gt;
+        
+    &lt;/div&gt;
+
+    &lt;div class=&quot;banner-content&quot;&gt;
+        &lt;span class=&quot;banner-text&quot;&gt;
+    由于传播、利用此库/文所提供的信息而造成的任何直接或者间接的后果及损失，均由使用者本人负责，本文作者不为此承担任何责任。&lt;BR&gt;
+    ANY DIRECT OR INDIRECT CONSEQUENCES OR LOSSES CAUSED BY DISSEMINATING OR USING THE INFORMATION PROVIDED IN THIS REPOSITORY/DOCUMENT
+    SHALL BE BORNE SOLELY BY THE USER. THE AUTHOR OF THIS ARTICLE ASSUMES NO RESPONSIBILITY FOR SUCH CONSEQUENCES OR LOSSES.
+    &lt;/span&gt;
+    &lt;/div&gt;
+
+    &lt;button class=&quot;banner-close&quot; aria-label=&quot;关闭通知横幅&quot; title=&quot;Dismiss banner&quot; type=&quot;button&quot;&gt;
+        &lt;svg viewBox=&quot;0 0 16 16&quot; fill=&quot;currentColor&quot; aria-hidden=&quot;true&quot;&gt;
+            &lt;path d=&quot;M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z&quot;&gt;&lt;/path&gt;
+        &lt;/svg&gt;
+    &lt;/button&gt;
+&lt;/section&gt;
+
+&lt;script&gt;
+    (function() {
+        // 全局只初始化一次关闭事件委托
+        if (!window._ghBannerInitialized) {
+            window._ghBannerInitialized = true;
+            document.addEventListener(&#39;click&#39;, function(e) {
+                const closeBtn = e.target.closest(&#39;.banner-close&#39;);
+                if (closeBtn) {
+                    const banner = closeBtn.closest(&#39;.gh-banner&#39;);
+                    if (banner) {
+                        banner.classList.add(&#39;hide-banner&#39;);
+                        banner.setAttribute(&#39;aria-hidden&#39;, &#39;true&#39;);
+                    }
+                }
+            });
+        }
+    })();
+&lt;/script&gt;
+						
+						&lt;h1 id=&quot;微信小程序逆向进阶&quot;&gt;微信小程序逆向进阶&lt;/h1&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;已完成第一次解包并导入开发者工具&lt;/li&gt;
-  &lt;li&gt;能看懂最基础的 JavaScript&lt;/li&gt;
-  &lt;li&gt;愿意花 30 分钟搭建 Frida 环境&lt;/li&gt;
+  &lt;li&gt;抓包与 Frida Hook 提取加密明文&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;工具准备2026-推荐配置&quot;&gt;工具准备（2026 推荐配置）&lt;/h2&gt;
+&lt;p&gt;在前序实践中，我们已完成小程序的源码提取，本文将聚焦解决源码分析阶段的痛点：加密算法逻辑不清晰、密钥定位困难。通过网络流量抓包分析结合动态 Hook 技术，
+可在运行时直接提取明文参数、密钥（Key）、初始向量（Initialization Vector, IV）等核心敏感信息。&lt;/p&gt;
 
-&lt;table&gt;
+&lt;h2 id=&quot;前置技能&quot;&gt;前置技能&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;已完成小程序包解包，并可将源码导入微信开发者工具&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;具备基础 JavaScript 代码阅读能力&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;可在 30 分钟内完成 Frida 环境的搭建与验证&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;工具准备&quot;&gt;工具准备&lt;/h2&gt;
+
+&lt;table class=&quot;table&quot;&gt;
   &lt;thead&gt;
     &lt;tr&gt;
       &lt;th&gt;工具&lt;/th&gt;
@@ -929,67 +1015,76 @@
   &lt;tbody&gt;
     &lt;tr&gt;
       &lt;td&gt;HttpCanary&lt;/td&gt;
-      &lt;td&gt;安卓抓包&lt;/td&gt;
-      &lt;td&gt;Google Play / apkpure&lt;/td&gt;
-      &lt;td&gt;真机首选&lt;/td&gt;
+      &lt;td&gt;安卓端流量抓包&lt;/td&gt;
+      &lt;td&gt;Google Play / Apkpure&lt;/td&gt;
+      &lt;td&gt;真机环境首选工具&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;PC Fiddler / Charles&lt;/td&gt;
-      &lt;td&gt;PC 微信抓包&lt;/td&gt;
-      &lt;td&gt;官网&lt;/td&gt;
-      &lt;td&gt;需证书信任&lt;/td&gt;
+      &lt;td&gt;PC 端微信流量抓包&lt;/td&gt;
+      &lt;td&gt;工具官网&lt;/td&gt;
+      &lt;td&gt;需安装并信任根证书&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;mitmproxy&lt;/td&gt;
-      &lt;td&gt;命令行抓包&lt;/td&gt;
-      &lt;td&gt;pip install mitmproxy&lt;/td&gt;
-      &lt;td&gt;高级&lt;/td&gt;
+      &lt;td&gt;命令行流量抓包&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pip install mitmproxy&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;适用于高级自动化分析场景&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;Frida&lt;/td&gt;
-      &lt;td&gt;动态 Hook&lt;/td&gt;
-      &lt;td&gt;pip install frida-tools&lt;/td&gt;
-      &lt;td&gt;核心&lt;/td&gt;
+      &lt;td&gt;动态插桩 Hook&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pip install frida-tools&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;本次实践核心工具&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;frida-server&lt;/td&gt;
-      &lt;td&gt;手机端&lt;/td&gt;
-      &lt;td&gt;github releases&lt;/td&gt;
-      &lt;td&gt;架构需匹配&lt;/td&gt;
+      &lt;td&gt;移动端 Frida 服务端&lt;/td&gt;
+      &lt;td&gt;GitHub Releases&lt;/td&gt;
+      &lt;td&gt;需与目标设备 CPU 架构匹配&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;r0capture&lt;/td&gt;
-      &lt;td&gt;内存明文&lt;/td&gt;
-      &lt;td&gt;github&lt;/td&gt;
-      &lt;td&gt;兜底方案&lt;/td&gt;
+      &lt;td&gt;内存明文提取&lt;/td&gt;
+      &lt;td&gt;GitHub&lt;/td&gt;
+      &lt;td&gt;补充方案，用于常规方法失效时的内存明文提取&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;h3 id=&quot;frida-环境搭建安卓&quot;&gt;Frida 环境搭建（安卓）&lt;/h3&gt;
+&lt;h3 id=&quot;frida环境&quot;&gt;Frida环境&lt;/h3&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;下载对应架构的 frida-server&lt;/li&gt;
-  &lt;li&gt;adb push 到 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/data/local/tmp/&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;chmod 755 frida-server &amp;amp;&amp;amp; ./frida-server &amp;amp;&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;PC 端 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;frida-ps -U&lt;/code&gt; 验证&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;下载与目标设备架构匹配的 frida-server 二进制文件&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;通过 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;adb push&lt;/code&gt; 将文件推送至设备 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/data/local/tmp/&lt;/code&gt; 目录&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;执行权限配置与服务启动：&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;chmod 755 frida-server &amp;amp;&amp;amp; ./frida-server&lt;/code&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;在 PC 端执行 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;frida-ps -U&lt;/code&gt; 验证服务连接状态&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;hr /&gt;
 
-&lt;h2 id=&quot;高频-hook-脚本合集hookjs&quot;&gt;高频 Hook 脚本合集（hook.js）&lt;/h2&gt;
+&lt;h2 id=&quot;hook脚本&quot;&gt;Hook脚本&lt;/h2&gt;
 
 &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;[*] Hook WeChat MiniApp&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
 &lt;span class=&quot;nx&quot;&gt;Java&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;perform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;// AES&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// AES 加解密函数Hook&lt;/span&gt;
   &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Cipher&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Java&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;use&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;javax.crypto.Cipher&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
   &lt;span class=&quot;nx&quot;&gt;Cipher&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;doFinal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;overload&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;[B&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;implementation&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;[AES 明文]&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Java&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;use&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;java.lang.String&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;doFinal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
   &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-
-  &lt;span class=&quot;c1&quot;&gt;// MD5 / SHA&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// 摘要算法（MD5/SHA等）输入Hook&lt;/span&gt;
   &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;MessageDigest&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Java&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;use&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;java.security.MessageDigest&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
   &lt;span class=&quot;nx&quot;&gt;MessageDigest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;overload&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;[B&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;implementation&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;[Digest 输入]&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
@@ -998,21 +1093,31 @@
 &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;启动：&lt;/p&gt;
+&lt;p&gt;脚本启动命令：&lt;/p&gt;
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;frida &lt;span class=&quot;nt&quot;&gt;-U&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; com.tencent.mm &lt;span class=&quot;nt&quot;&gt;-l&lt;/span&gt; hook.js &lt;span class=&quot;nt&quot;&gt;--no-pause&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;hr /&gt;
 
-&lt;h2 id=&quot;实战案例打印登录接口-aes-参数&quot;&gt;实战案例：打印登录接口 AES 参数&lt;/h2&gt;
+&lt;h2 id=&quot;实战案例一&quot;&gt;实战案例一&lt;/h2&gt;
 
-&lt;p&gt;操作流程：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;提取登录接口 AES 参数&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;实践操作流程：&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;启动 Frida&lt;/li&gt;
-  &lt;li&gt;打开目标小程序&lt;/li&gt;
-  &lt;li&gt;触发登录 / 下单等接口&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;启动 Frida 服务并加载上述 Hook 脚本&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;启动微信客户端并打开目标小程序&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;触发目标业务操作（如登录、下单等）以调用加密接口&lt;/p&gt;
+  &lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;示例输出：&lt;/p&gt;
@@ -1024,9 +1129,9 @@
 
 &lt;hr /&gt;
 
-&lt;h2 id=&quot;常见问题--绕过&quot;&gt;常见问题 &amp;amp; 绕过&lt;/h2&gt;
+&lt;h2 id=&quot;常见问题&quot;&gt;常见问题&lt;/h2&gt;
 
-&lt;table&gt;
+&lt;table class=&quot;table&quot;&gt;
   &lt;thead&gt;
     &lt;tr&gt;
       &lt;th&gt;问题&lt;/th&gt;
@@ -1036,86 +1141,322 @@
   &lt;/thead&gt;
   &lt;tbody&gt;
     &lt;tr&gt;
-      &lt;td&gt;Frida 闪退&lt;/td&gt;
-      &lt;td&gt;server 不匹配&lt;/td&gt;
-      &lt;td&gt;换版本&lt;/td&gt;
+      &lt;td&gt;Frida 客户端启动后闪退&lt;/td&gt;
+      &lt;td&gt;Frida-server 与客户端版本不匹配&lt;/td&gt;
+      &lt;td&gt;更换与客户端版本一致的 Frida-server&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td&gt;无输出&lt;/td&gt;
-      &lt;td&gt;Hook 点不对&lt;/td&gt;
-      &lt;td&gt;Hook JSON / String&lt;/td&gt;
+      &lt;td&gt;Hook 脚本无预期输出&lt;/td&gt;
+      &lt;td&gt;Hook 点未命中目标加密函数&lt;/td&gt;
+      &lt;td&gt;调整 Hook 点，可尝试 Hook JSON 序列化或字符串处理函数以定位明文&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td&gt;证书抓不到&lt;/td&gt;
-      &lt;td&gt;Pinning&lt;/td&gt;
-      &lt;td&gt;JustTrustMe&lt;/td&gt;
+      &lt;td&gt;无法通过代理抓取 HTTPS 流量&lt;/td&gt;
+      &lt;td&gt;SSL 证书固定（SSL Pinning）&lt;/td&gt;
+      &lt;td&gt;使用 JustTrustMe 模块绕过证书校验&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td&gt;被检测 Root&lt;/td&gt;
-      &lt;td&gt;反调试&lt;/td&gt;
-      &lt;td&gt;Magisk + Shamiko&lt;/td&gt;
+      &lt;td&gt;设备被应用检测到 Root 权限&lt;/td&gt;
+      &lt;td&gt;应用 Root 检测机制&lt;/td&gt;
+      &lt;td&gt;使用 Magisk 配合 Shamiko 模块隐藏 Root 环境&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
 
 &lt;hr /&gt;
 
-&lt;h2 id=&quot;实战闭环从-frida-明文到-https-接口复现-&quot;&gt;实战闭环：从 Frida 明文到 HTTPS 接口复现 ✅&lt;/h2&gt;
+&lt;h2 id=&quot;实战&quot;&gt;实战&lt;/h2&gt;
 
-&lt;h3 id=&quot;你已经掌握的关键信息&quot;&gt;你已经掌握的关键信息&lt;/h3&gt;
+&lt;p&gt;闭环：从 Frida 明文提取到 HTTPS 接口复现&lt;/p&gt;
+
+&lt;h3 id=&quot;核心信息&quot;&gt;核心信息&lt;/h3&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;算法：AES-CBC&lt;/li&gt;
-  &lt;li&gt;key / iv&lt;/li&gt;
-  &lt;li&gt;明文结构&lt;/li&gt;
-  &lt;li&gt;接口 URL&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;加密算法：AES-CBC&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;密钥（Key）与初始向量（IV）&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;业务请求明文结构&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;业务接口请求地址&lt;/p&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;python-本地解密验证&quot;&gt;Python 本地解密验证&lt;/h3&gt;
+&lt;h3 id=&quot;本地解密&quot;&gt;本地解密&lt;/h3&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Crypto.Cipher&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AES&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;base64&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;json&lt;/span&gt;
-
 &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;sa&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;0123456789abcdef0123456789abcdef&#39;&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;iv&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;sa&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&#39;fedcba9876543210&#39;&lt;/span&gt;
-
 &lt;span class=&quot;n&quot;&gt;cipher&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MODE_CBC&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;iv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cipher&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;decrypt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;base64&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b64decode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;U2FsdGVkX1+...&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-
 &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plain&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;本地加密并重放接口&quot;&gt;本地加密并重放接口&lt;/h3&gt;
+&lt;h3 id=&quot;本地加密&quot;&gt;本地加密&lt;/h3&gt;
+
+&lt;p&gt;本地加密与接口重放&lt;/p&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;requests&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;payload&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;encrypt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# 注：encrypt为已实现的AES-CBC加密函数
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;payload&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;encrypt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
   &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;phone&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;13800000000&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;code&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;123456&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
   &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;iv&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
 &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;requests&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
   &lt;span class=&quot;s&quot;&gt;&quot;https://api.example.com/login&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
   &lt;span class=&quot;n&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;data&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;payload&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
 &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;hr /&gt;
 
-&lt;h3 id=&quot;本篇你真正获得的能力-&quot;&gt;本篇你真正获得的能力 ✅&lt;/h3&gt;
+&lt;h3 id=&quot;其他&quot;&gt;其他&lt;/h3&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;能在运行时无视 HTTPS&lt;/li&gt;
-  &lt;li&gt;能稳定拿到 key / iv&lt;/li&gt;
-  &lt;li&gt;能复现真实业务接口&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;可在运行时绕过 HTTPS 加密限制，直接提取业务明文数据&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;可稳定提取加密算法所需的密钥与初始向量&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;可复现真实业务接口的请求逻辑，完成接口重放验证&lt;/p&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;hr /&gt;
 
-&lt;p&gt;下一篇：&lt;br /&gt;
-👉 &lt;strong&gt;高级工具链 &amp;amp; 自动化解密流水线&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;[!NOTE]
+本文档对原始内容的技术修正说明：&lt;/p&gt;
+
+  &lt;ol&gt;
+    &lt;li&gt;
+      &lt;p&gt;修正了原始常见问题表格中，Root 检测问题的原因标注错误，原标注为 “反调试”，实际为应用 Root 检测机制。&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;p&gt;原始 Hook 脚本存在两处技术局限：&lt;/p&gt;
+
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MessageDigest.update&lt;/code&gt;的 Hook 实现直接打印字节数组对象，无法正确输出摘要算法的输入内容，需将字节数组转换为字符串后再输出。&lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+          &lt;p&gt;脚本仅 Hook 了&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Cipher.doFinal&lt;/code&gt;的输入参数，无法区分加密与解密调用，可能混淆加密输入（明文）与解密输入（密文），建议补充调用栈分析或返回值 Hook 以区分加解密流程。&lt;/p&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/blockquote&gt;
+
+&lt;style&gt;
+    /* GitHub 风格横幅样式 - 支持错误/警告/信息主题 */
+    .gh-banner {
+        --banner-bg: #eef5ff;
+        --banner-border: rgba(84, 174, 255, 0.3);
+        --banner-icon-color: #1f7bdf;
+        --banner-text: #1f2328;
+        --banner-link: #0969da;
+        --banner-link-hover: #0550ae;
+        --banner-close-color: #656d76;
+        --banner-close-hover-bg: rgba(0, 0, 0, 0.05);
+        --banner-close-hover-color: #1f2328;
+        background-color: var(--banner-bg);
+        border: 1px solid var(--banner-border);
+        border-radius: 12px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        padding: 1rem 1rem 1rem 1.25rem;
+        transition: all 0.2s ease;
+        position: relative;
+    }
+    /* 错误主题 */
+    .gh-banner.error {
+        --banner-bg: #ffebe9;
+        --banner-border: rgba(255, 129, 130, 0.4);
+        --banner-icon-color: #cf222e;
+    }
+    /* 警告主题 */
+    .gh-banner.warn {
+        --banner-bg: #fff8e7;
+        --banner-border: rgba(215, 173, 62, 0.4);
+        --banner-icon-color: #bc6f00;
+    }
+    /* 深色模式适配 */
+    @media (prefers-color-scheme: dark) {
+        .gh-banner {
+            --banner-bg: #1c2a3e;
+            --banner-border: #2d4a6e;
+            --banner-icon-color: #6cb4ff;
+            --banner-text: #e6edf3;
+            --banner-link: #6cb4ff;
+            --banner-link-hover: #9acbff;
+            --banner-close-color: #9aa6b2;
+            --banner-close-hover-bg: rgba(177, 186, 196, 0.12);
+            --banner-close-hover-color: #f0f3f6;
+            background-color: var(--banner-bg);
+            border-color: #2d4a6e;
+        }
+        .gh-banner.error {
+            --banner-bg: #3b1e1e;
+            --banner-border: #da3633;
+            --banner-icon-color: #f85149;
+        }
+        .gh-banner.warn {
+            --banner-bg: #382d1a;
+            --banner-border: #d29922;
+            --banner-icon-color: #e3b341;
+        }
+    }
+    .banner-icon {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 1px;
+    }
+    .banner-icon svg {
+        width: 20px;
+        height: 20px;
+        color: var(--banner-icon-color);
+        fill: currentColor;
+        display: block;
+    }
+    .banner-content {
+        flex: 1;
+        font-size: 0.9375rem;
+        font-weight: 400;
+        color: var(--banner-text);
+        line-height: 1.5;
+        word-break: break-word;
+    }
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+    }
+    .banner-content a {
+        color: var(--banner-link);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.12s ease, text-decoration 0.12s;
+    }
+    .banner-content a:hover {
+        color: var(--banner-link-hover);
+        text-decoration: underline;
+        text-underline-offset: 2px;
+    }
+    .banner-text {
+        display: inline;
+        /*font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, &quot;Noto Sans&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;;*/
+    }
+    .banner-close {
+        flex-shrink: 0;
+        background: transparent;
+        border: 0;
+        padding: 4px;
+        margin: -4px -4px 0 0;
+        cursor: pointer;
+        border-radius: 6px;
+        color: var(--banner-close-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.2s, color 0.2s;
+        line-height: 1;
+    }
+    .banner-close:hover {
+        background-color: var(--banner-close-hover-bg);
+        color: var(--banner-close-hover-color);
+    }
+    .banner-close:focus-visible {
+        outline: 2px solid var(--banner-icon-color);
+        outline-offset: 2px;
+    }
+    .banner-close svg {
+        width: 16px;
+        height: 16px;
+        fill: currentColor;
+        display: block;
+    }
+    .gh-banner.hide-banner {
+        display: none;
+    }
+    @media (max-width: 640px) {
+        .gh-banner {
+            padding: 0.875rem 1rem;
+            gap: 0.5rem;
+        }
+        .banner-content {
+            font-size: 0.875rem;
+        }
+        .banner-icon svg {
+            width: 18px;
+            height: 18px;
+        }
+    }
+    .banner-content span {
+        display: inline;
+    }
+    .banner-content a {
+        display: inline-block;
+    }
+&lt;/style&gt;
+
+&lt;section class=&quot;gh-banner info&quot; aria-labelledby=&quot;banner-title-a-href-about-wechat-miniapp-reverse-advanced-toolchain-下一篇内容将进入高级工具链与自动化解密流水线-more-info-about-reverse-advanced-toolchain-a&quot; role=&quot;region&quot; data-dismissible=&quot;true&quot;&gt;
+    &lt;div class=&quot;banner-icon&quot; aria-hidden=&quot;true&quot;&gt;
+        
+        &lt;svg viewBox=&quot;0 0 16 16&quot; fill=&quot;currentColor&quot;&gt;
+            &lt;path d=&quot;M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z&quot;&gt;&lt;/path&gt;
+        &lt;/svg&gt;
+        
+    &lt;/div&gt;
+
+    &lt;div class=&quot;banner-content&quot;&gt;
+        &lt;span class=&quot;banner-text&quot;&gt;&lt;a href=&quot;/ABOUT/WECHAT-MINIAPP-REVERSE-ADVANCED-TOOLCHAIN/&quot;&gt;
+👉 下一篇内容将进入高级工具链与自动化解密流水线 | MORE INFO ABOUT REVERSE-ADVANCED-TOOLCHAIN&lt;/a&gt;&lt;/span&gt;
+    &lt;/div&gt;
+
+    &lt;button class=&quot;banner-close&quot; aria-label=&quot;关闭通知横幅&quot; title=&quot;Dismiss banner&quot; type=&quot;button&quot;&gt;
+        &lt;svg viewBox=&quot;0 0 16 16&quot; fill=&quot;currentColor&quot; aria-hidden=&quot;true&quot;&gt;
+            &lt;path d=&quot;M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z&quot;&gt;&lt;/path&gt;
+        &lt;/svg&gt;
+    &lt;/button&gt;
+&lt;/section&gt;
+
+&lt;script&gt;
+    (function() {
+        // 全局只初始化一次关闭事件委托
+        if (!window._ghBannerInitialized) {
+            window._ghBannerInitialized = true;
+            document.addEventListener(&#39;click&#39;, function(e) {
+                const closeBtn = e.target.closest(&#39;.banner-close&#39;);
+                if (closeBtn) {
+                    const banner = closeBtn.closest(&#39;.gh-banner&#39;);
+                    if (banner) {
+                        banner.classList.add(&#39;hide-banner&#39;);
+                        banner.setAttribute(&#39;aria-hidden&#39;, &#39;true&#39;);
+                    }
+                }
+            });
+        }
+    })();
+&lt;/script&gt;
+
 
 					&lt;/div&gt;
 					&lt;div class=&quot;spacing&quot;&gt;&lt;/div&gt;
@@ -1167,36 +1508,38 @@
 				&lt;/div&gt;&lt;!--page main content end--&gt;
 
 				
-&lt;div class=&quot;ml-hide article-index thin-scrollbar position-sticky top-0&quot; style=&quot;max-height: 100vh; overflow-y: auto;&quot;&gt;
-    &lt;div class=&quot;nav nav-stacked tableOfContents_35-E&quot;&gt;
-        &lt;li class=&quot; table-of-contents&quot;&gt;
-            &lt;code-index-css&gt;
-                &lt;ul&gt;&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column&quot;&gt;&lt;a&gt;文章目录&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
-                &lt;ul id=&quot;toc&quot; class=&quot;section-nav&quot;&gt;
-&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h1&quot;&gt;&lt;a href=&quot;#微信小程序逆向进阶抓包--frida-hook-打印加密明文2026超详细版&quot;&gt;微信小程序逆向进阶：抓包 + Frida Hook 打印加密明文（2026超详细版）&lt;/a&gt;
+&lt;div class=&quot;col-md-4&quot;&gt;
+    &lt;div class=&quot;ml-hide article-index thin-scrollbar position-sticky top-0&quot; style=&quot;max-height: 100vh; overflow-y: auto;&quot;&gt;
+        &lt;div class=&quot;nav nav-stacked tableOfContents_35-E&quot;&gt;
+            &lt;li class=&quot;table-of-contents&quot;&gt;
+                &lt;code-index-css&gt;
+                    &lt;h3&gt;&lt;i class=&quot;fa fa-list&quot;&gt;&lt;/i&gt; 文章目录&lt;/h3&gt;
+                    &lt;ul id=&quot;toc&quot; class=&quot;section-nav&quot;&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h1&quot;&gt;&lt;a href=&quot;#微信小程序逆向进阶&quot;&gt;微信小程序逆向进阶&lt;/a&gt;
 &lt;ul&gt;
-&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2&quot;&gt;&lt;a href=&quot;#目标读者--前置技能&quot;&gt;目标读者 &amp;amp; 前置技能&lt;/a&gt;&lt;/li&gt;
-&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2&quot;&gt;&lt;a href=&quot;#工具准备2026-推荐配置&quot;&gt;工具准备（2026 推荐配置）&lt;/a&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2&quot;&gt;&lt;a href=&quot;#前置技能&quot;&gt;前置技能&lt;/a&gt;&lt;/li&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2&quot;&gt;&lt;a href=&quot;#工具准备&quot;&gt;工具准备&lt;/a&gt;
 &lt;ul&gt;
-&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3&quot;&gt;&lt;a href=&quot;#frida-环境搭建安卓&quot;&gt;Frida 环境搭建（安卓）&lt;/a&gt;&lt;/li&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3&quot;&gt;&lt;a href=&quot;#frida环境&quot;&gt;Frida环境&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2&quot;&gt;&lt;a href=&quot;#高频-hook-脚本合集hookjs&quot;&gt;高频 Hook 脚本合集（hook.js）&lt;/a&gt;&lt;/li&gt;
-&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2&quot;&gt;&lt;a href=&quot;#实战案例打印登录接口-aes-参数&quot;&gt;实战案例：打印登录接口 AES 参数&lt;/a&gt;&lt;/li&gt;
-&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2&quot;&gt;&lt;a href=&quot;#常见问题--绕过&quot;&gt;常见问题 &amp;amp; 绕过&lt;/a&gt;&lt;/li&gt;
-&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2&quot;&gt;&lt;a href=&quot;#实战闭环从-frida-明文到-https-接口复现-&quot;&gt;实战闭环：从 Frida 明文到 HTTPS 接口复现 ✅&lt;/a&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2&quot;&gt;&lt;a href=&quot;#hook脚本&quot;&gt;Hook脚本&lt;/a&gt;&lt;/li&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2&quot;&gt;&lt;a href=&quot;#实战案例一&quot;&gt;实战案例一&lt;/a&gt;&lt;/li&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2&quot;&gt;&lt;a href=&quot;#常见问题&quot;&gt;常见问题&lt;/a&gt;&lt;/li&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2&quot;&gt;&lt;a href=&quot;#实战&quot;&gt;实战&lt;/a&gt;
 &lt;ul&gt;
-&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3&quot;&gt;&lt;a href=&quot;#你已经掌握的关键信息&quot;&gt;你已经掌握的关键信息&lt;/a&gt;&lt;/li&gt;
-&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3&quot;&gt;&lt;a href=&quot;#python-本地解密验证&quot;&gt;Python 本地解密验证&lt;/a&gt;&lt;/li&gt;
-&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3&quot;&gt;&lt;a href=&quot;#本地加密并重放接口&quot;&gt;本地加密并重放接口&lt;/a&gt;&lt;/li&gt;
-&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3&quot;&gt;&lt;a href=&quot;#本篇你真正获得的能力-&quot;&gt;本篇你真正获得的能力 ✅&lt;/a&gt;&lt;/li&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3&quot;&gt;&lt;a href=&quot;#核心信息&quot;&gt;核心信息&lt;/a&gt;&lt;/li&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3&quot;&gt;&lt;a href=&quot;#本地解密&quot;&gt;本地解密&lt;/a&gt;&lt;/li&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3&quot;&gt;&lt;a href=&quot;#本地加密&quot;&gt;本地加密&lt;/a&gt;&lt;/li&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3&quot;&gt;&lt;a href=&quot;#其他&quot;&gt;其他&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-            &lt;/code-index-css&gt;
-        &lt;/li&gt;
+                &lt;/code-index-css&gt;
+            &lt;/li&gt;
+        &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;
 
@@ -1231,7 +1574,6 @@ vim: ts=2 sts=2 sw=2 noexpandtab
 
 <link rel="stylesheet" type="text/css" href="/assets/css/pace-minimal.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/footer.css">
-<script src="/assets/js/pace.min.js"></script>
 <!-- Bootstrap core CSS -->
 <link href="/assets/css/bootstrap.css" rel="stylesheet">
 <link href="/assets/css/bilibili_icon.css" rel="stylesheet">
@@ -1243,22 +1585,13 @@ vim: ts=2 sts=2 sw=2 noexpandtab
 <link rel="stylesheet" type="text/css" href="/assets/css/card.css">
 
 <script src="/assets/js/jquery.min.js"></script>
+<!-- #### defer load ####################################################################################-->
 <script src="/assets/js/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
-<script src="/assets/js/jquery.sticky/1.0.4/jquery.sticky.js"></script>
+<script defer src="/assets/js/pace.min.js"></script>
+<!-- #### defer load end ################################################################################-->
+
+<script defer src="/assets/js/jquery.sticky/1.0.4/jquery.sticky.js"></script>
 <script src="/assets/js/bootstrap.min.js"></script>
-
-<!--mathjax-config scripts.-->
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-        inlineMath: [['$$','$$']]
-      }
-    });
-</script>
-<script src="/assets/js/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<!--mathjax-config scripts stop.-->
-
 
 
 </head>
@@ -1477,153 +1810,16 @@ vim: ts=2 sts=2 sw=2 noexpandtab
 
         <startprint2pdfs>
             <div id="research-content" class="col-sm-bb">
-                <style>
-	.d-flex {
-		display: flex !important;
-		align-items: stretch;
-	}
-	/* 侧边栏基础样式 (继承原有结构，并确保折叠时平滑) */
-	#sidebar1 {
-		transition: width 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1), padding 0.2s ease, border 0.2s ease;
-		overflow-x: hidden;
-		overflow-y: auto;
-	}
-
-	/* 折叠状态：宽度归零，隐藏所有内部内容（包括logo，菜单等完全隐藏） */
-	#sidebar1.collapsed {
-		width: 0 !important;
-		min-width: 0 !important;
-		flex: 0 0 0 !important;
-		padding: 0 !important;
-		margin: 0 !important;
-		border-right-width: 0 !important;
-		overflow: hidden;
-		opacity: 0;
-		visibility: collapse;
-	}
-
-	/* 为了保证折叠时侧边栏内的logo彻底消失（视觉和DOM不可见），加一层安全隐藏 */
-	#sidebar1.collapsed #logo,
-	#sidebar1.collapsed .logo-link,
-	#sidebar1.collapsed #help-nav {
-		display: none !important;
-	}
-
-	/* 侧边栏内部滚动条美化，无功能影响 */
-	#sidebar1::-webkit-scrollbar {
-		width: 4px;
-	}
-	/* ---------- 切换按钮容器样式 (悬浮显示，定位在侧边栏右侧中间) ---------- */
-	.aside-area-toggle-btn {
-		position: fixed;
-		z-index: 1000;
-		width: 32px;          /* 略微加宽以更好容纳图片 */
-		height: 32px;
-		background: #ffffff;
-		/*mark*/
-		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
-		border-radius: 15px 15px 15px 15px ;
-		border: 1px solid #e1e4e8;
-		border-right: none;
-		cursor: pointer;
-		transition: all 0.2s ease;
-		opacity: 0;
-		visibility: hidden;
-		transform: translateX(4px);
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-
-	/* 按钮显示状态 */
-	.aside-area-toggle-btn.visible {
-		opacity: 1;
-		visibility: visible;
-		transform: translateX(0);
-	}
-
-	/* 内部表格布局保持原有结构，但改用flex确保图片居中 */
-	.aside-area-toggle-btn .dp-table-cell {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 100%;
-		height: 100%;
-	}
-
-	.aside-area-toggle-btn .btn-ctnr {
-		position: relative;
-		width: 100%;
-		height: 100%;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-
-	/* 实际可点击按钮 - 完全填充容器，图片居中 */
-	.restore-btn {
-		width: 100%;
-		height: 100%;
-		background: transparent;
-		border: 1px;
-		cursor: pointer;
-		outline: none;
-		align-items: center;
-		justify-content: center;
-		padding: 1px;
-		margin: 0;
-		transition: background-color 0.15s;
-		border-radius: 15px 15px 15px 15px;
-	}
-
-	.restore-btn:hover {
-		background-color: rgba(0, 0, 0, 0.05);
-	}
-
-	/* 切换按钮内部的图片样式：作为logo显示，自适应大小 */
-	.toggle-logo-img {
-		width: 28px;
-		height: auto;
-		max-width: 32px;
-		max-height: 32px;
-		object-fit: contain;
-		display: block;
-		pointer-events: none;  /* 确保点击穿透到按钮 */
-		border-radius: 4px;
-	}
-
-	/* 侧边栏内部原有logo样式保持 */
-	.logo-link {
-		display: flex;
-		align-items: center;
-		text-decoration: none;
-		padding: 1rem 1.2rem;
-		border-bottom: 1px solid #eaecef;
-	}
-
-	.logo-link img, .logo-link svg {
-		height: 32px;
-		width: auto;
-	}
-	/* 响应式辅助 */
-	@media (min-width: 768px) {
-		#sidebar1.collapsed {
-			flex: 0 0 0 !important;
-			max-width: 0 !important;
-		}
-	}
-</style>
+                <link href="/assets/css/research.css" rel="stylesheet">
 
 
 <div id="help-page">
-	<!--<div class="visible-xs">nav banner with logo. 响应式::菜单::表单-->
-		
 	<div id="post-content" class="row markdown-body-img d-flex">
-		<div id="sidebar1" class="flex-column col-md-3 position-sticky ml-hide overflow-y-auto top-0 d-none d-lg-block flex-shrink-0 border-right" style="height:100vh">
-
-			
+		<div id="sidebar1" class="flex-column col-md-2 position-sticky ml-hide overflow-y-auto top-0 d-none d-lg-block flex-shrink-0 border-right" style="height:100vh">
 			<div style="padding-top: 20px">
 				
+
+
 
 
 
@@ -1791,18 +1987,20 @@ vim: ts=2 sts=2 sw=2 noexpandtab
     }
 </style>
 
-<section class="gh-banner info" aria-labelledby="banner-title-欢迎并请注意-未经授权的渗透测试访问或滥用行为将被严格禁止-并将受到法律制裁-br-welcome-and-attention-plz-unauthorized-pentest-access-or-misuse-is-strictly-prohibited-and-will-be-prosecuted" role="region" data-dismissible="true">
+<section class="gh-banner error" aria-labelledby="banner-title-" role="region" data-dismissible="true">
     <div class="banner-icon" aria-hidden="true">
         
         <svg viewBox="0 0 16 16" fill="currentColor">
-            <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path>
+            <path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575L6.457 1.047ZM8 4.75a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 4.75Zm.75 6.75a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Z"></path>
         </svg>
         
     </div>
 
     <div class="banner-content">
-        <span class="banner-text">欢迎并请注意：未经授权的渗透测试访问或滥用行为将被严格禁止，并将受到法律制裁。<br>
-				Welcome and attention plz: Unauthorized Pentest access or misuse is strictly prohibited and will be prosecuted.</span>
+        <span class="banner-text">
+    注意: 任何形式的未授权访问都是禁止的<BR>
+    ATTENTION: UNAUTHORIZED ACCESS OF ANY FORM IS PROHIBITED.
+    </span>
     </div>
 
     <button class="banner-close" aria-label="关闭通知横幅" title="Dismiss banner" type="button">
@@ -1831,7 +2029,7 @@ vim: ts=2 sts=2 sw=2 noexpandtab
     })();
 </script>
 			</div>
-			<!--left area: menu 左边菜单栏 col-sm-3 ./25%-->
+			<!--left area: menu 左边菜单栏-->
 			<div id="help-nav" aria-expanded="true" class="nav nav-pills nav-stacked" style="padding-top: 20px; padding-bottom: 20px">
 				
 	<details >
@@ -2349,21 +2547,247 @@ vim: ts=2 sts=2 sw=2 noexpandtab
 							</ion-icon>
 							</a></span>
 						</h1>
-						<h1 id="微信小程序逆向进阶抓包--frida-hook-打印加密明文2026超详细版">微信小程序逆向进阶：抓包 + Frida Hook 打印加密明文（2026超详细版）</h1>
+						
+						<br><br><br>
+						
 
-<p>上一期我们拿到了源码，这一期重点解决“源码有了，但加密函数看不懂、key藏在哪里”的问题。通过抓包 + 动态 Hook，我们可以直接在运行时打印出明文参数、key、iv 等核心信息。</p>
 
-<h2 id="目标读者--前置技能">目标读者 &amp; 前置技能</h2>
+
+
+
+
+
+<style>
+    /* GitHub 风格横幅样式 - 支持错误/警告/信息主题 */
+    .gh-banner {
+        --banner-bg: #eef5ff;
+        --banner-border: rgba(84, 174, 255, 0.3);
+        --banner-icon-color: #1f7bdf;
+        --banner-text: #1f2328;
+        --banner-link: #0969da;
+        --banner-link-hover: #0550ae;
+        --banner-close-color: #656d76;
+        --banner-close-hover-bg: rgba(0, 0, 0, 0.05);
+        --banner-close-hover-color: #1f2328;
+        background-color: var(--banner-bg);
+        border: 1px solid var(--banner-border);
+        border-radius: 12px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        padding: 1rem 1rem 1rem 1.25rem;
+        transition: all 0.2s ease;
+        position: relative;
+    }
+    /* 错误主题 */
+    .gh-banner.error {
+        --banner-bg: #ffebe9;
+        --banner-border: rgba(255, 129, 130, 0.4);
+        --banner-icon-color: #cf222e;
+    }
+    /* 警告主题 */
+    .gh-banner.warn {
+        --banner-bg: #fff8e7;
+        --banner-border: rgba(215, 173, 62, 0.4);
+        --banner-icon-color: #bc6f00;
+    }
+    /* 深色模式适配 */
+    @media (prefers-color-scheme: dark) {
+        .gh-banner {
+            --banner-bg: #1c2a3e;
+            --banner-border: #2d4a6e;
+            --banner-icon-color: #6cb4ff;
+            --banner-text: #e6edf3;
+            --banner-link: #6cb4ff;
+            --banner-link-hover: #9acbff;
+            --banner-close-color: #9aa6b2;
+            --banner-close-hover-bg: rgba(177, 186, 196, 0.12);
+            --banner-close-hover-color: #f0f3f6;
+            background-color: var(--banner-bg);
+            border-color: #2d4a6e;
+        }
+        .gh-banner.error {
+            --banner-bg: #3b1e1e;
+            --banner-border: #da3633;
+            --banner-icon-color: #f85149;
+        }
+        .gh-banner.warn {
+            --banner-bg: #382d1a;
+            --banner-border: #d29922;
+            --banner-icon-color: #e3b341;
+        }
+    }
+    .banner-icon {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 1px;
+    }
+    .banner-icon svg {
+        width: 20px;
+        height: 20px;
+        color: var(--banner-icon-color);
+        fill: currentColor;
+        display: block;
+    }
+    .banner-content {
+        flex: 1;
+        font-size: 0.9375rem;
+        font-weight: 400;
+        color: var(--banner-text);
+        line-height: 1.5;
+        word-break: break-word;
+    }
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+    }
+    .banner-content a {
+        color: var(--banner-link);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.12s ease, text-decoration 0.12s;
+    }
+    .banner-content a:hover {
+        color: var(--banner-link-hover);
+        text-decoration: underline;
+        text-underline-offset: 2px;
+    }
+    .banner-text {
+        display: inline;
+        /*font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";*/
+    }
+    .banner-close {
+        flex-shrink: 0;
+        background: transparent;
+        border: 0;
+        padding: 4px;
+        margin: -4px -4px 0 0;
+        cursor: pointer;
+        border-radius: 6px;
+        color: var(--banner-close-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.2s, color 0.2s;
+        line-height: 1;
+    }
+    .banner-close:hover {
+        background-color: var(--banner-close-hover-bg);
+        color: var(--banner-close-hover-color);
+    }
+    .banner-close:focus-visible {
+        outline: 2px solid var(--banner-icon-color);
+        outline-offset: 2px;
+    }
+    .banner-close svg {
+        width: 16px;
+        height: 16px;
+        fill: currentColor;
+        display: block;
+    }
+    .gh-banner.hide-banner {
+        display: none;
+    }
+    @media (max-width: 640px) {
+        .gh-banner {
+            padding: 0.875rem 1rem;
+            gap: 0.5rem;
+        }
+        .banner-content {
+            font-size: 0.875rem;
+        }
+        .banner-icon svg {
+            width: 18px;
+            height: 18px;
+        }
+    }
+    .banner-content span {
+        display: inline;
+    }
+    .banner-content a {
+        display: inline-block;
+    }
+</style>
+
+<section class="gh-banner info" aria-labelledby="banner-title-" role="region" data-dismissible="true">
+    <div class="banner-icon" aria-hidden="true">
+        
+        <svg viewBox="0 0 16 16" fill="currentColor">
+            <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path>
+        </svg>
+        
+    </div>
+
+    <div class="banner-content">
+        <span class="banner-text">
+    由于传播、利用此库/文所提供的信息而造成的任何直接或者间接的后果及损失，均由使用者本人负责，本文作者不为此承担任何责任。<BR>
+    ANY DIRECT OR INDIRECT CONSEQUENCES OR LOSSES CAUSED BY DISSEMINATING OR USING THE INFORMATION PROVIDED IN THIS REPOSITORY/DOCUMENT
+    SHALL BE BORNE SOLELY BY THE USER. THE AUTHOR OF THIS ARTICLE ASSUMES NO RESPONSIBILITY FOR SUCH CONSEQUENCES OR LOSSES.
+    </span>
+    </div>
+
+    <button class="banner-close" aria-label="关闭通知横幅" title="Dismiss banner" type="button">
+        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
+        </svg>
+    </button>
+</section>
+
+<script>
+    (function() {
+        // 全局只初始化一次关闭事件委托
+        if (!window._ghBannerInitialized) {
+            window._ghBannerInitialized = true;
+            document.addEventListener('click', function(e) {
+                const closeBtn = e.target.closest('.banner-close');
+                if (closeBtn) {
+                    const banner = closeBtn.closest('.gh-banner');
+                    if (banner) {
+                        banner.classList.add('hide-banner');
+                        banner.setAttribute('aria-hidden', 'true');
+                    }
+                }
+            });
+        }
+    })();
+</script>
+						
+						<h1 id="微信小程序逆向进阶">微信小程序逆向进阶</h1>
 
 <ul>
-  <li>已完成第一次解包并导入开发者工具</li>
-  <li>能看懂最基础的 JavaScript</li>
-  <li>愿意花 30 分钟搭建 Frida 环境</li>
+  <li>抓包与 Frida Hook 提取加密明文</li>
 </ul>
 
-<h2 id="工具准备2026-推荐配置">工具准备（2026 推荐配置）</h2>
+<p>在前序实践中，我们已完成小程序的源码提取，本文将聚焦解决源码分析阶段的痛点：加密算法逻辑不清晰、密钥定位困难。通过网络流量抓包分析结合动态 Hook 技术，
+可在运行时直接提取明文参数、密钥（Key）、初始向量（Initialization Vector, IV）等核心敏感信息。</p>
 
-<table>
+<h2 id="前置技能">前置技能</h2>
+
+<ul>
+  <li>
+    <p>已完成小程序包解包，并可将源码导入微信开发者工具</p>
+  </li>
+  <li>
+    <p>具备基础 JavaScript 代码阅读能力</p>
+  </li>
+  <li>
+    <p>可在 30 分钟内完成 Frida 环境的搭建与验证</p>
+  </li>
+</ul>
+
+<h2 id="工具准备">工具准备</h2>
+
+<table class="table">
   <thead>
     <tr>
       <th>工具</th>
@@ -2375,67 +2799,76 @@ vim: ts=2 sts=2 sw=2 noexpandtab
   <tbody>
     <tr>
       <td>HttpCanary</td>
-      <td>安卓抓包</td>
-      <td>Google Play / apkpure</td>
-      <td>真机首选</td>
+      <td>安卓端流量抓包</td>
+      <td>Google Play / Apkpure</td>
+      <td>真机环境首选工具</td>
     </tr>
     <tr>
       <td>PC Fiddler / Charles</td>
-      <td>PC 微信抓包</td>
-      <td>官网</td>
-      <td>需证书信任</td>
+      <td>PC 端微信流量抓包</td>
+      <td>工具官网</td>
+      <td>需安装并信任根证书</td>
     </tr>
     <tr>
       <td>mitmproxy</td>
-      <td>命令行抓包</td>
-      <td>pip install mitmproxy</td>
-      <td>高级</td>
+      <td>命令行流量抓包</td>
+      <td><code class="language-plaintext highlighter-rouge">pip install mitmproxy</code></td>
+      <td>适用于高级自动化分析场景</td>
     </tr>
     <tr>
       <td>Frida</td>
-      <td>动态 Hook</td>
-      <td>pip install frida-tools</td>
-      <td>核心</td>
+      <td>动态插桩 Hook</td>
+      <td><code class="language-plaintext highlighter-rouge">pip install frida-tools</code></td>
+      <td>本次实践核心工具</td>
     </tr>
     <tr>
       <td>frida-server</td>
-      <td>手机端</td>
-      <td>github releases</td>
-      <td>架构需匹配</td>
+      <td>移动端 Frida 服务端</td>
+      <td>GitHub Releases</td>
+      <td>需与目标设备 CPU 架构匹配</td>
     </tr>
     <tr>
       <td>r0capture</td>
-      <td>内存明文</td>
-      <td>github</td>
-      <td>兜底方案</td>
+      <td>内存明文提取</td>
+      <td>GitHub</td>
+      <td>补充方案，用于常规方法失效时的内存明文提取</td>
     </tr>
   </tbody>
 </table>
 
-<h3 id="frida-环境搭建安卓">Frida 环境搭建（安卓）</h3>
+<h3 id="frida环境">Frida环境</h3>
 
 <ol>
-  <li>下载对应架构的 frida-server</li>
-  <li>adb push 到 <code class="language-plaintext highlighter-rouge">/data/local/tmp/</code></li>
-  <li><code class="language-plaintext highlighter-rouge">chmod 755 frida-server &amp;&amp; ./frida-server &amp;</code></li>
-  <li>PC 端 <code class="language-plaintext highlighter-rouge">frida-ps -U</code> 验证</li>
+  <li>
+    <p>下载与目标设备架构匹配的 frida-server 二进制文件</p>
+  </li>
+  <li>
+    <p>通过 <code class="language-plaintext highlighter-rouge">adb push</code> 将文件推送至设备 <code class="language-plaintext highlighter-rouge">/data/local/tmp/</code> 目录</p>
+  </li>
+  <li>
+    <p>执行权限配置与服务启动：</p>
+  </li>
+</ol>
+
+<p><code class="language-plaintext highlighter-rouge">chmod 755 frida-server &amp;&amp; ./frida-server</code></p>
+
+<ol>
+  <li>在 PC 端执行 <code class="language-plaintext highlighter-rouge">frida-ps -U</code> 验证服务连接状态</li>
 </ol>
 
 <hr />
 
-<h2 id="高频-hook-脚本合集hookjs">高频 Hook 脚本合集（hook.js）</h2>
+<h2 id="hook脚本">Hook脚本</h2>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">[*] Hook WeChat MiniApp</span><span class="dl">"</span><span class="p">);</span>
-
 <span class="nx">Java</span><span class="p">.</span><span class="nx">perform</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-  <span class="c1">// AES</span>
+  <span class="c1">// AES 加解密函数Hook</span>
   <span class="kd">var</span> <span class="nx">Cipher</span> <span class="o">=</span> <span class="nx">Java</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="dl">"</span><span class="s2">javax.crypto.Cipher</span><span class="dl">"</span><span class="p">);</span>
   <span class="nx">Cipher</span><span class="p">.</span><span class="nx">doFinal</span><span class="p">.</span><span class="nx">overload</span><span class="p">(</span><span class="dl">'</span><span class="s1">[B</span><span class="dl">'</span><span class="p">).</span><span class="nx">implementation</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">input</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">[AES 明文]</span><span class="dl">"</span><span class="p">,</span> <span class="nx">Java</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="dl">"</span><span class="s2">java.lang.String</span><span class="dl">"</span><span class="p">).</span><span class="nx">$new</span><span class="p">(</span><span class="nx">input</span><span class="p">));</span>
     <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">doFinal</span><span class="p">(</span><span class="nx">input</span><span class="p">);</span>
   <span class="p">};</span>
-
-  <span class="c1">// MD5 / SHA</span>
+  <span class="c1">// 摘要算法（MD5/SHA等）输入Hook</span>
   <span class="kd">var</span> <span class="nx">MessageDigest</span> <span class="o">=</span> <span class="nx">Java</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="dl">"</span><span class="s2">java.security.MessageDigest</span><span class="dl">"</span><span class="p">);</span>
   <span class="nx">MessageDigest</span><span class="p">.</span><span class="nx">update</span><span class="p">.</span><span class="nx">overload</span><span class="p">(</span><span class="dl">'</span><span class="s1">[B</span><span class="dl">'</span><span class="p">).</span><span class="nx">implementation</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">[Digest 输入]</span><span class="dl">"</span><span class="p">,</span> <span class="nx">b</span><span class="p">);</span>
@@ -2444,21 +2877,31 @@ vim: ts=2 sts=2 sw=2 noexpandtab
 <span class="p">});</span>
 </code></pre></div></div>
 
-<p>启动：</p>
+<p>脚本启动命令：</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>frida <span class="nt">-U</span> <span class="nt">-f</span> com.tencent.mm <span class="nt">-l</span> hook.js <span class="nt">--no-pause</span>
 </code></pre></div></div>
 
 <hr />
 
-<h2 id="实战案例打印登录接口-aes-参数">实战案例：打印登录接口 AES 参数</h2>
+<h2 id="实战案例一">实战案例一</h2>
 
-<p>操作流程：</p>
+<ul>
+  <li>提取登录接口 AES 参数</li>
+</ul>
+
+<p>实践操作流程：</p>
 
 <ol>
-  <li>启动 Frida</li>
-  <li>打开目标小程序</li>
-  <li>触发登录 / 下单等接口</li>
+  <li>
+    <p>启动 Frida 服务并加载上述 Hook 脚本</p>
+  </li>
+  <li>
+    <p>启动微信客户端并打开目标小程序</p>
+  </li>
+  <li>
+    <p>触发目标业务操作（如登录、下单等）以调用加密接口</p>
+  </li>
 </ol>
 
 <p>示例输出：</p>
@@ -2470,9 +2913,9 @@ vim: ts=2 sts=2 sw=2 noexpandtab
 
 <hr />
 
-<h2 id="常见问题--绕过">常见问题 &amp; 绕过</h2>
+<h2 id="常见问题">常见问题</h2>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>问题</th>
@@ -2482,86 +2925,322 @@ vim: ts=2 sts=2 sw=2 noexpandtab
   </thead>
   <tbody>
     <tr>
-      <td>Frida 闪退</td>
-      <td>server 不匹配</td>
-      <td>换版本</td>
+      <td>Frida 客户端启动后闪退</td>
+      <td>Frida-server 与客户端版本不匹配</td>
+      <td>更换与客户端版本一致的 Frida-server</td>
     </tr>
     <tr>
-      <td>无输出</td>
-      <td>Hook 点不对</td>
-      <td>Hook JSON / String</td>
+      <td>Hook 脚本无预期输出</td>
+      <td>Hook 点未命中目标加密函数</td>
+      <td>调整 Hook 点，可尝试 Hook JSON 序列化或字符串处理函数以定位明文</td>
     </tr>
     <tr>
-      <td>证书抓不到</td>
-      <td>Pinning</td>
-      <td>JustTrustMe</td>
+      <td>无法通过代理抓取 HTTPS 流量</td>
+      <td>SSL 证书固定（SSL Pinning）</td>
+      <td>使用 JustTrustMe 模块绕过证书校验</td>
     </tr>
     <tr>
-      <td>被检测 Root</td>
-      <td>反调试</td>
-      <td>Magisk + Shamiko</td>
+      <td>设备被应用检测到 Root 权限</td>
+      <td>应用 Root 检测机制</td>
+      <td>使用 Magisk 配合 Shamiko 模块隐藏 Root 环境</td>
     </tr>
   </tbody>
 </table>
 
 <hr />
 
-<h2 id="实战闭环从-frida-明文到-https-接口复现-">实战闭环：从 Frida 明文到 HTTPS 接口复现 ✅</h2>
+<h2 id="实战">实战</h2>
 
-<h3 id="你已经掌握的关键信息">你已经掌握的关键信息</h3>
+<p>闭环：从 Frida 明文提取到 HTTPS 接口复现</p>
+
+<h3 id="核心信息">核心信息</h3>
 
 <ul>
-  <li>算法：AES-CBC</li>
-  <li>key / iv</li>
-  <li>明文结构</li>
-  <li>接口 URL</li>
+  <li>
+    <p>加密算法：AES-CBC</p>
+  </li>
+  <li>
+    <p>密钥（Key）与初始向量（IV）</p>
+  </li>
+  <li>
+    <p>业务请求明文结构</p>
+  </li>
+  <li>
+    <p>业务接口请求地址</p>
+  </li>
 </ul>
 
-<h3 id="python-本地解密验证">Python 本地解密验证</h3>
+<h3 id="本地解密">本地解密</h3>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">Crypto.Cipher</span> <span class="kn">import</span> <span class="n">AES</span>
 <span class="kn">import</span> <span class="nn">base64</span><span class="p">,</span> <span class="n">json</span>
-
 <span class="n">key</span> <span class="o">=</span> <span class="sa">b</span><span class="s">'0123456789abcdef0123456789abcdef'</span>
 <span class="n">iv</span>  <span class="o">=</span> <span class="sa">b</span><span class="s">'fedcba9876543210'</span>
-
 <span class="n">cipher</span> <span class="o">=</span> <span class="n">AES</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">AES</span><span class="p">.</span><span class="n">MODE_CBC</span><span class="p">,</span> <span class="n">iv</span><span class="p">)</span>
 <span class="n">plain</span> <span class="o">=</span> <span class="n">cipher</span><span class="p">.</span><span class="n">decrypt</span><span class="p">(</span><span class="n">base64</span><span class="p">.</span><span class="n">b64decode</span><span class="p">(</span><span class="s">"U2FsdGVkX1+..."</span><span class="p">))</span>
-
 <span class="k">print</span><span class="p">(</span><span class="n">plain</span><span class="p">)</span>
 </code></pre></div></div>
 
-<h3 id="本地加密并重放接口">本地加密并重放接口</h3>
+<h3 id="本地加密">本地加密</h3>
+
+<p>本地加密与接口重放</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">requests</span>
-
-<span class="n">payload</span> <span class="o">=</span> <span class="n">encrypt</span><span class="p">(</span>
+<span class="c1"># 注：encrypt为已实现的AES-CBC加密函数
+</span><span class="n">payload</span> <span class="o">=</span> <span class="n">encrypt</span><span class="p">(</span>
   <span class="p">{</span><span class="s">"phone"</span><span class="p">:</span><span class="s">"13800000000"</span><span class="p">,</span><span class="s">"code"</span><span class="p">:</span><span class="s">"123456"</span><span class="p">},</span>
   <span class="n">key</span><span class="p">,</span> <span class="n">iv</span>
 <span class="p">)</span>
-
 <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span>
   <span class="s">"https://api.example.com/login"</span><span class="p">,</span>
   <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s">"data"</span><span class="p">:</span> <span class="n">payload</span><span class="p">}</span>
 <span class="p">)</span>
-
 <span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>
 </code></pre></div></div>
 
 <hr />
 
-<h3 id="本篇你真正获得的能力-">本篇你真正获得的能力 ✅</h3>
+<h3 id="其他">其他</h3>
 
 <ul>
-  <li>能在运行时无视 HTTPS</li>
-  <li>能稳定拿到 key / iv</li>
-  <li>能复现真实业务接口</li>
+  <li>
+    <p>可在运行时绕过 HTTPS 加密限制，直接提取业务明文数据</p>
+  </li>
+  <li>
+    <p>可稳定提取加密算法所需的密钥与初始向量</p>
+  </li>
+  <li>
+    <p>可复现真实业务接口的请求逻辑，完成接口重放验证</p>
+  </li>
 </ul>
 
 <hr />
 
-<p>下一篇：<br />
-👉 <strong>高级工具链 &amp; 自动化解密流水线</strong></p>
+<blockquote>
+  <p>[!NOTE]
+本文档对原始内容的技术修正说明：</p>
+
+  <ol>
+    <li>
+      <p>修正了原始常见问题表格中，Root 检测问题的原因标注错误，原标注为 “反调试”，实际为应用 Root 检测机制。</p>
+    </li>
+    <li>
+      <p>原始 Hook 脚本存在两处技术局限：</p>
+
+      <ul>
+        <li>
+          <p><code class="language-plaintext highlighter-rouge">MessageDigest.update</code>的 Hook 实现直接打印字节数组对象，无法正确输出摘要算法的输入内容，需将字节数组转换为字符串后再输出。</p>
+        </li>
+        <li>
+          <p>脚本仅 Hook 了<code class="language-plaintext highlighter-rouge">Cipher.doFinal</code>的输入参数，无法区分加密与解密调用，可能混淆加密输入（明文）与解密输入（密文），建议补充调用栈分析或返回值 Hook 以区分加解密流程。</p>
+        </li>
+      </ul>
+    </li>
+  </ol>
+</blockquote>
+
+<style>
+    /* GitHub 风格横幅样式 - 支持错误/警告/信息主题 */
+    .gh-banner {
+        --banner-bg: #eef5ff;
+        --banner-border: rgba(84, 174, 255, 0.3);
+        --banner-icon-color: #1f7bdf;
+        --banner-text: #1f2328;
+        --banner-link: #0969da;
+        --banner-link-hover: #0550ae;
+        --banner-close-color: #656d76;
+        --banner-close-hover-bg: rgba(0, 0, 0, 0.05);
+        --banner-close-hover-color: #1f2328;
+        background-color: var(--banner-bg);
+        border: 1px solid var(--banner-border);
+        border-radius: 12px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        padding: 1rem 1rem 1rem 1.25rem;
+        transition: all 0.2s ease;
+        position: relative;
+    }
+    /* 错误主题 */
+    .gh-banner.error {
+        --banner-bg: #ffebe9;
+        --banner-border: rgba(255, 129, 130, 0.4);
+        --banner-icon-color: #cf222e;
+    }
+    /* 警告主题 */
+    .gh-banner.warn {
+        --banner-bg: #fff8e7;
+        --banner-border: rgba(215, 173, 62, 0.4);
+        --banner-icon-color: #bc6f00;
+    }
+    /* 深色模式适配 */
+    @media (prefers-color-scheme: dark) {
+        .gh-banner {
+            --banner-bg: #1c2a3e;
+            --banner-border: #2d4a6e;
+            --banner-icon-color: #6cb4ff;
+            --banner-text: #e6edf3;
+            --banner-link: #6cb4ff;
+            --banner-link-hover: #9acbff;
+            --banner-close-color: #9aa6b2;
+            --banner-close-hover-bg: rgba(177, 186, 196, 0.12);
+            --banner-close-hover-color: #f0f3f6;
+            background-color: var(--banner-bg);
+            border-color: #2d4a6e;
+        }
+        .gh-banner.error {
+            --banner-bg: #3b1e1e;
+            --banner-border: #da3633;
+            --banner-icon-color: #f85149;
+        }
+        .gh-banner.warn {
+            --banner-bg: #382d1a;
+            --banner-border: #d29922;
+            --banner-icon-color: #e3b341;
+        }
+    }
+    .banner-icon {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 1px;
+    }
+    .banner-icon svg {
+        width: 20px;
+        height: 20px;
+        color: var(--banner-icon-color);
+        fill: currentColor;
+        display: block;
+    }
+    .banner-content {
+        flex: 1;
+        font-size: 0.9375rem;
+        font-weight: 400;
+        color: var(--banner-text);
+        line-height: 1.5;
+        word-break: break-word;
+    }
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+    }
+    .banner-content a {
+        color: var(--banner-link);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.12s ease, text-decoration 0.12s;
+    }
+    .banner-content a:hover {
+        color: var(--banner-link-hover);
+        text-decoration: underline;
+        text-underline-offset: 2px;
+    }
+    .banner-text {
+        display: inline;
+        /*font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";*/
+    }
+    .banner-close {
+        flex-shrink: 0;
+        background: transparent;
+        border: 0;
+        padding: 4px;
+        margin: -4px -4px 0 0;
+        cursor: pointer;
+        border-radius: 6px;
+        color: var(--banner-close-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.2s, color 0.2s;
+        line-height: 1;
+    }
+    .banner-close:hover {
+        background-color: var(--banner-close-hover-bg);
+        color: var(--banner-close-hover-color);
+    }
+    .banner-close:focus-visible {
+        outline: 2px solid var(--banner-icon-color);
+        outline-offset: 2px;
+    }
+    .banner-close svg {
+        width: 16px;
+        height: 16px;
+        fill: currentColor;
+        display: block;
+    }
+    .gh-banner.hide-banner {
+        display: none;
+    }
+    @media (max-width: 640px) {
+        .gh-banner {
+            padding: 0.875rem 1rem;
+            gap: 0.5rem;
+        }
+        .banner-content {
+            font-size: 0.875rem;
+        }
+        .banner-icon svg {
+            width: 18px;
+            height: 18px;
+        }
+    }
+    .banner-content span {
+        display: inline;
+    }
+    .banner-content a {
+        display: inline-block;
+    }
+</style>
+
+<section class="gh-banner info" aria-labelledby="banner-title-a-href-about-wechat-miniapp-reverse-advanced-toolchain-下一篇内容将进入高级工具链与自动化解密流水线-more-info-about-reverse-advanced-toolchain-a" role="region" data-dismissible="true">
+    <div class="banner-icon" aria-hidden="true">
+        
+        <svg viewBox="0 0 16 16" fill="currentColor">
+            <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path>
+        </svg>
+        
+    </div>
+
+    <div class="banner-content">
+        <span class="banner-text"><a href="/ABOUT/WECHAT-MINIAPP-REVERSE-ADVANCED-TOOLCHAIN/">
+👉 下一篇内容将进入高级工具链与自动化解密流水线 | MORE INFO ABOUT REVERSE-ADVANCED-TOOLCHAIN</a></span>
+    </div>
+
+    <button class="banner-close" aria-label="关闭通知横幅" title="Dismiss banner" type="button">
+        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
+        </svg>
+    </button>
+</section>
+
+<script>
+    (function() {
+        // 全局只初始化一次关闭事件委托
+        if (!window._ghBannerInitialized) {
+            window._ghBannerInitialized = true;
+            document.addEventListener('click', function(e) {
+                const closeBtn = e.target.closest('.banner-close');
+                if (closeBtn) {
+                    const banner = closeBtn.closest('.gh-banner');
+                    if (banner) {
+                        banner.classList.add('hide-banner');
+                        banner.setAttribute('aria-hidden', 'true');
+                    }
+                }
+            });
+        }
+    })();
+</script>
+
 
 					</div>
 					<div class="spacing"></div>
@@ -2613,36 +3292,38 @@ vim: ts=2 sts=2 sw=2 noexpandtab
 				</div><!--page main content end-->
 
 				
-<div class="ml-hide article-index thin-scrollbar position-sticky top-0" style="max-height: 100vh; overflow-y: auto;">
-    <div class="nav nav-stacked tableOfContents_35-E">
-        <li class=" table-of-contents">
-            <code-index-css>
-                <ul><li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column"><a>文章目录</a></li></ul>
-                <ul id="toc" class="section-nav">
-<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h1"><a href="#微信小程序逆向进阶抓包--frida-hook-打印加密明文2026超详细版">微信小程序逆向进阶：抓包 + Frida Hook 打印加密明文（2026超详细版）</a>
+<div class="col-md-4">
+    <div class="ml-hide article-index thin-scrollbar position-sticky top-0" style="max-height: 100vh; overflow-y: auto;">
+        <div class="nav nav-stacked tableOfContents_35-E">
+            <li class="table-of-contents">
+                <code-index-css>
+                    <h3><i class="fa fa-list"></i> 文章目录</h3>
+                    <ul id="toc" class="section-nav">
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h1"><a href="#微信小程序逆向进阶">微信小程序逆向进阶</a>
 <ul>
-<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2"><a href="#目标读者--前置技能">目标读者 &amp; 前置技能</a></li>
-<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2"><a href="#工具准备2026-推荐配置">工具准备（2026 推荐配置）</a>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2"><a href="#前置技能">前置技能</a></li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2"><a href="#工具准备">工具准备</a>
 <ul>
-<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3"><a href="#frida-环境搭建安卓">Frida 环境搭建（安卓）</a></li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3"><a href="#frida环境">Frida环境</a></li>
 </ul>
 </li>
-<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2"><a href="#高频-hook-脚本合集hookjs">高频 Hook 脚本合集（hook.js）</a></li>
-<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2"><a href="#实战案例打印登录接口-aes-参数">实战案例：打印登录接口 AES 参数</a></li>
-<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2"><a href="#常见问题--绕过">常见问题 &amp; 绕过</a></li>
-<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2"><a href="#实战闭环从-frida-明文到-https-接口复现-">实战闭环：从 Frida 明文到 HTTPS 接口复现 ✅</a>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2"><a href="#hook脚本">Hook脚本</a></li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2"><a href="#实战案例一">实战案例一</a></li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2"><a href="#常见问题">常见问题</a></li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2"><a href="#实战">实战</a>
 <ul>
-<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3"><a href="#你已经掌握的关键信息">你已经掌握的关键信息</a></li>
-<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3"><a href="#python-本地解密验证">Python 本地解密验证</a></li>
-<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3"><a href="#本地加密并重放接口">本地加密并重放接口</a></li>
-<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3"><a href="#本篇你真正获得的能力-">本篇你真正获得的能力 ✅</a></li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3"><a href="#核心信息">核心信息</a></li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3"><a href="#本地解密">本地解密</a></li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3"><a href="#本地加密">本地加密</a></li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3"><a href="#其他">其他</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
-            </code-index-css>
-        </li>
+                </code-index-css>
+            </li>
+        </div>
     </div>
 </div>
 

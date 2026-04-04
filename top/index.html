@@ -299,7 +299,6 @@ $(document).ready(function(){
 
 <link rel="stylesheet" type="text/css" href="/assets/css/pace-minimal.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/footer.css">
-<script src="/assets/js/pace.min.js"></script>
 <!-- Bootstrap core CSS -->
 <link href="/assets/css/bootstrap.css" rel="stylesheet">
 <link href="/assets/css/bilibili_icon.css" rel="stylesheet">
@@ -311,22 +310,13 @@ $(document).ready(function(){
 <link rel="stylesheet" type="text/css" href="/assets/css/card.css">
 
 <script src="/assets/js/jquery.min.js"></script>
+<!-- #### defer load ####################################################################################-->
 <script src="/assets/js/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
-<script src="/assets/js/jquery.sticky/1.0.4/jquery.sticky.js"></script>
+<script defer src="/assets/js/pace.min.js"></script>
+<!-- #### defer load end ################################################################################-->
+
+<script defer src="/assets/js/jquery.sticky/1.0.4/jquery.sticky.js"></script>
 <script src="/assets/js/bootstrap.min.js"></script>
-
-<!--mathjax-config scripts.-->
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-        inlineMath: [['$$','$$']]
-      }
-    });
-</script>
-<script src="/assets/js/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<!--mathjax-config scripts stop.-->
-
 
 
 </head>

@@ -1,12 +1,7 @@
 <!DOCTYPE html>
-<html><style></style>
-<link rel="stylesheet" type="text/css" href="/assets/css/common.css">
+<html lang="zh-CN"><style></style>
 <style>
-    .col-sm-bb {
-        position: relative;
-        min-height: 1px;
-        padding-left: 15px;
-    }
+
 </style>
 <head>
 <meta charset="utf-8">
@@ -31,153 +26,16 @@
 <!-- Open Graph metadata -->
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Protect Wechat Miniapp From Reverse Engineering 2026 | © 哨兵" />
-<meta property="og:description" content=" &lt;style&gt;
-	.d-flex {
-		display: flex !important;
-		align-items: stretch;
-	}
-	/* 侧边栏基础样式 (继承原有结构，并确保折叠时平滑) */
-	#sidebar1 {
-		transition: width 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1), padding 0.2s ease, border 0.2s ease;
-		overflow-x: hidden;
-		overflow-y: auto;
-	}
-
-	/* 折叠状态：宽度归零，隐藏所有内部内容（包括logo，菜单等完全隐藏） */
-	#sidebar1.collapsed {
-		width: 0 !important;
-		min-width: 0 !important;
-		flex: 0 0 0 !important;
-		padding: 0 !important;
-		margin: 0 !important;
-		border-right-width: 0 !important;
-		overflow: hidden;
-		opacity: 0;
-		visibility: collapse;
-	}
-
-	/* 为了保证折叠时侧边栏内的logo彻底消失（视觉和DOM不可见），加一层安全隐藏 */
-	#sidebar1.collapsed #logo,
-	#sidebar1.collapsed .logo-link,
-	#sidebar1.collapsed #help-nav {
-		display: none !important;
-	}
-
-	/* 侧边栏内部滚动条美化，无功能影响 */
-	#sidebar1::-webkit-scrollbar {
-		width: 4px;
-	}
-	/* ---------- 切换按钮容器样式 (悬浮显示，定位在侧边栏右侧中间) ---------- */
-	.aside-area-toggle-btn {
-		position: fixed;
-		z-index: 1000;
-		width: 32px;          /* 略微加宽以更好容纳图片 */
-		height: 32px;
-		background: #ffffff;
-		/*mark*/
-		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
-		border-radius: 15px 15px 15px 15px ;
-		border: 1px solid #e1e4e8;
-		border-right: none;
-		cursor: pointer;
-		transition: all 0.2s ease;
-		opacity: 0;
-		visibility: hidden;
-		transform: translateX(4px);
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-
-	/* 按钮显示状态 */
-	.aside-area-toggle-btn.visible {
-		opacity: 1;
-		visibility: visible;
-		transform: translateX(0);
-	}
-
-	/* 内部表格布局保持原有结构，但改用flex确保图片居中 */
-	.aside-area-toggle-btn .dp-table-cell {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 100%;
-		height: 100%;
-	}
-
-	.aside-area-toggle-btn .btn-ctnr {
-		position: relative;
-		width: 100%;
-		height: 100%;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-
-	/* 实际可点击按钮 - 完全填充容器，图片居中 */
-	.restore-btn {
-		width: 100%;
-		height: 100%;
-		background: transparent;
-		border: 1px;
-		cursor: pointer;
-		outline: none;
-		align-items: center;
-		justify-content: center;
-		padding: 1px;
-		margin: 0;
-		transition: background-color 0.15s;
-		border-radius: 15px 15px 15px 15px;
-	}
-
-	.restore-btn:hover {
-		background-color: rgba(0, 0, 0, 0.05);
-	}
-
-	/* 切换按钮内部的图片样式：作为logo显示，自适应大小 */
-	.toggle-logo-img {
-		width: 28px;
-		height: auto;
-		max-width: 32px;
-		max-height: 32px;
-		object-fit: contain;
-		display: block;
-		pointer-events: none;  /* 确保点击穿透到按钮 */
-		border-radius: 4px;
-	}
-
-	/* 侧边栏内部原有logo样式保持 */
-	.logo-link {
-		display: flex;
-		align-items: center;
-		text-decoration: none;
-		padding: 1rem 1.2rem;
-		border-bottom: 1px solid #eaecef;
-	}
-
-	.logo-link img, .logo-link svg {
-		height: 32px;
-		width: auto;
-	}
-	/* 响应式辅助 */
-	@media (min-width: 768px) {
-		#sidebar1.collapsed {
-			flex: 0 0 0 !important;
-			max-width: 0 !important;
-		}
-	}
-&lt;/style&gt;
+<meta property="og:description" content=" &lt;link href=&quot;/assets/css/research.css&quot; rel=&quot;stylesheet&quot;&gt;
 
 
 &lt;div id=&quot;help-page&quot;&gt;
-	&lt;!--&lt;div class=&quot;visible-xs&quot;&gt;nav banner with logo. 响应式::菜单::表单--&gt;
-		
 	&lt;div id=&quot;post-content&quot; class=&quot;row markdown-body-img d-flex&quot;&gt;
-		&lt;div id=&quot;sidebar1&quot; class=&quot;flex-column col-md-3 position-sticky ml-hide overflow-y-auto top-0 d-none d-lg-block flex-shrink-0 border-right&quot; style=&quot;height:100vh&quot;&gt;
-
-			
+		&lt;div id=&quot;sidebar1&quot; class=&quot;flex-column col-md-2 position-sticky ml-hide overflow-y-auto top-0 d-none d-lg-block flex-shrink-0 border-right&quot; style=&quot;height:100vh&quot;&gt;
 			&lt;div style=&quot;padding-top: 20px&quot;&gt;
 				
+
+
 
 
 
@@ -345,18 +203,20 @@
     }
 &lt;/style&gt;
 
-&lt;section class=&quot;gh-banner info&quot; aria-labelledby=&quot;banner-title-欢迎并请注意-未经授权的渗透测试访问或滥用行为将被严格禁止-并将受到法律制裁-br-welcome-and-attention-plz-unauthorized-pentest-access-or-misuse-is-strictly-prohibited-and-will-be-prosecuted&quot; role=&quot;region&quot; data-dismissible=&quot;true&quot;&gt;
+&lt;section class=&quot;gh-banner error&quot; aria-labelledby=&quot;banner-title-&quot; role=&quot;region&quot; data-dismissible=&quot;true&quot;&gt;
     &lt;div class=&quot;banner-icon&quot; aria-hidden=&quot;true&quot;&gt;
         
         &lt;svg viewBox=&quot;0 0 16 16&quot; fill=&quot;currentColor&quot;&gt;
-            &lt;path d=&quot;M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z&quot;&gt;&lt;/path&gt;
+            &lt;path d=&quot;M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575L6.457 1.047ZM8 4.75a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 4.75Zm.75 6.75a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Z&quot;&gt;&lt;/path&gt;
         &lt;/svg&gt;
         
     &lt;/div&gt;
 
     &lt;div class=&quot;banner-content&quot;&gt;
-        &lt;span class=&quot;banner-text&quot;&gt;欢迎并请注意：未经授权的渗透测试访问或滥用行为将被严格禁止，并将受到法律制裁。&lt;br&gt;
-				Welcome and attention plz: Unauthorized Pentest access or misuse is strictly prohibited and will be prosecuted.&lt;/span&gt;
+        &lt;span class=&quot;banner-text&quot;&gt;
+    注意: 任何形式的未授权访问都是禁止的&lt;BR&gt;
+    ATTENTION: UNAUTHORIZED ACCESS OF ANY FORM IS PROHIBITED.
+    &lt;/span&gt;
     &lt;/div&gt;
 
     &lt;button class=&quot;banner-close&quot; aria-label=&quot;关闭通知横幅&quot; title=&quot;Dismiss banner&quot; type=&quot;button&quot;&gt;
@@ -385,7 +245,7 @@
     })();
 &lt;/script&gt;
 			&lt;/div&gt;
-			&lt;!--left area: menu 左边菜单栏 col-sm-3 ./25%--&gt;
+			&lt;!--left area: menu 左边菜单栏--&gt;
 			&lt;div id=&quot;help-nav&quot; aria-expanded=&quot;true&quot; class=&quot;nav nav-pills nav-stacked&quot; style=&quot;padding-top: 20px; padding-bottom: 20px&quot;&gt;
 				
 	&lt;details &gt;
@@ -903,18 +763,232 @@
 							&lt;/ion-icon&gt;
 							&lt;/a&gt;&lt;/span&gt;
 						&lt;/h1&gt;
-						&lt;h1 id=&quot;小程序安全加固指南如何让逆向者解得心累收益为负2026版&quot;&gt;小程序安全加固指南：如何让逆向者“解得心累、收益为负”（2026版）&lt;/h1&gt;
+						
+						&lt;br&gt;&lt;br&gt;&lt;br&gt;
+						
 
-&lt;p&gt;目标读者：小程序开发者、安全工程师、风控同学。&lt;/p&gt;
 
-&lt;p&gt;逆向成本 = 时间 × 技术难度 × 法律风险&lt;br /&gt;
-好的加固不是让黑客完全解不开，而是让成本远高于收益。&lt;/p&gt;
+
+
+
+
+
+&lt;style&gt;
+    /* GitHub 风格横幅样式 - 支持错误/警告/信息主题 */
+    .gh-banner {
+        --banner-bg: #eef5ff;
+        --banner-border: rgba(84, 174, 255, 0.3);
+        --banner-icon-color: #1f7bdf;
+        --banner-text: #1f2328;
+        --banner-link: #0969da;
+        --banner-link-hover: #0550ae;
+        --banner-close-color: #656d76;
+        --banner-close-hover-bg: rgba(0, 0, 0, 0.05);
+        --banner-close-hover-color: #1f2328;
+        background-color: var(--banner-bg);
+        border: 1px solid var(--banner-border);
+        border-radius: 12px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        padding: 1rem 1rem 1rem 1.25rem;
+        transition: all 0.2s ease;
+        position: relative;
+    }
+    /* 错误主题 */
+    .gh-banner.error {
+        --banner-bg: #ffebe9;
+        --banner-border: rgba(255, 129, 130, 0.4);
+        --banner-icon-color: #cf222e;
+    }
+    /* 警告主题 */
+    .gh-banner.warn {
+        --banner-bg: #fff8e7;
+        --banner-border: rgba(215, 173, 62, 0.4);
+        --banner-icon-color: #bc6f00;
+    }
+    /* 深色模式适配 */
+    @media (prefers-color-scheme: dark) {
+        .gh-banner {
+            --banner-bg: #1c2a3e;
+            --banner-border: #2d4a6e;
+            --banner-icon-color: #6cb4ff;
+            --banner-text: #e6edf3;
+            --banner-link: #6cb4ff;
+            --banner-link-hover: #9acbff;
+            --banner-close-color: #9aa6b2;
+            --banner-close-hover-bg: rgba(177, 186, 196, 0.12);
+            --banner-close-hover-color: #f0f3f6;
+            background-color: var(--banner-bg);
+            border-color: #2d4a6e;
+        }
+        .gh-banner.error {
+            --banner-bg: #3b1e1e;
+            --banner-border: #da3633;
+            --banner-icon-color: #f85149;
+        }
+        .gh-banner.warn {
+            --banner-bg: #382d1a;
+            --banner-border: #d29922;
+            --banner-icon-color: #e3b341;
+        }
+    }
+    .banner-icon {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 1px;
+    }
+    .banner-icon svg {
+        width: 20px;
+        height: 20px;
+        color: var(--banner-icon-color);
+        fill: currentColor;
+        display: block;
+    }
+    .banner-content {
+        flex: 1;
+        font-size: 0.9375rem;
+        font-weight: 400;
+        color: var(--banner-text);
+        line-height: 1.5;
+        word-break: break-word;
+    }
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+    }
+    .banner-content a {
+        color: var(--banner-link);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.12s ease, text-decoration 0.12s;
+    }
+    .banner-content a:hover {
+        color: var(--banner-link-hover);
+        text-decoration: underline;
+        text-underline-offset: 2px;
+    }
+    .banner-text {
+        display: inline;
+        /*font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, &quot;Noto Sans&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;;*/
+    }
+    .banner-close {
+        flex-shrink: 0;
+        background: transparent;
+        border: 0;
+        padding: 4px;
+        margin: -4px -4px 0 0;
+        cursor: pointer;
+        border-radius: 6px;
+        color: var(--banner-close-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.2s, color 0.2s;
+        line-height: 1;
+    }
+    .banner-close:hover {
+        background-color: var(--banner-close-hover-bg);
+        color: var(--banner-close-hover-color);
+    }
+    .banner-close:focus-visible {
+        outline: 2px solid var(--banner-icon-color);
+        outline-offset: 2px;
+    }
+    .banner-close svg {
+        width: 16px;
+        height: 16px;
+        fill: currentColor;
+        display: block;
+    }
+    .gh-banner.hide-banner {
+        display: none;
+    }
+    @media (max-width: 640px) {
+        .gh-banner {
+            padding: 0.875rem 1rem;
+            gap: 0.5rem;
+        }
+        .banner-content {
+            font-size: 0.875rem;
+        }
+        .banner-icon svg {
+            width: 18px;
+            height: 18px;
+        }
+    }
+    .banner-content span {
+        display: inline;
+    }
+    .banner-content a {
+        display: inline-block;
+    }
+&lt;/style&gt;
+
+&lt;section class=&quot;gh-banner info&quot; aria-labelledby=&quot;banner-title-&quot; role=&quot;region&quot; data-dismissible=&quot;true&quot;&gt;
+    &lt;div class=&quot;banner-icon&quot; aria-hidden=&quot;true&quot;&gt;
+        
+        &lt;svg viewBox=&quot;0 0 16 16&quot; fill=&quot;currentColor&quot;&gt;
+            &lt;path d=&quot;M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z&quot;&gt;&lt;/path&gt;
+        &lt;/svg&gt;
+        
+    &lt;/div&gt;
+
+    &lt;div class=&quot;banner-content&quot;&gt;
+        &lt;span class=&quot;banner-text&quot;&gt;
+    由于传播、利用此库/文所提供的信息而造成的任何直接或者间接的后果及损失，均由使用者本人负责，本文作者不为此承担任何责任。&lt;BR&gt;
+    ANY DIRECT OR INDIRECT CONSEQUENCES OR LOSSES CAUSED BY DISSEMINATING OR USING THE INFORMATION PROVIDED IN THIS REPOSITORY/DOCUMENT
+    SHALL BE BORNE SOLELY BY THE USER. THE AUTHOR OF THIS ARTICLE ASSUMES NO RESPONSIBILITY FOR SUCH CONSEQUENCES OR LOSSES.
+    &lt;/span&gt;
+    &lt;/div&gt;
+
+    &lt;button class=&quot;banner-close&quot; aria-label=&quot;关闭通知横幅&quot; title=&quot;Dismiss banner&quot; type=&quot;button&quot;&gt;
+        &lt;svg viewBox=&quot;0 0 16 16&quot; fill=&quot;currentColor&quot; aria-hidden=&quot;true&quot;&gt;
+            &lt;path d=&quot;M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z&quot;&gt;&lt;/path&gt;
+        &lt;/svg&gt;
+    &lt;/button&gt;
+&lt;/section&gt;
+
+&lt;script&gt;
+    (function() {
+        // 全局只初始化一次关闭事件委托
+        if (!window._ghBannerInitialized) {
+            window._ghBannerInitialized = true;
+            document.addEventListener(&#39;click&#39;, function(e) {
+                const closeBtn = e.target.closest(&#39;.banner-close&#39;);
+                if (closeBtn) {
+                    const banner = closeBtn.closest(&#39;.gh-banner&#39;);
+                    if (banner) {
+                        banner.classList.add(&#39;hide-banner&#39;);
+                        banner.setAttribute(&#39;aria-hidden&#39;, &#39;true&#39;);
+                    }
+                }
+            });
+        }
+    })();
+&lt;/script&gt;
+						
+						&lt;h1 id=&quot;小程序安全加固指南&quot;&gt;小程序安全加固指南&lt;/h1&gt;
+
+&lt;p&gt;逆向成本 = 时间 × 技术难度 × 法律风险&lt;/p&gt;
+
+&lt;p&gt;有效的防护并非完全阻止逆向分析，而是将逆向的成本提升至远高于其收益，从而让攻击者放弃攻击。&lt;/p&gt;
 
 &lt;hr /&gt;
 
-&lt;h2 id=&quot;2026年性价比最高加固组合从易到难&quot;&gt;2026年性价比最高加固组合（从易到难）&lt;/h2&gt;
+&lt;h2 id=&quot;性价比加固方案组合&quot;&gt;性价比加固方案组合&lt;/h2&gt;
 
-&lt;table&gt;
+&lt;table class=&quot;table&quot;&gt;
   &lt;thead&gt;
     &lt;tr&gt;
       &lt;th&gt;优先级&lt;/th&gt;
@@ -927,35 +1001,35 @@
   &lt;tbody&gt;
     &lt;tr&gt;
       &lt;td&gt;1&lt;/td&gt;
-      &lt;td&gt;AES-256-CBC + RSA-OAEP混合 + 动态key&lt;/td&gt;
+      &lt;td&gt;AES-256-CBC + RSA-OAEP 混合加密 + 动态密钥&lt;/td&gt;
       &lt;td&gt;★★★&lt;/td&gt;
       &lt;td&gt;★★★★☆&lt;/td&gt;
       &lt;td&gt;低&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;2&lt;/td&gt;
-      &lt;td&gt;WebCrypto API + SM2/SM4国密&lt;/td&gt;
+      &lt;td&gt;WebCrypto API + SM2/SM4 国密算法&lt;/td&gt;
       &lt;td&gt;★★★★&lt;/td&gt;
       &lt;td&gt;★★★★☆&lt;/td&gt;
       &lt;td&gt;中&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;3&lt;/td&gt;
-      &lt;td&gt;字节码虚拟机（腾讯/字节/第三方服务）&lt;/td&gt;
+      &lt;td&gt;字节码虚拟机（腾讯 / 字节 / 第三方服务）&lt;/td&gt;
       &lt;td&gt;★★★★★&lt;/td&gt;
       &lt;td&gt;★★★★★&lt;/td&gt;
       &lt;td&gt;高&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;4&lt;/td&gt;
-      &lt;td&gt;多层wrapper + 花指令 + 函数自校验&lt;/td&gt;
+      &lt;td&gt;多层包装壳 + 花指令 + 函数自校验&lt;/td&gt;
       &lt;td&gt;★★★★&lt;/td&gt;
       &lt;td&gt;★★★★☆&lt;/td&gt;
       &lt;td&gt;中&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;5&lt;/td&gt;
-      &lt;td&gt;设备/行为指纹 + RASP + 二次校验&lt;/td&gt;
+      &lt;td&gt;设备 / 行为指纹 + RASP + 服务端二次校验&lt;/td&gt;
       &lt;td&gt;★★★★&lt;/td&gt;
       &lt;td&gt;★★★★☆&lt;/td&gt;
       &lt;td&gt;中高&lt;/td&gt;
@@ -972,17 +1046,19 @@
 
 &lt;hr /&gt;
 
-&lt;h2 id=&quot;案例一https-之上业务层-aes-加密是如何被解的&quot;&gt;案例一：HTTPS 之上，业务层 AES 加密是如何被解的？&lt;/h2&gt;
+&lt;h2 id=&quot;案例一&quot;&gt;案例一&lt;/h2&gt;
+
+&lt;p&gt;HTTPS 与业务层 AES 加密的防护局限&lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;误区&lt;/strong&gt;：用了 HTTPS，就没人能看到请求内容&lt;br /&gt;
-&lt;strong&gt;现实&lt;/strong&gt;：HTTPS 只能防“中间人”，防不了“终端逆向”&lt;/p&gt;
+  &lt;p&gt;常见防护误区：认为部署 HTTPS 后，请求内容就无法被获取。
+实际情况：HTTPS 仅能防范传输层的中间人攻击，无法抵御终端侧的逆向分析。&lt;/p&gt;
+
 &lt;/blockquote&gt;
 
-&lt;h3 id=&quot;-小程序端真实加密代码攻击目标&quot;&gt;✅ 小程序端真实加密代码（攻击目标）&lt;/h3&gt;
+&lt;h3 id=&quot;常规加密实现&quot;&gt;常规加密实现&lt;/h3&gt;
 
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;CryptoJS&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;crypto-js&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&#39;&lt;/span&gt;
-
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;CryptoJS&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;crypto-js&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&#39;&lt;/span&gt;
 &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;encryptPayload&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;iv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
   &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;CryptoJS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;AES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;encrypt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
     &lt;span class=&quot;nx&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;stringify&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
@@ -994,7 +1070,6 @@
     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
   &lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
 &lt;span class=&quot;nx&quot;&gt;wx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
   &lt;span class=&quot;na&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;/api/order/create&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
   &lt;span class=&quot;na&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
@@ -1007,7 +1082,7 @@
 &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;抓包只能看到：&lt;/p&gt;
+&lt;p&gt;常规抓包仅能看到加密后的内容：&lt;/p&gt;
 
 &lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
   &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;payload&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;U2FsdGVkX1+9X6l0...&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
@@ -1016,13 +1091,12 @@
 
 &lt;hr /&gt;
 
-&lt;h3 id=&quot;-攻击者真实解法frida-hook&quot;&gt;❌ 攻击者真实解法（Frida Hook）&lt;/h3&gt;
+&lt;h3 id=&quot;攻击者的突破方式&quot;&gt;攻击者的突破方式&lt;/h3&gt;
 
-&lt;p&gt;HTTPS 并不会阻止如下 Hook：&lt;/p&gt;
+&lt;p&gt;HTTPS 并不会阻止攻击者执行以下 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Hook&lt;/code&gt; 操作：&lt;/p&gt;
 
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;Java&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;perform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;Java&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;perform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
   &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;AES&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Java&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;use&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;javax.crypto.Cipher&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
   &lt;span class=&quot;nx&quot;&gt;AES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;doFinal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;overload&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;[B&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;implementation&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;[AES 明文]&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Java&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;use&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;java.lang.String&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;doFinal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -1032,31 +1106,43 @@
 
 &lt;hr /&gt;
 
-&lt;h3 id=&quot;-防守侧升级建议&quot;&gt;✅ 防守侧升级建议&lt;/h3&gt;
+&lt;h3 id=&quot;防守侧的升级建议&quot;&gt;防守侧的升级建议&lt;/h3&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;AES key 不应直接存在于 JS 运行时&lt;/li&gt;
-  &lt;li&gt;key 应通过 RSA 公钥加密下发&lt;/li&gt;
-  &lt;li&gt;解密逻辑拆散到多个 wrapper / VM 内&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;AES 密钥不应直接暴露在 JS 运行时中&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;密钥需通过 RSA 公钥加密后由服务端下发&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;解密逻辑需拆分到多层包装壳或字节码虚拟机中&lt;/p&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;hr /&gt;
 
-&lt;h2 id=&quot;案例二动态-key--安全如果派生方式可预测&quot;&gt;案例二：动态 key ≠ 安全（如果派生方式可预测）&lt;/h2&gt;
+&lt;h2 id=&quot;案例二&quot;&gt;案例二&lt;/h2&gt;
 
-&lt;h3 id=&quot;-常见伪动态-key设计&quot;&gt;❌ 常见“伪动态 key”设计&lt;/h3&gt;
+&lt;p&gt;动态密钥的防护局限：派生逻辑可预测的风险&lt;/p&gt;
 
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;key&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;md5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;openid&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;now&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;substr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;h3 id=&quot;常见的伪动态密钥设计&quot;&gt;常见的伪动态密钥设计&lt;/h3&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;key&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;md5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;openid&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;now&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;substr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;攻击者视角&quot;&gt;攻击者视角&lt;/h3&gt;
+&lt;h3 id=&quot;攻击者的突破视角&quot;&gt;攻击者的突破视角&lt;/h3&gt;
 
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;now&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1700000000000&lt;/span&gt;
+&lt;p&gt;攻击者可通过 Hook 篡改时间函数，预测密钥的生成逻辑：&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;now&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1700000000000&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;hr /&gt;
 
-&lt;h3 id=&quot;-正确做法&quot;&gt;✅ 正确做法&lt;/h3&gt;
+&lt;h3 id=&quot;正确的动态密钥实现&quot;&gt;正确的动态密钥实现&lt;/h3&gt;
+
+&lt;p&gt;基于 HKDF（密钥派生函数）生成密钥，结合多维度因子：&lt;/p&gt;
 
 &lt;div class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;key = HKDF(
   server_nonce,
@@ -1065,49 +1151,100 @@
 )
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;并在服务端二次校验设备行为指纹。&lt;/p&gt;
+&lt;p&gt;同时在服务端结合设备与行为指纹完成二次校验。&lt;/p&gt;
 
 &lt;hr /&gt;
 
-&lt;h2 id=&quot;加密设计必须遵守的-8-条铁律含逆向解释&quot;&gt;加密设计必须遵守的 8 条铁律（含逆向解释）&lt;/h2&gt;
+&lt;h2 id=&quot;加密设计的核心安全原则&quot;&gt;加密设计的核心安全原则&lt;/h2&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;密钥永不写死在前端&lt;/li&gt;
-  &lt;li&gt;AES key 必须服务器生成并公钥加密下发&lt;/li&gt;
-  &lt;li&gt;每次请求使用不同 IV&lt;/li&gt;
-  &lt;li&gt;敏感字段分包加密&lt;/li&gt;
-  &lt;li&gt;行为指纹必须参与服务端校验&lt;/li&gt;
-  &lt;li&gt;核心函数做 toString 校验&lt;/li&gt;
-  &lt;li&gt;上线前自己完整逆一遍&lt;/li&gt;
-  &lt;li&gt;定期轮换公钥并监控异常解包&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;密钥不得硬编码在前端代码中&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;AES 密钥需由服务端生成，并通过 RSA 公钥加密后下发&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;每次请求使用独立的初始向量（IV）&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;敏感业务字段采用分包加密的方式&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;设备与行为指纹需参与服务端的请求校验&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;核心加密函数需添加 toString 校验，防止被 Hook 篡改&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;上线前需自行完成完整的逆向测试，验证防护有效性&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;定期轮换加密公钥，并监控异常的解包行为&lt;/p&gt;
+  &lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;hr /&gt;
 
-&lt;h2 id=&quot;攻击者真实工作流你必须假设他们会这样做&quot;&gt;攻击者真实工作流（你必须假设他们会这样做）&lt;/h2&gt;
+&lt;h2 id=&quot;攻击者的典型工作流&quot;&gt;攻击者的典型工作流&lt;/h2&gt;
 
-&lt;div class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1. Charles 抓包
-2. KillWxapkg 解包
-3. Frida Hook AES / RSA
-4. 自动化解密脚本
+&lt;p&gt;作为防护方，你需要假设攻击者会执行以下流程：&lt;/p&gt;
+
+&lt;div class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1. 使用Charles完成流量抓包
+2. 使用KillWxapkg完成小程序的自动解包
+3. 使用Frida Hook加密相关函数，提取密钥与明文
+4. 构建自动化解密脚本，完成协议复现
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;hr /&gt;
 
-&lt;h2 id=&quot;快速落地方案12-周&quot;&gt;快速落地方案（1–2 周）&lt;/h2&gt;
+&lt;h2 id=&quot;快速落地方案&quot;&gt;快速落地方案&lt;/h2&gt;
 
-&lt;p&gt;当前状态                 → 推荐升级路径&lt;br /&gt;
-只有 MD5 签名            → AES-CBC + RSA-OAEP&lt;br /&gt;
-固定 AES key             → 登录态动态下发&lt;br /&gt;
-无环境校验               → 指纹 + RASP&lt;br /&gt;
-代码可读性高             → 字节码 + wrapper&lt;/p&gt;
+&lt;p&gt;针对不同的当前防护状态，可选择对应的升级路径：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;当前仅使用 MD5 签名：升级为 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;AES&lt;/code&gt;-&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CBC&lt;/code&gt; + &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;RSA&lt;/code&gt;-&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;OAEP&lt;/code&gt; 的混合加密方案&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;当前使用固定 AES 密钥：升级为基于登录态的动态密钥下发&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;当前无环境校验：添加设备指纹与 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;RASP&lt;/code&gt;（运行时应用自我保护）机制&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;当前代码可读性较高：添加字节码混淆与多层包装壳防护&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;hr /&gt;
 
-&lt;p&gt;一句话总结：&lt;/p&gt;
+&lt;h3 id=&quot;总结&quot;&gt;总结&lt;/h3&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;真正有效的防护，是让逆向者花一个月才解出接口，而业务窗口只剩三天。&lt;/p&gt;
+  &lt;p&gt;真正有效的防护，是将逆向分析的时间成本提升至超过业务的有效窗口，让攻击者的攻击收益低于其攻击成本。&lt;/p&gt;
+
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;[!NOTE]
+本文档对原始内容的格式与表述修正说明：&lt;/p&gt;
+
+  &lt;ol&gt;
+    &lt;li&gt;
+      &lt;p&gt;调整了加固方案表格的格式，统一了星级标识与列对齐，提升可读性。&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;p&gt;调整了口语化表述，将 “解得心累”“风控同学” 等口语化内容调整为专业的技术表述，统一文档风格。&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;p&gt;标准化了术语表述，将 “动态 key”“伪动态 key” 调整为 “动态密钥”“伪动态密钥”，统一了技术术语的规范。&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;p&gt;调整了部分绝对化表述，将 “铁律” 这类绝对化的表述调整为更严谨的安全原则，提升表述的严谨性。&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+
 &lt;/blockquote&gt;
 
 					&lt;/div&gt;
@@ -1160,37 +1297,43 @@
 				&lt;/div&gt;&lt;!--page main content end--&gt;
 
 				
-&lt;div class=&quot;ml-hide article-index thin-scrollbar position-sticky top-0&quot; style=&quot;max-height: 100vh; overflow-y: auto;&quot;&gt;
-    &lt;div class=&quot;nav nav-stacked tableOfContents_35-E&quot;&gt;
-        &lt;li class=&quot; table-of-contents&quot;&gt;
-            &lt;code-index-css&gt;
-                &lt;ul&gt;&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column&quot;&gt;&lt;a&gt;文章目录&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
-                &lt;ul id=&quot;toc&quot; class=&quot;section-nav&quot;&gt;
-&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h1&quot;&gt;&lt;a href=&quot;#小程序安全加固指南如何让逆向者解得心累收益为负2026版&quot;&gt;小程序安全加固指南：如何让逆向者“解得心累、收益为负”（2026版）&lt;/a&gt;
+&lt;div class=&quot;col-md-4&quot;&gt;
+    &lt;div class=&quot;ml-hide article-index thin-scrollbar position-sticky top-0&quot; style=&quot;max-height: 100vh; overflow-y: auto;&quot;&gt;
+        &lt;div class=&quot;nav nav-stacked tableOfContents_35-E&quot;&gt;
+            &lt;li class=&quot;table-of-contents&quot;&gt;
+                &lt;code-index-css&gt;
+                    &lt;h3&gt;&lt;i class=&quot;fa fa-list&quot;&gt;&lt;/i&gt; 文章目录&lt;/h3&gt;
+                    &lt;ul id=&quot;toc&quot; class=&quot;section-nav&quot;&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h1&quot;&gt;&lt;a href=&quot;#小程序安全加固指南&quot;&gt;小程序安全加固指南&lt;/a&gt;
 &lt;ul&gt;
-&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2&quot;&gt;&lt;a href=&quot;#2026年性价比最高加固组合从易到难&quot;&gt;2026年性价比最高加固组合（从易到难）&lt;/a&gt;&lt;/li&gt;
-&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2&quot;&gt;&lt;a href=&quot;#案例一https-之上业务层-aes-加密是如何被解的&quot;&gt;案例一：HTTPS 之上，业务层 AES 加密是如何被解的？&lt;/a&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2&quot;&gt;&lt;a href=&quot;#性价比加固方案组合&quot;&gt;性价比加固方案组合&lt;/a&gt;&lt;/li&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2&quot;&gt;&lt;a href=&quot;#案例一&quot;&gt;案例一&lt;/a&gt;
 &lt;ul&gt;
-&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3&quot;&gt;&lt;a href=&quot;#-小程序端真实加密代码攻击目标&quot;&gt;✅ 小程序端真实加密代码（攻击目标）&lt;/a&gt;&lt;/li&gt;
-&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3&quot;&gt;&lt;a href=&quot;#-攻击者真实解法frida-hook&quot;&gt;❌ 攻击者真实解法（Frida Hook）&lt;/a&gt;&lt;/li&gt;
-&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3&quot;&gt;&lt;a href=&quot;#-防守侧升级建议&quot;&gt;✅ 防守侧升级建议&lt;/a&gt;&lt;/li&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3&quot;&gt;&lt;a href=&quot;#常规加密实现&quot;&gt;常规加密实现&lt;/a&gt;&lt;/li&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3&quot;&gt;&lt;a href=&quot;#攻击者的突破方式&quot;&gt;攻击者的突破方式&lt;/a&gt;&lt;/li&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3&quot;&gt;&lt;a href=&quot;#防守侧的升级建议&quot;&gt;防守侧的升级建议&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2&quot;&gt;&lt;a href=&quot;#案例二动态-key--安全如果派生方式可预测&quot;&gt;案例二：动态 key ≠ 安全（如果派生方式可预测）&lt;/a&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2&quot;&gt;&lt;a href=&quot;#案例二&quot;&gt;案例二&lt;/a&gt;
 &lt;ul&gt;
-&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3&quot;&gt;&lt;a href=&quot;#-常见伪动态-key设计&quot;&gt;❌ 常见“伪动态 key”设计&lt;/a&gt;&lt;/li&gt;
-&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3&quot;&gt;&lt;a href=&quot;#攻击者视角&quot;&gt;攻击者视角&lt;/a&gt;&lt;/li&gt;
-&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3&quot;&gt;&lt;a href=&quot;#-正确做法&quot;&gt;✅ 正确做法&lt;/a&gt;&lt;/li&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3&quot;&gt;&lt;a href=&quot;#常见的伪动态密钥设计&quot;&gt;常见的伪动态密钥设计&lt;/a&gt;&lt;/li&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3&quot;&gt;&lt;a href=&quot;#攻击者的突破视角&quot;&gt;攻击者的突破视角&lt;/a&gt;&lt;/li&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3&quot;&gt;&lt;a href=&quot;#正确的动态密钥实现&quot;&gt;正确的动态密钥实现&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2&quot;&gt;&lt;a href=&quot;#加密设计必须遵守的-8-条铁律含逆向解释&quot;&gt;加密设计必须遵守的 8 条铁律（含逆向解释）&lt;/a&gt;&lt;/li&gt;
-&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2&quot;&gt;&lt;a href=&quot;#攻击者真实工作流你必须假设他们会这样做&quot;&gt;攻击者真实工作流（你必须假设他们会这样做）&lt;/a&gt;&lt;/li&gt;
-&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2&quot;&gt;&lt;a href=&quot;#快速落地方案12-周&quot;&gt;快速落地方案（1–2 周）&lt;/a&gt;&lt;/li&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2&quot;&gt;&lt;a href=&quot;#加密设计的核心安全原则&quot;&gt;加密设计的核心安全原则&lt;/a&gt;&lt;/li&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2&quot;&gt;&lt;a href=&quot;#攻击者的典型工作流&quot;&gt;攻击者的典型工作流&lt;/a&gt;&lt;/li&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2&quot;&gt;&lt;a href=&quot;#快速落地方案&quot;&gt;快速落地方案&lt;/a&gt;
+&lt;ul&gt;
+&lt;li class=&quot;no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3&quot;&gt;&lt;a href=&quot;#总结&quot;&gt;总结&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-            &lt;/code-index-css&gt;
-        &lt;/li&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+                &lt;/code-index-css&gt;
+            &lt;/li&gt;
+        &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;
 
@@ -1225,7 +1368,6 @@ vim: ts=2 sts=2 sw=2 noexpandtab
 
 <link rel="stylesheet" type="text/css" href="/assets/css/pace-minimal.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/footer.css">
-<script src="/assets/js/pace.min.js"></script>
 <!-- Bootstrap core CSS -->
 <link href="/assets/css/bootstrap.css" rel="stylesheet">
 <link href="/assets/css/bilibili_icon.css" rel="stylesheet">
@@ -1237,22 +1379,13 @@ vim: ts=2 sts=2 sw=2 noexpandtab
 <link rel="stylesheet" type="text/css" href="/assets/css/card.css">
 
 <script src="/assets/js/jquery.min.js"></script>
+<!-- #### defer load ####################################################################################-->
 <script src="/assets/js/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
-<script src="/assets/js/jquery.sticky/1.0.4/jquery.sticky.js"></script>
+<script defer src="/assets/js/pace.min.js"></script>
+<!-- #### defer load end ################################################################################-->
+
+<script defer src="/assets/js/jquery.sticky/1.0.4/jquery.sticky.js"></script>
 <script src="/assets/js/bootstrap.min.js"></script>
-
-<!--mathjax-config scripts.-->
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-        inlineMath: [['$$','$$']]
-      }
-    });
-</script>
-<script src="/assets/js/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<!--mathjax-config scripts stop.-->
-
 
 
 </head>
@@ -1471,153 +1604,16 @@ vim: ts=2 sts=2 sw=2 noexpandtab
 
         <startprint2pdfs>
             <div id="research-content" class="col-sm-bb">
-                <style>
-	.d-flex {
-		display: flex !important;
-		align-items: stretch;
-	}
-	/* 侧边栏基础样式 (继承原有结构，并确保折叠时平滑) */
-	#sidebar1 {
-		transition: width 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1), padding 0.2s ease, border 0.2s ease;
-		overflow-x: hidden;
-		overflow-y: auto;
-	}
-
-	/* 折叠状态：宽度归零，隐藏所有内部内容（包括logo，菜单等完全隐藏） */
-	#sidebar1.collapsed {
-		width: 0 !important;
-		min-width: 0 !important;
-		flex: 0 0 0 !important;
-		padding: 0 !important;
-		margin: 0 !important;
-		border-right-width: 0 !important;
-		overflow: hidden;
-		opacity: 0;
-		visibility: collapse;
-	}
-
-	/* 为了保证折叠时侧边栏内的logo彻底消失（视觉和DOM不可见），加一层安全隐藏 */
-	#sidebar1.collapsed #logo,
-	#sidebar1.collapsed .logo-link,
-	#sidebar1.collapsed #help-nav {
-		display: none !important;
-	}
-
-	/* 侧边栏内部滚动条美化，无功能影响 */
-	#sidebar1::-webkit-scrollbar {
-		width: 4px;
-	}
-	/* ---------- 切换按钮容器样式 (悬浮显示，定位在侧边栏右侧中间) ---------- */
-	.aside-area-toggle-btn {
-		position: fixed;
-		z-index: 1000;
-		width: 32px;          /* 略微加宽以更好容纳图片 */
-		height: 32px;
-		background: #ffffff;
-		/*mark*/
-		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
-		border-radius: 15px 15px 15px 15px ;
-		border: 1px solid #e1e4e8;
-		border-right: none;
-		cursor: pointer;
-		transition: all 0.2s ease;
-		opacity: 0;
-		visibility: hidden;
-		transform: translateX(4px);
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-
-	/* 按钮显示状态 */
-	.aside-area-toggle-btn.visible {
-		opacity: 1;
-		visibility: visible;
-		transform: translateX(0);
-	}
-
-	/* 内部表格布局保持原有结构，但改用flex确保图片居中 */
-	.aside-area-toggle-btn .dp-table-cell {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 100%;
-		height: 100%;
-	}
-
-	.aside-area-toggle-btn .btn-ctnr {
-		position: relative;
-		width: 100%;
-		height: 100%;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-
-	/* 实际可点击按钮 - 完全填充容器，图片居中 */
-	.restore-btn {
-		width: 100%;
-		height: 100%;
-		background: transparent;
-		border: 1px;
-		cursor: pointer;
-		outline: none;
-		align-items: center;
-		justify-content: center;
-		padding: 1px;
-		margin: 0;
-		transition: background-color 0.15s;
-		border-radius: 15px 15px 15px 15px;
-	}
-
-	.restore-btn:hover {
-		background-color: rgba(0, 0, 0, 0.05);
-	}
-
-	/* 切换按钮内部的图片样式：作为logo显示，自适应大小 */
-	.toggle-logo-img {
-		width: 28px;
-		height: auto;
-		max-width: 32px;
-		max-height: 32px;
-		object-fit: contain;
-		display: block;
-		pointer-events: none;  /* 确保点击穿透到按钮 */
-		border-radius: 4px;
-	}
-
-	/* 侧边栏内部原有logo样式保持 */
-	.logo-link {
-		display: flex;
-		align-items: center;
-		text-decoration: none;
-		padding: 1rem 1.2rem;
-		border-bottom: 1px solid #eaecef;
-	}
-
-	.logo-link img, .logo-link svg {
-		height: 32px;
-		width: auto;
-	}
-	/* 响应式辅助 */
-	@media (min-width: 768px) {
-		#sidebar1.collapsed {
-			flex: 0 0 0 !important;
-			max-width: 0 !important;
-		}
-	}
-</style>
+                <link href="/assets/css/research.css" rel="stylesheet">
 
 
 <div id="help-page">
-	<!--<div class="visible-xs">nav banner with logo. 响应式::菜单::表单-->
-		
 	<div id="post-content" class="row markdown-body-img d-flex">
-		<div id="sidebar1" class="flex-column col-md-3 position-sticky ml-hide overflow-y-auto top-0 d-none d-lg-block flex-shrink-0 border-right" style="height:100vh">
-
-			
+		<div id="sidebar1" class="flex-column col-md-2 position-sticky ml-hide overflow-y-auto top-0 d-none d-lg-block flex-shrink-0 border-right" style="height:100vh">
 			<div style="padding-top: 20px">
 				
+
+
 
 
 
@@ -1785,18 +1781,20 @@ vim: ts=2 sts=2 sw=2 noexpandtab
     }
 </style>
 
-<section class="gh-banner info" aria-labelledby="banner-title-欢迎并请注意-未经授权的渗透测试访问或滥用行为将被严格禁止-并将受到法律制裁-br-welcome-and-attention-plz-unauthorized-pentest-access-or-misuse-is-strictly-prohibited-and-will-be-prosecuted" role="region" data-dismissible="true">
+<section class="gh-banner error" aria-labelledby="banner-title-" role="region" data-dismissible="true">
     <div class="banner-icon" aria-hidden="true">
         
         <svg viewBox="0 0 16 16" fill="currentColor">
-            <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path>
+            <path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575L6.457 1.047ZM8 4.75a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 4.75Zm.75 6.75a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Z"></path>
         </svg>
         
     </div>
 
     <div class="banner-content">
-        <span class="banner-text">欢迎并请注意：未经授权的渗透测试访问或滥用行为将被严格禁止，并将受到法律制裁。<br>
-				Welcome and attention plz: Unauthorized Pentest access or misuse is strictly prohibited and will be prosecuted.</span>
+        <span class="banner-text">
+    注意: 任何形式的未授权访问都是禁止的<BR>
+    ATTENTION: UNAUTHORIZED ACCESS OF ANY FORM IS PROHIBITED.
+    </span>
     </div>
 
     <button class="banner-close" aria-label="关闭通知横幅" title="Dismiss banner" type="button">
@@ -1825,7 +1823,7 @@ vim: ts=2 sts=2 sw=2 noexpandtab
     })();
 </script>
 			</div>
-			<!--left area: menu 左边菜单栏 col-sm-3 ./25%-->
+			<!--left area: menu 左边菜单栏-->
 			<div id="help-nav" aria-expanded="true" class="nav nav-pills nav-stacked" style="padding-top: 20px; padding-bottom: 20px">
 				
 	<details >
@@ -2343,18 +2341,232 @@ vim: ts=2 sts=2 sw=2 noexpandtab
 							</ion-icon>
 							</a></span>
 						</h1>
-						<h1 id="小程序安全加固指南如何让逆向者解得心累收益为负2026版">小程序安全加固指南：如何让逆向者“解得心累、收益为负”（2026版）</h1>
+						
+						<br><br><br>
+						
 
-<p>目标读者：小程序开发者、安全工程师、风控同学。</p>
 
-<p>逆向成本 = 时间 × 技术难度 × 法律风险<br />
-好的加固不是让黑客完全解不开，而是让成本远高于收益。</p>
+
+
+
+
+
+<style>
+    /* GitHub 风格横幅样式 - 支持错误/警告/信息主题 */
+    .gh-banner {
+        --banner-bg: #eef5ff;
+        --banner-border: rgba(84, 174, 255, 0.3);
+        --banner-icon-color: #1f7bdf;
+        --banner-text: #1f2328;
+        --banner-link: #0969da;
+        --banner-link-hover: #0550ae;
+        --banner-close-color: #656d76;
+        --banner-close-hover-bg: rgba(0, 0, 0, 0.05);
+        --banner-close-hover-color: #1f2328;
+        background-color: var(--banner-bg);
+        border: 1px solid var(--banner-border);
+        border-radius: 12px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        padding: 1rem 1rem 1rem 1.25rem;
+        transition: all 0.2s ease;
+        position: relative;
+    }
+    /* 错误主题 */
+    .gh-banner.error {
+        --banner-bg: #ffebe9;
+        --banner-border: rgba(255, 129, 130, 0.4);
+        --banner-icon-color: #cf222e;
+    }
+    /* 警告主题 */
+    .gh-banner.warn {
+        --banner-bg: #fff8e7;
+        --banner-border: rgba(215, 173, 62, 0.4);
+        --banner-icon-color: #bc6f00;
+    }
+    /* 深色模式适配 */
+    @media (prefers-color-scheme: dark) {
+        .gh-banner {
+            --banner-bg: #1c2a3e;
+            --banner-border: #2d4a6e;
+            --banner-icon-color: #6cb4ff;
+            --banner-text: #e6edf3;
+            --banner-link: #6cb4ff;
+            --banner-link-hover: #9acbff;
+            --banner-close-color: #9aa6b2;
+            --banner-close-hover-bg: rgba(177, 186, 196, 0.12);
+            --banner-close-hover-color: #f0f3f6;
+            background-color: var(--banner-bg);
+            border-color: #2d4a6e;
+        }
+        .gh-banner.error {
+            --banner-bg: #3b1e1e;
+            --banner-border: #da3633;
+            --banner-icon-color: #f85149;
+        }
+        .gh-banner.warn {
+            --banner-bg: #382d1a;
+            --banner-border: #d29922;
+            --banner-icon-color: #e3b341;
+        }
+    }
+    .banner-icon {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 1px;
+    }
+    .banner-icon svg {
+        width: 20px;
+        height: 20px;
+        color: var(--banner-icon-color);
+        fill: currentColor;
+        display: block;
+    }
+    .banner-content {
+        flex: 1;
+        font-size: 0.9375rem;
+        font-weight: 400;
+        color: var(--banner-text);
+        line-height: 1.5;
+        word-break: break-word;
+    }
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+    }
+    .banner-content a {
+        color: var(--banner-link);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.12s ease, text-decoration 0.12s;
+    }
+    .banner-content a:hover {
+        color: var(--banner-link-hover);
+        text-decoration: underline;
+        text-underline-offset: 2px;
+    }
+    .banner-text {
+        display: inline;
+        /*font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";*/
+    }
+    .banner-close {
+        flex-shrink: 0;
+        background: transparent;
+        border: 0;
+        padding: 4px;
+        margin: -4px -4px 0 0;
+        cursor: pointer;
+        border-radius: 6px;
+        color: var(--banner-close-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.2s, color 0.2s;
+        line-height: 1;
+    }
+    .banner-close:hover {
+        background-color: var(--banner-close-hover-bg);
+        color: var(--banner-close-hover-color);
+    }
+    .banner-close:focus-visible {
+        outline: 2px solid var(--banner-icon-color);
+        outline-offset: 2px;
+    }
+    .banner-close svg {
+        width: 16px;
+        height: 16px;
+        fill: currentColor;
+        display: block;
+    }
+    .gh-banner.hide-banner {
+        display: none;
+    }
+    @media (max-width: 640px) {
+        .gh-banner {
+            padding: 0.875rem 1rem;
+            gap: 0.5rem;
+        }
+        .banner-content {
+            font-size: 0.875rem;
+        }
+        .banner-icon svg {
+            width: 18px;
+            height: 18px;
+        }
+    }
+    .banner-content span {
+        display: inline;
+    }
+    .banner-content a {
+        display: inline-block;
+    }
+</style>
+
+<section class="gh-banner info" aria-labelledby="banner-title-" role="region" data-dismissible="true">
+    <div class="banner-icon" aria-hidden="true">
+        
+        <svg viewBox="0 0 16 16" fill="currentColor">
+            <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path>
+        </svg>
+        
+    </div>
+
+    <div class="banner-content">
+        <span class="banner-text">
+    由于传播、利用此库/文所提供的信息而造成的任何直接或者间接的后果及损失，均由使用者本人负责，本文作者不为此承担任何责任。<BR>
+    ANY DIRECT OR INDIRECT CONSEQUENCES OR LOSSES CAUSED BY DISSEMINATING OR USING THE INFORMATION PROVIDED IN THIS REPOSITORY/DOCUMENT
+    SHALL BE BORNE SOLELY BY THE USER. THE AUTHOR OF THIS ARTICLE ASSUMES NO RESPONSIBILITY FOR SUCH CONSEQUENCES OR LOSSES.
+    </span>
+    </div>
+
+    <button class="banner-close" aria-label="关闭通知横幅" title="Dismiss banner" type="button">
+        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
+        </svg>
+    </button>
+</section>
+
+<script>
+    (function() {
+        // 全局只初始化一次关闭事件委托
+        if (!window._ghBannerInitialized) {
+            window._ghBannerInitialized = true;
+            document.addEventListener('click', function(e) {
+                const closeBtn = e.target.closest('.banner-close');
+                if (closeBtn) {
+                    const banner = closeBtn.closest('.gh-banner');
+                    if (banner) {
+                        banner.classList.add('hide-banner');
+                        banner.setAttribute('aria-hidden', 'true');
+                    }
+                }
+            });
+        }
+    })();
+</script>
+						
+						<h1 id="小程序安全加固指南">小程序安全加固指南</h1>
+
+<p>逆向成本 = 时间 × 技术难度 × 法律风险</p>
+
+<p>有效的防护并非完全阻止逆向分析，而是将逆向的成本提升至远高于其收益，从而让攻击者放弃攻击。</p>
 
 <hr />
 
-<h2 id="2026年性价比最高加固组合从易到难">2026年性价比最高加固组合（从易到难）</h2>
+<h2 id="性价比加固方案组合">性价比加固方案组合</h2>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>优先级</th>
@@ -2367,35 +2579,35 @@ vim: ts=2 sts=2 sw=2 noexpandtab
   <tbody>
     <tr>
       <td>1</td>
-      <td>AES-256-CBC + RSA-OAEP混合 + 动态key</td>
+      <td>AES-256-CBC + RSA-OAEP 混合加密 + 动态密钥</td>
       <td>★★★</td>
       <td>★★★★☆</td>
       <td>低</td>
     </tr>
     <tr>
       <td>2</td>
-      <td>WebCrypto API + SM2/SM4国密</td>
+      <td>WebCrypto API + SM2/SM4 国密算法</td>
       <td>★★★★</td>
       <td>★★★★☆</td>
       <td>中</td>
     </tr>
     <tr>
       <td>3</td>
-      <td>字节码虚拟机（腾讯/字节/第三方服务）</td>
+      <td>字节码虚拟机（腾讯 / 字节 / 第三方服务）</td>
       <td>★★★★★</td>
       <td>★★★★★</td>
       <td>高</td>
     </tr>
     <tr>
       <td>4</td>
-      <td>多层wrapper + 花指令 + 函数自校验</td>
+      <td>多层包装壳 + 花指令 + 函数自校验</td>
       <td>★★★★</td>
       <td>★★★★☆</td>
       <td>中</td>
     </tr>
     <tr>
       <td>5</td>
-      <td>设备/行为指纹 + RASP + 二次校验</td>
+      <td>设备 / 行为指纹 + RASP + 服务端二次校验</td>
       <td>★★★★</td>
       <td>★★★★☆</td>
       <td>中高</td>
@@ -2412,17 +2624,19 @@ vim: ts=2 sts=2 sw=2 noexpandtab
 
 <hr />
 
-<h2 id="案例一https-之上业务层-aes-加密是如何被解的">案例一：HTTPS 之上，业务层 AES 加密是如何被解的？</h2>
+<h2 id="案例一">案例一</h2>
+
+<p>HTTPS 与业务层 AES 加密的防护局限</p>
 
 <blockquote>
-  <p><strong>误区</strong>：用了 HTTPS，就没人能看到请求内容<br />
-<strong>现实</strong>：HTTPS 只能防“中间人”，防不了“终端逆向”</p>
+  <p>常见防护误区：认为部署 HTTPS 后，请求内容就无法被获取。
+实际情况：HTTPS 仅能防范传输层的中间人攻击，无法抵御终端侧的逆向分析。</p>
+
 </blockquote>
 
-<h3 id="-小程序端真实加密代码攻击目标">✅ 小程序端真实加密代码（攻击目标）</h3>
+<h3 id="常规加密实现">常规加密实现</h3>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">CryptoJS</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">crypto-js</span><span class="dl">'</span>
-
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">CryptoJS</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">crypto-js</span><span class="dl">'</span>
 <span class="kd">function</span> <span class="nx">encryptPayload</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">key</span><span class="p">,</span> <span class="nx">iv</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">return</span> <span class="nx">CryptoJS</span><span class="p">.</span><span class="nx">AES</span><span class="p">.</span><span class="nx">encrypt</span><span class="p">(</span>
     <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">data</span><span class="p">),</span>
@@ -2434,7 +2648,6 @@ vim: ts=2 sts=2 sw=2 noexpandtab
     <span class="p">}</span>
   <span class="p">).</span><span class="nx">toString</span><span class="p">()</span>
 <span class="p">}</span>
-
 <span class="nx">wx</span><span class="p">.</span><span class="nx">request</span><span class="p">({</span>
   <span class="na">url</span><span class="p">:</span> <span class="dl">'</span><span class="s1">/api/order/create</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
@@ -2447,7 +2660,7 @@ vim: ts=2 sts=2 sw=2 noexpandtab
 <span class="p">})</span>
 </code></pre></div></div>
 
-<p>抓包只能看到：</p>
+<p>常规抓包仅能看到加密后的内容：</p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"payload"</span><span class="p">:</span><span class="w"> </span><span class="s2">"U2FsdGVkX1+9X6l0..."</span><span class="w">
@@ -2456,13 +2669,12 @@ vim: ts=2 sts=2 sw=2 noexpandtab
 
 <hr />
 
-<h3 id="-攻击者真实解法frida-hook">❌ 攻击者真实解法（Frida Hook）</h3>
+<h3 id="攻击者的突破方式">攻击者的突破方式</h3>
 
-<p>HTTPS 并不会阻止如下 Hook：</p>
+<p>HTTPS 并不会阻止攻击者执行以下 <code class="language-plaintext highlighter-rouge">Hook</code> 操作：</p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">Java</span><span class="p">.</span><span class="nx">perform</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">Java</span><span class="p">.</span><span class="nx">perform</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
   <span class="kd">const</span> <span class="nx">AES</span> <span class="o">=</span> <span class="nx">Java</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="dl">'</span><span class="s1">javax.crypto.Cipher</span><span class="dl">'</span><span class="p">)</span>
-
   <span class="nx">AES</span><span class="p">.</span><span class="nx">doFinal</span><span class="p">.</span><span class="nx">overload</span><span class="p">(</span><span class="dl">'</span><span class="s1">[B</span><span class="dl">'</span><span class="p">).</span><span class="nx">implementation</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">[AES 明文]</span><span class="dl">'</span><span class="p">,</span> <span class="nx">Java</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="dl">'</span><span class="s1">java.lang.String</span><span class="dl">'</span><span class="p">).</span><span class="nx">$new</span><span class="p">(</span><span class="nx">data</span><span class="p">))</span>
     <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">doFinal</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
@@ -2472,31 +2684,43 @@ vim: ts=2 sts=2 sw=2 noexpandtab
 
 <hr />
 
-<h3 id="-防守侧升级建议">✅ 防守侧升级建议</h3>
+<h3 id="防守侧的升级建议">防守侧的升级建议</h3>
 
 <ul>
-  <li>AES key 不应直接存在于 JS 运行时</li>
-  <li>key 应通过 RSA 公钥加密下发</li>
-  <li>解密逻辑拆散到多个 wrapper / VM 内</li>
+  <li>
+    <p>AES 密钥不应直接暴露在 JS 运行时中</p>
+  </li>
+  <li>
+    <p>密钥需通过 RSA 公钥加密后由服务端下发</p>
+  </li>
+  <li>
+    <p>解密逻辑需拆分到多层包装壳或字节码虚拟机中</p>
+  </li>
 </ul>
 
 <hr />
 
-<h2 id="案例二动态-key--安全如果派生方式可预测">案例二：动态 key ≠ 安全（如果派生方式可预测）</h2>
+<h2 id="案例二">案例二</h2>
 
-<h3 id="-常见伪动态-key设计">❌ 常见“伪动态 key”设计</h3>
+<p>动态密钥的防护局限：派生逻辑可预测的风险</p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">key</span> <span class="o">=</span> <span class="nx">md5</span><span class="p">(</span><span class="nx">openid</span> <span class="o">+</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()).</span><span class="nx">substr</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
+<h3 id="常见的伪动态密钥设计">常见的伪动态密钥设计</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">key</span> <span class="o">=</span> <span class="nx">md5</span><span class="p">(</span><span class="nx">openid</span> <span class="o">+</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()).</span><span class="nx">substr</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
 </code></pre></div></div>
 
-<h3 id="攻击者视角">攻击者视角</h3>
+<h3 id="攻击者的突破视角">攻击者的突破视角</h3>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="mi">1700000000000</span>
+<p>攻击者可通过 Hook 篡改时间函数，预测密钥的生成逻辑：</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="mi">1700000000000</span>
 </code></pre></div></div>
 
 <hr />
 
-<h3 id="-正确做法">✅ 正确做法</h3>
+<h3 id="正确的动态密钥实现">正确的动态密钥实现</h3>
+
+<p>基于 HKDF（密钥派生函数）生成密钥，结合多维度因子：</p>
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>key = HKDF(
   server_nonce,
@@ -2505,49 +2729,100 @@ vim: ts=2 sts=2 sw=2 noexpandtab
 )
 </code></pre></div></div>
 
-<p>并在服务端二次校验设备行为指纹。</p>
+<p>同时在服务端结合设备与行为指纹完成二次校验。</p>
 
 <hr />
 
-<h2 id="加密设计必须遵守的-8-条铁律含逆向解释">加密设计必须遵守的 8 条铁律（含逆向解释）</h2>
+<h2 id="加密设计的核心安全原则">加密设计的核心安全原则</h2>
 
 <ol>
-  <li>密钥永不写死在前端</li>
-  <li>AES key 必须服务器生成并公钥加密下发</li>
-  <li>每次请求使用不同 IV</li>
-  <li>敏感字段分包加密</li>
-  <li>行为指纹必须参与服务端校验</li>
-  <li>核心函数做 toString 校验</li>
-  <li>上线前自己完整逆一遍</li>
-  <li>定期轮换公钥并监控异常解包</li>
+  <li>
+    <p>密钥不得硬编码在前端代码中</p>
+  </li>
+  <li>
+    <p>AES 密钥需由服务端生成，并通过 RSA 公钥加密后下发</p>
+  </li>
+  <li>
+    <p>每次请求使用独立的初始向量（IV）</p>
+  </li>
+  <li>
+    <p>敏感业务字段采用分包加密的方式</p>
+  </li>
+  <li>
+    <p>设备与行为指纹需参与服务端的请求校验</p>
+  </li>
+  <li>
+    <p>核心加密函数需添加 toString 校验，防止被 Hook 篡改</p>
+  </li>
+  <li>
+    <p>上线前需自行完成完整的逆向测试，验证防护有效性</p>
+  </li>
+  <li>
+    <p>定期轮换加密公钥，并监控异常的解包行为</p>
+  </li>
 </ol>
 
 <hr />
 
-<h2 id="攻击者真实工作流你必须假设他们会这样做">攻击者真实工作流（你必须假设他们会这样做）</h2>
+<h2 id="攻击者的典型工作流">攻击者的典型工作流</h2>
 
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. Charles 抓包
-2. KillWxapkg 解包
-3. Frida Hook AES / RSA
-4. 自动化解密脚本
+<p>作为防护方，你需要假设攻击者会执行以下流程：</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. 使用Charles完成流量抓包
+2. 使用KillWxapkg完成小程序的自动解包
+3. 使用Frida Hook加密相关函数，提取密钥与明文
+4. 构建自动化解密脚本，完成协议复现
 </code></pre></div></div>
 
 <hr />
 
-<h2 id="快速落地方案12-周">快速落地方案（1–2 周）</h2>
+<h2 id="快速落地方案">快速落地方案</h2>
 
-<p>当前状态                 → 推荐升级路径<br />
-只有 MD5 签名            → AES-CBC + RSA-OAEP<br />
-固定 AES key             → 登录态动态下发<br />
-无环境校验               → 指纹 + RASP<br />
-代码可读性高             → 字节码 + wrapper</p>
+<p>针对不同的当前防护状态，可选择对应的升级路径：</p>
+
+<ul>
+  <li>
+    <p>当前仅使用 MD5 签名：升级为 <code class="language-plaintext highlighter-rouge">AES</code>-<code class="language-plaintext highlighter-rouge">CBC</code> + <code class="language-plaintext highlighter-rouge">RSA</code>-<code class="language-plaintext highlighter-rouge">OAEP</code> 的混合加密方案</p>
+  </li>
+  <li>
+    <p>当前使用固定 AES 密钥：升级为基于登录态的动态密钥下发</p>
+  </li>
+  <li>
+    <p>当前无环境校验：添加设备指纹与 <code class="language-plaintext highlighter-rouge">RASP</code>（运行时应用自我保护）机制</p>
+  </li>
+  <li>
+    <p>当前代码可读性较高：添加字节码混淆与多层包装壳防护</p>
+  </li>
+</ul>
 
 <hr />
 
-<p>一句话总结：</p>
+<h3 id="总结">总结</h3>
 
 <blockquote>
-  <p>真正有效的防护，是让逆向者花一个月才解出接口，而业务窗口只剩三天。</p>
+  <p>真正有效的防护，是将逆向分析的时间成本提升至超过业务的有效窗口，让攻击者的攻击收益低于其攻击成本。</p>
+
+</blockquote>
+
+<blockquote>
+  <p>[!NOTE]
+本文档对原始内容的格式与表述修正说明：</p>
+
+  <ol>
+    <li>
+      <p>调整了加固方案表格的格式，统一了星级标识与列对齐，提升可读性。</p>
+    </li>
+    <li>
+      <p>调整了口语化表述，将 “解得心累”“风控同学” 等口语化内容调整为专业的技术表述，统一文档风格。</p>
+    </li>
+    <li>
+      <p>标准化了术语表述，将 “动态 key”“伪动态 key” 调整为 “动态密钥”“伪动态密钥”，统一了技术术语的规范。</p>
+    </li>
+    <li>
+      <p>调整了部分绝对化表述，将 “铁律” 这类绝对化的表述调整为更严谨的安全原则，提升表述的严谨性。</p>
+    </li>
+  </ol>
+
 </blockquote>
 
 					</div>
@@ -2600,37 +2875,43 @@ vim: ts=2 sts=2 sw=2 noexpandtab
 				</div><!--page main content end-->
 
 				
-<div class="ml-hide article-index thin-scrollbar position-sticky top-0" style="max-height: 100vh; overflow-y: auto;">
-    <div class="nav nav-stacked tableOfContents_35-E">
-        <li class=" table-of-contents">
-            <code-index-css>
-                <ul><li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column"><a>文章目录</a></li></ul>
-                <ul id="toc" class="section-nav">
-<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h1"><a href="#小程序安全加固指南如何让逆向者解得心累收益为负2026版">小程序安全加固指南：如何让逆向者“解得心累、收益为负”（2026版）</a>
+<div class="col-md-4">
+    <div class="ml-hide article-index thin-scrollbar position-sticky top-0" style="max-height: 100vh; overflow-y: auto;">
+        <div class="nav nav-stacked tableOfContents_35-E">
+            <li class="table-of-contents">
+                <code-index-css>
+                    <h3><i class="fa fa-list"></i> 文章目录</h3>
+                    <ul id="toc" class="section-nav">
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h1"><a href="#小程序安全加固指南">小程序安全加固指南</a>
 <ul>
-<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2"><a href="#2026年性价比最高加固组合从易到难">2026年性价比最高加固组合（从易到难）</a></li>
-<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2"><a href="#案例一https-之上业务层-aes-加密是如何被解的">案例一：HTTPS 之上，业务层 AES 加密是如何被解的？</a>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2"><a href="#性价比加固方案组合">性价比加固方案组合</a></li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2"><a href="#案例一">案例一</a>
 <ul>
-<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3"><a href="#-小程序端真实加密代码攻击目标">✅ 小程序端真实加密代码（攻击目标）</a></li>
-<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3"><a href="#-攻击者真实解法frida-hook">❌ 攻击者真实解法（Frida Hook）</a></li>
-<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3"><a href="#-防守侧升级建议">✅ 防守侧升级建议</a></li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3"><a href="#常规加密实现">常规加密实现</a></li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3"><a href="#攻击者的突破方式">攻击者的突破方式</a></li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3"><a href="#防守侧的升级建议">防守侧的升级建议</a></li>
 </ul>
 </li>
-<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2"><a href="#案例二动态-key--安全如果派生方式可预测">案例二：动态 key ≠ 安全（如果派生方式可预测）</a>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2"><a href="#案例二">案例二</a>
 <ul>
-<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3"><a href="#-常见伪动态-key设计">❌ 常见“伪动态 key”设计</a></li>
-<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3"><a href="#攻击者视角">攻击者视角</a></li>
-<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3"><a href="#-正确做法">✅ 正确做法</a></li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3"><a href="#常见的伪动态密钥设计">常见的伪动态密钥设计</a></li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3"><a href="#攻击者的突破视角">攻击者的突破视角</a></li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3"><a href="#正确的动态密钥实现">正确的动态密钥实现</a></li>
 </ul>
 </li>
-<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2"><a href="#加密设计必须遵守的-8-条铁律含逆向解释">加密设计必须遵守的 8 条铁律（含逆向解释）</a></li>
-<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2"><a href="#攻击者真实工作流你必须假设他们会这样做">攻击者真实工作流（你必须假设他们会这样做）</a></li>
-<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2"><a href="#快速落地方案12-周">快速落地方案（1–2 周）</a></li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2"><a href="#加密设计的核心安全原则">加密设计的核心安全原则</a></li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2"><a href="#攻击者的典型工作流">攻击者的典型工作流</a></li>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h2"><a href="#快速落地方案">快速落地方案</a>
+<ul>
+<li class="no-underline table-of-contents Item__StyledItem-sc-yeql7o-2 edSFyN flex-column toc-h3"><a href="#总结">总结</a></li>
 </ul>
 </li>
 </ul>
-            </code-index-css>
-        </li>
+</li>
+</ul>
+                </code-index-css>
+            </li>
+        </div>
     </div>
 </div>
 
