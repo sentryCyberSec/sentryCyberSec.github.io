@@ -50,9 +50,6 @@
         --banner-text: #1f2328;
         --banner-link: #0969da;
         --banner-link-hover: #0550ae;
-        --banner-close-color: #656d76;
-        --banner-close-hover-bg: rgba(0, 0, 0, 0.05);
-        --banner-close-hover-color: #1f2328;
         background-color: var(--banner-bg);
         border: 1px solid var(--banner-border);
         border-radius: 12px;
@@ -63,6 +60,7 @@
         padding: 1rem 1rem 1rem 1.25rem;
         transition: all 0.2s ease;
         position: relative;
+        margin: 25px;
     }
     /* 错误主题 */
     .gh-banner.error {
@@ -85,9 +83,6 @@
             --banner-text: #e6edf3;
             --banner-link: #6cb4ff;
             --banner-link-hover: #9acbff;
-            --banner-close-color: #9aa6b2;
-            --banner-close-hover-bg: rgba(177, 186, 196, 0.12);
-            --banner-close-hover-color: #f0f3f6;
             background-color: var(--banner-bg);
             border-color: #2d4a6e;
         }
@@ -150,35 +145,6 @@
         display: inline;
         /*font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, &quot;Noto Sans&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;;*/
     }
-    .banner-close {
-        flex-shrink: 0;
-        background: transparent;
-        border: 0;
-        padding: 4px;
-        margin: -4px -4px 0 0;
-        cursor: pointer;
-        border-radius: 6px;
-        color: var(--banner-close-color);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: background-color 0.2s, color 0.2s;
-        line-height: 1;
-    }
-    .banner-close:hover {
-        background-color: var(--banner-close-hover-bg);
-        color: var(--banner-close-hover-color);
-    }
-    .banner-close:focus-visible {
-        outline: 2px solid var(--banner-icon-color);
-        outline-offset: 2px;
-    }
-    .banner-close svg {
-        width: 16px;
-        height: 16px;
-        fill: currentColor;
-        display: block;
-    }
     .gh-banner.hide-banner {
         display: none;
     }
@@ -219,31 +185,12 @@
     &lt;/span&gt;
     &lt;/div&gt;
 
-    &lt;button class=&quot;banner-close&quot; aria-label=&quot;关闭通知横幅&quot; title=&quot;Dismiss banner&quot; type=&quot;button&quot;&gt;
+    &lt;!-- &lt;button class=&quot;banner-close&quot; aria-label=&quot;关闭通知横幅&quot; title=&quot;Dismiss banner&quot; type=&quot;button&quot;&gt;
         &lt;svg viewBox=&quot;0 0 16 16&quot; fill=&quot;currentColor&quot; aria-hidden=&quot;true&quot;&gt;
             &lt;path d=&quot;M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z&quot;&gt;&lt;/path&gt;
         &lt;/svg&gt;
-    &lt;/button&gt;
+    &lt;/button&gt; --&gt;
 &lt;/section&gt;
-
-&lt;script&gt;
-    (function() {
-        // 全局只初始化一次关闭事件委托
-        if (!window._ghBannerInitialized) {
-            window._ghBannerInitialized = true;
-            document.addEventListener(&#39;click&#39;, function(e) {
-                const closeBtn = e.target.closest(&#39;.banner-close&#39;);
-                if (closeBtn) {
-                    const banner = closeBtn.closest(&#39;.gh-banner&#39;);
-                    if (banner) {
-                        banner.classList.add(&#39;hide-banner&#39;);
-                        banner.setAttribute(&#39;aria-hidden&#39;, &#39;true&#39;);
-                    }
-                }
-            });
-        }
-    })();
-&lt;/script&gt;
 			&lt;/div&gt;
 			&lt;!--left area: menu 左边菜单栏--&gt;
 			&lt;div id=&quot;help-nav&quot; aria-expanded=&quot;true&quot; class=&quot;nav nav-pills nav-stacked&quot; style=&quot;padding-top: 20px; padding-bottom: 20px&quot;&gt;
@@ -284,8 +231,8 @@
 		&lt;/ul&gt;
 		
 		&lt;ul class=&quot;nav nav-pills nav-stacked no-underline&quot;&gt;
-			&lt;li id=&quot;toc-「poseidon3」： 用户名枚举漏洞&quot; class=&quot;table-of-contents table-of-contents__left-border &quot;&gt;
-				&lt;a href=&quot;/about/poseidon3-anti-burp-token-leakage/&quot;&gt;VI. 「POSEIDON3」： 用户名枚举漏洞&lt;/a&gt;
+			&lt;li id=&quot;toc-「poseidon3」：防护Token泄露（全微服务）&quot; class=&quot;table-of-contents table-of-contents__left-border &quot;&gt;
+				&lt;a href=&quot;/about/poseidon3-anti-burp-token-leakage/&quot;&gt;VI. 「POSEIDON3」：防护TOKEN泄露（全微服务）&lt;/a&gt;
 			&lt;/li&gt;
 		&lt;/ul&gt;
 		
@@ -643,8 +590,8 @@
 		&lt;/summary&gt;
 		
 		&lt;ul class=&quot;nav nav-pills nav-stacked no-underline&quot;&gt;
-			&lt;li id=&quot;toc-Dynamic-analysis-of-java-framework-code&quot; class=&quot;table-of-contents table-of-contents__left-border &quot;&gt;
-				&lt;a href=&quot;/about/Dynamic-analysis-of-java-framework-code/&quot;&gt;I. DYNAMIC-ANALYSIS-OF-JAVA-FRAMEWORK-CODE&lt;/a&gt;
+			&lt;li id=&quot;toc-Java框架代码动态调试分析&quot; class=&quot;table-of-contents table-of-contents__left-border &quot;&gt;
+				&lt;a href=&quot;/about/Dynamic-analysis-of-java-framework-code/&quot;&gt;I. JAVA框架代码动态调试分析&lt;/a&gt;
 			&lt;/li&gt;
 		&lt;/ul&gt;
 		
@@ -831,9 +778,6 @@
         --banner-text: #1f2328;
         --banner-link: #0969da;
         --banner-link-hover: #0550ae;
-        --banner-close-color: #656d76;
-        --banner-close-hover-bg: rgba(0, 0, 0, 0.05);
-        --banner-close-hover-color: #1f2328;
         background-color: var(--banner-bg);
         border: 1px solid var(--banner-border);
         border-radius: 12px;
@@ -844,6 +788,7 @@
         padding: 1rem 1rem 1rem 1.25rem;
         transition: all 0.2s ease;
         position: relative;
+        margin: 25px;
     }
     /* 错误主题 */
     .gh-banner.error {
@@ -866,9 +811,6 @@
             --banner-text: #e6edf3;
             --banner-link: #6cb4ff;
             --banner-link-hover: #9acbff;
-            --banner-close-color: #9aa6b2;
-            --banner-close-hover-bg: rgba(177, 186, 196, 0.12);
-            --banner-close-hover-color: #f0f3f6;
             background-color: var(--banner-bg);
             border-color: #2d4a6e;
         }
@@ -931,35 +873,6 @@
         display: inline;
         /*font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, &quot;Noto Sans&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;;*/
     }
-    .banner-close {
-        flex-shrink: 0;
-        background: transparent;
-        border: 0;
-        padding: 4px;
-        margin: -4px -4px 0 0;
-        cursor: pointer;
-        border-radius: 6px;
-        color: var(--banner-close-color);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: background-color 0.2s, color 0.2s;
-        line-height: 1;
-    }
-    .banner-close:hover {
-        background-color: var(--banner-close-hover-bg);
-        color: var(--banner-close-hover-color);
-    }
-    .banner-close:focus-visible {
-        outline: 2px solid var(--banner-icon-color);
-        outline-offset: 2px;
-    }
-    .banner-close svg {
-        width: 16px;
-        height: 16px;
-        fill: currentColor;
-        display: block;
-    }
     .gh-banner.hide-banner {
         display: none;
     }
@@ -1001,31 +914,12 @@
     &lt;/span&gt;
     &lt;/div&gt;
 
-    &lt;button class=&quot;banner-close&quot; aria-label=&quot;关闭通知横幅&quot; title=&quot;Dismiss banner&quot; type=&quot;button&quot;&gt;
+    &lt;!-- &lt;button class=&quot;banner-close&quot; aria-label=&quot;关闭通知横幅&quot; title=&quot;Dismiss banner&quot; type=&quot;button&quot;&gt;
         &lt;svg viewBox=&quot;0 0 16 16&quot; fill=&quot;currentColor&quot; aria-hidden=&quot;true&quot;&gt;
             &lt;path d=&quot;M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z&quot;&gt;&lt;/path&gt;
         &lt;/svg&gt;
-    &lt;/button&gt;
+    &lt;/button&gt; --&gt;
 &lt;/section&gt;
-
-&lt;script&gt;
-    (function() {
-        // 全局只初始化一次关闭事件委托
-        if (!window._ghBannerInitialized) {
-            window._ghBannerInitialized = true;
-            document.addEventListener(&#39;click&#39;, function(e) {
-                const closeBtn = e.target.closest(&#39;.banner-close&#39;);
-                if (closeBtn) {
-                    const banner = closeBtn.closest(&#39;.gh-banner&#39;);
-                    if (banner) {
-                        banner.classList.add(&#39;hide-banner&#39;);
-                        banner.setAttribute(&#39;aria-hidden&#39;, &#39;true&#39;);
-                    }
-                }
-            });
-        }
-    })();
-&lt;/script&gt;
 						
 						&lt;h1 id=&quot;小程序安全加固指南&quot;&gt;小程序安全加固指南&lt;/h1&gt;
 
@@ -1677,9 +1571,6 @@ vim: ts=2 sts=2 sw=2 noexpandtab
         --banner-text: #1f2328;
         --banner-link: #0969da;
         --banner-link-hover: #0550ae;
-        --banner-close-color: #656d76;
-        --banner-close-hover-bg: rgba(0, 0, 0, 0.05);
-        --banner-close-hover-color: #1f2328;
         background-color: var(--banner-bg);
         border: 1px solid var(--banner-border);
         border-radius: 12px;
@@ -1690,6 +1581,7 @@ vim: ts=2 sts=2 sw=2 noexpandtab
         padding: 1rem 1rem 1rem 1.25rem;
         transition: all 0.2s ease;
         position: relative;
+        margin: 25px;
     }
     /* 错误主题 */
     .gh-banner.error {
@@ -1712,9 +1604,6 @@ vim: ts=2 sts=2 sw=2 noexpandtab
             --banner-text: #e6edf3;
             --banner-link: #6cb4ff;
             --banner-link-hover: #9acbff;
-            --banner-close-color: #9aa6b2;
-            --banner-close-hover-bg: rgba(177, 186, 196, 0.12);
-            --banner-close-hover-color: #f0f3f6;
             background-color: var(--banner-bg);
             border-color: #2d4a6e;
         }
@@ -1777,35 +1666,6 @@ vim: ts=2 sts=2 sw=2 noexpandtab
         display: inline;
         /*font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";*/
     }
-    .banner-close {
-        flex-shrink: 0;
-        background: transparent;
-        border: 0;
-        padding: 4px;
-        margin: -4px -4px 0 0;
-        cursor: pointer;
-        border-radius: 6px;
-        color: var(--banner-close-color);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: background-color 0.2s, color 0.2s;
-        line-height: 1;
-    }
-    .banner-close:hover {
-        background-color: var(--banner-close-hover-bg);
-        color: var(--banner-close-hover-color);
-    }
-    .banner-close:focus-visible {
-        outline: 2px solid var(--banner-icon-color);
-        outline-offset: 2px;
-    }
-    .banner-close svg {
-        width: 16px;
-        height: 16px;
-        fill: currentColor;
-        display: block;
-    }
     .gh-banner.hide-banner {
         display: none;
     }
@@ -1846,31 +1706,12 @@ vim: ts=2 sts=2 sw=2 noexpandtab
     </span>
     </div>
 
-    <button class="banner-close" aria-label="关闭通知横幅" title="Dismiss banner" type="button">
+    <!-- <button class="banner-close" aria-label="关闭通知横幅" title="Dismiss banner" type="button">
         <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
             <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
         </svg>
-    </button>
+    </button> -->
 </section>
-
-<script>
-    (function() {
-        // 全局只初始化一次关闭事件委托
-        if (!window._ghBannerInitialized) {
-            window._ghBannerInitialized = true;
-            document.addEventListener('click', function(e) {
-                const closeBtn = e.target.closest('.banner-close');
-                if (closeBtn) {
-                    const banner = closeBtn.closest('.gh-banner');
-                    if (banner) {
-                        banner.classList.add('hide-banner');
-                        banner.setAttribute('aria-hidden', 'true');
-                    }
-                }
-            });
-        }
-    })();
-</script>
 			</div>
 			<!--left area: menu 左边菜单栏-->
 			<div id="help-nav" aria-expanded="true" class="nav nav-pills nav-stacked" style="padding-top: 20px; padding-bottom: 20px">
@@ -1911,8 +1752,8 @@ vim: ts=2 sts=2 sw=2 noexpandtab
 		</ul>
 		
 		<ul class="nav nav-pills nav-stacked no-underline">
-			<li id="toc-「poseidon3」： 用户名枚举漏洞" class="table-of-contents table-of-contents__left-border ">
-				<a href="/about/poseidon3-anti-burp-token-leakage/">VI. 「POSEIDON3」： 用户名枚举漏洞</a>
+			<li id="toc-「poseidon3」：防护Token泄露（全微服务）" class="table-of-contents table-of-contents__left-border ">
+				<a href="/about/poseidon3-anti-burp-token-leakage/">VI. 「POSEIDON3」：防护TOKEN泄露（全微服务）</a>
 			</li>
 		</ul>
 		
@@ -2270,8 +2111,8 @@ vim: ts=2 sts=2 sw=2 noexpandtab
 		</summary>
 		
 		<ul class="nav nav-pills nav-stacked no-underline">
-			<li id="toc-Dynamic-analysis-of-java-framework-code" class="table-of-contents table-of-contents__left-border ">
-				<a href="/about/Dynamic-analysis-of-java-framework-code/">I. DYNAMIC-ANALYSIS-OF-JAVA-FRAMEWORK-CODE</a>
+			<li id="toc-Java框架代码动态调试分析" class="table-of-contents table-of-contents__left-border ">
+				<a href="/about/Dynamic-analysis-of-java-framework-code/">I. JAVA框架代码动态调试分析</a>
 			</li>
 		</ul>
 		
@@ -2458,9 +2299,6 @@ vim: ts=2 sts=2 sw=2 noexpandtab
         --banner-text: #1f2328;
         --banner-link: #0969da;
         --banner-link-hover: #0550ae;
-        --banner-close-color: #656d76;
-        --banner-close-hover-bg: rgba(0, 0, 0, 0.05);
-        --banner-close-hover-color: #1f2328;
         background-color: var(--banner-bg);
         border: 1px solid var(--banner-border);
         border-radius: 12px;
@@ -2471,6 +2309,7 @@ vim: ts=2 sts=2 sw=2 noexpandtab
         padding: 1rem 1rem 1rem 1.25rem;
         transition: all 0.2s ease;
         position: relative;
+        margin: 25px;
     }
     /* 错误主题 */
     .gh-banner.error {
@@ -2493,9 +2332,6 @@ vim: ts=2 sts=2 sw=2 noexpandtab
             --banner-text: #e6edf3;
             --banner-link: #6cb4ff;
             --banner-link-hover: #9acbff;
-            --banner-close-color: #9aa6b2;
-            --banner-close-hover-bg: rgba(177, 186, 196, 0.12);
-            --banner-close-hover-color: #f0f3f6;
             background-color: var(--banner-bg);
             border-color: #2d4a6e;
         }
@@ -2558,35 +2394,6 @@ vim: ts=2 sts=2 sw=2 noexpandtab
         display: inline;
         /*font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";*/
     }
-    .banner-close {
-        flex-shrink: 0;
-        background: transparent;
-        border: 0;
-        padding: 4px;
-        margin: -4px -4px 0 0;
-        cursor: pointer;
-        border-radius: 6px;
-        color: var(--banner-close-color);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: background-color 0.2s, color 0.2s;
-        line-height: 1;
-    }
-    .banner-close:hover {
-        background-color: var(--banner-close-hover-bg);
-        color: var(--banner-close-hover-color);
-    }
-    .banner-close:focus-visible {
-        outline: 2px solid var(--banner-icon-color);
-        outline-offset: 2px;
-    }
-    .banner-close svg {
-        width: 16px;
-        height: 16px;
-        fill: currentColor;
-        display: block;
-    }
     .gh-banner.hide-banner {
         display: none;
     }
@@ -2628,31 +2435,12 @@ vim: ts=2 sts=2 sw=2 noexpandtab
     </span>
     </div>
 
-    <button class="banner-close" aria-label="关闭通知横幅" title="Dismiss banner" type="button">
+    <!-- <button class="banner-close" aria-label="关闭通知横幅" title="Dismiss banner" type="button">
         <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
             <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
         </svg>
-    </button>
+    </button> -->
 </section>
-
-<script>
-    (function() {
-        // 全局只初始化一次关闭事件委托
-        if (!window._ghBannerInitialized) {
-            window._ghBannerInitialized = true;
-            document.addEventListener('click', function(e) {
-                const closeBtn = e.target.closest('.banner-close');
-                if (closeBtn) {
-                    const banner = closeBtn.closest('.gh-banner');
-                    if (banner) {
-                        banner.classList.add('hide-banner');
-                        banner.setAttribute('aria-hidden', 'true');
-                    }
-                }
-            });
-        }
-    })();
-</script>
 						
 						<h1 id="小程序安全加固指南">小程序安全加固指南</h1>
 
