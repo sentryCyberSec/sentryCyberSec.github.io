@@ -24,45 +24,42 @@
 <!-- Open Graph metadata -->
 <meta property="og:type" content="website" />
 <meta property="og:title" content="不得不谈的：「Spring Boot」未授权渗透 | © 哨兵" />
-<meta property="og:description" content=" &lt;div class=&quot;container mtb&quot;&gt;
-    &lt;div class=&quot;row d-flex &quot;&gt;
+<meta property="og:description" content=" &lt;div class=&quot;container mtb post-layout&quot;&gt;
         &lt;!-- SINGLE POST --&gt;
-        &lt;div class=&quot;col-lg-8 markdown-body-img flex-column&quot;&gt;
+        &lt;div class=&quot;markdown-body-img flex-column&quot;&gt;
             &lt;!-- Blog Post  --&gt;
             &lt;a href=&quot;/blog/2020/spring-boot-vuln-summary/&quot;&gt;&lt;h1 class=&quot;ctitle&quot;&gt;不得不谈的：「Spring Boot」未授权渗透&lt;/h1&gt;&lt;/a&gt;
             &lt;csmall&gt;&lt;div class=&quot;d-flex items-center&quot;&gt;
                 &lt;!--article author end--&gt;
 
-&lt;!-- site build time set to the latest time.--&gt;
-
-&lt;!-- post time--&gt;
 
 
 
 
 
-&lt;div class=&quot;ml-hide&quot;&gt;
-    &lt;a class=&quot;f2 d-flex color-fg-default&quot; href=&quot;https://github.com/LandGrey&quot; target=&quot;_blank&quot;&gt;
+
+
+&lt;span class=&quot;ymh-author-badge&quot;&gt;
+    &lt;a class=&quot;ymh-author-link&quot; href=&quot;https://github.com/LandGrey&quot; target=&quot;_blank&quot;&gt;
+        &lt;span class=&quot;ymh-author-avatar&quot;&gt;L&lt;/span&gt;
         LandGrey
-
-        
-            
-            &lt;!-- wrench time--&gt;
-            
-        edited
-        
-
-        
-        
-        
-        
-        
-
-        
-            on Oct 8, 2022
-        
     &lt;/a&gt;
-&lt;/div&gt;
+
+    
+
+    
+    
+    
+    
+    
+
+    &lt;span class=&quot;ymh-time-badge&quot;&gt;
+        
+            Jul 5, 52702
+        
+    &lt;/span&gt;
+&lt;/span&gt;
+
             &lt;/div&gt;&lt;/csmall&gt;
             &lt;div class=&quot;post-content&quot;&gt; 
             &lt;h2 id=&quot;零路由和版本&quot;&gt;零：路由和版本&lt;/h2&gt;
@@ -1309,9 +1306,57 @@ Content-Type: application/json
 &lt;/footer&gt;
             &lt;/div&gt;
             &lt;div class=&quot;spacing&quot;&gt;&lt;/div&gt;
-        &lt;/div&gt;&lt;!--/col-lg-8 --&gt;
+        &lt;/div&gt;&lt;!--/post-content --&gt;
         
 
+&lt;script&gt;
+function copyAsMarkdown() {
+    var rawPath = &quot;//_posts/blog/2020-09-25-spring-boot-vuln-summary.markdown&quot;;
+    fetch(rawPath)
+        .then(function(res) {
+            if (!res.ok) throw new Error(&#39;Network response was not ok&#39;);
+            return res.text();
+        })
+        .then(function(text) {
+            return navigator.clipboard.writeText(text);
+        })
+        .then(function() {
+            var btn = document.querySelector(&#39;.toc-copy-btn&#39;);
+            var textEl = btn.querySelector(&#39;.toc-btn-text&#39;);
+            var origText = textEl.textContent;
+            var origSvg = btn.querySelector(&#39;.toc-btn-leading-visual&#39;).innerHTML;
+            textEl.textContent = &#39;已复制！&#39;;
+            btn.querySelector(&#39;.toc-btn-leading-visual&#39;).innerHTML = &#39;&lt;svg viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot; height=&quot;16&quot; fill=&quot;currentColor&quot;&gt;&lt;path d=&quot;M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z&quot;/&gt;&lt;/svg&gt;&#39;;
+            btn.classList.add(&#39;toc-copy-success&#39;);
+            setTimeout(function() {
+                textEl.textContent = origText;
+                btn.querySelector(&#39;.toc-btn-leading-visual&#39;).innerHTML = origSvg;
+                btn.classList.remove(&#39;toc-copy-success&#39;);
+            }, 2000);
+        })
+        .catch(function(err) {
+            console.error(&#39;Failed to copy markdown:&#39;, err);
+        });
+}
+
+function toggleTocDropdown(e) {
+    e.stopPropagation();
+    var menu = document.getElementById(&#39;tocDropdownMenu&#39;);
+    var trigger = e.currentTarget;
+    var isOpen = menu.classList.contains(&#39;toc-dropdown-open&#39;);
+    menu.classList.toggle(&#39;toc-dropdown-open&#39;);
+    trigger.setAttribute(&#39;aria-expanded&#39;, !isOpen);
+}
+
+document.addEventListener(&#39;click&#39;, function(e) {
+    var menu = document.getElementById(&#39;tocDropdownMenu&#39;);
+    if (menu &amp;&amp; !menu.contains(e.target) &amp;&amp; !e.target.closest(&#39;.toc-dropdown-trigger&#39;)) {
+        menu.classList.remove(&#39;toc-dropdown-open&#39;);
+        var trigger = document.querySelector(&#39;.toc-dropdown-trigger&#39;);
+        if (trigger) trigger.setAttribute(&#39;aria-expanded&#39;, &#39;false&#39;);
+    }
+});
+&lt;/script&gt;
     &lt;/div&gt;&lt;!--/row --&gt;
 &lt;/div&gt;&lt;!--/container --&gt;哨兵安全实验室 SENTINEL SECURITY, LAB" />
 <meta property="og:image" content="https://bin4xin.github.io/assets/img/logo-share.png" /> <!-- WeChat requires that thumbnail image is larger than 300x300 -->
@@ -1762,45 +1807,42 @@ Content-Type: application/json
 </devsite-header><!--./devsite-header cws banner end.-->
 </div>
                 
-                <div class="container mtb">
-    <div class="row d-flex ">
+                <div class="container mtb post-layout">
         <!-- SINGLE POST -->
-        <div class="col-lg-8 markdown-body-img flex-column">
+        <div class="markdown-body-img flex-column">
             <!-- Blog Post  -->
             <a href="/blog/2020/spring-boot-vuln-summary/"><h1 class="ctitle">不得不谈的：「Spring Boot」未授权渗透</h1></a>
             <csmall><div class="d-flex items-center">
                 <!--article author end-->
 
-<!-- site build time set to the latest time.-->
-
-<!-- post time-->
 
 
 
 
 
-<div class="ml-hide">
-    <a class="f2 d-flex color-fg-default" href="https://github.com/LandGrey" target="_blank">
+
+
+<span class="ymh-author-badge">
+    <a class="ymh-author-link" href="https://github.com/LandGrey" target="_blank">
+        <span class="ymh-author-avatar">L</span>
         LandGrey
-
-        
-            
-            <!-- wrench time-->
-            
-        edited
-        
-
-        
-        
-        
-        
-        
-
-        
-            on Oct 8, 2022
-        
     </a>
-</div>
+
+    
+
+    
+    
+    
+    
+    
+
+    <span class="ymh-time-badge">
+        
+            Jul 5, 52702
+        
+    </span>
+</span>
+
             </div></csmall>
             <div class="post-content"> 
             <h2 id="零路由和版本">零：路由和版本</h2>
@@ -3047,9 +3089,57 @@ Content-Type: application/json
 </footer>
             </div>
             <div class="spacing"></div>
-        </div><!--/col-lg-8 -->
+        </div><!--/post-content -->
         
 
+<script>
+function copyAsMarkdown() {
+    var rawPath = "//_posts/blog/2020-09-25-spring-boot-vuln-summary.markdown";
+    fetch(rawPath)
+        .then(function(res) {
+            if (!res.ok) throw new Error('Network response was not ok');
+            return res.text();
+        })
+        .then(function(text) {
+            return navigator.clipboard.writeText(text);
+        })
+        .then(function() {
+            var btn = document.querySelector('.toc-copy-btn');
+            var textEl = btn.querySelector('.toc-btn-text');
+            var origText = textEl.textContent;
+            var origSvg = btn.querySelector('.toc-btn-leading-visual').innerHTML;
+            textEl.textContent = '已复制！';
+            btn.querySelector('.toc-btn-leading-visual').innerHTML = '<svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"/></svg>';
+            btn.classList.add('toc-copy-success');
+            setTimeout(function() {
+                textEl.textContent = origText;
+                btn.querySelector('.toc-btn-leading-visual').innerHTML = origSvg;
+                btn.classList.remove('toc-copy-success');
+            }, 2000);
+        })
+        .catch(function(err) {
+            console.error('Failed to copy markdown:', err);
+        });
+}
+
+function toggleTocDropdown(e) {
+    e.stopPropagation();
+    var menu = document.getElementById('tocDropdownMenu');
+    var trigger = e.currentTarget;
+    var isOpen = menu.classList.contains('toc-dropdown-open');
+    menu.classList.toggle('toc-dropdown-open');
+    trigger.setAttribute('aria-expanded', !isOpen);
+}
+
+document.addEventListener('click', function(e) {
+    var menu = document.getElementById('tocDropdownMenu');
+    if (menu && !menu.contains(e.target) && !e.target.closest('.toc-dropdown-trigger')) {
+        menu.classList.remove('toc-dropdown-open');
+        var trigger = document.querySelector('.toc-dropdown-trigger');
+        if (trigger) trigger.setAttribute('aria-expanded', 'false');
+    }
+});
+</script>
     </div><!--/row -->
 </div><!--/container -->
                 <!-- 代码引用申明/code reference declaration:

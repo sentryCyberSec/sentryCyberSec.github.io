@@ -30,163 +30,191 @@
             
                 
                     
-                    &lt;div class=&quot;py-2&quot;&gt;
-    &lt;div class=&quot;row blog-bar-display&quot;&gt;
-        &lt;div class=&quot;Box-header d-flex flex-justify-between&quot;&gt;&lt;!--box header--&gt;
-            &lt;a class=&quot;my-3 col-7 color-fg-default text-bold mb-1 lh-condensed css-truncate-target d-flex&quot; style=&quot;max-width: 100%; font-size: 20px&quot; href=&quot;/blog/2019/Ubuntu-linux-with-arm/&quot;&gt;《「移植」Ubuntu With Arm公网存储容器搭建记录》&lt;/a&gt;
-            &lt;!--article title end--&gt;
-            &lt;a class=&quot;display-nav-li no-underline d-flex&quot; href=&quot;https://github.com/Bin4xin/bin4xin.github.io/blob/main/&quot; target=&quot;_blank&quot;&gt;
-                &lt;span class=&quot;completeness-indicator completeness-indicator-problem&quot;&gt;
-                   &lt;span class=&quot;content-summary-icon scrollbar-20-20&quot;&gt;&lt;/span&gt;
-                &lt;/span&gt;
+                    &lt;div class=&quot;blog-card&quot;&gt;
+    &lt;div class=&quot;blog-card-header&quot;&gt;
+        &lt;a class=&quot;blog-card-title&quot; href=&quot;/blog/2019/Ubuntu-linux-with-arm/&quot;&gt;
+            「移植」Ubuntu With Arm公网存储容器搭建记录
+        &lt;/a&gt;
+        &lt;div class=&quot;blog-card-actions&quot;&gt;
+            &lt;a class=&quot;blog-card-action-btn&quot; href=&quot;/blog/2019/Ubuntu-linux-with-arm/&quot; title=&quot;阅读全文&quot;&gt;
+                &lt;svg viewBox=&quot;0 0 16 16&quot; width=&quot;14&quot; height=&quot;14&quot; fill=&quot;currentColor&quot;&gt;&lt;path d=&quot;M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z&quot;/&gt;&lt;/svg&gt;
             &lt;/a&gt;
-            &lt;!--article relation git repos &lt;branch/md files.&gt; end--&gt;
-        &lt;/div&gt;&lt;!--box header stop--&gt;
-        &lt;div class=&quot;Box-row&quot;&gt;
-            &lt;a class=&quot;d-flex flex-justify-around flex-column overflow-hidden flex-items-stretch&quot; style=&quot;z-index: 2;&quot; href=&quot;/blog/2019/Ubuntu-linux-with-arm/&quot;&gt;&lt;/a&gt;
-            &lt;div class=&quot;discussion-spotlight-details position-relative p-3 pr-5 css-truncate width-fit d-flex flex-column flex-items-start&quot; style=&quot;z-index: 3;&quot;&gt;
-                &lt;a class=&quot;my-3 col-7 color-fg-default text-bold f3 no-underline d-flex flex-items-center mt-2&quot; aria-label=&quot;elisemoe (author)&quot;&gt;
-                    &lt;span class=&quot;mr-1&quot;&gt;
+            
+            &lt;a class=&quot;blog-card-action-btn&quot; href=&quot;https://github.com/Bin4xin/bin4xin.github.io/edit/main/_posts/blog/2019-11-10-Ubuntu-linux-with-arm.md&quot; target=&quot;_blank&quot; title=&quot;编辑此页&quot;&gt;
+                &lt;svg viewBox=&quot;0 0 16 16&quot; width=&quot;14&quot; height=&quot;14&quot; fill=&quot;currentColor&quot;&gt;&lt;path d=&quot;M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Z&quot;/&gt;&lt;/svg&gt;
+            &lt;/a&gt;
+            
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    
+    &lt;div class=&quot;blog-card-body&quot;&gt;
+        &lt;p class=&quot;blog-card-excerpt&quot;&gt;
+            
   声明：本文章首发于华为云鲲鹏社区，同步于作者个人博客:)
 
 
 鲲鹏云服务器Ubuntu 18.04 64bit with ARM
 
-PHP+NGIN...&lt;/span&gt;&lt;/a&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-        &lt;div class=&quot;Box-row discussion-spotlight-details position-relative py-2 pr-5 css-truncate width-fit d-flex flex-column flex-items-start&quot; style=&quot;z-index: 3;&quot;&gt;
-            &lt;div class=&quot;d-flex nv0 f5 no-underline&quot; style=&quot;font-family: &#39;DM Mono&#39;, monospace;&quot;&gt;
-                &lt;csmall&gt;&lt;div class=&quot;d-flex items-center&quot;&gt;
-                    &lt;a class=&quot;author-avatar-small d-flex px-md-6&quot;&gt;
-                        
+PHP+NGINX软链接演示
+
+
+  摘要：华为云社区的活动好多～最近领了个ARM云服务器。打算用服务器搭建一个云存储服务容器方便自己上传论文，说干就干，于是就是在网上找了个开源的项目。下载压缩包下来完事，发现没有php环境，得自己配置。行吧，自己配。
+
+
+1.安装nginx网站服务器
+
+1.1 换源
+
+安装web前记得先把源换一下，...
+        &lt;/p&gt;
+    &lt;/div&gt;
+    
+
+    &lt;div class=&quot;blog-card-footer&quot;&gt;
+        &lt;div class=&quot;blog-card-meta&quot;&gt;
+            &lt;span class=&quot;blog-card-author&quot;&gt;
+                
 &lt;img alt=&quot;Bin4xin&quot; src=&quot;https://avatars.githubusercontent.com/u/57884471?v=4&quot;/&gt;
-                    &lt;/a&gt;
-                    &lt;!--article author avatar img. end--&gt;
-                    &lt;div class=&quot;color-fg-success-icon scrollbar-16-16&quot;&gt;&lt;/div&gt;&lt;!--article GitHub action success.site.commitString--&gt;
-                    
-                    &lt;a class=&quot;d-flex color-fg-default px-md-6&quot; href=&quot;https://github.com/Bin4xin/bin4xin.github.io/commit/d9452839&quot; target=&quot;_blank&quot;&gt;d9452839&lt;/a&gt;
-                    &lt;!--article author end--&gt;
-
-&lt;!-- site build time set to the latest time.--&gt;
-
-&lt;!-- post time--&gt;
+            &lt;/span&gt;
+            &lt;!--article author end--&gt;
 
 
 
 
 
-&lt;div class=&quot;ml-hide&quot;&gt;
-    &lt;a class=&quot;f2 d-flex color-fg-default&quot; href=&quot;https://github.com/Bin4xin&quot; target=&quot;_blank&quot;&gt;
+
+
+
+&lt;span class=&quot;ymh-author-badge&quot;&gt;
+    &lt;a class=&quot;ymh-author-link&quot; href=&quot;https://github.com/Bin4xin&quot; target=&quot;_blank&quot;&gt;
+        &lt;span class=&quot;ymh-author-avatar&quot;&gt;B&lt;/span&gt;
         Bin4xin
-
-        
-            
-        post
-        
-
-        
-        
-        
-        
-        
-
-        
-            on Sep 1, 2019
-        
     &lt;/a&gt;
-&lt;/div&gt;
-                &lt;/div&gt;&lt;/csmall&gt;
-            &lt;/div&gt;
+
+    
+
+    
+    
+    
+    
+    
+
+    &lt;span class=&quot;ymh-time-badge&quot;&gt;
+        
+            Sep 21, 51634
+        
+    &lt;/span&gt;
+&lt;/span&gt;
+
+        &lt;/div&gt;
+        &lt;div class=&quot;blog-card-meta&quot;&gt;
+            &lt;span class=&quot;blog-card-status-dot&quot;&gt;&lt;/span&gt;
+            
+            &lt;a class=&quot;blog-card-hash&quot; href=&quot;https://github.com/Bin4xin/bin4xin.github.io/commit/8e82aae4&quot; target=&quot;_blank&quot;&gt;
+                8e82aae
+            &lt;/a&gt;
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;
                 
                     
-                    &lt;div class=&quot;py-2&quot;&gt;
-    &lt;div class=&quot;row blog-bar-display&quot;&gt;
-        &lt;div class=&quot;Box-header d-flex flex-justify-between&quot;&gt;&lt;!--box header--&gt;
-            &lt;a class=&quot;my-3 col-7 color-fg-default text-bold mb-1 lh-condensed css-truncate-target d-flex&quot; style=&quot;max-width: 100%; font-size: 20px&quot; href=&quot;/blog/2019/findomain/&quot;&gt;《「FINDOMAIN」：跨平台子域名搜集工具》&lt;/a&gt;
-            &lt;!--article title end--&gt;
-            &lt;a class=&quot;display-nav-li no-underline d-flex&quot; href=&quot;https://github.com/Bin4xin/bin4xin.github.io/blob/main/&quot; target=&quot;_blank&quot;&gt;
-                &lt;span class=&quot;completeness-indicator completeness-indicator-problem&quot;&gt;
-                   &lt;span class=&quot;content-summary-icon scrollbar-20-20&quot;&gt;&lt;/span&gt;
-                &lt;/span&gt;
+                    &lt;div class=&quot;blog-card&quot;&gt;
+    &lt;div class=&quot;blog-card-header&quot;&gt;
+        &lt;a class=&quot;blog-card-title&quot; href=&quot;/blog/2019/findomain/&quot;&gt;
+            「FINDOMAIN」：跨平台子域名搜集工具
+        &lt;/a&gt;
+        &lt;div class=&quot;blog-card-actions&quot;&gt;
+            &lt;a class=&quot;blog-card-action-btn&quot; href=&quot;/blog/2019/findomain/&quot; title=&quot;阅读全文&quot;&gt;
+                &lt;svg viewBox=&quot;0 0 16 16&quot; width=&quot;14&quot; height=&quot;14&quot; fill=&quot;currentColor&quot;&gt;&lt;path d=&quot;M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z&quot;/&gt;&lt;/svg&gt;
             &lt;/a&gt;
-            &lt;!--article relation git repos &lt;branch/md files.&gt; end--&gt;
-        &lt;/div&gt;&lt;!--box header stop--&gt;
-        &lt;div class=&quot;Box-row&quot;&gt;
-            &lt;a class=&quot;d-flex flex-justify-around flex-column overflow-hidden flex-items-stretch&quot; style=&quot;z-index: 2;&quot; href=&quot;/blog/2019/findomain/&quot;&gt;&lt;/a&gt;
-            &lt;div class=&quot;discussion-spotlight-details position-relative p-3 pr-5 css-truncate width-fit d-flex flex-column flex-items-start&quot; style=&quot;z-index: 3;&quot;&gt;
-                &lt;a class=&quot;my-3 col-7 color-fg-default text-bold f3 no-underline d-flex flex-items-center mt-2&quot; aria-label=&quot;elisemoe (author)&quot;&gt;
-                    &lt;span class=&quot;mr-1&quot;&gt;摘要:之前在暑假里申请注册了个云先知平台账号，平时没事闲（mo）着（yang）的（gong）时候当当土拨鼠挖挖洞。挖过的都懂，是一个类似于渗透测试的中心化...&lt;/span&gt;&lt;/a&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-        &lt;div class=&quot;Box-row discussion-spotlight-details position-relative py-2 pr-5 css-truncate width-fit d-flex flex-column flex-items-start&quot; style=&quot;z-index: 3;&quot;&gt;
-            &lt;div class=&quot;d-flex nv0 f5 no-underline&quot; style=&quot;font-family: &#39;DM Mono&#39;, monospace;&quot;&gt;
-                &lt;csmall&gt;&lt;div class=&quot;d-flex items-center&quot;&gt;
-                    &lt;a class=&quot;author-avatar-small d-flex px-md-6&quot;&gt;
-                        
-&lt;img alt=&quot;Bin4xin&quot; src=&quot;https://avatars.githubusercontent.com/u/57884471?v=4&quot;/&gt;
-                    &lt;/a&gt;
-                    &lt;!--article author avatar img. end--&gt;
-                    &lt;div class=&quot;color-fg-success-icon scrollbar-16-16&quot;&gt;&lt;/div&gt;&lt;!--article GitHub action success.site.commitString--&gt;
-                    
-                    &lt;a class=&quot;d-flex color-fg-default px-md-6&quot; href=&quot;https://github.com/Bin4xin/bin4xin.github.io/commit/d9452839&quot; target=&quot;_blank&quot;&gt;d9452839&lt;/a&gt;
-                    &lt;!--article author end--&gt;
-
-&lt;!-- site build time set to the latest time.--&gt;
-
-&lt;!-- post time--&gt;
-
-
-
-
-
-&lt;div class=&quot;ml-hide&quot;&gt;
-    &lt;a class=&quot;f2 d-flex color-fg-default&quot; href=&quot;https://github.com/Bin4xin&quot; target=&quot;_blank&quot;&gt;
-        Bin4xin
-
-        
             
-        post
-        
+            &lt;a class=&quot;blog-card-action-btn&quot; href=&quot;https://github.com/Bin4xin/bin4xin.github.io/edit/main/_posts/blog/2019-09-01-findomain.md&quot; target=&quot;_blank&quot; title=&quot;编辑此页&quot;&gt;
+                &lt;svg viewBox=&quot;0 0 16 16&quot; width=&quot;14&quot; height=&quot;14&quot; fill=&quot;currentColor&quot;&gt;&lt;path d=&quot;M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Z&quot;/&gt;&lt;/svg&gt;
+            &lt;/a&gt;
+            
+        &lt;/div&gt;
+    &lt;/div&gt;
 
-        
-        
-        
-        
-        
+    
+    &lt;div class=&quot;blog-card-body&quot;&gt;
+        &lt;p class=&quot;blog-card-excerpt&quot;&gt;
+            摘要:之前在暑假里申请注册了个云先知平台账号，平时没事闲（mo）着（yang）的（gong）时候当当土拨鼠挖挖洞。挖过的都懂，是一个类似于渗透测试的中心化平台。乙方公司有这个需求，通过这个平台发放任务，通过不同的漏洞等级【严重】-【高危】-【中危】-【低危】，严重就是危及到服务器权限，能够get web shell、root甚至横向渗透，依次类推每一项，危及程度依次类推，有兴趣的朋友自行搜索体会（你们可以猜猜xss在哪个位置）。
 
-        
-            on Sep 1, 2019
-        
+以上背景，每份任务都会规定好一些任务域...
+        &lt;/p&gt;
+    &lt;/div&gt;
+    
+
+    &lt;div class=&quot;blog-card-footer&quot;&gt;
+        &lt;div class=&quot;blog-card-meta&quot;&gt;
+            &lt;span class=&quot;blog-card-author&quot;&gt;
+                
+&lt;img alt=&quot;Bin4xin&quot; src=&quot;https://avatars.githubusercontent.com/u/57884471?v=4&quot;/&gt;
+            &lt;/span&gt;
+            &lt;!--article author end--&gt;
+
+
+
+
+
+
+
+
+&lt;span class=&quot;ymh-author-badge&quot;&gt;
+    &lt;a class=&quot;ymh-author-link&quot; href=&quot;https://github.com/Bin4xin&quot; target=&quot;_blank&quot;&gt;
+        &lt;span class=&quot;ymh-author-avatar&quot;&gt;B&lt;/span&gt;
+        Bin4xin
     &lt;/a&gt;
-&lt;/div&gt;
-                &lt;/div&gt;&lt;/csmall&gt;
-            &lt;/div&gt;
+
+    
+
+    
+    
+    
+    
+    
+
+    &lt;span class=&quot;ymh-time-badge&quot;&gt;
+        
+            Sep 21, 51634
+        
+    &lt;/span&gt;
+&lt;/span&gt;
+
+        &lt;/div&gt;
+        &lt;div class=&quot;blog-card-meta&quot;&gt;
+            &lt;span class=&quot;blog-card-status-dot&quot;&gt;&lt;/span&gt;
+            
+            &lt;a class=&quot;blog-card-hash&quot; href=&quot;https://github.com/Bin4xin/bin4xin.github.io/commit/8e82aae4&quot; target=&quot;_blank&quot;&gt;
+                8e82aae
+            &lt;/a&gt;
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;
                 
                     
-                    &lt;div class=&quot;py-2&quot;&gt;
-    &lt;div class=&quot;row blog-bar-display&quot;&gt;
-        &lt;div class=&quot;Box-header d-flex flex-justify-between&quot;&gt;&lt;!--box header--&gt;
-            &lt;a class=&quot;my-3 col-7 color-fg-default text-bold mb-1 lh-condensed css-truncate-target d-flex&quot; style=&quot;max-width: 100%; font-size: 20px&quot; href=&quot;/blog/2019/minUv2-walkthrough/&quot;&gt;《「渗透」SVG的神秘力量：minUv2》&lt;/a&gt;
-            &lt;!--article title end--&gt;
-            &lt;a class=&quot;display-nav-li no-underline d-flex&quot; href=&quot;https://github.com/Bin4xin/bin4xin.github.io/blob/main/&quot; target=&quot;_blank&quot;&gt;
-                &lt;span class=&quot;completeness-indicator completeness-indicator-problem&quot;&gt;
-                   &lt;span class=&quot;content-summary-icon scrollbar-20-20&quot;&gt;&lt;/span&gt;
-                &lt;/span&gt;
+                    &lt;div class=&quot;blog-card&quot;&gt;
+    &lt;div class=&quot;blog-card-header&quot;&gt;
+        &lt;a class=&quot;blog-card-title&quot; href=&quot;/blog/2019/minUv2-walkthrough/&quot;&gt;
+            「渗透」SVG的神秘力量：minUv2
+        &lt;/a&gt;
+        &lt;div class=&quot;blog-card-actions&quot;&gt;
+            &lt;a class=&quot;blog-card-action-btn&quot; href=&quot;/blog/2019/minUv2-walkthrough/&quot; title=&quot;阅读全文&quot;&gt;
+                &lt;svg viewBox=&quot;0 0 16 16&quot; width=&quot;14&quot; height=&quot;14&quot; fill=&quot;currentColor&quot;&gt;&lt;path d=&quot;M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z&quot;/&gt;&lt;/svg&gt;
             &lt;/a&gt;
-            &lt;!--article relation git repos &lt;branch/md files.&gt; end--&gt;
-        &lt;/div&gt;&lt;!--box header stop--&gt;
-        &lt;div class=&quot;Box-row&quot;&gt;
-            &lt;a class=&quot;d-flex flex-justify-around flex-column overflow-hidden flex-items-stretch&quot; style=&quot;z-index: 2;&quot; href=&quot;/blog/2019/minUv2-walkthrough/&quot;&gt;&lt;/a&gt;
-            &lt;div class=&quot;discussion-spotlight-details position-relative p-3 pr-5 css-truncate width-fit d-flex flex-column flex-items-start&quot; style=&quot;z-index: 3;&quot;&gt;
-                &lt;a class=&quot;my-3 col-7 color-fg-default text-bold f3 no-underline d-flex flex-items-center mt-2&quot; aria-label=&quot;elisemoe (author)&quot;&gt;
-                    &lt;span class=&quot;mr-1&quot;&gt;
+            
+            &lt;a class=&quot;blog-card-action-btn&quot; href=&quot;https://github.com/Bin4xin/bin4xin.github.io/edit/main/_posts/blog/2019-07-01-minUv2-walkthrough.markdown&quot; target=&quot;_blank&quot; title=&quot;编辑此页&quot;&gt;
+                &lt;svg viewBox=&quot;0 0 16 16&quot; width=&quot;14&quot; height=&quot;14&quot; fill=&quot;currentColor&quot;&gt;&lt;path d=&quot;M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Z&quot;/&gt;&lt;/svg&gt;
+            &lt;/a&gt;
+            
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    
+    &lt;div class=&quot;blog-card-body&quot;&gt;
+        &lt;p class=&quot;blog-card-excerpt&quot;&gt;
+            
   categories:
     
       blog
@@ -194,52 +222,60 @@ PHP+NGIN...&lt;/span&gt;&lt;/a&gt;
       漏洞复现
       渗透
       vulnhub
-  ...&lt;/span&gt;&lt;/a&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-        &lt;div class=&quot;Box-row discussion-spotlight-details position-relative py-2 pr-5 css-truncate width-fit d-flex flex-column flex-items-start&quot; style=&quot;z-index: 3;&quot;&gt;
-            &lt;div class=&quot;d-flex nv0 f5 no-underline&quot; style=&quot;font-family: &#39;DM Mono&#39;, monospace;&quot;&gt;
-                &lt;csmall&gt;&lt;div class=&quot;d-flex items-center&quot;&gt;
-                    &lt;a class=&quot;author-avatar-small d-flex px-md-6&quot;&gt;
-                        
+    
+  
+
+
+序言
+hello,各位。最近闲来无事，工作之余偷偷用公司电脑测试入侵了一个linux靶机，遂记录下。（手动狗头）
+这个靶机本身难度适中，复现了svg的代码执行漏洞且要求对linux的系统命令较为熟悉；svg大体来说是一种图像文件格式，基于XML，由W3C联盟进行开发的，支持网页打开，编辑方便等。可以自行...
+        &lt;/p&gt;
+    &lt;/div&gt;
+    
+
+    &lt;div class=&quot;blog-card-footer&quot;&gt;
+        &lt;div class=&quot;blog-card-meta&quot;&gt;
+            &lt;span class=&quot;blog-card-author&quot;&gt;
+                
 &lt;img alt=&quot;Bin4xin&quot; src=&quot;https://avatars.githubusercontent.com/u/57884471?v=4&quot;/&gt;
-                    &lt;/a&gt;
-                    &lt;!--article author avatar img. end--&gt;
-                    &lt;div class=&quot;color-fg-success-icon scrollbar-16-16&quot;&gt;&lt;/div&gt;&lt;!--article GitHub action success.site.commitString--&gt;
-                    
-                    &lt;a class=&quot;d-flex color-fg-default px-md-6&quot; href=&quot;https://github.com/Bin4xin/bin4xin.github.io/commit/d9452839&quot; target=&quot;_blank&quot;&gt;d9452839&lt;/a&gt;
-                    &lt;!--article author end--&gt;
-
-&lt;!-- site build time set to the latest time.--&gt;
-
-&lt;!-- post time--&gt;
+            &lt;/span&gt;
+            &lt;!--article author end--&gt;
 
 
 
 
 
-&lt;div class=&quot;ml-hide&quot;&gt;
-    &lt;a class=&quot;f2 d-flex color-fg-default&quot; href=&quot;https://github.com/Bin4xin&quot; target=&quot;_blank&quot;&gt;
+
+
+
+&lt;span class=&quot;ymh-author-badge&quot;&gt;
+    &lt;a class=&quot;ymh-author-link&quot; href=&quot;https://github.com/Bin4xin&quot; target=&quot;_blank&quot;&gt;
+        &lt;span class=&quot;ymh-author-avatar&quot;&gt;B&lt;/span&gt;
         Bin4xin
-
-        
-            
-        post
-        
-
-        
-        
-        
-        
-        
-
-        
-            on Sep 1, 2019
-        
     &lt;/a&gt;
-&lt;/div&gt;
-                &lt;/div&gt;&lt;/csmall&gt;
-            &lt;/div&gt;
+
+    
+
+    
+    
+    
+    
+    
+
+    &lt;span class=&quot;ymh-time-badge&quot;&gt;
+        
+            Sep 21, 51634
+        
+    &lt;/span&gt;
+&lt;/span&gt;
+
+        &lt;/div&gt;
+        &lt;div class=&quot;blog-card-meta&quot;&gt;
+            &lt;span class=&quot;blog-card-status-dot&quot;&gt;&lt;/span&gt;
+            
+            &lt;a class=&quot;blog-card-hash&quot; href=&quot;https://github.com/Bin4xin/bin4xin.github.io/commit/8e82aae4&quot; target=&quot;_blank&quot;&gt;
+                8e82aae
+            &lt;/a&gt;
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;
@@ -410,7 +446,7 @@ PHP+NGIN...&lt;/span&gt;&lt;/a&gt;
     &lt;/div&gt;
     
     &lt;p&gt;
-    &lt;details open&gt;
+    &lt;details&gt;
         &lt;summary class=&quot;point flex justify-between&quot;&gt;所有标签/数量&lt;/summary&gt;
         
         &lt;p&gt;
@@ -836,163 +872,191 @@ PHP+NGIN...&lt;/span&gt;&lt;/a&gt;
             
                 
                     
-                    <div class="py-2">
-    <div class="row blog-bar-display">
-        <div class="Box-header d-flex flex-justify-between"><!--box header-->
-            <a class="my-3 col-7 color-fg-default text-bold mb-1 lh-condensed css-truncate-target d-flex" style="max-width: 100%; font-size: 20px" href="/blog/2019/Ubuntu-linux-with-arm/">《「移植」Ubuntu With Arm公网存储容器搭建记录》</a>
-            <!--article title end-->
-            <a class="display-nav-li no-underline d-flex" href="https://github.com/Bin4xin/bin4xin.github.io/blob/main/" target="_blank">
-                <span class="completeness-indicator completeness-indicator-problem">
-                   <span class="content-summary-icon scrollbar-20-20"></span>
-                </span>
+                    <div class="blog-card">
+    <div class="blog-card-header">
+        <a class="blog-card-title" href="/blog/2019/Ubuntu-linux-with-arm/">
+            「移植」Ubuntu With Arm公网存储容器搭建记录
+        </a>
+        <div class="blog-card-actions">
+            <a class="blog-card-action-btn" href="/blog/2019/Ubuntu-linux-with-arm/" title="阅读全文">
+                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"/></svg>
             </a>
-            <!--article relation git repos <branch/md files.> end-->
-        </div><!--box header stop-->
-        <div class="Box-row">
-            <a class="d-flex flex-justify-around flex-column overflow-hidden flex-items-stretch" style="z-index: 2;" href="/blog/2019/Ubuntu-linux-with-arm/"></a>
-            <div class="discussion-spotlight-details position-relative p-3 pr-5 css-truncate width-fit d-flex flex-column flex-items-start" style="z-index: 3;">
-                <a class="my-3 col-7 color-fg-default text-bold f3 no-underline d-flex flex-items-center mt-2" aria-label="elisemoe (author)">
-                    <span class="mr-1">
+            
+            <a class="blog-card-action-btn" href="https://github.com/Bin4xin/bin4xin.github.io/edit/main/_posts/blog/2019-11-10-Ubuntu-linux-with-arm.md" target="_blank" title="编辑此页">
+                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Z"/></svg>
+            </a>
+            
+        </div>
+    </div>
+
+    
+    <div class="blog-card-body">
+        <p class="blog-card-excerpt">
+            
   声明：本文章首发于华为云鲲鹏社区，同步于作者个人博客:)
 
 
 鲲鹏云服务器Ubuntu 18.04 64bit with ARM
 
-PHP+NGIN...</span></a>
-            </div>
-        </div>
-        <div class="Box-row discussion-spotlight-details position-relative py-2 pr-5 css-truncate width-fit d-flex flex-column flex-items-start" style="z-index: 3;">
-            <div class="d-flex nv0 f5 no-underline" style="font-family: 'DM Mono', monospace;">
-                <csmall><div class="d-flex items-center">
-                    <a class="author-avatar-small d-flex px-md-6">
-                        
+PHP+NGINX软链接演示
+
+
+  摘要：华为云社区的活动好多～最近领了个ARM云服务器。打算用服务器搭建一个云存储服务容器方便自己上传论文，说干就干，于是就是在网上找了个开源的项目。下载压缩包下来完事，发现没有php环境，得自己配置。行吧，自己配。
+
+
+1.安装nginx网站服务器
+
+1.1 换源
+
+安装web前记得先把源换一下，...
+        </p>
+    </div>
+    
+
+    <div class="blog-card-footer">
+        <div class="blog-card-meta">
+            <span class="blog-card-author">
+                
 <img alt="Bin4xin" src="https://avatars.githubusercontent.com/u/57884471?v=4"/>
-                    </a>
-                    <!--article author avatar img. end-->
-                    <div class="color-fg-success-icon scrollbar-16-16"></div><!--article GitHub action success.site.commitString-->
-                    
-                    <a class="d-flex color-fg-default px-md-6" href="https://github.com/Bin4xin/bin4xin.github.io/commit/d9452839" target="_blank">d9452839</a>
-                    <!--article author end-->
-
-<!-- site build time set to the latest time.-->
-
-<!-- post time-->
+            </span>
+            <!--article author end-->
 
 
 
 
 
-<div class="ml-hide">
-    <a class="f2 d-flex color-fg-default" href="https://github.com/Bin4xin" target="_blank">
+
+
+
+<span class="ymh-author-badge">
+    <a class="ymh-author-link" href="https://github.com/Bin4xin" target="_blank">
+        <span class="ymh-author-avatar">B</span>
         Bin4xin
-
-        
-            
-        post
-        
-
-        
-        
-        
-        
-        
-
-        
-            on Sep 1, 2019
-        
     </a>
-</div>
-                </div></csmall>
-            </div>
+
+    
+
+    
+    
+    
+    
+    
+
+    <span class="ymh-time-badge">
+        
+            Sep 21, 51634
+        
+    </span>
+</span>
+
+        </div>
+        <div class="blog-card-meta">
+            <span class="blog-card-status-dot"></span>
+            
+            <a class="blog-card-hash" href="https://github.com/Bin4xin/bin4xin.github.io/commit/8e82aae4" target="_blank">
+                8e82aae
+            </a>
         </div>
     </div>
 </div>
                 
                     
-                    <div class="py-2">
-    <div class="row blog-bar-display">
-        <div class="Box-header d-flex flex-justify-between"><!--box header-->
-            <a class="my-3 col-7 color-fg-default text-bold mb-1 lh-condensed css-truncate-target d-flex" style="max-width: 100%; font-size: 20px" href="/blog/2019/findomain/">《「FINDOMAIN」：跨平台子域名搜集工具》</a>
-            <!--article title end-->
-            <a class="display-nav-li no-underline d-flex" href="https://github.com/Bin4xin/bin4xin.github.io/blob/main/" target="_blank">
-                <span class="completeness-indicator completeness-indicator-problem">
-                   <span class="content-summary-icon scrollbar-20-20"></span>
-                </span>
+                    <div class="blog-card">
+    <div class="blog-card-header">
+        <a class="blog-card-title" href="/blog/2019/findomain/">
+            「FINDOMAIN」：跨平台子域名搜集工具
+        </a>
+        <div class="blog-card-actions">
+            <a class="blog-card-action-btn" href="/blog/2019/findomain/" title="阅读全文">
+                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"/></svg>
             </a>
-            <!--article relation git repos <branch/md files.> end-->
-        </div><!--box header stop-->
-        <div class="Box-row">
-            <a class="d-flex flex-justify-around flex-column overflow-hidden flex-items-stretch" style="z-index: 2;" href="/blog/2019/findomain/"></a>
-            <div class="discussion-spotlight-details position-relative p-3 pr-5 css-truncate width-fit d-flex flex-column flex-items-start" style="z-index: 3;">
-                <a class="my-3 col-7 color-fg-default text-bold f3 no-underline d-flex flex-items-center mt-2" aria-label="elisemoe (author)">
-                    <span class="mr-1">摘要:之前在暑假里申请注册了个云先知平台账号，平时没事闲（mo）着（yang）的（gong）时候当当土拨鼠挖挖洞。挖过的都懂，是一个类似于渗透测试的中心化...</span></a>
-            </div>
-        </div>
-        <div class="Box-row discussion-spotlight-details position-relative py-2 pr-5 css-truncate width-fit d-flex flex-column flex-items-start" style="z-index: 3;">
-            <div class="d-flex nv0 f5 no-underline" style="font-family: 'DM Mono', monospace;">
-                <csmall><div class="d-flex items-center">
-                    <a class="author-avatar-small d-flex px-md-6">
-                        
-<img alt="Bin4xin" src="https://avatars.githubusercontent.com/u/57884471?v=4"/>
-                    </a>
-                    <!--article author avatar img. end-->
-                    <div class="color-fg-success-icon scrollbar-16-16"></div><!--article GitHub action success.site.commitString-->
-                    
-                    <a class="d-flex color-fg-default px-md-6" href="https://github.com/Bin4xin/bin4xin.github.io/commit/d9452839" target="_blank">d9452839</a>
-                    <!--article author end-->
-
-<!-- site build time set to the latest time.-->
-
-<!-- post time-->
-
-
-
-
-
-<div class="ml-hide">
-    <a class="f2 d-flex color-fg-default" href="https://github.com/Bin4xin" target="_blank">
-        Bin4xin
-
-        
             
-        post
-        
+            <a class="blog-card-action-btn" href="https://github.com/Bin4xin/bin4xin.github.io/edit/main/_posts/blog/2019-09-01-findomain.md" target="_blank" title="编辑此页">
+                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Z"/></svg>
+            </a>
+            
+        </div>
+    </div>
 
-        
-        
-        
-        
-        
+    
+    <div class="blog-card-body">
+        <p class="blog-card-excerpt">
+            摘要:之前在暑假里申请注册了个云先知平台账号，平时没事闲（mo）着（yang）的（gong）时候当当土拨鼠挖挖洞。挖过的都懂，是一个类似于渗透测试的中心化平台。乙方公司有这个需求，通过这个平台发放任务，通过不同的漏洞等级【严重】-【高危】-【中危】-【低危】，严重就是危及到服务器权限，能够get web shell、root甚至横向渗透，依次类推每一项，危及程度依次类推，有兴趣的朋友自行搜索体会（你们可以猜猜xss在哪个位置）。
 
-        
-            on Sep 1, 2019
-        
+以上背景，每份任务都会规定好一些任务域...
+        </p>
+    </div>
+    
+
+    <div class="blog-card-footer">
+        <div class="blog-card-meta">
+            <span class="blog-card-author">
+                
+<img alt="Bin4xin" src="https://avatars.githubusercontent.com/u/57884471?v=4"/>
+            </span>
+            <!--article author end-->
+
+
+
+
+
+
+
+
+<span class="ymh-author-badge">
+    <a class="ymh-author-link" href="https://github.com/Bin4xin" target="_blank">
+        <span class="ymh-author-avatar">B</span>
+        Bin4xin
     </a>
-</div>
-                </div></csmall>
-            </div>
+
+    
+
+    
+    
+    
+    
+    
+
+    <span class="ymh-time-badge">
+        
+            Sep 21, 51634
+        
+    </span>
+</span>
+
+        </div>
+        <div class="blog-card-meta">
+            <span class="blog-card-status-dot"></span>
+            
+            <a class="blog-card-hash" href="https://github.com/Bin4xin/bin4xin.github.io/commit/8e82aae4" target="_blank">
+                8e82aae
+            </a>
         </div>
     </div>
 </div>
                 
                     
-                    <div class="py-2">
-    <div class="row blog-bar-display">
-        <div class="Box-header d-flex flex-justify-between"><!--box header-->
-            <a class="my-3 col-7 color-fg-default text-bold mb-1 lh-condensed css-truncate-target d-flex" style="max-width: 100%; font-size: 20px" href="/blog/2019/minUv2-walkthrough/">《「渗透」SVG的神秘力量：minUv2》</a>
-            <!--article title end-->
-            <a class="display-nav-li no-underline d-flex" href="https://github.com/Bin4xin/bin4xin.github.io/blob/main/" target="_blank">
-                <span class="completeness-indicator completeness-indicator-problem">
-                   <span class="content-summary-icon scrollbar-20-20"></span>
-                </span>
+                    <div class="blog-card">
+    <div class="blog-card-header">
+        <a class="blog-card-title" href="/blog/2019/minUv2-walkthrough/">
+            「渗透」SVG的神秘力量：minUv2
+        </a>
+        <div class="blog-card-actions">
+            <a class="blog-card-action-btn" href="/blog/2019/minUv2-walkthrough/" title="阅读全文">
+                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"/></svg>
             </a>
-            <!--article relation git repos <branch/md files.> end-->
-        </div><!--box header stop-->
-        <div class="Box-row">
-            <a class="d-flex flex-justify-around flex-column overflow-hidden flex-items-stretch" style="z-index: 2;" href="/blog/2019/minUv2-walkthrough/"></a>
-            <div class="discussion-spotlight-details position-relative p-3 pr-5 css-truncate width-fit d-flex flex-column flex-items-start" style="z-index: 3;">
-                <a class="my-3 col-7 color-fg-default text-bold f3 no-underline d-flex flex-items-center mt-2" aria-label="elisemoe (author)">
-                    <span class="mr-1">
+            
+            <a class="blog-card-action-btn" href="https://github.com/Bin4xin/bin4xin.github.io/edit/main/_posts/blog/2019-07-01-minUv2-walkthrough.markdown" target="_blank" title="编辑此页">
+                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Z"/></svg>
+            </a>
+            
+        </div>
+    </div>
+
+    
+    <div class="blog-card-body">
+        <p class="blog-card-excerpt">
+            
   categories:
     
       blog
@@ -1000,52 +1064,60 @@ PHP+NGIN...</span></a>
       漏洞复现
       渗透
       vulnhub
-  ...</span></a>
-            </div>
-        </div>
-        <div class="Box-row discussion-spotlight-details position-relative py-2 pr-5 css-truncate width-fit d-flex flex-column flex-items-start" style="z-index: 3;">
-            <div class="d-flex nv0 f5 no-underline" style="font-family: 'DM Mono', monospace;">
-                <csmall><div class="d-flex items-center">
-                    <a class="author-avatar-small d-flex px-md-6">
-                        
+    
+  
+
+
+序言
+hello,各位。最近闲来无事，工作之余偷偷用公司电脑测试入侵了一个linux靶机，遂记录下。（手动狗头）
+这个靶机本身难度适中，复现了svg的代码执行漏洞且要求对linux的系统命令较为熟悉；svg大体来说是一种图像文件格式，基于XML，由W3C联盟进行开发的，支持网页打开，编辑方便等。可以自行...
+        </p>
+    </div>
+    
+
+    <div class="blog-card-footer">
+        <div class="blog-card-meta">
+            <span class="blog-card-author">
+                
 <img alt="Bin4xin" src="https://avatars.githubusercontent.com/u/57884471?v=4"/>
-                    </a>
-                    <!--article author avatar img. end-->
-                    <div class="color-fg-success-icon scrollbar-16-16"></div><!--article GitHub action success.site.commitString-->
-                    
-                    <a class="d-flex color-fg-default px-md-6" href="https://github.com/Bin4xin/bin4xin.github.io/commit/d9452839" target="_blank">d9452839</a>
-                    <!--article author end-->
-
-<!-- site build time set to the latest time.-->
-
-<!-- post time-->
+            </span>
+            <!--article author end-->
 
 
 
 
 
-<div class="ml-hide">
-    <a class="f2 d-flex color-fg-default" href="https://github.com/Bin4xin" target="_blank">
+
+
+
+<span class="ymh-author-badge">
+    <a class="ymh-author-link" href="https://github.com/Bin4xin" target="_blank">
+        <span class="ymh-author-avatar">B</span>
         Bin4xin
-
-        
-            
-        post
-        
-
-        
-        
-        
-        
-        
-
-        
-            on Sep 1, 2019
-        
     </a>
-</div>
-                </div></csmall>
-            </div>
+
+    
+
+    
+    
+    
+    
+    
+
+    <span class="ymh-time-badge">
+        
+            Sep 21, 51634
+        
+    </span>
+</span>
+
+        </div>
+        <div class="blog-card-meta">
+            <span class="blog-card-status-dot"></span>
+            
+            <a class="blog-card-hash" href="https://github.com/Bin4xin/bin4xin.github.io/commit/8e82aae4" target="_blank">
+                8e82aae
+            </a>
         </div>
     </div>
 </div>
@@ -1216,7 +1288,7 @@ PHP+NGIN...</span></a>
     </div>
     
     <p>
-    <details open>
+    <details>
         <summary class="point flex justify-between">所有标签/数量</summary>
         
         <p>

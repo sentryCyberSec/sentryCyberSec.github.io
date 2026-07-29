@@ -30,163 +30,207 @@
             
                 
                     
-                    &lt;div class=&quot;py-2&quot;&gt;
-    &lt;div class=&quot;row blog-bar-display&quot;&gt;
-        &lt;div class=&quot;Box-header d-flex flex-justify-between&quot;&gt;&lt;!--box header--&gt;
-            &lt;a class=&quot;my-3 col-7 color-fg-default text-bold mb-1 lh-condensed css-truncate-target d-flex&quot; style=&quot;max-width: 100%; font-size: 20px&quot; href=&quot;/blog/2022/SQL注入学习记录/&quot;&gt;《SQL注入学习记录》&lt;/a&gt;
-            &lt;!--article title end--&gt;
-            &lt;a class=&quot;display-nav-li no-underline d-flex&quot; href=&quot;https://github.com/Bin4xin/bin4xin.github.io/blob/main/&quot; target=&quot;_blank&quot;&gt;
-                &lt;span class=&quot;completeness-indicator completeness-indicator-problem&quot;&gt;
-                   &lt;span class=&quot;content-summary-icon scrollbar-20-20&quot;&gt;&lt;/span&gt;
-                &lt;/span&gt;
+                    &lt;div class=&quot;blog-card&quot;&gt;
+    &lt;div class=&quot;blog-card-header&quot;&gt;
+        &lt;a class=&quot;blog-card-title&quot; href=&quot;/blog/2022/SQL注入学习记录/&quot;&gt;
+            SQL注入学习记录
+        &lt;/a&gt;
+        &lt;div class=&quot;blog-card-actions&quot;&gt;
+            &lt;a class=&quot;blog-card-action-btn&quot; href=&quot;/blog/2022/SQL注入学习记录/&quot; title=&quot;阅读全文&quot;&gt;
+                &lt;svg viewBox=&quot;0 0 16 16&quot; width=&quot;14&quot; height=&quot;14&quot; fill=&quot;currentColor&quot;&gt;&lt;path d=&quot;M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z&quot;/&gt;&lt;/svg&gt;
             &lt;/a&gt;
-            &lt;!--article relation git repos &lt;branch/md files.&gt; end--&gt;
-        &lt;/div&gt;&lt;!--box header stop--&gt;
-        &lt;div class=&quot;Box-row&quot;&gt;
-            &lt;a class=&quot;d-flex flex-justify-around flex-column overflow-hidden flex-items-stretch&quot; style=&quot;z-index: 2;&quot; href=&quot;/blog/2022/SQL注入学习记录/&quot;&gt;&lt;/a&gt;
-            &lt;div class=&quot;discussion-spotlight-details position-relative p-3 pr-5 css-truncate width-fit d-flex flex-column flex-items-start&quot; style=&quot;z-index: 3;&quot;&gt;
-                &lt;a class=&quot;my-3 col-7 color-fg-default text-bold f3 no-underline d-flex flex-items-center mt-2&quot; aria-label=&quot;elisemoe (author)&quot;&gt;
-                    &lt;span class=&quot;mr-1&quot;&gt;该SQL注入文档是自己学习过程中的记录汇集（不涉及WAF拦截或参数过滤），文档中涉及到的数据库管理系统为MySQL。现将文档整理出来，留作自己的学习记录历...&lt;/span&gt;&lt;/a&gt;
-            &lt;/div&gt;
+            
+            &lt;a class=&quot;blog-card-action-btn&quot; href=&quot;https://github.com/Bin4xin/bin4xin.github.io/edit/main/_posts/blog/2022-01-17-SQL注入学习记录.md&quot; target=&quot;_blank&quot; title=&quot;编辑此页&quot;&gt;
+                &lt;svg viewBox=&quot;0 0 16 16&quot; width=&quot;14&quot; height=&quot;14&quot; fill=&quot;currentColor&quot;&gt;&lt;path d=&quot;M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Z&quot;/&gt;&lt;/svg&gt;
+            &lt;/a&gt;
+            
         &lt;/div&gt;
-        &lt;div class=&quot;Box-row discussion-spotlight-details position-relative py-2 pr-5 css-truncate width-fit d-flex flex-column flex-items-start&quot; style=&quot;z-index: 3;&quot;&gt;
-            &lt;div class=&quot;d-flex nv0 f5 no-underline&quot; style=&quot;font-family: &#39;DM Mono&#39;, monospace;&quot;&gt;
-                &lt;csmall&gt;&lt;div class=&quot;d-flex items-center&quot;&gt;
-                    &lt;a class=&quot;author-avatar-small d-flex px-md-6&quot;&gt;
-                        
+    &lt;/div&gt;
+
+    
+    &lt;div class=&quot;blog-card-body&quot;&gt;
+        &lt;p class=&quot;blog-card-excerpt&quot;&gt;
+            该SQL注入文档是自己学习过程中的记录汇集（不涉及WAF拦截或参数过滤），文档中涉及到的数据库管理系统为MySQL。现将文档整理出来，留作自己的学习记录历程。每个注入类型将会有一到两个例子辅助说明。
+
+SQL 整型注入
+
+相关知识
+
+一、常用函数
+
+1、database()：当前网站使用的数据库。
+2、version()：当前MySQL版本。
+3、user()：当前MySQL的用户。
+
+二、关于information_schema的数据库
+
+MySQL默认有inform...
+        &lt;/p&gt;
+    &lt;/div&gt;
+    
+
+    &lt;div class=&quot;blog-card-footer&quot;&gt;
+        &lt;div class=&quot;blog-card-meta&quot;&gt;
+            &lt;span class=&quot;blog-card-author&quot;&gt;
+                
 &lt;img alt=&quot;Yang2635&quot; src=&quot;https://avatars.githubusercontent.com/u/60431848?v=4&quot;/&gt;
-                    &lt;/a&gt;
-                    &lt;!--article author avatar img. end--&gt;
-                    &lt;div class=&quot;color-fg-success-icon scrollbar-16-16&quot;&gt;&lt;/div&gt;&lt;!--article GitHub action success.site.commitString--&gt;
-                    
-                    &lt;a class=&quot;d-flex color-fg-default px-md-6&quot; href=&quot;https://github.com/Bin4xin/bin4xin.github.io/commit/d9452839&quot; target=&quot;_blank&quot;&gt;d9452839&lt;/a&gt;
-                    &lt;!--article author end--&gt;
-
-&lt;!-- site build time set to the latest time.--&gt;
-
-&lt;!-- post time--&gt;
+            &lt;/span&gt;
+            &lt;!--article author end--&gt;
 
 
 
 
 
-&lt;div class=&quot;ml-hide&quot;&gt;
-    &lt;a class=&quot;f2 d-flex color-fg-default&quot; href=&quot;https://github.com/Yang2635&quot; target=&quot;_blank&quot;&gt;
+
+
+
+&lt;span class=&quot;ymh-author-badge&quot;&gt;
+    &lt;a class=&quot;ymh-author-link&quot; href=&quot;https://github.com/Yang2635&quot; target=&quot;_blank&quot;&gt;
+        &lt;span class=&quot;ymh-author-avatar&quot;&gt;Y&lt;/span&gt;
         Yang2635
-
-        
-            
-            &lt;!-- wrench time--&gt;
-            
-        edited
-        
-
-        
-        
-        
-        
-        
-
-        
-            on Jan 17, 2022
-        
     &lt;/a&gt;
-&lt;/div&gt;
-                &lt;/div&gt;&lt;/csmall&gt;
-            &lt;/div&gt;
+
+    
+
+    
+    
+    
+    
+    
+
+    &lt;span class=&quot;ymh-time-badge&quot;&gt;
+        
+            Dec 18, 54013
+        
+    &lt;/span&gt;
+&lt;/span&gt;
+
+        &lt;/div&gt;
+        &lt;div class=&quot;blog-card-meta&quot;&gt;
+            &lt;span class=&quot;blog-card-status-dot&quot;&gt;&lt;/span&gt;
+            
+            &lt;a class=&quot;blog-card-hash&quot; href=&quot;https://github.com/Bin4xin/bin4xin.github.io/commit/8e82aae4&quot; target=&quot;_blank&quot;&gt;
+                8e82aae
+            &lt;/a&gt;
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;
                 
                     
-                    &lt;div class=&quot;py-2&quot;&gt;
-    &lt;div class=&quot;row blog-bar-display&quot;&gt;
-        &lt;div class=&quot;Box-header d-flex flex-justify-between&quot;&gt;&lt;!--box header--&gt;
-            &lt;a class=&quot;my-3 col-7 color-fg-default text-bold mb-1 lh-condensed css-truncate-target d-flex&quot; style=&quot;max-width: 100%; font-size: 20px&quot; href=&quot;/blog/2022/安卓逆向-脱壳学习记录/&quot;&gt;《安卓逆向-脱壳学习记录》&lt;/a&gt;
-            &lt;!--article title end--&gt;
-            &lt;a class=&quot;display-nav-li no-underline d-flex&quot; href=&quot;https://github.com/Bin4xin/bin4xin.github.io/blob/main/&quot; target=&quot;_blank&quot;&gt;
-                &lt;span class=&quot;completeness-indicator completeness-indicator-problem&quot;&gt;
-                   &lt;span class=&quot;content-summary-icon scrollbar-20-20&quot;&gt;&lt;/span&gt;
-                &lt;/span&gt;
+                    &lt;div class=&quot;blog-card&quot;&gt;
+    &lt;div class=&quot;blog-card-header&quot;&gt;
+        &lt;a class=&quot;blog-card-title&quot; href=&quot;/blog/2022/安卓逆向-脱壳学习记录/&quot;&gt;
+            安卓逆向-脱壳学习记录
+        &lt;/a&gt;
+        &lt;div class=&quot;blog-card-actions&quot;&gt;
+            &lt;a class=&quot;blog-card-action-btn&quot; href=&quot;/blog/2022/安卓逆向-脱壳学习记录/&quot; title=&quot;阅读全文&quot;&gt;
+                &lt;svg viewBox=&quot;0 0 16 16&quot; width=&quot;14&quot; height=&quot;14&quot; fill=&quot;currentColor&quot;&gt;&lt;path d=&quot;M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z&quot;/&gt;&lt;/svg&gt;
             &lt;/a&gt;
-            &lt;!--article relation git repos &lt;branch/md files.&gt; end--&gt;
-        &lt;/div&gt;&lt;!--box header stop--&gt;
-        &lt;div class=&quot;Box-row&quot;&gt;
-            &lt;a class=&quot;d-flex flex-justify-around flex-column overflow-hidden flex-items-stretch&quot; style=&quot;z-index: 2;&quot; href=&quot;/blog/2022/安卓逆向-脱壳学习记录/&quot;&gt;&lt;/a&gt;
-            &lt;div class=&quot;discussion-spotlight-details position-relative p-3 pr-5 css-truncate width-fit d-flex flex-column flex-items-start&quot; style=&quot;z-index: 3;&quot;&gt;
-                &lt;a class=&quot;my-3 col-7 color-fg-default text-bold f3 no-underline d-flex flex-items-center mt-2&quot; aria-label=&quot;elisemoe (author)&quot;&gt;
-                    &lt;span class=&quot;mr-1&quot;&gt;前言
-
-Android上的应用安装文件是apk格式，这个apk文件其实就是个归档文件压缩包，把应用相关的源码、资源文件、配置文件等乱七八糟的东西都简单粗暴...&lt;/span&gt;&lt;/a&gt;
-            &lt;/div&gt;
+            
+            &lt;a class=&quot;blog-card-action-btn&quot; href=&quot;https://github.com/Bin4xin/bin4xin.github.io/edit/main/_posts/blog/2022-01-16-安卓逆向-脱壳学习记录.md&quot; target=&quot;_blank&quot; title=&quot;编辑此页&quot;&gt;
+                &lt;svg viewBox=&quot;0 0 16 16&quot; width=&quot;14&quot; height=&quot;14&quot; fill=&quot;currentColor&quot;&gt;&lt;path d=&quot;M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Z&quot;/&gt;&lt;/svg&gt;
+            &lt;/a&gt;
+            
         &lt;/div&gt;
-        &lt;div class=&quot;Box-row discussion-spotlight-details position-relative py-2 pr-5 css-truncate width-fit d-flex flex-column flex-items-start&quot; style=&quot;z-index: 3;&quot;&gt;
-            &lt;div class=&quot;d-flex nv0 f5 no-underline&quot; style=&quot;font-family: &#39;DM Mono&#39;, monospace;&quot;&gt;
-                &lt;csmall&gt;&lt;div class=&quot;d-flex items-center&quot;&gt;
-                    &lt;a class=&quot;author-avatar-small d-flex px-md-6&quot;&gt;
-                        
+    &lt;/div&gt;
+
+    
+    &lt;div class=&quot;blog-card-body&quot;&gt;
+        &lt;p class=&quot;blog-card-excerpt&quot;&gt;
+            前言
+
+Android上的应用安装文件是apk格式，这个apk文件其实就是个归档文件压缩包，把应用相关的源码、资源文件、配置文件等乱七八糟的东西都简单粗暴的归档打包，其包内文件结构大体如下：
+
+
+  
+    
+      文件或目录
+      作用
+    
+  
+  
+    
+      META-INF/
+      存放签名信息，用来保证apk包的完整性和系统的安全。
+    
+    
+      res/
+      存放资源文件的目录
+    
+   ...
+        &lt;/p&gt;
+    &lt;/div&gt;
+    
+
+    &lt;div class=&quot;blog-card-footer&quot;&gt;
+        &lt;div class=&quot;blog-card-meta&quot;&gt;
+            &lt;span class=&quot;blog-card-author&quot;&gt;
+                
 &lt;img alt=&quot;Yang2635&quot; src=&quot;https://avatars.githubusercontent.com/u/60431848?v=4&quot;/&gt;
-                    &lt;/a&gt;
-                    &lt;!--article author avatar img. end--&gt;
-                    &lt;div class=&quot;color-fg-success-icon scrollbar-16-16&quot;&gt;&lt;/div&gt;&lt;!--article GitHub action success.site.commitString--&gt;
-                    
-                    &lt;a class=&quot;d-flex color-fg-default px-md-6&quot; href=&quot;https://github.com/Bin4xin/bin4xin.github.io/commit/d9452839&quot; target=&quot;_blank&quot;&gt;d9452839&lt;/a&gt;
-                    &lt;!--article author end--&gt;
-
-&lt;!-- site build time set to the latest time.--&gt;
-
-&lt;!-- post time--&gt;
+            &lt;/span&gt;
+            &lt;!--article author end--&gt;
 
 
 
 
 
-&lt;div class=&quot;ml-hide&quot;&gt;
-    &lt;a class=&quot;f2 d-flex color-fg-default&quot; href=&quot;https://github.com/Yang2635&quot; target=&quot;_blank&quot;&gt;
+
+
+
+&lt;span class=&quot;ymh-author-badge&quot;&gt;
+    &lt;a class=&quot;ymh-author-link&quot; href=&quot;https://github.com/Yang2635&quot; target=&quot;_blank&quot;&gt;
+        &lt;span class=&quot;ymh-author-avatar&quot;&gt;Y&lt;/span&gt;
         Yang2635
-
-        
-            
-            &lt;!-- wrench time--&gt;
-            
-        edited
-        
-
-        
-        
-        
-        
-        
-
-        
-            on Jan 16, 2022
-        
     &lt;/a&gt;
-&lt;/div&gt;
-                &lt;/div&gt;&lt;/csmall&gt;
-            &lt;/div&gt;
+
+    
+
+    
+    
+    
+    
+    
+
+    &lt;span class=&quot;ymh-time-badge&quot;&gt;
+        
+            Oct 19, 53994
+        
+    &lt;/span&gt;
+&lt;/span&gt;
+
+        &lt;/div&gt;
+        &lt;div class=&quot;blog-card-meta&quot;&gt;
+            &lt;span class=&quot;blog-card-status-dot&quot;&gt;&lt;/span&gt;
+            
+            &lt;a class=&quot;blog-card-hash&quot; href=&quot;https://github.com/Bin4xin/bin4xin.github.io/commit/8e82aae4&quot; target=&quot;_blank&quot;&gt;
+                8e82aae
+            &lt;/a&gt;
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;
                 
                     
-                    &lt;div class=&quot;py-2&quot;&gt;
-    &lt;div class=&quot;row blog-bar-display&quot;&gt;
-        &lt;div class=&quot;Box-header d-flex flex-justify-between&quot;&gt;&lt;!--box header--&gt;
-            &lt;a class=&quot;my-3 col-7 color-fg-default text-bold mb-1 lh-condensed css-truncate-target d-flex&quot; style=&quot;max-width: 100%; font-size: 20px&quot; href=&quot;/blog/2022/Learning-process-about-virtual-function-table/&quot;&gt;《关于虚函数表的学习过程》&lt;/a&gt;
-            &lt;!--article title end--&gt;
-            &lt;a class=&quot;display-nav-li no-underline d-flex&quot; href=&quot;https://github.com/Bin4xin/bin4xin.github.io/blob/main/&quot; target=&quot;_blank&quot;&gt;
-                &lt;span class=&quot;completeness-indicator completeness-indicator-problem&quot;&gt;
-                   &lt;span class=&quot;content-summary-icon scrollbar-20-20&quot;&gt;&lt;/span&gt;
-                &lt;/span&gt;
+                    &lt;div class=&quot;blog-card&quot;&gt;
+    &lt;div class=&quot;blog-card-header&quot;&gt;
+        &lt;a class=&quot;blog-card-title&quot; href=&quot;/blog/2022/Learning-process-about-virtual-function-table/&quot;&gt;
+            关于虚函数表的学习过程
+        &lt;/a&gt;
+        &lt;div class=&quot;blog-card-actions&quot;&gt;
+            &lt;a class=&quot;blog-card-action-btn&quot; href=&quot;/blog/2022/Learning-process-about-virtual-function-table/&quot; title=&quot;阅读全文&quot;&gt;
+                &lt;svg viewBox=&quot;0 0 16 16&quot; width=&quot;14&quot; height=&quot;14&quot; fill=&quot;currentColor&quot;&gt;&lt;path d=&quot;M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z&quot;/&gt;&lt;/svg&gt;
             &lt;/a&gt;
-            &lt;!--article relation git repos &lt;branch/md files.&gt; end--&gt;
-        &lt;/div&gt;&lt;!--box header stop--&gt;
-        &lt;div class=&quot;Box-row&quot;&gt;
-            &lt;a class=&quot;d-flex flex-justify-around flex-column overflow-hidden flex-items-stretch&quot; style=&quot;z-index: 2;&quot; href=&quot;/blog/2022/Learning-process-about-virtual-function-table/&quot;&gt;&lt;/a&gt;
-            &lt;div class=&quot;discussion-spotlight-details position-relative p-3 pr-5 css-truncate width-fit d-flex flex-column flex-items-start&quot; style=&quot;z-index: 3;&quot;&gt;
-                &lt;a class=&quot;my-3 col-7 color-fg-default text-bold f3 no-underline d-flex flex-items-center mt-2&quot; aria-label=&quot;elisemoe (author)&quot;&gt;
-                    &lt;span class=&quot;mr-1&quot;&gt;虚函数表
+            
+            &lt;a class=&quot;blog-card-action-btn&quot; href=&quot;https://github.com/Bin4xin/bin4xin.github.io/edit/main/_posts/blog/2022-01-09-Learning-process-about-virtual-function-table.md&quot; target=&quot;_blank&quot; title=&quot;编辑此页&quot;&gt;
+                &lt;svg viewBox=&quot;0 0 16 16&quot; width=&quot;14&quot; height=&quot;14&quot; fill=&quot;currentColor&quot;&gt;&lt;path d=&quot;M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Z&quot;/&gt;&lt;/svg&gt;
+            &lt;/a&gt;
+            
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    
+    &lt;div class=&quot;blog-card-body&quot;&gt;
+        &lt;p class=&quot;blog-card-excerpt&quot;&gt;
+            虚函数表
 
 简介
 
@@ -194,52 +238,61 @@ C++面向对象的多态性，这里我们就要涉及到虚函数了，接下�
 
 直接调用与简介调用
 
-这里的直接调用和...&lt;/span&gt;&lt;/a&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-        &lt;div class=&quot;Box-row discussion-spotlight-details position-relative py-2 pr-5 css-truncate width-fit d-flex flex-column flex-items-start&quot; style=&quot;z-index: 3;&quot;&gt;
-            &lt;div class=&quot;d-flex nv0 f5 no-underline&quot; style=&quot;font-family: &#39;DM Mono&#39;, monospace;&quot;&gt;
-                &lt;csmall&gt;&lt;div class=&quot;d-flex items-center&quot;&gt;
-                    &lt;a class=&quot;author-avatar-small d-flex px-md-6&quot;&gt;
-                        
+这里的直接调用和间接调用时汇编层面上的，我们在看反汇编代码的时候经常会看到 call —- (调用函数的那个call)，那这个呢就是直接调用，而还有一种形式是这样的call [—-]那这个呢就是间接调用。
+
+直接调用和简介调用反馈到十六进制编码上就是E8(直接调用)和FF(简介调用)
+
+虚函数
+
+class Base{
+public:...
+        &lt;/p&gt;
+    &lt;/div&gt;
+    
+
+    &lt;div class=&quot;blog-card-footer&quot;&gt;
+        &lt;div class=&quot;blog-card-meta&quot;&gt;
+            &lt;span class=&quot;blog-card-author&quot;&gt;
+                
 &lt;img alt=&quot;codecat11&quot; src=&quot;https://avatars.githubusercontent.com/u/77820961?v=4&quot;/&gt;
-                    &lt;/a&gt;
-                    &lt;!--article author avatar img. end--&gt;
-                    &lt;div class=&quot;color-fg-success-icon scrollbar-16-16&quot;&gt;&lt;/div&gt;&lt;!--article GitHub action success.site.commitString--&gt;
-                    
-                    &lt;a class=&quot;d-flex color-fg-default px-md-6&quot; href=&quot;https://github.com/Bin4xin/bin4xin.github.io/commit/d9452839&quot; target=&quot;_blank&quot;&gt;d9452839&lt;/a&gt;
-                    &lt;!--article author end--&gt;
-
-&lt;!-- site build time set to the latest time.--&gt;
-
-&lt;!-- post time--&gt;
+            &lt;/span&gt;
+            &lt;!--article author end--&gt;
 
 
 
 
 
-&lt;div class=&quot;ml-hide&quot;&gt;
-    &lt;a class=&quot;f2 d-flex color-fg-default&quot; href=&quot;https://github.com/codecat11&quot; target=&quot;_blank&quot;&gt;
+
+
+
+&lt;span class=&quot;ymh-author-badge&quot;&gt;
+    &lt;a class=&quot;ymh-author-link&quot; href=&quot;https://github.com/codecat11&quot; target=&quot;_blank&quot;&gt;
+        &lt;span class=&quot;ymh-author-avatar&quot;&gt;C&lt;/span&gt;
         codecat11
-
-        
-            
-        post
-        
-
-        
-        
-        
-        
-        
-
-        
-            on Jan 9, 2022
-        
     &lt;/a&gt;
-&lt;/div&gt;
-                &lt;/div&gt;&lt;/csmall&gt;
-            &lt;/div&gt;
+
+    
+
+    
+    
+    
+    
+    
+
+    &lt;span class=&quot;ymh-time-badge&quot;&gt;
+        
+            Jan 23, 53992
+        
+    &lt;/span&gt;
+&lt;/span&gt;
+
+        &lt;/div&gt;
+        &lt;div class=&quot;blog-card-meta&quot;&gt;
+            &lt;span class=&quot;blog-card-status-dot&quot;&gt;&lt;/span&gt;
+            
+            &lt;a class=&quot;blog-card-hash&quot; href=&quot;https://github.com/Bin4xin/bin4xin.github.io/commit/8e82aae4&quot; target=&quot;_blank&quot;&gt;
+                8e82aae
+            &lt;/a&gt;
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;
@@ -410,7 +463,7 @@ C++面向对象的多态性，这里我们就要涉及到虚函数了，接下�
     &lt;/div&gt;
     
     &lt;p&gt;
-    &lt;details open&gt;
+    &lt;details&gt;
         &lt;summary class=&quot;point flex justify-between&quot;&gt;所有标签/数量&lt;/summary&gt;
         
         &lt;p&gt;
@@ -836,163 +889,207 @@ C++面向对象的多态性，这里我们就要涉及到虚函数了，接下�
             
                 
                     
-                    <div class="py-2">
-    <div class="row blog-bar-display">
-        <div class="Box-header d-flex flex-justify-between"><!--box header-->
-            <a class="my-3 col-7 color-fg-default text-bold mb-1 lh-condensed css-truncate-target d-flex" style="max-width: 100%; font-size: 20px" href="/blog/2022/SQL注入学习记录/">《SQL注入学习记录》</a>
-            <!--article title end-->
-            <a class="display-nav-li no-underline d-flex" href="https://github.com/Bin4xin/bin4xin.github.io/blob/main/" target="_blank">
-                <span class="completeness-indicator completeness-indicator-problem">
-                   <span class="content-summary-icon scrollbar-20-20"></span>
-                </span>
+                    <div class="blog-card">
+    <div class="blog-card-header">
+        <a class="blog-card-title" href="/blog/2022/SQL注入学习记录/">
+            SQL注入学习记录
+        </a>
+        <div class="blog-card-actions">
+            <a class="blog-card-action-btn" href="/blog/2022/SQL注入学习记录/" title="阅读全文">
+                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"/></svg>
             </a>
-            <!--article relation git repos <branch/md files.> end-->
-        </div><!--box header stop-->
-        <div class="Box-row">
-            <a class="d-flex flex-justify-around flex-column overflow-hidden flex-items-stretch" style="z-index: 2;" href="/blog/2022/SQL注入学习记录/"></a>
-            <div class="discussion-spotlight-details position-relative p-3 pr-5 css-truncate width-fit d-flex flex-column flex-items-start" style="z-index: 3;">
-                <a class="my-3 col-7 color-fg-default text-bold f3 no-underline d-flex flex-items-center mt-2" aria-label="elisemoe (author)">
-                    <span class="mr-1">该SQL注入文档是自己学习过程中的记录汇集（不涉及WAF拦截或参数过滤），文档中涉及到的数据库管理系统为MySQL。现将文档整理出来，留作自己的学习记录历...</span></a>
-            </div>
+            
+            <a class="blog-card-action-btn" href="https://github.com/Bin4xin/bin4xin.github.io/edit/main/_posts/blog/2022-01-17-SQL注入学习记录.md" target="_blank" title="编辑此页">
+                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Z"/></svg>
+            </a>
+            
         </div>
-        <div class="Box-row discussion-spotlight-details position-relative py-2 pr-5 css-truncate width-fit d-flex flex-column flex-items-start" style="z-index: 3;">
-            <div class="d-flex nv0 f5 no-underline" style="font-family: 'DM Mono', monospace;">
-                <csmall><div class="d-flex items-center">
-                    <a class="author-avatar-small d-flex px-md-6">
-                        
+    </div>
+
+    
+    <div class="blog-card-body">
+        <p class="blog-card-excerpt">
+            该SQL注入文档是自己学习过程中的记录汇集（不涉及WAF拦截或参数过滤），文档中涉及到的数据库管理系统为MySQL。现将文档整理出来，留作自己的学习记录历程。每个注入类型将会有一到两个例子辅助说明。
+
+SQL 整型注入
+
+相关知识
+
+一、常用函数
+
+1、database()：当前网站使用的数据库。
+2、version()：当前MySQL版本。
+3、user()：当前MySQL的用户。
+
+二、关于information_schema的数据库
+
+MySQL默认有inform...
+        </p>
+    </div>
+    
+
+    <div class="blog-card-footer">
+        <div class="blog-card-meta">
+            <span class="blog-card-author">
+                
 <img alt="Yang2635" src="https://avatars.githubusercontent.com/u/60431848?v=4"/>
-                    </a>
-                    <!--article author avatar img. end-->
-                    <div class="color-fg-success-icon scrollbar-16-16"></div><!--article GitHub action success.site.commitString-->
-                    
-                    <a class="d-flex color-fg-default px-md-6" href="https://github.com/Bin4xin/bin4xin.github.io/commit/d9452839" target="_blank">d9452839</a>
-                    <!--article author end-->
-
-<!-- site build time set to the latest time.-->
-
-<!-- post time-->
+            </span>
+            <!--article author end-->
 
 
 
 
 
-<div class="ml-hide">
-    <a class="f2 d-flex color-fg-default" href="https://github.com/Yang2635" target="_blank">
+
+
+
+<span class="ymh-author-badge">
+    <a class="ymh-author-link" href="https://github.com/Yang2635" target="_blank">
+        <span class="ymh-author-avatar">Y</span>
         Yang2635
-
-        
-            
-            <!-- wrench time-->
-            
-        edited
-        
-
-        
-        
-        
-        
-        
-
-        
-            on Jan 17, 2022
-        
     </a>
-</div>
-                </div></csmall>
-            </div>
+
+    
+
+    
+    
+    
+    
+    
+
+    <span class="ymh-time-badge">
+        
+            Dec 18, 54013
+        
+    </span>
+</span>
+
+        </div>
+        <div class="blog-card-meta">
+            <span class="blog-card-status-dot"></span>
+            
+            <a class="blog-card-hash" href="https://github.com/Bin4xin/bin4xin.github.io/commit/8e82aae4" target="_blank">
+                8e82aae
+            </a>
         </div>
     </div>
 </div>
                 
                     
-                    <div class="py-2">
-    <div class="row blog-bar-display">
-        <div class="Box-header d-flex flex-justify-between"><!--box header-->
-            <a class="my-3 col-7 color-fg-default text-bold mb-1 lh-condensed css-truncate-target d-flex" style="max-width: 100%; font-size: 20px" href="/blog/2022/安卓逆向-脱壳学习记录/">《安卓逆向-脱壳学习记录》</a>
-            <!--article title end-->
-            <a class="display-nav-li no-underline d-flex" href="https://github.com/Bin4xin/bin4xin.github.io/blob/main/" target="_blank">
-                <span class="completeness-indicator completeness-indicator-problem">
-                   <span class="content-summary-icon scrollbar-20-20"></span>
-                </span>
+                    <div class="blog-card">
+    <div class="blog-card-header">
+        <a class="blog-card-title" href="/blog/2022/安卓逆向-脱壳学习记录/">
+            安卓逆向-脱壳学习记录
+        </a>
+        <div class="blog-card-actions">
+            <a class="blog-card-action-btn" href="/blog/2022/安卓逆向-脱壳学习记录/" title="阅读全文">
+                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"/></svg>
             </a>
-            <!--article relation git repos <branch/md files.> end-->
-        </div><!--box header stop-->
-        <div class="Box-row">
-            <a class="d-flex flex-justify-around flex-column overflow-hidden flex-items-stretch" style="z-index: 2;" href="/blog/2022/安卓逆向-脱壳学习记录/"></a>
-            <div class="discussion-spotlight-details position-relative p-3 pr-5 css-truncate width-fit d-flex flex-column flex-items-start" style="z-index: 3;">
-                <a class="my-3 col-7 color-fg-default text-bold f3 no-underline d-flex flex-items-center mt-2" aria-label="elisemoe (author)">
-                    <span class="mr-1">前言
-
-Android上的应用安装文件是apk格式，这个apk文件其实就是个归档文件压缩包，把应用相关的源码、资源文件、配置文件等乱七八糟的东西都简单粗暴...</span></a>
-            </div>
+            
+            <a class="blog-card-action-btn" href="https://github.com/Bin4xin/bin4xin.github.io/edit/main/_posts/blog/2022-01-16-安卓逆向-脱壳学习记录.md" target="_blank" title="编辑此页">
+                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Z"/></svg>
+            </a>
+            
         </div>
-        <div class="Box-row discussion-spotlight-details position-relative py-2 pr-5 css-truncate width-fit d-flex flex-column flex-items-start" style="z-index: 3;">
-            <div class="d-flex nv0 f5 no-underline" style="font-family: 'DM Mono', monospace;">
-                <csmall><div class="d-flex items-center">
-                    <a class="author-avatar-small d-flex px-md-6">
-                        
+    </div>
+
+    
+    <div class="blog-card-body">
+        <p class="blog-card-excerpt">
+            前言
+
+Android上的应用安装文件是apk格式，这个apk文件其实就是个归档文件压缩包，把应用相关的源码、资源文件、配置文件等乱七八糟的东西都简单粗暴的归档打包，其包内文件结构大体如下：
+
+
+  
+    
+      文件或目录
+      作用
+    
+  
+  
+    
+      META-INF/
+      存放签名信息，用来保证apk包的完整性和系统的安全。
+    
+    
+      res/
+      存放资源文件的目录
+    
+   ...
+        </p>
+    </div>
+    
+
+    <div class="blog-card-footer">
+        <div class="blog-card-meta">
+            <span class="blog-card-author">
+                
 <img alt="Yang2635" src="https://avatars.githubusercontent.com/u/60431848?v=4"/>
-                    </a>
-                    <!--article author avatar img. end-->
-                    <div class="color-fg-success-icon scrollbar-16-16"></div><!--article GitHub action success.site.commitString-->
-                    
-                    <a class="d-flex color-fg-default px-md-6" href="https://github.com/Bin4xin/bin4xin.github.io/commit/d9452839" target="_blank">d9452839</a>
-                    <!--article author end-->
-
-<!-- site build time set to the latest time.-->
-
-<!-- post time-->
+            </span>
+            <!--article author end-->
 
 
 
 
 
-<div class="ml-hide">
-    <a class="f2 d-flex color-fg-default" href="https://github.com/Yang2635" target="_blank">
+
+
+
+<span class="ymh-author-badge">
+    <a class="ymh-author-link" href="https://github.com/Yang2635" target="_blank">
+        <span class="ymh-author-avatar">Y</span>
         Yang2635
-
-        
-            
-            <!-- wrench time-->
-            
-        edited
-        
-
-        
-        
-        
-        
-        
-
-        
-            on Jan 16, 2022
-        
     </a>
-</div>
-                </div></csmall>
-            </div>
+
+    
+
+    
+    
+    
+    
+    
+
+    <span class="ymh-time-badge">
+        
+            Oct 19, 53994
+        
+    </span>
+</span>
+
+        </div>
+        <div class="blog-card-meta">
+            <span class="blog-card-status-dot"></span>
+            
+            <a class="blog-card-hash" href="https://github.com/Bin4xin/bin4xin.github.io/commit/8e82aae4" target="_blank">
+                8e82aae
+            </a>
         </div>
     </div>
 </div>
                 
                     
-                    <div class="py-2">
-    <div class="row blog-bar-display">
-        <div class="Box-header d-flex flex-justify-between"><!--box header-->
-            <a class="my-3 col-7 color-fg-default text-bold mb-1 lh-condensed css-truncate-target d-flex" style="max-width: 100%; font-size: 20px" href="/blog/2022/Learning-process-about-virtual-function-table/">《关于虚函数表的学习过程》</a>
-            <!--article title end-->
-            <a class="display-nav-li no-underline d-flex" href="https://github.com/Bin4xin/bin4xin.github.io/blob/main/" target="_blank">
-                <span class="completeness-indicator completeness-indicator-problem">
-                   <span class="content-summary-icon scrollbar-20-20"></span>
-                </span>
+                    <div class="blog-card">
+    <div class="blog-card-header">
+        <a class="blog-card-title" href="/blog/2022/Learning-process-about-virtual-function-table/">
+            关于虚函数表的学习过程
+        </a>
+        <div class="blog-card-actions">
+            <a class="blog-card-action-btn" href="/blog/2022/Learning-process-about-virtual-function-table/" title="阅读全文">
+                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"/></svg>
             </a>
-            <!--article relation git repos <branch/md files.> end-->
-        </div><!--box header stop-->
-        <div class="Box-row">
-            <a class="d-flex flex-justify-around flex-column overflow-hidden flex-items-stretch" style="z-index: 2;" href="/blog/2022/Learning-process-about-virtual-function-table/"></a>
-            <div class="discussion-spotlight-details position-relative p-3 pr-5 css-truncate width-fit d-flex flex-column flex-items-start" style="z-index: 3;">
-                <a class="my-3 col-7 color-fg-default text-bold f3 no-underline d-flex flex-items-center mt-2" aria-label="elisemoe (author)">
-                    <span class="mr-1">虚函数表
+            
+            <a class="blog-card-action-btn" href="https://github.com/Bin4xin/bin4xin.github.io/edit/main/_posts/blog/2022-01-09-Learning-process-about-virtual-function-table.md" target="_blank" title="编辑此页">
+                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Z"/></svg>
+            </a>
+            
+        </div>
+    </div>
+
+    
+    <div class="blog-card-body">
+        <p class="blog-card-excerpt">
+            虚函数表
 
 简介
 
@@ -1000,52 +1097,61 @@ C++面向对象的多态性，这里我们就要涉及到虚函数了，接下�
 
 直接调用与简介调用
 
-这里的直接调用和...</span></a>
-            </div>
-        </div>
-        <div class="Box-row discussion-spotlight-details position-relative py-2 pr-5 css-truncate width-fit d-flex flex-column flex-items-start" style="z-index: 3;">
-            <div class="d-flex nv0 f5 no-underline" style="font-family: 'DM Mono', monospace;">
-                <csmall><div class="d-flex items-center">
-                    <a class="author-avatar-small d-flex px-md-6">
-                        
+这里的直接调用和间接调用时汇编层面上的，我们在看反汇编代码的时候经常会看到 call —- (调用函数的那个call)，那这个呢就是直接调用，而还有一种形式是这样的call [—-]那这个呢就是间接调用。
+
+直接调用和简介调用反馈到十六进制编码上就是E8(直接调用)和FF(简介调用)
+
+虚函数
+
+class Base{
+public:...
+        </p>
+    </div>
+    
+
+    <div class="blog-card-footer">
+        <div class="blog-card-meta">
+            <span class="blog-card-author">
+                
 <img alt="codecat11" src="https://avatars.githubusercontent.com/u/77820961?v=4"/>
-                    </a>
-                    <!--article author avatar img. end-->
-                    <div class="color-fg-success-icon scrollbar-16-16"></div><!--article GitHub action success.site.commitString-->
-                    
-                    <a class="d-flex color-fg-default px-md-6" href="https://github.com/Bin4xin/bin4xin.github.io/commit/d9452839" target="_blank">d9452839</a>
-                    <!--article author end-->
-
-<!-- site build time set to the latest time.-->
-
-<!-- post time-->
+            </span>
+            <!--article author end-->
 
 
 
 
 
-<div class="ml-hide">
-    <a class="f2 d-flex color-fg-default" href="https://github.com/codecat11" target="_blank">
+
+
+
+<span class="ymh-author-badge">
+    <a class="ymh-author-link" href="https://github.com/codecat11" target="_blank">
+        <span class="ymh-author-avatar">C</span>
         codecat11
-
-        
-            
-        post
-        
-
-        
-        
-        
-        
-        
-
-        
-            on Jan 9, 2022
-        
     </a>
-</div>
-                </div></csmall>
-            </div>
+
+    
+
+    
+    
+    
+    
+    
+
+    <span class="ymh-time-badge">
+        
+            Jan 23, 53992
+        
+    </span>
+</span>
+
+        </div>
+        <div class="blog-card-meta">
+            <span class="blog-card-status-dot"></span>
+            
+            <a class="blog-card-hash" href="https://github.com/Bin4xin/bin4xin.github.io/commit/8e82aae4" target="_blank">
+                8e82aae
+            </a>
         </div>
     </div>
 </div>
@@ -1216,7 +1322,7 @@ C++面向对象的多态性，这里我们就要涉及到虚函数了，接下�
     </div>
     
     <p>
-    <details open>
+    <details>
         <summary class="point flex justify-between">所有标签/数量</summary>
         
         <p>
