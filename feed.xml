@@ -7,14 +7,29 @@
     <link>https://bin4xin.github.io</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
     <pubDate>
-         2026/07/31
+         2026/08/1
         
     </pubDate>
     <lastBuildDate>
-         2026/07/31
+         2026/08/1
         
     </lastBuildDate>
     <generator>Jekyll Ver 3.9.5.</generator>
+    
+      <item>
+        <title>about: Introduction To Devsecops Security Toolchain Solutions</title>
+        <description>[MORE]</description>
+        <pubDate>
+         2026/07/30
+        
+        </pubDate>
+        <link>https://bin4xin.github.io/about/DevSecOps/Introduction-to-DevSecOps-Security-Toolchain-Solutions/</link>
+        <guid isPermaLink="true">/about/DevSecOps/Introduction-to-DevSecOps-Security-Toolchain-Solutions/</guid>
+        
+        
+        <category>about</category>
+        
+      </item>
     
       <item>
         <title>about: Username Enumeration</title>

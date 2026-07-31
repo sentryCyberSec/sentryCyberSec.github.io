@@ -28,8 +28,8 @@
         &lt;!-- SINGLE POST --&gt;
         &lt;div class=&quot;markdown-body-img flex-column&quot;&gt;
             &lt;!-- Blog Post  --&gt;
-            &lt;a href=&quot;/blog/2020/C-S/use/internet-Inside/&quot;&gt;&lt;h1 class=&quot;ctitle&quot;&gt;「CS」:内网渗透工具学习笔记&lt;/h1&gt;&lt;/a&gt;
-            &lt;csmall&gt;&lt;div class=&quot;d-flex items-center&quot;&gt;
+            &lt;h1 class=&quot;ctitle&quot;&gt;「CS」:内网渗透工具学习笔记&lt;/h1&gt;
+            &lt;div class=&quot;post-meta-row&quot;&gt;
                 &lt;!--article author end--&gt;
 
 
@@ -60,8 +60,8 @@
     &lt;/span&gt;
 &lt;/span&gt;
 
-            &lt;/div&gt;&lt;/csmall&gt;
-            &lt;div class=&quot;post-content&quot;&gt; 
+            &lt;/div&gt;
+            &lt;div class=&quot;post-content&quot;&gt;
             &lt;blockquote&gt;
   &lt;p&gt;内网渗透中，工具的使用只是手段，理解原理才是根本。本文记录在内网渗透场景下常用工具的使用方法与思路。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -391,7 +391,7 @@ beadow&amp;gt; shell wevtutil qe Security /q:&lt;span class=&quot;s2&quot;&gt;&q
         
 
         &lt;!-- Table of Contents --&gt;
-        &lt;h2 class=&quot;toc-heading&quot; id=&quot;in-this-article&quot; style=&quot;padding-left: var(--ifm-list-left-padding);&quot;&gt;在本文中&lt;/h2&gt;
+        &lt;h2 class=&quot;toc-heading&quot; id=&quot;in-this-article&quot;&gt;在本文中&lt;/h2&gt;
         &lt;nav class=&quot;toc-nav&quot; aria-labelledby=&quot;in-this-article&quot;&gt;
             &lt;ul id=&quot;toc&quot; class=&quot;section-nav&quot;&gt;
 &lt;li class=&quot;toc-entry toc-h2&quot;&gt;&lt;a href=&quot;#0x00-信息收集&quot;&gt;0x00 信息收集&lt;/a&gt;&lt;/li&gt;
@@ -456,7 +456,8 @@ document.addEventListener(&#39;click&#39;, function(e) {
 });
 &lt;/script&gt;
     &lt;/div&gt;&lt;!--/row --&gt;
-&lt;/div&gt;&lt;!--/container --&gt;哨兵安全实验室 SENTINEL SECURITY, LAB" />
+&lt;/div&gt;&lt;!--/container --&gt;
+哨兵安全实验室 SENTINEL SECURITY, LAB" />
 <meta property="og:image" content="https://bin4xin.github.io/assets/img/logo-share.png" /> <!-- WeChat requires that thumbnail image is larger than 300x300 -->
 <meta property="og:url" content="https://bin4xin.github.io/blog/2020/C-S/use/internet-Inside/" />
 <title> 「CS」:内网渗透工具学习笔记 | © 哨兵 | SENTINEL SECURITY, LAB</title>
@@ -490,58 +491,7 @@ document.addEventListener(&#39;click&#39;, function(e) {
                 <div class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
-            <!-- logo+popover整体包裹，便于布局和交互 -->
-            <div class="navbar-logo-hover-wrap">
-                <a class="gb_A flex-justify-center-l navbar-logo" href="/" title="返回首页" tabindex="0" aria-label="返回首页">
-                    <picture>
-  <svg style="vertical-align: middle;" aria-hidden="true" focusable="false" role="img" class="color-fg-default" viewBox="0 0 16 16" width="42" height="42" fill="currentColor" style=""><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
-  
-</picture>
-                </a>
-                <!-- Apple/GitHub 风格美化的 popover -->
-                <div class="navbar-logo-popover" tabindex="-1">
-                    <div class="popover-arrow"></div>
-                    <ul>
-                    
-                    
-                        
-                    
-                        
-                            
-                            <li>
-                                <a class="popover-link" href="https://github.com/Bin4xin/bigger-than-bigger/" target="_blank">
-                                    <span class="fa fa-code-fork"></span>
-                                    <span class="popover-link-text">BIGGER THAN BIGGER</span>
-                                </a>
-                            </li>
-                            
-                            <li>
-                                <a class="popover-link" href="https://github.com/Bin4xin/bigger-than-bigger/tree/master/CoVV" target="_blank">
-                                    <span class="fa fa-code-fork"></span>
-                                    <span class="popover-link-text">COLLECTION OF VERIFIED VULNERABILITIES</span>
-                                </a>
-                            </li>
-                            
-                            <li>
-                                <a class="popover-link" href="https://github.com/Bin4xin/sweet-ysoserial" target="_blank">
-                                    <span class="fa fa-code-fork"></span>
-                                    <span class="popover-link-text">SWEET-YSOSERIAL</span>
-                                </a>
-                            </li>
-                            
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                        
-                    
-                    </ul>
-                </div>
-            </div>
+            
             <!-- 菜单按钮 -->
             <button type="button" class="navbar-toggle" id="navbar-toggle-btn" data-toggle="collapse" data-target=".navbar-collapse" aria-label="切换导航菜单" aria-expanded="false" aria-controls="main-nav" style="outline:2px solid transparent; margin-left: 8px;">
                 <span class="sr-only">Toggle navigation</span>
@@ -553,7 +503,8 @@ document.addEventListener(&#39;click&#39;, function(e) {
         <div class="navbar-collapse collapse navbar-right">
             <ul class="nav navbar-nav">
                 
-                <li ><a href="/"><div class="fa fa-search"></div></a></li>
+                <li ><a href="/"><div class="fa fa-dashboard"></div></a></li>
+                <li ><a href="/search"><div class="fa fa-search"></div></a></li>
                 <li class="active"><a href="/blog/">BLOG</a></li>
                 <li ><a href="/categories/">CATEGORIES</a></li>
                 <li ><a href="/daily/">DAILY</a></li>
@@ -561,138 +512,7 @@ document.addEventListener(&#39;click&#39;, function(e) {
                 <li ><a href="/about/">RESEARCH</a></li>
                 <li ><a href="/feed.xml">RSS</a></li>
                 
-                <li><a><style>
-    .color-scheme-toggle label:hover {
-        background: var(--color-code-bg, #f0f0f0);
-    }
-    .color-scheme-toggle input {
-        position: absolute;
-        opacity: 0;
-        pointer-events: none;
-        width: 0;
-        height: 0;
-    }
-    .color-scheme-toggle .text {
-        display: inline-block;
-    }
-    .color-scheme-toggle input:checked + .text {
-        background: var(--color-primary, #82318E);
-        color: #ffffff;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.15);
-        border-radius: 40px;
-        padding: 6px 16px;
-        margin: -6px -16px;
-    }
-
-    /* 暗色模式适配 (系统) */
-    @media (prefers-color-scheme: dark) {
-        .color-scheme-toggle {
-            background: var(--color-btn-bg-dark, #21262d);
-            border-color: var(--color-primary, #C353D3);
-        }
-        .color-scheme-toggle label {
-            color: var(--color-text, #ddd);
-        }
-        .color-scheme-toggle label:hover {
-            background: rgba(255,255,255,0.1);
-        }
-        .color-scheme-toggle input:checked + .text {
-            background: var(--color-primary, #C353D3);
-            color: #ffffff;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.4);
-        }
-    }
-
-    /* 手动主题覆盖 */
-    body.theme-dark {
-        background-color: #1c1c1e;
-        color: #f5f5f7;
-        transition: background-color 0.3s ease, color 0.3s ease;
-    }
-    body.theme-dark .color-scheme-toggle {
-        background: #21262d;
-        border-color: #C353D3;
-    }
-
-    body.theme-dark .highlight,
-    body.theme-dark pre,
-    body.theme-dark code {
-        background: rgba(255, 255, 255, 0.15);
-    }
-
-    body.theme-dark .navbar-logo {
-        background: #21262d;
-        border-color: #C353D3;
-    }
-    body.theme-dark .color-scheme-toggle label {
-        color: #ddd;
-    }
-    body.theme-dark .color-scheme-toggle input:checked + .text {
-        background: #C353D3;
-    }
-    body.theme-dark .color-fg-default {
-        color: #ffffff;
-    }
-    body.theme-dark .Box-header{
-        background: transparent;
-    }
-    body.theme-light {
-        background-color: #ffffff;
-        color: #1d1d1f;
-        transition: background-color 0.3s ease, color 0.3s ease;
-    }
-
-    body.theme-light .color-scheme-toggle {
-        background: #f0f0f0;
-        border-color: #82318E;
-    }
-    body.theme-light .color-scheme-toggle label {
-        color: #384452;
-    }
-    body.theme-light .color-scheme-toggle input:checked + .text {
-        background: #82318E;
-    }
-
-    /* kbd 样式 */
-    kbd {
-        background: var(--color-code-bg, #e8e8ed);
-        color: var(--color-text, #384452);
-        padding: 2px 6px;
-        border-radius: 6px;
-        font-family: monospace;
-        font-size: 0.85rem;
-    }
-    body.theme-dark kbd {
-        background: #2c2c2e;
-        color: #fff;
-    }
-    body.theme-light kbd {
-        background: #e8e8ed;
-        color: #384452;
-    }
-</style><div class="color-scheme-toggle" role="group" aria-label="Select a color scheme preference" style="font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace">
-    <!-- Light 选项 -->
-    <label data-color-scheme-option="light">
-        <input type="radio" name="color-scheme-radio" value="light">
-        <span class="text">Light</span>
-    </label>
-    <!-- Dark 选项 -->
-    <label data-color-scheme-option="dark">
-        <input type="radio" name="color-scheme-radio" value="dark">
-        <span class="text">Dark</span>
-    </label>
-    <!-- Auto 选项 (跟随系统) -->
-    <label data-color-scheme-option="auto">
-        <input type="radio" name="color-scheme-radio" value="auto">
-        <span class="text">Auto</span>
-    </label>
-</div>
-<!--<script>-->
-<!--    if (!localStorage.getItem('preferredColorScheme')) {-->
-<!--        localStorage.setItem('preferredColorScheme', 'auto');-->
-<!--    }-->
-<!--</script>-->
-<!--<script async="" src="/assets/js/scripts/color-scheme-toggle.js"></script>--></a></li>
+                
             </ul>
         </div><!--/.nav-collapse -->
     </div>
@@ -703,8 +523,8 @@ document.addEventListener(&#39;click&#39;, function(e) {
         <!-- SINGLE POST -->
         <div class="markdown-body-img flex-column">
             <!-- Blog Post  -->
-            <a href="/blog/2020/C-S/use/internet-Inside/"><h1 class="ctitle">「CS」:内网渗透工具学习笔记</h1></a>
-            <csmall><div class="d-flex items-center">
+            <h1 class="ctitle">「CS」:内网渗透工具学习笔记</h1>
+            <div class="post-meta-row">
                 <!--article author end-->
 
 
@@ -735,8 +555,8 @@ document.addEventListener(&#39;click&#39;, function(e) {
     </span>
 </span>
 
-            </div></csmall>
-            <div class="post-content"> 
+            </div>
+            <div class="post-content">
             <blockquote>
   <p>内网渗透中，工具的使用只是手段，理解原理才是根本。本文记录在内网渗透场景下常用工具的使用方法与思路。</p>
 </blockquote>
@@ -1066,7 +886,7 @@ beadow&gt; shell wevtutil qe Security /q:<span class="s2">"*[System[TimeCreated[
         
 
         <!-- Table of Contents -->
-        <h2 class="toc-heading" id="in-this-article" style="padding-left: var(--ifm-list-left-padding);">在本文中</h2>
+        <h2 class="toc-heading" id="in-this-article">在本文中</h2>
         <nav class="toc-nav" aria-labelledby="in-this-article">
             <ul id="toc" class="section-nav">
 <li class="toc-entry toc-h2"><a href="#0x00-信息收集">0x00 信息收集</a></li>
@@ -1132,6 +952,7 @@ document.addEventListener('click', function(e) {
 </script>
     </div><!--/row -->
 </div><!--/container -->
+
                 <!-- 代码引用申明/code reference declaration:
 #############################################################################
 ## code from cloudflare. visit footer in https://www.cloudflare.com/zh-cn/ ##
