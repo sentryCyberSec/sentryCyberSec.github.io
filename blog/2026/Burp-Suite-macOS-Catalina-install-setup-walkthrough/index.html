@@ -1,5 +1,7 @@
+<!DOCTYPE html>
 <html>
-  <head>
+
+    <head>
 <meta charset="utf-8">
 <!--dev siwtch-->
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,7 +23,7 @@
 
 <!-- Open Graph metadata -->
 <meta property="og:type" content="website" />
-<meta property="og:title" content="© 哨兵" />
+<meta property="og:title" content="Burp Suite 2026.7.3 for macOS 10.15.7/Catalina | © 哨兵" />
 <meta property="og:description" content=" &lt;div class=&quot;container mtb post-layout&quot;&gt;
         &lt;!-- SINGLE POST --&gt;
         &lt;div class=&quot;markdown-body-img flex-column&quot;&gt;
@@ -1325,8 +1327,8 @@ document.addEventListener(&#39;click&#39;, function(e) {
 &lt;/div&gt;&lt;!--/container --&gt;
 哨兵安全实验室 SENTINEL SECURITY, LAB" />
 <meta property="og:image" content="https://bin4xin.github.io/assets/img/logo-share.png" /> <!-- WeChat requires that thumbnail image is larger than 300x300 -->
-<meta property="og:url" content="https://bin4xin.github.io/404.html" />
-<title> 404 |© 哨兵 | SENTINEL SECURITY, LAB</title>
+<meta property="og:url" content="https://bin4xin.github.io/blog/2026/Burp-Suite-macOS-Catalina-install-setup-walkthrough/" />
+<title> Burp Suite 2026.7.3 for macOS 10.15.7/Catalina | © 哨兵 | SENTINEL SECURITY, LAB</title>
 
 <link rel="stylesheet" type="text/css" href="/assets/css/pace-minimal.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/footer.css">
@@ -1352,8 +1354,9 @@ document.addEventListener(&#39;click&#39;, function(e) {
 
 </head>
 
-  <body>
-    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <body>
+
+                <div class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
             <!-- 菜单按钮 -->
@@ -1369,7 +1372,7 @@ document.addEventListener(&#39;click&#39;, function(e) {
                 
                 <li ><a href="/"><div class="fa fa-dashboard"></div></a></li>
                 <li ><a href="/search"><div class="fa fa-search"></div></a></li>
-                <li ><a href="/blog/">BLOG</a></li>
+                <li class="active"><a href="/blog/">BLOG</a></li>
                 <li ><a href="/categories/">CATEGORIES</a></li>
                 <li ><a href="/daily/">DAILY</a></li>
                 <li ><a href="/newest">NEWEST</a></li>
@@ -1382,15 +1385,1310 @@ document.addEventListener(&#39;click&#39;, function(e) {
     </div>
 </div>
 
-    <div id="mirrors">
-      <div class="spacing hidden-xs"></div>
-      <div class="container">
-        <div class="row">
-        <div class="not-found">    <div class="not-found-bg"></div>    <div class="not-found-hint"><div class="not-found-code">            404. 谢谢你这么好看还来看我博客:D</div>        <span class="thuhidden">Oops!你来到了没有知识的荒原。</span>        </div><div class="not-found-text thuhidden"><strong>如果您认为这一定是出了什么问题，欢迎您前往<a href="https://github.com/Bin4xin/"><i class="fa fa-github"></i> 哨兵/issues</a>            提交<a href="https://github.com/Bin4xin/bin4xin.github.io/issues/new?labels=Service+Issue,404&template=2-bug_report.yaml&title=_primaryindex/404.html&nbsp;© 哨兵 | SENTINEL SECURITY, LAB" id="new_issue_bug" target="_blank">错误报告</a></strong></div><div class="not-found-links"><a class="not-found-link" href="javascript:history.back()"><i class="fa fa-arrow-left"></i> 返回上一页</a></div></div>
+                
+                <div class="container mtb post-layout">
+        <!-- SINGLE POST -->
+        <div class="markdown-body-img flex-column">
+            <!-- Blog Post  -->
+            <h1 class="ctitle">Burp Suite 2026.7.3 for macOS 10.15.7/Catalina</h1>
+            <div class="post-meta-row">
+                <!--article author end-->
+
+
+
+
+
+
+
+
+<span class="ymh-author-badge">
+    <a class="ymh-author-link" href="https://github.com/Bin4xin" target="_blank">
+        <span class="ymh-author-avatar">B</span>
+        Bin4xin
+    </a>
+
+    
+
+    
+    
+    
+    
+    
+
+    <span class="ymh-time-badge">
+        
+            
+                
+                    4d
+                
+                post
+            
+        
+    </span>
+</span>
+
+            </div>
+            <div class="post-content">
+            <h2 id="在-macos-catalina-上安装与配置-burp-suite-202673">在 macOS Catalina 上安装与配置 Burp Suite 2026.7.3</h2>
+
+<style>
+    /* GitHub 风格横幅样式 - 支持错误/警告/信息主题 */
+    .gh-banner {
+        --banner-bg: #eef5ff;
+        --banner-border: rgba(84, 174, 255, 0.3);
+        --banner-icon-color: #1f7bdf;
+        --banner-text: #1f2328;
+        --banner-link: #0969da;
+        --banner-link-hover: #0550ae;
+        background-color: var(--banner-bg);
+        border: 1px solid var(--banner-border);
+        border-radius: 12px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        padding: 1rem 1rem 1rem 1.25rem;
+        transition: all 0.2s ease;
+        position: relative;
+        margin: 25px;
+    }
+    /* 错误主题 */
+    .gh-banner.error {
+        --banner-bg: #ffebe9;
+        --banner-border: rgba(255, 129, 130, 0.4);
+        --banner-icon-color: #cf222e;
+    }
+    /* 警告主题 */
+    .gh-banner.warn {
+        --banner-bg: #fff8e7;
+        --banner-border: rgba(215, 173, 62, 0.4);
+        --banner-icon-color: #bc6f00;
+    }
+    /* 深色模式适配 */
+    @media (prefers-color-scheme: dark) {
+        .gh-banner {
+            --banner-bg: #1c2a3e;
+            --banner-border: #2d4a6e;
+            --banner-icon-color: #6cb4ff;
+            --banner-text: #e6edf3;
+            --banner-link: #6cb4ff;
+            --banner-link-hover: #9acbff;
+            background-color: var(--banner-bg);
+            border-color: #2d4a6e;
+        }
+        .gh-banner.error {
+            --banner-bg: #3b1e1e;
+            --banner-border: #da3633;
+            --banner-icon-color: #f85149;
+        }
+        .gh-banner.warn {
+            --banner-bg: #382d1a;
+            --banner-border: #d29922;
+            --banner-icon-color: #e3b341;
+        }
+    }
+    .banner-icon {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 1px;
+    }
+    .banner-icon svg {
+        width: 20px;
+        height: 20px;
+        color: var(--banner-icon-color);
+        fill: currentColor;
+        display: block;
+    }
+    .banner-content {
+        flex: 1;
+        font-size: 0.9375rem;
+        font-weight: 400;
+        color: var(--banner-text);
+        line-height: 1.5;
+        word-break: break-word;
+    }
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+    }
+    .banner-content a {
+        color: var(--banner-link);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.12s ease, text-decoration 0.12s;
+    }
+    .banner-content a:hover {
+        color: var(--banner-link-hover);
+        text-decoration: underline;
+        text-underline-offset: 2px;
+    }
+    .banner-text {
+        display: inline;
+        /*font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";*/
+    }
+    .gh-banner.hide-banner {
+        display: none;
+    }
+    @media (max-width: 640px) {
+        .gh-banner {
+            padding: 0.875rem 1rem;
+            gap: 0.5rem;
+        }
+        .banner-content {
+            font-size: 0.875rem;
+        }
+        .banner-icon svg {
+            width: 18px;
+            height: 18px;
+        }
+    }
+    .banner-content span {
+        display: inline;
+    }
+    .banner-content a {
+        display: inline-block;
+    }
+</style>
+
+<section class="gh-banner info" aria-labelledby="banner-title-strong-教程说明-strong-br-本教程基于在-macos-catalina-10-15-x-系统上安装-burp-suite-2026-7-3-的真实经历编写-整个过程遇到了多个典型的兼容性问题-java-版本冲突-图形库缺失-浏览器启动失败等-以下是经过验证的完整解决方案" role="region" data-dismissible="true">
+    <div class="banner-icon" aria-hidden="true">
+        
+        <svg viewBox="0 0 16 16" fill="currentColor">
+            <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path>
+        </svg>
+        
+    </div>
+
+    <div class="banner-content">
+        <span class="banner-text"><strong>教程说明</strong><br />本教程基于在 macOS Catalina (10.15.x) 系统上安装 Burp Suite 2026.7.3 的真实经历编写。整个过程遇到了多个典型的兼容性问题（Java 版本冲突、图形库缺失、浏览器启动失败等），以下是经过验证的完整解决方案。</span>
+    </div>
+
+    <!-- <button class="banner-close" aria-label="关闭通知横幅" title="Dismiss banner" type="button">
+        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
+        </svg>
+    </button> -->
+</section>
+
+<hr />
+
+<h2 id="一系统环境与前置要求">一、系统环境与前置要求</h2>
+
+<h3 id="11-确认-macos-版本">1.1 确认 macOS 版本</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sw_vers <span class="nt">-productVersion</span>
+10.15.7
+<span class="c"># 应显示 10.15.x</span>
+</code></pre></div></div>
+
+<h3 id="12-java-版本最关键">1.2 Java 版本（最关键）</h3>
+
+<p>Burp Suite 2026.7.3 要求 <strong>Java 21 或更高版本</strong>。</p>
+
+<p>检查当前 Java 版本：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>java <span class="nt">-version</span>
+</code></pre></div></div>
+
+<p>如果版本低于 21，必须升级。在 Catalina 上，推荐使用 <strong>JDK 21 LTS</strong>（不是 Java 25，因为 Java 25 在 Catalina 上存在图形库兼容问题）：</p>
+
+<p><strong>方法一：使用 Homebrew 安装（推荐）</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 安装 Homebrew（如果没有）</span>
+/bin/bash <span class="nt">-c</span> <span class="s2">"</span><span class="si">$(</span>curl <span class="nt">-fsSL</span> https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh<span class="si">)</span><span class="s2">"</span>
+
+<span class="c"># 安装 OpenJDK 21</span>
+brew <span class="nb">install </span>openjdk@21
+
+<span class="c"># 创建软链接，让系统能找到</span>
+<span class="nb">sudo ln</span> <span class="nt">-sfn</span> /opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-21.jdk
+</code></pre></div></div>
+
+<p><strong>方法二：手动安装 DMG</strong></p>
+
+<ul>
+  <li>从 <a href="https://www.oracle.com/java/technologies/downloads/#java21">oracle</a> 下载适用于 Intel Mac 的 x64 版本的 JDK 21 DMG 安装包</li>
+  <li>文件名示例：<code class="language-plaintext highlighter-rouge">OpenJDK21U-jdk_x64_mac_hotspot_21.0.12_8.tar.gz</code></li>
+  <li>解压后移动到 <code class="language-plaintext highlighter-rouge">/Library/Java/JavaVirtualMachines/</code></li>
+</ul>
+
+<p>验证安装：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/usr/libexec/java_home <span class="nt">-v</span> 21
+<span class="c"># 应输出 JDK 21 的路径</span>
+/Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home
+</code></pre></div></div>
+
+<h3 id="13-关于-macos-catalina-的特殊说明">1.3 关于 macOS Catalina 的特殊说明</h3>
+
+<ul>
+  <li>Catalina 对未公证的应用有严格限制，需要手动处理</li>
+  <li><strong>不要使用 Java 25（Early Access）</strong>，它在 Catalina 上缺少 <code class="language-plaintext highlighter-rouge">JavaRuntimeSupport.framework</code> 依赖，会导致 AWT 图形界面无法启动</li>
+</ul>
+
+<hr />
+
+<h2 id="二下载-burp-suite">二、下载 Burp Suite</h2>
+
+<h3 id="21-推荐方式下载-jar-文件">2.1 推荐方式：下载 JAR 文件</h3>
+
+<ol>
+  <li>访问 <a href="https://portswigger.net/burp/releases#professional">PortSwigger 下载页面</a></li>
+  <li>找到 <strong>Burp Suite Professional / Community 2026.7.3</strong></li>
+  <li>下载 <strong>JAR 格式文件</strong>（如 <code class="language-plaintext highlighter-rouge">burpsuite_pro_v2026.7.3.jar</code>）</li>
+</ol>
+
+<style>
+    /* GitHub 风格横幅样式 - 支持错误/警告/信息主题 */
+    .gh-banner {
+        --banner-bg: #eef5ff;
+        --banner-border: rgba(84, 174, 255, 0.3);
+        --banner-icon-color: #1f7bdf;
+        --banner-text: #1f2328;
+        --banner-link: #0969da;
+        --banner-link-hover: #0550ae;
+        background-color: var(--banner-bg);
+        border: 1px solid var(--banner-border);
+        border-radius: 12px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        padding: 1rem 1rem 1rem 1.25rem;
+        transition: all 0.2s ease;
+        position: relative;
+        margin: 25px;
+    }
+    /* 错误主题 */
+    .gh-banner.error {
+        --banner-bg: #ffebe9;
+        --banner-border: rgba(255, 129, 130, 0.4);
+        --banner-icon-color: #cf222e;
+    }
+    /* 警告主题 */
+    .gh-banner.warn {
+        --banner-bg: #fff8e7;
+        --banner-border: rgba(215, 173, 62, 0.4);
+        --banner-icon-color: #bc6f00;
+    }
+    /* 深色模式适配 */
+    @media (prefers-color-scheme: dark) {
+        .gh-banner {
+            --banner-bg: #1c2a3e;
+            --banner-border: #2d4a6e;
+            --banner-icon-color: #6cb4ff;
+            --banner-text: #e6edf3;
+            --banner-link: #6cb4ff;
+            --banner-link-hover: #9acbff;
+            background-color: var(--banner-bg);
+            border-color: #2d4a6e;
+        }
+        .gh-banner.error {
+            --banner-bg: #3b1e1e;
+            --banner-border: #da3633;
+            --banner-icon-color: #f85149;
+        }
+        .gh-banner.warn {
+            --banner-bg: #382d1a;
+            --banner-border: #d29922;
+            --banner-icon-color: #e3b341;
+        }
+    }
+    .banner-icon {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 1px;
+    }
+    .banner-icon svg {
+        width: 20px;
+        height: 20px;
+        color: var(--banner-icon-color);
+        fill: currentColor;
+        display: block;
+    }
+    .banner-content {
+        flex: 1;
+        font-size: 0.9375rem;
+        font-weight: 400;
+        color: var(--banner-text);
+        line-height: 1.5;
+        word-break: break-word;
+    }
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+    }
+    .banner-content a {
+        color: var(--banner-link);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.12s ease, text-decoration 0.12s;
+    }
+    .banner-content a:hover {
+        color: var(--banner-link-hover);
+        text-decoration: underline;
+        text-underline-offset: 2px;
+    }
+    .banner-text {
+        display: inline;
+        /*font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";*/
+    }
+    .gh-banner.hide-banner {
+        display: none;
+    }
+    @media (max-width: 640px) {
+        .gh-banner {
+            padding: 0.875rem 1rem;
+            gap: 0.5rem;
+        }
+        .banner-content {
+            font-size: 0.875rem;
+        }
+        .banner-icon svg {
+            width: 18px;
+            height: 18px;
+        }
+    }
+    .banner-content span {
+        display: inline;
+    }
+    .banner-content a {
+        display: inline-block;
+    }
+</style>
+
+<section class="gh-banner info" aria-labelledby="banner-title-strong-tips-strong-br-最新版本2026-7-3不再区分professional-community-激活即可" role="region" data-dismissible="true">
+    <div class="banner-icon" aria-hidden="true">
+        
+        <svg viewBox="0 0 16 16" fill="currentColor">
+            <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path>
+        </svg>
+        
+    </div>
+
+    <div class="banner-content">
+        <span class="banner-text"><strong>TIPS</strong><br />最新版本2026.7.3不再区分Professional / Community，激活即可。</span>
+    </div>
+
+    <!-- <button class="banner-close" aria-label="关闭通知横幅" title="Dismiss banner" type="button">
+        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
+        </svg>
+    </button> -->
+</section>
+
+<hr />
+
+<h2 id="三配置与启动">三、配置与启动</h2>
+
+<h3 id="31-创建-jvm-参数配置文件">3.1 创建 JVM 参数配置文件</h3>
+
+<p>在<code class="language-plaintext highlighter-rouge">.app</code>目录下编辑 <code class="language-plaintext highlighter-rouge">burp.vmoptions</code> 文件：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat</span> /Applications/Burp<span class="se">\ </span>Suite.app/Contents/vmoptions.txt
+</code></pre></div></div>
+
+<p>粘贴以下内容：</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-XX:MaxRAMPercentage=50
+-include-options user.vmoptions
+
+--add-opens=java.base/java.lang=ALL-UNNAMED
+--add-opens=java.base/java.lang=ALL-UNNAMED
+--add-opens=java.base/jdk.internal.org.objectweb.asm=ALL-UNNAMED
+--add-opens=java.base/jdk.internal.org.objectweb.asm.tree=ALL-UNNAMED
+--add-opens=java.base/jdk.internal.org.objectweb.asm.Opcodes=ALL-UNNAMED
+-javaagent:BurpLoaderKeygen_v1.18.jar
+-noverify
+</code></pre></div></div>
+
+<style>
+    /* GitHub 风格横幅样式 - 支持错误/警告/信息主题 */
+    .gh-banner {
+        --banner-bg: #eef5ff;
+        --banner-border: rgba(84, 174, 255, 0.3);
+        --banner-icon-color: #1f7bdf;
+        --banner-text: #1f2328;
+        --banner-link: #0969da;
+        --banner-link-hover: #0550ae;
+        background-color: var(--banner-bg);
+        border: 1px solid var(--banner-border);
+        border-radius: 12px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        padding: 1rem 1rem 1rem 1.25rem;
+        transition: all 0.2s ease;
+        position: relative;
+        margin: 25px;
+    }
+    /* 错误主题 */
+    .gh-banner.error {
+        --banner-bg: #ffebe9;
+        --banner-border: rgba(255, 129, 130, 0.4);
+        --banner-icon-color: #cf222e;
+    }
+    /* 警告主题 */
+    .gh-banner.warn {
+        --banner-bg: #fff8e7;
+        --banner-border: rgba(215, 173, 62, 0.4);
+        --banner-icon-color: #bc6f00;
+    }
+    /* 深色模式适配 */
+    @media (prefers-color-scheme: dark) {
+        .gh-banner {
+            --banner-bg: #1c2a3e;
+            --banner-border: #2d4a6e;
+            --banner-icon-color: #6cb4ff;
+            --banner-text: #e6edf3;
+            --banner-link: #6cb4ff;
+            --banner-link-hover: #9acbff;
+            background-color: var(--banner-bg);
+            border-color: #2d4a6e;
+        }
+        .gh-banner.error {
+            --banner-bg: #3b1e1e;
+            --banner-border: #da3633;
+            --banner-icon-color: #f85149;
+        }
+        .gh-banner.warn {
+            --banner-bg: #382d1a;
+            --banner-border: #d29922;
+            --banner-icon-color: #e3b341;
+        }
+    }
+    .banner-icon {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 1px;
+    }
+    .banner-icon svg {
+        width: 20px;
+        height: 20px;
+        color: var(--banner-icon-color);
+        fill: currentColor;
+        display: block;
+    }
+    .banner-content {
+        flex: 1;
+        font-size: 0.9375rem;
+        font-weight: 400;
+        color: var(--banner-text);
+        line-height: 1.5;
+        word-break: break-word;
+    }
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+    }
+    .banner-content a {
+        color: var(--banner-link);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.12s ease, text-decoration 0.12s;
+    }
+    .banner-content a:hover {
+        color: var(--banner-link-hover);
+        text-decoration: underline;
+        text-underline-offset: 2px;
+    }
+    .banner-text {
+        display: inline;
+        /*font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";*/
+    }
+    .gh-banner.hide-banner {
+        display: none;
+    }
+    @media (max-width: 640px) {
+        .gh-banner {
+            padding: 0.875rem 1rem;
+            gap: 0.5rem;
+        }
+        .banner-content {
+            font-size: 0.875rem;
+        }
+        .banner-icon svg {
+            width: 18px;
+            height: 18px;
+        }
+    }
+    .banner-content span {
+        display: inline;
+    }
+    .banner-content a {
+        display: inline-block;
+    }
+</style>
+
+<section class="gh-banner info" aria-labelledby="banner-title-strong-说明-strong-br-1-code-add-opens-code-参数是-java-9-模块化系统要求的-用于允许-burp-访问内部-api-br-2-a-href-https-github-com-h3110w0r1d-y-burploaderkeygen-h3110w0r1d-y-burploaderkeygen-a" role="region" data-dismissible="true">
+    <div class="banner-icon" aria-hidden="true">
+        
+        <svg viewBox="0 0 16 16" fill="currentColor">
+            <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path>
+        </svg>
+        
+    </div>
+
+    <div class="banner-content">
+        <span class="banner-text"><strong>说明</strong><br />1、<code>--add-opens</code> 参数是 Java 9+ 模块化系统要求的，用于允许 Burp 访问内部 API<br />2、<a href="https://github.com/h3110w0r1d-y/burploaderkeygen">h3110w0r1d-y/burploaderkeygen</a></span>
+    </div>
+
+    <!-- <button class="banner-close" aria-label="关闭通知横幅" title="Dismiss banner" type="button">
+        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
+        </svg>
+    </button> -->
+</section>
+
+<h3 id="32-处理-catalina-安全限制">3.2 处理 Catalina 安全限制</h3>
+
+<p>如果 JAR 文件被 macOS 标记为”来自未知开发者”，执行：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>xattr <span class="nt">-d</span> com.apple.quarantine ~/BurpSuite/burpsuite_pro_v2026.7.3.jar
+</code></pre></div></div>
+
+<h3 id="33-启动-burp-suite">3.3 启动 Burp Suite</h3>
+
+<p>使用以下命令启动（注意使用 JDK 21）：</p>
+
+<p>默认的<code class="language-plaintext highlighter-rouge">Burp\ Suite.app</code>java 自带版本：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/Applications/Burp<span class="se">\ </span>Suite.app/Contents/Resources/jre.bundle/Contents/Home/bin/java <span class="nt">-version</span>
+openjdk version <span class="s2">"26.0.1"</span> 2026-04-21
+OpenJDK Runtime Environment <span class="o">(</span>build 26.0.1+8-34<span class="o">)</span>
+OpenJDK 64-Bit Server VM <span class="o">(</span>build 26.0.1+8-34, mixed mode<span class="o">)</span>
+</code></pre></div></div>
+<p>直接把<code class="language-plaintext highlighter-rouge">/Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/</code>下的所有目录复制到<code class="language-plaintext highlighter-rouge">/Applications/Burp\ Suite.app/Contents/Resources/jre.bundle/Contents/</code>目录下，<code class="language-plaintext highlighter-rouge">open /Applications/Burp\ Suite.app</code>即可。</p>
+
+<p>目录结构都是一致的：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">ls</span> /Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/                   🚀 <span class="k">for </span>12ms
+Home		Info.plist	MacOS		_CodeSignature
+
+<span class="nb">ls</span> /Applications/Burp<span class="se">\ </span>Suite.app/Contents/Resources/jre.bundle/Contents/    🚀 <span class="k">for </span>13ms
+Home		Info.plist	MacOS		_CodeSignature
+</code></pre></div></div>
+<h3 id="其他">其他</h3>
+
+<p>其他参考，不一定准确。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/Library/Java/JavaVirtualMachines/openjdk-21.jdk/Contents/Home/bin/java @burp.vmoptions <span class="nt">-jar</span> burpsuite_pro_v2026.7.3.jar
+</code></pre></div></div>
+
+<p>如果提示 <code class="language-plaintext highlighter-rouge">java</code> 命令找不到，使用完整路径：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/usr/libexec/java_home <span class="nt">-v</span> 21 <span class="nt">--exec</span> java @burp.vmoptions <span class="nt">-jar</span> burpsuite_pro_v2026.7.3.jar
+</code></pre></div></div>
+
+<h3 id="34-创建启动脚本方便日常使用">3.4 创建启动脚本（方便日常使用）</h3>
+
+<p>创建 <code class="language-plaintext highlighter-rouge">~/BurpSuite/start-burp.sh</code>：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+<span class="nb">cd</span> ~/BurpSuite
+<span class="nv">JAVA_CMD</span><span class="o">=</span><span class="s2">"/usr/libexec/java_home -v 21 --exec java"</span>
+<span class="nv">$JAVA_CMD</span> @burp.vmoptions <span class="nt">-jar</span> burpsuite_pro_v2026.7.3.jar
+</code></pre></div></div>
+
+<p>赋予执行权限：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">chmod</span> +x ~/BurpSuite/start-burp.sh
+./start-burp.sh
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="四常见问题与解决方案">四、常见问题与解决方案</h2>
+
+<h3 id="41-unsupportedclassversionerror">4.1 UnsupportedClassVersionError</h3>
+
+<p><strong>错误信息</strong>：<code class="language-plaintext highlighter-rouge">... has been compiled by a more recent version of the Java Runtime (class file version 65.0)</code></p>
+
+<p><strong>原因</strong>：使用的 Java 版本低于 21</p>
+
+<p><strong>解决</strong>：按照步骤 1.2 安装并切换到 JDK 21</p>
+
+<h3 id="42-javalangunsatisfiedlinkerror-libawtdylib">4.2 java.lang.UnsatisfiedLinkError: libawt.dylib</h3>
+
+<p><strong>错误信息</strong>：<code class="language-plaintext highlighter-rouge">Library not loaded: /System/Library/Frameworks/JavaRuntimeSupport.framework/Versions/A/JavaRuntimeSupport</code></p>
+
+<p><strong>原因</strong>：使用了 Java 25（Early Access）或 JDK 与 macOS 版本不兼容</p>
+
+<p><strong>解决</strong>：切换到 JDK 21 LTS，不要使用 Java 25</p>
+
+<h3 id="43-nosuchmethoderror-persistenceextensiondata">4.3 NoSuchMethodError: Persistence.extensionData()</h3>
+
+<p><strong>错误信息</strong>：<code class="language-plaintext highlighter-rouge">burp.api.montoya.persistence.Persistence.extensionData()</code></p>
+
+<p><strong>原因</strong>：加载的 MCP 扩展与 Burp 版本不兼容（通常是 Burp 版本太旧）</p>
+
+<p><strong>解决</strong>：</p>
+
+<ul>
+  <li>升级 Burp Suite 到最新版（2026.7.3）</li>
+  <li>或在加载扩展前，先确保 Burp 已更新到最新</li>
+</ul>
+
+<h3 id="44-burp-启动后立即崩溃">4.4 Burp 启动后立即崩溃</h3>
+
+<p><strong>现象</strong>：点击 Burp 图标后 1 秒内退出</p>
+
+<p><strong>诊断</strong>：用命令行启动查看详细错误</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/usr/libexec/java_home <span class="nt">-v</span> 21 <span class="nt">--exec</span> java @burp.vmoptions <span class="nt">-jar</span> burpsuite_pro_v2026.7.3.jar
+</code></pre></div></div>
+
+<p><strong>常见原因</strong>：</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>原因</th>
+      <th>解决方案</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Java 版本不对</td>
+      <td>切换到 JDK 21</td>
+    </tr>
+    <tr>
+      <td>JVM 参数错误</td>
+      <td>检查 <code class="language-plaintext highlighter-rouge">burp.vmoptions</code> 内容</td>
+    </tr>
+    <tr>
+      <td>配置文件损坏</td>
+      <td>删除 <code class="language-plaintext highlighter-rouge">~/Library/Application Support/BurpSuite/Preference.json</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="45-内置浏览器无法启动">4.5 内置浏览器无法启动</h3>
+
+<p><strong>现象</strong>：点击 “Open Browser” 报错 <code class="language-plaintext highlighter-rouge">posix_spawn failed</code></p>
+
+<p><strong>原因</strong>：Burp 自带的 Chromium 150 版本在 Catalina 上不兼容</p>
+
+<p><strong>解决方案（二选一）</strong>：</p>
+
+<p><strong>方案 A：手动启动浏览器（推荐）</strong></p>
+
+<p>创建启动脚本 <code class="language-plaintext highlighter-rouge">~/Desktop/burp-browser.command</code>：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/zsh</span>
+/Applications/Burp<span class="se">\ </span>Suite<span class="se">\ </span>Professional.app/Contents/Resources/app/burpbrowser/108.0.5359.124/Chromium.app/Contents/MacOS/Chromium <span class="se">\</span>
+  <span class="nt">--proxy-server</span><span class="o">=</span><span class="s2">"http://127.0.0.1:8080"</span> <span class="se">\</span>
+  <span class="nt">--user-data-dir</span><span class="o">=</span><span class="s2">"/tmp/burp-chromium-profile"</span> <span class="se">\</span>
+  <span class="nt">--ignore-certificate-errors</span> <span class="se">\</span>
+  <span class="nt">--disable-web-security</span> <span class="se">\</span>
+  <span class="nt">--disable-features</span><span class="o">=</span>IsolateOrigins,site-per-process <span class="se">\</span>
+  <span class="nt">--no-first-run</span> <span class="se">\</span>
+  <span class="nt">--new-window</span> <span class="s2">"http://burp"</span>
+</code></pre></div></div>
+
+<p>双击 <code class="language-plaintext highlighter-rouge">.command</code> 文件即可启动带代理的浏览器。</p>
+
+<style>
+    /* GitHub 风格横幅样式 - 支持错误/警告/信息主题 */
+    .gh-banner {
+        --banner-bg: #eef5ff;
+        --banner-border: rgba(84, 174, 255, 0.3);
+        --banner-icon-color: #1f7bdf;
+        --banner-text: #1f2328;
+        --banner-link: #0969da;
+        --banner-link-hover: #0550ae;
+        background-color: var(--banner-bg);
+        border: 1px solid var(--banner-border);
+        border-radius: 12px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        padding: 1rem 1rem 1rem 1.25rem;
+        transition: all 0.2s ease;
+        position: relative;
+        margin: 25px;
+    }
+    /* 错误主题 */
+    .gh-banner.error {
+        --banner-bg: #ffebe9;
+        --banner-border: rgba(255, 129, 130, 0.4);
+        --banner-icon-color: #cf222e;
+    }
+    /* 警告主题 */
+    .gh-banner.warn {
+        --banner-bg: #fff8e7;
+        --banner-border: rgba(215, 173, 62, 0.4);
+        --banner-icon-color: #bc6f00;
+    }
+    /* 深色模式适配 */
+    @media (prefers-color-scheme: dark) {
+        .gh-banner {
+            --banner-bg: #1c2a3e;
+            --banner-border: #2d4a6e;
+            --banner-icon-color: #6cb4ff;
+            --banner-text: #e6edf3;
+            --banner-link: #6cb4ff;
+            --banner-link-hover: #9acbff;
+            background-color: var(--banner-bg);
+            border-color: #2d4a6e;
+        }
+        .gh-banner.error {
+            --banner-bg: #3b1e1e;
+            --banner-border: #da3633;
+            --banner-icon-color: #f85149;
+        }
+        .gh-banner.warn {
+            --banner-bg: #382d1a;
+            --banner-border: #d29922;
+            --banner-icon-color: #e3b341;
+        }
+    }
+    .banner-icon {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 1px;
+    }
+    .banner-icon svg {
+        width: 20px;
+        height: 20px;
+        color: var(--banner-icon-color);
+        fill: currentColor;
+        display: block;
+    }
+    .banner-content {
+        flex: 1;
+        font-size: 0.9375rem;
+        font-weight: 400;
+        color: var(--banner-text);
+        line-height: 1.5;
+        word-break: break-word;
+    }
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+    }
+    .banner-content a {
+        color: var(--banner-link);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.12s ease, text-decoration 0.12s;
+    }
+    .banner-content a:hover {
+        color: var(--banner-link-hover);
+        text-decoration: underline;
+        text-underline-offset: 2px;
+    }
+    .banner-text {
+        display: inline;
+        /*font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";*/
+    }
+    .gh-banner.hide-banner {
+        display: none;
+    }
+    @media (max-width: 640px) {
+        .gh-banner {
+            padding: 0.875rem 1rem;
+            gap: 0.5rem;
+        }
+        .banner-content {
+            font-size: 0.875rem;
+        }
+        .banner-icon svg {
+            width: 18px;
+            height: 18px;
+        }
+    }
+    .banner-content span {
+        display: inline;
+    }
+    .banner-content a {
+        display: inline-block;
+    }
+</style>
+
+<section class="gh-banner info" aria-labelledby="banner-title-strong-tips-strong-br-以上操作会打开一个终端窗口-不够优雅-br-亦可以新增一个自动操作-code-burp-browser-code-app-选择-code-运行-bin-zsh脚本-code-保存后默认app在icloud云盘-自动操作目录下-拖到dock栏即可" role="region" data-dismissible="true">
+    <div class="banner-icon" aria-hidden="true">
+        
+        <svg viewBox="0 0 16 16" fill="currentColor">
+            <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path>
+        </svg>
+        
+    </div>
+
+    <div class="banner-content">
+        <span class="banner-text"><strong>TIPS:</strong><br />以上操作会打开一个终端窗口，不够优雅~<br />亦可以新增一个自动操作<code>Burp Browser</code>app，选择<code>运行/bin/zsh脚本</code>保存后默认app在iCloud云盘/自动操作目录下，拖到dock栏即可。</span>
+    </div>
+
+    <!-- <button class="banner-close" aria-label="关闭通知横幅" title="Dismiss banner" type="button">
+        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
+        </svg>
+    </button> -->
+</section>
+
+<p><strong>方案 B：替换 Burp 内置浏览器（不推荐，容易出错）</strong></p>
+
+<p>需要修改 <code class="language-plaintext highlighter-rouge">manifest.properties</code> 文件，但 Burp 有严格的完整性校验，替换过程复杂且容易失败。</p>
+
+<hr />
+
+<h2 id="五加载-mcp-扩展如需连接-claude-code">五、加载 MCP 扩展（如需连接 Claude Code）</h2>
+
+<h3 id="51-构建扩展">5.1 构建扩展</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/PortSwigger/mcp-server.git
+<span class="nb">cd </span>mcp-server
+./gradlew embedProxyJar
+<span class="c"># 生成 build/libs/burp-mcp-all.jar</span>
+</code></pre></div></div>
+
+<h3 id="52-在-burp-中加载">5.2 在 Burp 中加载</h3>
+
+<ol>
+  <li>Burp → <strong>Extensions</strong> 标签 → <strong>Add</strong></li>
+  <li>Extension Type: <strong>Java</strong></li>
+  <li>选择 <code class="language-plaintext highlighter-rouge">burp-mcp-all.jar</code></li>
+  <li>点击 <strong>Next</strong></li>
+</ol>
+
+<h3 id="53-配置-claude-code-连接">5.3 配置 Claude Code 连接</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>claude mcp add <span class="nt">--transport</span> sse burp http://127.0.0.1:9876/sse
+</code></pre></div></div>
+
+<style>
+    /* GitHub 风格横幅样式 - 支持错误/警告/信息主题 */
+    .gh-banner {
+        --banner-bg: #eef5ff;
+        --banner-border: rgba(84, 174, 255, 0.3);
+        --banner-icon-color: #1f7bdf;
+        --banner-text: #1f2328;
+        --banner-link: #0969da;
+        --banner-link-hover: #0550ae;
+        background-color: var(--banner-bg);
+        border: 1px solid var(--banner-border);
+        border-radius: 12px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        padding: 1rem 1rem 1rem 1.25rem;
+        transition: all 0.2s ease;
+        position: relative;
+        margin: 25px;
+    }
+    /* 错误主题 */
+    .gh-banner.error {
+        --banner-bg: #ffebe9;
+        --banner-border: rgba(255, 129, 130, 0.4);
+        --banner-icon-color: #cf222e;
+    }
+    /* 警告主题 */
+    .gh-banner.warn {
+        --banner-bg: #fff8e7;
+        --banner-border: rgba(215, 173, 62, 0.4);
+        --banner-icon-color: #bc6f00;
+    }
+    /* 深色模式适配 */
+    @media (prefers-color-scheme: dark) {
+        .gh-banner {
+            --banner-bg: #1c2a3e;
+            --banner-border: #2d4a6e;
+            --banner-icon-color: #6cb4ff;
+            --banner-text: #e6edf3;
+            --banner-link: #6cb4ff;
+            --banner-link-hover: #9acbff;
+            background-color: var(--banner-bg);
+            border-color: #2d4a6e;
+        }
+        .gh-banner.error {
+            --banner-bg: #3b1e1e;
+            --banner-border: #da3633;
+            --banner-icon-color: #f85149;
+        }
+        .gh-banner.warn {
+            --banner-bg: #382d1a;
+            --banner-border: #d29922;
+            --banner-icon-color: #e3b341;
+        }
+    }
+    .banner-icon {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 1px;
+    }
+    .banner-icon svg {
+        width: 20px;
+        height: 20px;
+        color: var(--banner-icon-color);
+        fill: currentColor;
+        display: block;
+    }
+    .banner-content {
+        flex: 1;
+        font-size: 0.9375rem;
+        font-weight: 400;
+        color: var(--banner-text);
+        line-height: 1.5;
+        word-break: break-word;
+    }
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+    }
+    .banner-content a {
+        color: var(--banner-link);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.12s ease, text-decoration 0.12s;
+    }
+    .banner-content a:hover {
+        color: var(--banner-link-hover);
+        text-decoration: underline;
+        text-underline-offset: 2px;
+    }
+    .banner-text {
+        display: inline;
+        /*font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";*/
+    }
+    .gh-banner.hide-banner {
+        display: none;
+    }
+    @media (max-width: 640px) {
+        .gh-banner {
+            padding: 0.875rem 1rem;
+            gap: 0.5rem;
+        }
+        .banner-content {
+            font-size: 0.875rem;
+        }
+        .banner-icon svg {
+            width: 18px;
+            height: 18px;
+        }
+    }
+    .banner-content span {
+        display: inline;
+    }
+    .banner-content a {
+        display: inline-block;
+    }
+</style>
+
+<section class="gh-banner warn" aria-labelledby="banner-title-strong-注意-strong-br-burp-的-mcp-服务器默认运行在-code-http-127-0-0-1-9876-sse-code-需要确保-burp-中的-mcp-扩展已启用-mcp-标签页勾选-enabled" role="region" data-dismissible="true">
+    <div class="banner-icon" aria-hidden="true">
+        
+        <svg viewBox="0 0 16 16" fill="currentColor">
+            <path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575L6.457 1.047ZM8 4.75a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 4.75Zm.75 6.75a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Z"></path>
+        </svg>
+        
+    </div>
+
+    <div class="banner-content">
+        <span class="banner-text"><strong>注意</strong><br />Burp 的 MCP 服务器默认运行在 <code>http://127.0.0.1:9876/sse</code>，需要确保 Burp 中的 MCP 扩展已启用（MCP 标签页勾选 “Enabled”）。</span>
+    </div>
+
+    <!-- <button class="banner-close" aria-label="关闭通知横幅" title="Dismiss banner" type="button">
+        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
+        </svg>
+    </button> -->
+</section>
+
+<hr />
+
+<h2 id="六总结与建议">六、总结与建议</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>问题</th>
+      <th>原因</th>
+      <th>解决方案</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>无法启动</td>
+      <td>Java 版本 &lt; 21</td>
+      <td>安装 JDK 21</td>
+    </tr>
+    <tr>
+      <td>图形界面报错</td>
+      <td>使用 Java 25</td>
+      <td>切换回 JDK 21</td>
+    </tr>
+    <tr>
+      <td>扩展加载失败</td>
+      <td>Burp 版本太旧</td>
+      <td>升级到 2026.7.3</td>
+    </tr>
+    <tr>
+      <td>内置浏览器崩溃</td>
+      <td>Chromium 150 不兼容 Catalina</td>
+      <td>手动启动浏览器并配置代理</td>
+    </tr>
+    <tr>
+      <td>安全提示</td>
+      <td>未公证的应用</td>
+      <td>使用 <code class="language-plaintext highlighter-rouge">xattr -d com.apple.quarantine</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="最佳实践">最佳实践</h3>
+
+<ul>
+  <li>✅ 始终使用 <strong>JDK 21 LTS</strong>，不要追求最新版 Java</li>
+  <li>✅ 从 <strong>JAR 文件</strong>启动，不要使用 DMG 安装包</li>
+  <li>✅ 使用<strong>命令行启动</strong>，方便查看错误信息</li>
+  <li>✅ <strong>手动启动浏览器</strong>，放弃 Burp 的内置浏览器按钮</li>
+</ul>
+
+<hr />
+
+<blockquote>
+  <p>这份教程完全基于实际问题和解决方案编写，适用于在 macOS Catalina 上使用 Burp Suite 2026.7.3。如果遇到其他问题，可以在命令行启动查看详细错误日志，然后针对性解决。</p>
+</blockquote>
+
+                <!-- [x] 2022/10/20/10:49:36 fixed: while width < some inch. would be flex column not display like a row.-->
+<footer>
+	<style>.border-top {
+		border-top: 1.5px solid #d0d7de!important;
+	}</style>
+	<div class="border-top"></div>
+		<section class="container-xl mt-lg-8 mt-6 px-3 px-md-6 no-print mx-auto">
+			<div class="col-xs-4-5 pr-4 mb-8 px-md-6 container-xl mx-auto py-6 py-lg-6 clearfix ">
+				<h2 class="lead">申明</h2>
+				<div>
+					<div class="mb-2"><a href="/blog/2026/Burp-Suite-macOS-Catalina-install-setup-walkthrough/" target="_blank" class=" text-bold">
+						<div class="fa fa-link"></div>
+						转载请申明本文档链接</a></div>
+					<div><a href="https://github.com/Bin4xin" target="_blank"  class="text-bold">
+						<div class="fa fa-user"></div>
+						Post by Bin4xin.</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-4-5 pr-4 mb-8 px-md-6 container-xl mx-auto py-6 py-lg-6 clearfix">
+				<h2 class="lead">贡献开源文档</h2>
+				<div>
+					<a href="https://github.com/Bin4xin/bin4xin.github.io/tree/main/_posts/blog/2026-08-08-Burp-Suite-macOS-Catalina-install-setup-walkthrough.md" target="_blank" class="no-underline btn mr-1 color-border-accent-emphasis">
+						<svg aria-hidden="true" focusable="false" role="img" class="octicon mr-1" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="display: inline-block; user-select: none; vertical-align: text-bottom; overflow: visible;"><path fill-rule="evenodd" d="M7.177 3.073L9.573.677A.25.25 0 0110 .854v4.792a.25.25 0 01-.427.177L7.177 3.427a.25.25 0 010-.354zM3.75 2.5a.75.75 0 100 1.5.75.75 0 000-1.5zm-2.25.75a2.25 2.25 0 113 2.122v5.256a2.251 2.251 0 11-1.5 0V5.372A2.25 2.25 0 011.5 3.25zM11 2.5h-1V4h1a1 1 0 011 1v5.628a2.251 2.251 0 101.5 0V5A2.5 2.5 0 0011 2.5zm1 10.25a.75.75 0 111.5 0 .75.75 0 01-1.5 0zM3.75 12a.75.75 0 100 1.5.75.75 0 000-1.5z"></path></svg>
+						贡献当前开源文档
+					</a>
+					<p class="f1-l mt-2 text-bold">此之前，学习开源贡献<a target="_blank" href="https://github.com/Bin4xin/bin4xin.github.io/wiki/Git操作-Git如何贡献仓库代码">CN&nbsp;|</a>
+						<a target="_blank" href="https://github.com/github/docs">EN</a></p>
+				</div>
+			</div>
+			<div class="col-xs-4-5 pr-4 mb-8 px-md-6 container-xl mx-auto py-6 py-lg-6 clearfix">
+				<h2 class="lead">此文档对您有帮助吗</h2>
+				<a href="https://github.com/Bin4xin/bin4xin.github.io/" target="_blank" class="no-underline">
+				<span class="btn mr-1 color-border-accent-emphasis" title="给文档仓库点个赞!">
+					<div class="fa fa-thumbs-o-up"></div>
+				</span>
+				</a>
+				<a href="https://github.com/Bin4xin/bin4xin.github.io/issues/new?labels=Service+Issue,research&template=2-bug_report.yaml&title=_posts/blog/2026-08-08-Burp-Suite-macOS-Catalina-install-setup-walkthrough.md&nbsp; Burp Suite 2026.7.3 for macOS 10.15.7/Catalina | © 哨兵 | SENTINEL SECURITY, LAB" target="_blank">
+				<span class="btn mr-1 color-border-accent-emphasis" title="本文档有问题?">
+				<div class="fa fa-thumbs-o-down"></div>
+				</span>
+				</a>
+			</div>
+		</section>
+</footer>
+            </div>
+            <div class="spacing"></div>
+        </div><!--/post-content -->
+        
+<div class="toc-sidebar position-sticky top-0" style="max-height: 100vh; overflow-y: auto;">
+    <div class="toc-sidebar-inner">
+
+        
+        
+        
+        
+
+        <!-- 布局样式修正：固定按钮最小宽度与图标切换机制 -->
+        <style>
+            .toc-copy-btn {
+                min-width: 175px; /* 锁死最小宽度，确保文字变化时按钮大小完全一致 */
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                box-sizing: border-box;
+            }
+            .toc-copy-btn .icon-success {
+                display: none;
+            }
+            .toc-copy-btn.toc-copy-success .icon-copy {
+                display: none;
+            }
+            .toc-copy-btn.toc-copy-success .icon-success {
+                display: inline-block;
+            }
+        </style>
+
+        <!-- Article actions toolbar - Primer ButtonGroup style -->
+        <div class="toc-article-actions mb-3 ml-3">
+            <div class="prc-ButtonGroup-ButtonGroup-vFUrY">
+                <div>
+                    <button class="toc-copy-btn" onclick="copyAsMarkdown()" title="复制为 Markdown 格式">
+                        <span class="toc-btn-leading-visual">
+                            <!-- 默认复制图标 -->
+                            <svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-copy icon-copy" viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
+                                <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"/>
+                                <path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"/>
+                            </svg>
+                            <!-- 成功勾选图标 -->
+                            <svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-check icon-success" viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
+                                <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"/>
+                            </svg>
+                        </span>
+                        <span class="toc-btn-text">复制为 Markdown 格式</span>
+                    </button>
+                </div>
+                <div>
+                    <div class="toc-dropdown-wrap">
+                        <button type="button" class="toc-dropdown-trigger" aria-label="更多 Markdown 选项" aria-haspopup="true" aria-expanded="false" tabindex="0" onclick="toggleTocDropdown(event)">
+                            <svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-triangle-down" viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
+                                <path d="m4.427 7.427 3.396 3.396a.25.25 0 0 0 .354 0l3.396-3.396A.25.25 0 0 0 11.396 7H4.604a.25.25 0 0 0-.177.427Z"/>
+                            </svg>
+                        </button>
+                        <div class="toc-dropdown-menu" id="tocDropdownMenu">
+                            <a class="toc-dropdown-item" href="https://github.com/copilot?prompt=I%20need%20help%20with%20this%20GitHub%20Docs%20page%3A%20https://github.com/Bin4xin/bin4xin.github.io/blob/main/_posts/blog/2026-08-08-Burp-Suite-macOS-Catalina-install-setup-walkthrough.md" target="_blank">
+                                <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
+                                    <path d="M7.998 15.035c-4.562 0-7.873-2.914-7.998-3.749V9.338c.085-.628.677-1.686 1.588-2.065.013-.07.024-.143.036-.218.029-.183.06-.384.126-.612-.201-.508-.254-1.084-.254-1.656 0-.87.128-1.769.693-2.484.579-.733 1.494-1.124 2.724-1.261 1.206-.134 2.262.034 2.944.765.05.053.096.108.139.165.044-.057.094-.112.143-.165.682-.731 1.738-.899 2.944-.765 1.23.137 2.145.528 2.724 1.261.566.715.693 1.614.693 2.484 0 .572-.053 1.148-.254 1.656.066.228.098.429.126.612.012.076.024.148.037.218.924.385 1.522 1.471 1.591 2.095v1.872c0 .766-3.351 3.795-8.002 3.795Zm0-1.485c2.28 0 4.584-1.11 5.002-1.433V7.862l-.023-.116c-.49.21-1.075.291-1.727.291-1.146 0-2.059-.327-2.71-.991A3.222 3.222 0 0 1 8 6.303a3.24 3.24 0 0 1-.544.743c-.65.664-1.563.991-2.71.991-.652 0-1.236-.081-1.727-.291l-.023.116v4.255c.419.323 2.722 1.433 5.002 1.433ZM6.762 2.83c-.193-.206-.637-.413-1.682-.297-1.019.113-1.479.404-1.713.7-.247.312-.369.789-.369 1.554 0 .793.129 1.171.308 1.371.162.181.519.379 1.442.379.853 0 1.339-.235 1.638-.54.315-.322.527-.827.617-1.553.117-.935-.037-1.395-.241-1.614Zm4.155-.297c-1.044-.116-1.488.091-1.681.297-.204.219-.359.679-.242 1.614.091.726.303 1.231.618 1.553.299.305.784.54 1.638.54.922 0 1.28-.198 1.442-.379.179-.2.308-.578.308-1.371 0-.765-.123-1.242-.37-1.554-.233-.296-.693-.587-1.713-.7Z"></path><path d="M6.25 9.037a.75.75 0 0 1 .75.75v1.501a.75.75 0 0 1-1.5 0V9.787a.75.75 0 0 1 .75-.75Zm4.25.75v1.501a.75.75 0 0 1-1.5 0V9.787a.75.75 0 0 1 1.5 0Z"></path>
+                                </svg>
+                                <span>询问 Copilot</span>
+                            </a>
+                            <a class="toc-dropdown-item" href="https://github.com/Bin4xin/bin4xin.github.io/blob/main/_posts/blog/2026-08-08-Burp-Suite-macOS-Catalina-install-setup-walkthrough.md" target="_blank">
+                                <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M2.75 14A1.75 1.75 0 0 1 1 12.25v-2.5a.75.75 0 0 1 1.5 0v2.5c0 .138.112.25.25.25h10.5a.25.25 0 0 0 .25-.25v-2.5a.75.75 0 0 1 1.5 0v2.5A1.75 1.75 0 0 1 13.25 14Z"/><path d="M7.25 7.689V2a.75.75 0 0 1 1.5 0v5.689l1.97-1.969a.749.749 0 1 1 1.06 1.06l-3.25 3.25a.749.749 0 0 1-1.06 0L4.22 6.78a.749.749 0 1 1 1.06-1.06l1.97 1.969Z"/></svg>
+                                <span>获取原始 Markdown</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div><!--/container -->
-    </div><!--/mirrors -->
-    <!-- footer style & markup start -->
+
+        <!-- Same-category article navigation -->
+        
+
+        <!-- Table of Contents -->
+        <h2 class="toc-heading" id="in-this-article">在本文中</h2>
+        <nav class="toc-nav" aria-labelledby="in-this-article">
+            <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="#在-macos-catalina-上安装与配置-burp-suite-202673">在 macOS Catalina 上安装与配置 Burp Suite 2026.7.3</a></li>
+<li class="toc-entry toc-h2"><a href="#一系统环境与前置要求">一、系统环境与前置要求</a></li>
+<li class="toc-entry toc-h2"><a href="#二下载-burp-suite">二、下载 Burp Suite</a></li>
+<li class="toc-entry toc-h2"><a href="#三配置与启动">三、配置与启动</a></li>
+<li class="toc-entry toc-h2"><a href="#四常见问题与解决方案">四、常见问题与解决方案</a></li>
+<li class="toc-entry toc-h2"><a href="#五加载-mcp-扩展如需连接-claude-code">五、加载 MCP 扩展（如需连接 Claude Code）</a></li>
+<li class="toc-entry toc-h2"><a href="#六总结与建议">六、总结与建议</a></li>
+</ul>
+        </nav>
+    </div>
+</div>
+
+
+<script>
+function copyAsMarkdown() {
+    var rawPath = "https://raw.githubusercontent.com/Bin4xin/bin4xin.github.io/main/_posts/blog/2026-08-08-Burp-Suite-macOS-Catalina-install-setup-walkthrough.md";
+    fetch(rawPath)
+        .then(function(res) {
+            if (!res.ok) throw new Error('HTTP error ' + res.status);
+            return res.text();
+        })
+        .then(function(text) {
+            return navigator.clipboard.writeText(text);
+        })
+        .then(function() {
+            var btn = document.querySelector('.toc-copy-btn');
+            var textEl = btn.querySelector('.toc-btn-text');
+            var origText = textEl.textContent;
+            
+            textEl.textContent = '已复制！';
+            btn.classList.add('toc-copy-success');
+            
+            setTimeout(function() {
+                textEl.textContent = origText;
+                btn.classList.remove('toc-copy-success');
+            }, 2000);
+        })
+        .catch(function(err) {
+            console.error('Failed to copy markdown:', err);
+        });
+}
+
+function toggleTocDropdown(e) {
+    e.stopPropagation();
+    var menu = document.getElementById('tocDropdownMenu');
+    var trigger = e.currentTarget;
+    var isOpen = menu.classList.contains('toc-dropdown-open');
+    menu.classList.toggle('toc-dropdown-open');
+    trigger.setAttribute('aria-expanded', !isOpen);
+}
+
+document.addEventListener('click', function(e) {
+    var menu = document.getElementById('tocDropdownMenu');
+    if (menu && !menu.contains(e.target) && !e.target.closest('.toc-dropdown-trigger')) {
+        menu.classList.remove('toc-dropdown-open');
+        var trigger = document.querySelector('.toc-dropdown-trigger');
+        if (trigger) trigger.setAttribute('aria-expanded', 'false');
+    }
+});
+</script>
+    </div><!--/row -->
+</div><!--/container -->
+
+                <!-- footer style & markup start -->
 <style>
     :root {
       --ftr-bg: rgba(255, 255, 255, 0.75);
@@ -1688,9 +2986,34 @@ document.addEventListener(&#39;click&#39;, function(e) {
     </div>
   </div>
   <!-- footer style & markup end -->
-  </body>
-</html>
-<!--
-  vim: ts=2 sts=2 sw=2 noexpandtab
+
+    </body>
+
+    <script src="/assets/js/copy.js"></script>
+<!--TODONE.
+**FireFox display BUG**
+position-fixed in FireFox display position -> none
+- Reference:
+    - { @link https://developer.mozilla.org/zh-CN/docs/Web/CSS/position#browser_compatibility }
+    - { @link https://blog.csdn.net/DDD4V/article/details/123354124 }
+    - { @link https://juejin.cn/post/6844904100576886797 }
+        - { @link Demo https://codepen.io/li377242494/pen/VwLGGaR }
+Fiex In `[assets/css/style.scss](https://github.com/Bin4xin/bin4xin.github.io/blob/main/assets/css/style.scss)`
+    - tooltipped css postion.
 -->
 
+<!--<link rel="preload" href="https://bobbyhadz.com/_next/static/css/b9669d7c5a48325f.css" as="style"/>-->
+<!--<link rel="stylesheet" href="https://bobbyhadz.com/_next/static/css/b9669d7c5a48325f.css" data-n-g=""/>-->
+
+<divs role="tooltip" class="position-fixed bottom-0 mb-4 right-5 mr-4 z-1 transition-200 opacity-0" onclick="$(&quot;html,body&quot;).animate({scrollTop:0}, 1000);">
+    <button class="tooltipped tooltipped-n tooltipped-no-delay color-bg-accent-emphasis color-fg-on-emphasis circle border-0" style="width:45px;height:45px"
+            aria-label="滚动到顶部">
+        <svg aria-hidden="true" role="img" class="octicon octicon-chevron-up" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="display:inline-block;user-select:none;vertical-align:text-bottom;overflow:visible">
+            <path fill-rule="evenodd" d="M3.22 9.78a.75.75 0 010-1.06l4.25-4.25a.75.75 0 011.06 0l4.25 4.25a.75.75 0 01-1.06 1.06L8 6.06 4.28 9.78a.75.75 0 01-1.06 0z">
+            </path>
+        </svg>
+    </button>
+</divs>
+
+
+</html>

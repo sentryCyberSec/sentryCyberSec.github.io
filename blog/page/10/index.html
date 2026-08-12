@@ -32,6 +32,89 @@
                     
                     &lt;div class=&quot;blog-card&quot;&gt;
     &lt;div class=&quot;blog-card-header&quot;&gt;
+        &lt;a class=&quot;blog-card-title&quot; href=&quot;/blog/2022/反弹Shell学习记录/&quot;&gt;
+            反弹Shell学习记录
+        &lt;/a&gt;
+        &lt;div class=&quot;blog-card-actions&quot;&gt;
+            &lt;a class=&quot;blog-card-action-btn&quot; href=&quot;/blog/2022/反弹Shell学习记录/&quot; title=&quot;阅读全文&quot;&gt;
+                &lt;svg viewBox=&quot;0 0 16 16&quot; width=&quot;14&quot; height=&quot;14&quot; fill=&quot;currentColor&quot;&gt;&lt;path d=&quot;M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z&quot;/&gt;&lt;/svg&gt;
+            &lt;/a&gt;
+            
+            &lt;a class=&quot;blog-card-action-btn&quot; href=&quot;https://github.com/Bin4xin/bin4xin.github.io/edit/main/_posts/blog/2022-01-19-反弹Shell学习记录.md&quot; target=&quot;_blank&quot; title=&quot;编辑此页&quot;&gt;
+                &lt;svg viewBox=&quot;0 0 16 16&quot; width=&quot;14&quot; height=&quot;14&quot; fill=&quot;currentColor&quot;&gt;&lt;path d=&quot;M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Z&quot;/&gt;&lt;/svg&gt;
+            &lt;/a&gt;
+            
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    
+    &lt;div class=&quot;blog-card-body&quot;&gt;
+        &lt;p class=&quot;blog-card-excerpt&quot;&gt;
+            该文档是自己学习过程中的记录汇集。现将文档整理出来，留作自己的学习记录历程。同时简单举几种示例演示。
+
+前言
+
+在渗透测试过程中，会经常遇到Linux系统，当我们拿到基本权限后，让Linux来反弹一个Shell出来再正常不过了。因此，在说原理前，先简单说说正向连接与反向连接：
+
+正向连接：
+
+目标主机打开一个监听端口，攻击者在自己的机器对目标机器发起TCP/HTTP/HTTPS连接，这是比较常规的形式。远程桌面、WEB服务、SSH、TELNET等都是正向连接。
+
+反向连...
+        &lt;/p&gt;
+    &lt;/div&gt;
+    
+
+    &lt;div class=&quot;blog-card-footer&quot;&gt;
+        &lt;div class=&quot;blog-card-meta&quot;&gt;
+            &lt;span class=&quot;blog-card-author&quot;&gt;
+                
+&lt;img alt=&quot;Yang2635&quot; src=&quot;https://avatars.githubusercontent.com/u/60431848?v=4&quot;/&gt;
+            &lt;/span&gt;
+            &lt;!--article author end--&gt;
+
+
+
+
+
+
+
+
+&lt;span class=&quot;ymh-author-badge&quot;&gt;
+    &lt;a class=&quot;ymh-author-link&quot; href=&quot;https://github.com/Yang2635&quot; target=&quot;_blank&quot;&gt;
+        &lt;span class=&quot;ymh-author-avatar&quot;&gt;Y&lt;/span&gt;
+        Yang2635
+    &lt;/a&gt;
+
+    
+
+    
+    
+    
+    
+    
+
+    &lt;span class=&quot;ymh-time-badge&quot;&gt;
+        
+            Jun 10, 54019
+        
+    &lt;/span&gt;
+&lt;/span&gt;
+
+        &lt;/div&gt;
+        &lt;div class=&quot;blog-card-meta&quot;&gt;
+            &lt;span class=&quot;blog-card-status-dot&quot;&gt;&lt;/span&gt;
+            
+            &lt;a class=&quot;blog-card-hash&quot; href=&quot;https://github.com/Bin4xin/bin4xin.github.io/commit/3bc2bd3e&quot; target=&quot;_blank&quot;&gt;
+                3bc2bd3
+            &lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+                
+                    
+                    &lt;div class=&quot;blog-card&quot;&gt;
+    &lt;div class=&quot;blog-card-header&quot;&gt;
         &lt;a class=&quot;blog-card-title&quot; href=&quot;/blog/2022/SQL注入学习记录/&quot;&gt;
             SQL注入学习记录
         &lt;/a&gt;
@@ -109,8 +192,8 @@ MySQL默认有inform...
         &lt;div class=&quot;blog-card-meta&quot;&gt;
             &lt;span class=&quot;blog-card-status-dot&quot;&gt;&lt;/span&gt;
             
-            &lt;a class=&quot;blog-card-hash&quot; href=&quot;https://github.com/Bin4xin/bin4xin.github.io/commit/869b3494&quot; target=&quot;_blank&quot;&gt;
-                869b349
+            &lt;a class=&quot;blog-card-hash&quot; href=&quot;https://github.com/Bin4xin/bin4xin.github.io/commit/3bc2bd3e&quot; target=&quot;_blank&quot;&gt;
+                3bc2bd3
             &lt;/a&gt;
         &lt;/div&gt;
     &lt;/div&gt;
@@ -202,96 +285,8 @@ Android上的应用安装文件是apk格式，这个apk文件其实就是个归�
         &lt;div class=&quot;blog-card-meta&quot;&gt;
             &lt;span class=&quot;blog-card-status-dot&quot;&gt;&lt;/span&gt;
             
-            &lt;a class=&quot;blog-card-hash&quot; href=&quot;https://github.com/Bin4xin/bin4xin.github.io/commit/869b3494&quot; target=&quot;_blank&quot;&gt;
-                869b349
-            &lt;/a&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-                
-                    
-                    &lt;div class=&quot;blog-card&quot;&gt;
-    &lt;div class=&quot;blog-card-header&quot;&gt;
-        &lt;a class=&quot;blog-card-title&quot; href=&quot;/blog/2022/Learning-process-about-virtual-function-table/&quot;&gt;
-            关于虚函数表的学习过程
-        &lt;/a&gt;
-        &lt;div class=&quot;blog-card-actions&quot;&gt;
-            &lt;a class=&quot;blog-card-action-btn&quot; href=&quot;/blog/2022/Learning-process-about-virtual-function-table/&quot; title=&quot;阅读全文&quot;&gt;
-                &lt;svg viewBox=&quot;0 0 16 16&quot; width=&quot;14&quot; height=&quot;14&quot; fill=&quot;currentColor&quot;&gt;&lt;path d=&quot;M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z&quot;/&gt;&lt;/svg&gt;
-            &lt;/a&gt;
-            
-            &lt;a class=&quot;blog-card-action-btn&quot; href=&quot;https://github.com/Bin4xin/bin4xin.github.io/edit/main/_posts/blog/2022-01-09-Learning-process-about-virtual-function-table.md&quot; target=&quot;_blank&quot; title=&quot;编辑此页&quot;&gt;
-                &lt;svg viewBox=&quot;0 0 16 16&quot; width=&quot;14&quot; height=&quot;14&quot; fill=&quot;currentColor&quot;&gt;&lt;path d=&quot;M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Z&quot;/&gt;&lt;/svg&gt;
-            &lt;/a&gt;
-            
-        &lt;/div&gt;
-    &lt;/div&gt;
-
-    
-    &lt;div class=&quot;blog-card-body&quot;&gt;
-        &lt;p class=&quot;blog-card-excerpt&quot;&gt;
-            虚函数表
-
-简介
-
-C++面向对象的多态性，这里我们就要涉及到虚函数了，接下来我们将用反汇编来学习虚函数的原理。
-
-直接调用与简介调用
-
-这里的直接调用和间接调用时汇编层面上的，我们在看反汇编代码的时候经常会看到 call —- (调用函数的那个call)，那这个呢就是直接调用，而还有一种形式是这样的call [—-]那这个呢就是间接调用。
-
-直接调用和简介调用反馈到十六进制编码上就是E8(直接调用)和FF(简介调用)
-
-虚函数
-
-class Base{
-public:...
-        &lt;/p&gt;
-    &lt;/div&gt;
-    
-
-    &lt;div class=&quot;blog-card-footer&quot;&gt;
-        &lt;div class=&quot;blog-card-meta&quot;&gt;
-            &lt;span class=&quot;blog-card-author&quot;&gt;
-                
-&lt;img alt=&quot;codecat11&quot; src=&quot;https://avatars.githubusercontent.com/u/77820961?v=4&quot;/&gt;
-            &lt;/span&gt;
-            &lt;!--article author end--&gt;
-
-
-
-
-
-
-
-
-&lt;span class=&quot;ymh-author-badge&quot;&gt;
-    &lt;a class=&quot;ymh-author-link&quot; href=&quot;https://github.com/codecat11&quot; target=&quot;_blank&quot;&gt;
-        &lt;span class=&quot;ymh-author-avatar&quot;&gt;C&lt;/span&gt;
-        codecat11
-    &lt;/a&gt;
-
-    
-
-    
-    
-    
-    
-    
-
-    &lt;span class=&quot;ymh-time-badge&quot;&gt;
-        
-            Jan 23, 53992
-        
-    &lt;/span&gt;
-&lt;/span&gt;
-
-        &lt;/div&gt;
-        &lt;div class=&quot;blog-card-meta&quot;&gt;
-            &lt;span class=&quot;blog-card-status-dot&quot;&gt;&lt;/span&gt;
-            
-            &lt;a class=&quot;blog-card-hash&quot; href=&quot;https://github.com/Bin4xin/bin4xin.github.io/commit/869b3494&quot; target=&quot;_blank&quot;&gt;
-                869b349
+            &lt;a class=&quot;blog-card-hash&quot; href=&quot;https://github.com/Bin4xin/bin4xin.github.io/commit/3bc2bd3e&quot; target=&quot;_blank&quot;&gt;
+                3bc2bd3
             &lt;/a&gt;
         &lt;/div&gt;
     &lt;/div&gt;
@@ -765,7 +760,7 @@ public:...
         
         &lt;div class=&quot;ntc-meta-item&quot;&gt;
           &lt;span&gt;&lt;i class=&quot;fa fa-angle-right mr-1&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; BLOG&lt;/span&gt;
-          &lt;span class=&quot;ntc-badge&quot;&gt;88&lt;/span&gt;
+          &lt;span class=&quot;ntc-badge&quot;&gt;89&lt;/span&gt;
         &lt;/div&gt;
         
         &lt;div class=&quot;ntc-meta-item&quot;&gt;
@@ -1009,6 +1004,89 @@ public:...
                     
                     <div class="blog-card">
     <div class="blog-card-header">
+        <a class="blog-card-title" href="/blog/2022/反弹Shell学习记录/">
+            反弹Shell学习记录
+        </a>
+        <div class="blog-card-actions">
+            <a class="blog-card-action-btn" href="/blog/2022/反弹Shell学习记录/" title="阅读全文">
+                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"/></svg>
+            </a>
+            
+            <a class="blog-card-action-btn" href="https://github.com/Bin4xin/bin4xin.github.io/edit/main/_posts/blog/2022-01-19-反弹Shell学习记录.md" target="_blank" title="编辑此页">
+                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Z"/></svg>
+            </a>
+            
+        </div>
+    </div>
+
+    
+    <div class="blog-card-body">
+        <p class="blog-card-excerpt">
+            该文档是自己学习过程中的记录汇集。现将文档整理出来，留作自己的学习记录历程。同时简单举几种示例演示。
+
+前言
+
+在渗透测试过程中，会经常遇到Linux系统，当我们拿到基本权限后，让Linux来反弹一个Shell出来再正常不过了。因此，在说原理前，先简单说说正向连接与反向连接：
+
+正向连接：
+
+目标主机打开一个监听端口，攻击者在自己的机器对目标机器发起TCP/HTTP/HTTPS连接，这是比较常规的形式。远程桌面、WEB服务、SSH、TELNET等都是正向连接。
+
+反向连...
+        </p>
+    </div>
+    
+
+    <div class="blog-card-footer">
+        <div class="blog-card-meta">
+            <span class="blog-card-author">
+                
+<img alt="Yang2635" src="https://avatars.githubusercontent.com/u/60431848?v=4"/>
+            </span>
+            <!--article author end-->
+
+
+
+
+
+
+
+
+<span class="ymh-author-badge">
+    <a class="ymh-author-link" href="https://github.com/Yang2635" target="_blank">
+        <span class="ymh-author-avatar">Y</span>
+        Yang2635
+    </a>
+
+    
+
+    
+    
+    
+    
+    
+
+    <span class="ymh-time-badge">
+        
+            Jun 10, 54019
+        
+    </span>
+</span>
+
+        </div>
+        <div class="blog-card-meta">
+            <span class="blog-card-status-dot"></span>
+            
+            <a class="blog-card-hash" href="https://github.com/Bin4xin/bin4xin.github.io/commit/3bc2bd3e" target="_blank">
+                3bc2bd3
+            </a>
+        </div>
+    </div>
+</div>
+                
+                    
+                    <div class="blog-card">
+    <div class="blog-card-header">
         <a class="blog-card-title" href="/blog/2022/SQL注入学习记录/">
             SQL注入学习记录
         </a>
@@ -1086,8 +1164,8 @@ MySQL默认有inform...
         <div class="blog-card-meta">
             <span class="blog-card-status-dot"></span>
             
-            <a class="blog-card-hash" href="https://github.com/Bin4xin/bin4xin.github.io/commit/869b3494" target="_blank">
-                869b349
+            <a class="blog-card-hash" href="https://github.com/Bin4xin/bin4xin.github.io/commit/3bc2bd3e" target="_blank">
+                3bc2bd3
             </a>
         </div>
     </div>
@@ -1179,96 +1257,8 @@ Android上的应用安装文件是apk格式，这个apk文件其实就是个归�
         <div class="blog-card-meta">
             <span class="blog-card-status-dot"></span>
             
-            <a class="blog-card-hash" href="https://github.com/Bin4xin/bin4xin.github.io/commit/869b3494" target="_blank">
-                869b349
-            </a>
-        </div>
-    </div>
-</div>
-                
-                    
-                    <div class="blog-card">
-    <div class="blog-card-header">
-        <a class="blog-card-title" href="/blog/2022/Learning-process-about-virtual-function-table/">
-            关于虚函数表的学习过程
-        </a>
-        <div class="blog-card-actions">
-            <a class="blog-card-action-btn" href="/blog/2022/Learning-process-about-virtual-function-table/" title="阅读全文">
-                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"/></svg>
-            </a>
-            
-            <a class="blog-card-action-btn" href="https://github.com/Bin4xin/bin4xin.github.io/edit/main/_posts/blog/2022-01-09-Learning-process-about-virtual-function-table.md" target="_blank" title="编辑此页">
-                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Z"/></svg>
-            </a>
-            
-        </div>
-    </div>
-
-    
-    <div class="blog-card-body">
-        <p class="blog-card-excerpt">
-            虚函数表
-
-简介
-
-C++面向对象的多态性，这里我们就要涉及到虚函数了，接下来我们将用反汇编来学习虚函数的原理。
-
-直接调用与简介调用
-
-这里的直接调用和间接调用时汇编层面上的，我们在看反汇编代码的时候经常会看到 call —- (调用函数的那个call)，那这个呢就是直接调用，而还有一种形式是这样的call [—-]那这个呢就是间接调用。
-
-直接调用和简介调用反馈到十六进制编码上就是E8(直接调用)和FF(简介调用)
-
-虚函数
-
-class Base{
-public:...
-        </p>
-    </div>
-    
-
-    <div class="blog-card-footer">
-        <div class="blog-card-meta">
-            <span class="blog-card-author">
-                
-<img alt="codecat11" src="https://avatars.githubusercontent.com/u/77820961?v=4"/>
-            </span>
-            <!--article author end-->
-
-
-
-
-
-
-
-
-<span class="ymh-author-badge">
-    <a class="ymh-author-link" href="https://github.com/codecat11" target="_blank">
-        <span class="ymh-author-avatar">C</span>
-        codecat11
-    </a>
-
-    
-
-    
-    
-    
-    
-    
-
-    <span class="ymh-time-badge">
-        
-            Jan 23, 53992
-        
-    </span>
-</span>
-
-        </div>
-        <div class="blog-card-meta">
-            <span class="blog-card-status-dot"></span>
-            
-            <a class="blog-card-hash" href="https://github.com/Bin4xin/bin4xin.github.io/commit/869b3494" target="_blank">
-                869b349
+            <a class="blog-card-hash" href="https://github.com/Bin4xin/bin4xin.github.io/commit/3bc2bd3e" target="_blank">
+                3bc2bd3
             </a>
         </div>
     </div>
@@ -1742,7 +1732,7 @@ public:...
         
         <div class="ntc-meta-item">
           <span><i class="fa fa-angle-right mr-1" aria-hidden="true"></i> BLOG</span>
-          <span class="ntc-badge">88</span>
+          <span class="ntc-badge">89</span>
         </div>
         
         <div class="ntc-meta-item">
