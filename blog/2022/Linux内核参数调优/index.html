@@ -24,878 +24,7 @@
 <!-- Open Graph metadata -->
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Linux内核参数调优 | © 哨兵" />
-<meta property="og:description" content=" &lt;div class=&quot;container mtb post-layout&quot;&gt;
-        &lt;!-- SINGLE POST --&gt;
-        &lt;div class=&quot;markdown-body-img flex-column&quot;&gt;
-            &lt;!-- Blog Post  --&gt;
-            &lt;h1 class=&quot;ctitle&quot;&gt;Linux内核参数调优&lt;/h1&gt;
-            &lt;div class=&quot;post-meta-row&quot;&gt;
-                &lt;!--article author end--&gt;
-
-
-
-
-
-
-
-
-&lt;span class=&quot;ymh-author-badge&quot;&gt;
-    &lt;a class=&quot;ymh-author-link&quot; href=&quot;https://github.com/Yang2635&quot; target=&quot;_blank&quot;&gt;
-        &lt;span class=&quot;ymh-author-avatar&quot;&gt;Y&lt;/span&gt;
-        Yang2635
-    &lt;/a&gt;
-
-    
-
-    
-    
-    
-    
-    
-
-    &lt;span class=&quot;ymh-time-badge&quot;&gt;
-        
-            May 27, 54197
-        
-    &lt;/span&gt;
-&lt;/span&gt;
-
-            &lt;/div&gt;
-            &lt;div class=&quot;post-content&quot;&gt;
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-        
-
-
-
-
-
-
-
-&lt;style&gt;
-    .gh-banner {
-        --banner-bg: #eef5ff;
-        --banner-border: rgba(84, 174, 255, 0.3);
-        --banner-icon-color: #1f7bdf;
-        --banner-text: #1f2328;
-        --banner-link: #0969da;
-        --banner-link-hover: #0550ae;
-        background-color: var(--banner-bg);
-        border: 1px solid var(--banner-border);
-        border-radius: 12px;
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
-        display: flex;
-        align-items: flex-start;
-        gap: 0.75rem;
-        padding: 1rem 1rem 1rem 1.25rem;
-        transition: all 0.2s ease;
-        position: relative;
-        margin: 25px;
-    }
-    .gh-banner.error {
-        --banner-bg: #ffebe9;
-        --banner-border: rgba(255, 129, 130, 0.4);
-        --banner-icon-color: #cf222e;
-    }
-    .gh-banner.warn {
-        --banner-bg: #fff8e7;
-        --banner-border: rgba(215, 173, 62, 0.4);
-        --banner-icon-color: #bc6f00;
-    }
-    /* 成功主题 */
-    .gh-banner.success {
-        --banner-bg: #dafbe1;
-        --banner-border: rgba(74, 194, 107, 0.4);
-        --banner-icon-color: #08882b;
-    }
-    @media (prefers-color-scheme: dark) {
-        .gh-banner {
-            --banner-bg: #1c2a3e;
-            --banner-border: #2d4a6e;
-            --banner-icon-color: #6cb4ff;
-            --banner-text: #e6edf3;
-            --banner-link: #6cb4ff;
-            --banner-link-hover: #9acbff;
-            background-color: var(--banner-bg);
-            border-color: #2d4a6e;
-        }
-        .gh-banner.error {
-            --banner-bg: #3b1e1e;
-            --banner-border: #da3633;
-            --banner-icon-color: #f85149;
-        }
-        .gh-banner.warn {
-            --banner-bg: #382d1a;
-            --banner-border: #d29922;
-            --banner-icon-color: #e3b341;
-        }
-        .gh-banner.success {
-            --banner-bg: #1b3424;
-            --banner-border: #238636;
-            --banner-icon-color: #3fb950;
-        }
-    }
-    .banner-icon {
-        flex-shrink: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-top: 1px;
-    }
-    .banner-icon svg {
-        width: 20px;
-        height: 20px;
-        color: var(--banner-icon-color);
-        fill: currentColor;
-        display: block;
-    }
-    .banner-content {
-        flex: 1;
-        font-size: 0.9375rem;
-        font-weight: 400;
-        color: var(--banner-text);
-        line-height: 1.5;
-        word-break: break-word;
-    }
-    .sr-only {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        white-space: nowrap;
-        border-width: 0;
-    }
-    .banner-content a {
-        color: var(--banner-link);
-        text-decoration: none;
-        font-weight: 500;
-        transition: color 0.12s ease, text-decoration 0.12s;
-    }
-    .banner-content a:hover {
-        color: var(--banner-link-hover);
-        text-decoration: underline;
-        text-underline-offset: 2px;
-    }
-    .banner-text {
-        display: inline;
-    }
-    .gh-banner.hide-banner {
-        display: none;
-    }
-    @media (max-width: 640px) {
-        .gh-banner {
-            padding: 0.875rem 1rem;
-            gap: 0.5rem;
-        }
-        .banner-content {
-            font-size: 0.875rem;
-        }
-        .banner-icon svg {
-            width: 18px;
-            height: 18px;
-        }
-    }
-    .banner-content span {
-        display: inline;
-    }
-    .banner-content a {
-        display: inline-block;
-    }
-&lt;/style&gt;
-
-&lt;section class=&quot;gh-banner error&quot; aria-labelledby=&quot;banner-title-上次修改距今已-strong-1608-strong-天-建议确认内容是否仍然成立&quot; role=&quot;region&quot; data-dismissible=&quot;true&quot;&gt;
-    &lt;div class=&quot;banner-icon&quot; aria-hidden=&quot;true&quot;&gt;
-        
-        &lt;svg viewBox=&quot;0 0 16 16&quot; fill=&quot;currentColor&quot;&gt;
-            &lt;path d=&quot;M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575L6.457 1.047ZM8 4.75a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 4.75Zm.75 6.75a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Z&quot;&gt;&lt;/path&gt;
-        &lt;/svg&gt;
-        
-    &lt;/div&gt;
-
-    &lt;div class=&quot;banner-content&quot;&gt;
-        &lt;span class=&quot;banner-text&quot;&gt;上次修改距今已 &lt;strong&gt;1608&lt;/strong&gt; 天，建议确认内容是否仍然成立&lt;/span&gt;
-    &lt;/div&gt;
-&lt;/section&gt;
-    
-    
-
-
-
-
-
-
-
-&lt;style&gt;
-    .gh-banner {
-        --banner-bg: #eef5ff;
-        --banner-border: rgba(84, 174, 255, 0.3);
-        --banner-icon-color: #1f7bdf;
-        --banner-text: #1f2328;
-        --banner-link: #0969da;
-        --banner-link-hover: #0550ae;
-        background-color: var(--banner-bg);
-        border: 1px solid var(--banner-border);
-        border-radius: 12px;
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
-        display: flex;
-        align-items: flex-start;
-        gap: 0.75rem;
-        padding: 1rem 1rem 1rem 1.25rem;
-        transition: all 0.2s ease;
-        position: relative;
-        margin: 25px;
-    }
-    .gh-banner.error {
-        --banner-bg: #ffebe9;
-        --banner-border: rgba(255, 129, 130, 0.4);
-        --banner-icon-color: #cf222e;
-    }
-    .gh-banner.warn {
-        --banner-bg: #fff8e7;
-        --banner-border: rgba(215, 173, 62, 0.4);
-        --banner-icon-color: #bc6f00;
-    }
-    /* 成功主题 */
-    .gh-banner.success {
-        --banner-bg: #dafbe1;
-        --banner-border: rgba(74, 194, 107, 0.4);
-        --banner-icon-color: #08882b;
-    }
-    @media (prefers-color-scheme: dark) {
-        .gh-banner {
-            --banner-bg: #1c2a3e;
-            --banner-border: #2d4a6e;
-            --banner-icon-color: #6cb4ff;
-            --banner-text: #e6edf3;
-            --banner-link: #6cb4ff;
-            --banner-link-hover: #9acbff;
-            background-color: var(--banner-bg);
-            border-color: #2d4a6e;
-        }
-        .gh-banner.error {
-            --banner-bg: #3b1e1e;
-            --banner-border: #da3633;
-            --banner-icon-color: #f85149;
-        }
-        .gh-banner.warn {
-            --banner-bg: #382d1a;
-            --banner-border: #d29922;
-            --banner-icon-color: #e3b341;
-        }
-        .gh-banner.success {
-            --banner-bg: #1b3424;
-            --banner-border: #238636;
-            --banner-icon-color: #3fb950;
-        }
-    }
-    .banner-icon {
-        flex-shrink: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-top: 1px;
-    }
-    .banner-icon svg {
-        width: 20px;
-        height: 20px;
-        color: var(--banner-icon-color);
-        fill: currentColor;
-        display: block;
-    }
-    .banner-content {
-        flex: 1;
-        font-size: 0.9375rem;
-        font-weight: 400;
-        color: var(--banner-text);
-        line-height: 1.5;
-        word-break: break-word;
-    }
-    .sr-only {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        white-space: nowrap;
-        border-width: 0;
-    }
-    .banner-content a {
-        color: var(--banner-link);
-        text-decoration: none;
-        font-weight: 500;
-        transition: color 0.12s ease, text-decoration 0.12s;
-    }
-    .banner-content a:hover {
-        color: var(--banner-link-hover);
-        text-decoration: underline;
-        text-underline-offset: 2px;
-    }
-    .banner-text {
-        display: inline;
-    }
-    .gh-banner.hide-banner {
-        display: none;
-    }
-    @media (max-width: 640px) {
-        .gh-banner {
-            padding: 0.875rem 1rem;
-            gap: 0.5rem;
-        }
-        .banner-content {
-            font-size: 0.875rem;
-        }
-        .banner-icon svg {
-            width: 18px;
-            height: 18px;
-        }
-    }
-    .banner-content span {
-        display: inline;
-    }
-    .banner-content a {
-        display: inline-block;
-    }
-&lt;/style&gt;
-
-&lt;section class=&quot;gh-banner warn&quot; aria-labelledby=&quot;banner-title-上次动笔在-strong-4-年前-strong-放了一阵了&quot; role=&quot;region&quot; data-dismissible=&quot;true&quot;&gt;
-    &lt;div class=&quot;banner-icon&quot; aria-hidden=&quot;true&quot;&gt;
-        
-        &lt;svg viewBox=&quot;0 0 16 16&quot; fill=&quot;currentColor&quot;&gt;
-            &lt;path d=&quot;M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575L6.457 1.047ZM8 4.75a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 4.75Zm.75 6.75a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Z&quot;&gt;&lt;/path&gt;
-        &lt;/svg&gt;
-        
-    &lt;/div&gt;
-
-    &lt;div class=&quot;banner-content&quot;&gt;
-        &lt;span class=&quot;banner-text&quot;&gt;上次动笔在 &lt;strong&gt;4 年前&lt;/strong&gt;，放了一阵了&lt;/span&gt;
-    &lt;/div&gt;
-&lt;/section&gt;
-
-                &lt;h3 id=&quot;前言&quot;&gt;前言&lt;/h3&gt;
-
-&lt;p&gt;在Linux中，/proc/sys下内核文件与配置文件sysctl.conf中变量存在着对应关系，我们需要对内核参数进行修改，可以直接在&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/sysctl.conf&lt;/code&gt;中添加修改，然后使用命令：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sysctl –p&lt;/code&gt;使其生效。&lt;/p&gt;
-
-&lt;p&gt;参数调优时，尽量不要盲目修改相关参数，这样做反而可能会导致性能下降，应逐个参数对其调优，然后对比调优前后的效果。&lt;/p&gt;
-
-&lt;h3 id=&quot;参数配置&quot;&gt;参数配置&lt;/h3&gt;
-
-&lt;p&gt;相关的一些参数优化配置及说明如下：&lt;/p&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 表示开启SYN Cookies。当出现SYN等待队列溢出时，启用cookies 来处理，可防范少量SYN攻击，默认为0，表示关闭
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;ipv4&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;tcp_syncookies&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 表示开启重用。允许将TIME-WAIT sockets重新用于新的TCP连接，默认为0，表示关闭;
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;ipv4&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;tcp_tw_reuse&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 开启记录欺骗，源路由和重定向包
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;ipv4&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;conf&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;all&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;log_martians&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;ipv4&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;conf&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;default&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;log_martians&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 开启恶意icmp错误消息保护
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;ipv4&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;icmp_ignore_bogus_error_responses&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 避免放大攻击
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;ipv4&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;icmp_echo_ignore_broadcasts&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 处理无源路由的包
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;ipv4&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;conf&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;all&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;accept_source_route&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;ipv4&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;conf&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;default&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;accept_source_route&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 长示开启TCP连接中TIME-WAIT sockets 的快速回收，默认为0，长示关闭;
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;ipv4&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;tcp_tw_recycle&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 修改系航默认的 TIMEOUT 时间。保持在FIN-WAIT-2状态的时间，使系统可以处理更多的连接，此参数值为整数，单位：秒。
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;ipv4&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;tcp_fin_timeout&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 表示当 keepalive起用的时候，TCP发送keepalive消息的频度。缺省是2小时，改为20分钟，单位：秒。
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;ipv4&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;tcp_keepalive_time&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;1200&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 表示用于向外连接的端口范围。缺省情况下很小: 32768到61000，改为10000到65000。(注意:这里不要将最低值设的太低，否则可能会占用掉正常的端口!)
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;ipv4&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;ip_local_port_range&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;10000&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;65000&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 表示SYN队列的长度，默认为1024，加大队列长度为8192，可以容纳更多等待连接的网络连接数。
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;ipv4&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;tcp_max_syn_backlog&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;8192&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 表示系统同时保持TIME_WAIT的最大数量，如果超过这个数字，TIME_WAIT将立刻被清除并打印警告信息。默认为180000，改为6000。
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;ipv4&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;tcp_max_tw_buckets&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;6000&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 每个网络接口接收数据包的速率比内核处理这些包的速率快时，允许送到队列的数据包的最大数目。
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;core&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;netdev_max_backlog&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;32768&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# web应用中 listen函数的backlog默认会给我们内核参数的net.core.somaxeonm限制到128，而nginx定义的NGX_LISTEN_BACKLOG默认为511，所以有必要调整这个值。
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;core&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;somaxconn&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;32768&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 为了打开对端的连接，内核需要发送一个SYN并附带一个回应前面一个SYN 的ACK。也就是所谓三次握手中的第二次握手。这个设置决定了内核放弃连接之前发送SYN+ACK包的数量。
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;ipv4&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;tcp_synack_retries&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 在内核放弃建立连接之前发送SYN包的数量。
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;ipv4&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;tcp_syn_retries&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 开启重用。允许将TIME-WAIT sockets重新用于新的TCP连按
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;ipv4&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;tcp_tw_reuse&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# TCP 写 buffer
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;ipv4&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;tcp_wmem&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;8192&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;436600&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;873200&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# TCP读 buffer
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;ipv4&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;tcp_rmem&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;32768&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;436600&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;873200&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;ipv4&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;tcp_mem&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;94500000&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;91500000&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;92700000&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;##上面参数同样有3个值,意思是:
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;ipv4&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;tcp_mem&lt;/span&gt;[&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;]:低于此值，&lt;span class=&quot;n&quot;&gt;TCP&lt;/span&gt;没有内存压力。
-&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;ipv4&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;tcp_mem&lt;/span&gt;[&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;]:在此值下，进入内存压力阶段。
-&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;ipv4&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;tcp_mem&lt;/span&gt;[&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;]:高于此值，&lt;span class=&quot;n&quot;&gt;TCP&lt;/span&gt;拒绝分配&lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt; 。
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 系统中最多有多少个TCP套接字不被关联到任何一个用户文件句柄上。如果超过这个数字，连接将即刻被复位并打印出警告信息。
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;ipv4&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;tcp_max_orphans&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;3276800&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 如果套接字由本端要求关闭，这个参数决定了它保持在FIN-WAIT-2状态的时间。对端可以出错并永远不关闭连接，甚至意外当机。缺省值是60秒。
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;ipv4&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;tcp_fin_timeout&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;30&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;一些其他的相关参数优化：&lt;/p&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 最大的待发送TCP数据缓冲区空间  
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;inet&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;tcp&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;sendspace&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;65536&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 最大的接受TCP缓冲区空间  
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;inet&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;tcp&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;recvspace&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;65536&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 最大的接受UDP缓冲区大小  
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;inet&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;udp&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;sendspace&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;65535&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 最大的发送UDP数据缓冲区大小  
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;inet&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;udp&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;maxdgram&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;65535&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 本地套接字连接的数据发送空间  
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;local&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;stream&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;sendspace&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;65535&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 加快网络性能的协议  
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;inet&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;tcp&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;rfc1323&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;inet&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;tcp&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;rfc1644&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;inet&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;tcp&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;rfc3042&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;inet&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;tcp&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;rfc3390&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 最大的套接字缓冲区  
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kern&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;ipc&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;maxsockbuf&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;2097152&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 系统中允许的最多文件数量  
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kern&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;maxfiles&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;65536&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 增加系统文件描述符限制
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fs&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;file&lt;/span&gt;-&lt;span class=&quot;n&quot;&gt;max&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;65535&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 每个进程能够同时打开的最大文件数量  
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kern&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;maxfilesperproc&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;32768&lt;/span&gt;  
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 当一台计算机发起TCP连接请求时，系统会回应ACK应答数据包。该选项设置是否延迟ACK应答数据包，把它和包含数据的数据包一起发送，在高速网络和低负载的情况下会略微提高性能，但在网络连接较差的时候，对方计算机得不到应答会持续发起连接请求，反而会降低性能。  
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;inet&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;tcp&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;delayed_ack&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;  
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 屏蔽ICMP重定向功能  
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;inet&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;icmp&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;drop_redirect&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;  
-&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;inet&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;icmp&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;log_redirect&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;  
-&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;inet&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;ip&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;redirect&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;  
-&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;inet6&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;ip6&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;redirect&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;  
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 防止ICMP广播风暴  
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;inet&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;icmp&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;bmcastecho&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;  
-&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;inet&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;icmp&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;maskrepl&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;  
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 限制系统发送ICMP速率  
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;inet&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;icmp&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;icmplim&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;100&lt;/span&gt;  
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 安全参数，编译内核的时候加了options TCP_DROP_SYNFIN才可以用  
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;inet&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;icmp&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;icmplim_output&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;  
-&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;inet&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;tcp&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;drop_synfin&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;  
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 设置为1会帮助系统清除没有正常断开的TCP连接，这增加了一些网络带宽的使用，但是一些死掉的连接最终能被识别并清除。死的TCP连接是被拨号用户存取的系统的一个特别的问题，因为用户经常断开modem而不正确的关闭活动的连接  
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;inet&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;tcp&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;always_keepalive&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 若看到net.inet.ip.intr_queue_drops这个在增加，就要调大net.inet.ip.intr_queue_maxlen，为0最好
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;inet&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;ip&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;intr_queue_maxlen&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;1000&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 防止DOS攻击，默认为30000
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;inet&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;tcp&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;msl&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;7500&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 接收到一个已经关闭的端口发来的所有包，直接drop，如果设置为1则是只针对TCP包
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;inet&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;tcp&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;blackhole&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;  
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 接收到一个已经关闭的端口发来的所有UDP包直接drop
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;inet&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;udp&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;blackhole&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;  
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 为网络数据连接时提供缓冲
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;inet&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;tcp&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;inflight&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;enable&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;  
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 如果打开的话每个目标地址一次转发成功以后它的数据都将被记录进路由表和arp数据表，节约路由的计算时间,但会需要大量的内核内存空间来保存路由表
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;inet&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;ip&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;fastforwarding&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;  
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# kernel编译打开options POLLING功能，高负载情况下使用，低负载不推荐。SMP不能和polling一起用
-#kern.polling.enable = 1  
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 并发连接数，默认为128，推荐在1024-4096之间。注：数字越大占用内存也越大
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kern&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;ipc&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;somaxconn&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;2048&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 禁止用户查看其他用户的进程  
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;security&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;bsd&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;see_other_uids&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;  
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 设置kernel安全级别  
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kern&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;securelevel&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;  
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 记录下任何TCP连接  
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;inet&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;tcp&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;log_in_vain&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;  
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 记录下任何UDP连接  
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;inet&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;udp&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;log_in_vain&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;  
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 防止不正确的udp包的攻击  
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;inet&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;udp&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;checksum&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;  
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 防止DOS攻击  
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;inet&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;tcp&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;syncookies&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;  
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 仅为线程提供物理内存支持，需要256M以上内存  
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kern&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;ipc&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;shm_use_phys&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;  
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 线程可使用的最大共享内存  
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kern&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;ipc&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;shmmax&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;67108864&lt;/span&gt;  
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 最大线程数量  
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kern&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;ipc&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;shmall&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;32768&lt;/span&gt;  
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 程序崩溃时不记录  
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kern&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;coredump&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# lo本地数据流接收和发送空间  
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;local&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;stream&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;recvspace&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;65536&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;local&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;dgram&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;maxdgram&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;16384&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;local&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;dgram&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;recvspace&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;65536&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 数据包数据段大小，ADSL为1452。  
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;inet&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;tcp&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;mssdflt&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;1460&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 为网络数据连接时提供缓冲  
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;inet&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;tcp&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;inflight_enable&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 数据包数据段最小值，ADSL为1452  
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;inet&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;tcp&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;minmss&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;1460&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 本地数据最大数量  
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;inet&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;raw&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;maxdgram&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;65536&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 本地数据流接收空间  
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;inet&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;raw&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;recvspace&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;65536&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# ipfw防火墙动态规则数量，默认为4096，增大该值可以防止某些病毒发送大量TCP连接，导致不能建立正常连接  
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;inet&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;ip&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;fw&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;dyn_max&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;65535&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-conf highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# 设置ipf防火墙TCP连接空闲保留时间，默认8640000（120小时）  
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;net&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;inet&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;ipf&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;fr_tcpidletimeout&lt;/span&gt; = &lt;span class=&quot;m&quot;&gt;864000&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;个人简单配置如图，使用时结合实际需求配置即可：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://www.isisy.com/usr/uploads/2021/06/4213898479.png&quot; alt=&quot;sysctl.conf&quot; /&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;文章由&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Yang2635&lt;/code&gt;上传，原文链接：https://www.isisy.com/1159.html&lt;/p&gt;
-&lt;/blockquote&gt;
-
-            &lt;!-- [x] 2022/10/20/10:49:36 fixed: while width &lt; some inch. would be flex column not display like a row.--&gt;
-&lt;footer&gt;
-	&lt;style&gt;
-		.border-top {
-			border-top: 1.5px solid #d0d7de!important;
-		}
-		
-		/* 仅在 /categories/ 页面生效的竖向排列样式 */
-		.suggestion-column-wrapper.is-categories-page {
-			display: flex;
-			flex-direction: column;
-			gap: 1.25rem;
-		}
-		.suggestion-column-wrapper.is-categories-page .col-xs-4-5 {
-			width: 100% !important;
-			padding-right: 0 !important;
-			padding-left: 0 !important;
-			margin-bottom: 0 !important;
-			padding-top: 0 !important;
-			padding-bottom: 0 !important;
-		}
-	&lt;/style&gt;
-	&lt;div class=&quot;border-top&quot;&gt;&lt;/div&gt;
-	
-	&lt;!-- 只有在 /categories/ 页面时添加 is-categories-page 类名 --&gt;
-	&lt;section class=&quot;container-xl mt-lg-8 mt-6 px-3 px-md-6 no-print mx-auto suggestion-column-wrapper &quot;&gt;
-		
-		&lt;!-- 1. 申明模块：/categories/ 页面隐藏 --&gt;
-		
-			&lt;div class=&quot;col-xs-4-5 pr-4 mb-8 px-md-6 container-xl mx-auto py-6 py-lg-6 clearfix&quot;&gt;
-				&lt;h2 class=&quot;lead&quot;&gt;申明&lt;/h2&gt;
-				&lt;div&gt;
-					&lt;div class=&quot;mb-2&quot;&gt;
-						&lt;a href=&quot;/blog/2022/Linux内核参数调优/&quot; target=&quot;_blank&quot; class=&quot;text-bold&quot;&gt;
-							&lt;div class=&quot;fa fa-link&quot;&gt;&lt;/div&gt;
-							转载请申明本文档链接
-						&lt;/a&gt;
-					&lt;/div&gt;
-					&lt;div&gt;
-						&lt;a href=&quot;https://github.com/Yang2635&quot; target=&quot;_blank&quot; class=&quot;text-bold&quot;&gt;
-							&lt;div class=&quot;fa fa-user&quot;&gt;&lt;/div&gt;
-							Post by Yang2635.
-						&lt;/a&gt;
-					&lt;/div&gt;
-				&lt;/div&gt;
-			&lt;/div&gt;
-
-		&lt;!-- 2. 贡献开源文档 --&gt;
-		&lt;div class=&quot;col-xs-4-5 pr-4 mb-8 px-md-6 container-xl mx-auto py-6 py-lg-6 clearfix&quot;&gt;
-			&lt;h2 class=&quot;lead&quot;&gt;贡献开源文档&lt;/h2&gt;
-			&lt;div&gt;
-				&lt;a href=&quot;https://github.com/Bin4xin/bin4xin.github.io/tree/main/_posts/blog/2022-03-25-Linux内核参数调优.md&quot; target=&quot;_blank&quot; class=&quot;no-underline btn mr-1 color-border-accent-emphasis&quot;&gt;
-					&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; role=&quot;img&quot; class=&quot;octicon mr-1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot; height=&quot;16&quot; fill=&quot;currentColor&quot; style=&quot;display: inline-block; user-select: none; vertical-align: text-bottom; overflow: visible;&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M7.177 3.073L9.573.677A.25.25 0 0110 .854v4.792a.25.25 0 01-.427.177L7.177 3.427a.25.25 0 010-.354zM3.75 2.5a.75.75 0 100 1.5.75.75 0 000-1.5zm-2.25.75a2.25 2.25 0 113 2.122v5.256a2.251 2.251 0 11-1.5 0V5.372A2.25 2.25 0 011.5 3.25zM11 2.5h-1V4h1a1 1 0 011 1v5.628a2.251 2.251 0 101.5 0V5A2.5 2.5 0 0011 2.5zm1 10.25a.75.75 0 111.5 0 .75.75 0 01-1.5 0zM3.75 12a.75.75 0 100 1.5.75.75 0 000-1.5z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;
-					贡献当前开源文档
-				&lt;/a&gt;
-				&lt;div class=&quot;f1-l mt-2 text-bold&quot;&gt;此之前，学习开源贡献&lt;a target=&quot;_blank&quot; href=&quot;https://github.com/Bin4xin/bin4xin.github.io/wiki/Git操作-Git如何贡献仓库代码&quot;&gt;CN&amp;nbsp;|&lt;/a&gt;
-					&lt;a target=&quot;_blank&quot; href=&quot;https://github.com/github/docs&quot;&gt;EN&lt;/a&gt;
-				&lt;/div&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-		
-
-		&lt;!-- 3. 此文档对您有帮助吗 --&gt;
-		&lt;div class=&quot;col-xs-4-5 pr-4 mb-8 px-md-6 container-xl mx-auto py-6 py-lg-6 clearfix&quot;&gt;
-			&lt;h2 class=&quot;lead&quot;&gt;此文档对您有帮助吗&lt;/h2&gt;
-			&lt;a href=&quot;https://github.com/Bin4xin/bin4xin.github.io/&quot; target=&quot;_blank&quot; class=&quot;no-underline&quot;&gt;
-				&lt;span class=&quot;btn mr-1 color-border-accent-emphasis&quot; title=&quot;给文档仓库点个赞!&quot;&gt;
-					&lt;div class=&quot;fa fa-thumbs-o-up&quot;&gt;&lt;/div&gt;
-				&lt;/span&gt;
-			&lt;/a&gt;
-			&lt;a href=&quot;https://github.com/Bin4xin/bin4xin.github.io/issues/new?labels=Service+Issue,research&amp;template=2-bug_report.yaml&amp;title=_posts/blog/2022-03-25-Linux内核参数调优.md&amp;nbsp; Linux内核参数调优 | © 哨兵 | SENTINEL SECURITY, LAB&quot; target=&quot;_blank&quot;&gt;
-				&lt;span class=&quot;btn mr-1 color-border-accent-emphasis&quot; title=&quot;本文档有问题?&quot;&gt;
-					&lt;div class=&quot;fa fa-thumbs-o-down&quot;&gt;&lt;/div&gt;
-				&lt;/span&gt;
-			&lt;/a&gt;
-		&lt;/div&gt;
-	&lt;/section&gt;
-&lt;/footer&gt;
-            &lt;/div&gt;
-            &lt;div class=&quot;spacing&quot;&gt;&lt;/div&gt;
-        &lt;/div&gt;&lt;!--/post-content --&gt;
-        
-&lt;div class=&quot;toc-sidebar position-sticky top-0&quot; style=&quot;max-height: 100vh; overflow-y: auto;&quot;&gt;
-    &lt;div class=&quot;toc-sidebar-inner&quot;&gt;
-
-        
-        
-        
-        
-
-        &lt;!-- 布局样式修正：固定按钮最小宽度与图标切换机制 --&gt;
-        &lt;style&gt;
-            .toc-copy-btn {
-                min-width: 175px; /* 锁死最小宽度，确保文字变化时按钮大小完全一致 */
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-                box-sizing: border-box;
-            }
-            .toc-copy-btn .icon-success {
-                display: none;
-            }
-            .toc-copy-btn.toc-copy-success .icon-copy {
-                display: none;
-            }
-            .toc-copy-btn.toc-copy-success .icon-success {
-                display: inline-block;
-            }
-        &lt;/style&gt;
-
-        &lt;!-- Article actions toolbar - Primer ButtonGroup style --&gt;
-        &lt;div class=&quot;toc-article-actions mb-3 ml-3&quot;&gt;
-            &lt;div class=&quot;prc-ButtonGroup-ButtonGroup-vFUrY&quot;&gt;
-                &lt;div&gt;
-                    &lt;button class=&quot;toc-copy-btn&quot; onclick=&quot;copyAsMarkdown()&quot; title=&quot;复制为 Markdown 格式&quot;&gt;
-                        &lt;span class=&quot;toc-btn-leading-visual&quot;&gt;
-                            &lt;!-- 默认复制图标 --&gt;
-                            &lt;svg data-component=&quot;Octicon&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot; class=&quot;octicon octicon-copy icon-copy&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot; height=&quot;16&quot; fill=&quot;currentColor&quot;&gt;
-                                &lt;path d=&quot;M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z&quot;/&gt;
-                                &lt;path d=&quot;M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z&quot;/&gt;
-                            &lt;/svg&gt;
-                            &lt;!-- 成功勾选图标 --&gt;
-                            &lt;svg data-component=&quot;Octicon&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot; class=&quot;octicon octicon-check icon-success&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot; height=&quot;16&quot; fill=&quot;currentColor&quot;&gt;
-                                &lt;path d=&quot;M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z&quot;/&gt;
-                            &lt;/svg&gt;
-                        &lt;/span&gt;
-                        &lt;span class=&quot;toc-btn-text&quot;&gt;复制为 Markdown 格式&lt;/span&gt;
-                    &lt;/button&gt;
-                &lt;/div&gt;
-                &lt;div&gt;
-                    &lt;div class=&quot;toc-dropdown-wrap&quot;&gt;
-                        &lt;button type=&quot;button&quot; class=&quot;toc-dropdown-trigger&quot; aria-label=&quot;更多 Markdown 选项&quot; aria-haspopup=&quot;true&quot; aria-expanded=&quot;false&quot; tabindex=&quot;0&quot; onclick=&quot;toggleTocDropdown(event)&quot;&gt;
-                            &lt;svg data-component=&quot;Octicon&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot; class=&quot;octicon octicon-triangle-down&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot; height=&quot;16&quot; fill=&quot;currentColor&quot;&gt;
-                                &lt;path d=&quot;m4.427 7.427 3.396 3.396a.25.25 0 0 0 .354 0l3.396-3.396A.25.25 0 0 0 11.396 7H4.604a.25.25 0 0 0-.177.427Z&quot;/&gt;
-                            &lt;/svg&gt;
-                        &lt;/button&gt;
-                        &lt;div class=&quot;toc-dropdown-menu&quot; id=&quot;tocDropdownMenu&quot;&gt;
-                            &lt;a class=&quot;toc-dropdown-item&quot; href=&quot;https://github.com/copilot?prompt=I%20need%20help%20with%20this%20GitHub%20Docs%20page%3A%20https://github.com/Bin4xin/bin4xin.github.io/blob/main/_posts/blog/2022-03-25-Linux内核参数调优.md&quot; target=&quot;_blank&quot;&gt;
-                                &lt;svg viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot; height=&quot;16&quot; fill=&quot;currentColor&quot;&gt;
-                                    &lt;path d=&quot;M7.998 15.035c-4.562 0-7.873-2.914-7.998-3.749V9.338c.085-.628.677-1.686 1.588-2.065.013-.07.024-.143.036-.218.029-.183.06-.384.126-.612-.201-.508-.254-1.084-.254-1.656 0-.87.128-1.769.693-2.484.579-.733 1.494-1.124 2.724-1.261 1.206-.134 2.262.034 2.944.765.05.053.096.108.139.165.044-.057.094-.112.143-.165.682-.731 1.738-.899 2.944-.765 1.23.137 2.145.528 2.724 1.261.566.715.693 1.614.693 2.484 0 .572-.053 1.148-.254 1.656.066.228.098.429.126.612.012.076.024.148.037.218.924.385 1.522 1.471 1.591 2.095v1.872c0 .766-3.351 3.795-8.002 3.795Zm0-1.485c2.28 0 4.584-1.11 5.002-1.433V7.862l-.023-.116c-.49.21-1.075.291-1.727.291-1.146 0-2.059-.327-2.71-.991A3.222 3.222 0 0 1 8 6.303a3.24 3.24 0 0 1-.544.743c-.65.664-1.563.991-2.71.991-.652 0-1.236-.081-1.727-.291l-.023.116v4.255c.419.323 2.722 1.433 5.002 1.433ZM6.762 2.83c-.193-.206-.637-.413-1.682-.297-1.019.113-1.479.404-1.713.7-.247.312-.369.789-.369 1.554 0 .793.129 1.171.308 1.371.162.181.519.379 1.442.379.853 0 1.339-.235 1.638-.54.315-.322.527-.827.617-1.553.117-.935-.037-1.395-.241-1.614Zm4.155-.297c-1.044-.116-1.488.091-1.681.297-.204.219-.359.679-.242 1.614.091.726.303 1.231.618 1.553.299.305.784.54 1.638.54.922 0 1.28-.198 1.442-.379.179-.2.308-.578.308-1.371 0-.765-.123-1.242-.37-1.554-.233-.296-.693-.587-1.713-.7Z&quot;&gt;&lt;/path&gt;&lt;path d=&quot;M6.25 9.037a.75.75 0 0 1 .75.75v1.501a.75.75 0 0 1-1.5 0V9.787a.75.75 0 0 1 .75-.75Zm4.25.75v1.501a.75.75 0 0 1-1.5 0V9.787a.75.75 0 0 1 1.5 0Z&quot;&gt;&lt;/path&gt;
-                                &lt;/svg&gt;
-                                &lt;span&gt;询问 Copilot&lt;/span&gt;
-                            &lt;/a&gt;
-                            &lt;a class=&quot;toc-dropdown-item&quot; href=&quot;https://github.com/Bin4xin/bin4xin.github.io/blob/main/_posts/blog/2022-03-25-Linux内核参数调优.md&quot; target=&quot;_blank&quot;&gt;
-                                &lt;svg viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot; height=&quot;16&quot; fill=&quot;currentColor&quot;&gt;&lt;path d=&quot;M2.75 14A1.75 1.75 0 0 1 1 12.25v-2.5a.75.75 0 0 1 1.5 0v2.5c0 .138.112.25.25.25h10.5a.25.25 0 0 0 .25-.25v-2.5a.75.75 0 0 1 1.5 0v2.5A1.75 1.75 0 0 1 13.25 14Z&quot;/&gt;&lt;path d=&quot;M7.25 7.689V2a.75.75 0 0 1 1.5 0v5.689l1.97-1.969a.749.749 0 1 1 1.06 1.06l-3.25 3.25a.749.749 0 0 1-1.06 0L4.22 6.78a.749.749 0 1 1 1.06-1.06l1.97 1.969Z&quot;/&gt;&lt;/svg&gt;
-                                &lt;span&gt;获取原始 Markdown&lt;/span&gt;
-                            &lt;/a&gt;
-                        &lt;/div&gt;
-                    &lt;/div&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-
-        &lt;!-- Same-category article navigation --&gt;
-        
-
-        &lt;!-- Table of Contents --&gt;
-        &lt;h2 class=&quot;toc-heading&quot; id=&quot;in-this-article&quot;&gt;在本文中&lt;/h2&gt;
-        &lt;nav class=&quot;toc-nav&quot; aria-labelledby=&quot;in-this-article&quot;&gt;
-            &lt;ul id=&quot;toc&quot; class=&quot;section-nav&quot;&gt;
-&lt;/ul&gt;
-        &lt;/nav&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-
-&lt;script&gt;
-function copyAsMarkdown() {
-    var rawPath = &quot;https://raw.githubusercontent.com/Bin4xin/bin4xin.github.io/main/_posts/blog/2022-03-25-Linux内核参数调优.md&quot;;
-    fetch(rawPath)
-        .then(function(res) {
-            if (!res.ok) throw new Error(&#39;HTTP error &#39; + res.status);
-            return res.text();
-        })
-        .then(function(text) {
-            return navigator.clipboard.writeText(text);
-        })
-        .then(function() {
-            var btn = document.querySelector(&#39;.toc-copy-btn&#39;);
-            var textEl = btn.querySelector(&#39;.toc-btn-text&#39;);
-            var origText = textEl.textContent;
-            
-            textEl.textContent = &#39;已复制！&#39;;
-            btn.classList.add(&#39;toc-copy-success&#39;);
-            
-            setTimeout(function() {
-                textEl.textContent = origText;
-                btn.classList.remove(&#39;toc-copy-success&#39;);
-            }, 2000);
-        })
-        .catch(function(err) {
-            console.error(&#39;Failed to copy markdown:&#39;, err);
-        });
-}
-
-function toggleTocDropdown(e) {
-    e.stopPropagation();
-    var menu = document.getElementById(&#39;tocDropdownMenu&#39;);
-    var trigger = e.currentTarget;
-    var isOpen = menu.classList.contains(&#39;toc-dropdown-open&#39;);
-    menu.classList.toggle(&#39;toc-dropdown-open&#39;);
-    trigger.setAttribute(&#39;aria-expanded&#39;, !isOpen);
-}
-
-document.addEventListener(&#39;click&#39;, function(e) {
-    var menu = document.getElementById(&#39;tocDropdownMenu&#39;);
-    if (menu &amp;&amp; !menu.contains(e.target) &amp;&amp; !e.target.closest(&#39;.toc-dropdown-trigger&#39;)) {
-        menu.classList.remove(&#39;toc-dropdown-open&#39;);
-        var trigger = document.querySelector(&#39;.toc-dropdown-trigger&#39;);
-        if (trigger) trigger.setAttribute(&#39;aria-expanded&#39;, &#39;false&#39;);
-    }
-});
-&lt;/script&gt;
-    &lt;/div&gt;&lt;!--/row --&gt;
-&lt;/div&gt;&lt;!--/container --&gt;
-哨兵安全实验室 SENTINEL SECURITY, LAB" />
+<meta property="og:description" content="本站由哨兵安全实验室支持创办" />
 <meta property="og:image" content="https://bin4xin.github.io/assets/img/logo-share.png" /> <!-- WeChat requires that thumbnail image is larger than 300x300 -->
 <meta property="og:url" content="https://bin4xin.github.io/blog/2022/Linux内核参数调优/" />
 <title> Linux内核参数调优 | © 哨兵 | SENTINEL SECURITY, LAB</title>
@@ -1033,141 +162,7 @@ document.addEventListener(&#39;click&#39;, function(e) {
 
 
 
-<style>
-    .gh-banner {
-        --banner-bg: #eef5ff;
-        --banner-border: rgba(84, 174, 255, 0.3);
-        --banner-icon-color: #1f7bdf;
-        --banner-text: #1f2328;
-        --banner-link: #0969da;
-        --banner-link-hover: #0550ae;
-        background-color: var(--banner-bg);
-        border: 1px solid var(--banner-border);
-        border-radius: 12px;
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
-        display: flex;
-        align-items: flex-start;
-        gap: 0.75rem;
-        padding: 1rem 1rem 1rem 1.25rem;
-        transition: all 0.2s ease;
-        position: relative;
-        margin: 25px;
-    }
-    .gh-banner.error {
-        --banner-bg: #ffebe9;
-        --banner-border: rgba(255, 129, 130, 0.4);
-        --banner-icon-color: #cf222e;
-    }
-    .gh-banner.warn {
-        --banner-bg: #fff8e7;
-        --banner-border: rgba(215, 173, 62, 0.4);
-        --banner-icon-color: #bc6f00;
-    }
-    /* 成功主题 */
-    .gh-banner.success {
-        --banner-bg: #dafbe1;
-        --banner-border: rgba(74, 194, 107, 0.4);
-        --banner-icon-color: #08882b;
-    }
-    @media (prefers-color-scheme: dark) {
-        .gh-banner {
-            --banner-bg: #1c2a3e;
-            --banner-border: #2d4a6e;
-            --banner-icon-color: #6cb4ff;
-            --banner-text: #e6edf3;
-            --banner-link: #6cb4ff;
-            --banner-link-hover: #9acbff;
-            background-color: var(--banner-bg);
-            border-color: #2d4a6e;
-        }
-        .gh-banner.error {
-            --banner-bg: #3b1e1e;
-            --banner-border: #da3633;
-            --banner-icon-color: #f85149;
-        }
-        .gh-banner.warn {
-            --banner-bg: #382d1a;
-            --banner-border: #d29922;
-            --banner-icon-color: #e3b341;
-        }
-        .gh-banner.success {
-            --banner-bg: #1b3424;
-            --banner-border: #238636;
-            --banner-icon-color: #3fb950;
-        }
-    }
-    .banner-icon {
-        flex-shrink: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-top: 1px;
-    }
-    .banner-icon svg {
-        width: 20px;
-        height: 20px;
-        color: var(--banner-icon-color);
-        fill: currentColor;
-        display: block;
-    }
-    .banner-content {
-        flex: 1;
-        font-size: 0.9375rem;
-        font-weight: 400;
-        color: var(--banner-text);
-        line-height: 1.5;
-        word-break: break-word;
-    }
-    .sr-only {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        white-space: nowrap;
-        border-width: 0;
-    }
-    .banner-content a {
-        color: var(--banner-link);
-        text-decoration: none;
-        font-weight: 500;
-        transition: color 0.12s ease, text-decoration 0.12s;
-    }
-    .banner-content a:hover {
-        color: var(--banner-link-hover);
-        text-decoration: underline;
-        text-underline-offset: 2px;
-    }
-    .banner-text {
-        display: inline;
-    }
-    .gh-banner.hide-banner {
-        display: none;
-    }
-    @media (max-width: 640px) {
-        .gh-banner {
-            padding: 0.875rem 1rem;
-            gap: 0.5rem;
-        }
-        .banner-content {
-            font-size: 0.875rem;
-        }
-        .banner-icon svg {
-            width: 18px;
-            height: 18px;
-        }
-    }
-    .banner-content span {
-        display: inline;
-    }
-    .banner-content a {
-        display: inline-block;
-    }
-</style>
-
-<section class="gh-banner error" aria-labelledby="banner-title-上次修改距今已-strong-1608-strong-天-建议确认内容是否仍然成立" role="region" data-dismissible="true">
+<section class="gh-banner error" aria-labelledby="banner-title-上次修改距今已-strong-1609-strong-天-建议确认内容是否仍然成立" role="region" data-dismissible="true">
     <div class="banner-icon" aria-hidden="true">
         
         <svg viewBox="0 0 16 16" fill="currentColor">
@@ -1177,7 +172,7 @@ document.addEventListener(&#39;click&#39;, function(e) {
     </div>
 
     <div class="banner-content">
-        <span class="banner-text">上次修改距今已 <strong>1608</strong> 天，建议确认内容是否仍然成立</span>
+        <span class="banner-text">上次修改距今已 <strong>1609</strong> 天，建议确认内容是否仍然成立</span>
     </div>
 </section>
     
@@ -1188,140 +183,6 @@ document.addEventListener(&#39;click&#39;, function(e) {
 
 
 
-
-<style>
-    .gh-banner {
-        --banner-bg: #eef5ff;
-        --banner-border: rgba(84, 174, 255, 0.3);
-        --banner-icon-color: #1f7bdf;
-        --banner-text: #1f2328;
-        --banner-link: #0969da;
-        --banner-link-hover: #0550ae;
-        background-color: var(--banner-bg);
-        border: 1px solid var(--banner-border);
-        border-radius: 12px;
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
-        display: flex;
-        align-items: flex-start;
-        gap: 0.75rem;
-        padding: 1rem 1rem 1rem 1.25rem;
-        transition: all 0.2s ease;
-        position: relative;
-        margin: 25px;
-    }
-    .gh-banner.error {
-        --banner-bg: #ffebe9;
-        --banner-border: rgba(255, 129, 130, 0.4);
-        --banner-icon-color: #cf222e;
-    }
-    .gh-banner.warn {
-        --banner-bg: #fff8e7;
-        --banner-border: rgba(215, 173, 62, 0.4);
-        --banner-icon-color: #bc6f00;
-    }
-    /* 成功主题 */
-    .gh-banner.success {
-        --banner-bg: #dafbe1;
-        --banner-border: rgba(74, 194, 107, 0.4);
-        --banner-icon-color: #08882b;
-    }
-    @media (prefers-color-scheme: dark) {
-        .gh-banner {
-            --banner-bg: #1c2a3e;
-            --banner-border: #2d4a6e;
-            --banner-icon-color: #6cb4ff;
-            --banner-text: #e6edf3;
-            --banner-link: #6cb4ff;
-            --banner-link-hover: #9acbff;
-            background-color: var(--banner-bg);
-            border-color: #2d4a6e;
-        }
-        .gh-banner.error {
-            --banner-bg: #3b1e1e;
-            --banner-border: #da3633;
-            --banner-icon-color: #f85149;
-        }
-        .gh-banner.warn {
-            --banner-bg: #382d1a;
-            --banner-border: #d29922;
-            --banner-icon-color: #e3b341;
-        }
-        .gh-banner.success {
-            --banner-bg: #1b3424;
-            --banner-border: #238636;
-            --banner-icon-color: #3fb950;
-        }
-    }
-    .banner-icon {
-        flex-shrink: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-top: 1px;
-    }
-    .banner-icon svg {
-        width: 20px;
-        height: 20px;
-        color: var(--banner-icon-color);
-        fill: currentColor;
-        display: block;
-    }
-    .banner-content {
-        flex: 1;
-        font-size: 0.9375rem;
-        font-weight: 400;
-        color: var(--banner-text);
-        line-height: 1.5;
-        word-break: break-word;
-    }
-    .sr-only {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        white-space: nowrap;
-        border-width: 0;
-    }
-    .banner-content a {
-        color: var(--banner-link);
-        text-decoration: none;
-        font-weight: 500;
-        transition: color 0.12s ease, text-decoration 0.12s;
-    }
-    .banner-content a:hover {
-        color: var(--banner-link-hover);
-        text-decoration: underline;
-        text-underline-offset: 2px;
-    }
-    .banner-text {
-        display: inline;
-    }
-    .gh-banner.hide-banner {
-        display: none;
-    }
-    @media (max-width: 640px) {
-        .gh-banner {
-            padding: 0.875rem 1rem;
-            gap: 0.5rem;
-        }
-        .banner-content {
-            font-size: 0.875rem;
-        }
-        .banner-icon svg {
-            width: 18px;
-            height: 18px;
-        }
-    }
-    .banner-content span {
-        display: inline;
-    }
-    .banner-content a {
-        display: inline-block;
-    }
-</style>
 
 <section class="gh-banner warn" aria-labelledby="banner-title-上次动笔在-strong-4-年前-strong-放了一阵了" role="region" data-dismissible="true">
     <div class="banner-icon" aria-hidden="true">
@@ -1843,6 +704,243 @@ document.addEventListener('click', function(e) {
     </div><!--/row -->
 </div><!--/container -->
 
+<!-- Lightbox DOM -->
+<div class="lb-overlay" id="lb-overlay">
+<button class="lb-close" id="lb-close"><i class="fas fa-times"></i></button>
+<button class="lb-arrow lb-prev" id="lb-prev"><i class="fas fa-chevron-left"></i></button>
+<button class="lb-arrow lb-next" id="lb-next"><i class="fas fa-chevron-right"></i></button>
+<img class="lb-img" id="lb-img" src="" alt="" draggable="false">
+<span class="lb-counter" id="lb-counter"></span>
+<div class="lb-zoom">
+    <button class="lb-zoom-btn" id="lb-zoom-out"><i class="fas fa-minus"></i></button>
+    <span class="lb-zoom-level" id="lb-zoom-level">100%</span>
+    <button class="lb-zoom-btn" id="lb-zoom-in"><i class="fas fa-plus"></i></button>
+    <button class="lb-zoom-btn" id="lb-zoom-reset"><i class="fas fa-expand"></i></button>
+</div>
+</div>
+
+<script>
+(function(){
+var overlay   = document.getElementById('lb-overlay');
+var img       = document.getElementById('lb-img');
+var btnClose  = document.getElementById('lb-close');
+var btnPrev   = document.getElementById('lb-prev');
+var btnNext   = document.getElementById('lb-next');
+var counter   = document.getElementById('lb-counter');
+var zoomIn    = document.getElementById('lb-zoom-in');
+var zoomOut   = document.getElementById('lb-zoom-out');
+var zoomReset = document.getElementById('lb-zoom-reset');
+var zoomLevel = document.getElementById('lb-zoom-level');
+
+var images = [];
+var idx    = 0;
+var scale  = 1;
+var posX   = 0;
+var posY   = 0;
+
+// ── Collect all clickable images (with src dedup) ──
+function collectImages(){
+    var containers = document.querySelectorAll('#help-content, .markdown-body-img, .post-content, .article-content, .ct-card__body, .lb-target');
+    images = [];
+    var seen = {};
+
+    containers.forEach(function(c){
+    c.querySelectorAll('img').forEach(function(im){
+        if(im.getAttribute('data-lb-ignore')) return;
+        if(im.naturalWidth < 60 && im.naturalHeight < 60) return;
+        if(images.indexOf(im) !== -1) return;
+
+        var key = im.getAttribute('data-src') || im.src;
+        if(seen[key]) return;
+        seen[key] = true;
+
+        images.push(im);
+        im.addEventListener('click', function(e){
+        e.preventDefault();
+        openAt(im);
+        });
+    });
+    });
+
+    // Also catch any img with class "lb-clickable"
+    document.querySelectorAll('img.lb-clickable').forEach(function(im){
+    if(images.indexOf(im) === -1){
+        images.push(im);
+        im.addEventListener('click', function(e){
+        e.preventDefault();
+        openAt(im);
+        });
+    }
+    });
+}
+
+// ── Open at specific image ──
+function openAt(targetImg){
+    idx = images.indexOf(targetImg);
+    if(idx === -1) idx = 0;
+    showImage();
+    overlay.classList.add('is-active');
+    document.body.style.overflow = 'hidden';
+}
+
+// ── Show image at current index ──
+function showImage(){
+    if(!images[idx]) return;
+    var src = images[idx].getAttribute('data-src') || images[idx].src;
+    img.src = src;
+    img.alt = images[idx].alt || '';
+    counter.textContent = (idx + 1) + ' / ' + images.length;
+    btnPrev.style.display = images.length > 1 ? '' : 'none';
+    btnNext.style.display = images.length > 1 ? '' : 'none';
+    resetZoom();
+}
+
+// ── Close ──
+function close(){
+    overlay.classList.remove('is-active');
+    document.body.style.overflow = '';
+    resetZoom();
+}
+
+// ── Navigate ──
+function goPrev(){
+    if(images.length <= 1) return;
+    idx = (idx - 1 + images.length) % images.length;
+    showImage();
+}
+function goNext(){
+    if(images.length <= 1) return;
+    idx = (idx + 1) % images.length;
+    showImage();
+}
+
+// ── Zoom ──
+function applyZoom(){
+    img.style.transform = 'scale(' + scale + ') translate(' + posX + 'px, ' + posY + 'px)';
+    zoomLevel.textContent = Math.round(scale * 100) + '%';
+}
+function zoomTo(s){
+    scale = Math.max(0.5, Math.min(5, s));
+    if(scale === 1){ posX = 0; posY = 0; }
+    applyZoom();
+}
+function resetZoom(){
+    scale = 1; posX = 0; posY = 0;
+    applyZoom();
+}
+
+// ── Drag when zoomed ──
+var dragging = false, dragStartX, dragStartY, startPosX, startPosY;
+
+img.addEventListener('mousedown', function(e){
+    if(scale <= 1) return;
+    e.preventDefault();
+    dragging = true;
+    img.classList.add('is-dragging');
+    dragStartX = e.clientX;
+    dragStartY = e.clientY;
+    startPosX  = posX;
+    startPosY  = posY;
+});
+document.addEventListener('mousemove', function(e){
+    if(!dragging) return;
+    posX = startPosX + (e.clientX - dragStartX) / scale;
+    posY = startPosY + (e.clientY - dragStartY) / scale;
+    applyZoom();
+});
+document.addEventListener('mouseup', function(){
+    dragging = false;
+    img.classList.remove('is-dragging');
+});
+
+// Mouse wheel zoom
+overlay.addEventListener('wheel', function(e){
+    if(!overlay.classList.contains('is-active')) return;
+    e.preventDefault();
+    var delta = e.deltaY > 0 ? -0.15 : 0.15;
+    zoomTo(scale + delta);
+}, { passive: false });
+
+// Pinch zoom (touch)
+var lastTouchDist = 0;
+overlay.addEventListener('touchstart', function(e){
+    if(e.touches.length === 2){
+    var dx = e.touches[0].clientX - e.touches[1].clientX;
+    var dy = e.touches[0].clientY - e.touches[1].clientY;
+    lastTouchDist = Math.sqrt(dx * dx + dy * dy);
+    }
+}, { passive: true });
+overlay.addEventListener('touchmove', function(e){
+    if(e.touches.length === 2){
+    e.preventDefault();
+    var dx = e.touches[0].clientX - e.touches[1].clientX;
+    var dy = e.touches[0].clientY - e.touches[1].clientY;
+    var dist = Math.sqrt(dx * dx + dy * dy);
+    var delta = (dist - lastTouchDist) * 0.008;
+    lastTouchDist = dist;
+    zoomTo(scale + delta);
+    }
+}, { passive: false });
+
+// Double-click to toggle zoom
+img.addEventListener('dblclick', function(e){
+    e.preventDefault();
+    if(scale > 1){
+    resetZoom();
+    } else {
+    zoomTo(2.5);
+    }
+});
+
+// ── Swipe navigation (touch) ──
+var touchStartX = 0, touchStartY = 0, swiping = false;
+img.addEventListener('touchstart', function(e){
+    if(e.touches.length !== 1 || scale > 1) return;
+    swiping = true;
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+}, { passive: true });
+img.addEventListener('touchend', function(e){
+    if(!swiping) return;
+    swiping = false;
+    var dx = e.changedTouches[0].clientX - touchStartX;
+    if(Math.abs(dx) > 60){
+    dx > 0 ? goPrev() : goNext();
+    }
+}, { passive: true });
+
+// ── Keyboard ──
+document.addEventListener('keydown', function(e){
+    if(!overlay.classList.contains('is-active')) return;
+    switch(e.key){
+    case 'Escape':  close(); break;
+    case 'ArrowLeft':  goPrev(); break;
+    case 'ArrowRight': goNext(); break;
+    case '+': case '=': zoomTo(scale + 0.2); break;
+    case '-': zoomTo(scale - 0.2); break;
+    case '0': resetZoom(); break;
+    }
+});
+
+// ── Click events ──
+overlay.addEventListener('click', function(e){
+    if(e.target === overlay) close();
+});
+btnClose.addEventListener('click', close);
+btnPrev.addEventListener('click', function(e){ e.stopPropagation(); goPrev(); });
+btnNext.addEventListener('click', function(e){ e.stopPropagation(); goNext(); });
+zoomIn.addEventListener('click', function(e){ e.stopPropagation(); zoomTo(scale + 0.25); });
+zoomOut.addEventListener('click', function(e){ e.stopPropagation(); zoomTo(scale - 0.25); });
+zoomReset.addEventListener('click', function(e){ e.stopPropagation(); resetZoom(); });
+
+// ── Init ──
+if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', collectImages);
+} else {
+    collectImages();
+}
+})();
+</script>
                 <!-- footer style & markup start -->
 <style>
     :root {
