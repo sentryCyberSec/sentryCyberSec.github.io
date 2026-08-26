@@ -28,7 +28,7 @@
 <meta property="og:image" content="https://bin4xin.github.io/assets/img/logo-share.png" /> <!-- WeChat requires that thumbnail image is larger than 300x300 -->
 <meta property="og:url" content="https://bin4xin.github.io/blog/page/18/index.html" />
 <title> 哨兵安全博客 - 第 18 页 | © 哨兵 | SENTINEL SECURITY, LAB</title>
-
+<link rel="stylesheet" href="/assets/css/cate-document.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/pace-minimal.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/footer.css">
 <!-- Bootstrap core CSS -->
@@ -104,6 +104,174 @@
     <div class="row">
         <div class="col-lg-9">
             
+                
+                    
+                    <div class="blog-card">
+    <div class="blog-card-header">
+        <a class="blog-card-title" href="/blog/2020/json/vuln-Cve/">
+            「漏洞复现」:Jackson反序列化漏洞利用总结
+        </a>
+        <div class="blog-card-actions">
+            <a class="blog-card-action-btn" href="/blog/2020/json/vuln-Cve/" title="阅读全文">
+                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"/></svg>
+            </a>
+            
+            <a class="blog-card-action-btn" href="https://github.com/Bin4xin/bin4xin.github.io/edit/main/_posts/blog/2020-08-14-jackson-deser-poc.markdown" target="_blank" title="编辑此页">
+                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Z"/></svg>
+            </a>
+            
+        </div>
+    </div>
+
+    
+    <div class="blog-card-body">
+        <p class="blog-card-excerpt">
+            
+  Jackson是Java生态中最流行的JSON序列化/反序列化库之一。当目标使用了enableDefaultTyping()或@JsonTypeInfo注解时，攻击者可通过构造恶意JSON实现任意代码执行。本文记录Jackson反序列化漏洞的识别、利用与实战踩坑。
+
+
+0x00 区分 Fastjson 和 Jackson
+
+在实际渗透测试中，首先需要判断目标使用的是Fastjson还是Jackson，两者的错误行为不同：
+
+发送如下请求，包含多余的key：
+
+PO...
+        </p>
+    </div>
+    
+
+    <div class="blog-card-footer">
+        <div class="blog-card-meta">
+            <span class="blog-card-author">
+                
+<img alt="Bin4xin" src="https://avatars.githubusercontent.com/u/57884471?v=4"/>
+            </span>
+            <!--article author end-->
+
+
+
+
+
+
+
+
+<span class="ymh-author-badge">
+    <a class="ymh-author-link" href="https://github.com/Bin4xin" target="_blank">
+        <span class="ymh-author-avatar">B</span>
+        Bin4xin
+    </a>
+
+    
+
+    
+    
+    
+    
+    
+
+    <span class="ymh-time-badge">
+        
+            Jul 7, 52587
+        
+    </span>
+</span>
+
+        </div>
+        <div class="blog-card-meta">
+            <span class="blog-card-status-dot"></span>
+            
+            <a class="blog-card-hash" href="https://github.com/Bin4xin/bin4xin.github.io/commit/13b88370" target="_blank">
+                13b8837
+            </a>
+        </div>
+    </div>
+</div>
+                
+                    
+                    <div class="blog-card">
+    <div class="blog-card-header">
+        <a class="blog-card-title" href="/blog/2020/Confluence/vuln-Cve/">
+            「Src」:Confluence漏洞复现总结
+        </a>
+        <div class="blog-card-actions">
+            <a class="blog-card-action-btn" href="/blog/2020/Confluence/vuln-Cve/" title="阅读全文">
+                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"/></svg>
+            </a>
+            
+            <a class="blog-card-action-btn" href="https://github.com/Bin4xin/bin4xin.github.io/edit/main/_posts/blog/2020-07-23-use-confluence-cve.markdown" target="_blank" title="编辑此页">
+                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Z"/></svg>
+            </a>
+            
+        </div>
+    </div>
+
+    
+    <div class="blog-card-body">
+        <p class="blog-card-excerpt">
+            0x00 Confluence未授权RCE (CVE-2019-3396)
+
+
+  影响版本：Confluence Server &amp; Data Center 6.6.0 ~ 6.6.13, 6.7.0 ~ 6.13.4, 6.14.0 ~ 6.14.3
+
+  漏洞类型：服务端模板注入（SSTI）+ 远程文件包含
+
+
+文件读取
+
+POST /confluence/rest/tinymce/1/macro/preview
+
+{"contentId":"786457"...
+        </p>
+    </div>
+    
+
+    <div class="blog-card-footer">
+        <div class="blog-card-meta">
+            <span class="blog-card-author">
+                
+<img alt="Bin4xin" src="https://avatars.githubusercontent.com/u/57884471?v=4"/>
+            </span>
+            <!--article author end-->
+
+
+
+
+
+
+
+
+<span class="ymh-author-badge">
+    <a class="ymh-author-link" href="https://github.com/Bin4xin" target="_blank">
+        <span class="ymh-author-avatar">B</span>
+        Bin4xin
+    </a>
+
+    
+
+    
+    
+    
+    
+    
+
+    <span class="ymh-time-badge">
+        
+            Apr 13, 52527
+        
+    </span>
+</span>
+
+        </div>
+        <div class="blog-card-meta">
+            <span class="blog-card-status-dot"></span>
+            
+            <a class="blog-card-hash" href="https://github.com/Bin4xin/bin4xin.github.io/commit/13b88370" target="_blank">
+                13b8837
+            </a>
+        </div>
+    </div>
+</div>
                 
                     
                     <div class="blog-card">
@@ -189,188 +357,8 @@ she...
         <div class="blog-card-meta">
             <span class="blog-card-status-dot"></span>
             
-            <a class="blog-card-hash" href="https://github.com/Bin4xin/bin4xin.github.io/commit/db4d779b" target="_blank">
-                db4d779
-            </a>
-        </div>
-    </div>
-</div>
-                
-                    
-                    <div class="blog-card">
-    <div class="blog-card-header">
-        <a class="blog-card-title" href="/blog/2020/usetools-in-linux(aq+awvs)-server/">
-            「安全工具」:A-Web_Vuln_Scan和aq域名爆破工具
-        </a>
-        <div class="blog-card-actions">
-            <a class="blog-card-action-btn" href="/blog/2020/usetools-in-linux(aq+awvs)-server/" title="阅读全文">
-                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"/></svg>
-            </a>
-            
-            <a class="blog-card-action-btn" href="https://github.com/Bin4xin/bin4xin.github.io/edit/main/_posts/blog/2020-06-21-usetools-in-linux(aq+awvs)-server.markdown" target="_blank" title="编辑此页">
-                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Z"/></svg>
-            </a>
-            
-        </div>
-    </div>
-
-    
-    <div class="blog-card-body">
-        <p class="blog-card-excerpt">
-            aq域名工具
-
-此处仅仅对于aq工具的报错进行部分记录，若存在无法解决的问题可以自行查询其他师傅的文章。
-
-
-  gem换源
-gem安装软件之前一定要换源；
-
-
-gem sources --add https://gems.ruby-china.com/ --remove https://rubygems.org/
-npm config set registry https://registry.npm.taobao.org
-
-
-
-  依赖报错
-
-
-gem instal...
-        </p>
-    </div>
-    
-
-    <div class="blog-card-footer">
-        <div class="blog-card-meta">
-            <span class="blog-card-author">
-                
-<img alt="Bin4xin" src="https://avatars.githubusercontent.com/u/57884471?v=4"/>
-            </span>
-            <!--article author end-->
-
-
-
-
-
-
-
-
-<span class="ymh-author-badge">
-    <a class="ymh-author-link" href="https://github.com/Bin4xin" target="_blank">
-        <span class="ymh-author-avatar">B</span>
-        Bin4xin
-    </a>
-
-    
-
-    
-    
-    
-    
-    
-
-    <span class="ymh-time-badge">
-        
-            Sep 1, 52439
-        
-    </span>
-</span>
-
-        </div>
-        <div class="blog-card-meta">
-            <span class="blog-card-status-dot"></span>
-            
-            <a class="blog-card-hash" href="https://github.com/Bin4xin/bin4xin.github.io/commit/db4d779b" target="_blank">
-                db4d779
-            </a>
-        </div>
-    </div>
-</div>
-                
-                    
-                    <div class="blog-card">
-    <div class="blog-card-header">
-        <a class="blog-card-title" href="/blog/2020/learn-to-fuzz/">
-            「Fuzz」:浅谈一些模糊匹配搜集信息的技巧
-        </a>
-        <div class="blog-card-actions">
-            <a class="blog-card-action-btn" href="/blog/2020/learn-to-fuzz/" title="阅读全文">
-                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"/></svg>
-            </a>
-            
-            <a class="blog-card-action-btn" href="https://github.com/Bin4xin/bin4xin.github.io/edit/main/_posts/blog/2020-06-10-learn-to-fuzz.markdown" target="_blank" title="编辑此页">
-                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Z"/></svg>
-            </a>
-            
-        </div>
-    </div>
-
-    
-    <div class="blog-card-body">
-        <p class="blog-card-excerpt">
-            写在文前：
-
-
-  我们在web攻防期间有很多时候有一种感觉：那就是遇到rce漏洞时，bp放包的时候有一种隐隐的感觉，有的时候bp的反包字节大小莫名其妙的怪异，有经验的老师傅就索性直接跑RCE的fuzz字典，所以本篇就日常记录一些有关于web攻防期间的一些fuzz技巧
-
-
-服务器RCE的fuzz技巧
-
-
-  Windows机器的fuzz
-
-
-即我们可以在关键参数后面使用管道符号和连接符fuzz命令执行实现我们的盲打：
-
-||和&amp;
-
-
-  linux机器的fuzz...
-        </p>
-    </div>
-    
-
-    <div class="blog-card-footer">
-        <div class="blog-card-meta">
-            <span class="blog-card-author">
-                
-<img alt="Bin4xin" src="https://avatars.githubusercontent.com/u/57884471?v=4"/>
-            </span>
-            <!--article author end-->
-
-
-
-
-
-
-
-
-<span class="ymh-author-badge">
-    <a class="ymh-author-link" href="https://github.com/Bin4xin" target="_blank">
-        <span class="ymh-author-avatar">B</span>
-        Bin4xin
-    </a>
-
-    
-
-    
-    
-    
-    
-    
-
-    <span class="ymh-time-badge">
-        
-            Jul 20, 52409
-        
-    </span>
-</span>
-
-        </div>
-        <div class="blog-card-meta">
-            <span class="blog-card-status-dot"></span>
-            
-            <a class="blog-card-hash" href="https://github.com/Bin4xin/bin4xin.github.io/commit/db4d779b" target="_blank">
-                db4d779
+            <a class="blog-card-hash" href="https://github.com/Bin4xin/bin4xin.github.io/commit/13b88370" target="_blank">
+                13b8837
             </a>
         </div>
     </div>
@@ -380,7 +368,7 @@ gem instal...
                     
                         <a href="/blog/page/17/" class="btn btn-primary">上一页</a>
                     
-                    <span>第 18 页 / 共 30 页</span>
+                    <span>第 18 页 / 共 31 页</span>
                     
                         <a href="/blog/page/19/" class="btn btn-primary">下一页</a>
                     
@@ -527,6 +515,30 @@ gem instal...
           
           <div class="ntc-meta-item">
             <span><i class="far fa-folder fa-fw mr-1" aria-hidden="true"></i> <a href="/blog/">blog</a></span>
+          </div>
+          
+        
+          
+          <div class="ntc-meta-item">
+            <span><i class="far fa-folder fa-fw mr-1" aria-hidden="true"></i> <a href="/%E7%AC%94%E8%AE%B0/">笔记</a></span>
+          </div>
+          
+        
+          
+          <div class="ntc-meta-item">
+            <span><i class="far fa-folder fa-fw mr-1" aria-hidden="true"></i> <a href="/%E5%AE%89%E5%85%A8%E5%B7%A5%E5%85%B7/">安全工具</a></span>
+          </div>
+          
+        
+          
+          <div class="ntc-meta-item">
+            <span><i class="far fa-folder fa-fw mr-1" aria-hidden="true"></i> <a href="/Cobalt+Strike/">Cobalt Strike</a></span>
+          </div>
+          
+        
+          
+          <div class="ntc-meta-item">
+            <span><i class="far fa-folder fa-fw mr-1" aria-hidden="true"></i> <a href="/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/">内网渗透</a></span>
           </div>
           
         
@@ -761,7 +773,7 @@ gem instal...
             
             <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="/privacy/" target="_blank">隐私</a></li>
             
-            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="/privacy/#cookie" target="_blank">Cookie偏好</a></li>
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="/privacy/#Cookie" target="_blank">Cookie偏好</a></li>
             
             
         </ul>

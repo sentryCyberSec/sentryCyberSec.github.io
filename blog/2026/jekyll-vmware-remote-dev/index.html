@@ -1,0 +1,1615 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+<meta charset="utf-8">
+<!--dev siwtch-->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name='mobile-web-app-capable' content='yes'/>
+<meta name='full-screen' content='true'/>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--dev switch end-->
+<meta name="description" content="本站由哨兵安全实验室支持创办">
+
+    <meta name="baidu-site-verification" content="codeva-Bt0LqEvH6L" />
+    <!-- Google tag (gtag.js) -->
+<!--<script defer src="https://www.googletagmanager.com/gtag/js?id=G-TJ5SFQ4KCM"></script>-->
+<!--<script defer src="/assets/js/gta.js"></script>-->
+<link rel="shortcut icon" href="/assets/img/favicon.png">
+<link type="application/atom+xml" rel="alternate" href="/feed.xml" title="© 哨兵" />
+
+
+
+
+<!-- Open Graph metadata -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="在 VMware Ubuntu 中结合 VS Code 与 Jekyll 进行远程开发 | © 哨兵" />
+<meta property="og:description" content="本站由哨兵安全实验室支持创办" />
+<meta property="og:image" content="https://bin4xin.github.io/assets/img/logo-share.png" /> <!-- WeChat requires that thumbnail image is larger than 300x300 -->
+<meta property="og:url" content="https://bin4xin.github.io/blog/2026/jekyll-vmware-remote-dev/" />
+<title> 在 VMware Ubuntu 中结合 VS Code 与 Jekyll 进行远程开发 | © 哨兵 | SENTINEL SECURITY, LAB</title>
+<link rel="stylesheet" href="/assets/css/cate-document.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/pace-minimal.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/footer.css">
+<!-- Bootstrap core CSS -->
+<link href="/assets/css/bootstrap.css" rel="stylesheet">
+<link href="/assets/css/bilibili_icon.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+<link href="/assets/css/style.css" rel="stylesheet">
+<link href="/assets/css/font-awesome.min.css" rel="stylesheet">
+<link href="/assets/css/font-awesome-v4-shims.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="/assets/css/card.css">
+
+<script src="/assets/js/jquery.min.js"></script>
+<!-- #### defer load ####################################################################################-->
+<script src="/assets/js/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+<script defer src="/assets/js/pace.min.js"></script>
+<!-- #### defer load end ################################################################################-->
+
+<script defer src="/assets/js/jquery.sticky/1.0.4/jquery.sticky.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+
+
+</head>
+
+    <body>
+
+                <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <!-- 菜单按钮 -->
+            <button type="button" class="navbar-toggle" id="navbar-toggle-btn" data-toggle="collapse" data-target=".navbar-collapse" aria-label="切换导航菜单" aria-expanded="false" aria-controls="main-nav" style="outline:2px solid transparent; margin-left: 8px;">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse navbar-right">
+            <ul class="nav navbar-nav">
+                
+                <li >
+                    <a href="/"><i class="fas fa-home"></i> Home &middot;</a>
+                </li>
+                <li >
+                    <a href="/search"><i class="fas fa-search"></i> Search &middot;</a>
+                </li>
+                <li class="active">
+                    <a href="/blog/"><i class="fas fa-pen-nib"></i> BLOG &middot;</a>
+                </li>
+                <li >
+                    <a href="/categories/"><i class="fas fa-folder-open"></i> CATEGORIES &middot;</a>
+                </li>
+                <li >
+                    <a href="/daily/"><i class="fas fa-calendar"></i> DAILY &middot;</a>
+                </li>
+                <li >
+                    <a href="/newest"><i class="fas fa-bolt"></i> NEWEST &middot;</a>
+                </li>
+                <li >
+                    <a href="/about/"><i class="fas fa-flask"></i> RESEARCH &middot;</a>
+                </li>
+                <li >
+                    <a href="/feed.xml"><i class="fas fa-rss"></i> RSS</a>
+                </li>
+                
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+
+                
+                <div class="container mtb post-layout">
+        <!-- SINGLE POST -->
+        <div class="markdown-body-img flex-column">
+            <!-- Blog Post  -->
+            <h1 class="ctitle">在 VMware Ubuntu 中结合 VS Code 与 Jekyll 进行远程开发</h1>
+            <div class="post-meta-row">
+                <!--article author end-->
+
+
+
+
+
+
+
+
+<span class="ymh-author-badge">
+    <a class="ymh-author-link" href="https://github.com/Bin4xin" target="_blank">
+        <span class="ymh-author-avatar">B</span>
+        Bin4xin
+    </a>
+
+    
+
+    
+    
+    
+    
+    
+
+    <span class="ymh-time-badge">
+        
+            
+                
+                    24h
+                
+                post
+            
+        
+    </span>
+</span>
+
+            </div>
+            <div class="post-content">
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+<section class="gh-banner success" aria-labelledby="banner-title-写于-strong-1-天前-strong-墨迹未干" role="region" data-dismissible="true">
+    <div class="banner-icon" aria-hidden="true">
+        
+        <svg viewBox="0 0 16 16" fill="currentColor">
+            <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+        </svg>
+        
+    </div>
+
+    <div class="banner-content">
+        <span class="banner-text">写于 <strong>1 天前</strong>，墨迹未干</span>
+    </div>
+</section>
+
+                <h1 id="在-vmware-ubuntu-中结合-vs-code-与-jekyll-进行远程开发">在 VMware Ubuntu 中结合 VS Code 与 Jekyll 进行远程开发</h1>
+
+<h2 id="背景">背景</h2>
+
+<p>在 Windows 环境下开发 Jekyll 博客时，经常会遇到 Ruby 原生扩展（如 <code class="language-plaintext highlighter-rouge">nokogiri</code>）的编译问题。即使通过 MSYS2 配置好编译工具链，仍然可能面临版本兼容性、权限管理和依赖冲突等挑战。</p>
+
+<p>为了解决这些痛点，我选择在 VMware 虚拟机中运行 Ubuntu Server，并利用 VS Code 的 Remote-SSH 功能进行远程编辑和调试，最终实现了流畅的 Jekyll 开发体验。</p>
+
+<p>本文将详细介绍整个搭建过程，包括环境准备、Ruby 安装、Jekyll 运行、VS Code 远程连接以及 Git 配置等关键步骤，并分享一些常见问题的解决方法。</p>
+
+<h2 id="环境准备">环境准备</h2>
+
+<h3 id="iso-下载">ISO 下载</h3>
+
+<div class="dl-panel" id="ubuntu-dl">
+  <div class="dl-panel-head">
+    <h3 class="dl-panel-title">
+      Ubuntu 22.04.5 LTS Server
+      
+        <span class="dl-panel-version">22.04.5</span>
+      
+    </h3>
+    
+      <p class="dl-panel-note"><i class="fas fa-info-circle"></i> 22.04.5 为当前最新小版本，后续可能有更新，但官方链接长期有效</p>
+    
+  </div>
+
+  
+  <div class="dl-os-bar">
+    <b class="dl-tab-btn active" data-dl-target="ubuntu-dl-win" data-dl-group="ubuntu-dl-os">
+      <i class="fab fa-windows"></i> Windows
+    </b>
+    <b class="dl-tab-btn" data-dl-target="ubuntu-dl-linux" data-dl-group="ubuntu-dl-os">
+      <i class="fab fa-linux"></i> Linux
+    </b>
+    <b class="dl-tab-btn" data-dl-target="ubuntu-dl-mac" data-dl-group="ubuntu-dl-os">
+      <i class="fab fa-apple"></i> macOS
+    </b>
+  </div>
+
+  
+  <div class="dl-mirror-bar" data-dl-group="ubuntu-dl-mirror">
+    <span class="dl-mirror-label"><i class="fas fa-server"></i> 镜像源</span>
+    
+      <b class="dl-mirror-btn active" data-dl-mirror="official" data-dl-group="ubuntu-dl-mirror">
+        官方源
+      </b>
+    
+      <b class="dl-mirror-btn " data-dl-mirror="tuna" data-dl-group="ubuntu-dl-mirror">
+        清华 TUNA
+      </b>
+    
+      <b class="dl-mirror-btn " data-dl-mirror="aliyun" data-dl-group="ubuntu-dl-mirror">
+        阿里云
+      </b>
+    
+      <b class="dl-mirror-btn " data-dl-mirror="ustc" data-dl-group="ubuntu-dl-mirror">
+        中科大 USTC
+      </b>
+    
+  </div>
+
+  
+  <div class="dl-content" id="ubuntu-dl-win" data-dl-group="ubuntu-dl-os" style="display:block;">
+    
+      <div class="dl-mirror-section is-visible" data-dl-mirror-content="official" data-dl-group="ubuntu-dl-mirror">
+        
+        <div class="dl-item">
+          <div class="dl-item-label">
+            <span class="dl-arch-tag">x64</span>
+            <span class="dl-size-tag">3</span>
+            <span class="dl-filename">ubuntu-22.04.5-live-server-amd64.iso</span>
+          </div>
+          <pre class="dl-code"><code><span class="token prompt">&gt; </span>curl -LO https://releases.ubuntu.com/22.04/ubuntu-22.04.5-live-server-amd64.iso</code></pre>
+        </div>
+        
+      </div>
+    
+      <div class="dl-mirror-section is-hidden" data-dl-mirror-content="tuna" data-dl-group="ubuntu-dl-mirror">
+        
+        <div class="dl-item">
+          <div class="dl-item-label">
+            <span class="dl-arch-tag">x64</span>
+            <span class="dl-size-tag">3</span>
+            <span class="dl-filename">ubuntu-22.04.5-live-server-amd64.iso</span>
+          </div>
+          <pre class="dl-code"><code><span class="token prompt">&gt; </span>curl -LO https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases/22.04/ubuntu-22.04.5-live-server-amd64.iso</code></pre>
+        </div>
+        
+      </div>
+    
+      <div class="dl-mirror-section is-hidden" data-dl-mirror-content="aliyun" data-dl-group="ubuntu-dl-mirror">
+        
+        <div class="dl-item">
+          <div class="dl-item-label">
+            <span class="dl-arch-tag">x64</span>
+            <span class="dl-size-tag">3</span>
+            <span class="dl-filename">ubuntu-22.04.5-live-server-amd64.iso</span>
+          </div>
+          <pre class="dl-code"><code><span class="token prompt">&gt; </span>curl -LO https://mirrors.aliyun.com/ubuntu-releases/22.04/ubuntu-22.04.5-live-server-amd64.iso</code></pre>
+        </div>
+        
+      </div>
+    
+      <div class="dl-mirror-section is-hidden" data-dl-mirror-content="ustc" data-dl-group="ubuntu-dl-mirror">
+        
+        <div class="dl-item">
+          <div class="dl-item-label">
+            <span class="dl-arch-tag">x64</span>
+            <span class="dl-size-tag">3</span>
+            <span class="dl-filename">ubuntu-22.04.5-live-server-amd64.iso</span>
+          </div>
+          <pre class="dl-code"><code><span class="token prompt">&gt; </span>curl -LO https://mirrors.ustc.edu.cn/ubuntu-releases/22.04/ubuntu-22.04.5-live-server-amd64.iso</code></pre>
+        </div>
+        
+      </div>
+    
+  </div>
+
+  
+  <div class="dl-content" id="ubuntu-dl-linux" data-dl-group="ubuntu-dl-os" style="display:none;">
+    
+      <div class="dl-mirror-section is-visible" data-dl-mirror-content="official" data-dl-group="ubuntu-dl-mirror">
+        
+        <div class="dl-item">
+          <div class="dl-item-label">
+            <span class="dl-arch-tag">x64</span>
+            <span class="dl-size-tag">3</span>
+            <span class="dl-filename">ubuntu-22.04.5-live-server-amd64.iso</span>
+          </div>
+          <pre class="dl-code"><code><span class="token prompt">$ </span>wget https://releases.ubuntu.com/22.04/ubuntu-22.04.5-live-server-amd64.iso</code></pre>
+        </div>
+        
+      </div>
+    
+      <div class="dl-mirror-section is-hidden" data-dl-mirror-content="tuna" data-dl-group="ubuntu-dl-mirror">
+        
+        <div class="dl-item">
+          <div class="dl-item-label">
+            <span class="dl-arch-tag">x64</span>
+            <span class="dl-size-tag">3</span>
+            <span class="dl-filename">ubuntu-22.04.5-live-server-amd64.iso</span>
+          </div>
+          <pre class="dl-code"><code><span class="token prompt">$ </span>wget https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases/22.04/ubuntu-22.04.5-live-server-amd64.iso</code></pre>
+        </div>
+        
+      </div>
+    
+      <div class="dl-mirror-section is-hidden" data-dl-mirror-content="aliyun" data-dl-group="ubuntu-dl-mirror">
+        
+        <div class="dl-item">
+          <div class="dl-item-label">
+            <span class="dl-arch-tag">x64</span>
+            <span class="dl-size-tag">3</span>
+            <span class="dl-filename">ubuntu-22.04.5-live-server-amd64.iso</span>
+          </div>
+          <pre class="dl-code"><code><span class="token prompt">$ </span>wget https://mirrors.aliyun.com/ubuntu-releases/22.04/ubuntu-22.04.5-live-server-amd64.iso</code></pre>
+        </div>
+        
+      </div>
+    
+      <div class="dl-mirror-section is-hidden" data-dl-mirror-content="ustc" data-dl-group="ubuntu-dl-mirror">
+        
+        <div class="dl-item">
+          <div class="dl-item-label">
+            <span class="dl-arch-tag">x64</span>
+            <span class="dl-size-tag">3</span>
+            <span class="dl-filename">ubuntu-22.04.5-live-server-amd64.iso</span>
+          </div>
+          <pre class="dl-code"><code><span class="token prompt">$ </span>wget https://mirrors.ustc.edu.cn/ubuntu-releases/22.04/ubuntu-22.04.5-live-server-amd64.iso</code></pre>
+        </div>
+        
+      </div>
+    
+  </div>
+
+  
+  <div class="dl-content" id="ubuntu-dl-mac" data-dl-group="ubuntu-dl-os" style="display:none;">
+    
+      <div class="dl-mirror-section is-visible" data-dl-mirror-content="official" data-dl-group="ubuntu-dl-mirror">
+        
+        <div class="dl-item">
+          <div class="dl-item-label">
+            <span class="dl-arch-tag">x64</span>
+            <span class="dl-size-tag">3</span>
+            <span class="dl-filename">ubuntu-22.04.5-live-server-amd64.iso</span>
+          </div>
+          <pre class="dl-code"><code><span class="token prompt">$ </span>curl -LO https://releases.ubuntu.com/22.04/ubuntu-22.04.5-live-server-amd64.iso</code></pre>
+        </div>
+        
+      </div>
+    
+      <div class="dl-mirror-section is-hidden" data-dl-mirror-content="tuna" data-dl-group="ubuntu-dl-mirror">
+        
+        <div class="dl-item">
+          <div class="dl-item-label">
+            <span class="dl-arch-tag">x64</span>
+            <span class="dl-size-tag">3</span>
+            <span class="dl-filename">ubuntu-22.04.5-live-server-amd64.iso</span>
+          </div>
+          <pre class="dl-code"><code><span class="token prompt">$ </span>curl -LO https://mirrors.tuna.tsinghua.edu.cn/ubuntu-releases/22.04/ubuntu-22.04.5-live-server-amd64.iso</code></pre>
+        </div>
+        
+      </div>
+    
+      <div class="dl-mirror-section is-hidden" data-dl-mirror-content="aliyun" data-dl-group="ubuntu-dl-mirror">
+        
+        <div class="dl-item">
+          <div class="dl-item-label">
+            <span class="dl-arch-tag">x64</span>
+            <span class="dl-size-tag">3</span>
+            <span class="dl-filename">ubuntu-22.04.5-live-server-amd64.iso</span>
+          </div>
+          <pre class="dl-code"><code><span class="token prompt">$ </span>curl -LO https://mirrors.aliyun.com/ubuntu-releases/22.04/ubuntu-22.04.5-live-server-amd64.iso</code></pre>
+        </div>
+        
+      </div>
+    
+      <div class="dl-mirror-section is-hidden" data-dl-mirror-content="ustc" data-dl-group="ubuntu-dl-mirror">
+        
+        <div class="dl-item">
+          <div class="dl-item-label">
+            <span class="dl-arch-tag">x64</span>
+            <span class="dl-size-tag">3</span>
+            <span class="dl-filename">ubuntu-22.04.5-live-server-amd64.iso</span>
+          </div>
+          <pre class="dl-code"><code><span class="token prompt">$ </span>curl -LO https://mirrors.ustc.edu.cn/ubuntu-releases/22.04/ubuntu-22.04.5-live-server-amd64.iso</code></pre>
+        </div>
+        
+      </div>
+    
+  </div>
+
+  
+  
+  <div class="dl-verify">
+    <div class="dl-verify-title"><i class="fas fa-shield-halved"></i> 校验文件完整性</div>
+    
+      <pre class="dl-code"><code><span class="token prompt">$ </span>sha256sum ubuntu-22.04.5-live-server-amd64.iso</code></pre>
+    
+      <pre class="dl-code"><code><span class="token prompt">&gt; </span>certutil -hashfile ubuntu-22.04.5-live-server-amd64.iso SHA256</code></pre>
+    
+  </div>
+  
+</div>
+
+<script>
+(function(){
+  // OS tab switching
+  document.querySelectorAll('.dl-tab-btn[data-dl-target]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var group = this.getAttribute('data-dl-group');
+      var target = this.getAttribute('data-dl-target');
+      // Deactivate siblings
+      document.querySelectorAll('.dl-tab-btn[data-dl-group="' + group + '"]').forEach(function(b){
+        b.classList.remove('active');
+      });
+      this.classList.add('active');
+      // Show/hide content panels
+      document.querySelectorAll('.dl-content[data-dl-group="' + group + '"]').forEach(function(c){
+        c.style.display = 'none';
+      });
+      var el = document.getElementById(target);
+      if(el) el.style.display = 'block';
+    });
+  });
+
+  // Mirror switching
+  document.querySelectorAll('.dl-mirror-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var group = this.getAttribute('data-dl-group');
+      var mirror = this.getAttribute('data-dl-mirror');
+      // Deactivate siblings
+      document.querySelectorAll('.dl-mirror-btn[data-dl-group="' + group + '"]').forEach(function(b){
+        b.classList.remove('active');
+      });
+      this.classList.add('active');
+      // Show/hide mirror sections (across all OS panels)
+      var contentGroup = group.replace('-mirror', '-os');
+      document.querySelectorAll('.dl-mirror-section[data-dl-group="' + group + '"]').forEach(function(s){
+        s.classList.toggle('is-visible', s.getAttribute('data-dl-mirror-content') === mirror);
+        s.classList.toggle('is-hidden', s.getAttribute('data-dl-mirror-content') !== mirror);
+      });
+    });
+  });
+})();
+</script>
+
+<h3 id="安装-vmware-虚拟机">安装 VMware 虚拟机</h3>
+
+<p>在 VMware 中创建一台 Ubuntu 22.04 LTS Server 虚拟机，建议分配至少 2 个 CPU、4GB 内存和 20GB 硬盘。</p>
+
+<p>安装时注意：</p>
+
+<ul>
+  <li>选择 <strong>Ubuntu Server</strong>（不要选择 minimized 版本）</li>
+  <li>勾选 <strong>Install OpenSSH server</strong>，方便后续远程连接</li>
+</ul>
+
+<section class="gh-banner info" aria-labelledby="banner-title-建议将虚拟机网络模式设为-nat-共享宿主机-ip-既能通过宿主机代理访问外网-又能避免桥接模式下-ip-频繁变动导致-ssh-连接中断" role="region" data-dismissible="true">
+    <div class="banner-icon" aria-hidden="true">
+        
+        <svg viewBox="0 0 16 16" fill="currentColor">
+            <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path>
+        </svg>
+        
+    </div>
+
+    <div class="banner-content">
+        <span class="banner-text">建议将虚拟机网络模式设为 NAT（共享宿主机 IP），既能通过宿主机代理访问外网，又能避免桥接模式下 IP 频繁变动导致 SSH 连接中断。</span>
+    </div>
+</section>
+
+<h3 id="更换国内软件源">更换国内软件源</h3>
+
+<p>为了加速 <code class="language-plaintext highlighter-rouge">apt</code> 下载，将软件源更换为阿里云镜像。</p>
+
+<section class="gh-banner warn" aria-labelledby="banner-title-替换-sources-list-前请先执行-code-sudo-cp-etc-apt-sources-list-etc-apt-sources-list-bak-code-备份原文件-若镜像源不可用可随时回滚" role="region" data-dismissible="true">
+    <div class="banner-icon" aria-hidden="true">
+        
+        <svg viewBox="0 0 16 16" fill="currentColor">
+            <path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575L6.457 1.047ZM8 4.75a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 4.75Zm.75 6.75a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Z"></path>
+        </svg>
+        
+    </div>
+
+    <div class="banner-content">
+        <span class="banner-text">替换 sources.list 前请先执行 <code>sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak</code> 备份原文件，若镜像源不可用可随时回滚。</span>
+    </div>
+</section>
+
+<p>编辑 <code class="language-plaintext highlighter-rouge">/etc/apt/sources.list</code>，替换为以下内容：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>deb http://mirrors.aliyun.com/ubuntu/ jammy main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ jammy-updates main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ jammy-backports main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ jammy-security main restricted universe multiverse
+</code></pre></div></div>
+
+<p>更新软件源和系统：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt update
+<span class="nb">sudo </span>apt upgrade <span class="nt">-y</span>
+</code></pre></div></div>
+
+<h3 id="安装基础依赖">安装基础依赖</h3>
+
+<p>Jekyll 和常用的 Ruby gem 编译需要一些系统库，执行以下命令安装：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt <span class="nb">install</span> <span class="nt">-y</span> build-essential git curl <span class="se">\</span>
+  zlib1g-dev libssl-dev libreadline-dev libyaml-dev <span class="se">\</span>
+  libxml2-dev libxslt1-dev
+</code></pre></div></div>
+
+<h2 id="安装-ruby">安装 Ruby</h2>
+
+<p>使用 <code class="language-plaintext highlighter-rouge">rbenv</code> 来管理 Ruby 版本，便于安装和切换。首先克隆 <code class="language-plaintext highlighter-rouge">rbenv</code> 和 <code class="language-plaintext highlighter-rouge">ruby-build</code>：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+<span class="nb">echo</span> <span class="s1">'export PATH="$HOME/.rbenv/bin:$PATH"'</span> <span class="o">&gt;&gt;</span> ~/.bashrc
+<span class="nb">echo</span> <span class="s1">'eval "$(rbenv init -)"'</span> <span class="o">&gt;&gt;</span> ~/.bashrc
+<span class="nb">source</span> ~/.bashrc
+
+git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+</code></pre></div></div>
+
+<p>为了加速 Ruby 源码下载，设置国内镜像：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s1">'export RUBY_BUILD_MIRROR_URL="https://cache.ruby-china.com/pub/ruby/"'</span> <span class="o">&gt;&gt;</span> ~/.bashrc
+<span class="nb">source</span> ~/.bashrc
+</code></pre></div></div>
+
+<p>安装 Ruby 3.1.4（与 GitHub Pages 兼容性较好）：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rbenv <span class="nb">install </span>3.1.4
+rbenv global 3.1.4
+&lt;code&gt;ruby <span class="nt">-v</span>&lt;/code&gt;
+</code></pre></div></div>
+
+<h2 id="安装-bundler-和-jekyll">安装 Bundler 和 Jekyll</h2>
+
+<p>安装 Bundler（建议使用 2.x 版本）：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem <span class="nb">install </span>bundler <span class="nt">-v</span> <span class="s1">'~&gt; 2.4'</span>
+</code></pre></div></div>
+
+<p>进入你的 Jekyll 项目目录，执行：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">install</span>
+</code></pre></div></div>
+
+<p>如果 <code class="language-plaintext highlighter-rouge">Gemfile</code> 中包含 <code class="language-plaintext highlighter-rouge">github-pages</code>，它会自动安装 Jekyll 3.9.5 及其依赖。因为我们已经安装了编译所需的系统库，<code class="language-plaintext highlighter-rouge">nokogiri</code> 等 gem 应该能顺利编译安装。</p>
+
+<h2 id="获取项目代码">获取项目代码</h2>
+
+<p>可以直接在虚拟机中克隆你的 GitHub 仓库：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/你的用户名/bin4xin.github.io.git
+<span class="nb">cd </span>bin4xin.github.io
+</code></pre></div></div>
+
+<p>如果 Git 访问 GitHub 较慢，可以设置代理（假设宿主机代理为 <code class="language-plaintext highlighter-rouge">192.168.3.98:7890</code>）：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config <span class="nt">--global</span> http.proxy http://192.168.3.98:7890
+git config <span class="nt">--global</span> https.proxy http://192.168.3.98:7890
+</code></pre></div></div>
+
+<h2 id="启动-jekyll-预览">启动 Jekyll 预览</h2>
+
+<p>在项目目录中运行：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">exec </span>jekyll serve <span class="nt">--host</span> 0.0.0.0 <span class="nt">-P</span> 4000
+</code></pre></div></div>
+
+<p>参数说明：</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">--host 0.0.0.0</code>：允许外部访问</li>
+  <li><code class="language-plaintext highlighter-rouge">-P 4000</code>：指定端口（默认 4000，不需要 root 权限）</li>
+</ul>
+
+<p>启动后，在 Windows 浏览器中访问 <code class="language-plaintext highlighter-rouge">http://$INNER-VM-HOST-IP:4000</code> 即可看到博客。</p>
+
+<section class="gh-banner success" aria-labelledby="banner-title-jekyll-服务已成功启动-后续修改-markdown-文件后保存即可自动重新生成站点-刷新浏览器查看效果" role="region" data-dismissible="true">
+    <div class="banner-icon" aria-hidden="true">
+        
+        <svg viewBox="0 0 16 16" fill="currentColor">
+            <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+        </svg>
+        
+    </div>
+
+    <div class="banner-content">
+        <span class="banner-text">Jekyll 服务已成功启动，后续修改 Markdown 文件后保存即可自动重新生成站点，刷新浏览器查看效果。</span>
+    </div>
+</section>
+
+<h2 id="vs-code-远程编辑">VS Code 远程编辑</h2>
+
+<h3 id="安装-remote---ssh-扩展">安装 Remote - SSH 扩展</h3>
+
+<p>在 VS Code 中搜索并安装 <strong>Remote - SSH</strong> 扩展（Microsoft 出品）。</p>
+
+<h3 id="配置-ssh-密钥登录">配置 SSH 密钥登录</h3>
+
+<p>每次连接都输入密码既繁琐又不安全，推荐配置 SSH 密钥实现免密登录。</p>
+
+<h4 id="1-在-windows-端生成密钥对">1. 在 Windows 端生成密钥对</h4>
+
+<p>打开 PowerShell 或 Git Bash，执行：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh-keygen <span class="nt">-t</span> ed25519 <span class="nt">-C</span> <span class="s2">"你的邮箱@example.com"</span>
+</code></pre></div></div>
+
+<p>按回车使用默认路径（<code class="language-plaintext highlighter-rouge">C:\Users\你的用户名\.ssh\id_ed25519</code>），建议设置一个 passphrase（也可留空）。</p>
+
+<p>生成后会得到两个文件：</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">id_ed25519</code>：私钥，<strong>绝不能泄露</strong></li>
+  <li><code class="language-plaintext highlighter-rouge">id_ed25519.pub</code>：公钥，可以分发到服务器</li>
+</ul>
+
+<h4 id="2-将公钥上传到虚拟机">2. 将公钥上传到虚拟机</h4>
+
+<p><strong>方式一：使用 <code class="language-plaintext highlighter-rouge">ssh-copy-id</code>（Git Bash 或 WSL）</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh-copy-id <span class="nt">-i</span> ~/.ssh/id_ed25519.pub 用户名@<span class="nv">$INNER</span><span class="nt">-VM-HOST-IP</span>
+</code></pre></div></div>
+
+<p><strong>方式二：手动复制（PowerShell）</strong></p>
+
+<p>先查看公钥内容：</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Get-Content</span><span class="w"> </span><span class="nv">$</span><span class="nn">env</span><span class="p">:</span><span class="nv">USERPROFILE</span><span class="nx">\.ssh\id_ed25519.pub</span><span class="w">
+</span></code></pre></div></div>
+
+<p>然后 SSH 登录到虚拟机，将公钥追加到 <code class="language-plaintext highlighter-rouge">authorized_keys</code>：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> <span class="nt">-p</span> ~/.ssh
+<span class="nb">chmod </span>700 ~/.ssh
+<span class="nb">echo</span> <span class="s2">"你的公钥内容"</span> <span class="o">&gt;&gt;</span> ~/.ssh/authorized_keys
+<span class="nb">chmod </span>600 ~/.ssh/authorized_keys
+</code></pre></div></div>
+
+<h4 id="3-配置-ssh-config可选但推荐">3. 配置 SSH Config（可选但推荐）</h4>
+
+<p>在 Windows 的 <code class="language-plaintext highlighter-rouge">C:\Users\你的用户名\.ssh\config</code> 文件中添加：</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Host jekyll-vm
+    HostName $INNER-VM-HOST-IP
+    User bin4xin
+    IdentityFile ~/.ssh/id_ed25519
+    Port 22
+</code></pre></div></div>
+
+<p>这样后续连接只需输入别名 <code class="language-plaintext highlighter-rouge">jekyll-vm</code>，无需再记 IP 和用户名。</p>
+
+<h4 id="4-测试免密登录">4. 测试免密登录</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh jekyll-vm
+</code></pre></div></div>
+
+<p>如果直接登录成功且无需输入密码，说明配置完成。</p>
+
+<section class="gh-banner info" aria-labelledby="banner-title-配置好密钥后-vs-code-remote-ssh-连接时将自动使用密钥认证-无需每次输入密码-大幅提升开发体验" role="region" data-dismissible="true">
+    <div class="banner-icon" aria-hidden="true">
+        
+        <svg viewBox="0 0 16 16" fill="currentColor">
+            <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path>
+        </svg>
+        
+    </div>
+
+    <div class="banner-content">
+        <span class="banner-text">配置好密钥后，VS Code Remote-SSH 连接时将自动使用密钥认证，无需每次输入密码，大幅提升开发体验。</span>
+    </div>
+</section>
+
+<h3 id="配置-ssh-连接">配置 SSH 连接</h3>
+
+<p>使用快捷键 <code class="language-plaintext highlighter-rouge">Ctrl+Shift+P</code> 打开命令面板，输入 <code class="language-plaintext highlighter-rouge">Remote-SSH: Connect to Host...</code>，然后输入连接信息：</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>用户名@$INNER-VM-HOST-IP
+</code></pre></div></div>
+
+<p>例如 <code class="language-plaintext highlighter-rouge">bin4xin@$INNER-VM-HOST-IP</code>。第一次连接时需要确认主机指纹并输入密码。</p>
+
+<p>连接成功后，VS Code 会打开一个远程窗口，左下角显示 <code class="language-plaintext highlighter-rouge">SSH: $INNER-VM-HOST-IP</code>。</p>
+
+<h3 id="打开远程文件夹">打开远程文件夹</h3>
+
+<p>在远程窗口中点击”打开文件夹”，输入远程项目路径（如 <code class="language-plaintext highlighter-rouge">/home/bin4xin/github/bin4xin.github.io</code>），即可像编辑本地文件一样编辑博客内容。</p>
+
+<h3 id="实时预览">实时预览</h3>
+
+<p>保持虚拟机的 Jekyll 服务运行，在 VS Code 中修改文件后，Jekyll 会自动重新生成站点（如果未启用 <code class="language-plaintext highlighter-rouge">--livereload</code>，则手动刷新浏览器即可）。</p>
+
+<p>这种方式下，你可以在熟悉的 VS Code 环境中编辑，而所有的编译和运行都在 Linux 中完成，避免了 Windows 上的依赖问题。</p>
+
+<h2 id="git-配置与推送">Git 配置与推送</h2>
+
+<h3 id="配置用户信息">配置用户信息</h3>
+
+<p>首次提交前需要设置用户名和邮箱：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config <span class="nt">--global</span> user.name <span class="s2">"你的用户名"</span>
+git config <span class="nt">--global</span> user.email <span class="s2">"你的邮箱@example.com"</span>
+</code></pre></div></div>
+
+<h3 id="推送代码到-github">推送代码到 GitHub</h3>
+
+<h4 id="方式一https--personal-access-token">方式一：HTTPS + Personal Access Token</h4>
+
+<p>使用 HTTPS 方式推送时，需要 Personal Access Token (PAT)：</p>
+
+<ol>
+  <li>打开 GitHub → Settings → Developer settings → Personal access tokens → Tokens (classic)</li>
+  <li>生成新 token，勾选 <code class="language-plaintext highlighter-rouge">repo</code> 权限</li>
+  <li>配置 Git 凭据存储：</li>
+</ol>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config <span class="nt">--global</span> credential.helper store
+</code></pre></div></div>
+
+<ol>
+  <li>执行 <code class="language-plaintext highlighter-rouge">git push</code>，输入用户名和 token（不是密码）</li>
+</ol>
+
+<h4 id="方式二ssh推荐">方式二：SSH（推荐）</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 生成 SSH 密钥</span>
+ssh-keygen <span class="nt">-t</span> ed25519 <span class="nt">-C</span> <span class="s2">"你的邮箱@example.com"</span>
+
+<span class="c"># 查看公钥并添加到 GitHub</span>
+<span class="nb">cat</span> ~/.ssh/id_ed25519.pub
+
+<span class="c"># 修改远程仓库地址</span>
+git remote set-url origin git@github.com:你的用户名/bin4xin.github.io.git
+
+<span class="c"># 推送</span>
+git push
+</code></pre></div></div>
+
+<h2 id="常见问题与解决">常见问题与解决</h2>
+
+<section class="gh-banner error" aria-labelledby="banner-title-若遇到-code-bundle-install-code-或-code-jekyll-serve-code-报错-优先检查-ruby-版本-code-ruby-v-code-与-gemfile-中指定的版本是否一致-版本不匹配是最常见的根因" role="region" data-dismissible="true">
+    <div class="banner-icon" aria-hidden="true">
+        
+        <svg viewBox="0 0 16 16" fill="currentColor">
+            <path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575L6.457 1.047ZM8 4.75a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 4.75Zm.75 6.75a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Z"></path>
+        </svg>
+        
+    </div>
+
+    <div class="banner-content">
+        <span class="banner-text">若遇到 <code>bundle install</code>或 <code>jekyll serve</code> 报错，优先检查 Ruby 版本（<code>ruby -v</code>）与 Gemfile 中指定的版本是否一致，版本不匹配是最常见的根因。</span>
+    </div>
+</section>
+
+<h3 id="1-sudo-bundle-command-not-found">1. <code class="language-plaintext highlighter-rouge">sudo: bundle: command not found</code></h3>
+
+<p>使用 <code class="language-plaintext highlighter-rouge">sudo bundle</code> 时，<code class="language-plaintext highlighter-rouge">rbenv</code> 的环境变量不会传递给 root。解决方法是使用 <code class="language-plaintext highlighter-rouge">sudo -E</code> 保留环境，或者直接使用高端口（如 4000），避免使用 <code class="language-plaintext highlighter-rouge">sudo</code>。</p>
+
+<h3 id="2-bundler-command-not-found-jekyll">2. <code class="language-plaintext highlighter-rouge">bundler: command not found: jekyll</code></h3>
+
+<p>同样是因为 <code class="language-plaintext highlighter-rouge">sudo</code> 导致 <code class="language-plaintext highlighter-rouge">PATH</code> 丢失。可以使用 <code class="language-plaintext highlighter-rouge">sudo -E</code>，或安装 <code class="language-plaintext highlighter-rouge">rbenv-sudo</code> 插件，或者用完整路径执行。</p>
+
+<h3 id="3-git-代理问题">3. Git 代理问题</h3>
+
+<p>如果虚拟机无法直接访问 GitHub，可以配置代理。如果代理是 SOCKS5，需要改用 <code class="language-plaintext highlighter-rouge">socks5://</code> 前缀：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config <span class="nt">--global</span> http.proxy socks5://192.168.3.98:7890
+</code></pre></div></div>
+
+<h3 id="4-ruby-源码下载慢">4. Ruby 源码下载慢</h3>
+
+<p>使用 <code class="language-plaintext highlighter-rouge">RUBY_BUILD_MIRROR_URL</code> 环境变量指向国内镜像，并确保 <code class="language-plaintext highlighter-rouge">ruby-build</code> 插件已更新到最新版。</p>
+
+<h3 id="5-remote-ssh-连接失败">5. Remote-SSH 连接失败</h3>
+
+<p>检查虚拟机 IP 是否可达，SSH 服务是否运行，防火墙是否放行 22 端口：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>systemctl status ssh
+<span class="nb">sudo </span>ufw allow 22
+</code></pre></div></div>
+
+<h3 id="6-nokogiri-编译失败">6. <code class="language-plaintext highlighter-rouge">nokogiri</code> 编译失败</h3>
+
+<p>确保已安装 <code class="language-plaintext highlighter-rouge">libxml2-dev</code> 和 <code class="language-plaintext highlighter-rouge">libxslt1-dev</code>，并在 Linux 环境下编译，通常可以避免 Windows 上的编译问题。</p>
+
+<h2 id="总结">总结</h2>
+
+<p>通过 <strong>VMware Ubuntu + VS Code Remote-SSH + Jekyll</strong> 的组合，我们获得了稳定高效的博客开发体验。Linux 环境下 Ruby 原生扩展的编译更加顺畅，而 VS Code 的远程开发功能让我们可以继续使用熟悉的编辑器，兼顾了开发效率和跨平台兼容性。</p>
+
+<p>这种方案特别适合以下场景：</p>
+
+<ul>
+  <li>Windows 下 Jekyll 环境配置困难</li>
+  <li>需要同时使用多个 Ruby 版本</li>
+  <li>希望保持本地 Windows 环境整洁</li>
+  <li>需要模拟 Linux 生产环境</li>
+</ul>
+
+<section class="gh-banner success" aria-labelledby="banner-title-以上-阐述完毕" role="region" data-dismissible="true">
+    <div class="banner-icon" aria-hidden="true">
+        
+        <svg viewBox="0 0 16 16" fill="currentColor">
+            <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+        </svg>
+        
+    </div>
+
+    <div class="banner-content">
+        <span class="banner-text">以上，阐述完毕。</span>
+    </div>
+</section>
+
+            <!-- [x] 2022/10/20/10:49:36 fixed: while width < some inch. would be flex column not display like a row.-->
+<footer>
+	<style>
+		.border-top {
+			border-top: 1.5px solid #d0d7de!important;
+		}
+		
+		/* 仅在 /categories/ 页面生效的竖向排列样式 */
+		.suggestion-column-wrapper.is-categories-page {
+			display: flex;
+			flex-direction: column;
+			gap: 1.25rem;
+		}
+		.suggestion-column-wrapper.is-categories-page .col-xs-4-5 {
+			width: 100% !important;
+			padding-right: 0 !important;
+			padding-left: 0 !important;
+			margin-bottom: 0 !important;
+			padding-top: 0 !important;
+			padding-bottom: 0 !important;
+		}
+	</style>
+	<div class="border-top"></div>
+	
+	<!-- 只有在 /categories/ 页面时添加 is-categories-page 类名 -->
+	<section class="container-xl mt-lg-8 mt-6 px-3 px-md-6 no-print mx-auto suggestion-column-wrapper ">
+		
+		<!-- 1. 申明模块：/categories/ 页面隐藏 -->
+		
+			<div class="col-xs-4-5 pr-4 mb-8 px-md-6 container-xl mx-auto py-6 py-lg-6 clearfix">
+				<h2 class="lead">申明</h2>
+				<div>
+					<div class="mb-2">
+						<a href="/blog/2026/jekyll-vmware-remote-dev/" target="_blank" class="text-bold">
+							<div class="fa fa-link"></div>
+							转载请申明本文档链接
+						</a>
+					</div>
+					<div>
+						<a href="https://github.com/Bin4xin" target="_blank" class="text-bold">
+							<div class="fa fa-user"></div>
+							Post by Bin4xin.
+						</a>
+					</div>
+				</div>
+			</div>
+
+		<!-- 2. 贡献开源文档 -->
+		<div class="col-xs-4-5 pr-4 mb-8 px-md-6 container-xl mx-auto py-6 py-lg-6 clearfix">
+			<h2 class="lead">贡献开源文档</h2>
+			<div>
+				<a href="https://github.com/Bin4xin/bin4xin.github.io/tree/main/_posts/blog/2026-08-26-jekyll-vmware-remote-dev.md" target="_blank" class="no-underline btn mr-1 color-border-accent-emphasis">
+					<svg aria-hidden="true" focusable="false" role="img" class="octicon mr-1" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="display: inline-block; user-select: none; vertical-align: text-bottom; overflow: visible;"><path fill-rule="evenodd" d="M7.177 3.073L9.573.677A.25.25 0 0110 .854v4.792a.25.25 0 01-.427.177L7.177 3.427a.25.25 0 010-.354zM3.75 2.5a.75.75 0 100 1.5.75.75 0 000-1.5zm-2.25.75a2.25 2.25 0 113 2.122v5.256a2.251 2.251 0 11-1.5 0V5.372A2.25 2.25 0 011.5 3.25zM11 2.5h-1V4h1a1 1 0 011 1v5.628a2.251 2.251 0 101.5 0V5A2.5 2.5 0 0011 2.5zm1 10.25a.75.75 0 111.5 0 .75.75 0 01-1.5 0zM3.75 12a.75.75 0 100 1.5.75.75 0 000-1.5z"></path></svg>
+					贡献当前开源文档
+				</a>
+				<div class="f1-l mt-2 text-bold">此之前，学习开源贡献<a target="_blank" href="https://github.com/Bin4xin/bin4xin.github.io/wiki/Git操作-Git如何贡献仓库代码">CN&nbsp;|</a>
+					<a target="_blank" href="https://github.com/github/docs">EN</a>
+				</div>
+			</div>
+		</div>
+		
+
+		<!-- 3. 此文档对您有帮助吗 -->
+		<div class="col-xs-4-5 pr-4 mb-8 px-md-6 container-xl mx-auto py-6 py-lg-6 clearfix">
+			<h2 class="lead">此文档对您有帮助吗</h2>
+			<a href="https://github.com/Bin4xin/bin4xin.github.io/" target="_blank" class="no-underline">
+				<span class="btn mr-1 color-border-accent-emphasis" title="给文档仓库点个赞!">
+					<div class="fa fa-thumbs-o-up"></div>
+				</span>
+			</a>
+			<a href="https://github.com/Bin4xin/bin4xin.github.io/issues/new?labels=Service+Issue,research&template=2-bug_report.yaml&title=_posts/blog/2026-08-26-jekyll-vmware-remote-dev.md&nbsp; 在 VMware Ubuntu 中结合 VS Code 与 Jekyll 进行远程开发 | © 哨兵 | SENTINEL SECURITY, LAB" target="_blank">
+				<span class="btn mr-1 color-border-accent-emphasis" title="本文档有问题?">
+					<div class="fa fa-thumbs-o-down"></div>
+				</span>
+			</a>
+		</div>
+	</section>
+</footer>
+            </div>
+            <div class="spacing"></div>
+        </div><!--/post-content -->
+        
+<div class="toc-sidebar position-sticky top-0" style="max-height: 100vh; overflow-y: auto;">
+    <div class="toc-sidebar-inner">
+        
+        
+        
+        
+        <!-- Article actions toolbar - Primer ButtonGroup style -->
+        <div class="toc-article-actions mb-3 ml-3">
+            <div class="prc-ButtonGroup-ButtonGroup-vFUrY">
+                <div>
+                    <button class="toc-copy-btn" onclick="copyAsMarkdown()" title="复制为 Markdown 格式">
+                        <span class="toc-btn-leading-visual">
+                            <!-- 默认复制图标 -->
+                            <svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-copy icon-copy" viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
+                                <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"/>
+                                <path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"/>
+                            </svg>
+                            <!-- 成功勾选图标 -->
+                            <svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-check icon-success" viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
+                                <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.75.75 0 0 1 1.06-1.06L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"/>
+                            </svg>
+                        </span>
+                        <span class="toc-btn-text">复制为 Markdown 格式</span>
+                    </button>
+                </div>
+                <div>
+                    <div class="toc-dropdown-wrap">
+                        <button type="button" class="toc-dropdown-trigger" aria-label="更多 Markdown 选项" aria-haspopup="true" aria-expanded="false" tabindex="0" onclick="toggleTocDropdown(event)">
+                            <svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-triangle-down" viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
+                                <path d="m4.427 7.427 3.396 3.396a.25.25 0 0 0 .354 0l3.396-3.396A.25.25 0 0 0 11.396 7H4.604a.25.25 0 0 0-.177.427Z"/>
+                            </svg>
+                        </button>
+                        <div class="toc-dropdown-menu" id="tocDropdownMenu">
+                            <a class="toc-dropdown-item" href="https://github.com/copilot?prompt=I%20need%20help%20with%20this%20GitHub%20Docs%20page%3A%20https://github.com/Bin4xin/bin4xin.github.io/blob/main/_posts/blog/2026-08-26-jekyll-vmware-remote-dev.md" target="_blank">
+                                <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
+                                    <path d="M7.998 15.035c-4.562 0-7.873-2.914-7.998-3.749V9.338c.085-.628.677-1.686 1.588-2.065.013-.07.024-.143.036-.218.029-.183.06-.384.126-.612-.201-.508-.254-1.084-.254-1.656 0-.87.128-1.769.693-2.484.579-.733 1.494-1.124 2.724-1.261 1.206-.134 2.262.034 2.944.765.05.053.096.108.139.165.044-.057.094-.112.143-.165.682-.731 1.738-.899 2.944-.765 1.23.137 2.145.528 2.724 1.261.566.715.693 1.614.693 2.484 0 .572-.053 1.148-.254 1.656.066.228.098.429.126.612.012.076.024.148.037.218.924.385 1.522 1.471 1.591 2.095v1.872c0 .766-3.351 3.795-8.002 3.795Zm0-1.485c2.28 0 4.584-1.11 5.002-1.433V7.862l-.023-.116c-.49.21-1.075.291-1.727.291-1.146 0-2.059-.327-2.71-.991A3.222 3.222 0 0 1 8 6.303a3.24 3.24 0 0 1-.544.743c-.65.664-1.563.991-2.71.991-.652 0-1.236-.081-1.727-.291l-.023.116v4.255c.419.323 2.722 1.433 5.002 1.433ZM6.762 2.83c-.193-.206-.637-.413-1.682-.297-1.019.113-1.479.404-1.713.7-.247.312-.369.789-.369 1.554 0 .793.129 1.171.308 1.371.162.181.519.379 1.442.379.853 0 1.339-.235 1.638-.54.315-.322.527-.827.617-1.553.117-.935-.037-1.395-.241-1.614Zm4.155-.297c-1.044-.116-1.488.091-1.681.297-.204.219-.359.679-.242 1.614.091.726.303 1.231.618 1.553.299.305.784.54 1.638.54.922 0 1.28-.198 1.442-.379.179-.2.308-.578.308-1.371 0-.765-.123-1.242-.37-1.554-.233-.296-.693-.587-1.713-.7Z"></path><path d="M6.25 9.037a.75.75 0 0 1 .75.75v1.501a.75.75 0 0 1-1.5 0V9.787a.75.75 0 0 1 .75-.75Zm4.25.75v1.501a.75.75 0 0 1-1.5 0V9.787a.75.75 0 0 1 1.5 0Z"></path>
+                                </svg>
+                                <span>询问 Copilot</span>
+                            </a>
+                            <a class="toc-dropdown-item" href="https://github.com/Bin4xin/bin4xin.github.io/blob/main/_posts/blog/2026-08-26-jekyll-vmware-remote-dev.md" target="_blank">
+                                <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M2.75 14A1.75 1.75 0 0 1 1 12.25v-2.5a.75.75 0 0 1 1.5 0v2.5c0 .138.112.25.25.25h10.5a.25.25 0 0 0 .25-.25v-2.5a.75.75 0 0 1 1.5 0v2.5A1.75 1.75 0 0 1 13.25 14Z"/><path d="M7.25 7.689V2a.75.75 0 0 1 1.5 0v5.689l1.97-1.969a.749.749 0 1 1 1.06 1.06l-3.25 3.25a.749.749 0 0 1-1.06 0L4.22 6.78a.749.749 0 1 1 1.06-1.06l1.97 1.969Z"/></svg>
+                                <span>获取原始 Markdown</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Same-category article navigation -->
+        
+
+        <!-- Table of Contents -->
+        <h2 class="toc-heading" id="in-this-article">在本文中</h2>
+        <nav class="toc-nav" aria-labelledby="in-this-article">
+            <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h1"><a href="#在-vmware-ubuntu-中结合-vs-code-与-jekyll-进行远程开发">在 VMware Ubuntu 中结合 VS Code 与 Jekyll 进行远程开发</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#背景">背景</a></li>
+<li class="toc-entry toc-h2"><a href="#环境准备">环境准备</a></li>
+<li class="toc-entry toc-h2"><a href="#安装-ruby">安装 Ruby</a></li>
+<li class="toc-entry toc-h2"><a href="#安装-bundler-和-jekyll">安装 Bundler 和 Jekyll</a></li>
+<li class="toc-entry toc-h2"><a href="#获取项目代码">获取项目代码</a></li>
+<li class="toc-entry toc-h2"><a href="#启动-jekyll-预览">启动 Jekyll 预览</a></li>
+<li class="toc-entry toc-h2"><a href="#vs-code-远程编辑">VS Code 远程编辑</a></li>
+<li class="toc-entry toc-h2"><a href="#git-配置与推送">Git 配置与推送</a></li>
+<li class="toc-entry toc-h2"><a href="#常见问题与解决">常见问题与解决</a></li>
+<li class="toc-entry toc-h2"><a href="#总结">总结</a></li>
+</ul>
+</li>
+</ul>
+        </nav>
+    </div>
+</div>
+
+
+<script>
+function copyAsMarkdown() {
+    var rawPath = "https://raw.githubusercontent.com/Bin4xin/bin4xin.github.io/main/_posts/blog/2026-08-26-jekyll-vmware-remote-dev.md";
+    fetch(rawPath)
+        .then(function(res) {
+            if (!res.ok) throw new Error('HTTP error ' + res.status);
+            return res.text();
+        })
+        .then(function(text) {
+            return navigator.clipboard.writeText(text);
+        })
+        .then(function() {
+            var btn = document.querySelector('.toc-copy-btn');
+            var textEl = btn.querySelector('.toc-btn-text');
+            var origText = textEl.textContent;
+            
+            textEl.textContent = '已复制！';
+            btn.classList.add('toc-copy-success');
+            
+            setTimeout(function() {
+                textEl.textContent = origText;
+                btn.classList.remove('toc-copy-success');
+            }, 2000);
+        })
+        .catch(function(err) {
+            console.error('Failed to copy markdown:', err);
+        });
+}
+
+function toggleTocDropdown(e) {
+    e.stopPropagation();
+    var menu = document.getElementById('tocDropdownMenu');
+    var trigger = e.currentTarget;
+    var isOpen = menu.classList.contains('toc-dropdown-open');
+    menu.classList.toggle('toc-dropdown-open');
+    trigger.setAttribute('aria-expanded', !isOpen);
+}
+
+document.addEventListener('click', function(e) {
+    var menu = document.getElementById('tocDropdownMenu');
+    if (menu && !menu.contains(e.target) && !e.target.closest('.toc-dropdown-trigger')) {
+        menu.classList.remove('toc-dropdown-open');
+        var trigger = document.querySelector('.toc-dropdown-trigger');
+        if (trigger) trigger.setAttribute('aria-expanded', 'false');
+    }
+});
+</script>
+    </div><!--/row -->
+</div><!--/container -->
+
+<!-- Lightbox DOM -->
+<div class="lb-overlay" id="lb-overlay">
+<button class="lb-close" id="lb-close"><i class="fas fa-times"></i></button>
+<button class="lb-arrow lb-prev" id="lb-prev"><i class="fas fa-chevron-left"></i></button>
+<button class="lb-arrow lb-next" id="lb-next"><i class="fas fa-chevron-right"></i></button>
+<img class="lb-img" id="lb-img" src="" alt="" draggable="false">
+<span class="lb-counter" id="lb-counter"></span>
+<div class="lb-zoom">
+    <button class="lb-zoom-btn" id="lb-zoom-out"><i class="fas fa-minus"></i></button>
+    <span class="lb-zoom-level" id="lb-zoom-level">100%</span>
+    <button class="lb-zoom-btn" id="lb-zoom-in"><i class="fas fa-plus"></i></button>
+    <button class="lb-zoom-btn" id="lb-zoom-reset"><i class="fas fa-expand"></i></button>
+</div>
+</div>
+
+<script>
+(function(){
+var overlay   = document.getElementById('lb-overlay');
+var img       = document.getElementById('lb-img');
+var btnClose  = document.getElementById('lb-close');
+var btnPrev   = document.getElementById('lb-prev');
+var btnNext   = document.getElementById('lb-next');
+var counter   = document.getElementById('lb-counter');
+var zoomIn    = document.getElementById('lb-zoom-in');
+var zoomOut   = document.getElementById('lb-zoom-out');
+var zoomReset = document.getElementById('lb-zoom-reset');
+var zoomLevel = document.getElementById('lb-zoom-level');
+
+var images = [];
+var idx    = 0;
+var scale  = 1;
+var posX   = 0;
+var posY   = 0;
+
+// ── Collect all clickable images (with src dedup) ──
+  function collectImages(){
+    var containers = document.querySelectorAll('#help-content, .markdown-body-img, .post-content, .article-content, .ct-card__body, .lb-target');
+    images = [];
+    var seen = {};
+
+    containers.forEach(function(c){
+      c.querySelectorAll('img').forEach(function(im){
+        if(im.getAttribute('data-lb-ignore')) return;
+        if(im.getAttribute('width') && parseInt(im.getAttribute('width')) < 60) return;
+        if(im.getAttribute('height') && parseInt(im.getAttribute('height')) < 60) return;
+        if(images.indexOf(im) !== -1) return;
+
+        var key = im.getAttribute('data-src') || im.src;
+        if(seen[key]) return;
+        seen[key] = true;
+
+        images.push(im);
+        im.addEventListener('click', function(e){
+          e.preventDefault();
+          openAt(im);
+        });
+      });
+    });
+
+    // Also catch any img with class "lb-clickable"
+    document.querySelectorAll('img.lb-clickable').forEach(function(im){
+      if(images.indexOf(im) === -1){
+        images.push(im);
+        im.addEventListener('click', function(e){
+          e.preventDefault();
+          openAt(im);
+        });
+      }
+    });
+  }
+
+// ── Open at specific image ──
+function openAt(targetImg){
+    idx = images.indexOf(targetImg);
+    if(idx === -1) idx = 0;
+    showImage();
+    overlay.classList.add('is-active');
+    document.body.style.overflow = 'hidden';
+}
+
+// ── Show image at current index ──
+function showImage(){
+    if(!images[idx]) return;
+    var src = images[idx].getAttribute('data-src') || images[idx].src;
+    img.src = src;
+    img.alt = images[idx].alt || '';
+    counter.textContent = (idx + 1) + ' / ' + images.length;
+    btnPrev.style.display = images.length > 1 ? '' : 'none';
+    btnNext.style.display = images.length > 1 ? '' : 'none';
+    resetZoom();
+}
+
+// ── Close ──
+function close(){
+    overlay.classList.remove('is-active');
+    document.body.style.overflow = '';
+    resetZoom();
+}
+
+// ── Navigate ──
+function goPrev(){
+    if(images.length <= 1) return;
+    idx = (idx - 1 + images.length) % images.length;
+    showImage();
+}
+function goNext(){
+    if(images.length <= 1) return;
+    idx = (idx + 1) % images.length;
+    showImage();
+}
+
+// ── Zoom ──
+function applyZoom(){
+    img.style.transform = 'scale(' + scale + ') translate(' + posX + 'px, ' + posY + 'px)';
+    zoomLevel.textContent = Math.round(scale * 100) + '%';
+}
+function zoomTo(s){
+    scale = Math.max(0.5, Math.min(5, s));
+    if(scale === 1){ posX = 0; posY = 0; }
+    applyZoom();
+}
+function resetZoom(){
+    scale = 1; posX = 0; posY = 0;
+    applyZoom();
+}
+
+// ── Drag when zoomed ──
+var dragging = false, dragStartX, dragStartY, startPosX, startPosY;
+
+img.addEventListener('mousedown', function(e){
+    if(scale <= 1) return;
+    e.preventDefault();
+    dragging = true;
+    img.classList.add('is-dragging');
+    dragStartX = e.clientX;
+    dragStartY = e.clientY;
+    startPosX  = posX;
+    startPosY  = posY;
+});
+document.addEventListener('mousemove', function(e){
+    if(!dragging) return;
+    posX = startPosX + (e.clientX - dragStartX) / scale;
+    posY = startPosY + (e.clientY - dragStartY) / scale;
+    applyZoom();
+});
+document.addEventListener('mouseup', function(){
+    dragging = false;
+    img.classList.remove('is-dragging');
+});
+
+// Mouse wheel zoom
+overlay.addEventListener('wheel', function(e){
+    if(!overlay.classList.contains('is-active')) return;
+    e.preventDefault();
+    var delta = e.deltaY > 0 ? -0.15 : 0.15;
+    zoomTo(scale + delta);
+}, { passive: false });
+
+// Pinch zoom (touch)
+var lastTouchDist = 0;
+overlay.addEventListener('touchstart', function(e){
+    if(e.touches.length === 2){
+    var dx = e.touches[0].clientX - e.touches[1].clientX;
+    var dy = e.touches[0].clientY - e.touches[1].clientY;
+    lastTouchDist = Math.sqrt(dx * dx + dy * dy);
+    }
+}, { passive: true });
+overlay.addEventListener('touchmove', function(e){
+    if(e.touches.length === 2){
+    e.preventDefault();
+    var dx = e.touches[0].clientX - e.touches[1].clientX;
+    var dy = e.touches[0].clientY - e.touches[1].clientY;
+    var dist = Math.sqrt(dx * dx + dy * dy);
+    var delta = (dist - lastTouchDist) * 0.008;
+    lastTouchDist = dist;
+    zoomTo(scale + delta);
+    }
+}, { passive: false });
+
+// Double-click to toggle zoom
+img.addEventListener('dblclick', function(e){
+    e.preventDefault();
+    if(scale > 1){
+    resetZoom();
+    } else {
+    zoomTo(2.5);
+    }
+});
+
+// ── Swipe navigation (touch) ──
+var touchStartX = 0, touchStartY = 0, swiping = false;
+img.addEventListener('touchstart', function(e){
+    if(e.touches.length !== 1 || scale > 1) return;
+    swiping = true;
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+}, { passive: true });
+img.addEventListener('touchend', function(e){
+    if(!swiping) return;
+    swiping = false;
+    var dx = e.changedTouches[0].clientX - touchStartX;
+    if(Math.abs(dx) > 60){
+    dx > 0 ? goPrev() : goNext();
+    }
+}, { passive: true });
+
+// ── Keyboard ──
+document.addEventListener('keydown', function(e){
+    if(!overlay.classList.contains('is-active')) return;
+    switch(e.key){
+    case 'Escape':  close(); break;
+    case 'ArrowLeft':  goPrev(); break;
+    case 'ArrowRight': goNext(); break;
+    case '+': case '=': zoomTo(scale + 0.2); break;
+    case '-': zoomTo(scale - 0.2); break;
+    case '0': resetZoom(); break;
+    }
+});
+
+// ── Click events ──
+overlay.addEventListener('click', function(e){
+    if(e.target === overlay) close();
+});
+btnClose.addEventListener('click', close);
+btnPrev.addEventListener('click', function(e){ e.stopPropagation(); goPrev(); });
+btnNext.addEventListener('click', function(e){ e.stopPropagation(); goNext(); });
+zoomIn.addEventListener('click', function(e){ e.stopPropagation(); zoomTo(scale + 0.25); });
+zoomOut.addEventListener('click', function(e){ e.stopPropagation(); zoomTo(scale - 0.25); });
+zoomReset.addEventListener('click', function(e){ e.stopPropagation(); resetZoom(); });
+
+// ── Init ──
+if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', collectImages);
+} else {
+    collectImages();
+}
+})();
+</script>
+                <!-- footer style & markup start -->
+<style>
+    :root {
+      --ftr-bg: rgba(255, 255, 255, 0.75);
+      --ftr-border: rgba(0, 0, 0, 0.08);
+      --ftr-text: #656d76;
+      --ftr-text-hover: #0969da;
+      --ftr-tertiary-bg: rgba(0, 0, 0, 0.02);
+      --ftr-tertiary-text: #8b949e;
+    }
+  
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --ftr-bg: rgba(22, 27, 34, 0.75);
+        --ftr-border: rgba(255, 255, 255, 0.08);
+        --ftr-text: #8b949e;
+        --ftr-text-hover: #58a6ff;
+        --ftr-tertiary-bg: rgba(0, 0, 0, 0.2);
+        --ftr-tertiary-text: #6e7681;
+      }
+    }
+  
+    [data-theme="dark"] {
+      --ftr-bg: rgba(22, 27, 34, 0.75);
+      --ftr-border: rgba(255, 255, 255, 0.08);
+      --ftr-text: #8b949e;
+      --ftr-text-hover: #58a6ff;
+      --ftr-tertiary-bg: rgba(0, 0, 0, 0.2);
+      --ftr-tertiary-text: #6e7681;
+    }
+  
+    #footerwrap {
+      margin-top: 3rem;
+      border-top: 1px solid var(--ftr-border);
+      background: var(--ftr-bg);
+      backdrop-filter: blur(12px) saturate(1.2);
+      -webkit-backdrop-filter: blur(12px) saturate(1.2);
+      color: var(--ftr-text);
+      font-size: 0.875rem;
+      transition: all 0.25s ease;
+    }
+  
+    .ftr-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 1.5rem;
+    }
+  
+    .ftr-main-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+    }
+  
+    .ftr-counter-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 1.25rem;
+      border-top: 1px dashed var(--ftr-border);
+    }
+  
+    /* 底部版权与 Brand 栏 */
+    .ftr-tertiary {
+      background: var(--ftr-tertiary-bg);
+      border-top: 1px solid var(--ftr-border);
+      padding: 0.85rem 1.5rem;
+    }
+  
+    .ftr-tertiary-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    .ftr-nav-list {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+  
+    .ftr-nav-list li {
+      display: inline-flex;
+      align-items: center;
+    }
+  
+    .ftr-nav-list li:not(:last-child)::after {
+      content: "•";
+      margin-left: 1.25rem;
+      color: var(--ftr-tertiary-text);
+      opacity: 0.5;
+    }
+  
+    .ftr-nav-list a, 
+    .ftr-nav-list span {
+      color: var(--ftr-tertiary-text);
+      font-weight: 500;
+      font-size: 0.825rem;
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+  
+    .ftr-nav-list a:hover {
+      color: var(--ftr-text-hover);
+    }
+  
+    @media (max-width: 640px) {
+      .ftr-container {
+        padding: 1.5rem 1rem 1rem;
+      }
+  
+      .ftr-nav-list {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+  
+      .ftr-nav-list li:not(:last-child)::after {
+        display: none;
+      }
+    }
+  
+    @media print {
+      #footerwrap { display: none !important; }
+    }
+  </style>
+  
+  <div id="footerwrap" class="hidden-print">
+    <div class="ftr-container">
+      <!-- 主链接与内容展示区 -->
+      <div class="ftr-main-row">
+        
+<div class="footer-col-lg-2">
+    <details class="bb bb-ns bb-m bn-l b--white pv2 pv2-ns pv2-m pv0-l" open>
+        <summary class="fw6 mt0 flex justify-between mb0 mb0-ns mb0-m mb1-l lh-copy f2 f2-ns f2-m f3-l ">
+            <span class="footer-abstract point"><strong>入门</strong></span>
+        </summary>
+        <ul class="db db-ns db-m db-l ma0 pa0 mt2 mt2-ns mt2-m mt0-l list">
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="/usage/" target="_blank">快速开始</a></li>
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="/blog/2019/jekyll/in/linux/" target="_blank">博客搭建</a></li>
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="/blog/2019/nginx/with/jekyll-site/" target="_blank">公网部署</a></li>
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="https://github.com/tuna/mirror-web/" target="_blank">Jekyll Tuna源码</a></li>
+            
+            
+        </ul>
+    </details>
+</div>
+
+<div class="footer-col-lg-2">
+    <details class="bb bb-ns bb-m bn-l b--white pv2 pv2-ns pv2-m pv0-l" open>
+        <summary class="fw6 mt0 flex justify-between mb0 mb0-ns mb0-m mb1-l lh-copy f2 f2-ns f2-m f3-l ">
+            <span class="footer-abstract point"><strong>社区</strong></span>
+        </summary>
+        <ul class="db db-ns db-m db-l ma0 pa0 mt2 mt2-ns mt2-m mt0-l list">
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="https://github.com/Bin4xin/bigger-than-bigger/" target="_blank">Bigger than Bigger</a></li>
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="https://github.com/Bin4xin/bigger-than-bigger/tree/master/CoVV" target="_blank">Collection Of Verified Vulnerabilities</a></li>
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="https://github.com/Bin4xin/sweet-ysoserial" target="_blank">sweet-ysoserial</a></li>
+            
+            
+        </ul>
+    </details>
+</div>
+
+<div class="footer-col-lg-2">
+    <details class="bb bb-ns bb-m bn-l b--white pv2 pv2-ns pv2-m pv0-l" open>
+        <summary class="fw6 mt0 flex justify-between mb0 mb0-ns mb0-m mb1-l lh-copy f2 f2-ns f2-m f3-l ">
+            <span class="footer-abstract point"><strong>技术栈</strong></span>
+        </summary>
+        <ul class="db db-ns db-m db-l ma0 pa0 mt2 mt2-ns mt2-m mt0-l list">
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="https://jekyllrb.com/docs/" target="_blank">Jekyll</a></li>
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="https://www.markdownguide.org/" target="_blank">MarkDown</a></li>
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="https://www.cloudflare.com/waf/" target="_blank">CloudFlare WAF</a></li>
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="https://dash.cloudflare.com/dns/" target="_blank">CloudFlare CDN</a></li>
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="https://github.com/features/actions" target="_blank">Github Action</a></li>
+            
+            
+        </ul>
+    </details>
+</div>
+
+<div class="footer-col-lg-2">
+    <details class="bb bb-ns bb-m bn-l b--white pv2 pv2-ns pv2-m pv0-l" open>
+        <summary class="fw6 mt0 flex justify-between mb0 mb0-ns mb0-m mb1-l lh-copy f2 f2-ns f2-m f3-l ">
+            <span class="footer-abstract point"><strong>关于</strong></span>
+        </summary>
+        <ul class="db db-ns db-m db-l ma0 pa0 mt2 mt2-ns mt2-m mt0-l list">
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="/about/" target="_blank">近期研究</a></li>
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="/blog/" target="_blank">博客</a></li>
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="https://github.com/Bin4xin/bin4xin.github.io/wiki" target="_blank">WIKI</a></li>
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="/usage/" target="_blank">帮助</a></li>
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="/privacy/" target="_blank">隐私</a></li>
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="/privacy/#Cookie" target="_blank">Cookie偏好</a></li>
+            
+            
+        </ul>
+    </details>
+</div>
+
+<div class="footer-col-lg-2">
+    <details class="bb bb-ns bb-m bn-l b--white pv2 pv2-ns pv2-m pv0-l" open>
+        <summary class="fw6 mt0 flex justify-between mb0 mb0-ns mb0-m mb1-l lh-copy f2 f2-ns f2-m f3-l ">
+            <span class="footer-abstract point"><strong>贡献者</strong></span>
+        </summary>
+        <ul class="db db-ns db-m db-l ma0 pa0 mt2 mt2-ns mt2-m mt0-l list">
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="https://github.com/bin4xin" target="_blank">本阿信</a></li>
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="https://github.com/dnf-2008" target="_blank">夏天の风</a></li>
+            
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="https://github.com/Yang2635" target="_blank">Yang2635</a></li>
+            
+            
+        </ul>
+    </details>
+</div>
+
+      </div>
+  
+      <!-- 计数器/统计组件区 -->
+      <div class="ftr-counter-row">
+        <!--
+   - FlipClock design
+   -    @link { https://github.com/objectivehtml/FlipClock }
+-->
+
+<div class="flex items-center mb3 mb3-ns mb3-m mb0-l lh-1 mt0 mt3-ns" >
+    
+    
+    
+    <div id="SentinelLAB"><a class="lh-1 dib mr2" title="SentinelLAB" target="_blank" rel="noopener" href="https://www.vulbox.com/team/ERRORS"></a></div>
+    
+    
+    
+    <div id="YouTuBe"><a class="lh-1 dib mr2" title="YouTuBe" target="_blank" rel="noopener" href="https://www.youtube.com/@bin4xin"></a></div>
+    
+    
+    
+    <div id="Twitter"><a class="lh-1 dib mr2" title="Twitter" target="_blank" rel="noopener" href="https://twitter.com/bin4xin"></a></div>
+    
+    
+    
+    <div id="Linkedin"><a class="lh-1 dib mr2" title="Linkedin" target="_blank" rel="noopener" href="https://www.linkedin.com/#"></a></div>
+    
+    
+    
+    <div id="Facebook"><a class="lh-1 dib mr2" title="Facebook" target="_blank" rel="noopener" href="https://www.facebook.com/#"></a></div>
+    
+    
+    
+    <div id="Bilibili"><a class="lh-1 dib mr2" title="Bilibili" target="_blank" rel="noopener" href="https://space.bilibili.com/67373868"></a></div>
+    
+</div>
+      </div>
+    </div>
+  
+    <!-- 底部版权/品牌栏 -->
+    <div class="ftr-tertiary">
+      <div class="ftr-tertiary-inner">
+        <ul class="ftr-nav-list">
+          <li>
+            <span>© 2019-2026 </span>
+          </li>
+          
+          <li>
+            <span>SENTINEL SECURITY, LAB</span>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- footer style & markup end -->
+
+    </body>
+
+    <script src="/assets/js/copy.js"></script>
+<!--TODONE.
+**FireFox display BUG**
+position-fixed in FireFox display position -> none
+- Reference:
+    - { @link https://developer.mozilla.org/zh-CN/docs/Web/CSS/position#browser_compatibility }
+    - { @link https://blog.csdn.net/DDD4V/article/details/123354124 }
+    - { @link https://juejin.cn/post/6844904100576886797 }
+        - { @link Demo https://codepen.io/li377242494/pen/VwLGGaR }
+Fiex In `[assets/css/style.scss](https://github.com/Bin4xin/bin4xin.github.io/blob/main/assets/css/style.scss)`
+    - tooltipped css postion.
+-->
+
+<!--<link rel="preload" href="https://bobbyhadz.com/_next/static/css/b9669d7c5a48325f.css" as="style"/>-->
+<!--<link rel="stylesheet" href="https://bobbyhadz.com/_next/static/css/b9669d7c5a48325f.css" data-n-g=""/>-->
+
+<divs role="tooltip" class="position-fixed bottom-0 mb-4 right-5 mr-4 z-1 transition-200 opacity-0" onclick="$(&quot;html,body&quot;).animate({scrollTop:0}, 1000);">
+    <button class="tooltipped tooltipped-n tooltipped-no-delay color-bg-accent-emphasis color-fg-on-emphasis circle border-0" style="width:45px;height:45px"
+            aria-label="滚动到顶部">
+        <svg aria-hidden="true" role="img" class="octicon octicon-chevron-up" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="display:inline-block;user-select:none;vertical-align:text-bottom;overflow:visible">
+            <path fill-rule="evenodd" d="M3.22 9.78a.75.75 0 010-1.06l4.25-4.25a.75.75 0 011.06 0l4.25 4.25a.75.75 0 01-1.06 1.06L8 6.06 4.28 9.78a.75.75 0 01-1.06 0z">
+            </path>
+        </svg>
+    </button>
+</divs>
+
+
+</html>

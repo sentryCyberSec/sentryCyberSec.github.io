@@ -28,7 +28,7 @@
 <meta property="og:image" content="https://bin4xin.github.io/assets/img/logo-share.png" /> <!-- WeChat requires that thumbnail image is larger than 300x300 -->
 <meta property="og:url" content="https://bin4xin.github.io/blog/page/17/index.html" />
 <title> 哨兵安全博客 - 第 17 页 | © 哨兵 | SENTINEL SECURITY, LAB</title>
-
+<link rel="stylesheet" href="/assets/css/cate-document.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/pace-minimal.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/footer.css">
 <!-- Bootstrap core CSS -->
@@ -108,6 +108,184 @@
                     
                     <div class="blog-card">
     <div class="blog-card-header">
+        <a class="blog-card-title" href="/blog/2020/vim-2-usage/">
+            「技巧」：Linux & Unix Terminal小技巧
+        </a>
+        <div class="blog-card-actions">
+            <a class="blog-card-action-btn" href="/blog/2020/vim-2-usage/" title="阅读全文">
+                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"/></svg>
+            </a>
+            
+            <a class="blog-card-action-btn" href="https://github.com/Bin4xin/bin4xin.github.io/edit/main/_posts/blog/2020-09-01-vim-2-usage.markdown" target="_blank" title="编辑此页">
+                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Z"/></svg>
+            </a>
+            
+        </div>
+    </div>
+
+    
+    <div class="blog-card-body">
+        <p class="blog-card-excerpt">
+            grep
+
+
+  grep -n "get_spg2lsf" -r ./
+
+
+在当前文件夹下查找包含get_spg2lsf字符串的文件
+
+vim
+
+快速删除
+
+1、删除每行前10个字符：
+
+
+  :%s/^.\{10\}//
+
+
+其中，%表示所有行，s表示替换，”%s”可用”1,$”代替（下同）；
+
+正则表达式”/^.{10}//”中，^表示行首；”.”表示要删除的字符个数，”.{10}“表示删除10个字符，可用10个”.”表示；
+
+2、删除每行后10个字符
+
+
+  :...
+        </p>
+    </div>
+    
+
+    <div class="blog-card-footer">
+        <div class="blog-card-meta">
+            <span class="blog-card-author">
+                
+<img alt="Bin4xin" src="https://avatars.githubusercontent.com/u/57884471?v=4"/>
+            </span>
+            <!--article author end-->
+
+
+
+
+
+
+
+
+<span class="ymh-author-badge">
+    <a class="ymh-author-link" href="https://github.com/Bin4xin" target="_blank">
+        <span class="ymh-author-avatar">B</span>
+        Bin4xin
+    </a>
+
+    
+
+    
+    
+    
+    
+    
+
+    <span class="ymh-time-badge">
+        
+            Oct 18, 52636
+        
+    </span>
+</span>
+
+        </div>
+        <div class="blog-card-meta">
+            <span class="blog-card-status-dot"></span>
+            
+            <a class="blog-card-hash" href="https://github.com/Bin4xin/bin4xin.github.io/commit/13b88370" target="_blank">
+                13b8837
+            </a>
+        </div>
+    </div>
+</div>
+                
+                    
+                    <div class="blog-card">
+    <div class="blog-card-header">
+        <a class="blog-card-title" href="/blog/2020/Nexus/vuln-Cve/">
+            「Src」：Nexus-Repository-Manager3 漏洞复现总结
+        </a>
+        <div class="blog-card-actions">
+            <a class="blog-card-action-btn" href="/blog/2020/Nexus/vuln-Cve/" title="阅读全文">
+                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"/></svg>
+            </a>
+            
+            <a class="blog-card-action-btn" href="https://github.com/Bin4xin/bin4xin.github.io/edit/main/_posts/blog/2020-08-23-Nexus-Repository-Manager3-vuln.markdown" target="_blank" title="编辑此页">
+                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Z"/></svg>
+            </a>
+            
+        </div>
+    </div>
+
+    
+    <div class="blog-card-body">
+        <p class="blog-card-excerpt">
+            
+  简单记录关于Nexus Repository Manager 3的POC代码，主要涉及OGNL注入导致的RCE漏洞。
+
+
+POST /service/extdirect HTTP/1.1
+Host: vuln_ip
+sUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:79.0) Gecko/20100101 Firefox/79.0
+Accept: text/html,application/...
+        </p>
+    </div>
+    
+
+    <div class="blog-card-footer">
+        <div class="blog-card-meta">
+            <span class="blog-card-author">
+                
+<img alt="Bin4xin" src="https://avatars.githubusercontent.com/u/57884471?v=4"/>
+            </span>
+            <!--article author end-->
+
+
+
+
+
+
+
+
+<span class="ymh-author-badge">
+    <a class="ymh-author-link" href="https://github.com/Bin4xin" target="_blank">
+        <span class="ymh-author-avatar">B</span>
+        Bin4xin
+    </a>
+
+    
+
+    
+    
+    
+    
+    
+
+    <span class="ymh-time-badge">
+        
+            Feb 27, 52612
+        
+    </span>
+</span>
+
+        </div>
+        <div class="blog-card-meta">
+            <span class="blog-card-status-dot"></span>
+            
+            <a class="blog-card-hash" href="https://github.com/Bin4xin/bin4xin.github.io/commit/13b88370" target="_blank">
+                13b8837
+            </a>
+        </div>
+    </div>
+</div>
+                
+                    
+                    <div class="blog-card">
+    <div class="blog-card-header">
         <a class="blog-card-title" href="/blog/2020/Apache/vuln-Cve/">
             「漏洞复现」:Apache-Solr & ActiveMQ RCE漏洞复现
         </a>
@@ -182,176 +360,8 @@
         <div class="blog-card-meta">
             <span class="blog-card-status-dot"></span>
             
-            <a class="blog-card-hash" href="https://github.com/Bin4xin/bin4xin.github.io/commit/db4d779b" target="_blank">
-                db4d779
-            </a>
-        </div>
-    </div>
-</div>
-                
-                    
-                    <div class="blog-card">
-    <div class="blog-card-header">
-        <a class="blog-card-title" href="/blog/2020/json/vuln-Cve/">
-            「漏洞复现」:Jackson反序列化漏洞利用总结
-        </a>
-        <div class="blog-card-actions">
-            <a class="blog-card-action-btn" href="/blog/2020/json/vuln-Cve/" title="阅读全文">
-                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"/></svg>
-            </a>
-            
-            <a class="blog-card-action-btn" href="https://github.com/Bin4xin/bin4xin.github.io/edit/main/_posts/blog/2020-08-14-jackson-deser-poc.markdown" target="_blank" title="编辑此页">
-                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Z"/></svg>
-            </a>
-            
-        </div>
-    </div>
-
-    
-    <div class="blog-card-body">
-        <p class="blog-card-excerpt">
-            
-  Jackson是Java生态中最流行的JSON序列化/反序列化库之一。当目标使用了enableDefaultTyping()或@JsonTypeInfo注解时，攻击者可通过构造恶意JSON实现任意代码执行。本文记录Jackson反序列化漏洞的识别、利用与实战踩坑。
-
-
-0x00 区分 Fastjson 和 Jackson
-
-在实际渗透测试中，首先需要判断目标使用的是Fastjson还是Jackson，两者的错误行为不同：
-
-发送如下请求，包含多余的key：
-
-PO...
-        </p>
-    </div>
-    
-
-    <div class="blog-card-footer">
-        <div class="blog-card-meta">
-            <span class="blog-card-author">
-                
-<img alt="Bin4xin" src="https://avatars.githubusercontent.com/u/57884471?v=4"/>
-            </span>
-            <!--article author end-->
-
-
-
-
-
-
-
-
-<span class="ymh-author-badge">
-    <a class="ymh-author-link" href="https://github.com/Bin4xin" target="_blank">
-        <span class="ymh-author-avatar">B</span>
-        Bin4xin
-    </a>
-
-    
-
-    
-    
-    
-    
-    
-
-    <span class="ymh-time-badge">
-        
-            Jul 7, 52587
-        
-    </span>
-</span>
-
-        </div>
-        <div class="blog-card-meta">
-            <span class="blog-card-status-dot"></span>
-            
-            <a class="blog-card-hash" href="https://github.com/Bin4xin/bin4xin.github.io/commit/db4d779b" target="_blank">
-                db4d779
-            </a>
-        </div>
-    </div>
-</div>
-                
-                    
-                    <div class="blog-card">
-    <div class="blog-card-header">
-        <a class="blog-card-title" href="/blog/2020/Confluence/vuln-Cve/">
-            「Src」:Confluence漏洞复现总结
-        </a>
-        <div class="blog-card-actions">
-            <a class="blog-card-action-btn" href="/blog/2020/Confluence/vuln-Cve/" title="阅读全文">
-                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"/></svg>
-            </a>
-            
-            <a class="blog-card-action-btn" href="https://github.com/Bin4xin/bin4xin.github.io/edit/main/_posts/blog/2020-07-23-use-confluence-cve.markdown" target="_blank" title="编辑此页">
-                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Z"/></svg>
-            </a>
-            
-        </div>
-    </div>
-
-    
-    <div class="blog-card-body">
-        <p class="blog-card-excerpt">
-            0x00 Confluence未授权RCE (CVE-2019-3396)
-
-
-  影响版本：Confluence Server &amp; Data Center 6.6.0 ~ 6.6.13, 6.7.0 ~ 6.13.4, 6.14.0 ~ 6.14.3
-
-  漏洞类型：服务端模板注入（SSTI）+ 远程文件包含
-
-
-文件读取
-
-POST /confluence/rest/tinymce/1/macro/preview
-
-{"contentId":"786457"...
-        </p>
-    </div>
-    
-
-    <div class="blog-card-footer">
-        <div class="blog-card-meta">
-            <span class="blog-card-author">
-                
-<img alt="Bin4xin" src="https://avatars.githubusercontent.com/u/57884471?v=4"/>
-            </span>
-            <!--article author end-->
-
-
-
-
-
-
-
-
-<span class="ymh-author-badge">
-    <a class="ymh-author-link" href="https://github.com/Bin4xin" target="_blank">
-        <span class="ymh-author-avatar">B</span>
-        Bin4xin
-    </a>
-
-    
-
-    
-    
-    
-    
-    
-
-    <span class="ymh-time-badge">
-        
-            Apr 13, 52527
-        
-    </span>
-</span>
-
-        </div>
-        <div class="blog-card-meta">
-            <span class="blog-card-status-dot"></span>
-            
-            <a class="blog-card-hash" href="https://github.com/Bin4xin/bin4xin.github.io/commit/db4d779b" target="_blank">
-                db4d779
+            <a class="blog-card-hash" href="https://github.com/Bin4xin/bin4xin.github.io/commit/13b88370" target="_blank">
+                13b8837
             </a>
         </div>
     </div>
@@ -361,7 +371,7 @@ POST /confluence/rest/tinymce/1/macro/preview
                     
                         <a href="/blog/page/16/" class="btn btn-primary">上一页</a>
                     
-                    <span>第 17 页 / 共 30 页</span>
+                    <span>第 17 页 / 共 31 页</span>
                     
                         <a href="/blog/page/18/" class="btn btn-primary">下一页</a>
                     
@@ -519,19 +529,19 @@ POST /confluence/rest/tinymce/1/macro/preview
         
           
           <div class="ntc-meta-item">
-            <span><i class="far fa-folder fa-fw mr-1" aria-hidden="true"></i> <a href="/src/">src</a></span>
-          </div>
-          
-        
-          
-          <div class="ntc-meta-item">
             <span><i class="far fa-folder fa-fw mr-1" aria-hidden="true"></i> <a href="/CVE/">CVE</a></span>
           </div>
           
         
           
           <div class="ntc-meta-item">
-            <span><i class="far fa-folder fa-fw mr-1" aria-hidden="true"></i> <a href="/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/">信息搜集</a></span>
+            <span><i class="far fa-folder fa-fw mr-1" aria-hidden="true"></i> <a href="/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/">漏洞复现</a></span>
+          </div>
+          
+        
+          
+          <div class="ntc-meta-item">
+            <span><i class="far fa-folder fa-fw mr-1" aria-hidden="true"></i> <a href="/Java/">Java</a></span>
           </div>
           
         
@@ -766,7 +776,7 @@ POST /confluence/rest/tinymce/1/macro/preview
             
             <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="/privacy/" target="_blank">隐私</a></li>
             
-            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="/privacy/#cookie" target="_blank">Cookie偏好</a></li>
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="/privacy/#Cookie" target="_blank">Cookie偏好</a></li>
             
             
         </ul>

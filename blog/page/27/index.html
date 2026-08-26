@@ -28,7 +28,7 @@
 <meta property="og:image" content="https://bin4xin.github.io/assets/img/logo-share.png" /> <!-- WeChat requires that thumbnail image is larger than 300x300 -->
 <meta property="og:url" content="https://bin4xin.github.io/blog/page/27/index.html" />
 <title> 哨兵安全博客 - 第 27 页 | © 哨兵 | SENTINEL SECURITY, LAB</title>
-
+<link rel="stylesheet" href="/assets/css/cate-document.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/pace-minimal.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/footer.css">
 <!-- Bootstrap core CSS -->
@@ -104,6 +104,183 @@
     <div class="row">
         <div class="col-lg-9">
             
+                
+                    
+                    <div class="blog-card">
+    <div class="blog-card-header">
+        <a class="blog-card-title" href="/blog/2019/android-drozer-scan/">
+            「安卓渗透」:Amazing drozer Scanning frame
+        </a>
+        <div class="blog-card-actions">
+            <a class="blog-card-action-btn" href="/blog/2019/android-drozer-scan/" title="阅读全文">
+                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"/></svg>
+            </a>
+            
+            <a class="blog-card-action-btn" href="https://github.com/Bin4xin/bin4xin.github.io/edit/main/_posts/blog/2019-12-18-android-drozer-scan.md" target="_blank" title="编辑此页">
+                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Z"/></svg>
+            </a>
+            
+        </div>
+    </div>
+
+    
+    <div class="blog-card-body">
+        <p class="blog-card-excerpt">
+            
+  直接上链接，不多bb。有空写实战：）
+    
+      参考文档：安卓渗透框架－Drozer架构浅析–架构组成和自定义模块
+    
+  
+
+
+一、drozer运行概述
+跟Frida-Hook框架运行模式差不多，均为C/S模式。
+
+  1）移动端：drozer-agent启动pc-drozer框架前需打开drozer-agent进行端口转发
+  2）pc端：主要控制CLI端。渗透测试命令全部在这里输入执行；
+
+
+1.1 drozer环境
+
+  windows/...
+        </p>
+    </div>
+    
+
+    <div class="blog-card-footer">
+        <div class="blog-card-meta">
+            <span class="blog-card-author">
+                
+<img alt="Bin4xin" src="https://avatars.githubusercontent.com/u/57884471?v=4"/>
+            </span>
+            <!--article author end-->
+
+
+
+
+
+
+
+
+<span class="ymh-author-badge">
+    <a class="ymh-author-link" href="https://github.com/Bin4xin" target="_blank">
+        <span class="ymh-author-avatar">B</span>
+        Bin4xin
+    </a>
+
+    
+
+    
+    
+    
+    
+    
+
+    <span class="ymh-time-badge">
+        
+            Jun 2, 51930
+        
+    </span>
+</span>
+
+        </div>
+        <div class="blog-card-meta">
+            <span class="blog-card-status-dot"></span>
+            
+            <a class="blog-card-hash" href="https://github.com/Bin4xin/bin4xin.github.io/commit/13b88370" target="_blank">
+                13b8837
+            </a>
+        </div>
+    </div>
+</div>
+                
+                    
+                    <div class="blog-card">
+    <div class="blog-card-header">
+        <a class="blog-card-title" href="/blog/2019/android-hook/">
+            「安卓渗透」： Let's hook APK with frida～
+        </a>
+        <div class="blog-card-actions">
+            <a class="blog-card-action-btn" href="/blog/2019/android-hook/" title="阅读全文">
+                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"/></svg>
+            </a>
+            
+            <a class="blog-card-action-btn" href="https://github.com/Bin4xin/bin4xin.github.io/edit/main/_posts/blog/2019-12-15-android-hook.md" target="_blank" title="编辑此页">
+                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Z"/></svg>
+            </a>
+            
+        </div>
+    </div>
+
+    
+    <div class="blog-card-body">
+        <p class="blog-card-excerpt">
+            
+  忙里偷闲，本文是记录Hook-Frida框架，如何使用Frida注入代码，做到对安卓apk进行代码hook注入。
+
+
+Frida框架准备
+
+1.frida框架安装
+frida框架为C/S模式，即客户端、服务端模式：
+
+
+  1）一部分是运行在客户端上的命令行交互工具：Frida CLI。
+  2）另一部分是运行在目标机器（服务端，在本文中则是安卓手机）上的代码注入：frida-server。
+
+
+过程为：你在电脑上进行frida控制，开启目标机器（服务端）上的se...
+        </p>
+    </div>
+    
+
+    <div class="blog-card-footer">
+        <div class="blog-card-meta">
+            <span class="blog-card-author">
+                
+<img alt="Bin4xin" src="https://avatars.githubusercontent.com/u/57884471?v=4"/>
+            </span>
+            <!--article author end-->
+
+
+
+
+
+
+
+
+<span class="ymh-author-badge">
+    <a class="ymh-author-link" href="https://github.com/Bin4xin" target="_blank">
+        <span class="ymh-author-avatar">B</span>
+        Bin4xin
+    </a>
+
+    
+
+    
+    
+    
+    
+    
+
+    <span class="ymh-time-badge">
+        
+            Mar 16, 51922
+        
+    </span>
+</span>
+
+        </div>
+        <div class="blog-card-meta">
+            <span class="blog-card-status-dot"></span>
+            
+            <a class="blog-card-hash" href="https://github.com/Bin4xin/bin4xin.github.io/commit/13b88370" target="_blank">
+                13b8837
+            </a>
+        </div>
+    </div>
+</div>
                 
                     
                     <div class="blog-card">
@@ -184,188 +361,8 @@ apt-get install libpcre3 libpcre3-dev
         <div class="blog-card-meta">
             <span class="blog-card-status-dot"></span>
             
-            <a class="blog-card-hash" href="https://github.com/Bin4xin/bin4xin.github.io/commit/db4d779b" target="_blank">
-                db4d779
-            </a>
-        </div>
-    </div>
-</div>
-                
-                    
-                    <div class="blog-card">
-    <div class="blog-card-header">
-        <a class="blog-card-title" href="/blog/2019/php-with-nginx-error/">
-            「排错」：php-fpm解析404-not found
-        </a>
-        <div class="blog-card-actions">
-            <a class="blog-card-action-btn" href="/blog/2019/php-with-nginx-error/" title="阅读全文">
-                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"/></svg>
-            </a>
-            
-            <a class="blog-card-action-btn" href="https://github.com/Bin4xin/bin4xin.github.io/edit/main/_posts/blog/2019-12-04-php-with-nginx-error.markdown" target="_blank" title="编辑此页">
-                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Z"/></svg>
-            </a>
-            
-        </div>
-    </div>
-
-    
-    <div class="blog-card-body">
-        <p class="blog-card-excerpt">
-            
-  php+nginx解析错误，报错404-Not Found
-
-
-前言
-容器内是自己写的个人博客，处于安全考虑用的是静态页面博客。但是由于公网维护博客较为困难，加上之前用的开源存储云服务项目，那么就需要php来解析，所以打算试一试能不能「nginx+php」的方式方便个人维护博客。
-
-所以本菜最终想完成的是这样的：
-
-
-  static html：web blog + dynamic php：store server
-  静态博客页面 + 动态php页面传输mark...
-        </p>
-    </div>
-    
-
-    <div class="blog-card-footer">
-        <div class="blog-card-meta">
-            <span class="blog-card-author">
-                
-<img alt="Bin4xin" src="https://avatars.githubusercontent.com/u/57884471?v=4"/>
-            </span>
-            <!--article author end-->
-
-
-
-
-
-
-
-
-<span class="ymh-author-badge">
-    <a class="ymh-author-link" href="https://github.com/Bin4xin" target="_blank">
-        <span class="ymh-author-avatar">B</span>
-        Bin4xin
-    </a>
-
-    
-
-    
-    
-    
-    
-    
-
-    <span class="ymh-time-badge">
-        
-            Feb 1, 51892
-        
-    </span>
-</span>
-
-        </div>
-        <div class="blog-card-meta">
-            <span class="blog-card-status-dot"></span>
-            
-            <a class="blog-card-hash" href="https://github.com/Bin4xin/bin4xin.github.io/commit/db4d779b" target="_blank">
-                db4d779
-            </a>
-        </div>
-    </div>
-</div>
-                
-                    
-                    <div class="blog-card">
-    <div class="blog-card-header">
-        <a class="blog-card-title" href="/blog/2019/android/reversr/blog/">
-            「安卓渗透」：总览
-        </a>
-        <div class="blog-card-actions">
-            <a class="blog-card-action-btn" href="/blog/2019/android/reversr/blog/" title="阅读全文">
-                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"/></svg>
-            </a>
-            
-            <a class="blog-card-action-btn" href="https://github.com/Bin4xin/bin4xin.github.io/edit/main/_posts/blog/2019-11-30-android-reverse-blog.markdown" target="_blank" title="编辑此页">
-                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Z"/></svg>
-            </a>
-            
-        </div>
-    </div>
-
-    
-    <div class="blog-card-body">
-        <p class="blog-card-excerpt">
-            
-  最近在学安卓渗透，遂记录下相关知识点和一些没有弄明白的知识点。持续更新。
-
-
-前言
-
-接触了一些安卓渗透的项目，根据不同安全公司内部的要求，规定对于安卓渗透技术的基本原则、工作方式；且使用不同的、对外的商业渗透测试。综述包括如下：
-
-
-  代码、程序安全
-  验证码机制安全
-  越权检测
-  服务器WEB漏洞
-
-
-一、代码/程序安全
-
-1. 源码反编译
-
-保证源码安全，保证源码不被反编译，防止不法分子阅读源码了解运行逻辑。
-
-常用反编译工具：
-
-# apktool...
-        </p>
-    </div>
-    
-
-    <div class="blog-card-footer">
-        <div class="blog-card-meta">
-            <span class="blog-card-author">
-                
-<img alt="Bin4xin" src="https://avatars.githubusercontent.com/u/57884471?v=4"/>
-            </span>
-            <!--article author end-->
-
-
-
-
-
-
-
-
-<span class="ymh-author-badge">
-    <a class="ymh-author-link" href="https://github.com/Bin4xin" target="_blank">
-        <span class="ymh-author-avatar">B</span>
-        Bin4xin
-    </a>
-
-    
-
-    
-    
-    
-    
-    
-
-    <span class="ymh-time-badge">
-        
-            Feb 18, 51881
-        
-    </span>
-</span>
-
-        </div>
-        <div class="blog-card-meta">
-            <span class="blog-card-status-dot"></span>
-            
-            <a class="blog-card-hash" href="https://github.com/Bin4xin/bin4xin.github.io/commit/db4d779b" target="_blank">
-                db4d779
+            <a class="blog-card-hash" href="https://github.com/Bin4xin/bin4xin.github.io/commit/13b88370" target="_blank">
+                13b8837
             </a>
         </div>
     </div>
@@ -375,7 +372,7 @@ apt-get install libpcre3 libpcre3-dev
                     
                         <a href="/blog/page/26/" class="btn btn-primary">上一页</a>
                     
-                    <span>第 27 页 / 共 30 页</span>
+                    <span>第 27 页 / 共 31 页</span>
                     
                         <a href="/blog/page/28/" class="btn btn-primary">下一页</a>
                     
@@ -522,24 +519,6 @@ apt-get install libpcre3 libpcre3-dev
           
           <div class="ntc-meta-item">
             <span><i class="far fa-folder fa-fw mr-1" aria-hidden="true"></i> <a href="/blog/">blog</a></span>
-          </div>
-          
-        
-          
-          <div class="ntc-meta-item">
-            <span><i class="far fa-folder fa-fw mr-1" aria-hidden="true"></i> <a href="/%E7%AC%94%E8%AE%B0/">笔记</a></span>
-          </div>
-          
-        
-          
-          <div class="ntc-meta-item">
-            <span><i class="far fa-folder fa-fw mr-1" aria-hidden="true"></i> <a href="/%E6%B8%97%E9%80%8F/">渗透</a></span>
-          </div>
-          
-        
-          
-          <div class="ntc-meta-item">
-            <span><i class="far fa-folder fa-fw mr-1" aria-hidden="true"></i> <a href="/Android+Reverse/">Android Reverse</a></span>
           </div>
           
         
@@ -774,7 +753,7 @@ apt-get install libpcre3 libpcre3-dev
             
             <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="/privacy/" target="_blank">隐私</a></li>
             
-            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="/privacy/#cookie" target="_blank">Cookie偏好</a></li>
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="/privacy/#Cookie" target="_blank">Cookie偏好</a></li>
             
             
         </ul>

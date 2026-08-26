@@ -28,7 +28,7 @@
 <meta property="og:image" content="https://bin4xin.github.io/assets/img/logo-share.png" /> <!-- WeChat requires that thumbnail image is larger than 300x300 -->
 <meta property="og:url" content="https://bin4xin.github.io/blog/page/28/index.html" />
 <title> 哨兵安全博客 - 第 28 页 | © 哨兵 | SENTINEL SECURITY, LAB</title>
-
+<link rel="stylesheet" href="/assets/css/cate-document.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/pace-minimal.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/footer.css">
 <!-- Bootstrap core CSS -->
@@ -108,6 +108,186 @@
                     
                     <div class="blog-card">
     <div class="blog-card-header">
+        <a class="blog-card-title" href="/blog/2019/php-with-nginx-error/">
+            「排错」：php-fpm解析404-not found
+        </a>
+        <div class="blog-card-actions">
+            <a class="blog-card-action-btn" href="/blog/2019/php-with-nginx-error/" title="阅读全文">
+                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"/></svg>
+            </a>
+            
+            <a class="blog-card-action-btn" href="https://github.com/Bin4xin/bin4xin.github.io/edit/main/_posts/blog/2019-12-04-php-with-nginx-error.markdown" target="_blank" title="编辑此页">
+                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Z"/></svg>
+            </a>
+            
+        </div>
+    </div>
+
+    
+    <div class="blog-card-body">
+        <p class="blog-card-excerpt">
+            
+  php+nginx解析错误，报错404-Not Found
+
+
+前言
+容器内是自己写的个人博客，处于安全考虑用的是静态页面博客。但是由于公网维护博客较为困难，加上之前用的开源存储云服务项目，那么就需要php来解析，所以打算试一试能不能「nginx+php」的方式方便个人维护博客。
+
+所以本菜最终想完成的是这样的：
+
+
+  static html：web blog + dynamic php：store server
+  静态博客页面 + 动态php页面传输mark...
+        </p>
+    </div>
+    
+
+    <div class="blog-card-footer">
+        <div class="blog-card-meta">
+            <span class="blog-card-author">
+                
+<img alt="Bin4xin" src="https://avatars.githubusercontent.com/u/57884471?v=4"/>
+            </span>
+            <!--article author end-->
+
+
+
+
+
+
+
+
+<span class="ymh-author-badge">
+    <a class="ymh-author-link" href="https://github.com/Bin4xin" target="_blank">
+        <span class="ymh-author-avatar">B</span>
+        Bin4xin
+    </a>
+
+    
+
+    
+    
+    
+    
+    
+
+    <span class="ymh-time-badge">
+        
+            Feb 1, 51892
+        
+    </span>
+</span>
+
+        </div>
+        <div class="blog-card-meta">
+            <span class="blog-card-status-dot"></span>
+            
+            <a class="blog-card-hash" href="https://github.com/Bin4xin/bin4xin.github.io/commit/13b88370" target="_blank">
+                13b8837
+            </a>
+        </div>
+    </div>
+</div>
+                
+                    
+                    <div class="blog-card">
+    <div class="blog-card-header">
+        <a class="blog-card-title" href="/blog/2019/android/reversr/blog/">
+            「安卓渗透」：总览
+        </a>
+        <div class="blog-card-actions">
+            <a class="blog-card-action-btn" href="/blog/2019/android/reversr/blog/" title="阅读全文">
+                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"/></svg>
+            </a>
+            
+            <a class="blog-card-action-btn" href="https://github.com/Bin4xin/bin4xin.github.io/edit/main/_posts/blog/2019-11-30-android-reverse-blog.markdown" target="_blank" title="编辑此页">
+                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Z"/></svg>
+            </a>
+            
+        </div>
+    </div>
+
+    
+    <div class="blog-card-body">
+        <p class="blog-card-excerpt">
+            
+  最近在学安卓渗透，遂记录下相关知识点和一些没有弄明白的知识点。持续更新。
+
+
+前言
+
+接触了一些安卓渗透的项目，根据不同安全公司内部的要求，规定对于安卓渗透技术的基本原则、工作方式；且使用不同的、对外的商业渗透测试。综述包括如下：
+
+
+  代码、程序安全
+  验证码机制安全
+  越权检测
+  服务器WEB漏洞
+
+
+一、代码/程序安全
+
+1. 源码反编译
+
+保证源码安全，保证源码不被反编译，防止不法分子阅读源码了解运行逻辑。
+
+常用反编译工具：
+
+# apktool...
+        </p>
+    </div>
+    
+
+    <div class="blog-card-footer">
+        <div class="blog-card-meta">
+            <span class="blog-card-author">
+                
+<img alt="Bin4xin" src="https://avatars.githubusercontent.com/u/57884471?v=4"/>
+            </span>
+            <!--article author end-->
+
+
+
+
+
+
+
+
+<span class="ymh-author-badge">
+    <a class="ymh-author-link" href="https://github.com/Bin4xin" target="_blank">
+        <span class="ymh-author-avatar">B</span>
+        Bin4xin
+    </a>
+
+    
+
+    
+    
+    
+    
+    
+
+    <span class="ymh-time-badge">
+        
+            Feb 18, 51881
+        
+    </span>
+</span>
+
+        </div>
+        <div class="blog-card-meta">
+            <span class="blog-card-status-dot"></span>
+            
+            <a class="blog-card-hash" href="https://github.com/Bin4xin/bin4xin.github.io/commit/13b88370" target="_blank">
+                13b8837
+            </a>
+        </div>
+    </div>
+</div>
+                
+                    
+                    <div class="blog-card">
+    <div class="blog-card-header">
         <a class="blog-card-title" href="/blog/2019/android-debug-brige/">
             「安卓渗透」：天之骄子ADB
         </a>
@@ -179,187 +359,8 @@ ad...
         <div class="blog-card-meta">
             <span class="blog-card-status-dot"></span>
             
-            <a class="blog-card-hash" href="https://github.com/Bin4xin/bin4xin.github.io/commit/db4d779b" target="_blank">
-                db4d779
-            </a>
-        </div>
-    </div>
-</div>
-                
-                    
-                    <div class="blog-card">
-    <div class="blog-card-header">
-        <a class="blog-card-title" href="/blog/2019/nginx-with-jekyll-site/">
-            多子域：JEKYLL优雅地部署于NGINX
-        </a>
-        <div class="blog-card-actions">
-            <a class="blog-card-action-btn" href="/blog/2019/nginx-with-jekyll-site/" title="阅读全文">
-                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"/></svg>
-            </a>
-            
-            <a class="blog-card-action-btn" href="https://github.com/Bin4xin/bin4xin.github.io/edit/main/_posts/blog/2019-11-22-nginx-with-jekyll-site.markdown" target="_blank" title="编辑此页">
-                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Z"/></svg>
-            </a>
-            
-        </div>
-    </div>
-
-    
-    <div class="blog-card-body">
-        <p class="blog-card-excerpt">
-            
-
-本文主要介绍服务端的Jekyll站点部署方法，以及相关的一揽子问题及解决方案；
-
-于 2021年 6月27日 星期日 20时19分07秒 CST修改，个人建议
-
-优雅地使用：
-
-
-  阐述Jekyll的工作问题；
-  解决多子域问题：nginx配置文件，使得nginx文件配置更加容易移植、运维….
-  解决Web代码更新问题：Git  X B4xinSynchronize
-
-
-
-
-使用nginx作为jekyll博客的服务启动容器介绍：
-
-零：Jekyll如何工作
-
-...
-        </p>
-    </div>
-    
-
-    <div class="blog-card-footer">
-        <div class="blog-card-meta">
-            <span class="blog-card-author">
-                
-<img alt="Bin4xin" src="https://avatars.githubusercontent.com/u/57884471?v=4"/>
-            </span>
-            <!--article author end-->
-
-
-
-
-
-
-
-
-<span class="ymh-author-badge">
-    <a class="ymh-author-link" href="https://github.com/Bin4xin" target="_blank">
-        <span class="ymh-author-avatar">B</span>
-        Bin4xin
-    </a>
-
-    
-
-    
-    
-    
-    
-    
-
-    <span class="ymh-time-badge">
-        
-            Mar 26, 51859
-        
-    </span>
-</span>
-
-        </div>
-        <div class="blog-card-meta">
-            <span class="blog-card-status-dot"></span>
-            
-            <a class="blog-card-hash" href="https://github.com/Bin4xin/bin4xin.github.io/commit/db4d779b" target="_blank">
-                db4d779
-            </a>
-        </div>
-    </div>
-</div>
-                
-                    
-                    <div class="blog-card">
-    <div class="blog-card-header">
-        <a class="blog-card-title" href="/blog/2019/dokcer-t-pot/">
-            Docker环境下T-pot蜜罐部署记录
-        </a>
-        <div class="blog-card-actions">
-            <a class="blog-card-action-btn" href="/blog/2019/dokcer-t-pot/" title="阅读全文">
-                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"/></svg>
-            </a>
-            
-            <a class="blog-card-action-btn" href="https://github.com/Bin4xin/bin4xin.github.io/edit/main/_posts/blog/2019-11-21-dokcer-t-pot.markdown" target="_blank" title="编辑此页">
-                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Z"/></svg>
-            </a>
-            
-        </div>
-    </div>
-
-    
-    <div class="blog-card-body">
-        <p class="blog-card-excerpt">
-            
-  摘要:最近在网上冲浪看到一个开源蜜罐项目，看到是基于web的蜜罐项目，web页面是真好看。突发奇想正好手头有个公网ip，最近也在为论文数据来源发愁，索性来试试看。
-    
-      先说结论，安装失败。本篇持续更新～（滑稽）
-      看介绍项目的帖子说，最新版T-pot 18是基于ubuntu server 18.04 TLS进行部署。果断使用docker试试～
-    
-  
-
-
-1.docker安装使用
-
-1.1使用apt-get进行安装
-
-安装必要的...
-        </p>
-    </div>
-    
-
-    <div class="blog-card-footer">
-        <div class="blog-card-meta">
-            <span class="blog-card-author">
-                
-<img alt="Bin4xin" src="https://avatars.githubusercontent.com/u/57884471?v=4"/>
-            </span>
-            <!--article author end-->
-
-
-
-
-
-
-
-
-<span class="ymh-author-badge">
-    <a class="ymh-author-link" href="https://github.com/Bin4xin" target="_blank">
-        <span class="ymh-author-avatar">B</span>
-        Bin4xin
-    </a>
-
-    
-
-    
-    
-    
-    
-    
-
-    <span class="ymh-time-badge">
-        
-            Jun 29, 51856
-        
-    </span>
-</span>
-
-        </div>
-        <div class="blog-card-meta">
-            <span class="blog-card-status-dot"></span>
-            
-            <a class="blog-card-hash" href="https://github.com/Bin4xin/bin4xin.github.io/commit/db4d779b" target="_blank">
-                db4d779
+            <a class="blog-card-hash" href="https://github.com/Bin4xin/bin4xin.github.io/commit/13b88370" target="_blank">
+                13b8837
             </a>
         </div>
     </div>
@@ -369,7 +370,7 @@ ad...
                     
                         <a href="/blog/page/27/" class="btn btn-primary">上一页</a>
                     
-                    <span>第 28 页 / 共 30 页</span>
+                    <span>第 28 页 / 共 31 页</span>
                     
                         <a href="/blog/page/29/" class="btn btn-primary">下一页</a>
                     
@@ -750,7 +751,7 @@ ad...
             
             <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="/privacy/" target="_blank">隐私</a></li>
             
-            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="/privacy/#cookie" target="_blank">Cookie偏好</a></li>
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="/privacy/#Cookie" target="_blank">Cookie偏好</a></li>
             
             
         </ul>

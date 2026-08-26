@@ -28,7 +28,7 @@
 <meta property="og:image" content="https://bin4xin.github.io/assets/img/logo-share.png" /> <!-- WeChat requires that thumbnail image is larger than 300x300 -->
 <meta property="og:url" content="https://bin4xin.github.io/blog/page/12/index.html" />
 <title> 哨兵安全博客 - 第 12 页 | © 哨兵 | SENTINEL SECURITY, LAB</title>
-
+<link rel="stylesheet" href="/assets/css/cate-document.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/pace-minimal.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/footer.css">
 <!-- Bootstrap core CSS -->
@@ -104,6 +104,182 @@
     <div class="row">
         <div class="col-lg-9">
             
+                
+                    
+                    <div class="blog-card">
+    <div class="blog-card-header">
+        <a class="blog-card-title" href="/blog/2021/实战-某平台SQL注入及UDF提权/">
+            实战-某平台SQL注入及UDF提权
+        </a>
+        <div class="blog-card-actions">
+            <a class="blog-card-action-btn" href="/blog/2021/实战-某平台SQL注入及UDF提权/" title="阅读全文">
+                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"/></svg>
+            </a>
+            
+            <a class="blog-card-action-btn" href="https://github.com/Bin4xin/bin4xin.github.io/edit/main/_posts/blog/2021-12-06-实战-某平台SQL注入及UDF提权.md" target="_blank" title="编辑此页">
+                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Z"/></svg>
+            </a>
+            
+        </div>
+    </div>
+
+    
+    <div class="blog-card-body">
+        <p class="blog-card-excerpt">
+            前言
+
+在一次对某授权的平台服务渗透过程中发现网页调用接口存在SQL注入漏洞、所对应MySQL数据库存在相关用户弱口令及UDF提权漏洞，并成功利用UDF提权漏洞实现对内网服务的渗透，下面是渗透记录过程，部分内容会做模糊处理。
+
+后台接口SQL注入
+
+前面的渗透已成功进入了某系统平台后台，下面是直接基于在某平台后台后展开概述。
+
+1、开启BurpSuite对其数据流量进行监听，在平台后台浏览过程中发现存在接口调用，遂对其接口进行相关测试。先随意在POST传参的数据里将搜索...
+        </p>
+    </div>
+    
+
+    <div class="blog-card-footer">
+        <div class="blog-card-meta">
+            <span class="blog-card-author">
+                
+<img alt="Yang2635" src="https://avatars.githubusercontent.com/u/60431848?v=4"/>
+            </span>
+            <!--article author end-->
+
+
+
+
+
+
+
+
+<span class="ymh-author-badge">
+    <a class="ymh-author-link" href="https://github.com/Yang2635" target="_blank">
+        <span class="ymh-author-avatar">Y</span>
+        Yang2635
+    </a>
+
+    
+
+    
+    
+    
+    
+    
+
+    <span class="ymh-time-badge">
+        
+            Dec 21, 53898
+        
+    </span>
+</span>
+
+        </div>
+        <div class="blog-card-meta">
+            <span class="blog-card-status-dot"></span>
+            
+            <a class="blog-card-hash" href="https://github.com/Bin4xin/bin4xin.github.io/commit/13b88370" target="_blank">
+                13b8837
+            </a>
+        </div>
+    </div>
+</div>
+                
+                    
+                    <div class="blog-card">
+    <div class="blog-card-header">
+        <a class="blog-card-title" href="/blog/2021/FRP-Based-On-Golang/">
+            Frp Based On Golang
+        </a>
+        <div class="blog-card-actions">
+            <a class="blog-card-action-btn" href="/blog/2021/FRP-Based-On-Golang/" title="阅读全文">
+                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"/></svg>
+            </a>
+            
+            <a class="blog-card-action-btn" href="https://github.com/Bin4xin/bin4xin.github.io/edit/main/_posts/blog/2021-11-23-FRP-Based-On-Golang.md" target="_blank" title="编辑此页">
+                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Z"/></svg>
+            </a>
+            
+        </div>
+    </div>
+
+    
+    <div class="blog-card-body">
+        <p class="blog-card-excerpt">
+            FRP Based On Golang
+
+
+    
+        
+        
+            
+        
+        
+    
+
+    
+        frp 是一个专注于内网穿透的高性能的反向代理应用，支持 TCP、UDP、HTTP、HTTPS等多种协议。可以将内网服务以安全、便捷的方式通过具有公网 IP 节点的中转暴露到公网。
+    
+
+
+FRP 介绍
+通过在具有公网 IP 的节点上部署 frp 服务端，可以轻松地将内网服务穿...
+        </p>
+    </div>
+    
+
+    <div class="blog-card-footer">
+        <div class="blog-card-meta">
+            <span class="blog-card-author">
+                
+<img alt="Bin4xin" src="https://avatars.githubusercontent.com/u/57884471?v=4"/>
+            </span>
+            <!--article author end-->
+
+
+
+
+
+
+
+
+<span class="ymh-author-badge">
+    <a class="ymh-author-link" href="https://github.com/Bin4xin" target="_blank">
+        <span class="ymh-author-avatar">B</span>
+        Bin4xin
+    </a>
+
+    
+
+    
+    
+    
+    
+    
+
+    <span class="ymh-time-badge">
+        
+            
+                
+                    16h
+                
+                edited
+            
+        
+    </span>
+</span>
+
+        </div>
+        <div class="blog-card-meta">
+            <span class="blog-card-status-dot"></span>
+            
+            <a class="blog-card-hash" href="https://github.com/Bin4xin/bin4xin.github.io/commit/13b88370" target="_blank">
+                13b8837
+            </a>
+        </div>
+    </div>
+</div>
                 
                     
                     <div class="blog-card">
@@ -195,189 +371,8 @@ Github Actions的简介
         <div class="blog-card-meta">
             <span class="blog-card-status-dot"></span>
             
-            <a class="blog-card-hash" href="https://github.com/Bin4xin/bin4xin.github.io/commit/db4d779b" target="_blank">
-                db4d779
-            </a>
-        </div>
-    </div>
-</div>
-                
-                    
-                    <div class="blog-card">
-    <div class="blog-card-header">
-        <a class="blog-card-title" href="/blog/2021/memorandum-todo/">
-            备忘录
-        </a>
-        <div class="blog-card-actions">
-            <a class="blog-card-action-btn" href="/blog/2021/memorandum-todo/" title="阅读全文">
-                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"/></svg>
-            </a>
-            
-            <a class="blog-card-action-btn" href="https://github.com/Bin4xin/bin4xin.github.io/edit/main/_posts/blog/2021-10-26-memorandum-todo.md" target="_blank" title="编辑此页">
-                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Z"/></svg>
-            </a>
-            
-        </div>
-    </div>
-
-    
-    <div class="blog-card-body">
-        <p class="blog-card-excerpt">
-            博客的自动化同步问题
-
-当前重中之重在与对于博客的自动化同步问题的解决，那么自然需要对当下博客同步进行分析；
-
-当下同步流程问题
-
-
-  B4xinSynchronize同步对应仓库
-    
-      bin4xin.github.io  =&gt;git push&gt; www.domain.com
-      bin4xin.gitee.io   =&gt;git push&gt; about.domain.com
-      domain-www-cn   ...
-        </p>
-    </div>
-    
-
-    <div class="blog-card-footer">
-        <div class="blog-card-meta">
-            <span class="blog-card-author">
-                
-<img alt="Bin4xin" src="https://avatars.githubusercontent.com/u/57884471?v=4"/>
-            </span>
-            <!--article author end-->
-
-
-
-
-
-
-
-
-<span class="ymh-author-badge">
-    <a class="ymh-author-link" href="https://github.com/Bin4xin" target="_blank">
-        <span class="ymh-author-avatar">B</span>
-        Bin4xin
-    </a>
-
-    
-
-    
-    
-    
-    
-    
-
-    <span class="ymh-time-badge">
-        
-            Sep 19, 53786
-        
-    </span>
-</span>
-
-        </div>
-        <div class="blog-card-meta">
-            <span class="blog-card-status-dot"></span>
-            
-            <a class="blog-card-hash" href="https://github.com/Bin4xin/bin4xin.github.io/commit/db4d779b" target="_blank">
-                db4d779
-            </a>
-        </div>
-    </div>
-</div>
-                
-                    
-                    <div class="blog-card">
-    <div class="blog-card-header">
-        <a class="blog-card-title" href="/blog/2021/The-boundary-between-public-cloud-and-private-cloud/">
-            浅谈实际生产业务中公有云和私有云的边界
-        </a>
-        <div class="blog-card-actions">
-            <a class="blog-card-action-btn" href="/blog/2021/The-boundary-between-public-cloud-and-private-cloud/" title="阅读全文">
-                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M6.22 3.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L9.94 8 6.22 4.28a.75.75 0 0 1 0-1.06Z"/></svg>
-            </a>
-            
-            <a class="blog-card-action-btn" href="https://github.com/Bin4xin/bin4xin.github.io/edit/main/_posts/blog/2021-10-24-The-boundary-between-public-cloud-and-private-cloud.md" target="_blank" title="编辑此页">
-                <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Z"/></svg>
-            </a>
-            
-        </div>
-    </div>
-
-    
-    <div class="blog-card-body">
-        <p class="blog-card-excerpt">
-            
-
-前言
-
-我在WEB渗透的工作中常常会碰到这样的现象：很多企业单位在对自身的资产梳理往往都存在或多或少的问题，如：
-
-
-  
-    
-      问题
-      为什么产生？
-      解决？
-      备注
-    
-  
-  
-    
-      资产梳理有遗漏
-      企业单位部分边缘业务外包导致；业务生命周期逻辑存在缺陷导致无法闭环；技术人员技术理解参差不齐；
-      …
-      -
-    
-    
-      公网暴露面过多
-   ...
-        </p>
-    </div>
-    
-
-    <div class="blog-card-footer">
-        <div class="blog-card-meta">
-            <span class="blog-card-author">
-                
-<img alt="Bin4xin" src="https://avatars.githubusercontent.com/u/57884471?v=4"/>
-            </span>
-            <!--article author end-->
-
-
-
-
-
-
-
-
-<span class="ymh-author-badge">
-    <a class="ymh-author-link" href="https://github.com/Bin4xin" target="_blank">
-        <span class="ymh-author-avatar">B</span>
-        Bin4xin
-    </a>
-
-    
-
-    
-    
-    
-    
-    
-
-    <span class="ymh-time-badge">
-        
-            Mar 29, 53781
-        
-    </span>
-</span>
-
-        </div>
-        <div class="blog-card-meta">
-            <span class="blog-card-status-dot"></span>
-            
-            <a class="blog-card-hash" href="https://github.com/Bin4xin/bin4xin.github.io/commit/db4d779b" target="_blank">
-                db4d779
+            <a class="blog-card-hash" href="https://github.com/Bin4xin/bin4xin.github.io/commit/13b88370" target="_blank">
+                13b8837
             </a>
         </div>
     </div>
@@ -387,7 +382,7 @@ Github Actions的简介
                     
                         <a href="/blog/page/11/" class="btn btn-primary">上一页</a>
                     
-                    <span>第 12 页 / 共 30 页</span>
+                    <span>第 12 页 / 共 31 页</span>
                     
                         <a href="/blog/page/13/" class="btn btn-primary">下一页</a>
                     
@@ -768,7 +763,7 @@ Github Actions的简介
             
             <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="/privacy/" target="_blank">隐私</a></li>
             
-            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="/privacy/#cookie" target="_blank">Cookie偏好</a></li>
+            <li class="mt1 lh-6 "><a class="dotted-underline no-underline f2 fw4 footer-abstract" href="/privacy/#Cookie" target="_blank">Cookie偏好</a></li>
             
             
         </ul>
